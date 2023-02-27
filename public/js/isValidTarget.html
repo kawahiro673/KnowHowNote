@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ol class="example">
+      <li>
+        First
+        <ul class="nested1">
+          <li>N1</li>
+          <ul class="nested2">
+            <li>NN1</li>
+            <li>NN2</li>
+          </ul>
+          <li>N2</li>
+          <li>N2</li>
+        </ul>
+      </li>
+      <li>Second</li>
+      <li>Third</li>
+    </ol>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://johnny.github.io/jquery-sortable/js/jquery-sortable-min.js"></script>
+    <script>
+      $('ol.example').sortable({
+        isValidTarget: function ($item, container) {
+          console.log(container.el);
+          if (container.el.hasClass('nested1')) {
+            console.log('false');
+            return false;
+          } else {
+            console.log('true');
+            return true;
+          }
+        },
+      });
+    </script>
+  </body>
+</html>

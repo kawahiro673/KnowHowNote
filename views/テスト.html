@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>サンプル Sortable</title>
+    <!-- jQuery、jQuery UIの読み込み -->
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-sortable.js"></script>
+    <!-- Sortableの実装 -->
+    <script>
+      $(function () {
+        // リストを並べ替え可能に
+        $('#sortable').sortable({
+          // updateで並べ替えるたびに更新
+          update: function () {
+            // toArrayで現在の順番を取得し出力
+            $('#log').text($('#sortable').sortable('toArray'));
+          },
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <!-- リストにid属性を追加 -->
+    <ul id="sortable">
+      <li id="1">項目1</li>
+      <li id="2">項目2</li>
+      <li id="3">項目3</li>
+    </ul>
+    <p>リストの順番は「<span id="log"></span>」です</p>
+  </body>
+</html>

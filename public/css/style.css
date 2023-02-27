@@ -1,0 +1,551 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&family=Sriracha&display=swap');
+
+.window {
+  position: relative;
+}
+
+.container {
+  background-color: aliceblue;
+  max-width: 1200px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  margin: auto;
+  /*以下の設定でcontainerを真ん中上部へ固定*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-radius: 10px;
+}
+
+header {
+  background-color: rgb(162, 241, 241);
+  padding: 0;
+  margin: 0;
+}
+
+header h1 {
+  font-size: 25px;
+  text-align: center;
+  padding: 13px;
+  margin: 0;
+  font-family: 'Open Sans', sans-serifp;
+  /* z-index: 10px; */
+}
+
+.rightclick {
+  text-decoration: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.list_title {
+  margin: 0;
+  padding: 0;
+}
+
+.list_title {
+  margin: 0;
+  padding: 0;
+}
+.list_title:hover,
+.folder:hover {
+  border: 2px solid #00ffff;
+  border-radius: 10px;
+}
+
+.login {
+  float: right;
+  transition: all 0.5s;
+  /*カーソル合わせた時に0.5秒かけて変色*/
+  margin: 0px;
+  padding: 20px 20px;
+  font-family: 'Open Sans', sans-serif;
+  z-index: 100px;
+}
+
+.login:hover {
+  /*カーソルをかざした時に変化*/
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.container-list {
+  background-color: white;
+  width: 1200px;
+  padding: 10px;
+}
+
+.new-memo {
+  margin-left: 30px;
+}
+
+.container0 {
+  display: flex;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.container1 {
+  width: 250px;
+  background-color: white;
+  margin-top: 0;
+  margin-right: 50px;
+  margin-left: 30px;
+  border-radius: 10px;
+}
+
+.container2 {
+  width: 900px;
+  background-color: white;
+  margin-top: 0;
+  margin-right: 50px;
+  margin-left: 30px;
+  border-radius: 10px;
+}
+
+.container2 p {
+  font-size: 13px;
+  text-align: right;
+  color: red;
+}
+
+.time {
+  width: 20px;
+}
+
+.title-txt {
+  font-size: 1.2em;
+  text-align: center;
+}
+.title-edit {
+  margin: 10px;
+  width: 50px;
+}
+.title-save {
+  margin: 0;
+  width: 45px;
+}
+
+.title {
+  margin: 30px 30px 0px 30px;
+}
+
+.buttonTab {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  height: 15px;
+  width: 15px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  top: 5px;
+  left: 5px;
+  position: absolute;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+.buttonTab:hover {
+  color: black;
+  font-weight: bold;
+  background-color: gray;
+  border-radius: 10px;
+}
+.tabDB {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  height: 18px;
+  width: 18px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  top: 5px;
+  left: 5px;
+  position: absolute;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+.tabDB:hover {
+  color: black;
+  font-weight: bold;
+  background-color: gray;
+  border-radius: 10px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 30px 0px 30px;
+}
+
+.edit-save-button {
+  text-align: center;
+}
+.edit {
+  margin: 20px;
+  width: 200px;
+  display: inline-block; /*改行が入らず横に並ぶ*/
+}
+.save {
+  margin: 20px;
+  width: 200px;
+  display: inline-block;
+}
+.delete {
+  margin-right: 20px;
+  margin-bottom: 20px;
+  float: right;
+}
+
+.error_text {
+  color: red;
+  text-align: center;
+  margin: 30px;
+  padding: 10px;
+}
+
+footer {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 80%;
+  background-color: rgb(174, 171, 180);
+}
+
+#contextmenu {
+  display: none;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 200px;
+  height: 180px;
+  border: 1px solid #000;
+  background-color: #fff;
+  border-radius: 5px;
+  z-index: 100;
+}
+#contextmenu li {
+  cursor: pointer;
+}
+#delete:hover {
+  border: 1px solid black;
+}
+#name:hover {
+  border: 1px solid black;
+}
+#color:hover {
+  border: 1px solid black;
+}
+#contextmenu2 {
+  display: none;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 200px;
+  height: 180px;
+  border: 1px solid #000;
+  background-color: #fff;
+  border-radius: 5px;
+  z-index: 100;
+}
+#contextmenu2 li {
+  cursor: pointer;
+}
+
+#contextmenu3 {
+  display: none;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 200px;
+  height: 180px;
+  border: 1px solid #000;
+  background-color: #fff;
+  border-radius: 5px;
+  z-index: 100;
+}
+#contextmenu3 li {
+  cursor: pointer;
+}
+
+#folder:hover {
+  border: 1px solid black;
+}
+#newmemo:hover {
+  border: 1px solid black;
+}
+
+/**/
+.tab-wrap {
+  height: 100%;
+  min-height: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.tab-label {
+  width: 150px;
+  color: White;
+  background: LightGray;
+  font-weight: bold;
+  white-space: nowrap;
+  text-align: center;
+  border: 1px solid Gray;
+  border-radius: 4px 0 0 4px;
+  margin: 5px -1px 5px 1px;
+  padding: 10px 0.5em;
+  order: -1;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  float: left;
+}
+
+.tab-content {
+  display: none;
+}
+
+/* アクティブなタブ */
+.tab-switch:checked + .tab-label {
+  color: Gray;
+  background: White;
+  border-right-color: White;
+}
+
+.tab-switch:checked + .tab-label + .tab-content {
+  width: calc(100% - 150px);
+  /* - ボタン幅 */
+  height: 100%;
+  padding: 15px;
+  border-left: 1px solid Gray;
+  display: block;
+}
+
+/* ラジオボタン非表示 */
+.tab-switch {
+  display: none;
+}
+
+/************** こっから背景 ****************/
+section {
+  height: 100vh;
+  width: 100%;
+  background-color: aliceblue;
+  overflow: hidden;
+  user-select: none; /*カーソルでドラッグアンドドロップが出来ないくなる*/
+}
+
+section .row {
+  display: flex; /*改行をなくして横並びに*/
+  white-space: nowrap; /*折り返しなし*/
+  font-size: 64px;
+  padding: 10px 0;
+  transform: rotate(-30deg); /*画像を傾け*/
+  /*傾けた際に上側が若干あくため、埋めている*/
+  position: relative;
+  top: -50%;
+}
+
+i {
+  color: rgb(255, 255, 255);
+  transition: 1s;
+}
+/*ホバーした時の処理*/
+i:hover {
+  color: rgb(162, 241, 241);
+  text-shadow: 0 0 120px rgb(162, 241, 241); /*ぼかし120px*/
+  transition: 0s;
+}
+
+/*アニメーション*/
+section .row div {
+  animation: animate 60s linear infinite;
+}
+
+@keyframes animate {
+  /*60sかけて0~100へ移っている*/
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.fade-out-font {
+  margin: 0;
+  padding: 0;
+}
+
+/********** sortable  *************/
+/*↓があるとsortableがうまく機能しない*/
+/* ul {
+  list-style-type: none;
+  padding: 0;
+} */
+
+body.dragging,
+body.dragging * {
+  cursor: move !important;
+}
+
+.dragged {
+  position: absolute;
+  opacity: 0.5;
+  z-index: 2000;
+}
+
+ul.sample li.placeholder {
+  position: relative;
+}
+
+ul.sample li.placeholder:before {
+  position: absolute;
+}
+
+/******************************** treeview **************************************/
+.treeview,
+.treeview ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.treeview ul {
+  background-color: white;
+  margin-top: 4px;
+}
+
+.treeview .hitarea {
+  background: url(images/treeview-famfamfam.gif) -64px -25px no-repeat;
+  height: 16px;
+  width: 16px;
+  margin-left: -16px;
+  float: left;
+  cursor: pointer;
+}
+/* fix for IE6 */
+* html .hitarea {
+  display: inline;
+  float: none;
+}
+
+.treeview li {
+  margin: 0;
+  padding: 3px 0pt 3px 16px;
+}
+
+.treeview a.selected {
+  background-color: #eee;
+}
+
+#treecontrol {
+  margin: 1em 0;
+  display: none;
+}
+
+.treeview .hover {
+  cursor: pointer;
+}
+
+.treeview li {
+  background: url(images/treeview-famfamfam-line.gif) 0 0 no-repeat;
+}
+.treeview li.collapsable,
+.treeview li.expandable {
+  background-position: 0 -176px;
+}
+
+.treeview .expandable-hitarea {
+  background-position: -80px -3px;
+}
+
+.treeview li.last {
+  background-position: 0 -1766px;
+}
+.treeview li.lastCollapsable,
+.treeview li.lastExpandable {
+  background-image: url(images/treeview-famfamfam.gif);
+}
+.treeview li.lastCollapsable {
+  background-position: 0 -111px;
+}
+.treeview li.lastExpandable {
+  background-position: -32px -67px;
+}
+
+.treeview div.lastCollapsable-hitarea,
+.treeview div.lastExpandable-hitarea {
+  background-position: 0;
+}
+
+.treeview-red li {
+  background-image: url(images/treeview-red-line.gif);
+}
+.treeview-red .hitarea,
+.treeview-red li.lastCollapsable,
+.treeview-red li.lastExpandable {
+  background-image: url(images/treeview-red.gif);
+}
+
+.treeview-black li {
+  background-image: url(images/treeview-black-line.gif);
+}
+.treeview-black .hitarea,
+.treeview-black li.lastCollapsable,
+.treeview-black li.lastExpandable {
+  background-image: url(images/treeview-black.gif);
+}
+
+.treeview-gray li {
+  background-image: url(images/treeview-gray-line.gif);
+}
+.treeview-gray .hitarea,
+.treeview-gray li.lastCollapsable,
+.treeview-gray li.lastExpandable {
+  background-image: url(images/treeview-gray.gif);
+}
+
+.treeview-famfamfam li {
+  background-image: url(images/treeview-famfamfam-line.gif);
+}
+.treeview-famfamfam .hitarea,
+.treeview-famfamfam li.lastCollapsable,
+.treeview-famfamfam li.lastExpandable {
+  background-image: url(images/treeview-famfamfam.gif);
+}
+
+.treeview .placeholder {
+  background: url(images/ajax-loader.gif) 0 0 no-repeat;
+  height: 16px;
+  width: 16px;
+  display: block;
+}
+
+.filetree li {
+  padding: 3px 0 2px 16px;
+}
+.filetree span.folder,
+.filetree span.file {
+  padding: 1px 0 1px 16px;
+  display: block;
+}
+.filetree span.folder {
+  background: url(images/folder.gif) 0 0 no-repeat;
+}
+.filetree li.expandable span.folder {
+  background: url(images/folder-closed.gif) 0 0 no-repeat;
+}
+.filetree span.file {
+  background: url(images/file.gif) 0 0 no-repeat;
+}
+/*******************************************************************/
+
+.hide1 {
+  display: none;
+}
+
+.treecontrol {
+  margin: 5px;
+}

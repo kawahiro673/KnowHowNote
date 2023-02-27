@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT memo</title>
+
+    <link rel="stylesheet" href="css/sanitize.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <a href="/login" class="login">LOGIN</a>
+            <h1>IT memo <span class="sab-title">~横文字苦手な人向けのメモサイト~</span></h1>
+        </header>
+
+        <div class="container-list">
+            <a href="/home" class="home">ホームへ戻る</a>
+            <a href="/new" class="new-memo">新しいメモを作成する</a>
+
+        </div>
+
+        <div class="container0">
+
+            <div class="container1">
+                <% old_memo.forEach((mem)=>{ %>
+                    <a href="/index/<%= mem.id%>">
+                        <%= mem.title %></br>
+                    </a>
+                    <% }) %>
+            </div>
+
+            <div class="container2">
+                <form action="/update/<%= memo.id%>" method="post">
+                    <p>この記事の完読時間はおよそ<input name="read_time" class="time" type="text" value="<%= memo.read_time%>">分です</p>
+
+                    <div class="title">
+                        <p1>タイトル<br></p1>
+                        <input name="it_title" class="title-txt" type="text" value="<%= memo.title %>">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">メモ</label>
+                        <textarea name="it_text" id="message" rows="30"
+                            class="form-control"><%= memo.memo_text %></textarea>
+                    </div>
+
+                    <div class="edit-save-button">
+                        <input class="edit" type="submit" value="保存">
+                    </div>
+                </form>
+
+                <form action="/delete/<%= memo.id %>" method="post">
+                    <input class="delete" type="submit" value="削除">
+                </form>
+            </div>
+        </div>
+        <footer>
+            &copy; tomo
+        </footer>
+    </div>
+</body>
+
+</html>
