@@ -5,6 +5,7 @@ const mysql = require('mysql'); //mysqlを使うためのやーつ
 const bodyParser = require('body-parser');
 const Connection = require('mysql/lib/Connection');
 const { Template } = require('ejs');
+const http = express('http');
 
 const connection = mysql.createConnection({
   //mysql接続定数を代入

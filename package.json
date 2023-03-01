@@ -1,0 +1,15 @@
+{
+  "name": "01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app01.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
