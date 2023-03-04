@@ -85,7 +85,7 @@ app.post('/create', (req, res) => {
 });
 
 app.get('/index', (req, res) => {
-  console.log('ログインページ開きました : login.ejs');
+  console.log('マイページ開きました : index.ejs');
   res.render('index.ejs');
 });
 // .route('/index')
