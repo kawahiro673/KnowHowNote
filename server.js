@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const Connection = require('mysql/lib/Connection');
 const { Template } = require('ejs');
 const http = express('http');
-const connection = require('./db.js');
+const connection = require('./db');
 //mysql接続定数を代入
 // const connection = mysql.createConnection({
 //   host: 'us-cdbr-east-06.cleardb.net',
