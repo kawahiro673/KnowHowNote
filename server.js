@@ -7,7 +7,7 @@ const Connection = require('mysql/lib/Connection');
 const { Template } = require('ejs');
 const http = express('http');
 //const connection = require('./db.js');
-//console.log(connection);
+
 //mysql接続定数を代入
 const connection = mysql.createConnection({
   host: 'us-cdbr-east-06.cleardb.net',
@@ -16,7 +16,7 @@ const connection = mysql.createConnection({
   password: '386777a7',
   database: 'heroku_436d62cc5e9f7c4',
 });
-
+console.log(connection);
 function handleDisconnect() {
   console.log('INFO.CONNECTION_DB: ');
 
