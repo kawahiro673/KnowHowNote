@@ -7,17 +7,17 @@ const Connection = require('mysql/lib/Connection');
 const { Template } = require('ejs');
 const http = express('http');
 
+//mysql接続定数を代入
+const connection = mysql.createConnection({
+  host: 'us-cdbr-east-06.cleardb.net',
+  port: 3306,
+  user: 'b7a48a6bf21f12',
+  password: '386777a7',
+  database: 'heroku_436d62cc5e9f7c4',
+});
+
 function handleDisconnect() {
   console.log('INFO.CONNECTION_DB: ');
-
-  //mysql接続定数を代入
-  const connection = mysql.createConnection({
-    host: 'us-cdbr-east-06.cleardb.net',
-    port: 3306,
-    user: 'b7a48a6bf21f12',
-    password: '386777a7',
-    database: 'heroku_436d62cc5e9f7c4',
-  });
 
   //connection取得
   connection.connect((err) => {
@@ -28,7 +28,7 @@ function handleDisconnect() {
     }
     console.log('success...MySQL接続成功!!!');
   });
-  //error('PROTOCOL_CONNECTION_LOST')時に再接続
+  //error('PROTOCOL_CONNECTION_LOST')時に再接続(MySQLの仕様上定期的に接続が切れるため)
   connection.on('error', function (err) {
     console.log('ERROR.DB: ', err);
     if (err.code === 'PROTOCOL_CONNECTION_LOST') {
