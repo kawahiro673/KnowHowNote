@@ -7,7 +7,7 @@ const Connection = require('mysql/lib/Connection');
 const { Template } = require('ejs');
 const http = express('http');
 //const connection = require('./db.js');
-console.log(connection);
+//console.log(connection);
 //mysql接続定数を代入
 const connection = mysql.createConnection({
   host: 'us-cdbr-east-06.cleardb.net',
