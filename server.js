@@ -7,23 +7,39 @@ const Connection = require('mysql/lib/Connection');
 const { Template } = require('ejs');
 const http = express('http');
 
-const connection = mysql.createConnection({
-  //mysql接続定数を代入
-  host: 'us-cdbr-east-06.cleardb.net',
-  port: 3306,
-  user: 'b7a48a6bf21f12',
-  password: '386777a7',
-  database: 'heroku_436d62cc5e9f7c4',
-});
+function handleDisconnect() {
+  console.log('INFO.CONNECTION_DB: ');
 
-connection.connect((err) => {
-  //MySQLへの接続の確認
-  if (err) {
-    console.log('error connecting: ' + err.stack);
-    return;
-  }
-  console.log('success...MySQL接続成功!!!');
-});
+  //mysql接続定数を代入
+  const connection = mysql.createConnection({
+    host: 'us-cdbr-east-06.cleardb.net',
+    port: 3306,
+    user: 'b7a48a6bf21f12',
+    password: '386777a7',
+    database: 'heroku_436d62cc5e9f7c4',
+  });
+
+  //connection取得
+  connection.connect((err) => {
+    //MySQLへの接続の確認
+    if (err) {
+      console.log('ERROR.CONNECTION_DB: ', err);
+      setTimeout(handleDisconnect, 1000);
+    }
+    console.log('success...MySQL接続成功!!!');
+  });
+  //error('PROTOCOL_CONNECTION_LOST')時に再接続
+  connection.on('error', function (err) {
+    console.log('ERROR.DB: ', err);
+    if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+      console.log('ERROR.CONNECTION_LOST: ', err);
+      handleDisconnect();
+    } else {
+      throw err;
+    }
+  });
+}
+handleDisconnect();
 
 app.set('view engine', 'ejs');
 //publicフォルダ内のファイルを読み込めるようにする
