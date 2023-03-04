@@ -102,7 +102,10 @@ app.post('/create', (req, res) => {
 
 app.get('/index', (req, res) => {
   console.log('マイページ開きました : index.ejs');
-  res.render('index.ejs');
+  connection.query('select * from it_memo;', (error, results) => {
+    console.log(results);
+    res.render('index.ejs');
+  });
 });
 // .route('/index')
 // .get(function (req, res) {
