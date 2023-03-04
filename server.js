@@ -35,6 +35,7 @@ app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
   //指定したファイルを画面表示
+  console.log('トップページ開きました : top.ejs');
   res.render('top.ejs');
 });
 
@@ -45,6 +46,7 @@ app.get('/home', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
+  console.log('ログインページ開きました : login.ejs');
   res.render('login.ejs');
 });
 
