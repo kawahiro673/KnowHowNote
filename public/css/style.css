@@ -131,6 +131,10 @@ header h1 {
   display: flex;
 }
 
+.sharebtn {
+  margin: 15px 0px;
+}
+
 .buttonTab {
   margin: 0;
   padding: 0;
