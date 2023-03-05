@@ -114,6 +114,9 @@ app
                     connection.query(
                       'select * from folder order by folder_order ASC',
                       (error, result_folder) => {
+                        console.log('*****************');
+                        console.log(process.env.DATABASE_URL);
+                        console.log('*****************');
                         // 上のクエリ文が result に入る
                         res.render('index.ejs', {
                           old_memo: result,
