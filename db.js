@@ -4,7 +4,9 @@ const mysql = require('mysql'); //mysqlを使うためのやーつ
 //   accessKeyId: process.env.DATABASE_URL,
 //   password: process.env.DB_PASSWORD,
 // });
+console.log('*****************');
 console.log(process.env.DATABASE_URL);
+console.log('*****************');
 
 //mysql接続定数を代入
 var dbconnection = mysql.createConnection({
