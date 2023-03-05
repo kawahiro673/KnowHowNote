@@ -114,12 +114,6 @@ app
                     connection.query(
                       'select * from folder order by folder_order ASC',
                       (error, result_folder) => {
-                        console.log(process.env.DB_HOSTNAME);
-                        console.log(process.env.DB_PORT);
-                        console.log(process.env.DB_USERNAME);
-                        console.log(process.env.DB_PASSWORD);
-                        console.log(process.env.DB_NAME);
-                        console.log(typeof process.env.DB_PORT);
                         // 上のクエリ文が result に入る
                         res.render('index.ejs', {
                           old_memo: result,
