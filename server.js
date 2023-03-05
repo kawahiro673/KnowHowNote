@@ -117,7 +117,7 @@ app
                         console.log(process.env.DB_HOSTNAME);
                         console.log(process.env.DB_PORT);
                         console.log(process.env.DB_USERNAME);
-                        console.log(rocess.env.DB_PASSWORD);
+                        console.log(process.env.DB_PASSWORD);
                         console.log(process.env.DB_NAME);
                         console.log(typeof process.env.DB_PORT);
                         // 上のクエリ文が result に入る
