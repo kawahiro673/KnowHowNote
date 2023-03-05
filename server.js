@@ -1,20 +1,12 @@
 var express = require('express'); //Express使うよー定型分
 var app = express(); //expressオブジェクトでappインスタンス作ったよー
-const mysql = require('mysql'); //mysqlを使うためのやーつ
+//const mysql = require('mysql'); //mysqlを使うためのやーつ
 //bodyーparserとはHTML(ejs)のformのinputに入力された値を受け取れるようにするもの
 const bodyParser = require('body-parser');
 const Connection = require('mysql/lib/Connection');
 const { Template } = require('ejs');
 const http = express('http');
-
-//mysql接続定数を代入
-const connection = mysql.createConnection({
-  host: 'us-cdbr-east-06.cleardb.net',
-  port: 3306,
-  user: 'b7a48a6bf21f12',
-  password: '386777a7',
-  database: 'heroku_436d62cc5e9f7c4',
-});
+const connection = require('./db.js');
 
 function handleDisconnect() {
   console.log('INFO.CONNECTION_DB: ');
