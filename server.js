@@ -1,6 +1,5 @@
 var express = require('express'); //Express使うよー定型分
 var app = express(); //expressオブジェクトでappインスタンス作ったよー
-//const mysql = require('mysql'); //mysqlを使うためのやーつ
 //bodyーparserとはHTML(ejs)のformのinputに入力された値を受け取れるようにするもの
 const bodyParser = require('body-parser');
 const Connection = require('mysql/lib/Connection');
