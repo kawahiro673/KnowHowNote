@@ -764,6 +764,7 @@ window.onload = function () {
               p.setAttribute('id', 'tabP' + Id);
               let shareBtn = document.createElement('bottun');
               shareBtn.setAttribute('class', 'sharebtn');
+              shareBtn.innerHTML = '共有する';
               let divFade = document.createElement('div');
               let div2 = document.createElement('div');
               div2.setAttribute('class', 'form-group');
