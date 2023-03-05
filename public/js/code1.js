@@ -762,6 +762,8 @@ window.onload = function () {
               p.style.color = 'black';
               p.style.textAlign = 'left';
               p.setAttribute('id', 'tabP' + Id);
+              let shareBtn = document.createElement('bottun');
+              shareBtn.setAttribute('class', 'sharebtn');
               let divFade = document.createElement('div');
               let div2 = document.createElement('div');
               div2.setAttribute('class', 'form-group');
@@ -792,6 +794,7 @@ window.onload = function () {
               div.appendChild(divFade);
               div.appendChild(div2);
               div1.appendChild(p);
+              div1.appendChild(shareBtn);
               div2.appendChild(textarea);
               div.appendChild(inputEdit);
               divFade.appendChild(fadeFont);
@@ -1751,7 +1754,7 @@ window.onload = function () {
   //全削除ボタン押下
   $('.container-delete').click(function () {
     let btn = confirm(
-      'ノート/フォルダが全て削除されますが本当に削除しますか？'
+      'ノートやフォルダが全て削除されますが本当に削除しますか？'
     );
     //はいを押した場合(true)
     if (btn) {
