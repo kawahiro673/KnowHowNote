@@ -333,7 +333,7 @@ section {
   width: 100%;
   background-color: aliceblue;
   overflow: hidden;
-  user-select: none; /*カーソルでドラッグアンドドロップが出来ないくなる*/
+  user-select: none; /*カーソルでドラッグアンドドロップが出来なくなる*/
 }
 
 section .row {
@@ -358,10 +358,10 @@ i:hover {
   transition: 0s;
 }
 
-/*アニメーション*/
-section .row div {
+/*アニメーション、、、処理が重くなる原因かも*/
+/* section .row div {
   animation: animate 60s linear infinite;
-}
+} */
 
 @keyframes animate {
   /*60sかけて0~100へ移っている*/
