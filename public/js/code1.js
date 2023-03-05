@@ -642,7 +642,7 @@ window.onload = function () {
         flg: 'tabDesc',
       }),
       success: function (res) {
-        //console.log(res.response);
+        console.log(res.response);
         res.response.forEach((tab) => {
           //console.log(tab.tabTitle);
           titleClick(tab.id, tab.tabTitle);

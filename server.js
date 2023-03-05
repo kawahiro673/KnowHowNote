@@ -9,7 +9,6 @@ const connection = require('./db.js');
 
 function handleDisconnect() {
   console.log('INFO.CONNECTION_DB: ');
-
   //connection取得
   connection.connect((err) => {
     //MySQLへの接続の確認
@@ -95,7 +94,7 @@ app
   .route('/index')
   .get(function (req, res) {
     connection.query(
-      //indexに過去のリストを載せるためにもうひとつ作成（selectで全て表示するため）
+      //リストを表示するため（selectで全て表示するため）
       'select * from it_memo',
       (error, result) => {
         connection.query(
