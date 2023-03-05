@@ -762,7 +762,7 @@ window.onload = function () {
               p.style.color = 'black';
               p.style.textAlign = 'left';
               p.setAttribute('id', 'tabP' + Id);
-              let shareBtn = document.createElement('bottun');
+              let shareBtn = document.createElement('button');
               shareBtn.setAttribute('class', 'sharebtn');
               shareBtn.innerHTML = '共有する';
               let divFade = document.createElement('div');
