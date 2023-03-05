@@ -1750,24 +1750,30 @@ window.onload = function () {
   );
   //全削除ボタン押下
   $('.container-delete').click(function () {
-    $.ajax({
-      url: '/index/',
-      type: 'POST',
-      dataType: 'Json',
-      contentType: 'application/json',
-      data: JSON.stringify({
-        data: 'deleteALL',
-      }),
-      success: function (res) {
-        //全削除
-        $('#0').empty();
-        $('#tab').empty();
-        let p = document.createElement('p');
-        p.setAttribute('id', 'notab');
-        p.innerHTML = 'こちらにnoteが出力されます';
-        document.getElementById('tab').appendChild(p);
-      },
-    });
+    let btn = confirm(
+      'ノート/フォルダが全て削除されますが本当に削除しますか？'
+    );
+    //はいを押した場合(true)
+    if (btn) {
+      $.ajax({
+        url: '/index/',
+        type: 'POST',
+        dataType: 'Json',
+        contentType: 'application/json',
+        data: JSON.stringify({
+          data: 'deleteALL',
+        }),
+        success: function (res) {
+          //全削除
+          $('#0').empty();
+          $('#tab').empty();
+          let p = document.createElement('p');
+          p.setAttribute('id', 'notab');
+          p.innerHTML = 'こちらにnoteが出力されます';
+          document.getElementById('tab').appendChild(p);
+        },
+      });
+    }
   });
   //全て折り畳む
   $('.collapsable').click(function () {
