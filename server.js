@@ -183,6 +183,7 @@ app
         connection.query(
           'SELECT * FROM tab_hold ORDER BY tabOrder;',
           (error, results) => {
+            console.log(results);
             res.send({ response: results });
           }
         );
