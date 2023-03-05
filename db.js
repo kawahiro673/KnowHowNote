@@ -1,10 +1,10 @@
 const mysql = require('mysql'); //mysqlを使うためのやーつ
 
-let s3 = new mysql.S3({
-  accessKeyId: process.env.DATABASE_URL,
-  password: process.env.DB_PASSWORD,
-});
-console.log(s3.password);
+// let s3 = new mysql.S3({
+//   accessKeyId: process.env.DATABASE_URL,
+//   password: process.env.DB_PASSWORD,
+// });
+console.log(process.env.DATABASE_URL);
 
 //mysql接続定数を代入
 var dbconnection = mysql.createConnection({
