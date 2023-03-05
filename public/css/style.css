@@ -329,7 +329,7 @@ footer {
 
 /************** こっから背景 ****************/
 section {
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   background-color: aliceblue;
   overflow: hidden;
@@ -359,19 +359,19 @@ i:hover {
 }
 
 /*アニメーション、、、処理が重くなる原因かも*/
-/* section .row div {
+section .row div {
   animation: animate 60s linear infinite;
-} */
+}
 
-/* @keyframes animate {
-  /*60sかけて0~100へ移っている*/
-/* from {
+@keyframes animate {
+  /* 60sかけて0~100へ移っている */
+  from {
     transform: translateX(0%);
   }
   to {
     transform: translateX(-100%);
-  } */
-/* }  */
+  }
+}
 
 .fade-out-font {
   margin: 0;
