@@ -363,15 +363,15 @@ i:hover {
   animation: animate 60s linear infinite;
 } */
 
-@keyframes animate {
+/* @keyframes animate {
   /*60sかけて0~100へ移っている*/
-  from {
+/* from {
     transform: translateX(0%);
   }
   to {
     transform: translateX(-100%);
-  }
-}
+  } */
+/* }  */
 
 .fade-out-font {
   margin: 0;
