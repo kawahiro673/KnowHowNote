@@ -1,20 +1,11 @@
 const mysql = require('mysql'); //mysqlを使うためのやーつ
 
-// let s3 = new mysql.S3({
-//   accessKeyId: process.env.DATABASE_URL,
-//   password: process.env.DB_PASSWORD,
-// });
-console.log('*****************');
-console.log(process.env.DATABASE_URL);
-console.log('*****************');
-
-//mysql接続定数を代入
 var dbconnection = mysql.createConnection({
-  host: 'us-cdbr-east-06.cleardb.net',
-  port: 3306,
-  user: 'b7a48a6bf21f12',
-  password: '386777a7',
-  database: 'heroku_436d62cc5e9f7c4',
+  host: process.env.DB_HOSTNAME,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
 
 module.exports = dbconnection;
