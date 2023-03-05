@@ -1,3 +1,7 @@
 node_modules/
-.env
+
+
+# Local development
 .DS_Store
+.env
+db.js

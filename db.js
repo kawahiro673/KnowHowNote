@@ -1,5 +1,5 @@
 const mysql = require('mysql'); //mysqlを使うためのやーつ
-
+//mysql接続定数を代入
 var dbconnection = mysql.createConnection({
   host: 'us-cdbr-east-06.cleardb.net',
   port: 3306,
