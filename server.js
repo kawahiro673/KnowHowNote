@@ -103,27 +103,14 @@ app
           'select tab_hold.id, it_memo.title, it_memo.memo_text from tab_hold left join it_memo on tab_hold.id = it_memo.id;',
           (error, results) => {
             connection.query(
-              //ASはCOUNT(*)をcountDBに別名保存
-              'SELECT COUNT(*) AS countDB FROM tab_hold;',
-              (error, result_count) => {
-                connection.query(
-                  //解決次第削除
-                  'select * from tab_hold',
-                  (error, results_hold) => {
-                    connection.query(
-                      'select * from folder order by folder_order ASC',
-                      (error, result_folder) => {
-                        // 上のクエリ文が result に入る
-                        res.render('index.ejs', {
-                          old_memo: result,
-                          tab_memo: results,
-                          db_count: result_count[0].countDB, //テーブルの数が入る
-                          folderList: result_folder,
-                        });
-                      }
-                    );
-                  }
-                );
+              'select * from folder order by folder_order ASC',
+              (error, result_folder) => {
+                // 上のクエリ文が result に入る
+                res.render('index.ejs', {
+                  old_memo: result,
+                  tab_memo: results,
+                  folderList: result_folder,
+                });
               }
             );
           }
