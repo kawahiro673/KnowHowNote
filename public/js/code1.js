@@ -643,7 +643,7 @@ window.onload = function () {
       }),
       success: function (res) {
         console.log(res.response);
-        res.response.forEach((tab) => {
+        res.response.forEach(async (tab) => {
           //console.log(tab.tabTitle);
           titleClick(tab.id, tab.tabTitle);
         });
