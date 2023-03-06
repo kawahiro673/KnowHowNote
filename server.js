@@ -883,7 +883,7 @@ app
           'SELECT * FROM it_memo WHERE id = ?;',
           [req.body.id],
           (error, result) => {
-            res.send({ response: result });
+            res.send({ response: result[0] });
           }
         );
       }
