@@ -876,7 +876,10 @@ window.onload = function () {
                 div.appendChild(p1);
                 textarea.readOnly = false;
                 let titletext = document.createElement('input');
-                titletext.setAttribute('value', title);
+                titletext.setAttribute(
+                  'value',
+                  document.getElementById(`tabP${Id}`).innerHTML
+                );
                 document.getElementById(`tabP${Id}`).after(titletext);
                 document.getElementById(`tabP${Id}`).style.display = 'none';
 
