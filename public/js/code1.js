@@ -696,7 +696,7 @@ window.onload = function () {
       buttonTab.innerHTML = '×';
 
       document.getElementById('notab').style.display = 'none';
-      //console.log(Id, title);
+      console.log(Id, title);
       $.ajax({
         url: '/index/',
         type: 'POST',
@@ -715,7 +715,7 @@ window.onload = function () {
           if (res.response.findIndex((tab) => tab.id == Id) == -1) {
             newTabFlg = true;
           }
-
+          console.log(Id, title);
           $.ajax({
             url: '/index/',
             type: 'POST',
@@ -744,10 +744,12 @@ window.onload = function () {
                     title,
                   }),
                   success: function (res) {
+                    console.log(Id, title);
                     //console.log(res.response);
                   },
                 });
               }
+              console.log(Id, title);
               // div要素を生成
               let div = document.createElement('div');
               div.className = 'tab-content';
