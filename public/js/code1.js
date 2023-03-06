@@ -1011,7 +1011,15 @@ window.onload = function () {
     updateTime(id, time);
   }
 
-  function cancelButton(id, p1, inputKeep, inputCancel, inputEdit, textarea) {
+  function cancelButton(
+    id,
+    p1,
+    inputKeep,
+    inputCancel,
+    inputEdit,
+    textarea,
+    titletext
+  ) {
     console.log('取り消すクリック');
     let btn = confirm(
       '本当に編集を取り消しますか？\n保存していないものは取り消されます。'
@@ -1034,6 +1042,7 @@ window.onload = function () {
       p1.remove();
       inputKeep.remove();
       inputCancel.remove();
+      titletext.remove();
       inputEdit.style.display = 'block';
       textarea.readOnly = true;
     }
