@@ -1032,14 +1032,14 @@ window.onload = function () {
         dataType: 'Json',
         contentType: 'application/json',
         data: JSON.stringify({
-          data: 'tab',
+          data: 'note',
           flg: 'info',
           id: id,
         }),
         success: function (res) {
-          console.log(`取り消し成功！ ${res.response1.memo_text}`);
-          textarea.value = res.response1.memo_text;
-          document.getElementById(`tabP${id}`).innerHTML = res.response1.title;
+          console.log(`取り消し成功！ ${res.response.memo_text}`);
+          textarea.value = res.response.memo_text;
+          document.getElementById(`tabP${id}`).innerHTML = res.response.title;
         },
       });
       document.getElementById(`tabP${id}`).style.display = 'block';

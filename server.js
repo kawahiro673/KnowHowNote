@@ -189,12 +189,7 @@ app
         );
       } else if (req.body.flg == 'info') {
         connection.query('SELECT * FROM tab_hold;', (error, results) => {
-          connection.query(
-            'SELECT * FROM tab_hold WHERE id = ?;',
-            (error, result) => {
-              res.send({ response: results, response1: result });
-            }
-          );
+          res.send({ response: results, response1: result });
         });
       } else if (req.body.flg == 'focusTab') {
         connection.query(
@@ -881,6 +876,14 @@ app
           [req.body.pass, req.body.id],
           (error, result) => {
             res.send({ response: req.body.time });
+          }
+        );
+      } else if (req.body.flg == 'noteInfo') {
+        connection.query(
+          'SELECT * FROM it_memo WHERE id = ?;',
+          [req.body.id],
+          (error, result) => {
+            res.send({ response: result });
           }
         );
       }
