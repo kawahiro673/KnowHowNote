@@ -188,8 +188,13 @@ app
           }
         );
       } else if (req.body.flg == 'info') {
-        connection.query('SELECT * FROM tab_hold;', (error, result) => {
-          res.send({ response: result });
+        connection.query('SELECT * FROM tab_hold;', (error, results) => {
+          connection.query(
+            'SELECT * FROM tab_hold WHERE id = ?;',
+            (error, result) => {
+              res.send({ response: results, response1: result });
+            }
+          );
         });
       } else if (req.body.flg == 'focusTab') {
         connection.query(

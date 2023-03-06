@@ -1032,25 +1032,20 @@ window.onload = function () {
         contentType: 'application/json',
         data: JSON.stringify({
           data: 'tab',
+          flg: 'info',
           id: id,
         }),
         success: function (res) {
-          console.log(`取り消し成功！ ${res.response.memo_text}`);
-          textarea.value = res.response.memo_text;
-          p1.remove();
-          inputKeep.remove();
-          inputCancel.remove();
-          titletext.remove();
-          inputEdit.style.display = 'block';
-          textarea.readOnly = true;
+          console.log(`取り消し成功！ ${res.response1.memo_text}`);
+          textarea.value = res.response1.memo_text;
         },
       });
-      // p1.remove();
-      // inputKeep.remove();
-      // inputCancel.remove();
-      // titletext.remove();
-      // inputEdit.style.display = 'block';
-      // textarea.readOnly = true;
+      p1.remove();
+      inputKeep.remove();
+      inputCancel.remove();
+      titletext.remove();
+      inputEdit.style.display = 'block';
+      textarea.readOnly = true;
     }
   }
 
