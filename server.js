@@ -878,7 +878,7 @@ app
             res.send({ response: req.body.time });
           }
         );
-      } else if (req.body.flg == 'noteInfo') {
+      } else if (req.body.flg == 'info') {
         connection.query(
           'SELECT * FROM it_memo WHERE id = ?;',
           [req.body.id],
