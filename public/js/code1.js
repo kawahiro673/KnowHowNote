@@ -917,7 +917,8 @@ window.onload = function () {
                     inputKeep,
                     inputCancel,
                     inputEdit,
-                    textarea
+                    textarea,
+                    titletext
                   );
                 };
               };
@@ -1038,8 +1039,10 @@ window.onload = function () {
         success: function (res) {
           console.log(`取り消し成功！ ${res.response1.memo_text}`);
           textarea.value = res.response1.memo_text;
+          document.getElementById(`tabP${id}`).innerHTML = res.response1.title;
         },
       });
+      document.getElementById(`tabP${id}`).style.display = 'block';
       p1.remove();
       inputKeep.remove();
       inputCancel.remove();
