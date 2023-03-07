@@ -643,10 +643,10 @@ window.onload = function () {
       }),
       success: function (res) {
         console.log(res.response);
-        res.response.forEach(async (tab) => {
-          //console.log(tab.tabTitle);
+        for (const tab of res.response) {
+          console.log(tab);
           titleClick(tab.id, tab.tabTitle);
-        });
+        }
         if (res.response.length != 0) {
           setTimeout(() => {
             $.ajax({
