@@ -645,7 +645,9 @@ window.onload = function () {
         console.log(res.response);
         for (const tab of res.response) {
           console.log(tab);
+          console.log(tab.title);
           titleClick(tab.id, tab.tabTitle);
+          console.log(tab.title);
         }
         if (res.response.length != 0) {
           setTimeout(() => {
