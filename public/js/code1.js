@@ -10,7 +10,6 @@ let hitarea = document.getElementsByClassName('hitarea');
 let tmpForm;
 let borderTmp; //枠のついたlistTitles一時保持
 let borderArray;
-let tmpTab; //名前変更タグが生成された際にtitile保存
 var idArray = []; //tab生成時にidを配列へ格納
 let tabFocus;
 let initial_index;
@@ -311,7 +310,6 @@ window.onload = function () {
           inputTab.style.display = 'block';
           inputTab.setAttribute('value', listTitle.title);
 
-          tmpTab = listTitle.title;
           listTitle.titleThis.after(inputTab);
           listTitle.titleThis.style.display = 'none';
           //tmpForm = inputTab;
@@ -628,7 +626,6 @@ window.onload = function () {
       let ID = Number(listTitle.id);
       titleClick(ID, listTitle.title);
 
-      //orderを格納し、focus=1へ
       $.ajax({
         url: '/index/',
         type: 'POST',
@@ -644,6 +641,7 @@ window.onload = function () {
           let tabelements = document.getElementsByClassName('tab-content');
           let tabId = document.getElementById(`Tab-ID${ID}`);
           let index = [].slice.call(tabelements).indexOf(tabId);
+          //orderを格納し、focus=1へ
           $.ajax({
             url: '/index/',
             type: 'POST',
@@ -707,7 +705,7 @@ window.onload = function () {
   function titleClick(Id, title) {
     //console.log(Id, title);
     //タブ生成しておらず、・・・じゃないとき
-    if (idArray.includes(Id) == false && title !== tmpTab) {
+    if (idArray.includes(Id) == false) {
       $.ajax({
         url: '/index/',
         type: 'POST',
