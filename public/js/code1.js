@@ -719,6 +719,7 @@ window.onload = function () {
           id: Id,
         }),
         success: function (res) {
+          console.log(res.response);
           //input生成
           const inputTab = document.createElement('input');
           inputTab.setAttribute('id', 'TAB-ID' + Id);
