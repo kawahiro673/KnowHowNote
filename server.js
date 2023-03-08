@@ -134,25 +134,16 @@ app
       //[タイトルを変更する]を押下した場合
     } else if (req.body.data == 'tab') {
       console.log(`[POST(tab)] id : ${req.body.id}, title : ${req.body.title}`);
-      if (req.body.flg == 'etc') {
+      if (req.body.flg == 'clickTab') {
         connection.query(
-          'select * from it_memo where id = ?',
-          [req.body.id],
+          'UPDATE tab_hold SET tabOrder = ?,focus = 1 where id = ?',
+          [req.body.order, req.body.id],
           (error, results) => {
-            //console.log(results);
             connection.query(
-              //タブ追加時にtab_holdにも追加
-              'INSERT into tab_hold(id, tabTitle) values(?, ?);',
-              [req.body.id, req.body.title],
-              (error, result) => {
-                connection.query(
-                  'SELECT * from tab_hold;',
-                  [req.body.id, req.body.title],
-                  (error, result) => {
-                    console.log(result);
-                    res.send({ response: results[0], response1: result });
-                  }
-                );
+              'UPDATE tab_hold SET focus = 0 where id != ?',
+              [req.body.id],
+              (error, results) => {
+                res.send({ response: results });
               }
             );
           }
