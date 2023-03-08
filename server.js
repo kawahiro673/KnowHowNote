@@ -204,15 +204,15 @@ app
             );
           }
         );
+      } else if (req.body.flg == 'tabAdd') {
+        connection.query(
+          'INSERT into tab_hold(id, tabTitle) values(?, ?);',
+          [req.body.id, req.body.title],
+          (error, results) => {
+            res.send({ response: results });
+          }
+        );
       }
-    } else if (req.body.flg == 'tabAdd') {
-      connection.query(
-        'INSERT into tab_hold(id, tabTitle) values(?, ?);',
-        [req.body.id, req.body.title],
-        (error, results) => {
-          res.send({ response: results });
-        }
-      );
     } //追加後のDB更新
     else if (req.body.data == 'addOrder') {
       console.log(
