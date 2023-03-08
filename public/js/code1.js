@@ -764,8 +764,8 @@ window.onload = function () {
       let inputEdit = document.createElement('input');
       inputEdit.type = 'submit';
       inputEdit.value = '編集する';
-      p.innerHTML = res.response.title;
-      textarea.innerHTML = res.response.memo_text;
+      p.innerHTML = 'res.response.title';
+      textarea.innerHTML = 'res.response.memo_text';
       let fadeFont = document.createElement('p');
       fadeFont.setAttribute('class', 'fade-out-font');
       fadeFont.innerHTML = `保存が完了いたしました`;
@@ -774,7 +774,7 @@ window.onload = function () {
       let time = document.createElement('p');
       time.setAttribute('class', 'updatetime');
       time.style.color = 'black';
-      time.innerHTML = res.response.saved_time;
+      time.innerHTML = 'res.response.saved_time';
 
       //要素追加
       tab.appendChild(inputTab);
