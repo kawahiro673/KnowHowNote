@@ -677,9 +677,7 @@ window.onload = function () {
       success: function (res) {
         console.log(res.response);
         for (const tab of res.response) {
-          setTimeout(() => {
-            titleClick(tab.id, tab.tabTitle);
-          }, 500);
+          titleClick(tab.id, tab.tabTitle);
         }
         if (res.response.length != 0) {
           setTimeout(() => {
@@ -708,206 +706,206 @@ window.onload = function () {
     //console.log(Id, title);
     //タブ生成しておらず、・・・じゃないとき
     if (idArray.includes(Id) == false) {
-      $.ajax({
-        url: '/index/',
-        type: 'POST',
-        dataType: 'Json',
-        contentType: 'application/json',
-        data: JSON.stringify({
-          data: 'note',
-          flg: 'info',
-          id: Id,
-        }),
-        success: function (res) {
-          console.log(res.response);
-          //input生成
-          const inputTab = document.createElement('input');
-          inputTab.setAttribute('id', 'TAB-ID' + Id);
-          inputTab.setAttribute('type', 'radio');
-          inputTab.setAttribute('name', 'TAB');
-          inputTab.setAttribute('class', 'tab-switch');
-          inputTab.setAttribute('checked', 'checked');
-          //label生成
-          const labelTab = document.createElement('label');
-          labelTab.setAttribute('class', 'tab-label');
-          labelTab.setAttribute('id', 'tab-ID' + Id);
-          labelTab.setAttribute('for', 'TAB-ID' + Id);
-          labelTab.style.display = 'block';
-          labelTab.innerHTML = title;
-          //[✖️]ボタン作成
-          const buttonTab = document.createElement('button');
-          buttonTab.setAttribute('class', 'buttonTab');
-          buttonTab.setAttribute('id', 'button' + Id);
-          buttonTab.innerHTML = '×';
+      // $.ajax({
+      //   url: '/index/',
+      //   type: 'POST',
+      //   dataType: 'Json',
+      //   contentType: 'application/json',
+      //   data: JSON.stringify({
+      //     data: 'note',
+      //     flg: 'info',
+      //     id: Id,
+      //   }),
+      //   success: function (res) {
+      //     console.log(res.response);
+      //input生成
+      const inputTab = document.createElement('input');
+      inputTab.setAttribute('id', 'TAB-ID' + Id);
+      inputTab.setAttribute('type', 'radio');
+      inputTab.setAttribute('name', 'TAB');
+      inputTab.setAttribute('class', 'tab-switch');
+      inputTab.setAttribute('checked', 'checked');
+      //label生成
+      const labelTab = document.createElement('label');
+      labelTab.setAttribute('class', 'tab-label');
+      labelTab.setAttribute('id', 'tab-ID' + Id);
+      labelTab.setAttribute('for', 'TAB-ID' + Id);
+      labelTab.style.display = 'block';
+      labelTab.innerHTML = title;
+      //[✖️]ボタン作成
+      const buttonTab = document.createElement('button');
+      buttonTab.setAttribute('class', 'buttonTab');
+      buttonTab.setAttribute('id', 'button' + Id);
+      buttonTab.innerHTML = '×';
 
-          // div要素を生成
-          let div = document.createElement('div');
-          div.className = 'tab-content';
-          div.setAttribute('id', 'Tab-ID' + Id);
-          div.setAttribute('value', Id);
-          //div.setAttribute('data-title', res.response.title);
-          let div1 = document.createElement('div');
-          div1.setAttribute('class', 'title');
-          let p = document.createElement('p');
-          p.setAttribute('class', 'title-txt');
-          p.style.fontSize = '25px';
-          p.style.color = 'black';
-          p.style.textAlign = 'left';
-          p.setAttribute('id', 'tabP' + Id);
-          let shareBtn = document.createElement('button');
-          shareBtn.setAttribute('class', 'sharebtn');
-          shareBtn.innerHTML = '共有する';
-          let divFade = document.createElement('div');
-          let div2 = document.createElement('div');
-          div2.setAttribute('class', 'form-group');
-          let textarea = document.createElement('textarea');
-          textarea.readOnly = true;
-          textarea.style.height = '500px';
-          let inputEdit = document.createElement('input');
-          inputEdit.type = 'submit';
-          inputEdit.value = '編集する';
-          p.innerHTML = res.response.title;
-          textarea.innerHTML = res.response.memo_text;
-          let fadeFont = document.createElement('p');
-          fadeFont.setAttribute('class', 'fade-out-font');
-          fadeFont.innerHTML = `保存が完了いたしました`;
-          fadeFont.classList.add('fadeout');
-          fadeFont.style.visibility = 'hidden';
-          let time = document.createElement('p');
-          time.setAttribute('class', 'updatetime');
-          time.style.color = 'black';
-          time.innerHTML = res.response.saved_time;
+      // div要素を生成
+      let div = document.createElement('div');
+      div.className = 'tab-content';
+      div.setAttribute('id', 'Tab-ID' + Id);
+      div.setAttribute('value', Id);
+      //div.setAttribute('data-title', res.response.title);
+      let div1 = document.createElement('div');
+      div1.setAttribute('class', 'title');
+      let p = document.createElement('p');
+      p.setAttribute('class', 'title-txt');
+      p.style.fontSize = '25px';
+      p.style.color = 'black';
+      p.style.textAlign = 'left';
+      p.setAttribute('id', 'tabP' + Id);
+      let shareBtn = document.createElement('button');
+      shareBtn.setAttribute('class', 'sharebtn');
+      shareBtn.innerHTML = '共有する';
+      let divFade = document.createElement('div');
+      let div2 = document.createElement('div');
+      div2.setAttribute('class', 'form-group');
+      let textarea = document.createElement('textarea');
+      textarea.readOnly = true;
+      textarea.style.height = '500px';
+      let inputEdit = document.createElement('input');
+      inputEdit.type = 'submit';
+      inputEdit.value = '編集する';
+      p.innerHTML = res.response.title;
+      textarea.innerHTML = res.response.memo_text;
+      let fadeFont = document.createElement('p');
+      fadeFont.setAttribute('class', 'fade-out-font');
+      fadeFont.innerHTML = `保存が完了いたしました`;
+      fadeFont.classList.add('fadeout');
+      fadeFont.style.visibility = 'hidden';
+      let time = document.createElement('p');
+      time.setAttribute('class', 'updatetime');
+      time.style.color = 'black';
+      time.innerHTML = res.response.saved_time;
 
-          //要素追加
-          tab.appendChild(inputTab);
-          tab.appendChild(labelTab);
-          labelTab.appendChild(buttonTab);
-          tab.appendChild(div);
-          div.appendChild(div1);
-          div.appendChild(divFade);
-          div.appendChild(div2);
-          div1.appendChild(p);
-          div1.appendChild(shareBtn);
-          div2.appendChild(textarea);
-          div.appendChild(inputEdit);
-          divFade.appendChild(fadeFont);
-          div.appendChild(time);
+      //要素追加
+      tab.appendChild(inputTab);
+      tab.appendChild(labelTab);
+      labelTab.appendChild(buttonTab);
+      tab.appendChild(div);
+      div.appendChild(div1);
+      div.appendChild(divFade);
+      div.appendChild(div2);
+      div1.appendChild(p);
+      div1.appendChild(shareBtn);
+      div2.appendChild(textarea);
+      div.appendChild(inputEdit);
+      divFade.appendChild(fadeFont);
+      div.appendChild(time);
 
-          console.log(`"id: ${Id} title: ${title}"のタブが生成されました`);
+      console.log(`"id: ${Id} title: ${title}"のタブが生成されました`);
 
-          document.getElementById('notab').style.display = 'none';
+      document.getElementById('notab').style.display = 'none';
 
-          idArray.push(Id);
+      idArray.push(Id);
 
-          inputEdit.onclick = function () {
-            var p1 = document.createElement('p');
-            p1.innerHTML =
-              '※現在編集中です。編集完了後【保存する】ボタンを押してください';
-            div.appendChild(p1);
-            textarea.readOnly = false;
-            let titletext = document.createElement('input');
-            titletext.setAttribute('value', title);
-            document.getElementById(`tabP${Id}`).after(titletext);
-            document.getElementById(`tabP${Id}`).style.display = 'none';
+      inputEdit.onclick = function () {
+        var p1 = document.createElement('p');
+        p1.innerHTML =
+          '※現在編集中です。編集完了後【保存する】ボタンを押してください';
+        div.appendChild(p1);
+        textarea.readOnly = false;
+        let titletext = document.createElement('input');
+        titletext.setAttribute('value', title);
+        document.getElementById(`tabP${Id}`).after(titletext);
+        document.getElementById(`tabP${Id}`).style.display = 'none';
 
-            var inputKeep = document.createElement('input');
-            var inputCancel = document.createElement('input');
-            inputKeep.type = 'submit';
-            inputKeep.value = '保存する';
-            inputCancel.type = 'submit';
-            inputCancel.value = '取り消す';
-            inputKeep.setAttribute('class', 'keepbtn');
-            inputCancel.setAttribute('class', 'cancelbtn');
+        var inputKeep = document.createElement('input');
+        var inputCancel = document.createElement('input');
+        inputKeep.type = 'submit';
+        inputKeep.value = '保存する';
+        inputCancel.type = 'submit';
+        inputCancel.value = '取り消す';
+        inputKeep.setAttribute('class', 'keepbtn');
+        inputCancel.setAttribute('class', 'cancelbtn');
 
-            div.appendChild(inputKeep);
-            div.appendChild(inputCancel);
+        div.appendChild(inputKeep);
+        div.appendChild(inputCancel);
 
-            inputEdit.style.display = 'none';
-            //[保存する]ボタン押下
-            inputKeep.onclick = function () {
-              keepButton(
-                Id,
-                p,
-                textarea,
-                p1,
-                fadeFont,
-                inputKeep,
-                inputCancel,
-                inputEdit,
-                time,
-                titletext.value,
-                titletext
-              );
-            };
-            //[取り消す]ボタン押下
-            inputCancel.onclick = function () {
-              cancelButton(Id, p1, inputKeep, inputCancel, inputEdit, textarea);
-            };
-          };
+        inputEdit.style.display = 'none';
+        //[保存する]ボタン押下
+        inputKeep.onclick = function () {
+          keepButton(
+            Id,
+            p,
+            textarea,
+            p1,
+            fadeFont,
+            inputKeep,
+            inputCancel,
+            inputEdit,
+            time,
+            titletext.value,
+            titletext
+          );
+        };
+        //[取り消す]ボタン押下
+        inputCancel.onclick = function () {
+          cancelButton(Id, p1, inputKeep, inputCancel, inputEdit, textarea);
+        };
+      };
 
-          //タブ上の「✖️」ボタン押下
-          buttonTab.onclick = function () {
-            console.log(`id:${Id}, title:"${title}"タブを閉じました`);
-            let tabelements = document.getElementsByClassName('tab-content');
-            let tabId = document.getElementById(`Tab-ID${Id}`);
-            let index = [].slice.call(tabelements).indexOf(tabId);
-            index = index + 1;
-            closeTab(Id, index);
-            $.ajax({
-              url: '/index/',
-              type: 'POST',
-              dataType: 'Json',
-              contentType: 'application/json',
-              data: JSON.stringify({
-                data: 'tab',
-                flg: 'info',
-                id: Id,
-                title,
-              }),
-              success: function (res) {
-                if (res.response.length == 0) {
-                  document.getElementById('notepass').innerHTML = '';
-                }
-              },
-            });
-          };
-
-          document.getElementById(`tab-ID${Id}`).onclick = function (e) {
-            //閉じるボタン以外押下時
-            if (!e.target.closest('.buttonTab')) {
-              var a = $(event.target).closest(`#button${Id}`).length;
-              if (a) {
-                //nameをクリック
-              } else {
-                tabFocus = Id;
-              }
-              //パスを取得する関数
-              let pass = passGet(Id, title);
-              console.log(pass);
-              //クリックしたTabのfocusを1へ、その他を0へ
-              $.ajax({
-                url: '/index/',
-                type: 'POST',
-                dataType: 'Json',
-                contentType: 'application/json',
-                data: JSON.stringify({
-                  data: 'tab',
-                  flg: 'updateFocus',
-                  id: Id,
-                  title,
-                  pass,
-                }),
-                success: function (res) {
-                  //console.log('タブクリックしたぞ(ajax)');
-                  document.getElementById('notepass').innerHTML = pass;
-                },
-              });
-            } else {
-              //タブ閉じるボタン押下
+      //タブ上の「✖️」ボタン押下
+      buttonTab.onclick = function () {
+        console.log(`id:${Id}, title:"${title}"タブを閉じました`);
+        let tabelements = document.getElementsByClassName('tab-content');
+        let tabId = document.getElementById(`Tab-ID${Id}`);
+        let index = [].slice.call(tabelements).indexOf(tabId);
+        index = index + 1;
+        closeTab(Id, index);
+        $.ajax({
+          url: '/index/',
+          type: 'POST',
+          dataType: 'Json',
+          contentType: 'application/json',
+          data: JSON.stringify({
+            data: 'tab',
+            flg: 'info',
+            id: Id,
+            title,
+          }),
+          success: function (res) {
+            if (res.response.length == 0) {
+              document.getElementById('notepass').innerHTML = '';
             }
-          };
-        },
-      });
+          },
+        });
+      };
+
+      document.getElementById(`tab-ID${Id}`).onclick = function (e) {
+        //閉じるボタン以外押下時
+        if (!e.target.closest('.buttonTab')) {
+          var a = $(event.target).closest(`#button${Id}`).length;
+          if (a) {
+            //nameをクリック
+          } else {
+            tabFocus = Id;
+          }
+          //パスを取得する関数
+          let pass = passGet(Id, title);
+          console.log(pass);
+          //クリックしたTabのfocusを1へ、その他を0へ
+          $.ajax({
+            url: '/index/',
+            type: 'POST',
+            dataType: 'Json',
+            contentType: 'application/json',
+            data: JSON.stringify({
+              data: 'tab',
+              flg: 'updateFocus',
+              id: Id,
+              title,
+              pass,
+            }),
+            success: function (res) {
+              //console.log('タブクリックしたぞ(ajax)');
+              document.getElementById('notepass').innerHTML = pass;
+            },
+          });
+        } else {
+          //タブ閉じるボタン押下
+        }
+      };
+      //   },
+      // });
 
       //既にタブが生成されている場合
     } else {
