@@ -676,9 +676,12 @@ window.onload = function () {
       }),
       success: function (res) {
         console.log(res.response);
-        for (const tab of res.response) {
-          titleClick(tab.id, tab.tabTitle);
-        }
+        const main = async () => {
+          for (const tab of res.response) {
+            await titleClick(tab.id, tab.tabTitle);
+          }
+        };
+        main();
         if (res.response.length != 0) {
           setTimeout(() => {
             $.ajax({
