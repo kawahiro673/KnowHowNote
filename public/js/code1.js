@@ -679,7 +679,7 @@ window.onload = function () {
         for (const tab of res.response) {
           setTimeout(() => {
             titleClick(tab.id, tab.tabTitle);
-          }, 200);
+          }, 500);
         }
         if (res.response.length != 0) {
           setTimeout(() => {
