@@ -655,7 +655,8 @@ window.onload = function () {
               title: listTitle.title,
             }),
             success: function (res) {
-              //console.log(res.response);
+              let pass = passGet(listTitle.id, listTitle.title);
+              document.getElementById('notepass').innerHTML = pass;
             },
           });
         },
@@ -880,7 +881,7 @@ window.onload = function () {
               }
               //パスを取得する関数
               let pass = passGet(Id, title);
-              console.log(pass);
+              //console.log(pass);
               //クリックしたTabのfocusを1へ、その他を0へ
               $.ajax({
                 url: '/index/',
