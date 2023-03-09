@@ -48,7 +48,9 @@ window.onload = function () {
         let expandableArray = [];
 
         parentIdArray.push(0); //rootである0を追加
-
+        // for (const tab of res.response) {
+        //   titleClick(tab.id, tab.tabTitle);
+        // }
         //folderとfileを全て作成するまで(resTmpとresTmp2の結合配列arrayが空になるまで)
         while (array.length !== 0) {
           parentIdArray.forEach((parentId) => {
@@ -58,7 +60,7 @@ window.onload = function () {
             while (crFlg == true) {
               crFlg = false;
               orderNumber++;
-              res.response.forEach((folder) => {
+              for (const folder of res.response) {
                 //parentIdが合致すれば子要素として追加
                 if (
                   folder.parent_id == parentId &&
@@ -93,9 +95,9 @@ window.onload = function () {
                     expandableArray.push(folder.id);
                   }
                 }
-              });
+              }
               //file追加
-              resTmp2.forEach((file) => {
+              for (const file of resTmp2) {
                 if (
                   file.parent_id == parentId &&
                   orderNumber == file.folder_order &&
@@ -116,7 +118,7 @@ window.onload = function () {
                   //console.log(`${file.title}の要素を作成しました`);
                   crFlg = true;
                 }
-              });
+              }
               //一度表示したファイルをresTmp2から削除(forEach内で削除すると配列番号がズレてバグるため)
               deleteArray.forEach((file) => {
                 if (resTmp2.includes(file)) {
