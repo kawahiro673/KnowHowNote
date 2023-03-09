@@ -60,7 +60,7 @@ window.onload = function () {
             while (crFlg == true) {
               crFlg = false;
               orderNumber++;
-              for (const folder of res.response) {
+              for (const folder of Object.keys(res.response)) {
                 //parentIdが合致すれば子要素として追加
                 if (
                   folder.parent_id == parentId &&
@@ -679,7 +679,7 @@ window.onload = function () {
       }),
       success: function (res) {
         console.log(res.response);
-        for (const tab of res.response) {
+        for (const tab of Object.keys(res.response)) {
           titleClick(tab.id, tab.tabTitle);
         }
         if (res.response.length != 0) {
