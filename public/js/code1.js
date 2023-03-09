@@ -36,10 +36,7 @@ window.onload = function () {
         data: 'list',
       }),
       success: function (res) {
-        Object.prototype[Symbol.iterator] = function* () {
-          for (var k in this) if (this.hasOwnProperty(k)) yield [k, this[k]];
-        };
-        // console.log(res.response); //folder取得
+        console.log(res.response); //folder取得
         // console.log(res.response2); //file取得
         let resTmp = Array.from(res.response);
         let resTmp2 = Array.from(res.response2);
