@@ -60,7 +60,9 @@ window.onload = function () {
             while (crFlg == true) {
               crFlg = false;
               orderNumber++;
-              for (const folder of res.response) {
+              for (const hoge of Object.keys(res.response)) {
+                const folder = res.response[hoge];
+                //for (const folder of res.response) {
                 //parentIdが合致すれば子要素として追加
                 if (
                   folder.parent_id == parentId &&
