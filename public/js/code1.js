@@ -24,7 +24,7 @@ let tmp2;
 let tmp3;
 let tmp4;
 
-window.onload = function () {
+window.addEventListener('DOMContentLoaded', function () {
   //listの作成
   function listCreate() {
     $.ajax({
@@ -1858,4 +1858,4 @@ window.onload = function () {
     });
     return answer + ' > ' + title;
   }
-};
+});
