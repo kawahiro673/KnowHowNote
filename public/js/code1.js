@@ -99,7 +99,7 @@ window.onload = function () {
                 }
               }
               //file追加
-              for (const hoge of resTmp2) {
+              for (const hoge of Object.keys[resTmp2]) {
                 const file = resTmp2[hoge];
                 //for (const file of resTmp2) {
                 if (
@@ -683,7 +683,7 @@ window.onload = function () {
       }),
       success: function (res) {
         console.log(res.response);
-        for (const hoge of Object.key(res.response)) {
+        for (const hoge of Object.keys(res.response)) {
           const tab = res.response[hoge];
           //for (const tab of res.response) {
           titleClick(tab.id, tab.tabTitle);
