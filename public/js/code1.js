@@ -99,7 +99,9 @@ window.onload = function () {
                 }
               }
               //file追加
-              for (const file of resTmp2) {
+              for (const hoge of resTmp2) {
+                const file = resTmp2[hoge];
+                //for (const file of resTmp2) {
                 if (
                   file.parent_id == parentId &&
                   orderNumber == file.folder_order &&
