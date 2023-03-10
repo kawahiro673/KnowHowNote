@@ -404,6 +404,10 @@ app
           connection.query(
             'select * from it_memo order by folder_order ASC',
             (error, result) => {
+              console.log('*******************');
+              console.log(results);
+              console.log(result);
+              console.log('*******************');
               res.send({ response: results, response2: result });
             }
           );
