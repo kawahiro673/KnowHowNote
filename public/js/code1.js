@@ -683,7 +683,9 @@ window.onload = function () {
       }),
       success: function (res) {
         console.log(res.response);
-        for (const tab of res.response) {
+        for (const hoge of Object.key(res.response)) {
+          const tab = res.response[hoge];
+          //for (const tab of res.response) {
           titleClick(tab.id, tab.tabTitle);
         }
         if (res.response.length != 0) {
