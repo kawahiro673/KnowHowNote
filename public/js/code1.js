@@ -99,7 +99,7 @@ window.onload = function () {
                 }
               }
               //file追加
-              for (const hoge of Object.keys[resTmp2]) {
+              for (const hoge of Object.keys(resTmp2)) {
                 const file = resTmp2[hoge];
                 //for (const file of resTmp2) {
                 if (
