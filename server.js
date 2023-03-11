@@ -257,12 +257,16 @@ app
                           (error, result) => {
                             //tab_holdにあれば・・・
                             if (result[0] !== undefined) {
+                              console.log(
+                                '11111111111111111111111111111111111'
+                              );
                               res.send({
                                 response1: req.body.pass,
                                 response2: result[0].focus,
                               });
                               //なければ・・・
                             } else {
+                              console.log('2222222222222222222222222222222222');
                               res.send({
                                 response1: req.body.pass,
                               });
