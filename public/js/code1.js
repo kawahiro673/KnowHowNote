@@ -740,7 +740,10 @@ window.addEventListener('DOMContentLoaded', function () {
           labelTab.setAttribute('id', 'tab-ID' + Id);
           labelTab.setAttribute('for', 'TAB-ID' + Id);
           labelTab.style.display = 'block';
-          labelTab.innerHTML = title;
+
+          const tabname = document.createElement('p');
+          tabname.innerHTML = title;
+          //labelTab.innerHTML = title;
           //[✖️]ボタン作成
           const buttonTab = document.createElement('button');
           buttonTab.setAttribute('class', 'buttonTab');
@@ -787,6 +790,7 @@ window.addEventListener('DOMContentLoaded', function () {
           //要素追加
           tab.appendChild(inputTab);
           tab.appendChild(labelTab);
+          labelTab.appendChild(tabname);
           labelTab.appendChild(buttonTab);
           tab.appendChild(div);
           div.appendChild(div1);
