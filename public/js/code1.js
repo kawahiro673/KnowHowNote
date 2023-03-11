@@ -350,7 +350,7 @@ window.addEventListener('DOMContentLoaded', function () {
                     if (res.response2 != undefined) {
                       //リアルタイムにタイトル更新
                       document.getElementById(
-                        `tab-ID${listTitle.id}`
+                        `tabname${listTitle.id}`
                       ).innerHTML = res.response1;
                       document.getElementById(`tabP${listTitle.id}`).innerHTML =
                         res.response1;
@@ -742,6 +742,7 @@ window.addEventListener('DOMContentLoaded', function () {
           labelTab.style.display = 'block';
 
           const tabname = document.createElement('p');
+          tabname.setAttribute('class', 'tabname' + Id);
           tabname.innerHTML = title;
           //labelTab.innerHTML = title;
           //[✖️]ボタン作成
@@ -967,7 +968,7 @@ window.addEventListener('DOMContentLoaded', function () {
     inputCancel.remove();
     document.getElementById(`tabP${id}`).innerHTML = newTitle;
     document.getElementById(`tabP${id}`).style.display = 'block';
-    document.getElementById(`tab-ID${id}`).innerHTML = newTitle;
+    document.getElementById(`tabname${id}`).innerHTML = newTitle;
     document.getElementById(`li${id}`).innerHTML = newTitle;
     titletext.remove();
     inputEdit.style.display = 'block';
