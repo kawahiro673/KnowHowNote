@@ -255,10 +255,18 @@ app
                           'SELECT * FROM tab_hold WHERE id = ?',
                           [req.body.id],
                           (error, result) => {
-                            res.send({
-                              response1: req.body.pass,
-                              response2: result[0].focus,
-                            });
+                            //tab_holdにあれば・・・
+                            if (result[0] !== undefined) {
+                              res.send({
+                                response1: req.body.pass,
+                                response2: result[0].focus,
+                              });
+                              //なければ・・・
+                            } else {
+                              res.send({
+                                response1: req.body.pass,
+                              });
+                            }
                           }
                         );
                       }

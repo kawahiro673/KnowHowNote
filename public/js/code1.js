@@ -1267,7 +1267,7 @@ window.addEventListener('DOMContentLoaded', function () {
                       // console.log(res.response);
                       //passを正しく表示する2点セット
                       //1.focusが当たってたらパス更新
-                      if (res.response2 == 1) {
+                      if (res.response2 !== undefined && res.response2 == 1) {
                         document.getElementById('notepass').innerHTML =
                           res.response1;
                       }
