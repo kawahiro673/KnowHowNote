@@ -877,7 +877,7 @@ window.addEventListener('DOMContentLoaded', function () {
               },
             });
           };
-
+          //タブをクリックした際の処理
           document.getElementById(`tab-ID${Id}`).onclick = function (e) {
             //閉じるボタン以外押下時
             if (!e.target.closest('.buttonTab')) {
@@ -1273,11 +1273,11 @@ window.addEventListener('DOMContentLoaded', function () {
                           res.response1;
                       }
                       //2.タブクリック時にパス更新
-                      document.getElementById(`tab-ID${id}`).onclick =
-                        function (e) {
-                          document.getElementById('notepass').innerHTML =
-                            res.response1;
-                        };
+                      // document.getElementById(`tab-ID${id}`).onclick =
+                      //   function (e) {
+                      //     document.getElementById('notepass').innerHTML =
+                      //       res.response1;
+                      //   };
                     },
                   });
                 },
