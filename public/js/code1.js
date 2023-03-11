@@ -1264,7 +1264,8 @@ window.addEventListener('DOMContentLoaded', function () {
                       pattern: 'file',
                     }),
                     success: function (res) {
-                      // console.log(res.response);
+                      console.log(res.response1);
+                      //console.log(res.response2);
                       //passを正しく表示する2点セット
                       //1.focusが当たってたらパス更新
                       if (res.response2 !== undefined && res.response2 == 1) {
