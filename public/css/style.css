@@ -134,6 +134,10 @@ header h1 {
   margin: 20px 0px;
 }
 
+.tabname {
+  margin: 0;
+}
+
 .buttonTab {
   margin: 0;
   padding: 0;
