@@ -345,15 +345,16 @@ window.addEventListener('DOMContentLoaded', function () {
                     //tmpForm.remove();
                     listTitle.titleThis.style.display = 'block';
                     listTitle.titleThis.innerHTML = res.response1;
+                    inputTab.remove();
                     //タブが生成済みの場合
                     if (res.response2 != undefined) {
                       //リアルタイムにタイトル更新
                       document.getElementById(
                         `tabname${listTitle.id}`
-                      ).innerHTML = inputTab.value;
+                      ).innerHTML = res.response1;
                       document.getElementById(`tabP${listTitle.id}`).innerHTML =
-                        inputTab.value;
-                      inputTab.remove();
+                        res.response1;
+
                       //passを正しく表示する2点セット
                       //1.focusが当たってたらパス更新
                       if (res.response3 == 1) {
