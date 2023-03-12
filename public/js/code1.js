@@ -536,6 +536,10 @@ window.addEventListener('DOMContentLoaded', function () {
           folderList.folderThis.after(inputTab);
           folderList.folderThis.style.display = 'none';
 
+          let len = inputTab.value.length;
+          document.getElementById('inputTab').focus();
+          document.getElementById('inputTab').setSelectionRange(len, len);
+
           //Enter押下で変更する
           inputTab.addEventListener('keypress', function (e) {
             //Enter判定
