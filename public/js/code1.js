@@ -352,6 +352,7 @@ window.addEventListener('DOMContentLoaded', function () {
                       document.getElementById(
                         `tabname${listTitle.id}`
                       ).innerHTML = res.response1;
+
                       document.getElementById(`tabP${listTitle.id}`).innerHTML =
                         res.response1;
 
@@ -742,7 +743,7 @@ window.addEventListener('DOMContentLoaded', function () {
           labelTab.style.display = 'block';
 
           const tabname = document.createElement('p');
-          tabname.setAttribute('class', 'tabname' + Id);
+          tabname.setAttribute('id', 'tabname' + Id);
           tabname.innerHTML = title;
           //labelTab.innerHTML = title;
           //[✖️]ボタン作成
