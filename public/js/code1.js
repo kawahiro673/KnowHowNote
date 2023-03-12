@@ -893,7 +893,10 @@ window.addEventListener('DOMContentLoaded', function () {
                 tabFocus = Id;
               }
               //パスを取得する関数
-              let pass = passGet(Id, getElementById('tabname' + Id).innerHTML);
+              let pass = passGet(
+                Id,
+                document.getElementById('tabname' + Id).innerHTML
+              );
               console.log(pass);
               //クリックしたTabのfocusを1へ、その他を0へ。passも更新
               $.ajax({
