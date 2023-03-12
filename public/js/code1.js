@@ -7,7 +7,6 @@ let conme2 = document.getElementById('contextmenu2');
 let conme3 = document.getElementById('contextmenu3');
 let idGet = document.getElementsByClassName('idGet');
 let hitarea = document.getElementsByClassName('hitarea');
-let tmpForm;
 let borderTmp; //枠のついたlistTitles一時保持
 let borderArray;
 var idArray = []; //tab生成時にidを配列へ格納
@@ -18,11 +17,6 @@ let list;
 let tmpArray = [];
 let fileFlg = false;
 let folderFlg = false;
-
-let tmp1;
-let tmp2;
-let tmp3;
-let tmp4;
 
 window.addEventListener('DOMContentLoaded', function () {
   //listの作成
@@ -36,7 +30,7 @@ window.addEventListener('DOMContentLoaded', function () {
         data: 'list',
       }),
       success: function (res) {
-        console.log(res.response); //folder取得
+        //console.log(res.response); //folder取得
         // console.log(res.response2); //file取得
         let resTmp = Array.from(res.response);
         let resTmp2 = Array.from(res.response2);
@@ -318,7 +312,12 @@ window.addEventListener('DOMContentLoaded', function () {
 
           listTitle.titleThis.after(inputTab);
           listTitle.titleThis.style.display = 'none';
-          //tmpForm = inputTab;
+
+          //テキストエリアにフォーカスを当ててカーソルを末尾へ
+          let len = inputTab.value.length;
+          document.getElementById('inputTab').focus();
+          document.getElementById('inputTab').setSelectionRange(len, len);
+
           //Enter押下で変更する
           inputTab.addEventListener('keypress', function (e) {
             //Enter判定
@@ -327,7 +326,7 @@ window.addEventListener('DOMContentLoaded', function () {
               if (!inputTab.value || !inputTab.value.match(/\S/g)) {
                 alert('タイトルを入力してください');
               } else {
-                console.log(inputTab.value, listTitle.title);
+                //console.log(inputTab.value, listTitle.title);
                 $.ajax({
                   url: '/index/',
                   type: 'POST',
@@ -341,8 +340,8 @@ window.addEventListener('DOMContentLoaded', function () {
                     oldTitle: listTitle.title, //変更前のタイトル
                   }),
                   success: function (res) {
-                    console.log(`success受信(title) : "${res.response1}"`);
-                    //tmpForm.remove();
+                    //console.log(`success受信(title) : "${res.response1}"`);
+
                     listTitle.titleThis.style.display = 'block';
                     listTitle.titleThis.innerHTML = res.response1;
                     inputTab.remove();
@@ -536,7 +535,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
           folderList.folderThis.after(inputTab);
           folderList.folderThis.style.display = 'none';
-          //tmpForm = inputTab;
+
           //Enter押下で変更する
           inputTab.addEventListener('keypress', function (e) {
             //Enter判定
@@ -558,7 +557,7 @@ window.addEventListener('DOMContentLoaded', function () {
                   }),
                   success: function (res) {
                     console.log(`success受信(title) : "${res.response}"`);
-                    //tmpForm.remove();
+
                     folderList.folderThis.style.display = 'block';
                     folderList.folderThis.innerHTML = res.response;
                     inputTab.remove();
@@ -1593,7 +1592,7 @@ window.addEventListener('DOMContentLoaded', function () {
     //左クリック
     const clickL = function (e) {
       e.preventDefault();
-      console.log('1' + folderFlg);
+      //console.log('1' + folderFlg);
       if (fileFlg && !e.target.closest('#inputTab')) {
         console.log('左クリック');
         newCreateFile2(inputTab, span, id);
@@ -1609,7 +1608,7 @@ window.addEventListener('DOMContentLoaded', function () {
     //右クリック
     const clickR = function (e) {
       e.preventDefault();
-      console.log('2' + folderFlg);
+      //console.log('2' + folderFlg);
       if (fileFlg && !e.target.closest('#inputTab')) {
         console.log('右クリック');
         newCreateFile2(inputTab, span, id);
@@ -1624,7 +1623,7 @@ window.addEventListener('DOMContentLoaded', function () {
     //エンター押下時
     const enter = function (e) {
       //e.preventDefault(); //これがあると入力できない？？
-      console.log('3');
+      //console.log('3');
       if (fileFlg) {
         if (e.keyCode === 13) {
           newCreateFile2(inputTab, span, id);
@@ -1648,7 +1647,7 @@ window.addEventListener('DOMContentLoaded', function () {
     if (!inputTab.value || !inputTab.value.match(/\S/g)) {
       alert('タイトルを入力してください');
     } else {
-      console.log('入力されました');
+      //console.log('入力されました');
       $.ajax({
         url: '/index/',
         type: 'POST',
@@ -1662,7 +1661,7 @@ window.addEventListener('DOMContentLoaded', function () {
           parentId,
         }),
         success: function (res) {
-          console.log(`success受信(title) : "${res.response1}"`);
+          //console.log(`success受信(title) : "${res.response1}"`);
           span.setAttribute('id', `li${res.response2.id}`);
           span.setAttribute('value', res.response2.id);
           inputTab.remove();
