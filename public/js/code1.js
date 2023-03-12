@@ -1678,6 +1678,7 @@ window.addEventListener('DOMContentLoaded', function () {
           fileContextmenu();
           fileClick();
           updateTime(res.response2.id);
+          let pass = pass(res.response2.id, res.response2.title);
           $.ajax({
             url: '/index/',
             type: 'POST',
@@ -1690,6 +1691,7 @@ window.addEventListener('DOMContentLoaded', function () {
               folderName: inputTab.value,
               id: res.response2.id,
               order: newIndex,
+              pass,
             }),
             success: function (res) {
               //一度listを全て削除して、再び新しく追加している→jQueryUIがうまく適用されないため

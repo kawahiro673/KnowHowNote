@@ -661,8 +661,8 @@ app
           //order
         } else {
           connection.query(
-            'UPDATE it_memo SET folder_order = ? WHERE id = ?',
-            [req.body.order, req.body.id], //この値が？に入る
+            'UPDATE it_memo SET folder_order = ?, pass = ? WHERE id = ?',
+            [req.body.order, req.body.pass, req.body.id], //この値が？に入る
             (error, results) => {
               res.send({
                 response: req.body.order,
@@ -839,7 +839,7 @@ app
             // console.log(results[0].pass);
 
             //タブを生成済みであれば(tab_holdに格納されていれば)
-            if (results[0].pass != NULL) {
+            if (results.length != 0) {
               //passカラムの値の変更前のタイトルを変更後に変換
               let ans = results[0].pass.replace(
                 req.body.oldTitle,
