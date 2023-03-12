@@ -629,7 +629,7 @@ window.addEventListener('DOMContentLoaded', function () {
         id: $(this).attr('value'),
         titleThis: this,
       };
-      console.log(`"${listTitle.title}"がクリックされました。`);
+      //console.log(`"${listTitle.title}"がクリックされました。`);
       let ID = Number(listTitle.id);
       titleClick(ID, listTitle.title);
       let pass = passGet(listTitle.id, listTitle.title);
@@ -725,7 +725,7 @@ window.addEventListener('DOMContentLoaded', function () {
           id: Id,
         }),
         success: function (res) {
-          console.log(res.response);
+          //console.log(res.response);
           //input生成
           const inputTab = document.createElement('input');
           inputTab.setAttribute('id', 'TAB-ID' + Id);
@@ -804,7 +804,7 @@ window.addEventListener('DOMContentLoaded', function () {
           divFade.appendChild(fadeFont);
           div.appendChild(time);
 
-          console.log(`"id: ${Id} title: ${title}"のタブが生成されました`);
+          //console.log(`"id: ${Id} title: ${title}"のタブが生成されました`);
 
           document.getElementById('notab').style.display = 'none';
 
@@ -837,7 +837,7 @@ window.addEventListener('DOMContentLoaded', function () {
             //[保存する]ボタン押下
 
             let pass = passGet(Id, titletext.value);
-
+            console.log(pass);
             inputKeep.onclick = function () {
               keepButton(
                 Id,
