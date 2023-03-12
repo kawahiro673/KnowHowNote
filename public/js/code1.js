@@ -560,8 +560,7 @@ window.addEventListener('DOMContentLoaded', function () {
                     title: inputTab.value,
                   }),
                   success: function (res) {
-                    console.log(`success受信(title) : "${res.response}"`);
-
+                    //console.log(`success受信(title) : "${res.response}"`);
                     folderList.folderThis.style.display = 'block';
                     folderList.folderThis.innerHTML = res.response;
                     inputTab.remove();
@@ -586,12 +585,15 @@ window.addEventListener('DOMContentLoaded', function () {
           }
           fileFlg = true;
           newCreateFile1(folderList.folderId);
+          conme.style.display = 'none';
+          conme2.style.display = 'none';
+          conme3.style.display = 'none';
         });
       });
       $(document).ready(function () {
         $('#createfolder').off('click');
         $('#createfolder').on('click', function (event) {
-          console.log('"フォルダを作成する"押下');
+          //console.log('"フォルダを作成する"押下');
           event.stopPropagation();
           let fID = document.getElementById(`folder${folderList.folderId}`);
           //expandableの場合に配下の要素を開く
@@ -599,9 +601,10 @@ window.addEventListener('DOMContentLoaded', function () {
             fID.click();
           }
           folderFlg = true;
-          console.log(`追加するファイルの親IDは${folderList.folderId}`);
           newCreateFolder1(folderList.folderId);
-          console.log('無事に追加されました');
+          conme.style.display = 'none';
+          conme2.style.display = 'none';
+          conme3.style.display = 'none';
         });
       });
 
