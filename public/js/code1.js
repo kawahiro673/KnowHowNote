@@ -937,8 +937,7 @@ window.addEventListener('DOMContentLoaded', function () {
     inputEdit,
     time,
     newTitle,
-    titletext,
-    pass
+    titletext
   ) {
     let pass = passGet(id, newTitle);
     console.log(pass);
