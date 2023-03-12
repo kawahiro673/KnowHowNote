@@ -836,12 +836,9 @@ window.addEventListener('DOMContentLoaded', function () {
             inputEdit.style.display = 'none';
             //[保存する]ボタン押下
 
-            let pass = passGet(Id, titletext.value);
-            console.log(pass);
             inputKeep.onclick = function () {
               keepButton(
                 Id,
-                p,
                 textarea,
                 p1,
                 fadeFont,
@@ -850,8 +847,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 inputEdit,
                 time,
                 titletext.value,
-                titletext,
-                pass
+                titletext
               );
             };
             //[取り消す]ボタン押下
@@ -933,7 +929,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
   function keepButton(
     id,
-    p,
     textarea,
     p1,
     fadeFont,
@@ -945,6 +940,8 @@ window.addEventListener('DOMContentLoaded', function () {
     titletext,
     pass
   ) {
+    let pass = passGet(id, newTitle);
+    console.log(pass);
     $.ajax({
       url: '/index/',
       type: 'POST',
