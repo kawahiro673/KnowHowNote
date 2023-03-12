@@ -744,6 +744,7 @@ window.addEventListener('DOMContentLoaded', function () {
           labelTab.style.display = 'block';
 
           const tabname = document.createElement('p');
+          tabname.setAttribute('class', 'tabname');
           tabname.setAttribute('id', 'tabname' + Id);
           tabname.innerHTML = title;
           //labelTab.innerHTML = title;
