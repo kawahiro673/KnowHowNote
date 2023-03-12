@@ -632,7 +632,8 @@ window.addEventListener('DOMContentLoaded', function () {
       console.log(`"${listTitle.title}"がクリックされました。`);
       let ID = Number(listTitle.id);
       titleClick(ID, listTitle.title);
-
+      let pass = passGet(listTitle.id, listTitle.title);
+      //id((主キー)が同じ場合は更新してくれる(既にtab_holdに格納時みの場合)
       $.ajax({
         url: '/index/',
         type: 'POST',
@@ -643,6 +644,7 @@ window.addEventListener('DOMContentLoaded', function () {
           flg: 'tabAdd',
           id: ID,
           title: listTitle.title,
+          pass,
         }),
         success: function (res) {
           let tabelements = document.getElementsByClassName('tab-content');
@@ -662,7 +664,6 @@ window.addEventListener('DOMContentLoaded', function () {
               title: listTitle.title,
             }),
             success: function (res) {
-              let pass = passGet(listTitle.id, listTitle.title);
               document.getElementById('notepass').innerHTML = pass;
             },
           });
@@ -1678,7 +1679,6 @@ window.addEventListener('DOMContentLoaded', function () {
           fileContextmenu();
           fileClick();
           updateTime(res.response2.id);
-          let pass = passGet(res.response2.id, res.response2.title);
           $.ajax({
             url: '/index/',
             type: 'POST',
@@ -1691,7 +1691,6 @@ window.addEventListener('DOMContentLoaded', function () {
               folderName: inputTab.value,
               id: res.response2.id,
               order: newIndex,
-              pass,
             }),
             success: function (res) {
               //一度listを全て削除して、再び新しく追加している→jQueryUIがうまく適用されないため

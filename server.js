@@ -205,8 +205,8 @@ app
         );
       } else if (req.body.flg == 'tabAdd') {
         connection.query(
-          'INSERT into tab_hold(id, tabTitle) values(?, ?);',
-          [req.body.id, req.body.title],
+          'INSERT into tab_hold(id, tabTitle, pass) values(?, ?, ?);',
+          [req.body.id, req.body.title, req.body.pass],
           (error, results) => {
             res.send({ response: results });
           }
@@ -661,8 +661,8 @@ app
           //order
         } else {
           connection.query(
-            'UPDATE it_memo SET folder_order = ?, pass = ? WHERE id = ?',
-            [req.body.order, req.body.pass, req.body.id], //この値が？に入る
+            'UPDATE it_memo SET folder_order = ? WHERE id = ?',
+            [req.body.order, req.body.id], //この値が？に入る
             (error, results) => {
               res.send({
                 response: req.body.order,
