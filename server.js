@@ -174,6 +174,8 @@ app
         connection.query(
           'SELECT * FROM tab_hold ORDER BY tabOrder;',
           (error, results) => {
+            console.log(results);
+            console.log(error);
             res.send({ response: results });
           }
         );
@@ -413,9 +415,12 @@ app
       connection.query(
         'select * from folder order by folder_order ASC',
         (error, results) => {
+          console.log(results);
+          console.log(error);
           connection.query(
             'select * from it_memo order by folder_order ASC',
             (error, result) => {
+              console.log(error);
               res.send({ response: results, response2: result });
             }
           );
