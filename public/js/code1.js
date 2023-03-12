@@ -225,9 +225,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
   function fileContextmenu() {
     $('.list_title').on('contextmenu', function () {
-      // console.log(
-      //   `"${$(this).html()}" ${$(this).attr('value')} を右クリックしました`
-      // );
+      console.log(
+        `"${$(this).html()}" ${$(this).attr('value')} を右クリックしました`
+      );
       let listTitle = {
         title: $(this).html(),
         id: $(this).attr('value'),
