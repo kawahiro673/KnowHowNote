@@ -1678,7 +1678,7 @@ window.addEventListener('DOMContentLoaded', function () {
           fileContextmenu();
           fileClick();
           updateTime(res.response2.id);
-          let pass = pass(res.response2.id, res.response2.title);
+          let pass = passGet(res.response2.id, res.response2.title);
           $.ajax({
             url: '/index/',
             type: 'POST',
