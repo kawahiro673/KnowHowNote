@@ -893,8 +893,9 @@ window.addEventListener('DOMContentLoaded', function () {
                 tabFocus = Id;
               }
               //パスを取得する関数
-              let pass = passGet(Id, title);
-              //クリックしたTabのfocusを1へ、その他を0へ
+              let pass = passGet(Id, getElementById('tabname' + Id).innerHTML);
+              console.log(pass);
+              //クリックしたTabのfocusを1へ、その他を0へ。passも更新
               $.ajax({
                 url: '/index/',
                 type: 'POST',
@@ -940,7 +941,6 @@ window.addEventListener('DOMContentLoaded', function () {
     titletext
   ) {
     let pass = passGet(id, newTitle);
-    console.log(pass);
     $.ajax({
       url: '/index/',
       type: 'POST',
