@@ -687,7 +687,6 @@ window.addEventListener('DOMContentLoaded', function () {
         console.log(res.response);
         for (const hoge of Object.keys(res.response)) {
           const tab = res.response[hoge];
-          //for (const tab of res.response) {
           titleClick(tab.id, tab.tabTitle);
         }
         if (res.response.length != 0) {
@@ -702,7 +701,6 @@ window.addEventListener('DOMContentLoaded', function () {
                 flg: 'focusTab',
               }),
               success: function (res) {
-                //console.log(res.response.id);
                 $(`#tab-ID${res.response.id}`).trigger('click');
               },
             });
@@ -714,7 +712,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
   //*********** タブ生成関数(更新時) ************
   function titleClick(Id, title) {
-    //console.log(Id, title);
     //タブ生成しておらず、・・・じゃないとき
     if (idArray.includes(Id) == false) {
       $.ajax({
@@ -747,7 +744,7 @@ window.addEventListener('DOMContentLoaded', function () {
           tabname.setAttribute('class', 'tabname');
           tabname.setAttribute('id', 'tabname' + Id);
           tabname.innerHTML = title;
-          //labelTab.innerHTML = title;
+
           //[✖️]ボタン作成
           const buttonTab = document.createElement('button');
           buttonTab.setAttribute('class', 'buttonTab');
@@ -838,6 +835,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
             inputEdit.style.display = 'none';
             //[保存する]ボタン押下
+
+            let pass = passGet(Id, titletext.value);
+
             inputKeep.onclick = function () {
               keepButton(
                 Id,
@@ -850,7 +850,8 @@ window.addEventListener('DOMContentLoaded', function () {
                 inputEdit,
                 time,
                 titletext.value,
-                titletext
+                titletext,
+                pass
               );
             };
             //[取り消す]ボタン押下
@@ -897,7 +898,6 @@ window.addEventListener('DOMContentLoaded', function () {
               }
               //パスを取得する関数
               let pass = passGet(Id, title);
-              //console.log(pass);
               //クリックしたTabのfocusを1へ、その他を0へ
               $.ajax({
                 url: '/index/',
@@ -942,7 +942,8 @@ window.addEventListener('DOMContentLoaded', function () {
     inputEdit,
     time,
     newTitle,
-    titletext
+    titletext,
+    pass
   ) {
     $.ajax({
       url: '/index/',
@@ -955,6 +956,7 @@ window.addEventListener('DOMContentLoaded', function () {
         id: id,
         titleContent: newTitle, //p.innerHTML,
         memoContent: textarea.value, //ここに入力した値が入る
+        pass,
       }),
       success: function (res) {
         //console.log(res.response2);
@@ -977,6 +979,7 @@ window.addEventListener('DOMContentLoaded', function () {
     inputEdit.style.display = 'block';
     textarea.readOnly = true;
     updateTime(id, time);
+    document.getElementById('notepass').innerHTML = pass;
   }
 
   function cancelButton(

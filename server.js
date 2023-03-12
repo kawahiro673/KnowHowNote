@@ -416,10 +416,6 @@ app
           connection.query(
             'select * from it_memo order by folder_order ASC',
             (error, result) => {
-              console.log('*******************');
-              console.log(results);
-              console.log(result);
-              console.log('*******************');
               res.send({ response: results, response2: result });
             }
           );
@@ -685,8 +681,8 @@ app
               [req.body.id],
               (error, result) => {
                 connection.query(
-                  'UPDATE tab_hold SET tabTitle = ? WHERE id = ?;',
-                  [req.body.titleContent, req.body.id],
+                  'UPDATE tab_hold SET tabTitle = ?, pass = ? WHERE id = ?;',
+                  [req.body.titleContent, req.body.pass, req.body.id],
                   (error, no_Result) => {
                     res.send({
                       response1: req.body.time,
