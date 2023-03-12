@@ -345,7 +345,6 @@ window.addEventListener('DOMContentLoaded', function () {
                     //tmpForm.remove();
                     listTitle.titleThis.style.display = 'block';
                     listTitle.titleThis.innerHTML = res.response1;
-                    inputTab.remove();
                     //タブが生成済みの場合
                     if (res.response2 != undefined) {
                       //リアルタイムにタイトル更新
@@ -354,7 +353,7 @@ window.addEventListener('DOMContentLoaded', function () {
                       ).innerHTML = inputTab.value;
                       document.getElementById(`tabP${listTitle.id}`).innerHTML =
                         inputTab.value;
-
+                      inputTab.remove();
                       //passを正しく表示する2点セット
                       //1.focusが当たってたらパス更新
                       if (res.response3 == 1) {
