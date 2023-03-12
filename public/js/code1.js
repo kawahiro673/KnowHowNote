@@ -351,9 +351,9 @@ window.addEventListener('DOMContentLoaded', function () {
                       //リアルタイムにタイトル更新
                       document.getElementById(
                         `tabname${listTitle.id}`
-                      ).innerHTML = res.response1;
+                      ).innerHTML = inputTab.value;
                       document.getElementById(`tabP${listTitle.id}`).innerHTML =
-                        res.response1;
+                        inputTab.value;
 
                       //passを正しく表示する2点セット
                       //1.focusが当たってたらパス更新
