@@ -839,7 +839,7 @@ app
             // console.log(results[0].pass);
 
             //タブを生成済みであれば(tab_holdに格納されていれば)
-            if (results.length != 0) {
+            if (results[0].pass != NULL) {
               //passカラムの値の変更前のタイトルを変更後に変換
               let ans = results[0].pass.replace(
                 req.body.oldTitle,
