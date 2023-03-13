@@ -128,7 +128,6 @@ app
           }
         );
       } else if (req.body.flg == 'tabDel') {
-        console.log(req.body.order);
         pool.query(
           'DELETE from tab_hold where id = ?',
           [req.body.id],
