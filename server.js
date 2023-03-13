@@ -2,34 +2,10 @@ var express = require('express'); //Express使うよー定型分
 var app = express(); //expressオブジェクトでappインスタンス作ったよー
 //bodyーparserとはHTML(ejs)のformのinputに入力された値を受け取れるようにするもの
 const bodyParser = require('body-parser');
-//const Connection = require('mysql/lib/Connection');
 const { Template } = require('ejs');
 const http = express('http');
+//connectionだとmysqlとの通信が切れてしまうため、poolを使用
 const pool = require('./db.js');
-
-// function handleDisconnect() {
-//   console.log('INFO.CONNECTION_DB: ');
-//   //connection取得
-//   connection.connect((err) => {
-//     //MySQLへの接続の確認
-//     if (err) {
-//       console.log('ERROR.CONNECTION_DB: ', err);
-//       setTimeout(handleDisconnect, 1000);
-//     }
-//     console.log('success...MySQL接続成功!!!');
-//   });
-//   //error('PROTOCOL_CONNECTION_LOST')時に再接続(MySQLの仕様上定期的に接続が切れるため)
-//   connection.on('error', function (err) {
-//     console.log('ERROR.DB: ', err);
-//     if (err.code === 'PROTOCOL_CONNECTION_LOST') {
-//       console.log('ERROR.CONNECTION_LOST: ', err);
-//       handleDisconnect();
-//     } else {
-//       throw err;
-//     }
-//   });
-// }
-// handleDisconnect();
 
 app.set('view engine', 'ejs');
 //publicフォルダ内のファイルを読み込めるようにする
@@ -46,49 +22,10 @@ app.get('/', (req, res) => {
   res.render('top.ejs');
 });
 
-// app.get('/home', (req, res) => {
-//   connection.query('select * from it_memo;', (error, results) => {
-//     res.render('home.ejs', { memo: results });
-//   });
-// });
-
 app.get('/login', (req, res) => {
   console.log('ログインページ開きました : login.ejs');
   res.render('login.ejs');
 });
-
-// app.get('/new', (req, res) => {
-//   connection.query('select * from it_memo;', (error, results) => {
-//     res.render('new.ejs', { memo: results });
-//   });
-// });
-
-// app.post('/create', (req, res) => {
-//   //メモを追加するルーティング
-//   console.log(
-//     req.body.it_title + ' , ' + req.body.it_text + ' , ' + req.body.read_time
-//   );
-//   if (!req.body.it_title) {
-//     res.render('title_error.ejs');
-//   } else {
-//     //input要素にname属性を指定すると、オブジェクトの形で情報がサーバーに送信される。
-//     //よってサーバー側ではreq.body.name属性の値でフォームの値を取得で切る
-//     if (req.body.read_time === '') {
-//       //なぜかread_timeに未入力の場合。自動的にNULLが入らず、０でセット
-//       req.body.read_time = 0;
-//     }
-
-//     connection.query(
-//       'INSERT into it_memo(title, memo_text, read_time) values(?, ?, ?); ', // 挿入
-//       [req.body.it_title, req.body.it_text, req.body.read_time], //この値が？に入る
-//       (error, results) => {
-//         const id = results.insertId; //resultsオブジェクトのinsertIdを使用
-//         const index_id = '/index/' + id;
-//         res.redirect(index_id); //[/create]へ飛ぶと[/index]へリダイレクトしている →更新するとinsertされ続けるためリダイレクト活用
-//       }
-//     );
-//   }
-// });
 
 app
   .route('/index')
