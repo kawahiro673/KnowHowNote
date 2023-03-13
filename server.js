@@ -2,34 +2,34 @@ var express = require('express'); //Express使うよー定型分
 var app = express(); //expressオブジェクトでappインスタンス作ったよー
 //bodyーparserとはHTML(ejs)のformのinputに入力された値を受け取れるようにするもの
 const bodyParser = require('body-parser');
-const Connection = require('mysql/lib/Connection');
+//const Connection = require('mysql/lib/Connection');
 const { Template } = require('ejs');
 const http = express('http');
-const connection = require('./db.js');
+const pool = require('./db.js');
 
-function handleDisconnect() {
-  console.log('INFO.CONNECTION_DB: ');
-  //connection取得
-  connection.connect((err) => {
-    //MySQLへの接続の確認
-    if (err) {
-      console.log('ERROR.CONNECTION_DB: ', err);
-      setTimeout(handleDisconnect, 1000);
-    }
-    console.log('success...MySQL接続成功!!!');
-  });
-  //error('PROTOCOL_CONNECTION_LOST')時に再接続(MySQLの仕様上定期的に接続が切れるため)
-  connection.on('error', function (err) {
-    console.log('ERROR.DB: ', err);
-    if (err.code === 'PROTOCOL_CONNECTION_LOST') {
-      console.log('ERROR.CONNECTION_LOST: ', err);
-      handleDisconnect();
-    } else {
-      throw err;
-    }
-  });
-}
-handleDisconnect();
+// function handleDisconnect() {
+//   console.log('INFO.CONNECTION_DB: ');
+//   //connection取得
+//   connection.connect((err) => {
+//     //MySQLへの接続の確認
+//     if (err) {
+//       console.log('ERROR.CONNECTION_DB: ', err);
+//       setTimeout(handleDisconnect, 1000);
+//     }
+//     console.log('success...MySQL接続成功!!!');
+//   });
+//   //error('PROTOCOL_CONNECTION_LOST')時に再接続(MySQLの仕様上定期的に接続が切れるため)
+//   connection.on('error', function (err) {
+//     console.log('ERROR.DB: ', err);
+//     if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+//       console.log('ERROR.CONNECTION_LOST: ', err);
+//       handleDisconnect();
+//     } else {
+//       throw err;
+//     }
+//   });
+// }
+// handleDisconnect();
 
 app.set('view engine', 'ejs');
 //publicフォルダ内のファイルを読み込めるようにする
@@ -46,62 +46,62 @@ app.get('/', (req, res) => {
   res.render('top.ejs');
 });
 
-app.get('/home', (req, res) => {
-  connection.query('select * from it_memo;', (error, results) => {
-    res.render('home.ejs', { memo: results });
-  });
-});
+// app.get('/home', (req, res) => {
+//   connection.query('select * from it_memo;', (error, results) => {
+//     res.render('home.ejs', { memo: results });
+//   });
+// });
 
 app.get('/login', (req, res) => {
   console.log('ログインページ開きました : login.ejs');
   res.render('login.ejs');
 });
 
-app.get('/new', (req, res) => {
-  connection.query('select * from it_memo;', (error, results) => {
-    res.render('new.ejs', { memo: results });
-  });
-});
+// app.get('/new', (req, res) => {
+//   connection.query('select * from it_memo;', (error, results) => {
+//     res.render('new.ejs', { memo: results });
+//   });
+// });
 
-app.post('/create', (req, res) => {
-  //メモを追加するルーティング
-  console.log(
-    req.body.it_title + ' , ' + req.body.it_text + ' , ' + req.body.read_time
-  );
-  if (!req.body.it_title) {
-    res.render('title_error.ejs');
-  } else {
-    //input要素にname属性を指定すると、オブジェクトの形で情報がサーバーに送信される。
-    //よってサーバー側ではreq.body.name属性の値でフォームの値を取得で切る
-    if (req.body.read_time === '') {
-      //なぜかread_timeに未入力の場合。自動的にNULLが入らず、０でセット
-      req.body.read_time = 0;
-    }
+// app.post('/create', (req, res) => {
+//   //メモを追加するルーティング
+//   console.log(
+//     req.body.it_title + ' , ' + req.body.it_text + ' , ' + req.body.read_time
+//   );
+//   if (!req.body.it_title) {
+//     res.render('title_error.ejs');
+//   } else {
+//     //input要素にname属性を指定すると、オブジェクトの形で情報がサーバーに送信される。
+//     //よってサーバー側ではreq.body.name属性の値でフォームの値を取得で切る
+//     if (req.body.read_time === '') {
+//       //なぜかread_timeに未入力の場合。自動的にNULLが入らず、０でセット
+//       req.body.read_time = 0;
+//     }
 
-    connection.query(
-      'INSERT into it_memo(title, memo_text, read_time) values(?, ?, ?); ', // 挿入
-      [req.body.it_title, req.body.it_text, req.body.read_time], //この値が？に入る
-      (error, results) => {
-        const id = results.insertId; //resultsオブジェクトのinsertIdを使用
-        const index_id = '/index/' + id;
-        res.redirect(index_id); //[/create]へ飛ぶと[/index]へリダイレクトしている →更新するとinsertされ続けるためリダイレクト活用
-      }
-    );
-  }
-});
+//     connection.query(
+//       'INSERT into it_memo(title, memo_text, read_time) values(?, ?, ?); ', // 挿入
+//       [req.body.it_title, req.body.it_text, req.body.read_time], //この値が？に入る
+//       (error, results) => {
+//         const id = results.insertId; //resultsオブジェクトのinsertIdを使用
+//         const index_id = '/index/' + id;
+//         res.redirect(index_id); //[/create]へ飛ぶと[/index]へリダイレクトしている →更新するとinsertされ続けるためリダイレクト活用
+//       }
+//     );
+//   }
+// });
 
 app
   .route('/index')
   .get(function (req, res) {
-    connection.query(
+    pool.query(
       //リストを表示するため（selectで全て表示するため）
       'select * from it_memo',
       (error, result) => {
-        connection.query(
+        pool.query(
           //テーブルを結合してタブを表示
           'select tab_hold.id, it_memo.title, it_memo.memo_text from tab_hold left join it_memo on tab_hold.id = it_memo.id;',
           (error, results) => {
-            connection.query(
+            pool.query(
               'select * from folder order by folder_order ASC',
               (error, result_folder) => {
                 // 上のクエリ文が result に入る
@@ -123,7 +123,7 @@ app
       console.log(
         `[POST受信] id : ${req.body.id} ,  color : ${req.body.color} `
       );
-      connection.query(
+      pool.query(
         'UPDATE it_memo SET title_color=? WHERE id=?',
         [req.body.color, req.body.id],
         (error, results) => {
@@ -135,11 +135,11 @@ app
     } else if (req.body.data == 'tab') {
       console.log(`[POST(tab)] id : ${req.body.id}, title : ${req.body.title}`);
       if (req.body.flg == 'clickTab') {
-        connection.query(
+        pool.query(
           'UPDATE tab_hold SET tabOrder = ?,focus = 1 where id = ?',
           [req.body.order, req.body.id],
           (error, results) => {
-            connection.query(
+            pool.query(
               'UPDATE tab_hold SET focus = 0 where id != ?',
               [req.body.id],
               (error, results) => {
@@ -149,11 +149,11 @@ app
           }
         );
       } else if (req.body.flg == 'updateFocus') {
-        connection.query(
+        pool.query(
           'UPDATE tab_hold SET focus = ?, pass = ? where id = ?',
           [1, req.body.pass, req.body.id],
           (error, result) => {
-            connection.query(
+            pool.query(
               'UPDATE tab_hold SET focus = ? where id != ?',
               [0, req.body.id],
               (error, results) => {
@@ -163,7 +163,7 @@ app
           }
         );
       } else if (req.body.flg == 'updateOrder') {
-        connection.query(
+        pool.query(
           'UPDATE tab_hold SET tabOrder = ? where id = ?',
           [req.body.order, req.body.id],
           (error, results) => {
@@ -171,7 +171,7 @@ app
           }
         );
       } else if (req.body.flg == 'tabDesc') {
-        connection.query(
+        pool.query(
           'SELECT * FROM tab_hold ORDER BY tabOrder;',
           (error, results) => {
             console.log(results);
@@ -180,11 +180,11 @@ app
           }
         );
       } else if (req.body.flg == 'info') {
-        connection.query('SELECT * FROM tab_hold;', (error, result) => {
+        pool.query('SELECT * FROM tab_hold;', (error, result) => {
           res.send({ response: result });
         });
       } else if (req.body.flg == 'focusTab') {
-        connection.query(
+        pool.query(
           'select * from tab_hold where focus = 1;',
           (error, result) => {
             res.send({ response: result[0] });
@@ -192,11 +192,11 @@ app
         );
       } else if (req.body.flg == 'tabDel') {
         console.log(req.body.order);
-        connection.query(
+        pool.query(
           'DELETE from tab_hold where id = ?',
           [req.body.id],
           (error, result) => {
-            connection.query(
+            pool.query(
               'UPDATE tab_hold SET tabOrder = tabOrder - 1 WHERE tabOrder > ?; ',
               [req.body.order],
               (error, results) => {
@@ -206,7 +206,7 @@ app
           }
         );
       } else if (req.body.flg == 'tabAdd') {
-        connection.query(
+        pool.query(
           'INSERT into tab_hold(id, tabTitle, pass) values(?, ?, ?);',
           [req.body.id, req.body.title, req.body.pass],
           (error, results) => {
@@ -219,20 +219,20 @@ app
       console.log(
         `[POST(addOrder)] id: ${req.body.id}, order: ${req.body.order}`
       );
-      connection.query(
+      pool.query(
         'UPDATE folder SET folder_order = folder_order +1 where (parent_id = ?) AND (folder_order >= ?)',
         [req.body.parent_id, req.body.order],
         (error, result) => {
-          connection.query(
+          pool.query(
             'UPDATE it_memo SET folder_order = folder_order +1 where (parent_id = ?) AND (folder_order >= ?)',
             [req.body.parent_id, req.body.order],
             (error, result) => {
               if (req.body.pattern == 'folder') {
-                connection.query(
+                pool.query(
                   'UPDATE folder SET folder_order =? WHERE id = ?',
                   [req.body.order, req.body.id],
                   (error, result) => {
-                    connection.query(
+                    pool.query(
                       'SELECT * FROM tab_hold WHERE focus = 1',
                       (error, result) => {
                         res.send({
@@ -245,30 +245,26 @@ app
                 );
                 //fileの場合
               } else {
-                connection.query(
+                pool.query(
                   'UPDATE it_memo SET folder_order =? WHERE id = ?',
                   [req.body.order, req.body.id],
                   (error, result) => {
-                    connection.query(
+                    pool.query(
                       'UPDATE tab_hold SET pass = ? WHERE id = ?',
                       [req.body.pass, req.body.id],
                       (error, result) => {
-                        connection.query(
+                        pool.query(
                           'SELECT * FROM tab_hold WHERE id = ?',
                           [req.body.id],
                           (error, result) => {
                             //tab_holdにあれば・・・
                             if (result[0] !== undefined) {
-                              console.log(
-                                '11111111111111111111111111111111111'
-                              );
                               res.send({
                                 response1: req.body.pass,
                                 response2: result[0].focus,
                               });
                               //なければ・・・
                             } else {
-                              console.log('2222222222222222222222222222222222');
                               res.send({
                                 response1: req.body.pass,
                               });
@@ -327,7 +323,7 @@ app
       }
       fileArray.forEach((file) => {
         //ここでクエリを使用してファイル消す
-        connection.query(
+        pool.query(
           'DELETE from it_memo where id =?',
           [file],
           (error, result) => {}
@@ -335,7 +331,7 @@ app
       });
       folderArray.forEach((folder) => {
         //ここでクエリを使用してフォルダ消す
-        connection.query(
+        pool.query(
           'DELETE from folder where id =?',
           [folder],
           (error, result) => {}
@@ -350,7 +346,7 @@ app
       let parentIdArray = [];
       parentIdArray.push(req.body.id);
 
-      connection.query('select * from folder', (error, results) => {
+      pool.query('select * from folder', (error, results) => {
         console.log(results);
         while (parentIdArray.length !== 0) {
           parentIdArray.forEach((parentId) => {
@@ -378,8 +374,8 @@ app
       let parentIdArray = [];
       parentIdArray.push(req.body.id);
 
-      connection.query('select * from folder;', (error, result_folder) => {
-        connection.query('select * from it_memo;', (error, result_note) => {
+      pool.query('select * from folder;', (error, result_folder) => {
+        pool.query('select * from it_memo;', (error, result_note) => {
           while (parentIdArray.length !== 0) {
             parentIdArray.forEach((parentId) => {
               //まず配下のノート格納
@@ -412,12 +408,12 @@ app
         });
       });
     } else if (req.body.data == 'list') {
-      connection.query(
+      pool.query(
         'select * from folder order by folder_order ASC',
         (error, results) => {
           console.log(results);
           console.log(error);
-          connection.query(
+          pool.query(
             'select * from it_memo order by folder_order ASC',
             (error, result) => {
               console.log(error);
@@ -429,9 +425,9 @@ app
       //全削除ボタン
     } else if (req.body.data == 'deleteALL') {
       console.log(`データベースを全削除します`);
-      connection.query('DELETE from folder', (error, result) => {
-        connection.query('DELETE from it_memo', (error, result) => {
-          connection.query('DELETE from tab_hold', (error, result) => {
+      pool.query('DELETE from folder', (error, result) => {
+        pool.query('DELETE from it_memo', (error, result) => {
+          pool.query('DELETE from tab_hold', (error, result) => {
             res.send({ response: result });
           });
         });
@@ -443,11 +439,11 @@ app
       );
       if (req.body.flg == 'newFolder') {
         if (req.body.pattern == 'new') {
-          connection.query(
+          pool.query(
             'INSERT into folder(folder_name, parent_id) values(?, ?); ',
             [req.body.folderName, req.body.parentId],
             (error, results) => {
-              connection.query(
+              pool.query(
                 //新規作成後にフォルダーidを取得するためのクエリ
                 'select * from folder order by id desc; ',
                 (error, result) => {
@@ -461,7 +457,7 @@ app
           );
           //order
         } else {
-          connection.query(
+          pool.query(
             'UPDATE folder SET folder_order = ? WHERE id = ?',
             [req.body.order, req.body.id],
             (error, results) => {
@@ -472,11 +468,11 @@ app
           );
         }
       } else if (req.body.flg == 'parentIDSame') {
-        connection.query(
+        pool.query(
           'SELECT * from folder where id = ?', //D&D前の情報保持のため
           [req.body.id],
           (error, results) => {
-            connection.query(
+            pool.query(
               'UPDATE folder SET parent_id = ?, folder_order = ? WHERE id = ?',
               [req.body.parent_id, req.body.order, req.body.id],
               (error, nonResult) => {
@@ -484,7 +480,7 @@ app
                 if (req.body.order != results[0].folder_order) {
                   //下へD&D
                   if (req.body.move == 'down') {
-                    connection.query(
+                    pool.query(
                       'UPDATE it_memo SET folder_order = folder_order -1 where (parent_id = ?) AND (id != ?) AND ( ? < folder_order AND  folder_order <= ? )',
                       [
                         req.body.parent_id,
@@ -493,7 +489,7 @@ app
                         req.body.order,
                       ],
                       (error, result) => {
-                        connection.query(
+                        pool.query(
                           'UPDATE folder SET folder_order =  folder_order - 1 where (parent_id = ?) AND (id != ?) AND ( ? < folder_order AND  folder_order <= ? )',
                           [
                             req.body.parent_id,
@@ -507,7 +503,7 @@ app
                     );
                     //上へD&D
                   } else {
-                    connection.query(
+                    pool.query(
                       'UPDATE it_memo SET folder_order =  folder_order + 1 where (parent_id = ?) AND (id != ?) AND ( ? <= folder_order AND  folder_order < ? )',
                       [
                         req.body.parent_id,
@@ -516,7 +512,7 @@ app
                         results[0].folder_order,
                       ],
                       (error, result) => {
-                        connection.query(
+                        pool.query(
                           'UPDATE folder SET folder_order =  folder_order + 1 where (parent_id = ?) AND (id != ?) AND ( ? <= folder_order AND  folder_order < ? )',
                           [
                             req.body.parent_id,
@@ -540,16 +536,16 @@ app
         );
       } //移動後は違うparent_id場合
       else if (req.body.flg == 'parentIDDiffer') {
-        connection.query(
+        pool.query(
           //移動前の階層での変化。対象の要素より、順番が大きいもののorderを-１する
           'UPDATE folder SET folder_order = folder_order -1 where (parent_id = ?) AND (folder_order > ?)',
           [req.body.old_parent_id, req.body.old_order],
           (error, result) => {
-            connection.query(
+            pool.query(
               'UPDATE it_memo SET folder_order = folder_order -1 where (parent_id = ?) AND (folder_order > ?)',
               [req.body.old_parent_id, req.body.old_order],
               (error, result) => {
-                connection.query(
+                pool.query(
                   'UPDATE folder SET parent_id = ? WHERE id = ?',
                   [req.body.parent_id, req.body.id],
                   (error, result) => {
@@ -561,7 +557,7 @@ app
           }
         );
       } else if (req.body.flg == 'changeName') {
-        connection.query(
+        pool.query(
           'UPDATE folder SET folder_name=?  WHERE id = ?',
           [req.body.title, req.body.id],
           (error, results) => {
@@ -569,33 +565,27 @@ app
           }
         );
       } else if (req.body.flg == 'folderDel') {
-        connection.query(
+        pool.query(
           'UPDATE folder SET folder_order = folder_order - 1 where parent_id = ? AND folder_order > ? ',
           [req.body.parentId, req.body.order],
           (error, results) => {
-            connection.query(
+            pool.query(
               'UPDATE it_memo SET folder_order = folder_order - 1 where parent_id = ? AND folder_order > ? ',
               [req.body.parentId, req.body.order],
               (error, results) => {
-                connection.query(
+                pool.query(
                   'DELETE from folder where id = ?',
                   [req.body.id],
                   (error, results) => {
-                    connection.query(
-                      'select * from it_memo',
-                      (error, result_n) => {
-                        connection.query(
-                          'select * from folder',
-                          (error, result_f) => {
-                            res.send({
-                              response: req.body.id,
-                              response1: result_n,
-                              response2: result_f,
-                            });
-                          }
-                        );
-                      }
-                    );
+                    pool.query('select * from it_memo', (error, result_n) => {
+                      pool.query('select * from folder', (error, result_f) => {
+                        res.send({
+                          response: req.body.id,
+                          response1: result_n,
+                          response2: result_f,
+                        });
+                      });
+                    });
                   }
                 );
               }
@@ -604,25 +594,19 @@ app
         );
       } else if (req.body.flg == 'collapsableALL') {
         //console.log('全て折り畳む');
-        connection.query(
-          'UPDATE folder SET closed = "on";',
-          (error, result) => {
-            res.send({ response: '閉じました' });
-          }
-        );
+        pool.query('UPDATE folder SET closed = "on";', (error, result) => {
+          res.send({ response: '閉じました' });
+        });
       } else if (req.body.flg == 'expandableALL') {
         //console.log('全て展開する');
-        connection.query(
-          'UPDATE folder SET closed = "off";',
-          (error, result) => {
-            res.send({ response: '開きました' });
-          }
-        );
+        pool.query('UPDATE folder SET closed = "off";', (error, result) => {
+          res.send({ response: '開きました' });
+        });
       } else if (req.body.flg == 'closed') {
         //console.log('リストの開きを保存');
         //開く→閉じる
         if (req.body.closedFlg == 1) {
-          connection.query(
+          pool.query(
             'UPDATE folder SET closed = "on" WHERE id = ?;',
             [req.body.id],
             (error, result) => {
@@ -631,7 +615,7 @@ app
           );
           //開く→閉じる
         } else {
-          connection.query(
+          pool.query(
             'UPDATE folder SET closed = "off" WHERE id = ?;',
             [req.body.id],
             (error, result) => {
@@ -644,11 +628,11 @@ app
       console.log(`[POST受信(newFile)] title : ${req.body.title}`);
       if (req.body.flg == 'newNote') {
         if (req.body.pattern == 'new') {
-          connection.query(
+          pool.query(
             'INSERT into it_memo(title, parent_id) values(?, ?); ', // 挿入
             [req.body.title, req.body.parentId], //この値が？に入る
             (error, results) => {
-              connection.query(
+              pool.query(
                 'select * from  it_memo order by id desc;',
                 (error, result) => {
                   res.send({
@@ -661,7 +645,7 @@ app
           );
           //order
         } else {
-          connection.query(
+          pool.query(
             'UPDATE it_memo SET folder_order = ? WHERE id = ?',
             [req.body.order, req.body.id], //この値が？に入る
             (error, results) => {
@@ -672,7 +656,7 @@ app
           );
         }
       } else if (req.body.flg == 'noteKeep') {
-        connection.query(
+        pool.query(
           'UPDATE it_memo SET title = ?, memo_text = ?, saved_time = ? WHERE id = ?',
           [
             req.body.titleContent,
@@ -681,11 +665,11 @@ app
             req.body.id,
           ],
           (error, results) => {
-            connection.query(
+            pool.query(
               'select * from it_memo where id = ?;',
               [req.body.id],
               (error, result) => {
-                connection.query(
+                pool.query(
                   'UPDATE tab_hold SET tabTitle = ?, pass = ? WHERE id = ?;',
                   [req.body.titleContent, req.body.pass, req.body.id],
                   (error, no_Result) => {
@@ -700,33 +684,27 @@ app
           }
         );
       } else if (req.body.flg == 'delete') {
-        connection.query(
+        pool.query(
           'UPDATE folder SET folder_order = folder_order - 1 where parent_id = ? AND folder_order > ? ',
           [req.body.parentId, req.body.order],
           (error, results) => {
-            connection.query(
+            pool.query(
               'UPDATE it_memo SET folder_order = folder_order - 1 where parent_id = ? AND folder_order > ? ',
               [req.body.parentId, req.body.order],
               (error, results) => {
-                connection.query(
+                pool.query(
                   'DELETE from it_memo where id = ?',
                   [req.body.id],
                   (error, results) => {
-                    connection.query(
-                      'select * from it_memo',
-                      (error, result_n) => {
-                        connection.query(
-                          'select * from folder',
-                          (error, result_f) => {
-                            res.send({
-                              response: req.body.id,
-                              response1: result_n,
-                              response2: result_f,
-                            });
-                          }
-                        );
-                      }
-                    );
+                    pool.query('select * from it_memo', (error, result_n) => {
+                      pool.query('select * from folder', (error, result_f) => {
+                        res.send({
+                          response: req.body.id,
+                          response1: result_n,
+                          response2: result_f,
+                        });
+                      });
+                    });
                   }
                 );
               }
@@ -735,18 +713,18 @@ app
         );
       } else if (req.body.flg == 'parentIDSame') {
         //parentIdは変化しないパターン(同じ階層)
-        connection.query(
+        pool.query(
           'SELECT * from it_memo where id = ?',
           [req.body.id],
           (error, results) => {
-            connection.query(
+            pool.query(
               'UPDATE it_memo SET parent_id = ?, folder_order = ?  WHERE id = ?',
               [req.body.parent_id, req.body.order, req.body.id],
               (error, result) => {
                 //D&Dした結果parent_idが変わった結果(移動していない場合でないとき)
                 if (req.body.order != results[0].folder_order) {
                   if (req.body.move == 'down') {
-                    connection.query(
+                    pool.query(
                       'UPDATE it_memo SET folder_order = folder_order -1 where (parent_id = ?) AND (id != ?) AND ( ? < folder_order AND  folder_order <= ? )',
                       [
                         req.body.parent_id,
@@ -755,7 +733,7 @@ app
                         req.body.order,
                       ],
                       (error, result) => {
-                        connection.query(
+                        pool.query(
                           'UPDATE folder SET folder_order =  folder_order - 1 where (parent_id = ?) AND (id != ?) AND ( ? < folder_order AND  folder_order <= ? )',
                           [
                             req.body.parent_id,
@@ -769,7 +747,7 @@ app
                     );
                     //上へD&D
                   } else {
-                    connection.query(
+                    pool.query(
                       'UPDATE it_memo SET folder_order =  folder_order + 1 where (parent_id = ?) AND (id != ?) AND ( ? <= folder_order AND  folder_order < ? )',
                       [
                         req.body.parent_id,
@@ -778,7 +756,7 @@ app
                         results[0].folder_order,
                       ],
                       (error, result) => {
-                        connection.query(
+                        pool.query(
                           'UPDATE folder SET folder_order =  folder_order + 1 where (parent_id = ?) AND (id != ?) AND ( ? <= folder_order AND  folder_order < ? )',
                           [
                             req.body.parent_id,
@@ -801,16 +779,16 @@ app
         );
         //移動後は違うparent_id
       } else if (req.body.flg == 'parentIDDiffer') {
-        connection.query(
+        pool.query(
           //移動前の階層での変化。対象の要素より、順番が大きいもののorderを-１する
           'UPDATE folder SET folder_order = folder_order -1 where (parent_id = ?) AND (folder_order > ?)',
           [req.body.old_parent_id, req.body.old_order],
           (error, result_se) => {
-            connection.query(
+            pool.query(
               'UPDATE it_memo SET folder_order = folder_order -1 where (parent_id = ?) AND (folder_order > ?)',
               [req.body.old_parent_id, req.body.old_order],
               (error, result_se) => {
-                connection.query(
+                pool.query(
                   'UPDATE it_memo SET parent_id = ? WHERE id = ?',
                   [req.body.parent_id, req.body.id],
                   (error, result) => {
@@ -823,7 +801,7 @@ app
         );
       } else if (req.body.flg == 'updatetime') {
         console.log(`[POST受信(updatetime)] time : ${req.body.time}`);
-        connection.query(
+        pool.query(
           'UPDATE it_memo SET saved_time = ? WHERE id = ?;',
           [req.body.time, req.body.id],
           (error, result) => {
@@ -832,7 +810,7 @@ app
         );
       } else if (req.body.flg == 'name') {
         console.log(`[POST受信(name)] title : ${req.body.title}`);
-        connection.query(
+        pool.query(
           'SELECT * FROM tab_hold WHERE id = ?',
           [req.body.id],
           (error, results) => {
@@ -847,15 +825,15 @@ app
                 req.body.title
               );
               console.log(ans);
-              connection.query(
+              pool.query(
                 'UPDATE it_memo SET title = ?  WHERE id = ?',
                 [req.body.title, req.body.id],
                 (error, result) => {
-                  connection.query(
+                  pool.query(
                     'UPDATE tab_hold SET tabTitle = ?, pass = ? WHERE id = ?',
                     [req.body.title, ans, req.body.id],
                     (error, result) => {
-                      connection.query(
+                      pool.query(
                         'SELECT * FROM tab_hold WHERE id = ?',
                         [req.body.id],
                         (error, result) => {
@@ -872,7 +850,7 @@ app
               );
               //タブ未生成
             } else {
-              connection.query(
+              pool.query(
                 'UPDATE it_memo SET title = ?  WHERE id = ?',
                 [req.body.title, req.body.id],
                 (error, result) => {
@@ -884,7 +862,7 @@ app
         );
         //タブ押下時にメモの内容を表示する
       } else if (req.body.flg == 'updatePass') {
-        connection.query(
+        pool.query(
           'UPDATE tab_hold SET pass = ? WHERE id = ?;',
           [req.body.pass, req.body.id],
           (error, result) => {
@@ -892,7 +870,7 @@ app
           }
         );
       } else if (req.body.flg == 'info') {
-        connection.query(
+        pool.query(
           'SELECT * FROM it_memo WHERE id = ?;',
           [req.body.id],
           (error, result) => {

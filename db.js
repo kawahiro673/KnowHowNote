@@ -1,6 +1,6 @@
 const mysql = require('mysql'); //mysqlを使うためのやーつ
 
-var dbconnection = mysql.createConnection({
+const pool = mysql.createPool({
   host: process.env.DB_HOSTNAME,
   port: Number(process.env.DB_PORT), ///文字列でもいけてる？？
   user: process.env.DB_USERNAME,
@@ -8,4 +8,4 @@ var dbconnection = mysql.createConnection({
   database: process.env.DB_NAME,
 });
 
-module.exports = dbconnection;
+module.exports = pool;
