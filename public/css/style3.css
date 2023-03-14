@@ -12,4 +12,37 @@ body {
 }
 
 #login-box {
+  position: relative;
+  margin: 5% auto;
+  width: 600px;
+  height: 400px;
+  box-shadow: 0 2px 4px #4b4b4b;
+}
+
+.left-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 40px;
+  width: 300px;
+  height: 400px;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-weight: 300;
+  font-size: 28px;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'] {
+  margin-bottom: 20px;
+  padding: 4px;
+  width: 220px;
+  height: 32px;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #aaa;
 }
