@@ -20,13 +20,17 @@ body {
 }
 
 .left-box {
-  background-color: #aab629;
+  background-color: white;
   position: absolute;
   top: 0;
   left: 0;
   padding: 40px;
   width: 300px;
   height: 400px;
+}
+
+.left-box h1 {
+  color: black;
 }
 
 h1 {
