@@ -882,6 +882,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 title,
               }),
               success: function (res) {
+                console.log(res.response);
                 if (res.response.length == 0) {
                   document.getElementById('notepass').innerHTML = '';
                 }
@@ -1280,7 +1281,7 @@ window.addEventListener('DOMContentLoaded', function () {
                       pattern: 'file',
                     }),
                     success: function (res) {
-                      console.log(res.response1);
+                      //console.log(res.response1);
                       //console.log(res.response2);
                       //passを正しく表示する2点セット
                       //1.focusが当たってたらパス更新
@@ -1288,12 +1289,6 @@ window.addEventListener('DOMContentLoaded', function () {
                         document.getElementById('notepass').innerHTML =
                           res.response1;
                       }
-                      //2.タブクリック時にパス更新
-                      // document.getElementById(`tab-ID${id}`).onclick =
-                      //   function (e) {
-                      //     document.getElementById('notepass').innerHTML =
-                      //       res.response1;
-                      //   };
                     },
                   });
                 },
@@ -1396,16 +1391,7 @@ window.addEventListener('DOMContentLoaded', function () {
                       pattern: 'folder',
                     }),
                     success: function (res) {
-                      console.log(res.response);
-                      // childnoteArray.forEach((note) => {
-                      //   if (note == note.id) {
-                      //     document.getElementById(`tab-ID${note.id}`).onclick =
-                      //       function (e) {
-                      //         document.getElementById('notepass').innerHTML =
-                      //           res.response2;
-                      //       };
-                      //   }
-                      // });
+                      //console.log(res.response);
                     },
                   });
                 },
