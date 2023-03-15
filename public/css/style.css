@@ -115,12 +115,14 @@ button {
 
 .container-list {
   background-color: white;
-  width: 1200px;
+  width: 1000px;
   padding: 10px;
   margin: 40px;
   text-align: center;
   display: flex;
   justify-content: space-between;
+  flex-grow: 1;
+  flex-shrink: 1;
 }
 
 .container0 {
