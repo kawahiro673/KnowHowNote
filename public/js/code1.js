@@ -305,7 +305,7 @@ window.addEventListener('DOMContentLoaded', function () {
           inputTab.setAttribute('type', 'text');
           inputTab.setAttribute('id', 'inputTab');
           inputTab.setAttribute('name', 'list_title');
-          inputTab.setAttribute('maxlength', '10');
+          inputTab.setAttribute('maxlength', '20');
           inputTab.setAttribute('size', '20');
           inputTab.style.display = 'block';
           inputTab.setAttribute('value', listTitle.title);
@@ -528,7 +528,7 @@ window.addEventListener('DOMContentLoaded', function () {
           inputTab.setAttribute('type', 'text');
           inputTab.setAttribute('id', 'inputTab');
           inputTab.setAttribute('name', 'list_title');
-          inputTab.setAttribute('maxlength', '10');
+          inputTab.setAttribute('maxlength', '20');
           inputTab.setAttribute('size', '20');
           inputTab.style.display = 'block';
           inputTab.setAttribute('value', folderList.folderTitle);
@@ -1441,7 +1441,7 @@ window.addEventListener('DOMContentLoaded', function () {
     let inputTab = document.createElement('input');
     inputTab.setAttribute('type', 'text');
     inputTab.setAttribute('id', 'inputTab');
-    inputTab.setAttribute('maxlength', '10');
+    inputTab.setAttribute('maxlength', '20');
     inputTab.setAttribute('size', '20');
     inputTab.style.display = 'block';
     inputTab.setAttribute('value', 'NewFolder');
@@ -1582,7 +1582,7 @@ window.addEventListener('DOMContentLoaded', function () {
     inputTab.setAttribute('type', 'text');
     inputTab.setAttribute('id', 'inputTab');
     inputTab.setAttribute('name', 'list_title');
-    inputTab.setAttribute('maxlength', '10');
+    inputTab.setAttribute('maxlength', '20');
     inputTab.setAttribute('size', '20');
     inputTab.style.display = 'block';
     inputTab.setAttribute('value', 'NewNote');
