@@ -57,6 +57,7 @@ header h1 {
   width: 40px;
   height: 32px;
   position: relative;
+  float: left;
 }
 
 .hamburger_bar {
