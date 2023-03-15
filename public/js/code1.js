@@ -882,10 +882,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 title,
               }),
               success: function (res) {
-                console.log(res.response);
-                if (res.response.length == 0) {
-                  document.getElementById('notepass').innerHTML = '';
-                }
+                //console.log(res.response);
               },
             });
           };
@@ -1069,6 +1066,7 @@ window.addEventListener('DOMContentLoaded', function () {
     //タブ全削除判定
     if (idArray.length == 0) {
       document.getElementById('notab').style.display = 'block';
+      document.getElementById('notepass').innerHTML = '';
     }
     console.log(idArray);
   }
