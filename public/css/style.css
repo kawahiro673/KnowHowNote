@@ -93,11 +93,11 @@ header h1 {
 }
 
 /* リセットCSS */
-button {
+/* button {
   border-color: transparent;
   background: transparent;
   cursor: pointer;
-}
+} */
 
 .login {
   float: right;
