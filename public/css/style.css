@@ -63,38 +63,27 @@ header h1 {
   text-align: center;
 }
 
-.hamburger {
-  width: 40px;
-  height: 32px;
-  position: relative;
-  border-color: transparent;
-  background: transparent;
-  cursor: pointer;
-}
-
-.hamburger_bar {
-  display: block;
+/* ハンバーガーメニューの線 */
+.hamburger span {
   width: 100%;
-  height: 4px;
-  position: absolute;
-  left: 0;
-  background: #000;
+  height: 1px;
+  background-color: #000;
+  position: relative;
+  transition: ease 0.4s; /*ハンバーガーメニュークリック時の三本線の動きを遅延*/
+  display: block;
 }
 
-.hamburger_bar:nth-child(1) {
+.hamburger span:nth-child(1) {
   top: 0;
 }
 
-.hamburger_bar:nth-child(2) {
-  top: 50%;
-  transform: translateY(-50%);
+.hamburger span:nth-child(2) {
+  margin: 8px 0;
 }
 
-.hamburger_bar:nth-child(3) {
-  top: 100%;
-  transform: translateY(-100%);
+.hamburger span:nth-child(3) {
+  top: 0;
 }
-
 /* ハンバーガーメニュークリック後のスタイル */
 .hamburger_bar.active span:nth-child(1) {
   top: 5px;
