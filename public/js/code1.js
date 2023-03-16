@@ -1859,4 +1859,8 @@ window.addEventListener('DOMContentLoaded', function () {
     });
     return answer + ' > ' + title;
   }
+
+  $('.container-delete').click(function () {
+    console.log('ハンバーガー押下');
+  });
 });
