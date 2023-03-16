@@ -95,6 +95,20 @@ header h1 {
   transform: translateY(-100%);
 }
 
+/* ハンバーガーメニュークリック後のスタイル */
+.hamburger_bar.active span:nth-child(1) {
+  top: 5px;
+  transform: rotate(45deg);
+}
+
+.hamburger_bar.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger_bar.active span:nth-child(3) {
+  top: -13px;
+  transform: rotate(-45deg);
+}
 /* リセットCSS */
 /* button {
   border-color: transparent;
