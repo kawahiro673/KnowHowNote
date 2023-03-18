@@ -1,6 +1,5 @@
-const pool = require('../db');
-
 const router = require('express').Router();
+const pool = require('../db');
 
 router
   .route('/')
@@ -10,7 +9,7 @@ router
   })
   .post((req, res) => {
     if (req.body.data == 'info') {
-      pool.query('SELECT * FORM register_user;', (error, result) => {
+      pool.query('SELECT * FROM register_user;', (error, result) => {
         console.log(result);
 
         res.send({ response: result });
