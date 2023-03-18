@@ -22,7 +22,7 @@ window.addEventListener('DOMContentLoaded', function () {
   //listの作成
   function listCreate() {
     $.ajax({
-      url: '/index/',
+      url: '/mypage/',
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
@@ -155,7 +155,7 @@ window.addEventListener('DOMContentLoaded', function () {
               }
 
               $.ajax({
-                url: '/index/',
+                url: '/mypage/',
                 //async: false,
                 type: 'POST',
                 dataType: 'Json',
@@ -253,7 +253,7 @@ window.addEventListener('DOMContentLoaded', function () {
         //まずはタブ削除
         if (btn) {
           $.ajax({
-            url: '/index/',
+            url: '/mypage/',
             type: 'POST',
             dataType: 'Json',
             contentType: 'application/json',
@@ -276,7 +276,7 @@ window.addEventListener('DOMContentLoaded', function () {
               }
 
               $.ajax({
-                url: '/index/',
+                url: '/mypage/',
                 type: 'POST',
                 dataType: 'Json',
                 contentType: 'application/json',
@@ -328,7 +328,7 @@ window.addEventListener('DOMContentLoaded', function () {
               } else {
                 //console.log(inputTab.value, listTitle.title);
                 $.ajax({
-                  url: '/index/',
+                  url: '/mypage/',
                   type: 'POST',
                   dataType: 'Json',
                   contentType: 'application/json',
@@ -388,7 +388,7 @@ window.addEventListener('DOMContentLoaded', function () {
           //タイトルが赤色だった場合
           if (listTitle.titleThis.style.color == 'red') {
             $.ajax({
-              url: '/index/',
+              url: '/mypage/',
               type: 'POST',
               dataType: 'Json',
               contentType: 'application/json',
@@ -406,7 +406,7 @@ window.addEventListener('DOMContentLoaded', function () {
           } else {
             console.log('blackの場合');
             $.ajax({
-              url: '/index/',
+              url: '/mypage/',
               type: 'POST',
               dataType: 'Json',
               contentType: 'application/json',
@@ -471,7 +471,7 @@ window.addEventListener('DOMContentLoaded', function () {
         //はいを押した場合(true)
         if (btn) {
           $.ajax({
-            url: '/index/',
+            url: '/mypage/',
             type: 'POST',
             dataType: 'Json',
             contentType: 'application/json',
@@ -489,7 +489,7 @@ window.addEventListener('DOMContentLoaded', function () {
               // console.log(res.response1);
               // console.log(res.response2);
               $.ajax({
-                url: '/index/',
+                url: '/mypage/',
                 type: 'POST',
                 dataType: 'Json',
                 contentType: 'application/json',
@@ -549,7 +549,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 alert('タイトルを入力してください');
               } else {
                 $.ajax({
-                  url: '/index/',
+                  url: '/mypage/',
                   type: 'POST',
                   dataType: 'Json',
                   contentType: 'application/json',
@@ -641,7 +641,7 @@ window.addEventListener('DOMContentLoaded', function () {
       let pass = passGet(listTitle.id, listTitle.title);
       //id((主キー)が同じ場合は更新してくれる(既にtab_holdに格納時みの場合)
       $.ajax({
-        url: '/index/',
+        url: '/mypage/',
         type: 'POST',
         dataType: 'Json',
         contentType: 'application/json',
@@ -658,7 +658,7 @@ window.addEventListener('DOMContentLoaded', function () {
           let index = [].slice.call(tabelements).indexOf(tabId);
           //orderを格納し、focus=1へ
           $.ajax({
-            url: '/index/',
+            url: '/mypage/',
             type: 'POST',
             dataType: 'Json',
             contentType: 'application/json',
@@ -681,7 +681,7 @@ window.addEventListener('DOMContentLoaded', function () {
   //ページを更新した際に前回のタブ情報を載せる
   function tabUpload() {
     $.ajax({
-      url: '/index/',
+      url: '/mypage/',
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
@@ -698,7 +698,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (res.response.length != 0) {
           setTimeout(() => {
             $.ajax({
-              url: '/index/',
+              url: '/mypage/',
               type: 'POST',
               dataType: 'Json',
               contentType: 'application/json',
@@ -721,7 +721,7 @@ window.addEventListener('DOMContentLoaded', function () {
     //タブ生成しておらず、・・・じゃないとき
     if (idArray.includes(Id) == false) {
       $.ajax({
-        url: '/index/',
+        url: '/mypage/',
         type: 'POST',
         dataType: 'Json',
         contentType: 'application/json',
@@ -871,7 +871,7 @@ window.addEventListener('DOMContentLoaded', function () {
             index = index + 1;
             closeTab(Id, index);
             $.ajax({
-              url: '/index/',
+              url: '/mypage/',
               type: 'POST',
               dataType: 'Json',
               contentType: 'application/json',
@@ -904,7 +904,7 @@ window.addEventListener('DOMContentLoaded', function () {
               console.log(pass);
               //クリックしたTabのfocusを1へ、その他を0へ。passも更新
               $.ajax({
-                url: '/index/',
+                url: '/mypage/',
                 type: 'POST',
                 dataType: 'Json',
                 contentType: 'application/json',
@@ -949,7 +949,7 @@ window.addEventListener('DOMContentLoaded', function () {
   ) {
     let pass = passGet(id, newTitle);
     $.ajax({
-      url: '/index/',
+      url: '/mypage/',
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
@@ -1000,7 +1000,7 @@ window.addEventListener('DOMContentLoaded', function () {
     );
     if (btn) {
       $.ajax({
-        url: '/index/',
+        url: '/mypage/',
         type: 'POST',
         dataType: 'Json',
         contentType: 'application/json',
@@ -1031,7 +1031,7 @@ window.addEventListener('DOMContentLoaded', function () {
     document.getElementById('Tab-ID' + id).remove();
 
     $.ajax({
-      url: '/index/',
+      url: '/mypage/',
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
@@ -1098,7 +1098,7 @@ window.addEventListener('DOMContentLoaded', function () {
           id_tmp2 = item.prevObject[0].id;
           console.log(id);
           $.ajax({
-            url: '/index/',
+            url: '/mypage/',
             type: 'POST',
             dataType: 'Json',
             contentType: 'application/json',
@@ -1113,7 +1113,7 @@ window.addEventListener('DOMContentLoaded', function () {
           });
           //フォルダの子ノートを全て取得する(passの更新に使用するため)
           $.ajax({
-            url: '/index/',
+            url: '/mypage/',
             type: 'POST',
             dataType: 'Json',
             contentType: 'application/json',
@@ -1187,7 +1187,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 let id = item[0].childNodes[0].getAttribute('value');
 
                 $.ajax({
-                  url: '/index/',
+                  url: '/mypage/',
                   type: 'POST',
                   dataType: 'Json',
                   contentType: 'application/json',
@@ -1209,7 +1209,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 let id = item[0].childNodes[0].getAttribute('value');
 
                 $.ajax({
-                  url: '/index/',
+                  url: '/mypage/',
                   type: 'POST',
                   dataType: 'Json',
                   contentType: 'application/json',
@@ -1234,7 +1234,7 @@ window.addEventListener('DOMContentLoaded', function () {
               let id = item[0].childNodes[0].getAttribute('value');
 
               $.ajax({
-                url: '/index/',
+                url: '/mypage/',
                 type: 'POST',
                 dataType: 'Json',
                 contentType: 'application/json',
@@ -1266,7 +1266,7 @@ window.addEventListener('DOMContentLoaded', function () {
                   let pass = passGet(id, item[0].childNodes[0].innerHTML);
                   //console.log(pass);
                   $.ajax({
-                    url: '/index/',
+                    url: '/mypage/',
                     type: 'POST',
                     dataType: 'Json',
                     contentType: 'application/json',
@@ -1303,7 +1303,7 @@ window.addEventListener('DOMContentLoaded', function () {
               if (initial_index < index) {
                 console.log('フォルダ:下へD&D');
                 $.ajax({
-                  url: '/index/',
+                  url: '/mypage/',
                   type: 'POST',
                   dataType: 'Json',
                   contentType: 'application/json',
@@ -1323,7 +1323,7 @@ window.addEventListener('DOMContentLoaded', function () {
               } else if (initial_index > index) {
                 console.log('フォルダ:上へD&D');
                 $.ajax({
-                  url: '/index/',
+                  url: '/mypage/',
                   type: 'POST',
                   dataType: 'Json',
                   contentType: 'application/json',
@@ -1347,7 +1347,7 @@ window.addEventListener('DOMContentLoaded', function () {
               console.log('フォルダ:違うParentID');
               //D&D後に新しく追加された側のorderの動き
               $.ajax({
-                url: '/index/',
+                url: '/mypage/',
                 type: 'POST',
                 dataType: 'Json',
                 contentType: 'application/json',
@@ -1377,7 +1377,7 @@ window.addEventListener('DOMContentLoaded', function () {
                   );
                   console.log(list);
                   $.ajax({
-                    url: '/index/',
+                    url: '/mypage/',
                     type: 'POST',
                     dataType: 'Json',
                     contentType: 'application/json',
@@ -1498,7 +1498,7 @@ window.addEventListener('DOMContentLoaded', function () {
     } else {
       console.log('入力されました');
       $.ajax({
-        url: '/index/',
+        url: '/mypage/',
         type: 'POST',
         dataType: 'Json',
         contentType: 'application/json',
@@ -1529,7 +1529,7 @@ window.addEventListener('DOMContentLoaded', function () {
           jQUI();
           folderContextmenu();
           $.ajax({
-            url: '/index/',
+            url: '/mypage/',
             type: 'POST',
             dataType: 'Json',
             contentType: 'application/json',
@@ -1640,7 +1640,7 @@ window.addEventListener('DOMContentLoaded', function () {
     } else {
       //console.log('入力されました');
       $.ajax({
-        url: '/index/',
+        url: '/mypage/',
         type: 'POST',
         dataType: 'Json',
         contentType: 'application/json',
@@ -1673,7 +1673,7 @@ window.addEventListener('DOMContentLoaded', function () {
           fileClick();
           updateTime(res.response2.id);
           $.ajax({
-            url: '/index/',
+            url: '/mypage/',
             type: 'POST',
             dataType: 'Json',
             contentType: 'application/json',
@@ -1733,7 +1733,7 @@ window.addEventListener('DOMContentLoaded', function () {
     //はいを押した場合(true)
     if (btn) {
       $.ajax({
-        url: '/index/',
+        url: '/mypage/',
         type: 'POST',
         dataType: 'Json',
         contentType: 'application/json',
@@ -1756,7 +1756,7 @@ window.addEventListener('DOMContentLoaded', function () {
   $('.collapsable').click(function () {
     //console.log('折り畳むぼたん押下');
     $.ajax({
-      url: '/index/',
+      url: '/mypage/',
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
@@ -1773,7 +1773,7 @@ window.addEventListener('DOMContentLoaded', function () {
   $('.expandable').click(function () {
     //console.log('全て展開ぼたん押下');
     $.ajax({
-      url: '/index/',
+      url: '/mypage/',
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
@@ -1797,7 +1797,7 @@ window.addEventListener('DOMContentLoaded', function () {
     let Min = now.getMinutes();
     //let Sec = now.getSeconds();
     $.ajax({
-      url: '/index/',
+      url: '/mypage/',
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
