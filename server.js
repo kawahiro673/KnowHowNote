@@ -22,13 +22,7 @@ app.use('/auth', auth);
 app.use('/mypage', mypage);
 
 app.get('/', (req, res) => {
-  //指定したファイルを画面表示
   res.render('login.ejs');
-});
-
-app.get('/register', (req, res) => {
-  //指定したファイルを画面表示
-  res.render('register.ejs');
 });
 
 app.listen(process.env.PORT || 8080, () => {

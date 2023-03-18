@@ -9,4 +9,16 @@ document
 
 function registerButtonClick() {
   console.log('クリックしました');
+  $.ajax({
+    url: '/auth/',
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      data: 'info',
+    }),
+    success: function (res) {
+      console.log(res.response);
+    },
+  });
 }
