@@ -7,6 +7,7 @@ const http = express('http');
 //connectionだとmysqlとの通信が切れてしまうため、poolを使用
 const pool = require('./db.js');
 const mypage = require('./routes/mypage');
+const auth = require('./routes/auth');
 
 app.set('view engine', 'ejs');
 //publicフォルダ内のファイルを読み込めるようにする
@@ -16,7 +17,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // JSONでデータをやり取りしますよという指定
 app.use(express.json());
-//[/mypage]で開ける。app.use(express.json());でjsonを使えるようにした後でないとjsonを読み込めない
+//authというエンドポイントで./routes/authファイルでWebAPIを構築できる
+app.use('/auth', auth);
 app.use('/mypage', mypage);
 
 app.get('/', (req, res) => {
