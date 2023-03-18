@@ -825,7 +825,7 @@ window.addEventListener('DOMContentLoaded', function () {
             let titletext = document.createElement('input');
             titletext.setAttribute(
               'value',
-              document.getElementById(`tabP${Id}.innerHTML`)
+              document.getElementById(`tabP${Id}`).innerHTML
             );
             document.getElementById(`tabP${Id}`).after(titletext);
             document.getElementById(`tabP${Id}`).style.display = 'none';
