@@ -42,9 +42,7 @@ window.addEventListener('DOMContentLoaded', function () {
         let expandableArray = [];
 
         parentIdArray.push(0); //rootである0を追加
-        // for (const tab of res.response) {
-        //   titleClick(tab.id, tab.tabTitle);
-        // }
+
         //folderとfileを全て作成するまで(resTmpとresTmp2の結合配列arrayが空になるまで)
         while (array.length !== 0) {
           parentIdArray.forEach((parentId) => {
