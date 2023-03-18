@@ -13,7 +13,7 @@ router
       pool.query('SELECT * FORM register_user;', (error, result) => {
         console.log(result);
 
-        res.send({ response: 'OK!' });
+        res.send({ response: result });
       });
     }
   });

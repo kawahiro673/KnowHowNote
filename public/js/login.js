@@ -19,6 +19,12 @@ function registerButtonClick() {
     }),
     success: function (res) {
       console.log(res.response);
+      const user = res.response.find(
+        (user) => user.UserName === userName.value
+      );
+      if (user) {
+        return alert('そのユーザーは登録できません');
+      }
     },
   });
 }
