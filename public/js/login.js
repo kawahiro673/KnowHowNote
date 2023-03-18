@@ -1,4 +1,4 @@
-const userName = document.getElementById('username');
+let userName = document.getElementById('username');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 const cfPassword = document.getElementById('confirmedPassword');
