@@ -21,8 +21,8 @@ app.use('/mypage', mypage);
 
 app.get('/', (req, res) => {
   //指定したファイルを画面表示
-  console.log('トップページ開きました : top.ejs');
-  res.render('top.ejs');
+  //console.log('新規登録 : top.ejs');
+  res.render('register.ejs');
 });
 
 app.listen(process.env.PORT || 8080, () => {
