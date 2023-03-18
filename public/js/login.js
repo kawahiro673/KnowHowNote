@@ -19,6 +19,7 @@ function registerButtonClick() {
     }),
     success: function (res) {
       //console.log(res.response);
+      //未入力確認
       if (
         userName.value === '' ||
         email.value === '' ||
@@ -42,11 +43,12 @@ function registerButtonClick() {
         alert('メールアドレスをご確認ください');
         return false;
       }
-
+      //パスワード２回目入力チェック
       if (password.value !== cfPassword.value) {
         alert('パスワードの入力に誤りがあります');
         return false;
       }
+      console.log('正しく登録されました');
     },
   });
 }
