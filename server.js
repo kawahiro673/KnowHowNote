@@ -8,8 +8,6 @@ const http = express('http');
 const pool = require('./db.js');
 const mypage = require('./routes/mypage');
 
-app.use('/mypage', mypage);
-
 app.set('view engine', 'ejs');
 //publicフォルダ内のファイルを読み込めるようにする
 app.use(express.static('public'));
@@ -17,6 +15,7 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.json());
+app.use('/mypage', mypage);
 
 // 画面表示→get  データベース変更→post
 
