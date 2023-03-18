@@ -2,7 +2,7 @@ const router = require('express').Router();
 const pool = require('../db.js');
 
 router
-  .route('/mypage')
+  .route('/')
   .get(function (req, res) {
     pool.query(
       //リストを表示するため（selectで全て表示するため）
