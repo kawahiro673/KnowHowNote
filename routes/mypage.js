@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const pool = require('../db.js');
 
+router.use(express.json());
+
 router
   .route('/')
   .get(function (req, res) {
