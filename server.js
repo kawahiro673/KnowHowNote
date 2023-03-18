@@ -26,5 +26,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(process.env.PORT || 8080, () => {
-  console.log('Running at Port 8080...ローカルサーバー接続成功！！');
+  console.log('サーバー接続成功！！');
 });
