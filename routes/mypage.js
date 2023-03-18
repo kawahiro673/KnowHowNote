@@ -1,7 +1,7 @@
-const rout = require('express').Router();
+const express = require('express').Router();
 const pool = require('../db.js');
 
-var router = rout();
+var router = express();
 
 router.use(express.json());
 
