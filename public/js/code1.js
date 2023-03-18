@@ -810,12 +810,10 @@ window.addEventListener('DOMContentLoaded', function () {
           divFade.appendChild(fadeFont);
           div.appendChild(time);
 
-          //console.log(`"id: ${Id} title: ${title}"のタブが生成されました`);
-
           document.getElementById('notab').style.display = 'none';
 
           idArray.push(Id);
-
+          //「編集する」ボタンクリック
           inputEdit.onclick = function () {
             var p1 = document.createElement('p');
             p1.innerHTML =
@@ -861,7 +859,15 @@ window.addEventListener('DOMContentLoaded', function () {
             };
             //[取り消す]ボタン押下
             inputCancel.onclick = function () {
-              cancelButton(Id, p1, inputKeep, inputCancel, inputEdit, textarea);
+              cancelButton(
+                Id,
+                p1,
+                inputKeep,
+                inputCancel,
+                inputEdit,
+                textarea,
+                titletext
+              );
             };
           };
 
@@ -1013,9 +1019,9 @@ window.addEventListener('DOMContentLoaded', function () {
           id: id,
         }),
         success: function (res) {
-          console.log(`取り消し成功！ ${res.response.memo_text}`);
+          //console.log(`取り消し成功！ ${res.response.memo_text}`);
           textarea.value = res.response.memo_text;
-          document.getElementById(`tabP${id}`).innerHTML = res.response.title;
+          //document.getElementById(`tabP${id}`).innerHTML = res.response.title;
         },
       });
       document.getElementById(`tabP${id}`).style.display = 'block';
