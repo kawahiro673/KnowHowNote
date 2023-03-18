@@ -1,5 +1,5 @@
 const router = (require = require('express').Router());
-const pool = require('./db.js');
+const pool = require('../db.js');
 
 router
   .route('/mypage')
