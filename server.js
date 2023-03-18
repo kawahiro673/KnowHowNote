@@ -21,7 +21,11 @@ app.use('/mypage', mypage);
 
 app.get('/', (req, res) => {
   //指定したファイルを画面表示
-  //console.log('新規登録 : top.ejs');
+  res.render('login.ejs');
+});
+
+app.get('/register', (req, res) => {
+  //指定したファイルを画面表示
   res.render('register.ejs');
 });
 
