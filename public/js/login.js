@@ -19,11 +19,12 @@ function registerButtonClick() {
     }),
     success: function (res) {
       console.log(res.response);
+      console.log(userName.value);
       const user = res.response.find(
         (user) => user.UserName === userName.value
       );
       if (user) {
-        return alert('そのユーザーは登録できません');
+        alert('そのユーザーは登録できません');
       }
     },
   });
