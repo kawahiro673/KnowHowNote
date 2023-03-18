@@ -1,4 +1,4 @@
-const router = (require = require('Express').Router());
+const router = (require = require('express').Router());
 const pool = require('./db.js');
 
 router

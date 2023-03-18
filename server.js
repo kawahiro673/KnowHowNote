@@ -25,10 +25,10 @@ app.get('/', (req, res) => {
   res.render('top.ejs');
 });
 
-app.get('/login', (req, res) => {
-  console.log('ログインページ開きました : login.ejs');
-  res.render('login.ejs');
-});
+// app.get('/login', (req, res) => {
+//   console.log('ログインページ開きました : login.ejs');
+//   res.render('login.ejs');
+// });
 
 // app
 //   .route('/index')
