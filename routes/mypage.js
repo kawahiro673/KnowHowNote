@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const { append } = require('express/lib/response');
-const pool = require('../db.js');
+//const pool = require('../db.js');
 
-app.get('/', (req, res) => {
+router.get('/', (req, res) => {
   res.send('Hello Express');
 });
 
