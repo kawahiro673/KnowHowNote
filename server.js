@@ -15,6 +15,7 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.json());
+//[/mypage]で開ける。app.use(express.json());でjsonを使えるようにした後でないとjsonを読み込めない
 app.use('/mypage', mypage);
 
 // 画面表示→get  データベース変更→post
