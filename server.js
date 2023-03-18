@@ -16,6 +16,7 @@ app.use(express.static('public'));
 //フォームの値を受け取るために必要な定型分
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(express.json());
 
 // 画面表示→get  データベース変更→post
 
