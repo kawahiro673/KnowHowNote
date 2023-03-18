@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const pool = require('../db.js');
 
-app.use(bodyParser.json());
+router.use(bodyParser.json());
 
 router
   .route('/')
