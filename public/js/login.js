@@ -1,7 +1,7 @@
-const userName = document.getElementsByClassName('username');
-const email = document.getElementsByClassName('email');
-const password = document.getElementsByClassName('password');
-const cfPassword = document.getElementsByClassName('confirmedPassword');
+const userName = document.getElementsById('username');
+const email = document.getElementsById('email');
+const password = document.getElementsById('password');
+const cfPassword = document.getElementsById('confirmedPassword');
 
 document
   .getElementById('register')
