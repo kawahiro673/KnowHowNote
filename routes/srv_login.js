@@ -7,4 +7,4 @@ router.get('/', (req, res) => {
   res.render('login.ejs');
 });
 
-router.module.exports = router;
+module.exports = router;
