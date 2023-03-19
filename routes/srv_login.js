@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const JWT = require('jsonwebtoken');
 
 router.get('/', (req, res) => {
-  res.render('login.ejs');
+  const {}
 });
 
 module.exports = router;
