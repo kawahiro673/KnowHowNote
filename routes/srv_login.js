@@ -36,7 +36,7 @@ router
           }
         );
         //ここでクラアントに返した値(token)をCookieに保存させる
-        res.send({ token: token });
+        res.send({ message: token });
       });
     }
   });
