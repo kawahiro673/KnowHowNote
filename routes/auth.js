@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const pool = require('../db');
+const bcrypt = require('bcrypt');
 
 router
   .route('/')
@@ -7,13 +8,15 @@ router
     //指定したファイルを画面表示
     res.render('auth.ejs');
   })
-  .post((req, res) => {
-    if (req.body.data == 'info') {
+  .post(async (req, res) => {
+    if (req.body.flg === 'info') {
       pool.query('SELECT * FROM register_user;', (error, result) => {
-        console.log(result);
-
         res.send({ response: result });
       });
+    } else if (req.body.flg === 'cipher') {
+      console.log(req.body.password);
+      let hashedPassword = await bcrypt.hash(password, 10);
+      console.log(hashedPassword);
     }
   });
 

@@ -15,7 +15,7 @@ function registerButtonClick() {
     dataType: 'Json',
     contentType: 'application/json',
     data: JSON.stringify({
-      data: 'info',
+      flg: 'info',
     }),
     success: function (res) {
       //console.log(res.response);
@@ -36,20 +36,16 @@ function registerButtonClick() {
       );
       if (user) {
         alert('そのユーザーは登録できません');
-        userName.style.backgroundColor = '#FFBEDA';
         return false;
       }
       //emailバリデーションチェック
       if (!email.value.match(/.+@.+\..+/)) {
         alert('正しいメールアドレスを入力してください');
-        email.style.backgroundColor = '#FFBEDA';
         return false;
       }
       //パスワード２回目入力チェック
       if (password.value !== cfPassword.value) {
         alert('パスワードの入力に誤りがあります');
-        password.style.backgroundColor = '#FFBEDA';
-        cfPassword.style.backgroundColor = '#FFBEDA';
         return false;
       }
       //既に登録されているemailがあれば「登録済み」とする
@@ -58,8 +54,21 @@ function registerButtonClick() {
         alert('既にそのユーザは存在しています');
         return false;
       }
-
       console.log('登録が完了しました');
+
+      $.ajax({
+        url: '/auth/',
+        type: 'POST',
+        dataType: 'Json',
+        contentType: 'application/json',
+        data: JSON.stringify({
+          flg: 'cipher',
+          password: password.value,
+        }),
+        success: function (res) {
+          console.log(res.response);
+        },
+      });
     },
   });
 }
