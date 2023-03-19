@@ -28,13 +28,15 @@ router
         {
           email,
         },
-        'SECRET_KEY', //秘密鍵。envファイルとかに隠す。
+        'SECRET_KEY', //秘密鍵。今後はenvファイルとかに隠す。
         {
           expiresIn: '24h',
         }
       );
+      //ここでクラアントに返した値(token)をCookieに保存させる
       res.send({ token: token });
     }
   });
 
-module.exports = router;
+//ログイン用のAPI
+router.module.exports = router;

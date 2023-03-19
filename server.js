@@ -8,6 +8,7 @@ const http = express('http');
 const pool = require('./db.js');
 const mypage = require('./routes/mypage');
 const auth = require('./routes/auth');
+const login = require('./routes/srv_login');
 
 app.set('view engine', 'ejs');
 //publicフォルダ内のファイルを読み込めるようにする
@@ -20,10 +21,7 @@ app.use(express.json());
 //authというエンドポイントで./routes/authファイルでWebAPIを構築できる
 app.use('/auth', auth);
 app.use('/mypage', mypage);
-
-app.get('/', (req, res) => {
-  res.render('login.ejs');
-});
+app.use('/login', login);
 
 app.listen(process.env.PORT || 8080, () => {
   console.log('サーバー接続成功！！');

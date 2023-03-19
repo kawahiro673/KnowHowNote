@@ -30,7 +30,7 @@ function registerButtonClick() {
         return false;
       }
 
-      //ユーザーかぶりチェック
+      //ユーザー名かぶりチェック
       const user = res.response.find(
         (user) => user.UserName === userName.value
       );
@@ -43,7 +43,7 @@ function registerButtonClick() {
         alert('正しいメールアドレスを入力してください');
         return false;
       }
-      //パスワード２回目入力チェック
+      //確認用パスワード入力チェック
       if (password.value !== cfPassword.value) {
         alert('パスワードの入力に誤りがあります');
         return false;
@@ -54,7 +54,7 @@ function registerButtonClick() {
         alert('既に登録されてあるメールアドレスです');
         return false;
       }
-      console.log('登録が完了しました');
+      //console.log('登録が完了しました');
 
       $.ajax({
         url: '/auth/',
