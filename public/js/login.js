@@ -51,7 +51,7 @@ function registerButtonClick() {
       //既に登録されているemailがあれば「登録済み」とする
       const mail = res.response.find((user) => user.Email === email.value);
       if (mail) {
-        alert('既にそのユーザは存在しています');
+        alert('既に登録されてあるメールアドレスです');
         return false;
       }
       console.log('登録が完了しました');
@@ -64,6 +64,7 @@ function registerButtonClick() {
         data: JSON.stringify({
           flg: 'cipher',
           password: password.value,
+          email: email.value,
         }),
         success: function (res) {
           console.log(res.response);

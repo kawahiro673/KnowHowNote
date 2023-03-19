@@ -14,12 +14,15 @@ router
         res.send({ response: result });
       });
     } else if (req.body.flg === 'cipher') {
-      console.log(req.body.password);
+      //bcryptモジュールを使用して暗号化(ソルト)
       let hashedPassword = await bcrypt.hash(req.body.password, 10);
-      console.log(hashedPassword);
-      pool.query('SELECT * FROM register_user;', (error, result) => {
-        res.send({ response: hashedPassword });
-      });
+      pool.query(
+        'INSERT INTO hash_code (Email, HashedPassword) VALUES(?, ?);',
+        [req.body.email, hashedPassword],
+        (error, result) => {
+          res.send({ response: result });
+        }
+      );
     }
   });
 
