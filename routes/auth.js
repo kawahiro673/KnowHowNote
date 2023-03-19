@@ -15,8 +15,11 @@ router
       });
     } else if (req.body.flg === 'cipher') {
       console.log(req.body.password);
-      let hashedPassword = await bcrypt.hash(password, 10);
+      let hashedPassword = await bcrypt.hash(req.body.password, 10);
       console.log(hashedPassword);
+      pool.query('SELECT * FROM register_user;', (error, result) => {
+        res.send({ response: hashedPassword });
+      });
     }
   });
 
