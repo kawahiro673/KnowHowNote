@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const pool = require('../db');
 const bcrypt = require('bcrypt');
+const JWT = require('jsonwebtoken');
 
 router
   .route('/')
@@ -15,14 +16,24 @@ router
       });
     } else if (req.body.flg === 'cipher') {
       //bcryptモジュールを使用して暗号化(ソルト)
+      let email = req.body.email;
       let hashedPassword = await bcrypt.hash(req.body.password, 10);
       pool.query(
         'INSERT INTO hash_code (Email, HashedPassword) VALUES(?, ?);',
-        [req.body.email, hashedPassword],
-        (error, result) => {
-          res.send({ response: result });
+        [email, hashedPassword],
+        (error, result) => {}
+      );
+      //クライアントへJWTの発行(クライアント側のトークンはローカルストレージに保存するのはだめ。Cookieを使って保存する。)
+      const token = await JWT.sign(
+        {
+          email,
+        },
+        'SECRET_KEY', //秘密鍵。envファイルとかに隠す。
+        {
+          expiresIn: '24h',
         }
       );
+      res.send({ token: token });
     }
   });
 
