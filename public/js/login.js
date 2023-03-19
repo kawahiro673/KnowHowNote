@@ -30,7 +30,7 @@ function registerButtonClick() {
         return false;
       }
 
-      //ユーザーかぶり
+      //ユーザーかぶりチェック
       const user = res.response.find(
         (user) => user.UserName === userName.value
       );
@@ -40,7 +40,7 @@ function registerButtonClick() {
       }
       //emailバリデーションチェック
       if (!email.value.match(/.+@.+\..+/)) {
-        alert('メールアドレスをご確認ください');
+        alert('正しいメールアドレスを入力してください');
         return false;
       }
       //パスワード２回目入力チェック
@@ -48,7 +48,14 @@ function registerButtonClick() {
         alert('パスワードの入力に誤りがあります');
         return false;
       }
-      console.log('正しく登録されました');
+
+      const mail = res.response.find((user) => user.Email === email.value);
+      if (mail) {
+        alert('既にそのユーザは存在しています');
+        return false;
+      }
+
+      console.log('登録が完了しました');
     },
   });
 }
