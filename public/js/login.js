@@ -1,7 +1,23 @@
 const loginbtn = document.getElementById('loginbtn');
+const email = document.getElementById('email');
+const password = document.getElementById('password');
 
-login.addEventListener('click', loginButtonClick);
+loginbtn.addEventListener('click', loginButtonClick);
 
 function loginButtonClick() {
   console.log('ログインボタンクリック');
+  $.ajax({
+    url: '/login/',
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'info',
+      email: email.value,
+      password: password.value,
+    }),
+    success: function (res) {
+      alert(res.message);
+    },
+  });
 }

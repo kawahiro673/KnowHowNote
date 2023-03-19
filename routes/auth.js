@@ -16,11 +16,12 @@ router
       });
     } else if (req.body.flg === 'cipher') {
       //bcryptモジュールを使用して暗号化(ソルト)
+      let userName = req.body.username;
       let email = req.body.email;
       let hashedPassword = await bcrypt.hash(req.body.password, 10);
       pool.query(
-        'INSERT INTO hash_code (Email, HashedPassword) VALUES(?, ?);',
-        [email, hashedPassword],
+        'INSERT INTO register_user (UserName, Email, HashedPassword) VALUES(?, ?, ?);',
+        [userName, email, hashedPassword],
         (error, result) => {}
       );
       //クライアントへJWTの発行(クライアント側のトークンはローカルストレージに保存するのはだめ。Cookieを使って保存する。)

@@ -18,7 +18,6 @@ function registerButtonClick() {
       flg: 'info',
     }),
     success: function (res) {
-      //console.log(res.response);
       //未入力確認
       if (
         userName.value === '' ||
@@ -29,7 +28,6 @@ function registerButtonClick() {
         alert('入力されていない情報があります');
         return false;
       }
-
       //ユーザー名かぶりチェック
       const user = res.response.find(
         (user) => user.UserName === userName.value
@@ -63,8 +61,9 @@ function registerButtonClick() {
         contentType: 'application/json',
         data: JSON.stringify({
           flg: 'cipher',
-          password: password.value,
+          username: userName.value,
           email: email.value,
+          password: password.value,
         }),
         success: function (res) {
           console.log(res.token);
