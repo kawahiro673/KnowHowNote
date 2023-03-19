@@ -28,7 +28,7 @@ router
         {
           email,
         },
-        'SECRET_KEY', //秘密鍵。今後はenvファイルとかに隠す。
+        'SECRET_KEY', //秘密鍵。envファイルとかに隠す。
         {
           expiresIn: '24h',
         }
@@ -39,4 +39,5 @@ router
   });
 
 //ログイン用のAPI
-router.module.exports = router;
+
+module.exports = router;
