@@ -67,7 +67,7 @@ function registerButtonClick() {
           email: email.value,
         }),
         success: function (res) {
-          console.log(res.taken);
+          console.log(res.token);
         },
       });
     },

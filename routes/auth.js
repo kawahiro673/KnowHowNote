@@ -33,7 +33,6 @@ router
           expiresIn: '24h',
         }
       );
-      console.log(token);
       res.send({ token: token });
     }
   });
