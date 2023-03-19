@@ -9,6 +9,7 @@ router
     res.render('login.ejs');
   })
   .post(async (req, res) => {
+    let email = req.body.email;
     if (req.body.flg === 'info') {
       pool.query('SELECT * FROM register_user;', async (error, result) => {
         const user = result.find((user) => user.Email === req.body.email);
