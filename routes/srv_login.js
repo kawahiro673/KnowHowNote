@@ -18,8 +18,9 @@ router
         }
         //入力されたEmailのHashedPasswordを検索
         let hashedPassword;
-        let index = result.indexOf(req.body.email);
+        let index = result.Email.indexOf(req.body.email);
         console.log(index);
+        console.log(result.Email);
         //パスワードの復号・照合(true or falseを返す)
         const isMatch = await bcrypt.compare(
           req.body.password,
