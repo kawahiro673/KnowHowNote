@@ -13,14 +13,13 @@ router
     if (req.body.flg === 'info') {
       pool.query('SELECT * FROM register_user;', async (error, result) => {
         const user = result.find((user) => user.Email === req.body.email);
+        console.log(user);
         if (!user) {
           res.send({ message: 'そのユーザは存在しません' });
         }
         //入力されたEmailのHashedPasswordを検索
         let hashedPassword;
-        let index = result.Email.indexOf(req.body.email);
-        console.log(index);
-        console.log(result.Email);
+
         //パスワードの復号・照合(true or falseを返す)
         const isMatch = await bcrypt.compare(
           req.body.password,
