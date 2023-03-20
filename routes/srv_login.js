@@ -12,6 +12,9 @@ router
     let email = req.body.email;
     if (req.body.flg === 'info') {
       pool.query('SELECT * FROM register_user;', async (error, result) => {
+        console.log(result);
+        console.log(result[0]);
+        console.log(result[0].HashedPassword);
         const user = result.find((user) => user.Email === req.body.email);
         if (!user) {
           res.send({ message: 'そのユーザは存在しません' });
