@@ -18,5 +18,8 @@
     "mysql": "^2.18.1",
     "nodemon": "^2.0.21",
     "npm": "^9.6.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3"
   }
 }

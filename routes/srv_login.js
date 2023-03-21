@@ -35,7 +35,7 @@ router
           {
             email,
           },
-          'SECRET_KEY', //秘密鍵。envファイルとかに隠す。
+          process.env.SECRET_KEY, //秘密鍵。envファイルとかに隠す。
           {
             expiresIn: '24h',
           }
