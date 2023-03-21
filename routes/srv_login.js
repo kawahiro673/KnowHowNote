@@ -49,8 +49,8 @@ router
         };
 
         res.cookie('token', token, options);
-        //ここでクラアントに返した値(token)をCookieに保存させる
-        res.send({ message: token });
+
+        return res.redirect('/mypage');
       });
     }
   });
