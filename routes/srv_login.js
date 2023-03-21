@@ -40,6 +40,15 @@ router
             expiresIn: '24h',
           }
         );
+
+        const options = {
+          httpOnly: true, // JavaScriptからアクセスできないようにする
+          // maxAge: 60 * 60 * 24, // 有効期限を1日に設定
+          // secure: process.env.NODE_ENV === 'production', // HTTPS上でのみ送信する
+          // sameSite: 'Strict', // 同一ドメインからしかCookieを送信できなくする
+        };
+
+        res.cookie('token', token, options);
         //ここでクラアントに返した値(token)をCookieに保存させる
         res.send({ message: token });
       });
