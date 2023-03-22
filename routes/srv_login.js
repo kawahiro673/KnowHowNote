@@ -50,7 +50,7 @@ router
 
         res.cookie('token', token, options);
 
-        return res.redirect('/mypage/');
+        return res.redirect(302, '/mypage/');
         //res.render('index.ejs');
       });
     }
