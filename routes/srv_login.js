@@ -50,7 +50,8 @@ router
 
         res.cookie('token', token, options);
 
-        res.send({ message: token });
+        //res.send({ message: token });
+        return res.redirect('/mypage');
       });
     }
   });
