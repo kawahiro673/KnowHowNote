@@ -50,7 +50,7 @@ router
 
         res.cookie('token', token, options);
 
-        //res.send({ message: token });
+        console.log(token);
         return res.redirect('/mypage');
       });
     }
