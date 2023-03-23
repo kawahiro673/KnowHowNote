@@ -50,9 +50,9 @@ router
 
         res.cookie('token', token, options);
 
-        //return res.redirect(302, '/mypage/');
-        res.writeHead(302, { Location: '/mypage' });
-        res.end();
+        return res.redirect(302, '/mypage/');
+        // res.writeHead(302, { Location: '/mypage' });
+        // res.end();
         //res.render('index.ejs');
       });
     }
