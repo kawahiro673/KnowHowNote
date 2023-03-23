@@ -43,7 +43,7 @@ router
 
         const options = {
           httpOnly: true, // JavaScriptからアクセスできないようにする
-          maxAge: 60, // 有効期限を設定
+          maxAge: 1000 * 60, // 有効期限を設定
           // secure: process.env.NODE_ENV === 'production', // HTTPS上でのみ送信する
           // sameSite: 'Strict', // 同一ドメインからしかCookieを送信できなくする
         };
