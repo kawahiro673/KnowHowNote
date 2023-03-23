@@ -18,8 +18,8 @@ function loginButtonClick() {
     }),
     success: function (res) {
       //alert(res.message);
-      let cookieToken = document.cookie;
-      console.log(cookieToken);
+      // let cookieToken = document.cookie;
+      // console.log(cookieToken);
     },
   });
 }
