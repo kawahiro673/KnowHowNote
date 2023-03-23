@@ -17,7 +17,9 @@ function loginButtonClick() {
       password: password.value,
     }),
     success: function (res) {
-      alert(res.message);
+      //alert(res.message);
+      let cookieToken = document.cookie;
+      console.log(cookieToken);
     },
   });
 }
