@@ -26,5 +26,5 @@ app.use('/login', login);
 app.use(cookieParser());
 
 app.listen(process.env.PORT || 8080, () => {
-  console.log('サーバー接続成功！！');
+  console.log('サーバー接続成功');
 });
