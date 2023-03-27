@@ -2,13 +2,14 @@ const router = require('express').Router();
 const pool = require('../db');
 const bcrypt = require('bcrypt');
 const JWT = require('jsonwebtoken');
+const check = require('./check');
 
 router
   .route('/')
   .get((req, res) => {
     res.render('login.ejs');
   })
-  .post(async (req, res) => {
+  .post(check, async (req, res) => {
     let email = req.body.email;
     if (req.body.flg === 'info') {
       pool.query('SELECT * FROM register_user;', async (error, result) => {
@@ -42,7 +43,7 @@ router
         );
 
         const options = {
-          httpOnly: true, // JavaScriptからアクセスできないようにする(document.cookieで取得もできない)
+          //httpOnly: true, // JavaScriptからアクセスできないようにする(document.cookieで取得もできない)
           maxAge: 1000 * 60, // 有効期限を設定(ミリ秒)→アプリケーション>Cookieに保存されているの確認
           // secure: process.env.NODE_ENV === 'production', // HTTPS上でのみ送信する
           // sameSite: 'Strict', // 同一ドメインからしかCookieを送信できなくする

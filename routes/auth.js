@@ -34,9 +34,9 @@ router
           expiresIn: '24h',
         }
       );
-
+      //ここでクラアントに返した値(token)をCookieに保存させる。ログインと同様に新規登録したらすぐにログインさせるためにトークン発行
       const options = {
-        httpOnly: true, // JavaScriptからアクセスできないようにする(document.cookieで取得もできない)
+        //httpOnly: true, // JavaScriptからアクセスできないようにする(document.cookieで取得もできない)
         maxAge: 1000 * 60, // 有効期限を設定(ミリ秒)→アプリケーション>Cookieに保存されているの確認
         // secure: process.env.NODE_ENV === 'production', // HTTPS上でのみ送信する
         // sameSite: 'Strict', // 同一ドメインからしかCookieを送信できなくする
@@ -44,7 +44,6 @@ router
 
       res.cookie('token', token, options);
 
-      //ここでクラアントに返した値(token)をCookieに保存させる。ログインと同様に新規登録したらすぐにログインさせるためにトークン発行
       res.send({ token: token });
     }
   });
