@@ -15,9 +15,7 @@ function auth(req, res, next) {
     console.log(decoded);
     next();
   } catch (err) {
-    return res.send(401).json({
-      msg: '認証できません',
-    });
+    return res.redirect('/');
   }
 }
 
