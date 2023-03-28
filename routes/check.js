@@ -6,8 +6,7 @@ const JWT = require('jsonwebtoken');
 function check(req, res, next) {
   try {
     //承認用のトークン設定
-    const token =
-      'eyJhbGciOiJIUzI1NdWNoaUBnbWFpbC5jb20iLCJpYXQiOjE2ODAwMTM5MjksImV4cCI6MTY4MDEwMDMyOX0.AsjD-cmtiOiSl4pZFMtHjRJ1Y60M0IS-VcoK1NsHclc';
+    const token = req.headers.authorization;
     //復号する。認証できるかどうか確認
     const decoded = JWT.verify(
       token,
