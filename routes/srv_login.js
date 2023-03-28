@@ -51,7 +51,8 @@ router
 
         res.cookie('token', token, options);
 
-        res.send({ response: 'やあ' });
+        return res.redirect('/mypage');
+        res.send({ message: 'やあ' });
       });
     }
   });
