@@ -21,7 +21,6 @@ router
           'SECRET_KEY' //秘密鍵。envファイルとかに隠す。
         );
         console.log(decoded);
-        next();
       } catch (err) {
         return res.send(401).json({
           msg: '認証できません',
