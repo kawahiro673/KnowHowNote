@@ -1,6 +1,6 @@
 const res = require('express/lib/response');
 const JWT = require('jsonwebtoken');
-require('dotenv').config();
+//require('dotenv').config();
 
 //Cookieに保存しているトークンが
 function auth(req, res, next) {
