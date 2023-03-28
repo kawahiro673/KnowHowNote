@@ -3,7 +3,7 @@ const JWT = require('jsonwebtoken');
 //require('dotenv').config();
 
 //Cookieに保存しているトークンが
-function auth(req, res, next) {
+function check(req, res, next) {
   try {
     //承認用のトークン設定
     const token =
@@ -22,4 +22,4 @@ function auth(req, res, next) {
   }
 }
 
-module.exports = auth;
+module.exports = check;

@@ -5,7 +5,7 @@ const JWT = require('jsonwebtoken');
 const check = require('./check');
 const { redirect } = require('express/lib/response');
 
-//Getでページを表示した際にcheckでCookieに保存されているトークンを確認し、自動ログインするか否か判断
+//checkでCookieに保存されているトークンを確認し、自動ログインするか否か判断
 router.get('/', check, (req, res) => {
   //res.render('index.ejs');
   res.redirect('/mypage');
