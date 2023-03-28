@@ -19,9 +19,7 @@ function loginButtonClick() {
       cookieToken: document.cookie,
     }),
     success: function (res) {
-      //alert(res.message);
-      // let cookieToken = document.cookie;
-      // console.log(cookieToken);
+      alert(res.message);
     },
   });
 }
