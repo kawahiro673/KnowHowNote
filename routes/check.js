@@ -15,7 +15,8 @@ function auth(req, res, next) {
     console.log(decoded);
     next();
   } catch (err) {
-    return res.redirect('/login');
+    //return res.redirect('/login');
+    res.render('login.ejs');
   }
 }
 
