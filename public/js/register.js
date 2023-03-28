@@ -53,7 +53,7 @@ function registerButtonClick() {
         return false;
       }
       //console.log('登録が完了しました');
-
+      console.log(document.cookie);
       $.ajax({
         url: '/auth/',
         type: 'POST',
@@ -66,7 +66,7 @@ function registerButtonClick() {
           password: password.value,
         }),
         success: function (res) {
-          console.log(res.token);
+          //console.log(res.token);
         },
       });
     },

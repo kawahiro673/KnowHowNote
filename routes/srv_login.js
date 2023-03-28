@@ -2,16 +2,32 @@ const router = require('express').Router();
 const pool = require('../db');
 const bcrypt = require('bcrypt');
 const JWT = require('jsonwebtoken');
-const check = require('./check');
+//const check = require('./check');
 
 router
   .route('/')
   .get((req, res) => {
     res.render('login.ejs');
   })
-  .post(check, async (req, res) => {
+  .post(async (req, res) => {
     let email = req.body.email;
     if (req.body.flg === 'info') {
+      try {
+        //承認用のトークン設定
+        const token = req.body.cookieToken;
+        //復号する。認証できるかどうか確認
+        const decoded = JWT.verify(
+          token,
+          'SECRET_KEY' //秘密鍵。envファイルとかに隠す。
+        );
+        console.log(decoded);
+        next();
+      } catch (err) {
+        return res.send(401).json({
+          msg: '認証できません',
+        });
+      }
+
       pool.query('SELECT * FROM register_user;', async (error, result) => {
         const user = result.find((user) => user.Email === req.body.email);
         //console.log(user);
