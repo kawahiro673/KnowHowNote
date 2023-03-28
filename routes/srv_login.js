@@ -6,7 +6,7 @@ const check = require('./check');
 
 //Getでページを表示した際にcheckでCookieに保存されているトークンを確認し、自動ログインするか否か判断
 router.get('/', check, (req, res) => {
-  res.render('login.ejs');
+  res.render('index.ejs');
 });
 
 router.post('/', async (req, res) => {
