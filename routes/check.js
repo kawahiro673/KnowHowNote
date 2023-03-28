@@ -13,6 +13,7 @@ function auth(req, res, next) {
       'SECRET_KEY' //秘密鍵。envファイルとかに隠す。
     );
     console.log(decoded);
+    //下記で続きを実行、今回の場合は res.render('index.ejs');
     next();
   } catch (err) {
     //return res.redirect('/login');
