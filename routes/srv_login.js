@@ -9,7 +9,7 @@ router
   .get((req, res) => {
     res.render('login.ejs');
   })
-  .post(check, async (req, res) => {
+  .post(async (req, res) => {
     let email = req.body.email;
     if (req.body.flg === 'info') {
       pool.query('SELECT * FROM register_user;', async (error, result) => {
