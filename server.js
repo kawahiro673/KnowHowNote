@@ -19,11 +19,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // JSONでデータをやり取りしますよという指定
 app.use(express.json());
+app.use(cookieParser());
 //authというエンドポイントで./routes/authファイルでWebAPIを構築できる
 app.use('/auth', auth);
 app.use('/mypage', mypage);
 app.use('/login', login);
-app.use(cookieParser());
 
 app.listen(process.env.PORT || 8080, () => {
   console.log('サーバー接続成功');
