@@ -44,7 +44,8 @@ router
 
       res.cookie('token', token, options);
 
-      res.send({ token: token });
+      return res.redirect('/mypage');
+      //res.send({ token: token });
     }
   });
 

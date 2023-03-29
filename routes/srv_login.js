@@ -53,8 +53,8 @@ router.post('/', async (req, res) => {
 
       res.cookie('token', token, options);
 
-      return res.redirect('/mypage');
-      res.send({ message: 'やあ' });
+      return res.redirect('/');
+      //res.send({ message: 'やあ' });
     });
   }
 });
