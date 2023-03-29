@@ -6,7 +6,7 @@ loginbtn.addEventListener('click', loginButtonClick);
 
 function loginButtonClick() {
   console.log('ログインボタンクリック');
-  console.log(document.cookie);
+  //console.log(document.cookie);
   $.ajax({
     url: '/login/',
     type: 'POST',
@@ -16,7 +16,7 @@ function loginButtonClick() {
       flg: 'info',
       email: email.value,
       password: password.value,
-      cookieToken: document.cookie,
+      //cookieToken: document.cookie,
     }),
     success: function (res) {
       alert(res.message);

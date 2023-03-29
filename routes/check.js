@@ -7,7 +7,7 @@ function check(req, res, next) {
   try {
     //承認用のトークン設定
     const token = req.cookies.token;
-    console.log(token);
+    console.log('token : ', token);
     //復号する。認証できるかどうか確認
     const decoded = JWT.verify(
       token,
