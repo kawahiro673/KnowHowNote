@@ -20,6 +20,12 @@ app.use(bodyParser.json());
 // JSONでデータをやり取りしますよという指定
 app.use(express.json());
 app.use(cookieParser());
+
+app.get('/', (req, res) => {
+  //res.render('index.ejs');
+  res.render('top.ejs');
+});
+
 //authというエンドポイントで./routes/authファイルでWebAPIを構築できる
 app.use('/auth', auth);
 app.use('/mypage', mypage);
