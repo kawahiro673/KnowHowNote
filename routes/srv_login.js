@@ -53,7 +53,7 @@ router.post('/', async (req, res) => {
 
       res.cookie('token', token, options);
 
-      return res.redirect('/mypage');
+      res.redirect('/mypage');
       //res.send({ message: 'やあ' });
     });
   }
