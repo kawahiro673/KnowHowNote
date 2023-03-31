@@ -8,7 +8,7 @@ function loginButtonClick() {
   console.log('ログインボタンクリック');
   //console.log(document.cookie);
   $.ajax({
-    url: '/loginprocess/',
+    url: '/login/',
     type: 'POST',
     dataType: 'Json',
     contentType: 'application/json',
@@ -20,7 +20,7 @@ function loginButtonClick() {
     }),
     success: function (res) {
       if (res.message !== 'ok') alert(res.message);
-
+      //ajax通信を使用していると、nodejs(サーバーサイド)側でredirect()が使用できないっぽい
       location.href = 'https://nodejs-itnote-app.herokuapp.com/mypage';
     },
   });
