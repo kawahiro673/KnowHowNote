@@ -9,7 +9,7 @@ const pool = require('./db.js');
 const mypage = require('./routes/mypage');
 const auth = require('./routes/auth');
 const login = require('./routes/srv_login');
-const loginProcess = require('./loginprocess');
+const loginProcess = require('./routes/loginprocess');
 const cookieParser = require('cookie-parser');
 
 app.set('view engine', 'ejs');
