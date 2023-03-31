@@ -8,7 +8,7 @@ function loginButtonClick() {
   console.log('ログインボタンクリック');
   //console.log(document.cookie);
   $.ajax({
-    url: '/login/',
+    url: '/loginprocess/',
     type: 'POST',
     dataType: 'Json',
     contentType: 'application/json',

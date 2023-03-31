@@ -9,6 +9,7 @@ const pool = require('./db.js');
 const mypage = require('./routes/mypage');
 const auth = require('./routes/auth');
 const login = require('./routes/srv_login');
+const loginProcess = require('./loginprocess');
 const cookieParser = require('cookie-parser');
 
 app.set('view engine', 'ejs');
@@ -30,6 +31,7 @@ app.get('/', (req, res) => {
 app.use('/auth', auth);
 app.use('/mypage', mypage);
 app.use('/login', login);
+app.use('/loginprocess', loginProcess);
 
 app.listen(process.env.PORT || 8080, () => {
   console.log('サーバー接続成功');
