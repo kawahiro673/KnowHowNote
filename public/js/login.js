@@ -19,7 +19,9 @@ function loginButtonClick() {
       //cookieToken: document.cookie,
     }),
     success: function (res) {
-      alert(res.message);
+      if (res.message !== 'ok') alert(res.message);
+
+      location.href = 'https://nodejs-itnote-app.herokuapp.com/mypage';
     },
   });
 }
