@@ -44,8 +44,7 @@ router
 
       res.cookie('token', token, options);
 
-      return res.redirect('/mypage');
-      //res.send({ token: token });
+      res.send({ message: 'やあ' });
     }
   });
 
