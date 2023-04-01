@@ -67,6 +67,7 @@ function registerButtonClick() {
         }),
         success: function (res) {
           //console.log(res.token);
+          location.href = 'https://nodejs-itnote-app.herokuapp.com/mypage';
         },
       });
     },
