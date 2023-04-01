@@ -18,10 +18,23 @@ router
       //bcryptモジュールを使用して暗号化(ソルト)
       let userName = req.body.username;
       let email = req.body.email;
+      const now = new Date();
+      const formattedDate =
+        now.getFullYear() +
+        '-' +
+        (now.getMonth() + 1) +
+        '-' +
+        now.getDate() +
+        ' ' +
+        now.getHours() +
+        ':' +
+        now.getMinutes() +
+        ':' +
+        now.getSeconds();
       let hashedPassword = await bcrypt.hash(req.body.password, 10);
       pool.query(
-        'INSERT INTO register_user (UserName, Email, HashedPassword) VALUES(?, ?, ?);',
-        [userName, email, hashedPassword],
+        'INSERT INTO register_user (UserName, Email, HashedPassword, CreationDay) VALUES(?, ?, ?,?);',
+        [userName, email, hashedPassword, formattedDate],
         (error, result) => {}
       );
       //クライアントへJWTの発行(クライアント側のトークンはローカルストレージに保存するのはだめ。Cookieを使って保存する。)
