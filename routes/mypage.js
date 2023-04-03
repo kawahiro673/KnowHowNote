@@ -790,12 +790,11 @@ router
           }
         );
       }
+      //cookieを取得して、復元し、ユーザー名を返す
     } else if (req.body.data == 'cookie') {
       const token = req.cookies.token;
       // JWTのデコード
       const decoded = JWT.verify(token, 'SECRET_KEY');
-      console.log('****************************************');
-      console.log(decoded.email);
       pool.query(
         'SELECT * FROM register_user WHERE Email = ?;',
         [decoded.email],

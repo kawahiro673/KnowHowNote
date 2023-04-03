@@ -17,6 +17,7 @@ let list;
 let tmpArray = [];
 let fileFlg = false;
 let folderFlg = false;
+let userName;
 
 window.addEventListener('DOMContentLoaded', function () {
   //cookieを取得するためのやつ
@@ -29,7 +30,7 @@ window.addEventListener('DOMContentLoaded', function () {
       data: 'cookie',
     }),
     success: function (res) {
-      console.log(res.response);
+      document.getElementById('sab-title').innerHTML = res.response;
     },
   });
   //listの作成
