@@ -31,6 +31,7 @@ router
         now.getMinutes() +
         ':' +
         now.getSeconds();
+
       let hashedPassword = await bcrypt.hash(req.body.password, 10);
       pool.query(
         'INSERT INTO register_user (UserName, Email, HashedPassword, CreationDay) VALUES(?, ?, ?,?);',

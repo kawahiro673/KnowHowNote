@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
   if (req.body.flg === 'info') {
     pool.query('SELECT * FROM register_user;', async (error, result) => {
       const user = result.find((user) => user.Email === req.body.email);
-      //console.log(user);
+      console.log(user);
       if (!user) {
         res.send({
           message: 'メールアドレスまたはパスワードが間違っています',
@@ -52,7 +52,7 @@ router.post('/', async (req, res) => {
       };
 
       res.cookie('token', token, options);
-
+      console.log(user.UserName);
       res.send({ message: 'ok' });
     });
   }
