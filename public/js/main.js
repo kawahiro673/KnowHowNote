@@ -33,6 +33,7 @@ window.addEventListener('DOMContentLoaded', function () {
       document.getElementById('sab-title').innerHTML = res.response;
     },
   });
+
   //listの作成
   function listCreate() {
     $.ajax({
