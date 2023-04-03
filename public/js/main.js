@@ -17,9 +17,21 @@ let list;
 let tmpArray = [];
 let fileFlg = false;
 let folderFlg = false;
-import { userName } from './login.js';
 
 window.addEventListener('DOMContentLoaded', function () {
+  //cookieを取得するためのやつ
+  $.ajax({
+    url: '/mypage/',
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      data: 'cookie',
+    }),
+    success: function (res) {
+      console.log(res.response);
+    },
+  });
   //listの作成
   function listCreate() {
     $.ajax({
@@ -31,7 +43,6 @@ window.addEventListener('DOMContentLoaded', function () {
         data: 'list',
       }),
       success: function (res) {
-        console.log(userName);
         //console.log(res.response); //folder取得
         // console.log(res.response2); //file取得
         let resTmp = Array.from(res.response);

@@ -789,6 +789,13 @@ router
           }
         );
       }
+    } else if (req.body.data == 'cookie') {
+      const token = req.cookies.jwt;
+      // JWTのデコード
+      const decoded = jwt.verify(token, 'SECRET_KEY');
+      console.log(decoded);
+      // ユーザー名をレスポンスとして返す
+      res.send({ response: decoded });
     } else {
       console.log('dataで何も受け取ってません');
     }
