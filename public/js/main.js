@@ -17,6 +17,7 @@ let list;
 let tmpArray = [];
 let fileFlg = false;
 let folderFlg = false;
+import { userName } from './login';
 
 window.addEventListener('DOMContentLoaded', function () {
   //listの作成
@@ -30,6 +31,7 @@ window.addEventListener('DOMContentLoaded', function () {
         data: 'list',
       }),
       success: function (res) {
+        console.log(userName);
         //console.log(res.response); //folder取得
         // console.log(res.response2); //file取得
         let resTmp = Array.from(res.response);

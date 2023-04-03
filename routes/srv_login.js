@@ -52,8 +52,8 @@ router.post('/', async (req, res) => {
       };
 
       res.cookie('token', token, options);
-      console.log(user.UserName);
-      res.send({ message: 'ok' });
+      //console.log(user.UserName);
+      res.send({ message: 'ok', response: user.UserName });
     });
   }
 });
