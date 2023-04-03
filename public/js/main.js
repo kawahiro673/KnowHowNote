@@ -17,7 +17,7 @@ let list;
 let tmpArray = [];
 let fileFlg = false;
 let folderFlg = false;
-import { userName } from './login';
+import { userName } from './login.js';
 
 window.addEventListener('DOMContentLoaded', function () {
   //listの作成
