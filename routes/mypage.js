@@ -793,6 +793,7 @@ router
       const token = req.cookies.jwt;
       // JWTのデコード
       const decoded = jwt.verify(token, 'SECRET_KEY');
+      console.log('****************************************');
       console.log(decoded);
       // ユーザー名をレスポンスとして返す
       res.send({ response: decoded });
