@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { append } = require('express/lib/response');
 const pool = require('../db.js');
-
+const JWT = require('jsonwebtoken');
 router
   .route('/')
   .get(function (req, res) {
@@ -790,9 +790,9 @@ router
         );
       }
     } else if (req.body.data == 'cookie') {
-      const token = req.cookies.jwt;
+      const token = req.cookies.JWT;
       // JWTのデコード
-      const decoded = jwt.verify(token, 'SECRET_KEY');
+      const decoded = JWT.verify(token, 'SECRET_KEY');
       console.log('****************************************');
       console.log(decoded);
       // ユーザー名をレスポンスとして返す
