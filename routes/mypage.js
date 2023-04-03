@@ -795,9 +795,15 @@ router
       // JWTのデコード
       const decoded = JWT.verify(token, 'SECRET_KEY');
       console.log('****************************************');
-      console.log(decoded);
+      console.log(decoded.email);
+      pool.query(
+        'SELECT * FROM register_user WHERE Email = ?;',
+        [decoded.email],
+        (error, result) => {
+          res.send({ response: result[0].UserName });
+        }
+      );
       // ユーザー名をレスポンスとして返す
-      res.send({ response: decoded });
     } else {
       console.log('dataで何も受け取ってません');
     }
