@@ -43,10 +43,10 @@ router
         {
           email,
         },
-        'SECRET_KEY', //秘密鍵。envファイルとかに隠す。
-        {
-          expiresIn: '24h',
-        }
+        'SECRET_KEY' //秘密鍵。envファイルとかに隠す。
+        // {
+        //   expiresIn: '24h',
+        // }
       );
       //ここでクラアントに返した値(token)をCookieに保存させる。ログインと同様に新規登録したらすぐにログインさせるためにトークン発行
       const options = {

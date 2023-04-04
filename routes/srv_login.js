@@ -38,10 +38,10 @@ router.post('/', async (req, res) => {
         {
           email,
         },
-        'SECRET_KEY', //秘密鍵。envファイルとかに隠す。
-        {
-          expiresIn: '24h',
-        }
+        'SECRET_KEY' //秘密鍵。envファイルとかに隠す。
+        // {
+        //   expiresIn: '24h',
+        // }
       );
 
       const options = {
