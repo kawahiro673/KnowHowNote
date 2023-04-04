@@ -792,9 +792,9 @@ router
       }
       //cookieを取得して、復元し、ユーザー名を返す
     } else if (req.body.data == 'cookie') {
+      //cookieの有効期限が切れたら自動的にログアウト
       try {
         const token = req.cookies.token;
-        // JWTのデコード
         const decoded = JWT.verify(token, 'SECRET_KEY');
         pool.query(
           'SELECT * FROM register_user WHERE Email = ?;',
@@ -804,8 +804,8 @@ router
           }
         );
       } catch {
-        console.log('error:cookieないよ〜');
-        res.send({ response: 'NO User' });
+        res.redirect('/login');
+        //res.send({ response: 'NO User' });
       }
       // ユーザー名をレスポンスとして返す
     } else {
