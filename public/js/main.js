@@ -31,6 +31,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }),
     success: function (res) {
       if (res.response === 'NO User') {
+        console.log('クリック！！');
         $('#logout').trigger('click');
       }
       document.getElementById('sab-title').innerHTML = res.response;
