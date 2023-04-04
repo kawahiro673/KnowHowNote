@@ -32,7 +32,7 @@ window.addEventListener('DOMContentLoaded', function () {
     success: function (res) {
       if (res.response === 'NO User') {
         console.log('クリック！！');
-        $('#logout').trigger('click');
+        location.href = 'https://nodejs-itnote-app.herokuapp.com/login';
       }
       document.getElementById('sab-title').innerHTML = res.response;
     },
