@@ -30,6 +30,9 @@ window.addEventListener('DOMContentLoaded', function () {
       data: 'cookie',
     }),
     success: function (res) {
+      if (res.response === 'NO User') {
+        document.getElementById('logout').click();
+      }
       document.getElementById('sab-title').innerHTML = res.response;
     },
   });

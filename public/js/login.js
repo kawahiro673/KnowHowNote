@@ -22,7 +22,6 @@ function loginButtonClick() {
       if (res.message !== 'ok') alert(res.message);
       //ajax通信を使用していると、nodejs(サーバーサイド)側でredirect()が使用できないっぽいのでこちらを使用
       userName = res.response;
-      alert(userName);
       location.href = 'https://nodejs-itnote-app.herokuapp.com/mypage';
     },
   });

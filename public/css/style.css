@@ -105,7 +105,7 @@ header h1 {
   cursor: pointer;
 } */
 
-.login {
+#logout {
   float: right;
   transition: all 0.5s;
   /*カーソル合わせた時に0.5秒かけて変色*/
@@ -115,7 +115,7 @@ header h1 {
   z-index: 100px;
 }
 
-.login:hover {
+#logout:hover {
   /*カーソルをかざした時に変化*/
   background-color: rgba(255, 255, 255, 0.5);
 }

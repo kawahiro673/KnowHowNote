@@ -804,8 +804,7 @@ router
           }
         );
       } catch {
-        res.redirect('/login');
-        //res.send({ response: 'NO User' });
+        res.send({ response: 'NO User' });
       }
       // ユーザー名をレスポンスとして返す
     } else {
