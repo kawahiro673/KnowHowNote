@@ -792,16 +792,21 @@ router
       }
       //cookieを取得して、復元し、ユーザー名を返す
     } else if (req.body.data == 'cookie') {
-      const token = req.cookies.token;
-      // JWTのデコード
-      const decoded = JWT.verify(token, 'SECRET_KEY');
-      pool.query(
-        'SELECT * FROM register_user WHERE Email = ?;',
-        [decoded.email],
-        (error, result) => {
-          res.send({ response: result[0].UserName });
-        }
-      );
+      try {
+        const token = req.cookies.token;
+        // JWTのデコード
+        const decoded = JWT.verify(token, 'SECRET_KEY');
+        pool.query(
+          'SELECT * FROM register_user WHERE Email = ?;',
+          [decoded.email],
+          (error, result) => {
+            res.send({ response: result[0].UserName });
+          }
+        );
+      } catch {
+        console.log('error:cookieないよ〜');
+        res.send({ response: 'NO User' });
+      }
       // ユーザー名をレスポンスとして返す
     } else {
       console.log('dataで何も受け取ってません');
