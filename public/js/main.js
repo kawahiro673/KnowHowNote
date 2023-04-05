@@ -55,7 +55,7 @@ window.addEventListener('DOMContentLoaded', function () {
           console.log('クリック！！');
           location.href = 'https://nodejs-itnote-app.herokuapp.com/login';
         }
-        document.getElementById('sab-title').innerHTML = req.userName;
+        document.getElementById('sab-title').innerHTML = res.userName;
 
         let resTmp = Array.from(res.response);
         let resTmp2 = Array.from(res.response2);
