@@ -84,12 +84,19 @@ router
           }
         );
       } else if (req.body.flg == 'tabDesc') {
+        const token = req.cookies.token;
+        const decoded = JWT.verify(token, 'SECRET_KEY');
         pool.query(
-          'SELECT * FROM tab_hold ORDER BY tabOrder;',
-          (error, results) => {
-            console.log(results);
-            console.log(error);
-            res.send({ response: results });
+          'SELECT * FROM register_user WHERE Email = ?;',
+          [decoded.email],
+          (error, resultDecoded) => {
+            pool.query(
+              'SELECT * FROM tab_hold WHERE UserID = ? ORDER BY tabOrder;',
+              [resultDecoded[0].id],
+              (error, results) => {
+                res.send({ response: results });
+              }
+            );
           }
         );
       } else if (req.body.flg == 'info') {

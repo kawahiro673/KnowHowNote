@@ -20,24 +20,6 @@ let folderFlg = false;
 let userName;
 
 window.addEventListener('DOMContentLoaded', function () {
-  //cookieを取得するためのやつ
-  // $.ajax({
-  //   url: '/mypage/',
-  //   type: 'POST',
-  //   dataType: 'Json',
-  //   contentType: 'application/json',
-  //   data: JSON.stringify({
-  //     data: 'cookie',
-  //   }),
-  //   success: function (res) {
-  //     if (res.response === 'NO User') {
-  //       console.log('クリック！！');
-  //       location.href = 'https://nodejs-itnote-app.herokuapp.com/login';
-  //     }
-  //     document.getElementById('sab-title').innerHTML = res.response;
-  //   },
-  // });
-
   //listの作成
   function listCreate() {
     $.ajax({
