@@ -331,14 +331,13 @@ router
           (error, resultDecoded) => {
             pool.query('select * from register_user', (error, results) => {
               pool.query(
-                'select * from folder order by folder_order ASC',
+                'select * from folder order by folder_order ASC WHERE UserID = ?',
+                [resultDecoded[0].id],
                 (error, results) => {
-                  console.log(results);
-                  console.log(error);
                   pool.query(
-                    'select * from it_memo order by folder_order ASC',
+                    'select * from it_memo order by folder_order ASC WHERE UserID = ?',
+                    [resultDecoded[0].id],
                     (error, result) => {
-                      console.log(error);
                       res.send({
                         response: results,
                         response2: result,
