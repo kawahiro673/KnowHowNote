@@ -1879,4 +1879,19 @@ window.addEventListener('DOMContentLoaded', function () {
   $('.hamburger').click(function () {
     console.log('ハンバーガー押下');
   });
+
+  document.getElementById('logout').addEventListener('click', () => {
+    console.log('クリックされました');
+    //Cookieの削除をするためのPOST
+    $.ajax({
+      url: '/mypage/',
+      type: 'POST',
+      dataType: 'Json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        data: ' cookiedelete',
+      }),
+      success: function (res) {},
+    });
+  });
 });

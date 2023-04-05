@@ -378,18 +378,26 @@ router
       );
       if (req.body.flg == 'newFolder') {
         if (req.body.pattern == 'new') {
+          const token = req.cookies.token;
+          const decoded = JWT.verify(token, 'SECRET_KEY');
           pool.query(
-            'INSERT into folder(folder_name, parent_id) values(?, ?); ',
-            [req.body.folderName, req.body.parentId],
-            (error, results) => {
+            'SELECT * FROM register_user WHERE Email = ?;',
+            [decoded.email],
+            (error, resultDecoded) => {
               pool.query(
-                //新規作成後にフォルダーidを取得するためのクエリ
-                'select * from folder order by id desc; ',
-                (error, result) => {
-                  res.send({
-                    response1: req.body.folderName,
-                    response2: result[0],
-                  });
+                'INSERT into folder(folder_name, parent_id, UserID) values(?, ?, ?);',
+                [req.body.folderName, req.body.parentId, resultDecoded[0].id],
+                (error, results) => {
+                  pool.query(
+                    //新規作成後にフォルダーidを取得するためのクエリ
+                    'select * from folder order by id desc; ',
+                    (error, result) => {
+                      res.send({
+                        response1: req.body.folderName,
+                        response2: result[0],
+                      });
+                    }
+                  );
                 }
               );
             }
@@ -567,17 +575,25 @@ router
       console.log(`[POST受信(newFile)] title : ${req.body.title}`);
       if (req.body.flg == 'newNote') {
         if (req.body.pattern == 'new') {
+          const token = req.cookies.token;
+          const decoded = JWT.verify(token, 'SECRET_KEY');
           pool.query(
-            'INSERT into it_memo(title, parent_id) values(?, ?); ', // 挿入
-            [req.body.title, req.body.parentId], //この値が？に入る
-            (error, results) => {
+            'SELECT * FROM register_user WHERE Email = ?;',
+            [decoded.email],
+            (error, resultDecoded) => {
               pool.query(
-                'select * from  it_memo order by id desc;',
-                (error, result) => {
-                  res.send({
-                    response1: req.body.title,
-                    response2: result[0],
-                  });
+                'INSERT into it_memo(title, parent_id, UserID) values(?, ?, ?); ', // 挿入
+                [req.body.title, req.body.parentId, resultDecoded[0].id], //この値が？に入る
+                (error, results) => {
+                  pool.query(
+                    'select * from  it_memo order by id desc;',
+                    (error, result) => {
+                      res.send({
+                        response1: req.body.title,
+                        response2: result[0],
+                      });
+                    }
+                  );
                 }
               );
             }
@@ -817,6 +833,14 @@ router
           }
         );
       }
+      //ログアウト時にcookie削除
+    } else if (req.body.flg === 'cookiedelete') {
+      //cookie削除
+      response.setHeader(
+        'Set-Cookie',
+        `${req.cookies.token}=; Max-Age=-1; Path=/`
+      );
+      res.send('');
     } else {
       console.log('dataで何も受け取ってません');
     }
