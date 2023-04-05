@@ -49,8 +49,8 @@ window.addEventListener('DOMContentLoaded', function () {
         data: 'list',
       }),
       success: function (res) {
-        //console.log(res.response); //folder取得
-        // console.log(res.response2); //file取得
+        console.log(res.response); //folder取得
+        console.log(res.response2); //file取得
         if (res.userName === 'NO User') {
           console.log('クリック！！');
           location.href = 'https://nodejs-itnote-app.herokuapp.com/login';
