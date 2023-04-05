@@ -125,11 +125,19 @@ router
           }
         );
       } else if (req.body.flg == 'tabAdd') {
+        const token = req.cookies.token;
+        const decoded = JWT.verify(token, 'SECRET_KEY');
         pool.query(
-          'INSERT into tab_hold(id, tabTitle, pass) values(?, ?, ?);',
-          [req.body.id, req.body.title, req.body.pass],
-          (error, results) => {
-            res.send({ response: results });
+          'SELECT * FROM register_user WHERE Email = ?;',
+          [decoded.email],
+          (error, resultDecoded) => {
+            pool.query(
+              'INSERT into tab_hold(id, tabTitle, pass, UserID) values(?, ?, ?, ?);',
+              [req.body.id, req.body.title, req.body.pass, resultDecoded[0].id],
+              (error, results) => {
+                res.send({ response: results });
+              }
+            );
           }
         );
       }
