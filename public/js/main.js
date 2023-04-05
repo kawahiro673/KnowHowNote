@@ -57,6 +57,8 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         document.getElementById('sab-title').innerHTML = res.userName;
 
+        console.log(res.id);
+
         let resTmp = Array.from(res.response);
         let resTmp2 = Array.from(res.response2);
         let parentIdArray = []; //親フォルダになりうるフォルダを追加

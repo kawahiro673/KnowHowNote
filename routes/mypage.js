@@ -322,19 +322,6 @@ router
     } else if (req.body.data == 'list') {
       //   //cookieの有効期限が切れたら自動的にログアウト
       //   //仕様上、自動でログアウトされては困るので、リモードの際にのみログアウトする
-      //   try {
-      //     const token = req.cookies.token;
-      //     const decoded = JWT.verify(token, 'SECRET_KEY');
-      //     pool.query(
-      //       'SELECT * FROM register_user WHERE Email = ?;',
-      //       [decoded.email],
-      //       (error, result) => {
-      //         res.send({ response: result[0].UserName });
-      //       }
-      //     );
-      //   } catch {
-      //     res.send({ response: 'NO User' });
-      //   }
       try {
         const token = req.cookies.token;
         const decoded = JWT.verify(token, 'SECRET_KEY');
@@ -356,6 +343,7 @@ router
                         response: results,
                         response2: result,
                         userName: resultDecoded[0].UserName,
+                        id: resultDecoded[0].id,
                       });
                     }
                   );
@@ -823,24 +811,6 @@ router
           }
         );
       }
-      //cookieを取得して、復元し、ユーザー名を返す
-      // } else if (req.body.data == 'cookie') {
-      //   //cookieの有効期限が切れたら自動的にログアウト
-      //   //仕様上、自動でログアウトされては困るので、リモードの際にのみログアウトする
-      //   try {
-      //     const token = req.cookies.token;
-      //     const decoded = JWT.verify(token, 'SECRET_KEY');
-      //     pool.query(
-      //       'SELECT * FROM register_user WHERE Email = ?;',
-      //       [decoded.email],
-      //       (error, result) => {
-      //         res.send({ response: result[0].UserName });
-      //       }
-      //     );
-      //   } catch {
-      //     res.send({ response: 'NO User' });
-      //   }
-      // }
     } else {
       console.log('dataで何も受け取ってません');
     }
