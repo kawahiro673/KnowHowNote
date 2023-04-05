@@ -21,22 +21,22 @@ let userName;
 
 window.addEventListener('DOMContentLoaded', function () {
   //cookieを取得するためのやつ
-  $.ajax({
-    url: '/mypage/',
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      data: 'cookie',
-    }),
-    success: function (res) {
-      if (res.response === 'NO User') {
-        console.log('クリック！！');
-        location.href = 'https://nodejs-itnote-app.herokuapp.com/login';
-      }
-      document.getElementById('sab-title').innerHTML = res.response;
-    },
-  });
+  // $.ajax({
+  //   url: '/mypage/',
+  //   type: 'POST',
+  //   dataType: 'Json',
+  //   contentType: 'application/json',
+  //   data: JSON.stringify({
+  //     data: 'cookie',
+  //   }),
+  //   success: function (res) {
+  //     if (res.response === 'NO User') {
+  //       console.log('クリック！！');
+  //       location.href = 'https://nodejs-itnote-app.herokuapp.com/login';
+  //     }
+  //     document.getElementById('sab-title').innerHTML = res.response;
+  //   },
+  // });
 
   //listの作成
   function listCreate() {
@@ -51,6 +51,12 @@ window.addEventListener('DOMContentLoaded', function () {
       success: function (res) {
         //console.log(res.response); //folder取得
         // console.log(res.response2); //file取得
+        if (res.response === 'NO User') {
+          console.log('クリック！！');
+          location.href = 'https://nodejs-itnote-app.herokuapp.com/login';
+        }
+        document.getElementById('sab-title').innerHTML = req.userName;
+
         let resTmp = Array.from(res.response);
         let resTmp2 = Array.from(res.response2);
         let parentIdArray = []; //親フォルダになりうるフォルダを追加

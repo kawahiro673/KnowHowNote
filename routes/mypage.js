@@ -320,20 +320,53 @@ router
         });
       });
     } else if (req.body.data == 'list') {
-      pool.query(
-        'select * from folder order by folder_order ASC',
-        (error, results) => {
-          console.log(results);
-          console.log(error);
-          pool.query(
-            'select * from it_memo order by folder_order ASC',
-            (error, result) => {
-              console.log(error);
-              res.send({ response: results, response2: result });
-            }
-          );
-        }
-      );
+      //   //cookieの有効期限が切れたら自動的にログアウト
+      //   //仕様上、自動でログアウトされては困るので、リモードの際にのみログアウトする
+      //   try {
+      //     const token = req.cookies.token;
+      //     const decoded = JWT.verify(token, 'SECRET_KEY');
+      //     pool.query(
+      //       'SELECT * FROM register_user WHERE Email = ?;',
+      //       [decoded.email],
+      //       (error, result) => {
+      //         res.send({ response: result[0].UserName });
+      //       }
+      //     );
+      //   } catch {
+      //     res.send({ response: 'NO User' });
+      //   }
+      try {
+        const token = req.cookies.token;
+        const decoded = JWT.verify(token, 'SECRET_KEY');
+        pool.query(
+          'SELECT * FROM register_user WHERE Email = ?;',
+          [decoded.email],
+          (error, resultDecoded) => {
+            pool.query('select * from register_user', (error, results) => {
+              pool.query(
+                'select * from folder order by folder_order ASC',
+                (error, results) => {
+                  console.log(results);
+                  console.log(error);
+                  pool.query(
+                    'select * from it_memo order by folder_order ASC',
+                    (error, result) => {
+                      console.log(error);
+                      res.send({
+                        response: results,
+                        response2: result,
+                        userName: resultDecoded[0].UserName,
+                      });
+                    }
+                  );
+                }
+              );
+            });
+          }
+        );
+      } catch {
+        res.send({ userName: 'NO User' });
+      }
       //全削除ボタン
     } else if (req.body.data == 'deleteALL') {
       console.log(`データベースを全削除します`);
@@ -791,22 +824,23 @@ router
         );
       }
       //cookieを取得して、復元し、ユーザー名を返す
-    } else if (req.body.data == 'cookie') {
-      //cookieの有効期限が切れたら自動的にログアウト
-      try {
-        const token = req.cookies.token;
-        const decoded = JWT.verify(token, 'SECRET_KEY');
-        pool.query(
-          'SELECT * FROM register_user WHERE Email = ?;',
-          [decoded.email],
-          (error, result) => {
-            res.send({ response: result[0].UserName });
-          }
-        );
-      } catch {
-        res.send({ response: 'NO User' });
-      }
-      // ユーザー名をレスポンスとして返す
+      // } else if (req.body.data == 'cookie') {
+      //   //cookieの有効期限が切れたら自動的にログアウト
+      //   //仕様上、自動でログアウトされては困るので、リモードの際にのみログアウトする
+      //   try {
+      //     const token = req.cookies.token;
+      //     const decoded = JWT.verify(token, 'SECRET_KEY');
+      //     pool.query(
+      //       'SELECT * FROM register_user WHERE Email = ?;',
+      //       [decoded.email],
+      //       (error, result) => {
+      //         res.send({ response: result[0].UserName });
+      //       }
+      //     );
+      //   } catch {
+      //     res.send({ response: 'NO User' });
+      //   }
+      // }
     } else {
       console.log('dataで何も受け取ってません');
     }
