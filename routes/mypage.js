@@ -929,8 +929,9 @@ router
       //ログアウト時にcookie削除
     } else if (req.body.data === 'cookiedelete') {
       //cookie削除
-      res.setHeader('Set-Cookie', `${req.cookies.token}=; Max-Age=-1; Path=/`);
-      res.send('');
+      console.log('cookiedelete');
+      res.setHeader('Set-Cookie', `${req.cookies.token}=; Max-Age=-1; Path=/;`);
+      res.end();
     } else {
       console.log('dataで何も受け取ってません');
     }
