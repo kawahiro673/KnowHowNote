@@ -1889,7 +1889,7 @@ window.addEventListener('DOMContentLoaded', function () {
       dataType: 'Json',
       contentType: 'application/json',
       data: JSON.stringify({
-        data: ' cookiedelete',
+        data: 'cookiedelete',
       }),
       success: function (res) {},
     });
