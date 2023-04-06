@@ -52,8 +52,8 @@ function registerButtonClick() {
         alert('既に登録されてあるメールアドレスです');
         return false;
       }
-      //console.log('登録が完了しました');
-      console.log(document.cookie);
+      console.log('登録完了');
+      //console.log(document.cookie);
       $.ajax({
         url: '/auth/',
         type: 'POST',

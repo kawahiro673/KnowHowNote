@@ -930,7 +930,10 @@ router
     } else if (req.body.data === 'cookiedelete') {
       //cookie削除
       console.log('cookiedelete');
-      res.setHeader('Set-Cookie', `${req.cookies.token}=; Max-Age=-1; Path=/;`);
+      res.setHeader(
+        'Set-Cookie',
+        'token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; Path=/'
+      );
       res.end();
     } else {
       console.log('dataで何も受け取ってません');
