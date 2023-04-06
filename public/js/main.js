@@ -1881,7 +1881,6 @@ window.addEventListener('DOMContentLoaded', function () {
   });
 
   document.getElementById('logout').addEventListener('click', () => {
-    console.log('クリックされました');
     //Cookieの削除をするためのPOST
     $.ajax({
       url: '/mypage/',

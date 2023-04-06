@@ -929,7 +929,6 @@ router
       //ログアウト時にcookie削除
     } else if (req.body.data === 'cookiedelete') {
       //cookie削除
-      console.log('cookiedelete');
       res.setHeader(
         'Set-Cookie',
         'token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; Path=/'
