@@ -48,29 +48,45 @@ router
     } else if (req.body.data == 'tab') {
       console.log(`[POST(tab)] id : ${req.body.id}, title : ${req.body.title}`);
       if (req.body.flg == 'clickTab') {
+        const token = req.cookies.token;
+        const decoded = JWT.verify(token, 'SECRET_KEY');
         pool.query(
-          'UPDATE tab_hold SET tabOrder = ?,focus = 1 where id = ?',
-          [req.body.order, req.body.id],
-          (error, results) => {
+          'SELECT * FROM register_user WHERE Email = ?;',
+          [decoded.email],
+          (error, resultDecoded) => {
             pool.query(
-              'UPDATE tab_hold SET focus = 0 where id != ?',
-              [req.body.id],
+              'UPDATE tab_hold SET tabOrder = ?,focus = 1 where id = ?',
+              [req.body.order, req.body.id],
               (error, results) => {
-                res.send({ response: results });
+                pool.query(
+                  'UPDATE tab_hold SET focus = 0 where id ! = ? AND (UserID = ?)',
+                  [req.body.id, resultDecoded[0].id],
+                  (error, results) => {
+                    res.send({ response: results });
+                  }
+                );
               }
             );
           }
         );
       } else if (req.body.flg == 'updateFocus') {
+        const token = req.cookies.token;
+        const decoded = JWT.verify(token, 'SECRET_KEY');
         pool.query(
-          'UPDATE tab_hold SET focus = ?, pass = ? where id = ?',
-          [1, req.body.pass, req.body.id],
-          (error, result) => {
+          'SELECT * FROM register_user WHERE Email = ?;',
+          [decoded.email],
+          (error, resultDecoded) => {
             pool.query(
-              'UPDATE tab_hold SET focus = ? where id != ?',
-              [0, req.body.id],
-              (error, results) => {
-                res.send({ response: result });
+              'UPDATE tab_hold SET focus = ?, pass = ? where id = ?',
+              [1, req.body.pass, req.body.id],
+              (error, result) => {
+                pool.query(
+                  'UPDATE tab_hold SET focus = ? where id ! = ? AND (UserID = ?)',
+                  [0, req.body.id, resultDecoded[0].id],
+                  (error, results) => {
+                    res.send({ response: result });
+                  }
+                );
               }
             );
           }
@@ -104,22 +120,39 @@ router
           res.send({ response: result });
         });
       } else if (req.body.flg == 'focusTab') {
+        const token = req.cookies.token;
+        const decoded = JWT.verify(token, 'SECRET_KEY');
         pool.query(
-          'select * from tab_hold where focus = 1;',
-          (error, result) => {
-            res.send({ response: result[0] });
+          'SELECT * FROM register_user WHERE Email = ?;',
+          [decoded.email],
+          (error, resultDecoded) => {
+            pool.query(
+              'select * from tab_hold where focus = 1 AND (UserID = ?);',
+              [resultDecoded[0].id],
+              (error, result) => {
+                res.send({ response: result[0] });
+              }
+            );
           }
         );
       } else if (req.body.flg == 'tabDel') {
+        const token = req.cookies.token;
+        const decoded = JWT.verify(token, 'SECRET_KEY');
         pool.query(
-          'DELETE from tab_hold where id = ?',
-          [req.body.id],
-          (error, result) => {
+          'SELECT * FROM register_user WHERE Email = ?;',
+          [decoded.email],
+          (error, resultDecoded) => {
             pool.query(
-              'UPDATE tab_hold SET tabOrder = tabOrder - 1 WHERE tabOrder > ?; ',
-              [req.body.order],
-              (error, results) => {
-                res.send({ response: result });
+              'DELETE from tab_hold where id = ?',
+              [req.body.id],
+              (error, result) => {
+                pool.query(
+                  'UPDATE tab_hold SET tabOrder = tabOrder - 1 WHERE tabOrder > ? AND (UserID = ?); ',
+                  [req.body.order, resultDecoded[0].id],
+                  (error, results) => {
+                    res.send({ response: result });
+                  }
+                );
               }
             );
           }
@@ -408,14 +441,34 @@ router
       }
       //全削除ボタン
     } else if (req.body.data == 'deleteALL') {
-      console.log(`データベースを全削除します`);
-      pool.query('DELETE from folder', (error, result) => {
-        pool.query('DELETE from it_memo', (error, result) => {
-          pool.query('DELETE from tab_hold', (error, result) => {
-            res.send({ response: result });
-          });
-        });
-      });
+      const token = req.cookies.token;
+      const decoded = JWT.verify(token, 'SECRET_KEY');
+      pool.query(
+        'SELECT * FROM register_user WHERE Email = ?;',
+        [decoded.email],
+        (error, resultDecoded) => {
+          console.log(`データベースを全削除します`);
+          pool.query(
+            'DELETE from folder WHERE UserID = ?',
+            [resultDecoded[0].id],
+            (error, result) => {
+              pool.query(
+                'DELETE from it_memo WHERE UserID = ?',
+                [resultDecoded[0].id],
+                (error, result) => {
+                  pool.query(
+                    'DELETE from tab_hold WHERE UserID = ?',
+                    [resultDecoded[0].id],
+                    (error, result) => {
+                      res.send({ response: result });
+                    }
+                  );
+                }
+              );
+            }
+          );
+        }
+      );
       //フォルダの開き/閉じ判定
     } else if (req.body.data == 'folder') {
       console.log(
@@ -574,34 +627,48 @@ router
         );
       } else if (req.body.flg == 'changeName') {
         pool.query(
-          'UPDATE folder SET folder_name=?  WHERE id = ?',
+          'UPDATE folder SET folder_name=? WHERE id = ?',
           [req.body.title, req.body.id],
           (error, results) => {
             res.send({ response: req.body.title });
           }
         );
       } else if (req.body.flg == 'folderDel') {
+        const token = req.cookies.token;
+        const decoded = JWT.verify(token, 'SECRET_KEY');
         pool.query(
-          'UPDATE folder SET folder_order = folder_order - 1 where parent_id = ? AND folder_order > ? ',
-          [req.body.parentId, req.body.order],
-          (error, results) => {
+          'SELECT * FROM register_user WHERE Email = ?;',
+          [decoded.email],
+          (error, resultDecoded) => {
             pool.query(
-              'UPDATE it_memo SET folder_order = folder_order - 1 where parent_id = ? AND folder_order > ? ',
-              [req.body.parentId, req.body.order],
+              'UPDATE folder SET folder_order = folder_order - 1 where parent_id = ? AND folder_order > ? AND (UserID = ?)',
+              [req.body.parentId, req.body.order, resultDecoded[0].id],
               (error, results) => {
                 pool.query(
-                  'DELETE from folder where id = ?',
-                  [req.body.id],
+                  'UPDATE it_memo SET folder_order = folder_order - 1 where parent_id = ? AND folder_order > ? AND (UserID = ?)',
+                  [req.body.parentId, req.body.order, resultDecoded[0].id],
                   (error, results) => {
-                    pool.query('select * from it_memo', (error, result_n) => {
-                      pool.query('select * from folder', (error, result_f) => {
-                        res.send({
-                          response: req.body.id,
-                          response1: result_n,
-                          response2: result_f,
-                        });
-                      });
-                    });
+                    pool.query(
+                      'DELETE from folder where id = ?',
+                      [req.body.id],
+                      (error, results) => {
+                        pool.query(
+                          'select * from it_memo',
+                          (error, result_n) => {
+                            pool.query(
+                              'select * from folder',
+                              (error, result_f) => {
+                                res.send({
+                                  response: req.body.id,
+                                  response1: result_n,
+                                  response2: result_f,
+                                });
+                              }
+                            );
+                          }
+                        );
+                      }
+                    );
                   }
                 );
               }
@@ -610,14 +677,38 @@ router
         );
       } else if (req.body.flg == 'collapsableALL') {
         //console.log('全て折り畳む');
-        pool.query('UPDATE folder SET closed = "on";', (error, result) => {
-          res.send({ response: '閉じました' });
-        });
+        const token = req.cookies.token;
+        const decoded = JWT.verify(token, 'SECRET_KEY');
+        pool.query(
+          'SELECT * FROM register_user WHERE Email = ?;',
+          [decoded.email],
+          (error, resultDecoded) => {
+            pool.query(
+              'UPDATE folder SET closed = "on" WHERE UserID = ? ;',
+              [resultDecoded[0].id],
+              (error, result) => {
+                res.send({ response: '閉じました' });
+              }
+            );
+          }
+        );
       } else if (req.body.flg == 'expandableALL') {
-        //console.log('全て展開する');
-        pool.query('UPDATE folder SET closed = "off";', (error, result) => {
-          res.send({ response: '開きました' });
-        });
+        const token = req.cookies.token;
+        const decoded = JWT.verify(token, 'SECRET_KEY');
+        pool.query(
+          'SELECT * FROM register_user WHERE Email = ?;',
+          [decoded.email],
+          (error, resultDecoded) => {
+            //console.log('全て展開する');
+            pool.query(
+              'UPDATE folder SET closed = "off" WHERE UserID = ?;',
+              [resultDecoded[0].id],
+              (error, result) => {
+                res.send({ response: '開きました' });
+              }
+            );
+          }
+        );
       } else if (req.body.flg == 'closed') {
         //console.log('リストの開きを保存');
         //開く→閉じる
@@ -708,27 +799,41 @@ router
           }
         );
       } else if (req.body.flg == 'delete') {
+        const token = req.cookies.token;
+        const decoded = JWT.verify(token, 'SECRET_KEY');
         pool.query(
-          'UPDATE folder SET folder_order = folder_order - 1 where parent_id = ? AND folder_order > ? ',
-          [req.body.parentId, req.body.order],
-          (error, results) => {
+          'SELECT * FROM register_user WHERE Email = ?;',
+          [decoded.email],
+          (error, resultDecoded) => {
             pool.query(
-              'UPDATE it_memo SET folder_order = folder_order - 1 where parent_id = ? AND folder_order > ? ',
-              [req.body.parentId, req.body.order],
+              'UPDATE folder SET folder_order = folder_order - 1 where parent_id = ? AND folder_order > ? AND UserID = ?',
+              [req.body.parentId, req.body.order, resultDecoded[0].id],
               (error, results) => {
                 pool.query(
-                  'DELETE from it_memo where id = ?',
-                  [req.body.id],
+                  'UPDATE it_memo SET folder_order = folder_order - 1 where parent_id = ? AND folder_order > ? AND UserID = ?',
+                  [req.body.parentId, req.body.order, resultDecoded[0].id],
                   (error, results) => {
-                    pool.query('select * from it_memo', (error, result_n) => {
-                      pool.query('select * from folder', (error, result_f) => {
-                        res.send({
-                          response: req.body.id,
-                          response1: result_n,
-                          response2: result_f,
-                        });
-                      });
-                    });
+                    pool.query(
+                      'DELETE from it_memo where id = ?',
+                      [req.body.id],
+                      (error, results) => {
+                        pool.query(
+                          'select * from it_memo',
+                          (error, result_n) => {
+                            pool.query(
+                              'select * from folder',
+                              (error, result_f) => {
+                                res.send({
+                                  response: req.body.id,
+                                  response1: result_n,
+                                  response2: result_f,
+                                });
+                              }
+                            );
+                          }
+                        );
+                      }
+                    );
                   }
                 );
               }
