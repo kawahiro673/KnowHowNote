@@ -609,3 +609,49 @@ ul.sample li.placeholder:before {
 .treecontrol {
   margin: 5px;
 }
+
+/************************リスト側のタブ******************************/
+/*タブのスタイル*/
+.tab_item {
+  width: calc(100% / 3);
+  height: 50px;
+  border-bottom: 3px solid #5ab4bd;
+  background-color: #d9d9d9;
+  line-height: 50px;
+  font-size: 16px;
+  text-align: center;
+  color: #565656;
+  display: block;
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+.tab_item:hover {
+  opacity: 0.75;
+}
+
+/*ラジオボタンを全て消す*/
+input[name='tab_item'] {
+  display: none;
+}
+
+/*タブ切り替えの中身のスタイル*/
+.tab_content {
+  display: none;
+  padding: 40px 40px 0;
+  clear: both;
+  overflow: hidden;
+}
+
+/*選択されているタブのコンテンツのみを表示*/
+#nouhau:checked ~ #nouhau_content,
+#share:checked ~ #share_content {
+  display: block;
+}
+
+/*選択されているタブのスタイルを変える*/
+/* .tabs input:checked + .tab_item {
+  background-color: #5ab4bd;
+  color: #fff;
+} */
