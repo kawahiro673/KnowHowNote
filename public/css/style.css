@@ -132,8 +132,6 @@ header h1 {
   display: flex;
   margin-top: 0;
   padding-top: 0;
-  flex-direction: row;
-  white-space: nowrap;
 }
 
 .container1 {
