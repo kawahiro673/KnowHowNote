@@ -387,12 +387,6 @@ footer {
 
 /************************リスト側のタブ******************************/
 /*タブのスタイル*/
-.tablist {
-  margin: 0;
-  display: flex;
-  justify-content: space-between;
-}
-
 .tab_item {
   margin: 1px, 5px, -1px, 1px;
   width: calc(100% / 3);
@@ -408,6 +402,8 @@ footer {
   font-weight: bold;
   transition: all 0.2s ease;
   flex-basis: 50%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .tab_item:hover {
