@@ -388,7 +388,7 @@ footer {
 /************************リスト側のタブ******************************/
 /*タブのスタイル*/
 .tab_item {
-  margin: 1px 5px -1px 1px;
+  /* margin: 1px 5px -1px 3px; */
   width: calc(100% / 3);
   border-bottom: 3px solid #5ab4bd;
   background-color: Gray;
