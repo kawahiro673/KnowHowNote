@@ -778,7 +778,7 @@ window.addEventListener('DOMContentLoaded', function () {
           p.style.textAlign = 'left';
           p.setAttribute('id', 'tabP' + Id);
           let shareBtn = document.createElement('button');
-          shareBtn.setAttribute('class', 'sharebtn');
+          shareBtn.setAttribute('id', 'sharebtn');
           shareBtn.innerHTML = '共有する';
           let divFade = document.createElement('div');
           let div2 = document.createElement('div');
@@ -1892,5 +1892,10 @@ window.addEventListener('DOMContentLoaded', function () {
       }),
       success: function (res) {},
     });
+  });
+
+  document.getElementById('sharebtn').addEventListener('click', () => {
+    let name = prompt('名前を入力してください');
+    console.log(name);
   });
 });
