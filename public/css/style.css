@@ -396,7 +396,7 @@ footer {
 }
 
 .tab_item {
-  margin: 1px, 5px, -1px, 1px;
+  /* margin: 1px, 5px, -1px, 1px; */
   border-bottom-color: 1px solid Gray;
   background-color: gray;
   line-height: 30px;
@@ -406,7 +406,7 @@ footer {
   /* display: block; */
   /* float: left; */
   font-weight: bold;
-  transition: all 0.2s ease;
+  /* transition: all 0.2s ease; */
   display: inline-block;
   white-space: nowrap;
   width: 50%;
