@@ -390,11 +390,11 @@ footer {
 .tab_item {
   width: calc(100% / 3);
   border-bottom: 3px solid #5ab4bd;
-  background-color: #d9d9d9;
+  background-color: #565656;
   line-height: 30px;
   font-size: 16px;
   text-align: center;
-  color: #565656;
+  color: white;
   display: block;
   float: left;
   text-align: center;
@@ -426,10 +426,10 @@ input[name='tab_item'] {
 }
 
 /*選択されているタブのスタイルを変える*/
-/* .tabs input:checked + .tab_item {
-  background-color: #5ab4bd;
-  color: #fff;
-} */
+.container1 input:checked + .tab_item {
+  background-color: white;
+  color: #565656;
+}
 
 /********************** こっから背景 **********:**************/
 section {
