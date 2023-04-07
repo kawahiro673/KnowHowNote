@@ -44,10 +44,6 @@ header h1 {
   padding: 0;
 }
 
-.list_title {
-  margin: 0;
-  padding: 0;
-}
 .list_title:hover,
 .folder:hover {
   border: 2px solid #00ffff;
@@ -112,6 +108,14 @@ header h1 {
 #logout:hover {
   /*カーソルをかざした時に変化*/
   background-color: rgba(255, 255, 255, 0.5);
+}
+
+.hide1 {
+  display: none;
+}
+
+.treecontrol {
+  margin: 5px;
 }
 
 .container-list {
@@ -383,7 +387,53 @@ footer {
   display: none;
 }
 
-/************** こっから背景 ****************/
+/************************リスト側のタブ******************************/
+/*タブのスタイル*/
+.tab_item {
+  width: calc(100% / 3);
+  border-bottom: 3px solid #5ab4bd;
+  background-color: #d9d9d9;
+  line-height: 30px;
+  font-size: 16px;
+  text-align: center;
+  color: #565656;
+  display: block;
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.tab_item:hover {
+  opacity: 0.75;
+}
+
+/*ラジオボタンを全て消す*/
+input[name='tab_item'] {
+  display: none;
+}
+
+/*タブ切り替えの中身のスタイル*/
+.tab_content {
+  display: none;
+  padding: 0;
+  clear: both;
+  overflow: hidden;
+}
+
+/*選択されているタブのコンテンツのみを表示*/
+#nouhau:checked ~ #nouhau_content,
+#share:checked ~ #share_content {
+  display: block;
+}
+
+/*選択されているタブのスタイルを変える*/
+/* .tabs input:checked + .tab_item {
+  background-color: #5ab4bd;
+  color: #fff;
+} */
+
+/********************** こっから背景 **********:**************/
 section {
   min-height: 100vh;
   width: 100%;
@@ -433,56 +483,3 @@ section .row div {
   margin: 0;
   padding: 0;
 }
-
-.hide1 {
-  display: none;
-}
-
-.treecontrol {
-  margin: 5px;
-}
-
-/************************リスト側のタブ******************************/
-/*タブのスタイル*/
-.tab_item {
-  width: calc(100% / 3);
-  border-bottom: 3px solid #5ab4bd;
-  background-color: #d9d9d9;
-  line-height: 30px;
-  font-size: 16px;
-  text-align: center;
-  color: #565656;
-  display: block;
-  float: left;
-  text-align: center;
-  font-weight: bold;
-  transition: all 0.2s ease;
-}
-.tab_item:hover {
-  opacity: 0.75;
-}
-
-/*ラジオボタンを全て消す*/
-input[name='tab_item'] {
-  display: none;
-}
-
-/*タブ切り替えの中身のスタイル*/
-.tab_content {
-  display: none;
-  padding: 0;
-  clear: both;
-  overflow: hidden;
-}
-
-/*選択されているタブのコンテンツのみを表示*/
-#nouhau:checked ~ #nouhau_content,
-#share:checked ~ #share_content {
-  display: block;
-}
-
-/*選択されているタブのスタイルを変える*/
-/* .tabs input:checked + .tab_item {
-  background-color: #5ab4bd;
-  color: #fff;
-} */
