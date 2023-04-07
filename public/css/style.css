@@ -397,18 +397,20 @@ footer {
 
 .tab_item {
   margin: 1px, 5px, -1px, 1px;
-  width: calc(100% / 3);
+  /* width: calc(100% / 3); */
   border-bottom-color: 1px solid Gray;
   background-color: gray;
   line-height: 30px;
   font-size: 16px;
   text-align: center;
   color: white;
-  display: block;
-  float: left;
-  text-align: center;
+  /* display: block; */
+  /* float: left; */
   font-weight: bold;
   transition: all 0.2s ease;
+  display: inline-block;
+  width: 50%;
+  box-sizing: border-box;
 }
 
 .tab_item:hover {
