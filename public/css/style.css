@@ -388,9 +388,10 @@ footer {
 /************************リスト側のタブ******************************/
 /*タブのスタイル*/
 .tab_item {
+  margin: 1px 5px -1px 1px;
   width: calc(100% / 3);
   border-bottom: 3px solid #5ab4bd;
-  background-color: #565656;
+  background-color: Gray;
   line-height: 30px;
   font-size: 16px;
   text-align: center;
@@ -428,7 +429,7 @@ input[name='tab_item'] {
 /*選択されているタブのスタイルを変える*/
 .container1 input:checked + .tab_item {
   background-color: white;
-  color: #565656;
+  color: Gray;
 }
 
 /********************** こっから背景 **********:**************/
