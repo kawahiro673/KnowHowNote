@@ -617,7 +617,7 @@ ul.sample li.placeholder:before {
   height: 50px;
   border-bottom: 3px solid #5ab4bd;
   background-color: #d9d9d9;
-  line-height: 50px;
+  line-height: 30px;
   font-size: 16px;
   text-align: center;
   color: #565656;
@@ -639,7 +639,7 @@ input[name='tab_item'] {
 /*タブ切り替えの中身のスタイル*/
 .tab_content {
   display: none;
-  padding: 40px 40px 0;
+  padding: 0;
   clear: both;
   overflow: hidden;
 }
