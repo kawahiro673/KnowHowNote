@@ -390,7 +390,7 @@ footer {
 .tab_item {
   margin: 1px, 5px, -1px, 1px;
   width: calc(100% / 3);
-  border-bottom: 3px solid #5ab4bd;
+  border-bottom-color: 1px solid Gray;
   background-color: gray;
   line-height: 30px;
   font-size: 16px;
@@ -430,6 +430,7 @@ input[name='tab_item'] {
 .container1 input:checked + .tab_item {
   background-color: white;
   color: Gray;
+  border-bottom-color: White;
 }
 
 /********************** こっから背景 **********:**************/
