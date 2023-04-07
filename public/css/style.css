@@ -134,6 +134,7 @@ header h1 {
   display: flex;
   margin-top: 0;
   padding-top: 0;
+  flex-direction: row;
 }
 
 .container1 {
@@ -614,7 +615,6 @@ ul.sample li.placeholder:before {
 /*タブのスタイル*/
 .tab_item {
   width: calc(100% / 3);
-  height: 50px;
   border-bottom: 3px solid #5ab4bd;
   background-color: #d9d9d9;
   line-height: 30px;
