@@ -387,6 +387,10 @@ footer {
 
 /************************リスト側のタブ******************************/
 /*タブのスタイル*/
+.container1 label {
+  flex-basis: 50%;
+}
+
 .tab_item {
   margin: 1px, 5px, -1px, 1px;
   width: calc(100% / 3);
