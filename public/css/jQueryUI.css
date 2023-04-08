@@ -162,3 +162,7 @@ ul.sample li.placeholder:before {
 .filetree span.file {
   background: url(images/file.gif) 0 0 no-repeat;
 }
+
+.sharetree span.file {
+  background: url(images/file.gif) 0 0 no-repeat;
+}
