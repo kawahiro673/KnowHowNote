@@ -196,6 +196,7 @@ window.addEventListener('DOMContentLoaded', function () {
           let li = document.createElement('li');
           let span = document.createElement('span');
           span.innerHTML = file.title;
+          document.getElementById('sharelist').appendChild(li);
           li.appendChild(span);
         });
       },
