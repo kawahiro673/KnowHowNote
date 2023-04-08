@@ -1049,7 +1049,7 @@ router
             message: 'ユーザーが見つかりません',
           });
         }
-        console.log(user.id);
+        console.log(user);
         pool.query(
           'INSERT INTO it_memo (title, memo_text) (SELECT title, memo_text FROM it_memo WHERE id = ?);',
           [req.body.id],
