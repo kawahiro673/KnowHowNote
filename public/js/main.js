@@ -179,20 +179,21 @@ window.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // function shareListCreate() {
-  //   $.ajax({
-  //     url: '/mypage/',
-  //     type: 'POST',
-  //     dataType: 'Json',
-  //     contentType: 'application/json',
-  //     data: JSON.stringify({
-  //       data: 'sharelist',
-  //     }),
-  //     success: function (res) {
-  //       console.log(res.response2);
-  //     },
-  //   });
-  // }
+  function shareListCreate() {
+    $.ajax({
+      url: '/mypage/',
+      type: 'POST',
+      dataType: 'Json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        data: 'sharelist',
+      }),
+      success: function (res) {
+        console.log(res.response2);
+        //let li = document.createElement('li');
+      },
+    });
+  }
 
   listCreate();
   tabUpload();
