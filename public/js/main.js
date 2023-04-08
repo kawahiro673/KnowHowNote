@@ -5,6 +5,7 @@ let tab = document.getElementById('tab');
 let conme = document.getElementById('contextmenu');
 let conme2 = document.getElementById('contextmenu2');
 let conme3 = document.getElementById('contextmenu3');
+let conme4 = document.getElementById('contextmenu4');
 let idGet = document.getElementsByClassName('idGet');
 let hitarea = document.getElementsByClassName('hitarea');
 let borderTmp; //枠のついたlistTitles一時保持
@@ -195,7 +196,7 @@ window.addEventListener('DOMContentLoaded', function () {
           //要素作成
           let li = document.createElement('li');
           let span = document.createElement('span');
-          span.setAttribute('class', 'file');
+          span.setAttribute('class', 'sharenote file');
           span.innerHTML = file.title;
           document.getElementById('sharelist').appendChild(li);
           li.appendChild(span);
@@ -209,19 +210,27 @@ window.addEventListener('DOMContentLoaded', function () {
   shareListCreate();
 
   $('#right').on('click contextmenu', function (e) {
-    //list_title上で右クッリク
+    //ノート上で右クッリク
     if (e.target.closest('.list_title')) {
       conme.style.left = e.pageX + 'px';
       conme.style.top = e.pageY + 'px';
       conme.style.display = 'block';
       conme2.style.display = 'none';
       conme3.style.display = 'none';
+      conme4.style.display = 'none';
     } else if (e.target.closest('.folder')) {
       conme3.style.left = e.pageX + 'px';
       conme3.style.top = e.pageY + 'px';
       conme3.style.display = 'block';
       conme.style.display = 'none';
       conme2.style.display = 'none';
+    } else if (e.target.closest('.sharenote')) {
+      conme4.style.left = e.pageX + 'px';
+      conme4.style.top = e.pageY + 'px';
+      conme4.style.display = 'block';
+      conme.style.display = 'none';
+      conme2.style.display = 'none';
+      conme3.style.display = 'none';
     } else {
       conme.style.display = 'none';
       conme2.style.left = e.pageX + 'px';
@@ -232,6 +241,7 @@ window.addEventListener('DOMContentLoaded', function () {
       conme.style.display = 'none';
       conme2.style.display = 'none';
       conme3.style.display = 'none';
+      conme4.style.display = 'none';
     });
   });
   $('html').on('click contextmenu', function (e) {
@@ -242,6 +252,7 @@ window.addEventListener('DOMContentLoaded', function () {
       conme.style.display = 'none';
       conme2.style.display = 'none';
       conme3.style.display = 'none';
+      conme4.style.display = 'none';
     }
   });
 
