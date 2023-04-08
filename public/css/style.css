@@ -44,7 +44,7 @@ header h1 {
   padding: 0;
 }
 
-.list_title:hover,
+.file:hover,
 .folder:hover {
   border: 2px solid #00ffff;
   border-radius: 10px;
