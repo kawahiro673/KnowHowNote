@@ -1088,8 +1088,8 @@ router
         res.send({ message: '共有しました' });
         // pool.query(
         //   //レコードをコピーして新しいレコードとして挿入
-        //   'INSERT INTO it_memo (title, memo_text, UserID) (SELECT title, memo_text, ? FROM it_memo WHERE id = ?);',
-        //   [req.body. , req.body.id],
+        //   'INSERT INTO it_memo (title, memo_text, UserID) (SELECT title, memo_text, ?, ? FROM it_memo WHERE id = ?);',
+        //   [req.body. , 'Share', req.body.id],
         //   (error, result) => {
         //     res.send({ message: '共有しました' });
         //   }
