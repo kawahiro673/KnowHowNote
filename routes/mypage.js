@@ -1084,7 +1084,7 @@ router
             message: 'ユーザーが見つかりませんでした',
           });
         }
-        console.log(user);
+        console.log(user.id);
         res.send({ message: '共有しました' });
         // pool.query(
         //   //レコードをコピーして新しいレコードとして挿入
