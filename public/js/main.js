@@ -31,15 +31,11 @@ window.addEventListener('DOMContentLoaded', function () {
         data: 'list',
       }),
       success: function (res) {
-        console.log(res.response); //folder取得
-        console.log(res.response2); //file取得
         if (res.userName === 'NO User') {
           console.log('クリック！！');
           location.href = 'https://nodejs-itnote-app.herokuapp.com/login';
         }
         document.getElementById('sab-title').innerHTML = res.userName;
-
-        console.log(res.id);
 
         let resTmp = Array.from(res.response);
         let resTmp2 = Array.from(res.response2);
@@ -120,7 +116,6 @@ window.addEventListener('DOMContentLoaded', function () {
                   document.getElementById(`${parentId}`).appendChild(li);
                   li.appendChild(span);
                   deleteArray.push(file);
-                  //console.log(`${file.title}の要素を作成しました`);
                   crFlg = true;
                 }
               }
@@ -184,8 +179,24 @@ window.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  function shareListCreate() {
+    $.ajax({
+      url: '/mypage/',
+      type: 'POST',
+      dataType: 'Json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        data: 'sharelist',
+      }),
+      success: function (res) {
+        console.log(res.response2);
+      },
+    });
+  }
+
   listCreate();
   tabUpload();
+  shareListCreate();
 
   $('#right').on('click contextmenu', function (e) {
     //list_title上で右クッリク

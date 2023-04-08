@@ -407,8 +407,8 @@ router
         }
       );
     } else if (req.body.data == 'list') {
-      //   //cookieの有効期限が切れたら自動的にログアウト
-      //   //仕様上、自動でログアウトされては困るので、リモードの際にのみログアウトする
+      //cookieの有効期限が切れたら自動的にログアウト
+      //仕様上、自動でログアウトされては困るので、リロードの際にのみログアウトする
       try {
         const token = req.cookies.token;
         const decoded = JWT.verify(token, 'SECRET_KEY');
@@ -418,11 +418,46 @@ router
           (error, resultDecoded) => {
             pool.query('select * from register_user', (error, results) => {
               pool.query(
-                'select * from folder WHERE UserID = ? order by folder_order ASC',
+                'select * from folder WHERE (UserID = ?) AND (Type != "Share") order by folder_order ASC ',
                 [resultDecoded[0].id],
                 (error, results) => {
                   pool.query(
-                    'select * from it_memo WHERE UserID = ? order by folder_order ASC',
+                    'select * from it_memo WHERE (UserID = ?) AND (Type != "Share") order by folder_order ASC',
+                    [resultDecoded[0].id],
+                    (error, result) => {
+                      res.send({
+                        response: results,
+                        response2: result,
+                        userName: resultDecoded[0].UserName,
+                        id: resultDecoded[0].id,
+                      });
+                    }
+                  );
+                }
+              );
+            });
+          }
+        );
+      } catch {
+        res.send({ userName: 'NO User' });
+      }
+    } else if (req.body.data === 'sharelist') {
+      //cookieの有効期限が切れたら自動的にログアウト
+      //仕様上、自動でログアウトされては困るので、リロードの際にのみログアウトする
+      try {
+        const token = req.cookies.token;
+        const decoded = JWT.verify(token, 'SECRET_KEY');
+        pool.query(
+          'SELECT * FROM register_user WHERE Email = ?;',
+          [decoded.email],
+          (error, resultDecoded) => {
+            pool.query('select * from register_user', (error, results) => {
+              pool.query(
+                'select * from folder WHERE (UserID = ?) AND (Type = "Share") order by folder_order ASC ',
+                [resultDecoded[0].id],
+                (error, results) => {
+                  pool.query(
+                    'select * from it_memo WHERE (UserID = ?) AND (Type = "Share") order by folder_order ASC',
                     [resultDecoded[0].id],
                     (error, result) => {
                       res.send({
@@ -1046,20 +1081,19 @@ router
         const user = result.find((user) => user.UserName === req.body.name);
         if (!user) {
           res.send({
-            message: 'ユーザーが見つかりません',
+            message: 'ユーザーが見つかりませんでした',
           });
         }
         console.log(user);
-        pool.query(
-          'INSERT INTO it_memo (title, memo_text) (SELECT title, memo_text FROM it_memo WHERE id = ?);',
-          [req.body.id],
-          (error, result) => {
-            res.send({ message: 'DB格納済み' });
-          }
-        );
-        // res.send({
-        //   message: 'ユーザーが見つかりました',
-        // });
+        res.send({ message: '共有しました' });
+        // pool.query(
+        //   //レコードをコピーして新しいレコードとして挿入
+        //   'INSERT INTO it_memo (title, memo_text, UserID) (SELECT title, memo_text, ? FROM it_memo WHERE id = ?);',
+        //   [req.body. , req.body.id],
+        //   (error, result) => {
+        //     res.send({ message: '共有しました' });
+        //   }
+        // );
       });
     } else {
       console.log('dataで何も受け取ってません');
