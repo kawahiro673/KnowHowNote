@@ -179,24 +179,24 @@ window.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  function shareListCreate() {
-    $.ajax({
-      url: '/mypage/',
-      type: 'POST',
-      dataType: 'Json',
-      contentType: 'application/json',
-      data: JSON.stringify({
-        data: 'sharelist',
-      }),
-      success: function (res) {
-        console.log(res.response2);
-      },
-    });
-  }
+  // function shareListCreate() {
+  //   $.ajax({
+  //     url: '/mypage/',
+  //     type: 'POST',
+  //     dataType: 'Json',
+  //     contentType: 'application/json',
+  //     data: JSON.stringify({
+  //       data: 'sharelist',
+  //     }),
+  //     success: function (res) {
+  //       console.log(res.response2);
+  //     },
+  //   });
+  // }
 
   listCreate();
   tabUpload();
-  shareListCreate();
+  //shareListCreate();
 
   $('#right').on('click contextmenu', function (e) {
     //list_title上で右クッリク
