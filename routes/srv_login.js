@@ -52,7 +52,7 @@ router.post('/', async (req, res) => {
       };
 
       res.cookie('token', token, options);
-      //console.log(user.UserName);
+
       return res.send({ message: 'ok', response: user.UserName });
     });
   }

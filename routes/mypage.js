@@ -1080,12 +1080,10 @@ router
       pool.query('SELECT * FROM register_user;', (error, result) => {
         const user = result.find((user) => user.UserName === req.body.name);
         if (!user) {
-          res.send({
+          return res.send({
             message: 'ユーザーが見つかりませんでした',
           });
         }
-        console.log(user.id);
-        res.send({ message: '共有しました' });
         pool.query(
           //レコードをコピーして新しいレコードとして挿入
           'INSERT INTO it_memo (title, memo_text, Type, UserID) (SELECT title, memo_text, ?, ? FROM it_memo WHERE id = ?);',
