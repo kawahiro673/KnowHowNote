@@ -2,6 +2,8 @@ const router = require('express').Router();
 const { append } = require('express/lib/response');
 const pool = require('../db.js');
 const JWT = require('jsonwebtoken');
+const { resetWatchers } = require('nodemon/lib/monitor/watch');
+const { request } = require('express');
 
 router
   .route('/')
@@ -1039,6 +1041,18 @@ router
         'token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; Path=/'
       );
       res.end();
+    } else if (req.body.data === 'getuser') {
+      pool.query('SELECT * FROM register_user;', (error, result) => {
+        const user = result.find((user) => user.UserName === req.body.name);
+        if (!user) {
+          res.send({
+            message: 'ユーザーが見つかりません',
+          });
+        }
+        res.send({
+          message: 'ユーザーが見つかりました',
+        });
+      });
     } else {
       console.log('dataで何も受け取ってません');
     }

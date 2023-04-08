@@ -779,7 +779,7 @@ window.addEventListener('DOMContentLoaded', function () {
           p.setAttribute('id', 'tabP' + Id);
           let inputShare = document.createElement('input');
           inputShare.type = 'submit';
-          inputShare.value = '編集する';
+          inputShare.value = '共有する';
           let divFade = document.createElement('div');
           let div2 = document.createElement('div');
           div2.setAttribute('class', 'form-group');
@@ -881,6 +881,20 @@ window.addEventListener('DOMContentLoaded', function () {
           inputShare.onclick = function () {
             let name = prompt('共有する相手のユーザー名を入力してください');
             console.log(name);
+            $.ajax({
+              url: '/mypage/',
+              type: 'POST',
+              dataType: 'Json',
+              contentType: 'application/json',
+              data: JSON.stringify({
+                data: 'getuser',
+                id: Id,
+                name,
+              }),
+              success: function (res) {
+                alert(res.message);
+              },
+            });
           };
 
           //タブ上の「✖️」ボタン押下
