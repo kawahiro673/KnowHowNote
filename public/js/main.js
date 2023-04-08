@@ -197,7 +197,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   listCreate();
   tabUpload();
-  //shareListCreate();
+  shareListCreate();
 
   $('#right').on('click contextmenu', function (e) {
     //list_title上で右クッリク
