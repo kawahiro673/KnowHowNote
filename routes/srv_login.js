@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
       const user = result.find((user) => user.Email === req.body.email);
       console.log(user);
       if (!user) {
-        res.send({
+        return res.send({
           message: 'メールアドレスまたはパスワードが間違っています',
         });
       }
@@ -28,7 +28,7 @@ router.post('/', async (req, res) => {
         user.HashedPassword
       );
       if (!isMatch) {
-        res.send({
+        return res.send({
           message: 'メールアドレスまたはパスワードが間違っています',
         });
       }
@@ -53,7 +53,7 @@ router.post('/', async (req, res) => {
 
       res.cookie('token', token, options);
       //console.log(user.UserName);
-      res.send({ message: 'ok', response: user.UserName });
+      return res.send({ message: 'ok', response: user.UserName });
     });
   }
 });
