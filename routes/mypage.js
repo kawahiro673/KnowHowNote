@@ -418,11 +418,11 @@ router
           (error, resultDecoded) => {
             pool.query('select * from register_user', (error, results) => {
               pool.query(
-                'select * from folder WHERE (Type != "Share") AND (UserID = ?) order by folder_order ASC ',
+                'select * from folder WHERE (Type IS NULL) AND (UserID = ?) order by folder_order ASC ',
                 [resultDecoded[0].id],
                 (error, results) => {
                   pool.query(
-                    'select * from it_memo WHERE (Type != "Share") AND (UserID = ?) order by folder_order ASC',
+                    'select * from it_memo WHERE (Type IS NULL) AND (UserID = ?) order by folder_order ASC',
                     [resultDecoded[0].id],
                     (error, result) => {
                       res.send({
