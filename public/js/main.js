@@ -195,6 +195,7 @@ window.addEventListener('DOMContentLoaded', function () {
           //要素作成
           let li = document.createElement('li');
           let span = document.createElement('span');
+          span.setAttribute('class', 'file');
           span.innerHTML = file.title;
           document.getElementById('sharelist').appendChild(li);
           li.appendChild(span);
