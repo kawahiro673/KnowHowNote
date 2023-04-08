@@ -327,6 +327,22 @@ footer {
   cursor: pointer;
 }
 
+#contextmenu4 {
+  display: none;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 200px;
+  height: 180px;
+  border: 1px solid #000;
+  background-color: #fff;
+  border-radius: 5px;
+  z-index: 100;
+}
+#contextmenu4 li {
+  cursor: pointer;
+}
+
 #folder:hover {
   border: 1px solid black;
 }

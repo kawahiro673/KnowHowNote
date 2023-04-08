@@ -224,6 +224,7 @@ window.addEventListener('DOMContentLoaded', function () {
       conme3.style.display = 'block';
       conme.style.display = 'none';
       conme2.style.display = 'none';
+      conme4.style.display = 'none';
     } else if (e.target.closest('.sharenote')) {
       conme4.style.left = e.pageX + 'px';
       conme4.style.top = e.pageY + 'px';
@@ -232,10 +233,12 @@ window.addEventListener('DOMContentLoaded', function () {
       conme2.style.display = 'none';
       conme3.style.display = 'none';
     } else {
-      conme.style.display = 'none';
       conme2.style.left = e.pageX + 'px';
       conme2.style.top = e.pageY + 'px';
       conme2.style.display = 'block';
+      conme.style.display = 'none';
+      conme3.style.display = 'none';
+      conme4.style.display = 'none';
     }
     document.body.addEventListener('click', function (e) {
       conme.style.display = 'none';
