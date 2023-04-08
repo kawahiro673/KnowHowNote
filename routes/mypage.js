@@ -1049,9 +1049,17 @@ router
             message: 'ユーザーが見つかりません',
           });
         }
-        res.send({
-          message: 'ユーザーが見つかりました',
-        });
+        console.log(user.id);
+        pool.query(
+          'INSERT INTO it_memo (title, memo_text) (SELECT title, memo_text FROM it_memo WHERE id = ?);',
+          [req.body.id],
+          (error, result) => {
+            res.send({ message: 'DB格納済み' });
+          }
+        );
+        // res.send({
+        //   message: 'ユーザーが見つかりました',
+        // });
       });
     } else {
       console.log('dataで何も受け取ってません');
