@@ -777,9 +777,9 @@ window.addEventListener('DOMContentLoaded', function () {
           p.style.color = 'black';
           p.style.textAlign = 'left';
           p.setAttribute('id', 'tabP' + Id);
-          let shareBtn = document.createElement('button');
-          shareBtn.setAttribute('id', 'sharebtn');
-          shareBtn.innerHTML = '共有する';
+          let inputShare = document.createElement('input');
+          inputShare.type = 'submit';
+          inputShare.value = '編集する';
           let divFade = document.createElement('div');
           let div2 = document.createElement('div');
           div2.setAttribute('class', 'form-group');
@@ -811,7 +811,7 @@ window.addEventListener('DOMContentLoaded', function () {
           div.appendChild(divFade);
           div.appendChild(div2);
           div1.appendChild(p);
-          div1.appendChild(shareBtn);
+          div1.appendChild(inputShare);
           div2.appendChild(textarea);
           div.appendChild(inputEdit);
           divFade.appendChild(fadeFont);
@@ -876,6 +876,11 @@ window.addEventListener('DOMContentLoaded', function () {
                 titletext
               );
             };
+          };
+
+          inputShare.onclick = function () {
+            let name = prompt('共有する相手のユーザー名を入力してください');
+            console.log(name);
           };
 
           //タブ上の「✖️」ボタン押下
@@ -1892,10 +1897,5 @@ window.addEventListener('DOMContentLoaded', function () {
       }),
       success: function (res) {},
     });
-  });
-
-  document.getElementById('sharebtn').addEventListener('click', () => {
-    let name = prompt('名前を入力してください');
-    console.log(name);
   });
 });
