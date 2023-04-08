@@ -190,7 +190,14 @@ window.addEventListener('DOMContentLoaded', function () {
       }),
       success: function (res) {
         console.log(res.response2);
-        //let li = document.createElement('li');
+
+        res.response2.forEach((file) => {
+          //要素作成
+          let li = document.createElement('li');
+          let span = document.createElement('span');
+          span.innerHTML = file.title;
+          li.appendChild(span);
+        });
       },
     });
   }
