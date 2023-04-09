@@ -1,4 +1,10 @@
-import { keepButton, cancelButton, shareButton, aaa } from './tab_func.js';
+import {
+  keepButton,
+  cancelButton,
+  shareButton,
+  passGet,
+  updateTime,
+} from './tab_func.js';
 
 let tab = document.getElementById('tab');
 let conme = document.getElementById('contextmenu');
@@ -878,7 +884,6 @@ window.addEventListener('DOMContentLoaded', function () {
             inputEdit.style.display = 'none';
             //[保存する]ボタン押下
 
-            let pass = passGet(Id, titletext.value);
             inputKeep.onclick = () => {
               keepButton(
                 Id,
@@ -890,8 +895,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 inputEdit,
                 time,
                 titletext.value,
-                titletext,
-                pass
+                titletext
               );
             };
             //[取り消す]ボタン押下
@@ -1744,33 +1748,6 @@ window.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  //現在日時取得＆DB格納
-  function updateTime(id, time) {
-    let now = new Date();
-    let Year = now.getFullYear();
-    let Month = now.getMonth() + 1;
-    let DATE = now.getDate();
-    let Hour = now.getHours();
-    let Min = now.getMinutes();
-    //let Sec = now.getSeconds();
-    $.ajax({
-      url: '/mypage/',
-      type: 'POST',
-      dataType: 'Json',
-      contentType: 'application/json',
-      data: JSON.stringify({
-        data: 'note',
-        flg: 'updatetime',
-        id,
-        time: `${Year}年${Month}月${DATE}日 ${Hour}:${Min}`,
-      }),
-      success: function (res) {
-        //timeが空だと実行しない(ファイル作成時でtabを生成していないとき)
-        if (time) time.innerHTML = res.response;
-      },
-    });
-  }
-
   //わからん。。。。nameクリック後の判定が、、、、なぜか上手くいく。。
   function eventFunc(e) {
     let flg = false;
@@ -1793,30 +1770,6 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  //passを取得する関数
-  function passGet(id, title) {
-    let pass = document.getElementById(`li${id}`);
-    let parentArray = [];
-    let answer = '';
-    let i = 0;
-
-    while (pass.parentNode.parentNode.id != '0') {
-      parentArray.push(
-        pass.parentNode.parentNode.previousElementSibling.innerHTML
-      );
-      pass = pass.parentNode.parentNode.previousElementSibling;
-    }
-    parentArray.forEach((p) => {
-      i++;
-      if (i == parentArray.length) {
-        answer = `  ${p}` + answer;
-      } else {
-        answer = ` > ${p}` + answer;
-      }
-    });
-    return answer + ' > ' + title;
-  }
-
   $('.hamburger').click(function () {
     console.log('ハンバーガー押下');
   });
@@ -1834,5 +1787,4 @@ window.addEventListener('DOMContentLoaded', function () {
       success: function (res) {},
     });
   });
-  aaa('やあ');
 });
