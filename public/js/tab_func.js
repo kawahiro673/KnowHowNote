@@ -1,4 +1,5 @@
-export function keepButton(
+//タブエリアの[保存]ボタン押下時
+export const keepButton = (
   id,
   textarea,
   p1,
@@ -10,7 +11,7 @@ export function keepButton(
   newTitle,
   titletext,
   pass
-) {
+) => {
   $.ajax({
     url: '/mypage/',
     type: 'POST',
@@ -46,9 +47,10 @@ export function keepButton(
   textarea.readOnly = true;
   //updateTime(id, time);
   document.getElementById('notepass').innerHTML = pass;
-}
+};
 
-export function cancelButton(
+//タブエリアの[取り消し]ボタン押下時
+export const cancelButton = (
   id,
   p1,
   inputKeep,
@@ -56,8 +58,7 @@ export function cancelButton(
   inputEdit,
   textarea,
   titletext
-) {
-  console.log('取り消すクリック');
+) => {
   let btn = confirm(
     '本当に編集を取り消しますか？\n保存していないものは取り消されます。'
   );
@@ -84,4 +85,23 @@ export function cancelButton(
     inputEdit.style.display = 'block';
     textarea.readOnly = true;
   }
-}
+};
+
+//[共有する]ボタン押下時
+export const shareButton = (id) => {
+  let name = prompt('共有する相手のユーザー名を入力してください');
+  $.ajax({
+    url: '/mypage/',
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      data: 'getuser',
+      id,
+      name,
+    }),
+    success: function (res) {
+      alert(res.message);
+    },
+  });
+};
