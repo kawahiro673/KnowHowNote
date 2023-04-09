@@ -776,7 +776,7 @@ window.addEventListener('DOMContentLoaded', function () {
           success: function (res) {
             //resolve()を呼び出すことで、Promiseオブジェクトが完了したことを示すことができる
             resolve();
-            const [inputEdit, div, textarea, fadeFont] = tabCreate(
+            const [inputEdit, div, textarea, fadeFont, inputShare] = tabCreate(
               id,
               title,
               res.response
