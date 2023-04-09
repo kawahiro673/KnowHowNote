@@ -721,7 +721,7 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 
   //ページを更新した際に前回のタブ情報を載せる
-  function tabUpload() {
+ async function tabUpload() {
     $.ajax({
       url: '/mypage/',
       type: 'POST',
@@ -733,9 +733,8 @@ window.addEventListener('DOMContentLoaded', function () {
       }),
       success: function (res) {
         console.log(res.response);
-        for (const hoge of Object.keys(res.response)) {
-          const tab = res.response[hoge];
-          titleClick(tab.id, tab.tabTitle);
+        for (const tab of res.response) {
+         await titleClick(tab.id, tab.tabTitle);
         }
         if (res.response.length != 0) {
           setTimeout(() => {
@@ -759,7 +758,8 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 
   //*********** タブ生成関数(更新時) ************
-  function titleClick(Id, title) {
+ async function titleClick(Id, title) {
+  return new Promise(resolve => {
     //タブ生成しておらず、・・・じゃないとき
     if (idArray.includes(Id) == false) {
       $.ajax({
@@ -773,6 +773,7 @@ window.addEventListener('DOMContentLoaded', function () {
           id: Id,
         }),
         success: function (res) {
+          resolve();
           console.log(res.response);
           //input生成
           const inputTab = document.createElement('input');
@@ -935,6 +936,7 @@ window.addEventListener('DOMContentLoaded', function () {
       //タブをクリックしたことにする
       $(`#tab-ID${Id}`).trigger('click');
     }
+  });
   }
 
   function jQUI() {
