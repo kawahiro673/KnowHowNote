@@ -732,6 +732,7 @@ window.addEventListener('DOMContentLoaded', function () {
         flg: 'tabDesc',
       }),
       success: function (res) {
+        console.log(res.response);
         for (const hoge of Object.keys(res.response)) {
           const tab = res.response[hoge];
           titleClick(tab.id, tab.tabTitle);
@@ -772,7 +773,7 @@ window.addEventListener('DOMContentLoaded', function () {
           id: Id,
         }),
         success: function (res) {
-          //console.log(res.response);
+          console.log(res.response);
           //input生成
           const inputTab = document.createElement('input');
           inputTab.setAttribute('id', 'TAB-ID' + Id);
