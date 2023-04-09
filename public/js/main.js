@@ -4,6 +4,8 @@ import {
   shareButton,
   passGet,
   updateTime,
+  closeTab,
+  closeButton,
 } from './tab_func.js';
 
 let tab = document.getElementById('tab');
@@ -311,7 +313,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
               listTitle.id = Number(listTitle.id);
               if (idArray.includes(listTitle.id)) {
-                closeTab(listTitle.id, tabIndex);
+                closeTab(listTitle.id, tabIndex, tabFocus, idArray);
                 //idArrayの中にあるlistTitle.idを削除
                 idArray = idArray.filter((n) => n !== listTitle.id);
               }
@@ -546,7 +548,7 @@ window.addEventListener('DOMContentLoaded', function () {
                   for (i = 0; i < res.response.length; i++) {
                     //idArrayが文字列で格納されているため、num→String変換
                     if (idArray.includes(String(res.response[i]))) {
-                      closeTab(res.response[i]);
+                      closeTab(res.response[i], undefined, tabFocus, idArray);
                       //idArrayの中にあるlistTitle.idを削除
                       idArray = idArray.filter(
                         (n) => n !== String(res.response[i])
@@ -917,26 +919,10 @@ window.addEventListener('DOMContentLoaded', function () {
           };
 
           //タブ上の「✖️」ボタン押下
-          buttonTab.onclick = function () {
-            let tabelements = document.getElementsByClassName('tab-content');
-            let tabId = document.getElementById(`Tab-ID${Id}`);
-            let index = [].slice.call(tabelements).indexOf(tabId);
-            index = index + 1;
-            closeTab(Id, index);
-            $.ajax({
-              url: '/mypage/',
-              type: 'POST',
-              dataType: 'Json',
-              contentType: 'application/json',
-              data: JSON.stringify({
-                data: 'tab',
-                flg: 'info',
-                id: Id,
-                title,
-              }),
-              success: function (res) {},
-            });
+          buttonTab.onclick = () => {
+            closeButton(Id, title, tabFocus, idArray);
           };
+
           //タブをクリックした際の処理
           document.getElementById(`tab-ID${Id}`).onclick = function (e) {
             //閉じるボタン以外押下時
@@ -984,52 +970,6 @@ window.addEventListener('DOMContentLoaded', function () {
       //タブをクリックしたことにする
       $(`#tab-ID${Id}`).trigger('click');
     }
-  }
-
-  function closeTab(id, index) {
-    document.getElementById('TAB-ID' + id).remove();
-    document.getElementById('tab-ID' + id).remove();
-    document.getElementById('Tab-ID' + id).remove();
-
-    $.ajax({
-      url: '/mypage/',
-      type: 'POST',
-      dataType: 'Json',
-      contentType: 'application/json',
-      data: JSON.stringify({
-        data: 'tab',
-        flg: 'tabDel',
-        id,
-        order: index,
-      }),
-      success: function (res) {
-        //成功！！
-      },
-    });
-    if (tabFocus == undefined) {
-      tabFocus = id;
-    }
-    //フォーカスがあっているタブを削除する際に他のたぶへフォーカスを変更
-    var result = idArray.indexOf(id);
-    if (id == tabFocus) {
-      console.log('アクティブなタグ削除！！');
-      //idArrayの０番目じゃない場合。上に他のタブがまだある場合
-      if (result != 0) {
-        $(`#tab-ID${idArray[result - 1]}`).trigger('click');
-        //idArrayの０番目の場合。タブの一番上の場合
-      } else {
-        $(`#tab-ID${idArray[result + 1]}`).trigger('click');
-      }
-    }
-
-    //タブ削除したタイトルのIDをidArrayから削除
-    idArray = idArray.filter((n) => n !== id);
-    //タブ全削除判定
-    if (idArray.length == 0) {
-      document.getElementById('notab').style.display = 'block';
-      document.getElementById('notepass').innerHTML = '';
-    }
-    console.log(idArray);
   }
 
   function jQUI() {

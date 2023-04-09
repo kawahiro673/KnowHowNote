@@ -145,14 +145,20 @@ router
           [decoded.email],
           (error, resultDecoded) => {
             pool.query(
-              'DELETE from tab_hold where id = ?',
+              'SELECT * FROM it_memo WHERE id = ?',
               [req.body.id],
-              (error, result) => {
+              (error, resultFocus) => {
                 pool.query(
-                  'UPDATE tab_hold SET tabOrder = tabOrder - 1 WHERE tabOrder > ? AND (UserID = ?); ',
-                  [req.body.order, resultDecoded[0].id],
-                  (error, results) => {
-                    res.send({ response: result });
+                  'DELETE from tab_hold where id = ?',
+                  [req.body.id],
+                  (error, result) => {
+                    pool.query(
+                      'UPDATE tab_hold SET tabOrder = tabOrder - 1 WHERE tabOrder > ? AND (UserID = ?); ',
+                      [req.body.order, resultDecoded[0].id],
+                      (error, results) => {
+                        res.send({ response: result });
+                      }
+                    );
                   }
                 );
               }

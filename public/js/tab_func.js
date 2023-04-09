@@ -156,3 +156,67 @@ export const updateTime = (id, time) => {
     },
   });
 };
+
+export const closeTab = (id, index, tabFocus, idArray) => {
+  document.getElementById('TAB-ID' + id).remove();
+  document.getElementById('tab-ID' + id).remove();
+  document.getElementById('Tab-ID' + id).remove();
+
+  $.ajax({
+    url: '/mypage/',
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      data: 'tab',
+      flg: 'tabDel',
+      id,
+      order: index,
+    }),
+    success: function (res) {},
+  });
+  if (tabFocus == undefined) {
+    tabFocus = id;
+  }
+  //フォーカスがあっているタブを削除する際に他のタブへフォーカスを変更
+  let result = idArray.indexOf(id);
+  if (id == tabFocus) {
+    //idArrayが０番目じゃない場合(上に他のタブがまだある場合)
+    if (result != 0) {
+      $(`#tab-ID${idArray[result - 1]}`).trigger('click');
+      //idArrayの０番目の場合。タブの一番上の場合
+    } else {
+      $(`#tab-ID${idArray[result + 1]}`).trigger('click');
+    }
+  }
+
+  //タブ削除したタイトルのIDをidArrayから削除
+  idArray = idArray.filter((n) => n !== id);
+  //タブ全削除判定
+  if (idArray.length == 0) {
+    document.getElementById('notab').style.display = 'block';
+    document.getElementById('notepass').innerHTML = '';
+  }
+  console.log(idArray);
+};
+
+export const closeButton = (id, title, tabFocus, idArray) => {
+  let tabelements = document.getElementsByClassName('tab-content');
+  let tabId = document.getElementById(`Tab-ID${id}`);
+  let index = [].slice.call(tabelements).indexOf(tabId);
+  index = index + 1;
+  closeTab(id, index, tabFocus, idArray);
+  $.ajax({
+    url: '/mypage/',
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      data: 'tab',
+      flg: 'info',
+      id,
+      title,
+    }),
+    success: function (res) {},
+  });
+};
