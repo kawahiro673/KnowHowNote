@@ -157,6 +157,7 @@ export const updateTime = (id, time) => {
   });
 };
 
+//タブ削除時に、focusの操作
 export const closeTab = (id, index, tabFocus, idArray) => {
   document.getElementById('TAB-ID' + id).remove();
   document.getElementById('tab-ID' + id).remove();
@@ -200,6 +201,7 @@ export const closeTab = (id, index, tabFocus, idArray) => {
   console.log(idArray);
 };
 
+//タブ上の✖️ボタン押下時
 export const closeButton = (id, title, tabFocus, idArray) => {
   let tabelements = document.getElementsByClassName('tab-content');
   let tabId = document.getElementById(`Tab-ID${id}`);
@@ -219,4 +221,38 @@ export const closeButton = (id, title, tabFocus, idArray) => {
     }),
     success: function (res) {},
   });
+};
+
+export const tabClick = (e, id, title, tabFocus) => {
+  //閉じるボタン以外押下時
+  if (!e.target.closest('.buttonTab')) {
+    var a = $(event.target).closest(`#button${id}`).length;
+    if (a) {
+      //nameをクリック
+    } else {
+      tabFocus = id;
+    }
+    //パスを取得する関数
+    let pass = passGet(id, document.getElementById('tabname' + id).innerHTML);
+    //クリックしたTabのfocusを1へ、その他を0へ。passも更新
+    $.ajax({
+      url: '/mypage/',
+      type: 'POST',
+      dataType: 'Json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        data: 'tab',
+        flg: 'updateFocus',
+        id,
+        title,
+        pass,
+      }),
+      success: function (res) {
+        //console.log('タブクリックしたぞ(ajax)');
+        document.getElementById('notepass').innerHTML = pass;
+      },
+    });
+  } else {
+    //タブ閉じるボタン押下
+  }
 };

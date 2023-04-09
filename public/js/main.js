@@ -6,6 +6,7 @@ import {
   updateTime,
   closeTab,
   closeButton,
+  tabClick,
 } from './tab_func.js';
 
 let tab = document.getElementById('tab');
@@ -192,8 +193,6 @@ window.addEventListener('DOMContentLoaded', function () {
         data: 'sharelist',
       }),
       success: function (res) {
-        console.log(res.response2);
-
         res.response2.forEach((file) => {
           //要素作成
           let li = document.createElement('li');
@@ -733,7 +732,6 @@ window.addEventListener('DOMContentLoaded', function () {
         flg: 'tabDesc',
       }),
       success: function (res) {
-        console.log(res.response);
         for (const hoge of Object.keys(res.response)) {
           const tab = res.response[hoge];
           titleClick(tab.id, tab.tabTitle);
@@ -924,42 +922,8 @@ window.addEventListener('DOMContentLoaded', function () {
           };
 
           //タブをクリックした際の処理
-          document.getElementById(`tab-ID${Id}`).onclick = function (e) {
-            //閉じるボタン以外押下時
-            if (!e.target.closest('.buttonTab')) {
-              var a = $(event.target).closest(`#button${Id}`).length;
-              if (a) {
-                //nameをクリック
-              } else {
-                tabFocus = Id;
-              }
-              //パスを取得する関数
-              let pass = passGet(
-                Id,
-                document.getElementById('tabname' + Id).innerHTML
-              );
-              console.log(pass);
-              //クリックしたTabのfocusを1へ、その他を0へ。passも更新
-              $.ajax({
-                url: '/mypage/',
-                type: 'POST',
-                dataType: 'Json',
-                contentType: 'application/json',
-                data: JSON.stringify({
-                  data: 'tab',
-                  flg: 'updateFocus',
-                  id: Id,
-                  title,
-                  pass,
-                }),
-                success: function (res) {
-                  //console.log('タブクリックしたぞ(ajax)');
-                  document.getElementById('notepass').innerHTML = pass;
-                },
-              });
-            } else {
-              //タブ閉じるボタン押下
-            }
+          document.getElementById(`tab-ID${Id}`).onclick = (e) => {
+            tabClick(e, Id, title, tabFocus);
           };
         },
       });
