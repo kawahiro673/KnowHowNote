@@ -1,4 +1,6 @@
 //タブで必要な関数まとめ
+
+//タブ生成
 export const tabCreate = (id, title, res) => {
   const inputTab = document.createElement('input');
   inputTab.setAttribute('id', 'TAB-ID' + id);
@@ -77,7 +79,7 @@ export const tabCreate = (id, title, res) => {
   divFade.appendChild(fadeFont);
   div.appendChild(time);
 
-  return [inputEdit, div, textarea, fadeFont, inputShare, buttonTab];
+  return [inputEdit, div, textarea, fadeFont, time, inputShare, buttonTab];
 };
 
 //タブエリアの[保存]ボタン押下時
