@@ -1,4 +1,4 @@
-import { keepButton, cancelButton } from './tab_func';
+import { keepButton, cancelButton } from './tab_func.js';
 
 let tab = document.getElementById('tab');
 let conme = document.getElementById('contextmenu');
