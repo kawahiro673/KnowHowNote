@@ -699,7 +699,7 @@ window.addEventListener('DOMContentLoaded', function () {
           // let tabelements = document.getElementsByClassName('tab-content');
           // let tabId = document.getElementById(`Tab-ID${ID}`);
           // let index = [].slice.call(tabelements).indexOf(tabId);
-          index = orderGet('tab-content', `Tab-ID${ID}`);
+          let index = orderGet('tab-content', `Tab-ID${ID}`);
           console.log(index);
           //orderを格納し、focus=1へ
           $.ajax({
