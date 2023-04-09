@@ -776,11 +776,8 @@ window.addEventListener('DOMContentLoaded', function () {
           success: function (res) {
             //resolve()を呼び出すことで、Promiseオブジェクトが完了したことを示すことができる
             resolve();
-            const [inputEdit, div, textarea, fadeFont, inputShare] = tabCreate(
-              id,
-              title,
-              res.response
-            );
+            const [inputEdit, div, textarea, fadeFont, inputShare, buttonTab] =
+              tabCreate(id, title, res.response);
             // const inputTab = document.createElement('input');
             // inputTab.setAttribute('id', 'TAB-ID' + id);
             // inputTab.setAttribute('type', 'radio');

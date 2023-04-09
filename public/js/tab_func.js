@@ -77,7 +77,7 @@ export const tabCreate = (id, title, res) => {
   divFade.appendChild(fadeFont);
   div.appendChild(time);
 
-  return [inputEdit, div, textarea, fadeFont, inputShare];
+  return [inputEdit, div, textarea, fadeFont, inputShare, buttonTab];
 };
 
 //タブエリアの[保存]ボタン押下時
