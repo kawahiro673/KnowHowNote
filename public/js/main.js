@@ -817,8 +817,8 @@ window.addEventListener('DOMContentLoaded', function () {
               div.appendChild(inputCancel);
 
               inputEdit.style.display = 'none';
-              //[保存する]ボタン押下
 
+              //[保存する]ボタン押下
               inputKeep.onclick = () => {
                 keepButton(
                   id,

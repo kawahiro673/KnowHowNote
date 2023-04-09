@@ -173,7 +173,6 @@ export const cancelButton = (
 
 //[共有する]ボタン押下時
 export const shareButton = (id) => {
-  aaa('やあ');
   let name = prompt('共有する相手のユーザー名を入力してください');
   $.ajax({
     url: '/mypage/',
