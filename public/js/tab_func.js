@@ -158,7 +158,7 @@ export const updateTime = (id, time) => {
 };
 
 //タブ削除時に、focusの操作
-export const closeTab = (id, index, tabFocus, idArray) => {
+export const closeTab = (id, index, tabFocus, tabArray) => {
   document.getElementById('TAB-ID' + id).remove();
   document.getElementById('tab-ID' + id).remove();
   document.getElementById('Tab-ID' + id).remove();
@@ -180,34 +180,25 @@ export const closeTab = (id, index, tabFocus, idArray) => {
     tabFocus = id;
   }
   //フォーカスがあっているタブを削除する際に他のタブへフォーカスを変更
-  let result = idArray.indexOf(id);
+  let result = tabArray.indexOf(id);
   if (id == tabFocus) {
-    //idArrayが０番目じゃない場合(上に他のタブがまだある場合)
+    //tabArrayが０番目じゃない場合(上に他のタブがまだある場合)
     if (result != 0) {
-      $(`#tab-ID${idArray[result - 1]}`).trigger('click');
-      //idArrayの０番目の場合。タブの一番上の場合
+      $(`#tab-ID${tabArray[result - 1]}`).trigger('click');
+      //tabArrayの０番目の場合。タブの一番上の場合
     } else {
-      $(`#tab-ID${idArray[result + 1]}`).trigger('click');
+      $(`#tab-ID${tabArray[result + 1]}`).trigger('click');
     }
   }
-
-  //タブ削除したタイトルのIDをidArrayから削除
-  idArray = idArray.filter((n) => n !== id);
-  //タブを全削除したらnotabを表示
-  if (idArray.length == 0) {
-    document.getElementById('notab').style.display = 'block';
-    document.getElementById('notepass').innerHTML = '';
-  }
-  console.log(idArray);
 };
 
 //タブ上の✖️ボタン押下時
-export const closeButton = (id, title, tabFocus, idArray) => {
+export const closeButton = (id, title, tabFocus, tabArray) => {
   let tabelements = document.getElementsByClassName('tab-content');
   let tabId = document.getElementById(`Tab-ID${id}`);
   let index = [].slice.call(tabelements).indexOf(tabId);
   index = index + 1;
-  closeTab(id, index, tabFocus, idArray);
+  closeTab(id, index, tabFocus, tabArray);
   $.ajax({
     url: '/mypage/',
     type: 'POST',
@@ -255,4 +246,15 @@ export const tabClick = (e, id, title, tabFocus) => {
   } else {
     //タブ閉じるボタン押下
   }
+};
+
+export const deleteTabArray = (id, tabArray) => {
+  //タブ削除したタイトルのIDをtabArrayから削除
+  tabArray = tabArray.filter((n) => n !== id);
+  //タブを全削除したらnotabを表示。「ここにノートの情報が〜」のやつ
+  if (tabArray.length == 0) {
+    document.getElementById('notab').style.display = 'block';
+    document.getElementById('notepass').innerHTML = '';
+  }
+  return tabArray;
 };

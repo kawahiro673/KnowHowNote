@@ -7,6 +7,7 @@ import {
   closeTab,
   closeButton,
   tabClick,
+  deleteTabArray,
 } from './tab_func.js';
 
 let tab = document.getElementById('tab');
@@ -14,7 +15,7 @@ let conme = document.getElementById('contextmenu');
 let conme2 = document.getElementById('contextmenu2');
 let conme3 = document.getElementById('contextmenu3');
 let conme4 = document.getElementById('contextmenu4');
-var idArray = []; //tab生成時にidを配列へ格納
+var tabArray = []; //tab生成時にidを配列へ格納
 let tabFocus;
 let initial_index;
 let parent_id_Tmp;
@@ -311,10 +312,10 @@ window.addEventListener('DOMContentLoaded', function () {
               $(`#li${listTitle.id}`).parent().remove();
 
               listTitle.id = Number(listTitle.id);
-              if (idArray.includes(listTitle.id)) {
-                closeTab(listTitle.id, tabIndex, tabFocus, idArray);
+              if (tabArray.includes(listTitle.id)) {
+                closeTab(listTitle.id, tabIndex, tabFocus, tabArray);
                 //idArrayの中にあるlistTitle.idを削除
-                idArray = idArray.filter((n) => n !== listTitle.id);
+                tabArray = deleteTabArray(listTitle.id, tabArray);
               }
 
               $.ajax({
@@ -546,13 +547,13 @@ window.addEventListener('DOMContentLoaded', function () {
                   //削除されたファイルのタブを削除する
                   for (i = 0; i < res.response.length; i++) {
                     //idArrayが文字列で格納されているため、num→String変換
-                    if (idArray.includes(String(res.response[i]))) {
-                      closeTab(res.response[i], undefined, tabFocus, idArray);
+                    if (tabArray.includes(String(res.response[i]))) {
+                      closeTab(res.response[i], undefined, tabFocus, tabArray);
                       //idArrayの中にあるlistTitle.idを削除
-                      idArray = idArray.filter(
-                        (n) => n !== String(res.response[i])
+                      tabArray = deleteTabArray(
+                        String(res.response[i]),
+                        tabArray
                       );
-                      //console.log(idArray);
                     }
                   }
                 },
@@ -760,7 +761,7 @@ window.addEventListener('DOMContentLoaded', function () {
   async function titleClick(Id, title) {
     return new Promise((resolve) => {
       //タブ生成しておらず、・・・じゃないとき
-      if (idArray.includes(Id) == false) {
+      if (tabArray.includes(Id) == false) {
         $.ajax({
           url: '/mypage/',
           type: 'POST',
@@ -854,7 +855,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
             document.getElementById('notab').style.display = 'none';
 
-            idArray.push(Id);
+            tabArray.push(Id);
             //「編集する」ボタンクリック
             inputEdit.onclick = function () {
               let p1 = document.createElement('p');
@@ -919,8 +920,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
             //タブ上の「✖️」ボタン押下
             buttonTab.onclick = () => {
-              closeButton(Id, title, tabFocus, idArray);
-              console.log(idArray);
+              closeButton(Id, title, tabFocus, tabArray);
+              tabArray = deleteTabArray(Id, tabArray);
             };
 
             //タブをクリックした際の処理
@@ -932,7 +933,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
         //既にタブが生成されている場合
       } else {
-        console.log(`既に[${idArray}]にあります`);
+        console.log(`既に[${tabArray}]にあります`);
         //タブをクリックしたことにする
         $(`#tab-ID${Id}`).trigger('click');
       }
