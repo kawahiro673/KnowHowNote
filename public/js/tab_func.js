@@ -214,8 +214,9 @@ export const closeButton = (id, title, tabFocus, tabArray) => {
   });
 };
 
+//タブクリック時
 export const tabClick = (e, id, title, tabFocus) => {
-  //閉じるボタン以外押下時
+  //タブの「✖️」ボタン以外押下時
   if (!e.target.closest('.buttonTab')) {
     var a = $(event.target).closest(`#button${id}`).length;
     if (a) {
@@ -248,8 +249,8 @@ export const tabClick = (e, id, title, tabFocus) => {
   }
 };
 
+//タブ削除したタイトルのIDをtabArrayから削除
 export const deleteTabArray = (id, tabArray) => {
-  //タブ削除したタイトルのIDをtabArrayから削除
   tabArray = tabArray.filter((n) => n !== id);
   //タブを全削除したらnotabを表示。「ここにノートの情報が〜」のやつ
   if (tabArray.length == 0) {

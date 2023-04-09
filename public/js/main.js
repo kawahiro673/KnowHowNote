@@ -757,11 +757,11 @@ window.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  //*********** タブ生成関数(更新時) ************
-  async function titleClick(Id, title) {
+  //*********** タブ生成関数(ページリード時) ************
+  async function titleClick(id, title) {
     return new Promise((resolve) => {
       //タブ生成しておらず、・・・じゃないとき
-      if (tabArray.includes(Id) == false) {
+      if (tabArray.includes(id) == false) {
         $.ajax({
           url: '/mypage/',
           type: 'POST',
@@ -770,14 +770,14 @@ window.addEventListener('DOMContentLoaded', function () {
           data: JSON.stringify({
             data: 'note',
             flg: 'info',
-            id: Id,
+            id,
           }),
           success: function (res) {
             //resolve()を呼び出すことで、Promiseオブジェクトが完了したことを示すことができる
             resolve();
             //input生成
             const inputTab = document.createElement('input');
-            inputTab.setAttribute('id', 'TAB-ID' + Id);
+            inputTab.setAttribute('id', 'TAB-ID' + id);
             inputTab.setAttribute('type', 'radio');
             inputTab.setAttribute('name', 'TAB');
             inputTab.setAttribute('class', 'tab-switch');
@@ -785,26 +785,26 @@ window.addEventListener('DOMContentLoaded', function () {
             //label生成
             const labelTab = document.createElement('label');
             labelTab.setAttribute('class', 'tab-label');
-            labelTab.setAttribute('id', 'tab-ID' + Id);
-            labelTab.setAttribute('for', 'TAB-ID' + Id);
+            labelTab.setAttribute('id', 'tab-ID' + id);
+            labelTab.setAttribute('for', 'TAB-ID' + id);
             labelTab.style.display = 'block';
 
             const tabname = document.createElement('p');
             tabname.setAttribute('class', 'tabname');
-            tabname.setAttribute('id', 'tabname' + Id);
+            tabname.setAttribute('id', 'tabname' + id);
             tabname.innerHTML = title;
 
             //[✖️]ボタン作成
             const buttonTab = document.createElement('button');
             buttonTab.setAttribute('class', 'buttonTab');
-            buttonTab.setAttribute('id', 'button' + Id);
+            buttonTab.setAttribute('id', 'button' + id);
             buttonTab.innerHTML = '×';
 
             // div要素を生成
             let div = document.createElement('div');
             div.className = 'tab-content';
-            div.setAttribute('id', 'Tab-ID' + Id);
-            div.setAttribute('value', Id);
+            div.setAttribute('id', 'Tab-ID' + id);
+            div.setAttribute('value', id);
             let div1 = document.createElement('div');
             div1.setAttribute('class', 'title');
             let p = document.createElement('p');
@@ -812,7 +812,7 @@ window.addEventListener('DOMContentLoaded', function () {
             p.style.fontSize = '25px';
             p.style.color = 'black';
             p.style.textAlign = 'left';
-            p.setAttribute('id', 'tabP' + Id);
+            p.setAttribute('id', 'tabP' + id);
             let inputShare = document.createElement('input');
             inputShare.type = 'submit';
             inputShare.value = '共有する';
@@ -855,7 +855,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
             document.getElementById('notab').style.display = 'none';
 
-            tabArray.push(Id);
+            tabArray.push(id);
             //「編集する」ボタンクリック
             inputEdit.onclick = function () {
               let p1 = document.createElement('p');
@@ -866,10 +866,10 @@ window.addEventListener('DOMContentLoaded', function () {
               let titletext = document.createElement('input');
               titletext.setAttribute(
                 'value',
-                document.getElementById(`tabP${Id}`).innerHTML
+                document.getElementById(`tabP${id}`).innerHTML
               );
-              document.getElementById(`tabP${Id}`).after(titletext);
-              document.getElementById(`tabP${Id}`).style.display = 'none';
+              document.getElementById(`tabP${id}`).after(titletext);
+              document.getElementById(`tabP${id}`).style.display = 'none';
 
               let inputKeep = document.createElement('input');
               let inputCancel = document.createElement('input');
@@ -888,7 +888,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
               inputKeep.onclick = () => {
                 keepButton(
-                  Id,
+                  id,
                   textarea,
                   p1,
                   fadeFont,
@@ -903,7 +903,7 @@ window.addEventListener('DOMContentLoaded', function () {
               //[取り消す]ボタン押下
               inputCancel.onclick = () => {
                 cancelButton(
-                  Id,
+                  id,
                   p1,
                   inputKeep,
                   inputCancel,
@@ -915,18 +915,18 @@ window.addEventListener('DOMContentLoaded', function () {
             };
 
             inputShare.onclick = () => {
-              shareButton(Id);
+              shareButton(id);
             };
 
             //タブ上の「✖️」ボタン押下
             buttonTab.onclick = () => {
-              closeButton(Id, title, tabFocus, tabArray);
-              tabArray = deleteTabArray(Id, tabArray);
+              closeButton(id, title, tabFocus, tabArray);
+              tabArray = deleteTabArray(id, tabArray);
             };
 
             //タブをクリックした際の処理
-            document.getElementById(`tab-ID${Id}`).onclick = (e) => {
-              tabClick(e, Id, title, tabFocus);
+            document.getElementById(`tab-ID${id}`).onclick = (e) => {
+              tabClick(e, id, title, tabFocus);
             };
           },
         });
@@ -935,11 +935,12 @@ window.addEventListener('DOMContentLoaded', function () {
       } else {
         console.log(`既に[${tabArray}]にあります`);
         //タブをクリックしたことにする
-        $(`#tab-ID${Id}`).trigger('click');
+        $(`#tab-ID${id}`).trigger('click');
       }
     });
   }
 
+  //jQueryUI 関連
   function jQUI() {
     let childnoteArray = [];
     $(function () {
