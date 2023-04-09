@@ -11,6 +11,8 @@ import {
   tabCreate,
 } from './tab_func.js';
 
+import { notedelete } from './contextmenu.js';
+
 let tab = document.getElementById('tab');
 let conme = document.getElementById('contextmenu');
 let conme2 = document.getElementById('contextmenu2');
@@ -283,12 +285,9 @@ window.addEventListener('DOMContentLoaded', function () {
         .call(elements)
         .indexOf(listTitle.titleThis.parentNode);
       index++;
-      // console.log(
-      //   `id:${listTitle.id},title:${listTitle.title},order:${index},parent_id:${listTitle.titleThis.parentNode.parentNode.id}`
-      // );
-      //console.log(listTitle.titleThis);
-      document.getElementById('delete').onclick = function () {
-        var btn = confirm(`${listTitle.title} を本当に削除しますか？`);
+
+      document.getElementById('delete').onclick = () => {
+        let btn = confirm(`${listTitle.title} を本当に削除しますか？`);
         let tabelements = document.getElementsByClassName('tab-content');
         let tabId = document.getElementById(`Tab-ID${listTitle.id}`);
         let tabIndex = [].slice.call(tabelements).indexOf(tabId);
@@ -697,9 +696,11 @@ window.addEventListener('DOMContentLoaded', function () {
           pass,
         }),
         success: function (res) {
-          let tabelements = document.getElementsByClassName('tab-content');
-          let tabId = document.getElementById(`Tab-ID${ID}`);
-          let index = [].slice.call(tabelements).indexOf(tabId);
+          // let tabelements = document.getElementsByClassName('tab-content');
+          // let tabId = document.getElementById(`Tab-ID${ID}`);
+          // let index = [].slice.call(tabelements).indexOf(tabId);
+          index = orderGet('tab-content', `Tab-ID${ID}`);
+          console.log(index);
           //orderを格納し、focus=1へ
           $.ajax({
             url: '/mypage/',
@@ -710,7 +711,7 @@ window.addEventListener('DOMContentLoaded', function () {
               data: 'tab',
               flg: 'clickTab',
               id: ID,
-              order: index + 1,
+              order: index,
               title: listTitle.title,
             }),
             success: function (res) {
@@ -1631,4 +1632,12 @@ window.addEventListener('DOMContentLoaded', function () {
       success: function (res) {},
     });
   });
+
+  //順番を返す関数
+  const orderGet = (group, target) => {
+    let elements = document.getElementsByClassName(group);
+    let element = document.getElementById(target);
+    let index = [].slice.call(elements).indexOf(element);
+    return index + 1;
+  };
 });
