@@ -958,7 +958,9 @@ window.addEventListener('DOMContentLoaded', function () {
           initial_index = [].slice.call(elements).indexOf(item[0]);
           initial_index++;
           parent_id_Tmp = item[0].parentNode.id;
-          //console.log(item.prevObject[0].id);
+          console.log(item);
+          console.log(item.prevObject[0]);
+          console.log(item.prevObject[0].id);
           id_tmp = item.prevObject[0].id;
           id_tmp2 = item.prevObject[0].id;
           console.log(id);
