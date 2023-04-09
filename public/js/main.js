@@ -1,15 +1,10 @@
-let right = document.getElementById('right');
-let rightClicks = document.getElementsByClassName('rightclick'); //右クッリクエリア（ここではcontainer0）
-let listTitles = document.getElementsByClassName('list_title');
+import { keepButton, cancelButton } from './tab_func';
+
 let tab = document.getElementById('tab');
 let conme = document.getElementById('contextmenu');
 let conme2 = document.getElementById('contextmenu2');
 let conme3 = document.getElementById('contextmenu3');
 let conme4 = document.getElementById('contextmenu4');
-let idGet = document.getElementsByClassName('idGet');
-let hitarea = document.getElementsByClassName('hitarea');
-let borderTmp; //枠のついたlistTitles一時保持
-let borderArray;
 var idArray = []; //tab生成時にidを配列へ格納
 let tabFocus;
 let initial_index;
@@ -18,7 +13,6 @@ let list;
 let tmpArray = [];
 let fileFlg = false;
 let folderFlg = false;
-let userName;
 
 window.addEventListener('DOMContentLoaded', function () {
   //listの作成
@@ -272,7 +266,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
       listTitle.titleThis.style.backgroundColor = '#A7F1FF';
       listTitle.titleThis.style.borderRadius = '10px';
-      borderTmp = listTitle.titleThis;
 
       let elements = document.getElementsByClassName(
         `parent${listTitle.titleThis.parentNode.parentNode.id}`
@@ -885,6 +878,7 @@ window.addEventListener('DOMContentLoaded', function () {
             inputEdit.style.display = 'none';
             //[保存する]ボタン押下
 
+            let pass = passGet(Id, titletext.value);
             inputKeep.onclick = function () {
               keepButton(
                 Id,
@@ -896,7 +890,8 @@ window.addEventListener('DOMContentLoaded', function () {
                 inputEdit,
                 time,
                 titletext.value,
-                titletext
+                titletext,
+                pass
               );
             };
             //[取り消す]ボタン押下
@@ -1005,95 +1000,95 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  function keepButton(
-    id,
-    textarea,
-    p1,
-    fadeFont,
-    inputKeep,
-    inputCancel,
-    inputEdit,
-    time,
-    newTitle,
-    titletext
-  ) {
-    let pass = passGet(id, newTitle);
-    $.ajax({
-      url: '/mypage/',
-      type: 'POST',
-      dataType: 'Json',
-      contentType: 'application/json',
-      data: JSON.stringify({
-        data: 'note',
-        flg: 'noteKeep',
-        id: id,
-        titleContent: newTitle, //p.innerHTML,
-        memoContent: textarea.value, //ここに入力した値が入る
-        pass,
-      }),
-      success: function (res) {
-        //console.log(res.response2);
-        fadeFont.style.visibility = 'visible';
-        //1000ミリ秒後に表示を隠す
-        setTimeout(function () {
-          fadeFont.style.visibility = 'hidden';
-          // updateTime.innerHTML = res.response2.saved_time;
-        }, 1000);
-      },
-    });
-    p1.remove();
-    inputKeep.remove();
-    inputCancel.remove();
-    document.getElementById(`tabP${id}`).innerHTML = newTitle;
-    document.getElementById(`tabP${id}`).style.display = 'block';
-    document.getElementById(`tabname${id}`).innerHTML = newTitle;
-    document.getElementById(`li${id}`).innerHTML = newTitle;
-    titletext.remove();
-    inputEdit.style.display = 'block';
-    textarea.readOnly = true;
-    updateTime(id, time);
-    document.getElementById('notepass').innerHTML = pass;
-  }
+  // function keepButton(
+  //   id,
+  //   textarea,
+  //   p1,
+  //   fadeFont,
+  //   inputKeep,
+  //   inputCancel,
+  //   inputEdit,
+  //   time,
+  //   newTitle,
+  //   titletext
+  // ) {
+  //   let pass = passGet(id, newTitle);
+  //   $.ajax({
+  //     url: '/mypage/',
+  //     type: 'POST',
+  //     dataType: 'Json',
+  //     contentType: 'application/json',
+  //     data: JSON.stringify({
+  //       data: 'note',
+  //       flg: 'noteKeep',
+  //       id: id,
+  //       titleContent: newTitle, //p.innerHTML,
+  //       memoContent: textarea.value, //ここに入力した値が入る
+  //       pass,
+  //     }),
+  //     success: function (res) {
+  //       //console.log(res.response2);
+  //       fadeFont.style.visibility = 'visible';
+  //       //1000ミリ秒後に表示を隠す
+  //       setTimeout(function () {
+  //         fadeFont.style.visibility = 'hidden';
+  //         // updateTime.innerHTML = res.response2.saved_time;
+  //       }, 1000);
+  //     },
+  //   });
+  //   p1.remove();
+  //   inputKeep.remove();
+  //   inputCancel.remove();
+  //   document.getElementById(`tabP${id}`).innerHTML = newTitle;
+  //   document.getElementById(`tabP${id}`).style.display = 'block';
+  //   document.getElementById(`tabname${id}`).innerHTML = newTitle;
+  //   document.getElementById(`li${id}`).innerHTML = newTitle;
+  //   titletext.remove();
+  //   inputEdit.style.display = 'block';
+  //   textarea.readOnly = true;
+  //   updateTime(id, time);
+  //   document.getElementById('notepass').innerHTML = pass;
+  // }
 
-  function cancelButton(
-    id,
-    p1,
-    inputKeep,
-    inputCancel,
-    inputEdit,
-    textarea,
-    titletext
-  ) {
-    console.log('取り消すクリック');
-    let btn = confirm(
-      '本当に編集を取り消しますか？\n保存していないものは取り消されます。'
-    );
-    if (btn) {
-      $.ajax({
-        url: '/mypage/',
-        type: 'POST',
-        dataType: 'Json',
-        contentType: 'application/json',
-        data: JSON.stringify({
-          data: 'note',
-          flg: 'info',
-          id: id,
-        }),
-        success: function (res) {
-          //console.log(`取り消し成功！ ${res.response.memo_text}`);
-          textarea.value = res.response.memo_text;
-          //document.getElementById(`tabP${id}`).innerHTML = res.response.title;
-        },
-      });
-      document.getElementById(`tabP${id}`).style.display = 'block';
-      p1.remove();
-      inputKeep.remove();
-      inputCancel.remove();
-      titletext.remove();
-      inputEdit.style.display = 'block';
-      textarea.readOnly = true;
-    }
-  }
+  // function cancelButton(
+  //   id,
+  //   p1,
+  //   inputKeep,
+  //   inputCancel,
+  //   inputEdit,
+  //   textarea,
+  //   titletext
+  // ) {
+  //   console.log('取り消すクリック');
+  //   let btn = confirm(
+  //     '本当に編集を取り消しますか？\n保存していないものは取り消されます。'
+  //   );
+  //   if (btn) {
+  //     $.ajax({
+  //       url: '/mypage/',
+  //       type: 'POST',
+  //       dataType: 'Json',
+  //       contentType: 'application/json',
+  //       data: JSON.stringify({
+  //         data: 'note',
+  //         flg: 'info',
+  //         id: id,
+  //       }),
+  //       success: function (res) {
+  //         //console.log(`取り消し成功！ ${res.response.memo_text}`);
+  //         textarea.value = res.response.memo_text;
+  //         //document.getElementById(`tabP${id}`).innerHTML = res.response.title;
+  //       },
+  //     });
+  //     document.getElementById(`tabP${id}`).style.display = 'block';
+  //     p1.remove();
+  //     inputKeep.remove();
+  //     inputCancel.remove();
+  //     titletext.remove();
+  //     inputEdit.style.display = 'block';
+  //     textarea.readOnly = true;
+  //   }
+  // }
 
   function closeTab(id, index) {
     document.getElementById('TAB-ID' + id).remove();
