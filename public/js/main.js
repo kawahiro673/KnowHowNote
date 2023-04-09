@@ -721,7 +721,7 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 
   //ページを更新した際に前回のタブ情報を載せる
-  async function tabUpload() {
+  function tabUpload() {
     $.ajax({
       url: '/mypage/',
       type: 'POST',
