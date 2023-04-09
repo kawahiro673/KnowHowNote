@@ -732,7 +732,6 @@ window.addEventListener('DOMContentLoaded', function () {
         flg: 'tabDesc',
       }),
       success: async function (res) {
-        console.log(res.response);
         for (const tab of res.response) {
           await titleClick(tab.id, tab.tabTitle);
         }
@@ -773,8 +772,8 @@ window.addEventListener('DOMContentLoaded', function () {
             id: Id,
           }),
           success: function (res) {
+            //resolve()を呼び出すことで、Promiseオブジェクトが完了したことを示すことができる
             resolve();
-            console.log(res.response);
             //input生成
             const inputTab = document.createElement('input');
             inputTab.setAttribute('id', 'TAB-ID' + Id);
@@ -858,7 +857,7 @@ window.addEventListener('DOMContentLoaded', function () {
             idArray.push(Id);
             //「編集する」ボタンクリック
             inputEdit.onclick = function () {
-              var p1 = document.createElement('p');
+              let p1 = document.createElement('p');
               p1.innerHTML =
                 '※現在編集中です。編集完了後【保存する】ボタンを押してください';
               div.appendChild(p1);
@@ -871,8 +870,8 @@ window.addEventListener('DOMContentLoaded', function () {
               document.getElementById(`tabP${Id}`).after(titletext);
               document.getElementById(`tabP${Id}`).style.display = 'none';
 
-              var inputKeep = document.createElement('input');
-              var inputCancel = document.createElement('input');
+              let inputKeep = document.createElement('input');
+              let inputCancel = document.createElement('input');
               inputKeep.type = 'submit';
               inputKeep.value = '保存する';
               inputCancel.type = 'submit';
@@ -921,6 +920,7 @@ window.addEventListener('DOMContentLoaded', function () {
             //タブ上の「✖️」ボタン押下
             buttonTab.onclick = () => {
               closeButton(Id, title, tabFocus, idArray);
+              console.log(idArray);
             };
 
             //タブをクリックした際の処理

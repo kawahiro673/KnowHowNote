@@ -193,7 +193,7 @@ export const closeTab = (id, index, tabFocus, idArray) => {
 
   //タブ削除したタイトルのIDをidArrayから削除
   idArray = idArray.filter((n) => n !== id);
-  //タブ全削除判定
+  //タブを全削除したらnotabを表示
   if (idArray.length == 0) {
     document.getElementById('notab').style.display = 'block';
     document.getElementById('notepass').innerHTML = '';
