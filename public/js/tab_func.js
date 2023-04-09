@@ -11,7 +11,7 @@ export const keepButton = (
   newTitle,
   titletext
 ) => {
-  passGet(id, newTitle);
+  let pass = passGet(id, newTitle);
   $.ajax({
     url: '/mypage/',
     type: 'POST',
