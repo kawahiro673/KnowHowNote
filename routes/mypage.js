@@ -83,7 +83,7 @@ router
               [1, req.body.pass, req.body.id],
               (error, result) => {
                 pool.query(
-                  'UPDATE tab_hold SET focus = ? where id ! = ? AND (UserID = ?)',
+                  'UPDATE tab_hold SET focus = ? where id != ? AND (UserID = ?)',
                   [0, req.body.id, resultDecoded[0].id],
                   (error, results) => {
                     res.send({ response: result });
