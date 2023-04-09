@@ -1,4 +1,4 @@
-import { keepButton, cancelButton, shareButton } from './tab_func.js';
+import { keepButton, cancelButton, shareButton, aaa } from './tab_func.js';
 
 let tab = document.getElementById('tab');
 let conme = document.getElementById('contextmenu');
@@ -879,7 +879,7 @@ window.addEventListener('DOMContentLoaded', function () {
             //[保存する]ボタン押下
 
             let pass = passGet(Id, titletext.value);
-            inputKeep.onclick = function () {
+            inputKeep.onclick = () => {
               keepButton(
                 Id,
                 textarea,
@@ -895,7 +895,7 @@ window.addEventListener('DOMContentLoaded', function () {
               );
             };
             //[取り消す]ボタン押下
-            inputCancel.onclick = function () {
+            inputCancel.onclick = () => {
               cancelButton(
                 Id,
                 p1,
@@ -908,13 +908,12 @@ window.addEventListener('DOMContentLoaded', function () {
             };
           };
 
-          inputShare.onclick = function () {
+          inputShare.onclick = () => {
             shareButton(Id);
           };
 
           //タブ上の「✖️」ボタン押下
           buttonTab.onclick = function () {
-            console.log(`id:${Id}, title:"${title}"タブを閉じました`);
             let tabelements = document.getElementsByClassName('tab-content');
             let tabId = document.getElementById(`Tab-ID${Id}`);
             let index = [].slice.call(tabelements).indexOf(tabId);
@@ -931,9 +930,7 @@ window.addEventListener('DOMContentLoaded', function () {
                 id: Id,
                 title,
               }),
-              success: function (res) {
-                //console.log(res.response);
-              },
+              success: function (res) {},
             });
           };
           //タブをクリックした際の処理
@@ -1837,4 +1834,5 @@ window.addEventListener('DOMContentLoaded', function () {
       success: function (res) {},
     });
   });
+  aaa('やあ');
 });
