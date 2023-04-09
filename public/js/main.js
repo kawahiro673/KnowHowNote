@@ -142,7 +142,7 @@ window.addEventListener('DOMContentLoaded', function () {
           });
 
           let fol = document.getElementsByClassName('folder');
-          for (i = 0; i < fol.length; i++) {
+          for (let i = 0; i < fol.length; i++) {
             fol[i].addEventListener('click', function () {
               let closedFlg = 0;
               console.log(this.id.replace(/[^0-9]/g, ''));
