@@ -1,20 +1,9 @@
-import {
-  keepButton,
-  cancelButton,
-  shareButton,
-  passGet,
-  updateTime,
-  closeTab,
-  closeButton,
-  tabClick,
-  deleteTabArray,
-  tabCreate,
-} from './tab_func.js';
+import { closeTab, deleteTabArray } from './tab_func.js';
 
 let tmp1;
 let tmp2;
 
-export const notedelete = (listTitle, tabIndex, index, tabArray, tabFocus) => {
+export const noteDelete = (listTitle, tabIndex, index, tabArray, tabFocus) => {
   //はいを押した場合(true)
   //まずはタブ削除
   let btn = confirm(`${listTitle.title} を本当に削除しますか？`);

@@ -13,10 +13,11 @@ import {
 
 import {
   noteColorChange,
-  notedelete,
+  noteDelete,
   noteNameChange,
   bodyClickJuge,
-} from './contextmenu.js';
+} from './note_contextmenu.js';
+import { folderDelete } from './folder_contextmenu.js';
 
 let tmp1;
 let tmp2;
@@ -296,7 +297,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
       document.getElementById('delete').onclick = () => {
         let tabIndex = orderGet('tab-content', `Tab-ID${listTitle.id}`);
-        notedelete(listTitle, tabIndex, index, tabArray, tabFocus);
+        noteDelete(listTitle, tabIndex, index, tabArray, tabFocus);
       };
 
       $(document).ready(function () {
@@ -312,43 +313,6 @@ window.addEventListener('DOMContentLoaded', function () {
         $('#color').on('click', function (event) {
           event.preventDefault();
           noteColorChange(listTitle);
-          // console.log('colorクリック!');
-          // //タイトルが赤色だった場合
-          // if (listTitle.titleThis.style.color == 'red') {
-          //   $.ajax({
-          //     url: '/mypage/',
-          //     type: 'POST',
-          //     dataType: 'Json',
-          //     contentType: 'application/json',
-          //     data: JSON.stringify({
-          //       data: 'color',
-          //       id: listTitle.id,
-          //       color: 'black',
-          //     }),
-          //     success: function (res) {
-          //       console.log(`success受信(color) : "${res.response}"`);
-          //       listTitle.titleThis.style.color = res.response;
-          //     },
-          //   });
-          //   //タイトルが黒の場合に実行
-          // } else {
-          //   console.log('blackの場合');
-          //   $.ajax({
-          //     url: '/mypage/',
-          //     type: 'POST',
-          //     dataType: 'Json',
-          //     contentType: 'application/json',
-          //     data: JSON.stringify({
-          //       data: 'color',
-          //       id: listTitle.id,
-          //       color: 'red',
-          //     }),
-          //     success: function (res) {
-          //       console.log(`success受信(color) : "${res.response}"`);
-          //       listTitle.titleThis.style.color = res.response;
-          //     },
-          //   });
-          // }
         });
       });
 
@@ -388,62 +352,60 @@ window.addEventListener('DOMContentLoaded', function () {
       console.log(
         `id:${folderList.folderId},title:${folderList.folderTitle},order:${index},parent_id:${folderList.folderThis.parentNode.parentNode.id}`
       );
-      //console.log(folderList.folderThis);
-      document.getElementById('folderDelete').onclick = function () {
-        let btn = confirm(
-          `${folderList.folderTitle} 配下のフォルダやノートも全て削除されますが本当に削除しますか？`
-        );
 
-        //はいを押した場合(true)
-        if (btn) {
-          $.ajax({
-            url: '/mypage/',
-            type: 'POST',
-            dataType: 'Json',
-            contentType: 'application/json',
-            data: JSON.stringify({
-              data: 'folder',
-              flg: 'folderDel',
-              id: folderList.folderId,
-              title: folderList.folderTitle,
-              order: index,
-              parentId: folderList.folderThis.parentNode.parentNode.id,
-            }),
-            success: function (res) {
-              //成功！！ここにリストから消した際のタブ削除と、リスト削除を記載→タブの✖️を押下したことにすれば良いのでは？？
-              $(`#folder${res.response}`).parent().remove();
-              // console.log(res.response1);
-              // console.log(res.response2);
-              $.ajax({
-                url: '/mypage/',
-                type: 'POST',
-                dataType: 'Json',
-                contentType: 'application/json',
-                data: JSON.stringify({
-                  data: 'childFolder',
-                  id: folderList.folderId,
-                  file: res.response1,
-                  folder: res.response2,
-                }),
-                success: function (res) {
-                  console.log(res.response);
-                  //削除されたファイルのタブを削除する
-                  for (i = 0; i < res.response.length; i++) {
-                    //idArrayが文字列で格納されているため、num→String変換
-                    if (tabArray.includes(String(res.response[i]))) {
-                      closeTab(res.response[i], undefined, tabFocus, tabArray);
-                      //idArrayの中にあるlistTitle.idを削除
-                      tabArray = deleteTabArray(
-                        String(res.response[i]),
-                        tabArray
-                      );
-                    }
-                  }
-                },
-              });
-            },
-          });
-        }
+      document.getElementById('folderDelete').onclick = function () {
+        folderDelete(folderList, index, tabArray, tabFocus);
+        // let btn = confirm(
+        //   `${folderList.folderTitle} 配下のフォルダやノートも全て削除されますが本当に削除しますか？`
+        // );
+        // //はいを押した場合(true)
+        // if (btn) {
+        //   $.ajax({
+        //     url: '/mypage/',
+        //     type: 'POST',
+        //     dataType: 'Json',
+        //     contentType: 'application/json',
+        //     data: JSON.stringify({
+        //       data: 'folder',
+        //       flg: 'folderDel',
+        //       id: folderList.folderId,
+        //       title: folderList.folderTitle,
+        //       order: index,
+        //       parentId: folderList.folderThis.parentNode.parentNode.id,
+        //     }),
+        //     success: function (res) {
+        //       //成功！！ここにリストから消した際のタブ削除と、リスト削除を記載→タブの✖️を押下したことにすれば良いのでは？？
+        //       $(`#folder${res.response}`).parent().remove();
+        //       $.ajax({
+        //         url: '/mypage/',
+        //         type: 'POST',
+        //         dataType: 'Json',
+        //         contentType: 'application/json',
+        //         data: JSON.stringify({
+        //           data: 'childFolder',
+        //           id: folderList.folderId,
+        //           file: res.response1,
+        //           folder: res.response2,
+        //         }),
+        //         success: function (res) {
+        //           console.log(res.response);
+        //           //削除されたファイルのタブを削除する
+        //           for (i = 0; i < res.response.length; i++) {
+        //             //idArrayが文字列で格納されているため、num→String変換
+        //             if (tabArray.includes(String(res.response[i]))) {
+        //               closeTab(res.response[i], undefined, tabFocus, tabArray);
+        //               //idArrayの中にあるlistTitle.idを削除
+        //               tabArray = deleteTabArray(
+        //                 String(res.response[i]),
+        //                 tabArray
+        //               );
+        //             }
+        //           }
+        //         },
+        //       });
+        //     },
+        //   });
+        // }
       };
       $(document).ready(function () {
         $('#folderName').off('click');
