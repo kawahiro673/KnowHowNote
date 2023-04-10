@@ -287,7 +287,7 @@ window.addEventListener('DOMContentLoaded', function () {
       index++;
 
       document.getElementById('delete').onclick = () => {
-        tabIndex = orderGet('tab-content', `Tab-ID${listTitle.id}`);
+        let tabIndex = orderGet('tab-content', `Tab-ID${listTitle.id}`);
         notedelete(listTitle, tabIndex, index);
         // //はいを押した場合(true)
         // //まずはタブ削除
