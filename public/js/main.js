@@ -11,7 +11,13 @@ import {
   tabCreate,
 } from './tab_func.js';
 
-import { notedelete, noteNameChange } from './contextmenu.js';
+import {
+  noteColorChange,
+  notedelete,
+  noteNameChange,
+  noteColorChange,
+  bodyClickJuge,
+} from './contextmenu.js';
 
 let tmp1;
 let tmp2;
@@ -298,77 +304,6 @@ window.addEventListener('DOMContentLoaded', function () {
         $('#name').off('click');
         $('#name').on('click', function (event) {
           noteNameChange(listTitle);
-          // console.log('nameをクリックしました');
-          // //テキストの作成
-          // const inputTab = document.createElement('input');
-          // inputTab.setAttribute('type', 'text');
-          // inputTab.setAttribute('id', 'inputTab');
-          // inputTab.setAttribute('name', 'list_title');
-          // inputTab.setAttribute('maxlength', '20');
-          // inputTab.setAttribute('size', '20');
-          // inputTab.style.display = 'block';
-          // inputTab.setAttribute('value', listTitle.title);
-          // listTitle.titleThis.after(inputTab);
-          // listTitle.titleThis.style.display = 'none';
-          // //テキストエリアにフォーカスを当ててカーソルを末尾へ
-          // let len = inputTab.value.length;
-          // document.getElementById('inputTab').focus();
-          // document.getElementById('inputTab').setSelectionRange(len, len);
-          // //Enter押下で変更する
-          // inputTab.addEventListener('keypress', function (e) {
-          //   //Enter判定
-          //   if (e.keyCode === 13) {
-          //     //何も入力されていない時や空白や改行のみの入力
-          //     if (!inputTab.value || !inputTab.value.match(/\S/g)) {
-          //       alert('タイトルを入力してください');
-          //     } else {
-          //       //console.log(inputTab.value, listTitle.title);
-          //       $.ajax({
-          //         url: '/mypage/',
-          //         type: 'POST',
-          //         dataType: 'Json',
-          //         contentType: 'application/json',
-          //         data: JSON.stringify({
-          //           data: 'note',
-          //           flg: 'name',
-          //           id: listTitle.id,
-          //           title: inputTab.value,
-          //           oldTitle: listTitle.title, //変更前のタイトル
-          //         }),
-          //         success: function (res) {
-          //           //console.log(`success受信(title) : "${res.response1}"`);
-          //           listTitle.titleThis.style.display = 'block';
-          //           listTitle.titleThis.innerHTML = res.response1;
-          //           inputTab.remove();
-          //           //タブが生成済みの場合
-          //           if (res.response2 != undefined) {
-          //             //リアルタイムにタイトル更新
-          //             document.getElementById(
-          //               `tabname${listTitle.id}`
-          //             ).innerHTML = res.response1;
-          //             document.getElementById(`tabP${listTitle.id}`).innerHTML =
-          //               res.response1;
-          //             //passを正しく表示する2点セット
-          //             //1.focusが当たってたらパス更新
-          //             if (res.response3 == 1) {
-          //               document.getElementById('notepass').innerHTML =
-          //                 res.response2;
-          //             }
-          //             //2.タブクリック時にパス更新
-          //             document.getElementById(`tab-ID${listTitle.id}`).onclick =
-          //               function (e) {
-          //                 document.getElementById('notepass').innerHTML =
-          //                   res.response2;
-          //               };
-          //           }
-          //         },
-          //       });
-          //     }
-          //   }
-          // });
-          // tmp1 = inputTab;
-          // tmp2 = listTitle.titleThis;
-          // document.addEventListener('mousedown', eventFunc);
         });
       });
 
@@ -377,43 +312,44 @@ window.addEventListener('DOMContentLoaded', function () {
         $('#color').off('click');
         $('#color').on('click', function (event) {
           event.preventDefault();
-          console.log('colorクリック!');
-          //タイトルが赤色だった場合
-          if (listTitle.titleThis.style.color == 'red') {
-            $.ajax({
-              url: '/mypage/',
-              type: 'POST',
-              dataType: 'Json',
-              contentType: 'application/json',
-              data: JSON.stringify({
-                data: 'color',
-                id: listTitle.id,
-                color: 'black',
-              }),
-              success: function (res) {
-                console.log(`success受信(color) : "${res.response}"`);
-                listTitle.titleThis.style.color = res.response;
-              },
-            });
-            //タイトルが黒の場合に実行
-          } else {
-            console.log('blackの場合');
-            $.ajax({
-              url: '/mypage/',
-              type: 'POST',
-              dataType: 'Json',
-              contentType: 'application/json',
-              data: JSON.stringify({
-                data: 'color',
-                id: listTitle.id,
-                color: 'red',
-              }),
-              success: function (res) {
-                console.log(`success受信(color) : "${res.response}"`);
-                listTitle.titleThis.style.color = res.response;
-              },
-            });
-          }
+          noteColorChange(listTitle);
+          // console.log('colorクリック!');
+          // //タイトルが赤色だった場合
+          // if (listTitle.titleThis.style.color == 'red') {
+          //   $.ajax({
+          //     url: '/mypage/',
+          //     type: 'POST',
+          //     dataType: 'Json',
+          //     contentType: 'application/json',
+          //     data: JSON.stringify({
+          //       data: 'color',
+          //       id: listTitle.id,
+          //       color: 'black',
+          //     }),
+          //     success: function (res) {
+          //       console.log(`success受信(color) : "${res.response}"`);
+          //       listTitle.titleThis.style.color = res.response;
+          //     },
+          //   });
+          //   //タイトルが黒の場合に実行
+          // } else {
+          //   console.log('blackの場合');
+          //   $.ajax({
+          //     url: '/mypage/',
+          //     type: 'POST',
+          //     dataType: 'Json',
+          //     contentType: 'application/json',
+          //     data: JSON.stringify({
+          //       data: 'color',
+          //       id: listTitle.id,
+          //       color: 'red',
+          //     }),
+          //     success: function (res) {
+          //       console.log(`success受信(color) : "${res.response}"`);
+          //       listTitle.titleThis.style.color = res.response;
+          //     },
+          //   });
+          // }
         });
       });
 
@@ -421,8 +357,6 @@ window.addEventListener('DOMContentLoaded', function () {
         'mousedown',
         (e) => {
           let flg = false;
-          // console.log(e.target);
-          // console.log(listTitle.titleThis);
           if (e.target == listTitle.titleThis) flg = true;
           bodyClickJuge(listTitle.titleThis, null, flg, 'backgroundColor');
         },

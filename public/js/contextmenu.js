@@ -11,6 +11,9 @@ import {
   tabCreate,
 } from './tab_func.js';
 
+let tmp1;
+let tmp2;
+
 export const notedelete = (listTitle, tabIndex, index, tabArray, tabFocus) => {
   //はいを押した場合(true)
   //まずはタブ削除
@@ -59,9 +62,6 @@ export const notedelete = (listTitle, tabIndex, index, tabArray, tabFocus) => {
     });
   }
 };
-
-let tmp1;
-let tmp2;
 
 export const noteNameChange = (listTitle) => {
   console.log('nameをクリックしました');
@@ -147,7 +147,7 @@ function eventFunc(e) {
 }
 
 //右・左クリック時にいろんなものを消したり戻したり。。。
-function bodyClickJuge(target1, target2, flg1, flg2) {
+export const bodyClickJuge = (target1, target2, flg1, flg2) => {
   if (flg1) {
     //console.log('同じ要素です');
   } else {
@@ -159,4 +159,44 @@ function bodyClickJuge(target1, target2, flg1, flg2) {
       target2.style.display = 'block';
     }
   }
-}
+};
+
+export const noteColorChange = (listTitle) => {
+  console.log('colorクリック!');
+  //タイトルが赤色だった場合
+  if (listTitle.titleThis.style.color == 'red') {
+    $.ajax({
+      url: '/mypage/',
+      type: 'POST',
+      dataType: 'Json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        data: 'color',
+        id: listTitle.id,
+        color: 'black',
+      }),
+      success: function (res) {
+        console.log(`success受信(color) : "${res.response}"`);
+        listTitle.titleThis.style.color = res.response;
+      },
+    });
+    //タイトルが黒の場合に実行
+  } else {
+    console.log('blackの場合');
+    $.ajax({
+      url: '/mypage/',
+      type: 'POST',
+      dataType: 'Json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        data: 'color',
+        id: listTitle.id,
+        color: 'red',
+      }),
+      success: function (res) {
+        console.log(`success受信(color) : "${res.response}"`);
+        listTitle.titleThis.style.color = res.response;
+      },
+    });
+  }
+};
