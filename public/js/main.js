@@ -15,7 +15,6 @@ import {
   noteColorChange,
   notedelete,
   noteNameChange,
-  noteColorChange,
   bodyClickJuge,
 } from './contextmenu.js';
 
