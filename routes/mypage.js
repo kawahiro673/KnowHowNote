@@ -21,19 +21,16 @@ router
         pool.query(
           'select tab_hold.id, it_memo.title, it_memo.memo_text from tab_hold left join it_memo on tab_hold.id = it_memo.id;',
           (error, results) => {
-            return [result, results];
+            return [results];
           }
         );
       })
-      .then(([result, results]) => {
-        const result1 = result;
+      .then((results) => {
         const results1 = results;
         pool.query(
           'select * from folder order by folder_order ASC',
           (error, result_folder) => {
             res.render('index.ejs', {
-              old_memo: result1,
-              tab_memo: results1,
               folderList: result_folder,
             });
           }
