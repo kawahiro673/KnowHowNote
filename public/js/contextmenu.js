@@ -11,7 +11,7 @@ import {
   tabCreate,
 } from './tab_func.js';
 
-export const notedelete = (listTitle, tabIndex, index, tabArray) => {
+export const notedelete = (listTitle, tabIndex, index, tabArray, tabFocus) => {
   //はいを押した場合(true)
   //まずはタブ削除
   let btn = confirm(`${listTitle.title} を本当に削除しますか？`);
