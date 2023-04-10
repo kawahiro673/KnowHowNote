@@ -55,7 +55,7 @@ export const folderDelete = (folderList, index, tabArray, tabFocus) => {
   }
 };
 
-export const folderNameChange = () => {
+export const folderNameChange = (folderList) => {
   console.log('folderNameをクリックしました');
   //テキストの作成
   const inputTab = document.createElement('input');
