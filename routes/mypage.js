@@ -11,33 +11,34 @@ router
     let promise = new Promise((resolve, reject) => {
       resolve();
     });
-    promise.then(() => {
-      pool.query('select * from it_memo', (error, result) => {
-        return result;
+    promise
+      .then(() => {
+        pool.query('select * from it_memo', (error, result) => {
+          return result;
+        });
+      })
+      .then((result) => {
+        pool.query(
+          'select tab_hold.id, it_memo.title, it_memo.memo_text from tab_hold left join it_memo on tab_hold.id = it_memo.id;',
+          (error, results) => {
+            return [result, results];
+          }
+        );
+      })
+      .then(([result, results]) => {
+        const result1 = result;
+        const results1 = results;
+        pool.query(
+          'select * from folder order by folder_order ASC',
+          (error, result_folder) => {
+            res.render('index.ejs', {
+              old_memo: result1,
+              tab_memo: results1,
+              folderList: result_folder,
+            });
+          }
+        );
       });
-    });
-    promise.then((result) => {
-      pool.query(
-        'select tab_hold.id, it_memo.title, it_memo.memo_text from tab_hold left join it_memo on tab_hold.id = it_memo.id;',
-        (error, results) => {
-          return [result, results];
-        }
-      );
-    });
-    promise.then((resultArray) => {
-      pool.query(
-        'select * from folder order by folder_order ASC',
-        (error, result_folder) => {
-          console.log(resultArray);
-          [result, results] = resultArray;
-          res.render('index.ejs', {
-            old_memo: result,
-            tab_memo: results,
-            folderList: result_folder,
-          });
-        }
-      );
-    });
 
     // pool.query(
     //   //リストを表示するため（selectで全て表示するため）
