@@ -287,56 +287,54 @@ window.addEventListener('DOMContentLoaded', function () {
       index++;
 
       document.getElementById('delete').onclick = () => {
-        let btn = confirm(`${listTitle.title} を本当に削除しますか？`);
-        let tabelements = document.getElementsByClassName('tab-content');
-        let tabId = document.getElementById(`Tab-ID${listTitle.id}`);
-        let tabIndex = [].slice.call(tabelements).indexOf(tabId);
+        tabIndex = orderGet('tab-content', `Tab-ID${listTitle.id}`);
+        notedelete(listTitle, tabIndex, index);
+        // //はいを押した場合(true)
+        // //まずはタブ削除
+        // let btn = confirm(`${listTitle.title} を本当に削除しますか？`);
+        // if (btn) {
+        //   $.ajax({
+        //     url: '/mypage/',
+        //     type: 'POST',
+        //     dataType: 'Json',
+        //     contentType: 'application/json',
+        //     data: JSON.stringify({
+        //       data: 'tab',
+        //       flg: 'tabDel',
+        //       id: listTitle.id,
+        //       order: tabIndex,
+        //     }),
+        //     success: function (res) {
+        //       //成功！！ここにリストから消した際のタブ削除と、リスト削除を記載→タブの✖️を押下したことにすれば良いのでは？？
+        //       let parentid = listTitle.titleThis.parentNode.parentNode.id;
+        //       $(`#li${listTitle.id}`).parent().remove();
 
-        //はいを押した場合(true)
-        //まずはタブ削除
-        if (btn) {
-          $.ajax({
-            url: '/mypage/',
-            type: 'POST',
-            dataType: 'Json',
-            contentType: 'application/json',
-            data: JSON.stringify({
-              data: 'tab',
-              flg: 'tabDel',
-              id: listTitle.id,
-              order: tabIndex,
-            }),
-            success: function (res) {
-              //成功！！ここにリストから消した際のタブ削除と、リスト削除を記載→タブの✖️を押下したことにすれば良いのでは？？
-              let parentid = listTitle.titleThis.parentNode.parentNode.id;
-              $(`#li${listTitle.id}`).parent().remove();
+        //       listTitle.id = Number(listTitle.id);
+        //       if (tabArray.includes(listTitle.id)) {
+        //         closeTab(listTitle.id, tabIndex, tabFocus, tabArray);
+        //         //idArrayの中にあるlistTitle.idを削除
+        //         tabArray = deleteTabArray(listTitle.id, tabArray);
+        //       }
 
-              listTitle.id = Number(listTitle.id);
-              if (tabArray.includes(listTitle.id)) {
-                closeTab(listTitle.id, tabIndex, tabFocus, tabArray);
-                //idArrayの中にあるlistTitle.idを削除
-                tabArray = deleteTabArray(listTitle.id, tabArray);
-              }
-
-              $.ajax({
-                url: '/mypage/',
-                type: 'POST',
-                dataType: 'Json',
-                contentType: 'application/json',
-                data: JSON.stringify({
-                  data: 'note',
-                  flg: 'delete',
-                  id: listTitle.id,
-                  order: index,
-                  parentId: parentid,
-                }),
-                success: function (res) {
-                  console.log(`${res.response}を削除しました`);
-                },
-              });
-            },
-          });
-        }
+        //       $.ajax({
+        //         url: '/mypage/',
+        //         type: 'POST',
+        //         dataType: 'Json',
+        //         contentType: 'application/json',
+        //         data: JSON.stringify({
+        //           data: 'note',
+        //           flg: 'delete',
+        //           id: listTitle.id,
+        //           order: index,
+        //           parentId: parentid,
+        //         }),
+        //         success: function (res) {
+        //           console.log(`${res.response}を削除しました`);
+        //         },
+        //       });
+        //     },
+        //   });
+        // }
       };
 
       $(document).ready(function () {
@@ -696,11 +694,7 @@ window.addEventListener('DOMContentLoaded', function () {
           pass,
         }),
         success: function (res) {
-          // let tabelements = document.getElementsByClassName('tab-content');
-          // let tabId = document.getElementById(`Tab-ID${ID}`);
-          // let index = [].slice.call(tabelements).indexOf(tabId);
           let index = orderGet('tab-content', `Tab-ID${ID}`);
-          console.log(index);
           //orderを格納し、focus=1へ
           $.ajax({
             url: '/mypage/',
