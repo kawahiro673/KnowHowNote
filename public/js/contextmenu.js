@@ -63,7 +63,7 @@ export const notedelete = (listTitle, tabIndex, index, tabArray, tabFocus) => {
 let tmp1;
 let tmp2;
 
-export const noteNameChange = () => {
+export const noteNameChange = (listTitle) => {
   console.log('nameをクリックしました');
   //テキストの作成
   const inputTab = document.createElement('input');
