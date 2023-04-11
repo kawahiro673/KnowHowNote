@@ -445,87 +445,79 @@ router
     } else if (req.body.data == 'list') {
       //cookieの有効期限が切れたら自動的にログアウト
       //仕様上、自動でログアウトされては困るので、リロードの際にのみログアウトする
-      // const token = req.cookies.token;
-      // const decoded = JWT.verify(token, 'SECRET_KEY');
-      // let promise = new Promise((resolve, reject) => {
-      //   resolve();
-      // });
-      // promise
-      //   .then(() => {
-      //     pool.query(
-      //       'SELECT * FROM register_user WHERE Email = ?;',
-      //       [decoded.email],
-      //       (error, resultDecoded) => {
-      //         return resultDecoded;
-      //       }
-      //     );
-      //   })
-      //   // .then((resultDecoded) => {
-      //   //   pool.query('select * from register_user', (error, results) => {
-      //   //     return resultDecoded;
-      //   //   });
-      //   // })
-      //   .then((resultDecoded) => {
-      //     pool.query(
-      //       'select * from folder WHERE (Type IS NULL) AND (UserID = ?) order by folder_order ASC ',
-      //       [resultDecoded[0].id],
-      //       (error, results) => {
-      //         return results;
-      //       }
-      //     );
-      //   })
-      //   .then((results) => {
-      //     pool.query(
-      //       'select * from it_memo WHERE (Type IS NULL) AND (UserID = ?) order by folder_order ASC',
-      //       [resultDecoded[0].id],
-      //       (error, result) => {
-      //         res.send({
-      //           response: results,
-      //           response2: result,
-      //           userName: resultDecoded[0].UserName,
-      //           id: resultDecoded[0].id,
-      //         });
-      //       }
-      //     );
-      //   })
-      //   .catch(() => {
-      //     res.send({ userName: 'NO User' });
-      //   });
+      const token = req.cookies.token;
+      const decoded = JWT.verify(token, 'SECRET_KEY');
+      let promise = new Promise((resolve, reject) => {
+        resolve();
+      });
+      promise
+        .then(() => {
+          pool.query(
+            'SELECT * FROM register_user WHERE Email = ?;',
+            [decoded.email],
+            (error, resultDecoded) => {
+              return resultDecoded;
+            }
+          );
+        })
+        .then((resultDecoded) => {
+          pool.query(
+            'select * from folder WHERE (Type IS NULL) AND (UserID = ?) order by folder_order ASC ',
+            [resultDecoded[0].id],
+            (error, results) => {
+              return results;
+            }
+          );
+        })
+        .then((results) => {
+          pool.query(
+            'select * from it_memo WHERE (Type IS NULL) AND (UserID = ?) order by folder_order ASC',
+            [resultDecoded[0].id],
+            (error, result) => {
+              res.send({
+                response: results,
+                response2: result,
+                userName: resultDecoded[0].UserName,
+                id: resultDecoded[0].id,
+              });
+            }
+          );
+        })
+        .catch(() => {
+          res.send({ userName: 'NO User' });
+        });
       //cookieの有効期限が切れたら自動的にログアウト
       //仕様上、自動でログアウトされては困るので、リロードの際にのみログアウトする
-      try {
-        const token = req.cookies.token;
-        const decoded = JWT.verify(token, 'SECRET_KEY');
-        pool.query(
-          'SELECT * FROM register_user WHERE Email = ?;',
-          [decoded.email],
-          (error, resultDecoded) => {
-            //pool.query('select * from register_user', (error, results) => {
-            pool.query(
-              'select * from folder WHERE (Type IS NULL) AND (UserID = ?) order by folder_order ASC ',
-              [resultDecoded[0].id],
-              (error, results) => {
-                pool.query(
-                  'select * from it_memo WHERE (Type IS NULL) AND (UserID = ?) order by folder_order ASC',
-                  [resultDecoded[0].id],
-                  (error, result) => {
-                    res.send({
-                      response: results,
-                      response2: result,
-                      userName: resultDecoded[0].UserName,
-                      id: resultDecoded[0].id,
-                    });
-                  }
-                );
-                //   }
-                // );
-              }
-            );
-          }
-        );
-      } catch {
-        res.send({ userName: 'NO User' });
-      }
+      // try {
+      //   const token = req.cookies.token;
+      //   const decoded = JWT.verify(token, 'SECRET_KEY');
+      //   pool.query(
+      //     'SELECT * FROM register_user WHERE Email = ?;',
+      //     [decoded.email],
+      //     (error, resultDecoded) => {
+      //       pool.query(
+      //         'select * from folder WHERE (Type IS NULL) AND (UserID = ?) order by folder_order ASC ',
+      //         [resultDecoded[0].id],
+      //         (error, results) => {
+      //           pool.query(
+      //             'select * from it_memo WHERE (Type IS NULL) AND (UserID = ?) order by folder_order ASC',
+      //             [resultDecoded[0].id],
+      //             (error, result) => {
+      //               res.send({
+      //                 response: results,
+      //                 response2: result,
+      //                 userName: resultDecoded[0].UserName,
+      //                 id: resultDecoded[0].id,
+      //               });
+      //             }
+      //           );
+      //         }
+      //       );
+      //     }
+      //   );
+      // } catch {
+      //   res.send({ userName: 'NO User' });
+      // }
     } else if (req.body.data === 'sharelist') {
       //cookieの有効期限が切れたら自動的にログアウト
       //仕様上、自動でログアウトされては困るので、リロードの際にのみログアウトする
