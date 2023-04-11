@@ -450,42 +450,106 @@ router
       let promise = new Promise((resolve, reject) => {
         resolve();
       });
+
       promise
         .then(() => {
-          pool.query(
-            'SELECT * FROM register_user WHERE Email = ?;',
-            [decoded.email],
-            (error, resultDecoded) => {
-              return resultDecoded;
-            }
-          );
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'SELECT * FROM register_user WHERE Email = ?;',
+              [decoded.email],
+              (error, resultDecoded) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  resolve(resultDecoded);
+                }
+              }
+            );
+          });
         })
         .then((resultDecoded) => {
-          pool.query(
-            'select * from folder WHERE (Type IS NULL) AND (UserID = ?) order by folder_order ASC ',
-            [resultDecoded[0].id],
-            (error, results) => {
-              return results;
-            }
-          );
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'select * from folder WHERE (Type IS NULL) AND (UserID = ?) order by folder_order ASC ',
+              [resultDecoded[0].id],
+              (error, results) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  resolve({ results: results, resultDecoded: resultDecoded });
+                }
+              }
+            );
+          });
         })
-        .then((results) => {
-          pool.query(
-            'select * from it_memo WHERE (Type IS NULL) AND (UserID = ?) order by folder_order ASC',
-            [resultDecoded[0].id],
-            (error, result) => {
-              res.send({
-                response: results,
-                response2: result,
-                userName: resultDecoded[0].UserName,
-                id: resultDecoded[0].id,
-              });
-            }
-          );
+        .then(({ results, resultDecoded }) => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'select * from it_memo WHERE (Type IS NULL) AND (UserID = ?) order by folder_order ASC',
+              [resultDecoded[0].id],
+              (error, result) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  resolve({
+                    response: results,
+                    response2: result,
+                    userName: resultDecoded[0].UserName,
+                    id: resultDecoded[0].id,
+                  });
+                }
+              }
+            );
+          });
         })
-        .catch(() => {
-          res.send({ userName: 'NO User' });
+        .then((data) => {
+          res.send(data);
+        })
+        .catch((error) => {
+          console.error(error);
+          res.status(500).send('Internal Server Error');
         });
+      // const token = req.cookies.token;
+      // const decoded = JWT.verify(token, 'SECRET_KEY');
+      // let promise = new Promise((resolve, reject) => {
+      //   resolve();
+      // });
+      // promise
+      //   .then(() => {
+      //     pool.query(
+      //       'SELECT * FROM register_user WHERE Email = ?;',
+      //       [decoded.email],
+      //       (error, resultDecoded) => {
+      //         return resultDecoded;
+      //       }
+      //     );
+      //   })
+      //   .then((resultDecoded) => {
+      //     pool.query(
+      //       'select * from folder WHERE (Type IS NULL) AND (UserID = ?) order by folder_order ASC ',
+      //       [resultDecoded[0].id],
+      //       (error, results) => {
+      //         return results;
+      //       }
+      //     );
+      //   })
+      //   .then((results) => {
+      //     pool.query(
+      //       'select * from it_memo WHERE (Type IS NULL) AND (UserID = ?) order by folder_order ASC',
+      //       [resultDecoded[0].id],
+      //       (error, result) => {
+      //         res.send({
+      //           response: results,
+      //           response2: result,
+      //           userName: resultDecoded[0].UserName,
+      //           id: resultDecoded[0].id,
+      //         });
+      //       }
+      //     );
+      //   })
+      //   .catch(() => {
+      //     res.send({ userName: 'NO User' });
+      //   });
       //cookieの有効期限が切れたら自動的にログアウト
       //仕様上、自動でログアウトされては困るので、リロードの際にのみログアウトする
       // try {
