@@ -49,7 +49,7 @@ window.addEventListener('DOMContentLoaded', function () {
       }),
       success: function (res) {
         console.log(res);
-        if (res.userName === 'NO User') {
+        if (res.status === 500) {
           console.log('クリック！！');
           location.href = 'https://nodejs-itnote-app.herokuapp.com/login';
         }

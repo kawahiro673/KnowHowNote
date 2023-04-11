@@ -8,99 +8,76 @@ const { request } = require('express');
 router
   .route('/')
   .get(function (req, res) {
-    // let promise = new Promise((resolve, reject) => {
-    //   resolve();
-    // });
-    // promise
-    //   .then(() => {
-    //     pool.query('select * from it_memo', (error, result) => {
-    //       return result;
-    //     });
-    //   })
-    //   .then((result) => {
-    //     pool.query(
-    //       'select tab_hold.id, it_memo.title, it_memo.memo_text from tab_hold left join it_memo on tab_hold.id = it_memo.id;',
-    //       (error, results) => {
-    //         return [results];
-    //       }
-    //     );
-    //   })
-    //   .then((results) => {
-    //     const results1 = results;
-    //     pool.query(
-    //       'select * from folder order by folder_order ASC',
-    //       (error, result_folder) => {
     res.render('index.ejs');
-    // , {
-    //   folderList: result_folder,
-    // });
-    //  }
-    // );
-    //   });
-
-    // pool.query(
-    //   //リストを表示するため（selectで全て表示するため）
-    //   'select * from it_memo',
-    //   (error, result) => {
-    //     pool.query(
-    //       //テーブルを結合してタブを表示
-    //       'select tab_hold.id, it_memo.title, it_memo.memo_text from tab_hold left join it_memo on tab_hold.id = it_memo.id;',
-    //       (error, results) => {
-    //         pool.query(
-    //           'select * from folder order by folder_order ASC',
-    //           (error, result_folder) => {
-    //             // 上のクエリ文が result に入る
-    //             res.render('index.ejs', {
-    //               old_memo: result,
-    //               tab_memo: results,
-    //               folderList: result_folder,
-    //             });
-    //           }
-    //         );
-    //       }
-    //     );
-    //   }
-    // );
   })
   .post(function (req, res) {
     //[色を付ける]を押下した場合
     if (req.body.data == 'color') {
-      console.log(
-        `[POST受信] id : ${req.body.id} ,  color : ${req.body.color} `
-      );
       pool.query(
         'UPDATE it_memo SET title_color=? WHERE id=?',
         [req.body.color, req.body.id],
         (error, results) => {
-          console.log(`${req.body.color} 色にします`);
           res.send({ response: req.body.color });
         }
       );
       //[タイトルを変更する]を押下した場合
     } else if (req.body.data == 'tab') {
-      console.log(`[POST(tab)] id : ${req.body.id}, title : ${req.body.title}`);
       if (req.body.flg == 'clickTab') {
         const token = req.cookies.token;
         const decoded = JWT.verify(token, 'SECRET_KEY');
-        pool.query(
-          'SELECT * FROM register_user WHERE Email = ?;',
-          [decoded.email],
-          (error, resultDecoded) => {
-            pool.query(
-              'UPDATE tab_hold SET tabOrder = ?,focus = 1 where id = ?',
-              [req.body.order, req.body.id],
-              (error, results) => {
-                pool.query(
-                  'UPDATE tab_hold SET focus = 0 where id ! = ? AND (UserID = ?)',
-                  [req.body.id, resultDecoded[0].id],
-                  (error, results) => {
+        let promise = new Promise((resolve, reject) => {
+          resolve();
+        });
+        promise
+          .then(() => {
+            return new Promise((resolve, reject) => {
+              pool.query(
+                'SELECT * FROM register_user WHERE Email = ?;',
+                [decoded.email],
+                (error, resultDecoded) => {
+                  if (error) {
+                    reject(error);
+                  } else {
+                    resolve(resultDecoded);
+                  }
+                }
+              );
+            });
+          })
+          .then((resultDecoded) => {
+            return new Promise((resolve, reject) => {
+              pool.query(
+                'UPDATE tab_hold SET tabOrder = ?,focus = 1 where id = ?',
+                [req.body.order, req.body.id],
+                (error, results) => {
+                  if (error) {
+                    reject(error);
+                  } else {
+                    resolve({ results: results, resultDecoded: resultDecoded });
+                  }
+                }
+              );
+            });
+          })
+          .then(() => {
+            return new Promise((resolve, reject) => {
+              pool.query(
+                'UPDATE tab_hold SET focus = 0 where id ! = ? AND (UserID = ?)',
+                [req.body.id, resultDecoded[0].id],
+                (error, results) => {
+                  if (error) {
+                    reject(error);
+                  } else {
                     res.send({ response: results });
                   }
-                );
-              }
-            );
-          }
-        );
+                }
+              );
+            });
+          })
+          .catch(() => {
+            console.error(error);
+            res.status(500).send('Internal Server Error');
+          });
       } else if (req.body.flg == 'updateFocus') {
         const token = req.cookies.token;
         const decoded = JWT.verify(token, 'SECRET_KEY');
@@ -450,7 +427,6 @@ router
       let promise = new Promise((resolve, reject) => {
         resolve();
       });
-
       promise
         .then(() => {
           return new Promise((resolve, reject) => {
@@ -491,7 +467,7 @@ router
                 if (error) {
                   reject(error);
                 } else {
-                  resolve({
+                  res.send({
                     response: results,
                     response2: result,
                     userName: resultDecoded[0].UserName,
@@ -502,86 +478,10 @@ router
             );
           });
         })
-        .then((data) => {
-          res.send(data);
-        })
         .catch((error) => {
           console.error(error);
           res.status(500).send('Internal Server Error');
         });
-      // const token = req.cookies.token;
-      // const decoded = JWT.verify(token, 'SECRET_KEY');
-      // let promise = new Promise((resolve, reject) => {
-      //   resolve();
-      // });
-      // promise
-      //   .then(() => {
-      //     pool.query(
-      //       'SELECT * FROM register_user WHERE Email = ?;',
-      //       [decoded.email],
-      //       (error, resultDecoded) => {
-      //         return resultDecoded;
-      //       }
-      //     );
-      //   })
-      //   .then((resultDecoded) => {
-      //     pool.query(
-      //       'select * from folder WHERE (Type IS NULL) AND (UserID = ?) order by folder_order ASC ',
-      //       [resultDecoded[0].id],
-      //       (error, results) => {
-      //         return results;
-      //       }
-      //     );
-      //   })
-      //   .then((results) => {
-      //     pool.query(
-      //       'select * from it_memo WHERE (Type IS NULL) AND (UserID = ?) order by folder_order ASC',
-      //       [resultDecoded[0].id],
-      //       (error, result) => {
-      //         res.send({
-      //           response: results,
-      //           response2: result,
-      //           userName: resultDecoded[0].UserName,
-      //           id: resultDecoded[0].id,
-      //         });
-      //       }
-      //     );
-      //   })
-      //   .catch(() => {
-      //     res.send({ userName: 'NO User' });
-      //   });
-      //cookieの有効期限が切れたら自動的にログアウト
-      //仕様上、自動でログアウトされては困るので、リロードの際にのみログアウトする
-      // try {
-      //   const token = req.cookies.token;
-      //   const decoded = JWT.verify(token, 'SECRET_KEY');
-      //   pool.query(
-      //     'SELECT * FROM register_user WHERE Email = ?;',
-      //     [decoded.email],
-      //     (error, resultDecoded) => {
-      //       pool.query(
-      //         'select * from folder WHERE (Type IS NULL) AND (UserID = ?) order by folder_order ASC ',
-      //         [resultDecoded[0].id],
-      //         (error, results) => {
-      //           pool.query(
-      //             'select * from it_memo WHERE (Type IS NULL) AND (UserID = ?) order by folder_order ASC',
-      //             [resultDecoded[0].id],
-      //             (error, result) => {
-      //               res.send({
-      //                 response: results,
-      //                 response2: result,
-      //                 userName: resultDecoded[0].UserName,
-      //                 id: resultDecoded[0].id,
-      //               });
-      //             }
-      //           );
-      //         }
-      //       );
-      //     }
-      //   );
-      // } catch {
-      //   res.send({ userName: 'NO User' });
-      // }
     } else if (req.body.data === 'sharelist') {
       //cookieの有効期限が切れたら自動的にログアウト
       //仕様上、自動でログアウトされては困るので、リロードの際にのみログアウトする
