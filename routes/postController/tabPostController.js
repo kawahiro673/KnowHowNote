@@ -1,6 +1,4 @@
-const router = require('express').Router();
-
-router.post('/', (req, res) => {
+exports.createPost = (req, res) => {
   if (req.body.data == 'color') {
     pool.query(
       'UPDATE it_memo SET title_color=? WHERE id=?',
@@ -10,6 +8,4 @@ router.post('/', (req, res) => {
       }
     );
   }
-});
-
-module.exports = router;
+};

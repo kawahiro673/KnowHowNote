@@ -6,7 +6,7 @@ const { resetWatchers } = require('nodemon/lib/monitor/watch');
 const { request } = require('express');
 const tabPostController = require('./postController/tabPostController');
 
-router.use('/', tabPostController);
+router.use('/', tabPostController.createPost);
 
 router
   .route('/')
