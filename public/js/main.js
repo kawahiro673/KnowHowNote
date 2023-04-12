@@ -809,7 +809,7 @@ window.addEventListener('DOMContentLoaded', function () {
                   //index: D&D後のparent_id内での順番
                   let index = [].slice.call(elements).indexOf(item[0]);
                   index++;
-                  console('index : ', index);
+                  console.log('index : ', index);
                   console.log(
                     `移動後(folder)【order:${index}(違う階層の場合は0), parent_id: ${item[0].parentNode.id}】`
                   );
