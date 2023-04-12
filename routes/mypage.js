@@ -4,6 +4,9 @@ const pool = require('../db.js');
 const JWT = require('jsonwebtoken');
 const { resetWatchers } = require('nodemon/lib/monitor/watch');
 const { request } = require('express');
+const tabPostController = require('./postController/tabPostController');
+
+app.use('/', tabPostController);
 
 router
   .route('/')
@@ -12,16 +15,17 @@ router
   })
   .post(function (req, res) {
     //[色を付ける]を押下した場合
-    if (req.body.data == 'color') {
-      pool.query(
-        'UPDATE it_memo SET title_color=? WHERE id=?',
-        [req.body.color, req.body.id],
-        (error, results) => {
-          res.send({ response: req.body.color });
-        }
-      );
-      //[タイトルを変更する]を押下した場合
-    } else if (req.body.data == 'tab') {
+    // if (req.body.data == 'color') {
+    //   pool.query(
+    //     'UPDATE it_memo SET title_color=? WHERE id=?',
+    //     [req.body.color, req.body.id],
+    //     (error, results) => {
+    //       res.send({ response: req.body.color });
+    //     }
+    //   );
+    //[タイトルを変更する]を押下した場合
+    // } else
+    if (req.body.data == 'tab') {
       if (req.body.flg == 'clickTab') {
         const token = req.cookies.token;
         const decoded = JWT.verify(token, 'SECRET_KEY');
