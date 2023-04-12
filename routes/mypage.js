@@ -219,7 +219,7 @@ router
                 if (error) {
                   reject(error);
                 } else {
-                  resolve({ resultDecoded: resultDecoded });
+                  resolve(resultDecoded);
                 }
               }
             );
@@ -258,7 +258,7 @@ router
                       if (error) {
                         reject(error);
                       } else {
-                        resolve({ resultDecoded: resultDecoded });
+                        resolve(resultDecoded);
                       }
                     }
                   );
