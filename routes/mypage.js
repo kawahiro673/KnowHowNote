@@ -11,18 +11,15 @@ router
     res.render('index.ejs');
   })
   .post(function (req, res) {
-    //[色を付ける]を押下した場合
-    // if (req.body.data == 'color') {
-    //   pool.query(
-    //     'UPDATE it_memo SET title_color=? WHERE id=?',
-    //     [req.body.color, req.body.id],
-    //     (error, results) => {
-    //       res.send({ response: req.body.color });
-    //     }
-    //   );
-    //[タイトルを変更する]を押下した場合
-    // } else
-    if (req.body.data == 'tab') {
+    if (req.body.data === 'color') {
+      pool.query(
+        'UPDATE it_memo SET title_color=? WHERE id=?',
+        [req.body.color, req.body.id],
+        (error, results) => {
+          res.send({ response: req.body.color });
+        }
+      );
+    } else if (req.body.data === 'tab') {
       if (req.body.flg == 'clickTab') {
         const token = req.cookies.token;
         const decoded = JWT.verify(token, 'SECRET_KEY');
@@ -54,13 +51,13 @@ router
                   if (error) {
                     reject(error);
                   } else {
-                    resolve({ results: results, resultDecoded: resultDecoded });
+                    resolve({ resultDecoded: resultDecoded });
                   }
                 }
               );
             });
           })
-          .then(() => {
+          .then(({ resultDecoded }) => {
             return new Promise((resolve, reject) => {
               pool.query(
                 'UPDATE tab_hold SET focus = 0 where id ! = ? AND (UserID = ?)',
@@ -191,80 +188,225 @@ router
         );
       }
     } //追加後のDB更新
-    else if (req.body.data == 'addOrder') {
-      console.log(
-        `[POST(addOrder)] id: ${req.body.id}, order: ${req.body.order}`
-      );
+    else if (req.body.data === 'addOrder') {
       const token = req.cookies.token;
       const decoded = JWT.verify(token, 'SECRET_KEY');
-      pool.query(
-        'SELECT * FROM register_user WHERE Email = ?;',
-        [decoded.email],
-        (error, resultDecoded) => {
-          pool.query(
-            'UPDATE folder SET folder_order = folder_order +1 where (parent_id = ?) AND (folder_order >= ?) AND (UserID = ?)',
-            [req.body.parent_id, req.body.order, resultDecoded[0].id],
-            (error, result) => {
-              pool.query(
-                'UPDATE it_memo SET folder_order = folder_order +1 where (parent_id = ?) AND (folder_order >= ?) AND (UserID = ?)',
-                [req.body.parent_id, req.body.order, resultDecoded[0].id],
-                (error, result) => {
-                  if (req.body.pattern == 'folder') {
-                    pool.query(
-                      'UPDATE folder SET folder_order =? WHERE id = ?',
-                      [req.body.order, req.body.id],
-                      (error, result) => {
-                        pool.query(
-                          'SELECT * FROM tab_hold WHERE focus = 1 AND (UserID = ?)',
-                          [resultDecoded[0].id],
-                          (error, result) => {
-                            res.send({
-                              response: req.body.order,
-                              response: result.id,
-                            });
-                          }
-                        );
-                      }
-                    );
-                    //fileの場合
-                  } else {
-                    pool.query(
-                      'UPDATE it_memo SET folder_order =? WHERE id = ?',
-                      [req.body.order, req.body.id],
-                      (error, result) => {
-                        pool.query(
-                          'UPDATE tab_hold SET pass = ? WHERE id = ?',
-                          [req.body.pass, req.body.id],
-                          (error, result) => {
-                            pool.query(
-                              'SELECT * FROM tab_hold WHERE id = ?',
-                              [req.body.id],
-                              (error, result) => {
-                                //tab_holdにあれば・・・
-                                if (result[0] !== undefined) {
-                                  res.send({
-                                    response1: req.body.pass,
-                                    response2: result[0].focus,
-                                  });
-                                  //なければ・・・
-                                } else {
-                                  res.send({
-                                    response1: req.body.pass,
-                                  });
-                                }
-                              }
-                            );
-                          }
-                        );
-                      }
-                    );
-                  }
+      let promise = new Promise((resolve, reject) => {
+        resolve();
+      });
+      promise
+        .then(() => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'SELECT * FROM register_user WHERE Email = ?;',
+              [decoded.email],
+              (error, resultDecoded) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  resolve(resultDecoded);
                 }
-              );
-            }
-          );
-        }
-      );
+              }
+            );
+          });
+        })
+        .then((resultDecoded) => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'UPDATE folder SET folder_order = folder_order +1 where (parent_id = ?) AND (folder_order >= ?) AND (UserID = ?)',
+              [req.body.parent_id, req.body.order, resultDecoded[0].id],
+              (error, result) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  resolve({ resultDecoded: resultDecoded });
+                }
+              }
+            );
+          });
+        })
+        .then((resultDecoded) => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'UPDATE it_memo SET folder_order = folder_order +1 where (parent_id = ?) AND (folder_order >= ?) AND (UserID = ?)',
+              [req.body.parent_id, req.body.order, resultDecoded[0].id],
+              (error, result) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  resolve({
+                    pattern: req.body.pattern,
+                    resultDecoded: resultDecoded,
+                  });
+                }
+              }
+            );
+          });
+        })
+        .then(({ pattern, resultDecoded }) => {
+          if (pattern === 'folder') {
+            let promise1 = new Promise((resolve, reject) => {
+              resolve(resultDecoded);
+            });
+            promise1
+              .then((resultDecoded) => {
+                return new Promise((resolve, reject) => {
+                  pool.query(
+                    'UPDATE folder SET folder_order =? WHERE id = ?',
+                    [req.body.order, req.body.id],
+                    (error, result) => {
+                      if (error) {
+                        reject(error);
+                      } else {
+                        resolve({ resultDecoded: resultDecoded });
+                      }
+                    }
+                  );
+                });
+              })
+              .then((resultDecoded) => {
+                return new Promise((resolve, reject) => {
+                  pool.query(
+                    'SELECT * FROM tab_hold WHERE focus = 1 AND (UserID = ?)',
+                    [resultDecoded[0].id],
+                    (error, result) => {
+                      res.send({
+                        response: req.body.order,
+                        response: result.id,
+                      });
+                    }
+                  );
+                });
+              });
+          } else if (pattern === 'file') {
+            let promise1 = new Promise((resolve, reject) => {
+              resolve();
+            });
+            promise1
+              .then(() => {
+                return new Promise((resolve, reject) => {
+                  pool.query(
+                    'UPDATE it_memo SET folder_order =? WHERE id = ?',
+                    [req.body.order, req.body.id],
+                    (error, result) => {
+                      if (error) {
+                        reject(error);
+                      } else {
+                        resolve();
+                      }
+                    }
+                  );
+                });
+              })
+              .then(() => {
+                return new Promise((resolve, reject) => {
+                  pool.query(
+                    'UPDATE tab_hold SET pass = ? WHERE id = ?',
+                    [req.body.pass, req.body.id],
+                    (error, result) => {
+                      if (error) {
+                        reject(error);
+                      } else {
+                        resolve();
+                      }
+                    }
+                  );
+                });
+              })
+              .then(() => {
+                return new Promise((resolve, reject) => {
+                  pool.query(
+                    'SELECT * FROM tab_hold WHERE id = ?',
+                    [req.body.id],
+                    (error, result) => {
+                      if (result[0] !== undefined) {
+                        res.send({
+                          response1: req.body.pass,
+                          response2: result[0].focus,
+                        });
+                      } else {
+                        res.send({
+                          response1: req.body.pass,
+                        });
+                      }
+                    }
+                  );
+                });
+              })
+              .catch((error) => {
+                console.error(error);
+                res.status(500).send('Internal Server Error');
+              });
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+          res.status(500).send('Internal Server Error');
+        });
+      //     pool.query(
+      //       'UPDATE folder SET folder_order = folder_order +1 where (parent_id = ?) AND (folder_order >= ?) AND (UserID = ?)',
+      //       [req.body.parent_id, req.body.order, resultDecoded[0].id],
+      //       (error, result) => {
+      //         pool.query(
+      //           'UPDATE it_memo SET folder_order = folder_order +1 where (parent_id = ?) AND (folder_order >= ?) AND (UserID = ?)',
+      //           [req.body.parent_id, req.body.order, resultDecoded[0].id],
+      //           (error, result) => {
+      //             if (req.body.pattern == 'folder') {
+      //               pool.query(
+      //                 'UPDATE folder SET folder_order =? WHERE id = ?',
+      //                 [req.body.order, req.body.id],
+      //                 (error, result) => {
+      //                   pool.query(
+      //                     'SELECT * FROM tab_hold WHERE focus = 1 AND (UserID = ?)',
+      //                     [resultDecoded[0].id],
+      //                     (error, result) => {
+      //                       res.send({
+      //                         response: req.body.order,
+      //                         response: result.id,
+      //                       });
+      //                     }
+      //                   );
+      //                 }
+      //               );
+      //               //fileの場合
+      //             } else {
+      //               pool.query(
+      //                 'UPDATE it_memo SET folder_order =? WHERE id = ?',
+      //                 [req.body.order, req.body.id],
+      //                 (error, result) => {
+      //                   pool.query(
+      //                     'UPDATE tab_hold SET pass = ? WHERE id = ?',
+      //                     [req.body.pass, req.body.id],
+      //                     (error, result) => {
+      //                       pool.query(
+      //                         'SELECT * FROM tab_hold WHERE id = ?',
+      //                         [req.body.id],
+      //                         (error, result) => {
+      //                           //tab_holdにあれば・・・
+      //                           if (result[0] !== undefined) {
+      //                             res.send({
+      //                               response1: req.body.pass,
+      //                               response2: result[0].focus,
+      //                             });
+      //                             //なければ・・・
+      //                           } else {
+      //                             res.send({
+      //                               response1: req.body.pass,
+      //                             });
+      //                           }
+      //                         }
+      //                       );
+      //                     }
+      //                   );
+      //                 }
+      //               );
+      //             }
+      //           }
+      //         );
+      //       }
+      //     );
+      //   }
+      // );
     }
     //削除したフォルダの配下のファイルとフォルダを全て削除
     else if (req.body.data == 'childFolder') {
