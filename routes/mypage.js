@@ -4,9 +4,6 @@ const pool = require('../db.js');
 const JWT = require('jsonwebtoken');
 const { resetWatchers } = require('nodemon/lib/monitor/watch');
 const { request } = require('express');
-const tabPostController = require('./postController/tabPostController');
-
-router.use('/', tabPostController.createPost);
 
 router
   .route('/')
