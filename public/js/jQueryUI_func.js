@@ -295,7 +295,6 @@ export const jQueryUIOptionsFunc = () => {
                 console.log(
                   `移動後(folder)【order:${index}(違う階層の場合は0), parent_id: ${item[0].parentNode.id}】`
                 );
-                console.log(list);
                 $.ajax({
                   url: '/mypage/',
                   type: 'POST',

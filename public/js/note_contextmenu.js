@@ -3,6 +3,59 @@ import { closeTab, deleteTabArray } from './tab_func.js';
 let tmp1;
 let tmp2;
 
+export const fileContextmenu = () => {
+  $('.list_title').on('contextmenu', function () {
+    console.log(
+      `"${$(this).html()}" ${$(this).attr('value')} を右クリックしました`
+    );
+    let listTitle = {
+      title: $(this).html(),
+      id: $(this).attr('value'),
+      titleThis: this,
+    };
+
+    listTitle.titleThis.style.backgroundColor = '#A7F1FF';
+    listTitle.titleThis.style.borderRadius = '10px';
+
+    let elements = document.getElementsByClassName(
+      `parent${listTitle.titleThis.parentNode.parentNode.id}`
+    );
+    let index = [].slice.call(elements).indexOf(listTitle.titleThis.parentNode);
+    index++;
+
+    document.getElementById('delete').onclick = () => {
+      let tabIndex = orderGet('tab-content', `Tab-ID${listTitle.id}`);
+      noteDelete(listTitle, tabIndex, index, tabArray, tabFocus);
+    };
+
+    $(document).ready(function () {
+      $('#name').off('click');
+      $('#name').on('click', function (event) {
+        noteNameChange(listTitle);
+      });
+    });
+
+    $(document).ready(function () {
+      //重複してしまうため色変更イベントを一時削除
+      $('#color').off('click');
+      $('#color').on('click', function (event) {
+        event.preventDefault();
+        noteColorChange(listTitle);
+      });
+    });
+
+    document.addEventListener(
+      'mousedown',
+      (e) => {
+        let flg = false;
+        if (e.target == listTitle.titleThis) flg = true;
+        bodyClickJuge(listTitle.titleThis, null, flg, 'backgroundColor');
+      },
+      { once: true }
+    );
+  });
+};
+
 export const noteDelete = (listTitle, tabIndex, index, tabArray, tabFocus) => {
   //はいを押した場合(true)
   //まずはタブ削除
