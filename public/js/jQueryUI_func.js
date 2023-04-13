@@ -1,4 +1,7 @@
 export const jQueryUIOptionsFunc = () => {
+  let initial_index;
+  let parent_id_Tmp;
+  let tmpArray = [];
   $(function () {
     $('#0').treeview({
       animated: 'fast',

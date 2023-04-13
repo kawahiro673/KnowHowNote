@@ -31,10 +31,6 @@ let conme3 = document.getElementById('contextmenu3');
 let conme4 = document.getElementById('contextmenu4');
 var tabArray = []; //tab生成時にidを配列へ格納
 let tabFocus;
-let initial_index;
-let parent_id_Tmp;
-let list;
-let tmpArray = [];
 let fileFlg = false;
 let folderFlg = false;
 
@@ -922,6 +918,7 @@ window.addEventListener('DOMContentLoaded', function () {
   //                   `移動後(folder)【order:${index}(違う階層の場合は0), parent_id: ${item[0].parentNode.id}】`
   //                 );
   //                 console.log(list);
+
   //                 $.ajax({
   //                   url: '/mypage/',
   //                   type: 'POST',
