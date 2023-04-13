@@ -1,9 +1,9 @@
-//import { passGet } from './tab_func.js';
+import { passGet } from './tab_func.js';
 
 export const jQueryUIOptionsFunc = () => {
-  //   let initial_index;
-  //   let parent_id_Tmp;
-  //   let tmpArray = [];
+  let initial_index;
+  let parent_id_Tmp;
+  let tmpArray = [];
   $(function () {
     $('#0').treeview({
       animated: 'fast',
