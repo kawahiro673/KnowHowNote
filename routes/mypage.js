@@ -187,8 +187,7 @@ router
           }
         );
       }
-    } //追加後のDB更新
-    else if (req.body.data === 'addOrder') {
+    } else if (req.body.data === 'addOrder') {
       const token = req.cookies.token;
       const decoded = JWT.verify(token, 'SECRET_KEY');
       let promise = new Promise((resolve, reject) => {

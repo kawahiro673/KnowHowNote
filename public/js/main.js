@@ -19,6 +19,8 @@ import {
 } from './note_contextmenu.js';
 import { folderDelete, folderNameChange } from './folder_contextmenu.js';
 
+import { newFileCreate } from './newFileCreate.js';
+
 let tmp1;
 let tmp2;
 
@@ -375,7 +377,11 @@ window.addEventListener('DOMContentLoaded', function () {
             fID.click();
           }
           fileFlg = true;
-          newCreateFile1(folderList.folderId);
+          newFileCreate(folderList.folderId, fileFlg);
+          jQUI();
+          fileContextmenu();
+          fileClick();
+          listCreate();
           conme.style.display = 'none';
           conme2.style.display = 'none';
           conme3.style.display = 'none';
@@ -809,7 +815,6 @@ window.addEventListener('DOMContentLoaded', function () {
                   //index: D&D後のparent_id内での順番
                   let index = [].slice.call(elements).indexOf(item[0]);
                   index++;
-                  console.log('index : ', index);
                   console.log(
                     `移動後(folder)【order:${index}(違う階層の場合は0), parent_id: ${item[0].parentNode.id}】`
                   );
@@ -830,8 +835,6 @@ window.addEventListener('DOMContentLoaded', function () {
                       pattern: 'file',
                     }),
                     success: function (res) {
-                      //console.log(res.response1);
-                      //console.log(res.response2);
                       //passを正しく表示する2点セット
                       //1.focusが当たってたらパス更新
                       if (res.response2 !== undefined && res.response2 == 1) {
@@ -961,7 +964,11 @@ window.addEventListener('DOMContentLoaded', function () {
   //ファイル新規作成
   document.getElementById('newfile').onclick = function () {
     e.stopPropagation();
-    newCreateFile1(0);
+    newFileCreate(0, fileFlg);
+    jQUI();
+    fileContextmenu();
+    fileClick();
+    listCreate();
   };
 
   //rootの１番配下に新しくフォルダを追加
@@ -1106,149 +1113,144 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  function newCreateFile1(id) {
-    console.log('ファイル作成押下');
-    let li = document.createElement('li');
-    let span = document.createElement('span');
-    li.setAttribute('class', 'last');
-    span.classList.add('list_title', 'file');
+  // function newCreateFile1(id) {
+  //   let li = document.createElement('li');
+  //   let span = document.createElement('span');
+  //   li.setAttribute('class', 'last');
+  //   span.classList.add('list_title', 'file');
+  //   const inputTab = document.createElement('input');
+  //   inputTab.setAttribute('type', 'text');
+  //   inputTab.setAttribute('id', 'inputTab');
+  //   inputTab.setAttribute('name', 'list_title');
+  //   inputTab.setAttribute('maxlength', '20');
+  //   inputTab.setAttribute('size', '20');
+  //   inputTab.style.display = 'block';
+  //   inputTab.setAttribute('value', 'NewNote');
+  //   document.getElementById(id).appendChild(li);
+  //   li.appendChild(span);
+  //   span.appendChild(inputTab);
+  //   テキストエリアにフォーカスを当ててカーソルを末尾へ;
+  //   let len = inputTab.value.length;
+  //   document.getElementById('inputTab').focus();
+  //   document.getElementById('inputTab').setSelectionRange(len, len);
+  //   左クリック;
+  //   const clickL = function (e) {
+  //     e.preventDefault();
+  //     //console.log('1' + folderFlg);
+  //     if (fileFlg && !e.target.closest('#inputTab')) {
+  //       console.log('左クリック');
+  //       newCreateFile2(inputTab, span, id);
+  //       fileFlg = false;
+  //     }
+  //     //addEnentLisnterが残る!?ので削除する。
+  //     if (fileFlg == false) {
+  //       document.removeEventListener('click', clickL);
+  //       document.removeEventListener('contextmenu', clickR);
+  //       document.removeEventListener('keypress', enter);
+  //     }
+  //   };
+  //   //右クリック
+  //   const clickR = function (e) {
+  //     e.preventDefault();
+  //     //console.log('2' + folderFlg);
+  //     if (fileFlg && !e.target.closest('#inputTab')) {
+  //       console.log('右クリック');
+  //       newCreateFile2(inputTab, span, id);
+  //       fileFlg = false;
+  //     }
+  //     if (fileFlg == false) {
+  //       document.removeEventListener('click', clickL);
+  //       document.removeEventListener('contextmenu', clickR);
+  //       document.removeEventListener('keypress', enter);
+  //     }
+  //   };
+  //   //エンター押下時
+  //   const enter = function (e) {
+  //     //e.preventDefault(); //これがあると入力できない？？
+  //     //console.log('3');
+  //     if (fileFlg) {
+  //       if (e.keyCode === 13) {
+  //         newCreateFile2(inputTab, span, id);
+  //         fileFlg = false;
+  //       }
+  //     }
+  //     if (fileFlg == false) {
+  //       document.removeEventListener('click', clickL);
+  //       document.removeEventListener('contextmenu', clickR);
+  //       document.removeEventListener('keypress', enter);
+  //     }
+  //   };
+  //   //右・左・Enterそれぞれの実行
+  //   document.addEventListener('click', clickL);
+  //   document.addEventListener('contextmenu', clickR);
+  //   inputTab.addEventListener('keypress', enter);
+  // }
 
-    const inputTab = document.createElement('input');
-    inputTab.setAttribute('type', 'text');
-    inputTab.setAttribute('id', 'inputTab');
-    inputTab.setAttribute('name', 'list_title');
-    inputTab.setAttribute('maxlength', '20');
-    inputTab.setAttribute('size', '20');
-    inputTab.style.display = 'block';
-    inputTab.setAttribute('value', 'NewNote');
-
-    document.getElementById(id).appendChild(li);
-    li.appendChild(span);
-    span.appendChild(inputTab);
-
-    //テキストエリアにフォーカスを当ててカーソルを末尾へ
-    let len = inputTab.value.length;
-    document.getElementById('inputTab').focus();
-    document.getElementById('inputTab').setSelectionRange(len, len);
-
-    //左クリック
-    const clickL = function (e) {
-      e.preventDefault();
-      //console.log('1' + folderFlg);
-      if (fileFlg && !e.target.closest('#inputTab')) {
-        console.log('左クリック');
-        newCreateFile2(inputTab, span, id);
-        fileFlg = false;
-      }
-      //addEnentLisnterが残る!?ので削除する。
-      if (fileFlg == false) {
-        document.removeEventListener('click', clickL);
-        document.removeEventListener('contextmenu', clickR);
-        document.removeEventListener('keypress', enter);
-      }
-    };
-    //右クリック
-    const clickR = function (e) {
-      e.preventDefault();
-      //console.log('2' + folderFlg);
-      if (fileFlg && !e.target.closest('#inputTab')) {
-        console.log('右クリック');
-        newCreateFile2(inputTab, span, id);
-        fileFlg = false;
-      }
-      if (fileFlg == false) {
-        document.removeEventListener('click', clickL);
-        document.removeEventListener('contextmenu', clickR);
-        document.removeEventListener('keypress', enter);
-      }
-    };
-    //エンター押下時
-    const enter = function (e) {
-      //e.preventDefault(); //これがあると入力できない？？
-      //console.log('3');
-      if (fileFlg) {
-        if (e.keyCode === 13) {
-          newCreateFile2(inputTab, span, id);
-          fileFlg = false;
-        }
-      }
-      if (fileFlg == false) {
-        document.removeEventListener('click', clickL);
-        document.removeEventListener('contextmenu', clickR);
-        document.removeEventListener('keypress', enter);
-      }
-    };
-    //右・左・Enterそれぞれの実行
-    document.addEventListener('click', clickL);
-    document.addEventListener('contextmenu', clickR);
-    inputTab.addEventListener('keypress', enter);
-  }
-
-  function newCreateFile2(inputTab, span, parentId) {
-    //何も入力されていない時や空白や改行のみの入力
-    if (!inputTab.value || !inputTab.value.match(/\S/g)) {
-      alert('タイトルを入力してください');
-    } else {
-      //console.log('入力されました');
-      $.ajax({
-        url: '/mypage/',
-        type: 'POST',
-        dataType: 'Json',
-        contentType: 'application/json',
-        data: JSON.stringify({
-          data: 'note',
-          flg: 'newNote',
-          pattern: 'new',
-          title: inputTab.value,
-          parentId,
-        }),
-        success: function (res) {
-          //console.log(`success受信(title) : "${res.response1}"`);
-          span.setAttribute('id', `li${res.response2.id}`);
-          span.setAttribute('value', res.response2.id);
-          inputTab.remove();
-          span.innerHTML = res.response1;
-          span.parentNode.setAttribute(
-            'class',
-            `parent${res.response2.parent_id}`
-          );
-          let elements = document.getElementsByClassName(
-            `parent${res.response2.parent_id}`
-          );
-          //newIndex は並び替え(D&D) 後の配列の順番
-          let newIndex = [].slice.call(elements).indexOf(span.parentNode);
-          console.log(newIndex);
-          newIndex++;
-          jQUI();
-          fileContextmenu();
-          fileClick();
-          updateTime(res.response2.id);
-          $.ajax({
-            url: '/mypage/',
-            type: 'POST',
-            dataType: 'Json',
-            contentType: 'application/json',
-            data: JSON.stringify({
-              data: 'note',
-              flg: 'newNote',
-              pattern: 'order',
-              folderName: inputTab.value,
-              id: res.response2.id,
-              order: newIndex,
-            }),
-            success: function (res) {
-              //一度listを全て削除して、再び新しく追加している→jQueryUIがうまく適用されないため
-              const node = document.getElementById('0');
-              while (node.firstChild) {
-                node.removeChild(node.firstChild);
-              }
-              listCreate();
-            },
-          });
-        },
-      });
-    }
-  }
+  // function newCreateFile2(inputTab, span, parentId) {
+  //   //何も入力されていない時や空白や改行のみの入力
+  //   if (!inputTab.value || !inputTab.value.match(/\S/g)) {
+  //     alert('タイトルを入力してください');
+  //   } else {
+  //     //console.log('入力されました');
+  //     $.ajax({
+  //       url: '/mypage/',
+  //       type: 'POST',
+  //       dataType: 'Json',
+  //       contentType: 'application/json',
+  //       data: JSON.stringify({
+  //         data: 'note',
+  //         flg: 'newNote',
+  //         pattern: 'new',
+  //         title: inputTab.value,
+  //         parentId,
+  //       }),
+  //       success: function (res) {
+  //         //console.log(`success受信(title) : "${res.response1}"`);
+  //         span.setAttribute('id', `li${res.response2.id}`);
+  //         span.setAttribute('value', res.response2.id);
+  //         inputTab.remove();
+  //         span.innerHTML = res.response1;
+  //         span.parentNode.setAttribute(
+  //           'class',
+  //           `parent${res.response2.parent_id}`
+  //         );
+  //         let elements = document.getElementsByClassName(
+  //           `parent${res.response2.parent_id}`
+  //         );
+  //         //newIndex は並び替え(D&D) 後の配列の順番
+  //         let newIndex = [].slice.call(elements).indexOf(span.parentNode);
+  //         console.log(newIndex);
+  //         newIndex++;
+  //         jQUI();
+  //         fileContextmenu();
+  //         fileClick();
+  //         updateTime(res.response2.id);
+  //         $.ajax({
+  //           url: '/mypage/',
+  //           type: 'POST',
+  //           dataType: 'Json',
+  //           contentType: 'application/json',
+  //           data: JSON.stringify({
+  //             data: 'note',
+  //             flg: 'newNote',
+  //             pattern: 'order',
+  //             folderName: inputTab.value,
+  //             id: res.response2.id,
+  //             order: newIndex,
+  //           }),
+  //           success: function (res) {
+  //             //一度listを全て削除して、再び新しく追加している→jQueryUIがうまく適用されないため
+  //             const node = document.getElementById('0');
+  //             while (node.firstChild) {
+  //               node.removeChild(node.firstChild);
+  //             }
+  //             listCreate();
+  //           },
+  //         });
+  //       },
+  //     });
+  //   }
+  // }
 
   //「フォルダ追加」ボタン押下時(rootに参加)
   createbutton.addEventListener(
@@ -1271,7 +1273,11 @@ window.addEventListener('DOMContentLoaded', function () {
         let id = 0;
         e.stopPropagation();
         fileFlg = true;
-        newCreateFile1(id);
+        newFileCreate(id, fileFlg);
+        jQUI();
+        fileContextmenu();
+        fileClick();
+        listCreate();
       }
     },
     false
@@ -1315,9 +1321,7 @@ window.addEventListener('DOMContentLoaded', function () {
         data: 'folder',
         flg: 'collapsableALL',
       }),
-      success: function (res) {
-        console.log(res.response);
-      },
+      success: function (res) {},
     });
   });
   //全て展開
@@ -1332,9 +1336,7 @@ window.addEventListener('DOMContentLoaded', function () {
         data: 'folder',
         flg: 'expandableALL',
       }),
-      success: function (res) {
-        console.log(res.response);
-      },
+      success: function (res) {},
     });
   });
 
