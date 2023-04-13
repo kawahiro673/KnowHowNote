@@ -3,7 +3,7 @@ import { closeTab, deleteTabArray } from './tab_func.js';
 let tmp1;
 let tmp2;
 
-export const folderContextmenu = (tabArray, tabFocus) => {
+export const folderContextmenu = (tabArray, tabFocus, fileFlg) => {
   $('.folder').on('contextmenu', function () {
     console.log(
       `"${$(this).html()}" ${$(this).attr('value')} を右クリックしました`
