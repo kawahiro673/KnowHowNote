@@ -1,3 +1,5 @@
+import { passGet } from './tab_func.js';
+
 export const jQueryUIOptionsFunc = () => {
   let initial_index;
   let parent_id_Tmp;
