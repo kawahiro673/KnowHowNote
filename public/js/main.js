@@ -149,7 +149,7 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         jQueryUIOptionsFunc(); //jQueryUIを付与
         fileContextmenu(tabArray, tabFocus); //ファイルの右クリックメニュー
-        folderContextmenu(tabArray, tabFocus, fileFlg); //フォルダーの右クリックメニュー
+        folderContextmenu(tabArray, tabFocus, fileFlg, folderFlg); //フォルダーの右クリックメニュー
         fileClick(); //メモクリック時のTab表示
 
         //時間差でclosedのoffを開く＆フォルダ押下のclick関数作成
@@ -598,7 +598,7 @@ window.addEventListener('DOMContentLoaded', function () {
           let newIndex = [].slice.call(elements).indexOf(span.parentNode);
           newIndex++;
           jQueryUIOptionsFunc();
-          folderContextmenu(tabArray, tabFocus, fileFlg);
+          folderContextmenu(tabArray, tabFocus, fileFlg, folderFlg);
           $.ajax({
             url: '/mypage/',
             type: 'POST',
