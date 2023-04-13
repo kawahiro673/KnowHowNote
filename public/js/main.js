@@ -849,28 +849,6 @@ window.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  //わからん。。。。nameクリック後の判定が、、、、なぜか上手くいく。。
-  function eventFunc(e) {
-    let flg = false;
-    if (e.target == tmp1) flg = true;
-    bodyClickJuge(tmp1, tmp2, flg, 'input');
-  }
-
-  //右・左クリック時にいろんなものを消したり戻したり。。。
-  function bodyClickJuge(target1, target2, flg1, flg2) {
-    if (flg1) {
-      //console.log('同じ要素です');
-    } else {
-      //console.log('違う要素です');
-      if (flg2 == 'backgroundColor') {
-        target1.style.backgroundColor = 'white';
-      } else if (flg2 == 'input') {
-        target1.remove();
-        target2.style.display = 'block';
-      }
-    }
-  }
-
   $('.hamburger').click(function () {
     console.log('ハンバーガー押下');
   });
