@@ -167,7 +167,7 @@ router
             });
           })
           .then((resultDecoded) => {
-            return new Promise(() => {
+            return new Promise((resolve, reject) => {
               pool.query(
                 'SELECT * FROM tab_hold WHERE UserID = ? ORDER BY tabOrder;',
                 [resultDecoded[0].id],
@@ -217,7 +217,11 @@ router
                 'select * from tab_hold where focus = 1 AND (UserID = ?);',
                 [resultDecoded[0].id],
                 (error, result) => {
-                  res.send({ response: result[0] });
+                  if (error) {
+                    reject(error);
+                  } else {
+                    res.send({ response: result[0] });
+                  }
                 }
               );
             });
@@ -341,7 +345,7 @@ router
               );
             });
           })
-          .catch(() => {
+          .catch((error) => {
             console.error(error);
             res.status(500).send('Internal Server Error.(tabAdd)');
           });
