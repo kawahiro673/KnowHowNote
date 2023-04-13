@@ -334,13 +334,13 @@ router
               })
               .catch((error) => {
                 console.error(error);
-                res.status(500).send('Internal Server Error');
+                res.status(500).send('Internal Server Error.(addOrder)');
               });
           }
         })
         .catch((error) => {
           console.error(error);
-          res.status(500).send('Internal Server Error');
+          res.status(500).send('Internal Server Error.(addOrder)');
         });
     }
     //削除したフォルダの配下のファイルとフォルダを全て削除
@@ -558,7 +558,7 @@ router
         })
         .catch((error) => {
           console.error(error);
-          res.status(500).send('Internal Server Error');
+          res.status(500).send('Internal Server Error.(list)');
         });
     } else if (req.body.data === 'sharelist') {
       //cookieの有効期限が切れたら自動的にログアウト
