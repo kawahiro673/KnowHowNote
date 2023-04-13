@@ -1122,7 +1122,7 @@ window.addEventListener('DOMContentLoaded', function () {
     document.getElementById(id).appendChild(li);
     li.appendChild(span);
     span.appendChild(inputTab);
-    テキストエリアにフォーカスを当ててカーソルを末尾へ;
+    //テキストエリアにフォーカスを当ててカーソルを末尾へ;
     let len = inputTab.value.length;
     document.getElementById('inputTab').focus();
     document.getElementById('inputTab').setSelectionRange(len, len);
