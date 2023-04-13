@@ -3,7 +3,90 @@ import { closeTab, deleteTabArray } from './tab_func.js';
 let tmp1;
 let tmp2;
 
-export const folderDelete = (folderList, index, tabArray, tabFocus) => {
+export const folderContextmenu = (tabArray, tabFocus) => {
+  $('.folder').on('contextmenu', function () {
+    console.log(
+      `"${$(this).html()}" ${$(this).attr('value')} を右クリックしました`
+    );
+    let folderList = {
+      folderTitle: $(this).html(),
+      folderId: $(this).attr('value'),
+      folderThis: this,
+    };
+
+    folderList.folderThis.style.backgroundColor = '#A7F1FF';
+    folderList.folderThis.style.borderRadius = '10px';
+
+    let elements = document.getElementsByClassName(
+      `parent${folderList.folderThis.parentNode.parentNode.id}`
+    );
+    let index = [].slice
+      .call(elements)
+      .indexOf(folderList.folderThis.parentNode);
+    index++;
+    console.log(
+      `id:${folderList.folderId},title:${folderList.folderTitle},order:${index},parent_id:${folderList.folderThis.parentNode.parentNode.id}`
+    );
+
+    document.getElementById('folderDelete').onclick = function () {
+      folderDelete(folderList, index, tabArray, tabFocus);
+    };
+
+    $(document).ready(function () {
+      $('#folderName').off('click');
+      $('#folderName').on('click', function (event) {
+        folderNameChange(folderList);
+      });
+    });
+
+    $(document).ready(function () {
+      $('#createNote').off('click');
+      $('#createNote').on('click', function (event) {
+        event.stopPropagation();
+        let fID = document.getElementById(`folder${folderList.folderId}`);
+        //expandableの場合に配下の要素を開く
+        if (fID.parentNode.classList.contains('expandable') == true) {
+          fID.click();
+        }
+        fileFlg = true;
+        newFileCreate(folderList.folderId);
+
+        conme.style.display = 'none';
+        conme2.style.display = 'none';
+        conme3.style.display = 'none';
+      });
+    });
+    $(document).ready(function () {
+      $('#createfolder').off('click');
+      $('#createfolder').on('click', function (event) {
+        //console.log('"フォルダを作成する"押下');
+        event.stopPropagation();
+        let fID = document.getElementById(`folder${folderList.folderId}`);
+        //expandableの場合に配下の要素を開く
+        if (fID.parentNode.classList.contains('expandable') == true) {
+          fID.click();
+        }
+        folderFlg = true;
+        newCreateFolder1(folderList.folderId);
+        conme.style.display = 'none';
+        conme2.style.display = 'none';
+        conme3.style.display = 'none';
+      });
+    });
+
+    document.addEventListener(
+      'mousedown',
+      (e) => {
+        let flg = false;
+        if (e.target == folderList.folderThis) flg = true;
+        bodyClickJuge(folderList.folderThis, null, flg, 'backgroundColor');
+      },
+      { once: true }
+    );
+  });
+};
+
+const folderDelete = (folderList, index, tabArray, tabFocus) => {
   let btn = confirm(
     `${folderList.folderTitle} 配下のフォルダやノートも全て削除されますが本当に削除しますか？`
   );
@@ -55,7 +138,7 @@ export const folderDelete = (folderList, index, tabArray, tabFocus) => {
   }
 };
 
-export const folderNameChange = (folderList) => {
+const folderNameChange = (folderList) => {
   console.log('folderNameをクリックしました');
   //テキストの作成
   const inputTab = document.createElement('input');
@@ -116,7 +199,7 @@ function eventFunc(e) {
 }
 
 //右・左クリック時にいろんなものを消したり戻したり。。。
-export const bodyClickJuge = (target1, target2, flg1, flg2) => {
+const bodyClickJuge = (target1, target2, flg1, flg2) => {
   if (flg1) {
     //console.log('同じ要素です');
   } else {

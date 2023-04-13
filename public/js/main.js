@@ -12,7 +12,7 @@ import {
 } from './tab_func.js';
 
 import { fileContextmenu } from './note_contextmenu.js';
-import { folderDelete, folderNameChange } from './folder_contextmenu.js';
+import { folderContextmenu } from './folder_contextmenu.js';
 
 import { jQueryUIOptionsFunc } from './jQueryUI_func.js';
 
@@ -149,7 +149,7 @@ window.addEventListener('DOMContentLoaded', function () {
         }
         jQueryUIOptionsFunc(); //jQueryUIを付与
         fileContextmenu(tabArray, tabFocus); //ファイルの右クリックメニュー
-        folderContextmenu(); //フォルダーの右クリックメニュー
+        folderContextmenu(tabArray, tabFocus); //フォルダーの右クリックメニュー
         fileClick(); //メモクリック時のTab表示
 
         //時間差でclosedのoffを開く＆フォルダ押下のclick関数作成
@@ -267,91 +267,6 @@ window.addEventListener('DOMContentLoaded', function () {
       conme4.style.display = 'none';
     }
   });
-
-  function folderContextmenu() {
-    $('.folder').on('contextmenu', function () {
-      console.log(
-        `"${$(this).html()}" ${$(this).attr('value')} を右クリックしました`
-      );
-      let folderList = {
-        folderTitle: $(this).html(),
-        folderId: $(this).attr('value'),
-        folderThis: this,
-      };
-
-      folderList.folderThis.style.backgroundColor = '#A7F1FF';
-      folderList.folderThis.style.borderRadius = '10px';
-
-      let elements = document.getElementsByClassName(
-        `parent${folderList.folderThis.parentNode.parentNode.id}`
-      );
-      let index = [].slice
-        .call(elements)
-        .indexOf(folderList.folderThis.parentNode);
-      index++;
-      console.log(
-        `id:${folderList.folderId},title:${folderList.folderTitle},order:${index},parent_id:${folderList.folderThis.parentNode.parentNode.id}`
-      );
-
-      document.getElementById('folderDelete').onclick = function () {
-        folderDelete(folderList, index, tabArray, tabFocus);
-      };
-
-      $(document).ready(function () {
-        $('#folderName').off('click');
-        $('#folderName').on('click', function (event) {
-          folderNameChange(folderList);
-        });
-      });
-
-      $(document).ready(function () {
-        $('#createNote').off('click');
-        $('#createNote').on('click', function (event) {
-          event.stopPropagation();
-          let fID = document.getElementById(`folder${folderList.folderId}`);
-          //expandableの場合に配下の要素を開く
-          if (fID.parentNode.classList.contains('expandable') == true) {
-            fID.click();
-          }
-          fileFlg = true;
-          newFileCreate(folderList.folderId);
-
-          conme.style.display = 'none';
-          conme2.style.display = 'none';
-          conme3.style.display = 'none';
-        });
-      });
-      $(document).ready(function () {
-        $('#createfolder').off('click');
-        $('#createfolder').on('click', function (event) {
-          //console.log('"フォルダを作成する"押下');
-          event.stopPropagation();
-          let fID = document.getElementById(`folder${folderList.folderId}`);
-          //expandableの場合に配下の要素を開く
-          if (fID.parentNode.classList.contains('expandable') == true) {
-            fID.click();
-          }
-          folderFlg = true;
-          newCreateFolder1(folderList.folderId);
-          conme.style.display = 'none';
-          conme2.style.display = 'none';
-          conme3.style.display = 'none';
-        });
-      });
-
-      document.addEventListener(
-        'mousedown',
-        (e) => {
-          let flg = false;
-          // console.log(e.target);
-          // console.log(listTitle.titleThis);
-          if (e.target == folderList.folderThis) flg = true;
-          bodyClickJuge(folderList.folderThis, null, flg, 'backgroundColor');
-        },
-        { once: true }
-      );
-    });
-  }
 
   const noTab = document.createElement('p');
   noTab.innerHTML = 'こちらにnoteが出力されます';
@@ -683,7 +598,7 @@ window.addEventListener('DOMContentLoaded', function () {
           let newIndex = [].slice.call(elements).indexOf(span.parentNode);
           newIndex++;
           jQueryUIOptionsFunc();
-          folderContextmenu();
+          folderContextmenu(tabArray, tabFocus);
           $.ajax({
             url: '/mypage/',
             type: 'POST',
