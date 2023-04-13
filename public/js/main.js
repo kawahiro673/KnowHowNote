@@ -509,7 +509,7 @@ window.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  //*********** タブ生成関数(ページリード時) ************
+  //*********** タブ生成関数(ページリロード時) ************
   async function titleClick(id, title) {
     return new Promise((resolve) => {
       //タブ生成しておらず、・・・じゃないとき
