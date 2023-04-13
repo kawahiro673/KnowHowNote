@@ -60,7 +60,7 @@ router
           .then((resultDecoded) => {
             return new Promise((resolve, reject) => {
               pool.query(
-                'UPDATE tab_hold SET focus = 0 where id ! = ? AND (UserID = ?)',
+                'UPDATE tab_hold SET focus = 0 where id != ? AND (UserID = ?)',
                 [req.body.id, resultDecoded[0].id],
                 (error, results) => {
                   if (error) {
