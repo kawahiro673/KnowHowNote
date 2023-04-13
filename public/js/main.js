@@ -465,6 +465,7 @@ window.addEventListener('DOMContentLoaded', function () {
               title: listTitle.title,
             }),
             success: function (res) {
+              console.log(res);
               document.getElementById('notepass').innerHTML = pass;
             },
           });
