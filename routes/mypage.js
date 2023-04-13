@@ -197,7 +197,7 @@ router
         });
         promise
           .then(() => {
-            return new Promise(() => {
+            return new Promise((resolve, reject) => {
               pool.query(
                 'SELECT * FROM register_user WHERE Email = ?;',
                 [decoded.email],
@@ -235,7 +235,7 @@ router
 
         promise
           .then(() => {
-            return new Promise(() => {
+            return new Promise((resolve, reject) => {
               pool.query(
                 'SELECT * FROM register_user WHERE Email = ?;',
                 [decoded.email],
