@@ -51,13 +51,13 @@ router
                   if (error) {
                     reject(error);
                   } else {
-                    resolve({ resultDecoded: resultDecoded });
+                    resolve(resultDecoded);
                   }
                 }
               );
             });
           })
-          .then(({ resultDecoded }) => {
+          .then((resultDecoded) => {
             return new Promise((resolve, reject) => {
               pool.query(
                 'UPDATE tab_hold SET focus = 0 where id ! = ? AND (UserID = ?)',
@@ -74,7 +74,7 @@ router
           })
           .catch((error) => {
             console.error(error);
-            res.status(500).send('Internal Server Error');
+            res.status(500).send('Internal Server Error.(clickTab)');
           });
       } else if (req.body.flg == 'updateFocus') {
         const token = req.cookies.token;
