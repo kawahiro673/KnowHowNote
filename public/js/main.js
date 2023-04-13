@@ -11,16 +11,12 @@ import {
   tabCreate,
 } from './tab_func.js';
 
-import {
-  fileContextmenu,
-  noteColorChange,
-  noteDelete,
-  noteNameChange,
-  bodyClickJuge,
-} from './note_contextmenu.js';
+import { fileContextmenu } from './note_contextmenu.js';
 import { folderDelete, folderNameChange } from './folder_contextmenu.js';
 
 import { jQueryUIOptionsFunc } from './jQueryUI_func.js';
+
+import { orderGet } from './stringUtils.js';
 
 let tmp1;
 let tmp2;
@@ -977,12 +973,4 @@ window.addEventListener('DOMContentLoaded', function () {
       success: function (res) {},
     });
   });
-
-  //順番を返す関数
-  const orderGet = (group, target) => {
-    let elements = document.getElementsByClassName(group);
-    let element = document.getElementById(target);
-    let index = [].slice.call(elements).indexOf(element);
-    return index + 1;
-  };
 });

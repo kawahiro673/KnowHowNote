@@ -1,4 +1,5 @@
 import { closeTab, deleteTabArray } from './tab_func.js';
+import { orderGet } from './stringUtils.js';
 
 let tmp1;
 let tmp2;
@@ -56,7 +57,7 @@ export const fileContextmenu = () => {
   });
 };
 
-export const noteDelete = (listTitle, tabIndex, index, tabArray, tabFocus) => {
+const noteDelete = (listTitle, tabIndex, index, tabArray, tabFocus) => {
   //はいを押した場合(true)
   //まずはタブ削除
   let btn = confirm(`${listTitle.title} を本当に削除しますか？`);
@@ -105,7 +106,7 @@ export const noteDelete = (listTitle, tabIndex, index, tabArray, tabFocus) => {
   }
 };
 
-export const noteNameChange = (listTitle) => {
+const noteNameChange = (listTitle) => {
   console.log('nameをクリックしました');
   //テキストの作成
   const inputTab = document.createElement('input');
@@ -189,7 +190,7 @@ function eventFunc(e) {
 }
 
 //右・左クリック時にいろんなものを消したり戻したり。。。
-export const bodyClickJuge = (target1, target2, flg1, flg2) => {
+const bodyClickJuge = (target1, target2, flg1, flg2) => {
   if (flg1) {
     //console.log('同じ要素です');
   } else {
@@ -203,7 +204,7 @@ export const bodyClickJuge = (target1, target2, flg1, flg2) => {
   }
 };
 
-export const noteColorChange = (listTitle) => {
+const noteColorChange = (listTitle) => {
   console.log('colorクリック!');
   //タイトルが赤色だった場合
   if (listTitle.titleThis.style.color == 'red') {
