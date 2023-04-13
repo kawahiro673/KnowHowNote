@@ -1126,7 +1126,7 @@ window.addEventListener('DOMContentLoaded', function () {
     let len = inputTab.value.length;
     document.getElementById('inputTab').focus();
     document.getElementById('inputTab').setSelectionRange(len, len);
-    左クリック;
+    //左クリック
     const clickL = function (e) {
       e.preventDefault();
       //console.log('1' + folderFlg);
