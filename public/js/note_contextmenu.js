@@ -4,7 +4,7 @@ import { orderGet } from './stringUtils.js';
 let tmp1;
 let tmp2;
 
-export const fileContextmenu = () => {
+export const fileContextmenu = (tabArray, tabFocus) => {
   $('.list_title').on('contextmenu', function () {
     console.log(
       `"${$(this).html()}" ${$(this).attr('value')} を右クリックしました`
