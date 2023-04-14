@@ -863,7 +863,8 @@ window.addEventListener('DOMContentLoaded', function () {
       .then((response) => response.json())
       .then((data) => {
         // レスポンスを処理するコード
-        alert(data);
+        console.log(data);
+        alert(data.msg);
       })
       .catch((error) => {
         // エラー処理を行うコード
