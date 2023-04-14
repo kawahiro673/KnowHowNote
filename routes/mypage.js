@@ -11,10 +11,10 @@ const rules = require('nodemon/lib/rules');
 
 router
   .route('/')
-  .get(function (req, res) {
+  .get((req, res) => {
     res.render('index.ejs');
   })
-  .post(function (req, res) {
+  .post((req, res) => {
     if (req.body.data === 'color') {
       pool.query(
         'UPDATE it_memo SET title_color=? WHERE id=?',
@@ -825,7 +825,6 @@ router
     } else if (req.body.data === 'sharelist') {
       //cookieの有効期限が切れたら自動的にログアウト
       //仕様上、自動でログアウトされては困るので、リロードの際にのみログアウトする
-      //try {
       const token = req.cookies.token;
       const decoded = JWT.verify(token, 'SECRET_KEY');
       let promise = new Promise((resolve, reject) => {
@@ -960,11 +959,8 @@ router
           res.status(500).send('Internal Server Error.(sharelist)');
         });
       //フォルダの開き/閉じ判定
-    } else if (req.body.data == 'folder') {
-      console.log(
-        `[POST(folder)] フォルダ名 : ${req.body.folderName}, flg: ${req.body.flg}`
-      );
-      if (req.body.flg == 'newFolder') {
+    } else if (req.body.data === 'folder') {
+      if (req.body.flg === 'newFolder') {
         if (req.body.pattern == 'new') {
           const token = req.cookies.token;
           const decoded = JWT.verify(token, 'SECRET_KEY');
@@ -1002,7 +998,7 @@ router
             }
           );
         }
-      } else if (req.body.flg == 'parentIDSame') {
+      } else if (req.body.flg === 'parentIDSame') {
         const token = req.cookies.token;
         const decoded = JWT.verify(token, 'SECRET_KEY');
         pool.query(
@@ -1082,7 +1078,7 @@ router
           }
         );
       } //移動後は違うparent_id場合
-      else if (req.body.flg == 'parentIDDiffer') {
+      else if (req.body.flg === 'parentIDDiffer') {
         const token = req.cookies.token;
         const decoded = JWT.verify(token, 'SECRET_KEY');
         pool.query(
@@ -1115,7 +1111,7 @@ router
             );
           }
         );
-      } else if (req.body.flg == 'changeName') {
+      } else if (req.body.flg === 'changeName') {
         pool.query(
           'UPDATE folder SET folder_name=? WHERE id = ?',
           [req.body.title, req.body.id],
@@ -1123,7 +1119,7 @@ router
             res.send({ response: req.body.title });
           }
         );
-      } else if (req.body.flg == 'folderDel') {
+      } else if (req.body.flg === 'folderDel') {
         const token = req.cookies.token;
         const decoded = JWT.verify(token, 'SECRET_KEY');
         pool.query(
@@ -1165,7 +1161,7 @@ router
             );
           }
         );
-      } else if (req.body.flg == 'collapsableALL') {
+      } else if (req.body.flg === 'collapsableALL') {
         //console.log('全て折り畳む');
         const token = req.cookies.token;
         const decoded = JWT.verify(token, 'SECRET_KEY');
@@ -1182,7 +1178,7 @@ router
             );
           }
         );
-      } else if (req.body.flg == 'expandableALL') {
+      } else if (req.body.flg === 'expandableALL') {
         const token = req.cookies.token;
         const decoded = JWT.verify(token, 'SECRET_KEY');
         pool.query(
@@ -1199,7 +1195,7 @@ router
             );
           }
         );
-      } else if (req.body.flg == 'closed') {
+      } else if (req.body.flg === 'closed') {
         //console.log('リストの開きを保存');
         //開く→閉じる
         if (req.body.closedFlg == 1) {
@@ -1221,9 +1217,8 @@ router
           );
         }
       }
-    } else if (req.body.data == 'note') {
-      console.log(`[POST受信(newFile)] title : ${req.body.title}`);
-      if (req.body.flg == 'newNote') {
+    } else if (req.body.data === 'note') {
+      if (req.body.flg === 'newNote') {
         if (req.body.pattern == 'new') {
           const token = req.cookies.token;
           const decoded = JWT.verify(token, 'SECRET_KEY');
@@ -1260,7 +1255,7 @@ router
             }
           );
         }
-      } else if (req.body.flg == 'noteKeep') {
+      } else if (req.body.flg === 'noteKeep') {
         pool.query(
           'UPDATE it_memo SET title = ?, memo_text = ?, saved_time = ? WHERE id = ?',
           [
@@ -1288,7 +1283,7 @@ router
             );
           }
         );
-      } else if (req.body.flg == 'delete') {
+      } else if (req.body.flg === 'delete') {
         const token = req.cookies.token;
         const decoded = JWT.verify(token, 'SECRET_KEY');
         pool.query(
@@ -1330,7 +1325,7 @@ router
             );
           }
         );
-      } else if (req.body.flg == 'parentIDSame') {
+      } else if (req.body.flg === 'parentIDSame') {
         //parentIdは変化しないパターン(同じ階層)
         const token = req.cookies.token;
         const decoded = JWT.verify(token, 'SECRET_KEY');
@@ -1409,7 +1404,7 @@ router
           }
         );
         //移動後は違うparent_id
-      } else if (req.body.flg == 'parentIDDiffer') {
+      } else if (req.body.flg === 'parentIDDiffer') {
         const token = req.cookies.token;
         const decoded = JWT.verify(token, 'SECRET_KEY');
         pool.query(
@@ -1442,7 +1437,7 @@ router
             );
           }
         );
-      } else if (req.body.flg == 'updatetime') {
+      } else if (req.body.flg === 'updatetime') {
         console.log(`[POST受信(updatetime)] time : ${req.body.time}`);
         pool.query(
           'UPDATE it_memo SET saved_time = ? WHERE id = ?;',
@@ -1451,7 +1446,7 @@ router
             res.send({ response: req.body.time });
           }
         );
-      } else if (req.body.flg == 'name') {
+      } else if (req.body.flg === 'name') {
         console.log(`[POST受信(name)] title : ${req.body.title}`);
         pool.query(
           'SELECT * FROM tab_hold WHERE id = ?',
@@ -1504,7 +1499,7 @@ router
           }
         );
         //タブ押下時にメモの内容を表示する
-      } else if (req.body.flg == 'updatePass') {
+      } else if (req.body.flg === 'updatePass') {
         pool.query(
           'UPDATE tab_hold SET pass = ? WHERE id = ?;',
           [req.body.pass, req.body.id],
@@ -1512,7 +1507,7 @@ router
             res.send({ response: req.body.time });
           }
         );
-      } else if (req.body.flg == 'info') {
+      } else if (req.body.flg === 'info') {
         pool.query(
           'SELECT * FROM it_memo WHERE id = ?;',
           [req.body.id],
@@ -1573,22 +1568,8 @@ router
           console.error(error);
           res.status(500).send('Internal Server Error.(getuser)');
         });
-      // pool.query('SELECT * FROM register_user;', (error, result) => {
-      //   const user = result.find((user) => user.UserName === req.body.name);
-      //   if (!user) {
-      //     return res.send({
-      //       message: 'ユーザーが見つかりませんでした',
-      //     });
-      //   }
-      //   pool.query(
-      //     //レコードをコピーして新しいレコードとして挿入
-      //     'INSERT INTO it_memo (title, memo_text, Type, UserID) (SELECT title, memo_text, ?, ? FROM it_memo WHERE id = ?);',
-      //     ['Share', user.id, req.body.id],
-      //     (error, result) => {
-      //       res.send({ message: '共有しました' });
-      //     }
-      //   );
-      // });
+    } else if (req.body.data === 'humburgar') {
+      res.send('ハンバーガー押しましたね！？');
     } else {
       console.log('dataで何も受け取ってません');
     }

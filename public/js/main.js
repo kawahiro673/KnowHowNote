@@ -849,8 +849,25 @@ window.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  $('.hamburger').click(function () {
+  $('.hamburger').click(() => {
     console.log('ハンバーガー押下');
+    fetch('/mypage/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        data: 'humburger',
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // レスポンスを処理するコード
+        alert(data);
+      })
+      .catch((error) => {
+        // エラー処理を行うコード
+      });
   });
 
   document.getElementById('logout').addEventListener('click', () => {
