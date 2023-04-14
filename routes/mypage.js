@@ -689,13 +689,16 @@ router
                 if (error) {
                   reject(error);
                 } else {
-                  resolve(resultDecoded);
+                  resolve({
+                    result_folder: result_folder,
+                    resultDecoded: resultDecoded,
+                  });
                 }
               }
             );
           });
         })
-        .then((resultDecoded) => {
+        .then(({ result_folder, resultDecoded }) => {
           return new Promise((resolve, reject) => {
             pool.query(
               'SELECT * FROM it_memo WHERE UserID = ?;',
