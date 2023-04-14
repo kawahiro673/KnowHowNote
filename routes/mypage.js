@@ -1569,7 +1569,7 @@ router
           res.status(500).send('Internal Server Error.(getuser)');
         });
     } else if (req.body.data === 'humburgar') {
-      res.send({ msg: 'ハンバーガー押しましたね！？' });
+      res.json({ msg: 'ハンバーガー押しましたね！？' });
     } else {
       console.log('dataで何も受け取ってません');
     }
