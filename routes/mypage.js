@@ -507,7 +507,7 @@ router
         });
     }
     //削除したフォルダの配下のファイルとフォルダを全て削除
-    else if (req.body.data == 'childFolder') {
+    else if (req.body.data === 'childFolder') {
       let tmpIdArray = [];
       let fileArray = [];
       let folderArray = [];
@@ -565,66 +565,145 @@ router
       res.send({ response: fileArray });
 
       //配下のフォルダのidを全て配列に格納している
-    } else if (req.body.data == 'folderChild') {
-      console.log(`[POST受信(folderChild)]  id : ${req.body.id}`);
+    } else if (req.body.data === 'folderChild') {
       let idArray = []; //最終的にmain.jsに返す値
       let parentIdArray = [];
       parentIdArray.push(req.body.id);
       const token = req.cookies.token;
       const decoded = JWT.verify(token, 'SECRET_KEY');
-      pool.query(
-        'SELECT * FROM register_user WHERE Email = ?;',
-        [decoded.email],
-        (error, resultDecoded) => {
-          pool.query(
-            'select * from folder WHERE UserID = ?',
-            [resultDecoded[0].id],
-            (error, results) => {
-              console.log(results);
-              while (parentIdArray.length !== 0) {
-                parentIdArray.forEach((parentId) => {
-                  results.forEach((result) => {
-                    if (parentId == result.parent_id) {
-                      console.log(
-                        `id : ${result.id}, name: ${result.folder_name}`
-                      );
-                      //重複していないなら格納する
-                      if (idArray.indexOf(result.id) == -1) {
-                        idArray.push(result.id);
-                      }
-                      if (parentIdArray.indexOf(result.id) == -1) {
-                        parentIdArray.push(result.id);
-                      }
-                    }
-                  });
-                  parentIdArray.splice(parentIdArray.indexOf(parentId), 1);
-                });
+      let promise = new Promise((resolve, reject) => {
+        resolve();
+      });
+      promise
+        .then(() => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'SELECT * FROM register_user WHERE Email = ?;',
+              [decoded.email],
+              (error, resultDecoded) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  resolve(resultDecoded);
+                }
               }
-              res.send({ response: idArray });
-            }
-          );
-        }
-      );
+            );
+          });
+        })
+        .then((resultDecoded) => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'SELECT * FROM folder WHERE UserID = ?',
+              [resultDecoded[0].id],
+              (error, results) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  while (parentIdArray.length !== 0) {
+                    parentIdArray.forEach((parentId) => {
+                      results.forEach((result) => {
+                        if (parentId == result.parent_id) {
+                          //重複していないなら格納する
+                          if (idArray.indexOf(result.id) == -1) {
+                            idArray.push(result.id);
+                          }
+                          if (parentIdArray.indexOf(result.id) == -1) {
+                            parentIdArray.push(result.id);
+                          }
+                        }
+                      });
+                      parentIdArray.splice(parentIdArray.indexOf(parentId), 1);
+                    });
+                  }
+                  res.send({ response: idArray });
+                }
+              }
+            );
+          });
+        })
+        .catch((error) => {
+          console.error(error);
+          res.status(500).send('Internal Server Error.(folderChild)');
+        });
+      // pool.query(
+      //   'SELECT * FROM register_user WHERE Email = ?;',
+      //   [decoded.email],
+      //   (error, resultDecoded) => {
+      //     pool.query(
+      //       'SELECT * FROM folder WHERE UserID = ?',
+      //       [resultDecoded[0].id],
+      //       (error, results) => {
+      //         while (parentIdArray.length !== 0) {
+      //           parentIdArray.forEach((parentId) => {
+      //             results.forEach((result) => {
+      //               if (parentId == result.parent_id) {
+      //                 //重複していないなら格納する
+      //                 if (idArray.indexOf(result.id) == -1) {
+      //                   idArray.push(result.id);
+      //                 }
+      //                 if (parentIdArray.indexOf(result.id) == -1) {
+      //                   parentIdArray.push(result.id);
+      //                 }
+      //               }
+      //             });
+      //             parentIdArray.splice(parentIdArray.indexOf(parentId), 1);
+      //           });
+      //         }
+      //         res.send({ response: idArray });
+      //       }
+      //     );
+      //   }
+      // );
       //フォルダの子ノートを全て取得する(passの更新に使用するため)
-    } else if (req.body.data == 'noteChild') {
-      console.log(`[POST受信(noteChild)]  id : ${req.body.id}`);
+    } else if (req.body.data === 'noteChild') {
       let idArray = []; //最終的にcodejsに返す値
       let parentIdArray = [];
       parentIdArray.push(req.body.id);
       const token = req.cookies.token;
       const decoded = JWT.verify(token, 'SECRET_KEY');
-      pool.query(
-        'SELECT * FROM register_user WHERE Email = ?;',
-        [decoded.email],
-        (error, resultDecoded) => {
-          pool.query(
-            'select * from folder WHERE UserID = ?;',
-            [resultDecoded[0].id],
-            (error, result_folder) => {
-              pool.query(
-                'select * from it_memo WHERE UserID = ?;',
-                [resultDecoded[0].id],
-                (error, result_note) => {
+      let promise = new Promise((resolve, reject) => {
+        resolve();
+      });
+      promise
+        .then(() => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'SELECT * FROM register_user WHERE Email = ?;',
+              [decoded.email],
+              (error, resultDecoded) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  resolve(resultDecoded);
+                }
+              }
+            );
+          });
+        })
+        .then((resultDecoded) => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'SELECT * FROM folder WHERE UserID = ?;',
+              [resultDecoded[0].id],
+              (error, result_folder) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  resolve(resultDecoded);
+                }
+              }
+            );
+          });
+        })
+        .then((resultDecoded) => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'SELECT * FROM it_memo WHERE UserID = ?;',
+              [resultDecoded[0].id],
+              (error, result_note) => {
+                if (error) {
+                  reject(error);
+                } else {
                   while (parentIdArray.length !== 0) {
                     parentIdArray.forEach((parentId) => {
                       //まず配下のノート格納
@@ -632,12 +711,10 @@ router
                         if (parentId == note.parent_id) {
                           //重複していないなら格納する
                           if (idArray.indexOf(note.id) == -1) {
-                            //idArray.push({ id: note.id, title: note.title });
                             idArray.push(note.id);
                           }
                         }
                       });
-                      console.log(idArray);
                       result_folder.forEach((folder) => {
                         if (parentId == folder.parent_id) {
                           //重複していないなら格納する
@@ -646,21 +723,69 @@ router
                           }
                         }
                       });
-                      //console.log(parentIdArray);
                       parentIdArray.splice(parentIdArray.indexOf(parentId), 1);
                     });
                   }
                   setTimeout(() => {
-                    console.log(idArray);
                     res.send({ response: idArray });
                   }, 500);
                 }
-              );
-            }
-          );
-        }
-      );
-    } else if (req.body.data == 'list') {
+              }
+            );
+          });
+        })
+        .catch((error) => {
+          console.error(error);
+          res.status(500).send('Internal Server Error.(noteChild)');
+        });
+      // pool.query(
+      //   'SELECT * FROM register_user WHERE Email = ?;',
+      //   [decoded.email],
+      //   (error, resultDecoded) => {
+      //     pool.query(
+      //       'SELECT * FROM folder WHERE UserID = ?;',
+      //       [resultDecoded[0].id],
+      //       (error, result_folder) => {
+      //         pool.query(
+      //           'SELECT * FROM it_memo WHERE UserID = ?;',
+      //           [resultDecoded[0].id],
+      //           (error, result_note) => {
+      //             while (parentIdArray.length !== 0) {
+      //               parentIdArray.forEach((parentId) => {
+      //                 //まず配下のノート格納
+      //                 result_note.forEach((note) => {
+      //                   if (parentId == note.parent_id) {
+      //                     //重複していないなら格納する
+      //                     if (idArray.indexOf(note.id) == -1) {
+      //                       //idArray.push({ id: note.id, title: note.title });
+      //                       idArray.push(note.id);
+      //                     }
+      //                   }
+      //                 });
+      //                 console.log(idArray);
+      //                 result_folder.forEach((folder) => {
+      //                   if (parentId == folder.parent_id) {
+      //                     //重複していないなら格納する
+      //                     if (parentIdArray.indexOf(folder.id) == -1) {
+      //                       parentIdArray.push(folder.id);
+      //                     }
+      //                   }
+      //                 });
+      //                 //console.log(parentIdArray);
+      //                 parentIdArray.splice(parentIdArray.indexOf(parentId), 1);
+      //               });
+      //             }
+      //             setTimeout(() => {
+      //               console.log(idArray);
+      //               res.send({ response: idArray });
+      //             }, 500);
+      //           }
+      //         );
+      //       }
+      //     );
+      //   }
+      // );
+    } else if (req.body.data === 'list') {
       //cookieの有効期限が切れたら自動的にログアウト
       //仕様上、自動でログアウトされては困るので、リロードの際にのみログアウトする
       const token = req.cookies.token;
@@ -726,68 +851,177 @@ router
     } else if (req.body.data === 'sharelist') {
       //cookieの有効期限が切れたら自動的にログアウト
       //仕様上、自動でログアウトされては困るので、リロードの際にのみログアウトする
-      try {
-        const token = req.cookies.token;
-        const decoded = JWT.verify(token, 'SECRET_KEY');
-        pool.query(
-          'SELECT * FROM register_user WHERE Email = ?;',
-          [decoded.email],
-          (error, resultDecoded) => {
-            pool.query('select * from register_user', (error, results) => {
-              pool.query(
-                'select * from folder WHERE (UserID = ?) AND (Type = "Share") order by folder_order ASC ',
-                [resultDecoded[0].id],
-                (error, results) => {
-                  pool.query(
-                    'select * from it_memo WHERE (UserID = ?) AND (Type = "Share") order by folder_order ASC',
-                    [resultDecoded[0].id],
-                    (error, result) => {
-                      res.send({
-                        response: results,
-                        response2: result,
-                        userName: resultDecoded[0].UserName,
-                        id: resultDecoded[0].id,
-                      });
-                    }
-                  );
-                }
-              );
-            });
-          }
-        );
-      } catch {
-        res.send({ userName: 'NO User' });
-      }
-      //全削除ボタン
-    } else if (req.body.data == 'deleteALL') {
+      //try {
       const token = req.cookies.token;
       const decoded = JWT.verify(token, 'SECRET_KEY');
-      pool.query(
-        'SELECT * FROM register_user WHERE Email = ?;',
-        [decoded.email],
-        (error, resultDecoded) => {
-          console.log(`データベースを全削除します`);
-          pool.query(
-            'DELETE from folder WHERE UserID = ?',
-            [resultDecoded[0].id],
-            (error, result) => {
-              pool.query(
-                'DELETE from it_memo WHERE UserID = ?',
-                [resultDecoded[0].id],
-                (error, result) => {
-                  pool.query(
-                    'DELETE from tab_hold WHERE UserID = ?',
-                    [resultDecoded[0].id],
-                    (error, result) => {
-                      res.send({ response: result });
-                    }
-                  );
+      let promise = new Promise((resolve, reject) => {
+        resolve();
+      });
+
+      promise
+        .then(() => {
+          return new Promise((resolve, rejct) => {
+            pool.query(
+              'SELECT * FROM register_user WHERE Email = ?;',
+              [decoded.email],
+              (error, resultDecoded) => {
+                if (error) {
+                  rejct(error);
+                } else {
+                  resolve(resultDecoded);
                 }
-              );
-            }
-          );
-        }
-      );
+              }
+            );
+          });
+        })
+        // .then(() => {
+        //   return new Promise((resolve, rejct) => {
+        //     pool.query('select * from register_user', (error, results) => {
+        //       if (error) {
+        //         reject(error);
+        //       } else {
+        //         resolve();
+        //       }
+        //     });
+        //   });
+        // })
+        .then((resultDecoded) => {
+          return new Promise((resolve, rejct) => {
+            pool.query(
+              'select * from folder WHERE (UserID = ?) AND (Type = "Share") order by folder_order ASC ',
+              [resultDecoded[0].id],
+              (error, results) => {
+                if (error) {
+                  rejct(error);
+                } else {
+                  resolve({ results: results, resultDecoded: resultDecoded });
+                }
+              }
+            );
+          });
+        })
+        .then(({ results, resultDecoded }) => {
+          return new Promise((resolve, rejct) => {
+            pool.query(
+              'select * from it_memo WHERE (UserID = ?) AND (Type = "Share") order by folder_order ASC',
+              [resultDecoded[0].id],
+              (error, result) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  res.send({
+                    response: results,
+                    response2: result,
+                    userName: resultDecoded[0].UserName,
+                    id: resultDecoded[0].id,
+                  });
+                }
+              }
+            );
+          });
+        })
+        .catch((error) => {
+          console.error(error);
+          res.status(500).send('Internal Server Error.(list)');
+        });
+      //全削除ボタン
+    } else if (req.body.data === 'deleteALL') {
+      const token = req.cookies.token;
+      const decoded = JWT.verify(token, 'SECRET_KEY');
+      let promise = new Promise((resolve, reject) => {
+        resolve();
+      });
+      promise
+        .then(() => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'SELECT * FROM register_user WHERE Email = ?;',
+              [decoded.email],
+              (error, resultDecoded) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  resolve(resultDecoded);
+                }
+              }
+            );
+          });
+        })
+        .then((resultDecoded) => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'DELETE from folder WHERE UserID = ?',
+              [resultDecoded[0].id],
+              (error, result) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  resolve(resultDecoded);
+                }
+              }
+            );
+          });
+        })
+        .then((resultDecoded) => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'DELETE from it_memo WHERE UserID = ?',
+              [resultDecoded[0].id],
+              (error, result) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  resolve(resultDecoded);
+                }
+              }
+            );
+          });
+        })
+        .then((resultDecoded) => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'DELETE from tab_hold WHERE UserID = ?',
+              [resultDecoded[0].id],
+              (error, result) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  res.send({ response: result });
+                }
+              }
+            );
+          });
+        })
+        .catch((error) => {
+          console.error(error);
+          res.status(500).send('Internal Server Error.(sharelist)');
+        });
+      // pool.query(
+      //   'SELECT * FROM register_user WHERE Email = ?;',
+      //   [decoded.email],
+      //   (error, resultDecoded) => {
+      //     console.log(`データベースを全削除します`);
+      //     pool.query(
+      //       'DELETE from folder WHERE UserID = ?',
+      //       [resultDecoded[0].id],
+      //       (error, result) => {
+      //         pool.query(
+      //           'DELETE from it_memo WHERE UserID = ?',
+      //           [resultDecoded[0].id],
+      //           (error, result) => {
+      //             pool.query(
+      //               'DELETE from tab_hold WHERE UserID = ?',
+      //               [resultDecoded[0].id],
+      //               (error, result) => {
+      //                 res.send({ response: result });
+      //               }
+      //             );
+      //           }
+      //         );
+      //       }
+      //     );
+      //   }
+      // );
       //フォルダの開き/閉じ判定
     } else if (req.body.data == 'folder') {
       console.log(
