@@ -625,35 +625,6 @@ router
           console.error(error);
           res.status(500).send('Internal Server Error.(folderChild)');
         });
-      // pool.query(
-      //   'SELECT * FROM register_user WHERE Email = ?;',
-      //   [decoded.email],
-      //   (error, resultDecoded) => {
-      //     pool.query(
-      //       'SELECT * FROM folder WHERE UserID = ?',
-      //       [resultDecoded[0].id],
-      //       (error, results) => {
-      //         while (parentIdArray.length !== 0) {
-      //           parentIdArray.forEach((parentId) => {
-      //             results.forEach((result) => {
-      //               if (parentId == result.parent_id) {
-      //                 //重複していないなら格納する
-      //                 if (idArray.indexOf(result.id) == -1) {
-      //                   idArray.push(result.id);
-      //                 }
-      //                 if (parentIdArray.indexOf(result.id) == -1) {
-      //                   parentIdArray.push(result.id);
-      //                 }
-      //               }
-      //             });
-      //             parentIdArray.splice(parentIdArray.indexOf(parentId), 1);
-      //           });
-      //         }
-      //         res.send({ response: idArray });
-      //       }
-      //     );
-      //   }
-      // );
       //フォルダの子ノートを全て取得する(passの更新に使用するため)
     } else if (req.body.data === 'noteChild') {
       let idArray = []; //最終的にcodejsに返す値
@@ -877,17 +848,6 @@ router
             );
           });
         })
-        // .then(() => {
-        //   return new Promise((resolve, rejct) => {
-        //     pool.query('select * from register_user', (error, results) => {
-        //       if (error) {
-        //         reject(error);
-        //       } else {
-        //         resolve();
-        //       }
-        //     });
-        //   });
-        // })
         .then((resultDecoded) => {
           return new Promise((resolve, rejct) => {
             pool.query(
@@ -999,32 +959,6 @@ router
           console.error(error);
           res.status(500).send('Internal Server Error.(sharelist)');
         });
-      // pool.query(
-      //   'SELECT * FROM register_user WHERE Email = ?;',
-      //   [decoded.email],
-      //   (error, resultDecoded) => {
-      //     console.log(`データベースを全削除します`);
-      //     pool.query(
-      //       'DELETE from folder WHERE UserID = ?',
-      //       [resultDecoded[0].id],
-      //       (error, result) => {
-      //         pool.query(
-      //           'DELETE from it_memo WHERE UserID = ?',
-      //           [resultDecoded[0].id],
-      //           (error, result) => {
-      //             pool.query(
-      //               'DELETE from tab_hold WHERE UserID = ?',
-      //               [resultDecoded[0].id],
-      //               (error, result) => {
-      //                 res.send({ response: result });
-      //               }
-      //             );
-      //           }
-      //         );
-      //       }
-      //     );
-      //   }
-      // );
       //フォルダの開き/閉じ判定
     } else if (req.body.data == 'folder') {
       console.log(
@@ -1596,22 +1530,65 @@ router
       );
       res.end();
     } else if (req.body.data === 'getuser') {
-      pool.query('SELECT * FROM register_user;', (error, result) => {
-        const user = result.find((user) => user.UserName === req.body.name);
-        if (!user) {
-          return res.send({
-            message: 'ユーザーが見つかりませんでした',
-          });
-        }
-        pool.query(
-          //レコードをコピーして新しいレコードとして挿入
-          'INSERT INTO it_memo (title, memo_text, Type, UserID) (SELECT title, memo_text, ?, ? FROM it_memo WHERE id = ?);',
-          ['Share', user.id, req.body.id],
-          (error, result) => {
-            res.send({ message: '共有しました' });
-          }
-        );
+      let promise = new Promise((resolve, reject) => {
+        resolve();
       });
+      promise
+        .then(() => {
+          return new Promise((resolve, reject) => {
+            pool.query('SELECT * FROM register_user;', (error, result) => {
+              if (error) {
+                reject(error);
+              } else {
+                const user = result.find(
+                  (user) => user.UserName === req.body.name
+                );
+                if (!user) {
+                  return res.send({
+                    message: 'ユーザーが見つかりませんでした',
+                  });
+                }
+                resolve();
+              }
+            });
+          });
+        })
+        .then(() => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              //レコードをコピーして新しいレコードとして挿入
+              'INSERT INTO it_memo (title, memo_text, Type, UserID) (SELECT title, memo_text, ?, ? FROM it_memo WHERE id = ?);',
+              ['Share', user.id, req.body.id],
+              (error, result) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  res.send({ message: '共有しました' });
+                }
+              }
+            );
+          });
+        })
+        .catch((error) => {
+          console.error(error);
+          res.status(500).send('Internal Server Error.(getuser)');
+        });
+      // pool.query('SELECT * FROM register_user;', (error, result) => {
+      //   const user = result.find((user) => user.UserName === req.body.name);
+      //   if (!user) {
+      //     return res.send({
+      //       message: 'ユーザーが見つかりませんでした',
+      //     });
+      //   }
+      //   pool.query(
+      //     //レコードをコピーして新しいレコードとして挿入
+      //     'INSERT INTO it_memo (title, memo_text, Type, UserID) (SELECT title, memo_text, ?, ? FROM it_memo WHERE id = ?);',
+      //     ['Share', user.id, req.body.id],
+      //     (error, result) => {
+      //       res.send({ message: '共有しました' });
+      //     }
+      //   );
+      // });
     } else {
       console.log('dataで何も受け取ってません');
     }
