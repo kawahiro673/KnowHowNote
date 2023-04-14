@@ -1548,12 +1548,12 @@ router
                     message: 'ユーザーが見つかりませんでした',
                   });
                 }
-                resolve();
+                resolve(user);
               }
             });
           });
         })
-        .then(() => {
+        .then((user) => {
           return new Promise((resolve, reject) => {
             pool.query(
               //レコードをコピーして新しいレコードとして挿入
