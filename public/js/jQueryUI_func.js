@@ -47,7 +47,9 @@ export const jQueryUIOptionsFunc = () => {
             data: 'noteChild',
             id,
           }),
-          success: function (res) {},
+          success: function (res) {
+            console.log(`配下のファイルの子要素は ${res.response}`);
+          },
         });
       },
       //自分のfolder配下にはD&Dをできないようにしている
