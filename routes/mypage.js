@@ -1456,7 +1456,7 @@ router
               );
             });
           })
-          .then(() => {
+          .then((resultDecoded) => {
             return new Promise((resolve, reject) => {
               pool.query(
                 'UPDATE folder SET closed = "off" WHERE UserID = ?;',
