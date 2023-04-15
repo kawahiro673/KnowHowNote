@@ -44,7 +44,7 @@ window.addEventListener('DOMContentLoaded', function () {
       success: function (res) {
         console.log(res);
         if (res.status === 500) {
-          console.log('クリック！！');
+          console.log('ログイン画面に戻ります');
           location.href = 'https://nodejs-itnote-app.herokuapp.com/login';
         }
         document.getElementById('sab-title').innerHTML = res.userName;
@@ -863,7 +863,6 @@ window.addEventListener('DOMContentLoaded', function () {
       .then((response) => response.json())
       .then((data) => {
         // レスポンスを処理するコード
-        console.log(data);
         alert(data.msg);
       })
       .catch((error) => {
