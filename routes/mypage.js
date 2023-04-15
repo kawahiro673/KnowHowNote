@@ -1850,6 +1850,18 @@ router
         });
     } else if (req.body.data === 'humburger') {
       res.send({ msg: 'ハンバーガー押しましたね！？' });
+      let promise = new Promise((resolve, reject) => {
+        resolve();
+      });
+
+      promise
+        .then(() => {
+          throw Error('error');
+        })
+        .catch((error) => {
+          console.Console(error);
+          res.status(500).send('errorですよ〜');
+        });
     } else {
       console.log('dataで何も受け取ってません');
     }

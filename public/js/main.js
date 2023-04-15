@@ -866,6 +866,7 @@ window.addEventListener('DOMContentLoaded', function () {
         alert(data.msg);
       })
       .catch((error) => {
+        console.log(error);
         // エラー処理を行うコード
       });
   });
