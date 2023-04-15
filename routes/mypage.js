@@ -1376,11 +1376,15 @@ router
           .then((result_n) => {
             return new Promise((resolve, reject) => {
               pool.query('select * from folder', (error, result_f) => {
-                res.send({
-                  response: req.body.id,
-                  response1: result_n,
-                  response2: result_f,
-                });
+                if (error) {
+                  reject(error);
+                } else {
+                  res.send({
+                    response: req.body.id,
+                    response1: result_n,
+                    response2: result_f,
+                  });
+                }
               });
             });
           })
@@ -1397,7 +1401,7 @@ router
         });
         promise
           .then(() => {
-            return new Promise(() => {
+            return new Promise((resolve, reject) => {
               pool.query(
                 'SELECT * FROM register_user WHERE Email = ?;',
                 [decoded.email],
@@ -1412,7 +1416,7 @@ router
             });
           })
           .then((resultDecoded) => {
-            return new Promise(() => {
+            return new Promise((resolve, reject) => {
               pool.query(
                 'UPDATE folder SET closed = "on" WHERE UserID = ? ;',
                 [resultDecoded[0].id],
@@ -1438,7 +1442,7 @@ router
         });
         promise
           .then(() => {
-            return new Promise(() => {
+            return new Promise((resolve, reject) => {
               pool.query(
                 'SELECT * FROM register_user WHERE Email = ?;',
                 [decoded.email],
@@ -1453,7 +1457,7 @@ router
             });
           })
           .then(() => {
-            return new Promise(() => {
+            return new Promise((resolve, reject) => {
               pool.query(
                 'UPDATE folder SET closed = "off" WHERE UserID = ?;',
                 [resultDecoded[0].id],
