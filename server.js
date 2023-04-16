@@ -7,7 +7,7 @@ const http = express('http');
 //connectionだとmysqlとの通信が切れてしまうため、poolを使用
 const pool = require('./db.js');
 const mypage1 = require('./routes/mypage');
-const mypage2 = require('./routes/postController/tabPostController');
+const mypage2 = require('./routes/tabPostController');
 const auth = require('./routes/auth');
 const login = require('./routes/srv_login');
 const cookieParser = require('cookie-parser');
