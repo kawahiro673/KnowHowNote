@@ -6,7 +6,8 @@ const { Template } = require('ejs');
 const http = express('http');
 //connectionだとmysqlとの通信が切れてしまうため、poolを使用
 const pool = require('./db.js');
-const mypage = require('./routes/mypage');
+const mypage1 = require('./routes/mypage');
+const mypage2 = require('./routes/postController/tabPostController');
 const auth = require('./routes/auth');
 const login = require('./routes/srv_login');
 const cookieParser = require('cookie-parser');
@@ -28,7 +29,8 @@ app.get('/', (req, res) => {
 
 //authというエンドポイントで./routes/authファイルでWebAPIを構築できる
 app.use('/auth', auth);
-app.use('/mypage', mypage);
+app.use('/mypage', mypage1);
+app.use('/mypage', mypage2);
 app.use('/login', login);
 
 app.listen(process.env.PORT || 8080, () => {
