@@ -247,7 +247,7 @@ export const closeTab = (id, index, tabFocus, tabArray) => {
   document.getElementById('Tab-ID' + id).remove();
 
   $.ajax({
-    url: '/mypage/',
+    url: '/tabPostController/',
     type: 'POST',
     dataType: 'Json',
     contentType: 'application/json',
@@ -283,7 +283,7 @@ export const closeButton = (id, title, tabFocus, tabArray) => {
   index = index + 1;
   closeTab(id, index, tabFocus, tabArray);
   $.ajax({
-    url: '/mypage/',
+    url: '/tabPostController/',
     type: 'POST',
     dataType: 'Json',
     contentType: 'application/json',
@@ -311,7 +311,7 @@ export const tabClick = (e, id, title, tabFocus) => {
     let pass = passGet(id, document.getElementById('tabname' + id).innerHTML);
     //クリックしたTabのfocusを1へ、その他を0へ。passも更新
     $.ajax({
-      url: '/mypage/',
+      url: '/tabPostController/',
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
