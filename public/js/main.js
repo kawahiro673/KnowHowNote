@@ -31,7 +31,8 @@ let fileFlg = false;
 let folderFlg = false;
 
 window.addEventListener('DOMContentLoaded', function () {
-  //listの作成
+  //「マイノウハウ」タブにファイル/フォルダ全て表示
+  //DBから全ての情報を取得
   function listCreate() {
     $.ajax({
       url: '/mypage/',
@@ -42,7 +43,6 @@ window.addEventListener('DOMContentLoaded', function () {
         data: 'list',
       }),
       success: function (res) {
-        console.log(res);
         if (res.status === 500) {
           console.log('ログイン画面に戻ります');
           location.href = 'https://nodejs-itnote-app.herokuapp.com/login';
@@ -71,7 +71,6 @@ window.addEventListener('DOMContentLoaded', function () {
               orderNumber++;
               for (const hoge of Object.keys(res.response)) {
                 const folder = res.response[hoge];
-                //for (const folder of res.response) {
                 //parentIdが合致すれば子要素として追加
                 if (
                   folder.parent_id == parentId &&
@@ -93,7 +92,6 @@ window.addEventListener('DOMContentLoaded', function () {
                   document.getElementById(`${parentId}`).appendChild(li);
                   li.appendChild(span);
                   li.appendChild(ul);
-                  //console.log(`${folder.folder_name}の要素を作成しました`);
                   //重複していなければ追加
                   if (parentIdArray.indexOf(folder.id) == -1) {
                     parentIdArray.push(folder.id);
@@ -170,7 +168,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
               $.ajax({
                 url: '/folderPostController/',
-                //async: false,
                 type: 'POST',
                 dataType: 'Json',
                 contentType: 'application/json',
@@ -360,7 +357,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   //*********** タブ生成関数(ページリロード時) ************
   async function titleClick(id, title) {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       //タブ生成しておらず、・・・じゃないとき
       if (tabArray.includes(id) == false) {
         $.ajax({
@@ -374,7 +371,6 @@ window.addEventListener('DOMContentLoaded', function () {
             id,
           }),
           success: function (res) {
-            //resolve()を呼び出すことで、Promiseオブジェクトが完了したことを示すことができる
             resolve();
             const [
               inputEdit,
@@ -678,7 +674,6 @@ window.addEventListener('DOMContentLoaded', function () {
     //エンター押下時
     const enter = function (e) {
       //e.preventDefault(); //これがあると入力できない？？
-      //console.log('3');
       if (fileFlg) {
         if (e.keyCode === 13) {
           newCreateFile2(inputTab, span, id);
@@ -702,7 +697,6 @@ window.addEventListener('DOMContentLoaded', function () {
     if (!inputTab.value || !inputTab.value.match(/\S/g)) {
       alert('タイトルを入力してください');
     } else {
-      //console.log('入力されました');
       $.ajax({
         url: '/notePostController/',
         type: 'POST',
@@ -816,35 +810,15 @@ window.addEventListener('DOMContentLoaded', function () {
       });
     }
   });
-  //全て折り畳む
+
+  //[折り畳む]ボタン押下後、DB全て折り畳む値追加
   $('.collapsable').click(function () {
-    //console.log('折り畳むぼたん押下');
-    $.ajax({
-      url: '/folderPostController/',
-      type: 'POST',
-      dataType: 'Json',
-      contentType: 'application/json',
-      data: JSON.stringify({
-        data: 'folder',
-        flg: 'collapsableALL',
-      }),
-      success: function (res) {},
-    });
+    updateDBFunc('folder', 'collapsableALL');
   });
-  //全て展開
+
+  //[展開する]ボタン押下、DB全て展開する値追加
   $('.expandable').click(function () {
-    //console.log('全て展開ぼたん押下');
-    $.ajax({
-      url: '/folderPostController/',
-      type: 'POST',
-      dataType: 'Json',
-      contentType: 'application/json',
-      data: JSON.stringify({
-        data: 'folder',
-        flg: 'expandableALL',
-      }),
-      success: function (res) {},
-    });
+    updateDBFunc('folder', 'expandableALL');
   });
 
   $('.hamburger').click(() => {
@@ -869,17 +843,23 @@ window.addEventListener('DOMContentLoaded', function () {
       });
   });
 
+  //[ログアウト]押下後、サーバーでCookieを削除
   document.getElementById('logout').addEventListener('click', () => {
-    //Cookieの削除をするためのPOST
+    updateDBFunc('cookiedelete');
+  });
+
+  //サーバーとのやり取りをするだけの関数(レスポンスなしが好ましい)
+  const updateDBFunc = (str1, str2) => {
     $.ajax({
       url: '/mypage/',
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
       data: JSON.stringify({
-        data: 'cookiedelete',
+        data: str1,
+        flg: str2,
       }),
       success: function (res) {},
     });
-  });
+  };
 });
