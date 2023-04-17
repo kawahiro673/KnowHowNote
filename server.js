@@ -29,8 +29,8 @@ app.get('/', (req, res) => {
 
 //authというエンドポイントで./routes/authファイルでWebAPIを構築できる
 app.use('/auth', auth);
-app.use('/mypage', mypage1);
-app.use('/mypage', mypage2);
+app.use('/mypage', [mypage1, mypage2]);
+//app.use('/mypage', mypage2);
 app.use('/login', login);
 
 app.listen(process.env.PORT || 8080, () => {
