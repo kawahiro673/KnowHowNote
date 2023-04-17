@@ -93,7 +93,7 @@ const folderDelete = (folderList, index, tabArray, tabFocus) => {
   //はいを押した場合(true)
   if (btn) {
     $.ajax({
-      url: '/mypage/',
+      url: '/folderPostController/',
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
@@ -166,7 +166,7 @@ const folderNameChange = (folderList) => {
         alert('タイトルを入力してください');
       } else {
         $.ajax({
-          url: '/mypage/',
+          url: '/folderPostController/',
           type: 'POST',
           dataType: 'Json',
           contentType: 'application/json',

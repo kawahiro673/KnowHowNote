@@ -463,10 +463,8 @@ window.addEventListener('DOMContentLoaded', function () {
             };
           },
         });
-
         //既にタブが生成されている場合
       } else {
-        //console.log(`既に[${tabArray}]にあります`);
         //タブをクリックしたことにする
         $(`#tab-ID${id}`).trigger('click');
       }
