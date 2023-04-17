@@ -287,7 +287,7 @@ window.addEventListener('DOMContentLoaded', function () {
       let pass = passGet(listTitle.id, listTitle.title);
       //id((主キー)が同じ場合は更新してくれる(既にtab_holdに格納時みの場合)
       $.ajax({
-        url: '/mypage/',
+        url: '/tabPostController/',
         type: 'POST',
         dataType: 'Json',
         contentType: 'application/json',
@@ -302,7 +302,7 @@ window.addEventListener('DOMContentLoaded', function () {
           let index = orderGet('tab-content', `Tab-ID${ID}`);
           //orderを格納し、focus=1へ
           $.ajax({
-            url: '/mypage/',
+            url: '/tabPostController/',
             type: 'POST',
             dataType: 'Json',
             contentType: 'application/json',
@@ -325,7 +325,7 @@ window.addEventListener('DOMContentLoaded', function () {
   //ページを更新した際に前回のタブ情報を載せる
   function tabUpload() {
     $.ajax({
-      url: '/mypage/',
+      url: '/tabPostController/',
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
@@ -340,7 +340,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (res.response.length != 0) {
           setTimeout(() => {
             $.ajax({
-              url: '/mypage/',
+              url: '/tabPostController/',
               type: 'POST',
               dataType: 'Json',
               contentType: 'application/json',

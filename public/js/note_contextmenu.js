@@ -63,7 +63,7 @@ const noteDelete = (listTitle, tabIndex, index, tabArray, tabFocus) => {
   let btn = confirm(`${listTitle.title} を本当に削除しますか？`);
   if (btn) {
     $.ajax({
-      url: '/mypage/',
+      url: '/tabPostController/',
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
