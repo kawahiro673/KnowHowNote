@@ -111,7 +111,7 @@ export const jQueryUIOptionsFunc = () => {
               let id = item[0].childNodes[0].getAttribute('value');
 
               $.ajax({
-                url: '/mypage/',
+                url: '/notePostController/',
                 type: 'POST',
                 dataType: 'Json',
                 contentType: 'application/json',
@@ -133,7 +133,7 @@ export const jQueryUIOptionsFunc = () => {
               let id = item[0].childNodes[0].getAttribute('value');
 
               $.ajax({
-                url: '/mypage/',
+                url: '/notePostController/',
                 type: 'POST',
                 dataType: 'Json',
                 contentType: 'application/json',
@@ -158,7 +158,7 @@ export const jQueryUIOptionsFunc = () => {
             let id = item[0].childNodes[0].getAttribute('value');
 
             $.ajax({
-              url: '/mypage/',
+              url: '/notePostController/',
               type: 'POST',
               dataType: 'Json',
               contentType: 'application/json',
@@ -225,7 +225,7 @@ export const jQueryUIOptionsFunc = () => {
             if (initial_index < index) {
               console.log('フォルダ:下へD&D');
               $.ajax({
-                url: '/mypage/',
+                url: '/folderPostController/',
                 type: 'POST',
                 dataType: 'Json',
                 contentType: 'application/json',
@@ -245,7 +245,7 @@ export const jQueryUIOptionsFunc = () => {
             } else if (initial_index > index) {
               console.log('フォルダ:上へD&D');
               $.ajax({
-                url: '/mypage/',
+                url: '/folderPostController/',
                 type: 'POST',
                 dataType: 'Json',
                 contentType: 'application/json',
@@ -269,7 +269,7 @@ export const jQueryUIOptionsFunc = () => {
             console.log('フォルダ:違うParentID');
             //D&D後に新しく追加された側のorderの動き
             $.ajax({
-              url: '/mypage/',
+              url: '/folderPostController/',
               type: 'POST',
               dataType: 'Json',
               contentType: 'application/json',

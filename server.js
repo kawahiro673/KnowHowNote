@@ -7,7 +7,9 @@ const http = express('http');
 //connectionだとmysqlとの通信が切れてしまうため、poolを使用
 const pool = require('./db.js');
 const mypage1 = require('./routes/mypage');
-const tabPostController = require('./routes/tabPostController');
+const tabPostController = require('./routes/postController/tabPostController');
+const notePostController = require('./routes/postController/notePostController');
+const folderPostController = require('./routes/postController/folderPostController');
 const auth = require('./routes/auth');
 const login = require('./routes/srv_login');
 const cookieParser = require('cookie-parser');
@@ -30,6 +32,8 @@ app.get('/', (req, res) => {
 app.use('/auth', auth);
 app.use('/mypage', mypage1);
 app.use('/tabPostController', tabPostController);
+app.use('/notePostController', notePostController);
+app.use('/folderPostController', folderPostController);
 app.use('/login', login);
 
 app.listen(process.env.PORT || 8080, () => {

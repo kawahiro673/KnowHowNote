@@ -76,7 +76,7 @@ const newCreateFile2 = (inputTab, span, parentId) => {
     alert('タイトルを入力してください');
   } else {
     $.ajax({
-      url: '/mypage/',
+      url: '/notePostController/',
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
@@ -108,7 +108,7 @@ const newCreateFile2 = (inputTab, span, parentId) => {
         // fileClick();
         // updateTime(res.response2.id);
         $.ajax({
-          url: '/mypage/',
+          url: '/notePostController/',
           type: 'POST',
           dataType: 'Json',
           contentType: 'application/json',

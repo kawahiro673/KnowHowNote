@@ -169,7 +169,7 @@ window.addEventListener('DOMContentLoaded', function () {
               }
 
               $.ajax({
-                url: '/mypage/',
+                url: '/folderPostController/',
                 //async: false,
                 type: 'POST',
                 dataType: 'Json',
@@ -364,7 +364,7 @@ window.addEventListener('DOMContentLoaded', function () {
       //タブ生成しておらず、・・・じゃないとき
       if (tabArray.includes(id) == false) {
         $.ajax({
-          url: '/mypage/',
+          url: '/notePostController/',
           type: 'POST',
           dataType: 'Json',
           contentType: 'application/json',
@@ -569,7 +569,7 @@ window.addEventListener('DOMContentLoaded', function () {
     } else {
       console.log('入力されました');
       $.ajax({
-        url: '/mypage/',
+        url: '/folderPostController/',
         type: 'POST',
         dataType: 'Json',
         contentType: 'application/json',
@@ -600,7 +600,7 @@ window.addEventListener('DOMContentLoaded', function () {
           jQueryUIOptionsFunc();
           folderContextmenu(tabArray, tabFocus, fileFlg, folderFlg);
           $.ajax({
-            url: '/mypage/',
+            url: '/folderPostController/',
             type: 'POST',
             dataType: 'Json',
             contentType: 'application/json',
@@ -706,7 +706,7 @@ window.addEventListener('DOMContentLoaded', function () {
     } else {
       //console.log('入力されました');
       $.ajax({
-        url: '/mypage/',
+        url: '/notePostController/',
         type: 'POST',
         dataType: 'Json',
         contentType: 'application/json',
@@ -739,7 +739,7 @@ window.addEventListener('DOMContentLoaded', function () {
           fileClick();
           updateTime(res.response2.id);
           $.ajax({
-            url: '/mypage/',
+            url: '/notePostController/',
             type: 'POST',
             dataType: 'Json',
             contentType: 'application/json',
@@ -822,7 +822,7 @@ window.addEventListener('DOMContentLoaded', function () {
   $('.collapsable').click(function () {
     //console.log('折り畳むぼたん押下');
     $.ajax({
-      url: '/mypage/',
+      url: '/folderPostController/',
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
@@ -837,7 +837,7 @@ window.addEventListener('DOMContentLoaded', function () {
   $('.expandable').click(function () {
     //console.log('全て展開ぼたん押下');
     $.ajax({
-      url: '/mypage/',
+      url: '/folderPostController/',
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',

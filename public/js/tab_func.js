@@ -97,7 +97,7 @@ export const keepButton = (
 ) => {
   let pass = passGet(id, newTitle);
   $.ajax({
-    url: '/mypage/',
+    url: '/notePostController/',
     type: 'POST',
     dataType: 'Json',
     contentType: 'application/json',
@@ -148,7 +148,7 @@ export const cancelButton = (
   );
   if (btn) {
     $.ajax({
-      url: '/mypage/',
+      url: '/notePostController/',
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
@@ -223,7 +223,7 @@ export const updateTime = (id, time) => {
   let Hour = now.getHours();
   let Min = now.getMinutes();
   $.ajax({
-    url: '/mypage/',
+    url: '/notePostController/',
     type: 'POST',
     dataType: 'Json',
     contentType: 'application/json',

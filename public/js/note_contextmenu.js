@@ -86,7 +86,7 @@ const noteDelete = (listTitle, tabIndex, index, tabArray, tabFocus) => {
         }
 
         $.ajax({
-          url: '/mypage/',
+          url: '/notePostController/',
           type: 'POST',
           dataType: 'Json',
           contentType: 'application/json',
@@ -135,7 +135,7 @@ const noteNameChange = (listTitle) => {
         alert('タイトルを入力してください');
       } else {
         $.ajax({
-          url: '/mypage/',
+          url: '/notePostController/',
           type: 'POST',
           dataType: 'Json',
           contentType: 'application/json',
