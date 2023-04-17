@@ -813,12 +813,12 @@ window.addEventListener('DOMContentLoaded', function () {
 
   //[折り畳む]ボタン押下後、DB全て折り畳む値追加
   $('.collapsable').click(function () {
-    updateDBFunc('folder', 'collapsableALL');
+    updateDBFunc('/folderPostController/', 'folder', 'collapsableALL');
   });
 
   //[展開する]ボタン押下、DB全て展開する値追加
   $('.expandable').click(function () {
-    updateDBFunc('folder', 'expandableALL');
+    updateDBFunc('/folderPostController/', 'folder', 'expandableALL');
   });
 
   $('.hamburger').click(() => {
@@ -845,13 +845,13 @@ window.addEventListener('DOMContentLoaded', function () {
 
   //[ログアウト]押下後、サーバーでCookieを削除
   document.getElementById('logout').addEventListener('click', () => {
-    updateDBFunc('cookiedelete');
+    updateDBFunc('/mypage/', 'cookiedelete');
   });
 
   //サーバーとのやり取りをするだけの関数(レスポンスなしが好ましい)
-  const updateDBFunc = (str1, str2) => {
+  const updateDBFunc = (url, str1, str2) => {
     $.ajax({
-      url: '/mypage/',
+      url,
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
