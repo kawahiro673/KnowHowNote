@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 
 //authというエンドポイントで./routes/authファイルでWebAPIを構築できる
 app.use('/auth', auth);
-app.use('/mypage', [mypage1, mypage2]);
+app.post('/mypage', [mypage1, mypage2]);
 //app.use('/mypage', mypage2);
 app.use('/login', login);
 
