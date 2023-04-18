@@ -6,6 +6,11 @@ import { newFolderCreateFunc } from './newFolderCreate.js';
 let tmp1;
 let tmp2;
 
+let conme = document.getElementById('contextmenu');
+let conme2 = document.getElementById('contextmenu2');
+let conme3 = document.getElementById('contextmenu3');
+let conme4 = document.getElementById('contextmenu4');
+
 export const folderContextmenu = (tabArray, tabFocus, fileFlg, folderFlg) => {
   $('.folder').on('contextmenu', function () {
     console.log(

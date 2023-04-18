@@ -21,8 +21,6 @@ import { newFolderCreateFunc } from './newFolderCreate.js';
 
 import { orderGet } from './stringUtils.js';
 
-let tmp1;
-let tmp2;
 let tab = document.getElementById('tab');
 let conme = document.getElementById('contextmenu');
 let conme2 = document.getElementById('contextmenu2');
