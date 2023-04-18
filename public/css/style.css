@@ -98,13 +98,7 @@ header h1 {
 }
 
 #logout {
-  float: right;
-  transition: all 0.5s;
-  /*カーソル合わせた時に0.5秒かけて変色*/
-  margin: 0px;
-  padding: 20px 20px;
-  font-family: 'Open Sans', sans-serif;
-  z-index: 100px;
+  text-decoration: none;
 }
 
 #logout:hover {
