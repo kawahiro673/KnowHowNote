@@ -1,5 +1,6 @@
-//新規ファイルをルート配下に作成
-export const newFileCreate = (id, fileFlg) => {
+import { jQueryUIOptionsFunc } from './jQueryUI_func.js';
+
+export const newFileCreateFunc = (id, fileFlg, tabArray, tabFocus) => {
   const li = document.createElement('li');
   const span = document.createElement('span');
   li.setAttribute('class', 'last');
@@ -26,7 +27,7 @@ export const newFileCreate = (id, fileFlg) => {
   const clickL = function (e) {
     e.preventDefault();
     if (fileFlg && !e.target.closest('#inputTab')) {
-      newCreateFile2(inputTab, span, id);
+      newCreateFile2(inputTab, span, id, tabArray, tabFocus);
       fileFlg = false;
     }
     //addEnentLisnterが残る!?ので削除する。
@@ -40,7 +41,7 @@ export const newFileCreate = (id, fileFlg) => {
   const clickR = function (e) {
     e.preventDefault();
     if (fileFlg && !e.target.closest('#inputTab')) {
-      newCreateFile2(inputTab, span, id);
+      newCreateFile2(inputTab, span, id, tabArray, tabFocus);
       fileFlg = false;
     }
     if (fileFlg == false) {
@@ -54,7 +55,7 @@ export const newFileCreate = (id, fileFlg) => {
     //e.preventDefault(); //これがあると入力できない？？
     if (fileFlg) {
       if (e.keyCode === 13) {
-        newCreateFile2(inputTab, span, id);
+        newCreateFile2(inputTab, span, id, tabArray, tabFocus);
         fileFlg = false;
       }
     }
@@ -70,7 +71,7 @@ export const newFileCreate = (id, fileFlg) => {
   inputTab.addEventListener('keypress', enter);
 };
 
-const newCreateFile2 = (inputTab, span, parentId) => {
+const newCreateFile2 = (inputTab, span, parentId, tabArray, tabFocus) => {
   //何も入力されていない時や空白や改行のみ
   if (!inputTab.value || !inputTab.value.match(/\S/g)) {
     alert('タイトルを入力してください');
@@ -103,10 +104,10 @@ const newCreateFile2 = (inputTab, span, parentId) => {
         let newIndex = [].slice.call(elements).indexOf(span.parentNode);
         console.log(newIndex);
         newIndex++;
-        // jQUI();
-        // fileContextmenu();
-        // fileClick();
-        // updateTime(res.response2.id);
+        jQueryUIOptionsFunc();
+        fileContextmenu(tabArray, tabFocus);
+        fileClick();
+        updateTime(res.response2.id);
         $.ajax({
           url: '/notePostController/',
           type: 'POST',
@@ -126,7 +127,7 @@ const newCreateFile2 = (inputTab, span, parentId) => {
             while (node.firstChild) {
               node.removeChild(node.firstChild);
             }
-            // listCreate();
+            listCreate();
           },
         });
       },

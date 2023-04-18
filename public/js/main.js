@@ -16,6 +16,8 @@ import { folderContextmenu } from './folder_contextmenu.js';
 
 import { jQueryUIOptionsFunc } from './jQueryUI_func.js';
 
+import { newFileCreateFunc } from './newFileCreate.js';
+
 import { orderGet } from './stringUtils.js';
 
 let tmp1;
@@ -475,7 +477,7 @@ window.addEventListener('DOMContentLoaded', function () {
   //ファイル新規作成
   document.getElementById('newfile').onclick = function () {
     e.stopPropagation();
-    newFileCreate(0);
+    newFileCreateFunc(0, fileFlg, tabArray, tabFocus);
   };
 
   //rootの１番配下に新しくフォルダを追加
@@ -620,142 +622,143 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  function newFileCreate(id) {
-    let li = document.createElement('li');
-    let span = document.createElement('span');
-    li.setAttribute('class', 'last');
-    span.classList.add('list_title', 'file');
-    const inputTab = document.createElement('input');
-    inputTab.setAttribute('type', 'text');
-    inputTab.setAttribute('id', 'inputTab');
-    inputTab.setAttribute('name', 'list_title');
-    inputTab.setAttribute('maxlength', '20');
-    inputTab.setAttribute('size', '20');
-    inputTab.style.display = 'block';
-    inputTab.setAttribute('value', 'NewNote');
-    document.getElementById(id).appendChild(li);
-    li.appendChild(span);
-    span.appendChild(inputTab);
-    //テキストエリアにフォーカスを当ててカーソルを末尾へ;
-    let len = inputTab.value.length;
-    document.getElementById('inputTab').focus();
-    document.getElementById('inputTab').setSelectionRange(len, len);
-    //左クリック
-    const clickL = function (e) {
-      e.preventDefault();
-      //console.log('1' + folderFlg);
-      if (fileFlg && !e.target.closest('#inputTab')) {
-        console.log('左クリック');
-        newCreateFile2(inputTab, span, id);
-        fileFlg = false;
-      }
-      //addEnentLisnterが残る!?ので削除する。
-      if (fileFlg == false) {
-        document.removeEventListener('click', clickL);
-        document.removeEventListener('contextmenu', clickR);
-        document.removeEventListener('keypress', enter);
-      }
-    };
-    //右クリック
-    const clickR = function (e) {
-      e.preventDefault();
-      //console.log('2' + folderFlg);
-      if (fileFlg && !e.target.closest('#inputTab')) {
-        console.log('右クリック');
-        newCreateFile2(inputTab, span, id);
-        fileFlg = false;
-      }
-      if (fileFlg == false) {
-        document.removeEventListener('click', clickL);
-        document.removeEventListener('contextmenu', clickR);
-        document.removeEventListener('keypress', enter);
-      }
-    };
-    //エンター押下時
-    const enter = function (e) {
-      //e.preventDefault(); //これがあると入力できない？？
-      if (fileFlg) {
-        if (e.keyCode === 13) {
-          newCreateFile2(inputTab, span, id);
-          fileFlg = false;
-        }
-      }
-      if (fileFlg == false) {
-        document.removeEventListener('click', clickL);
-        document.removeEventListener('contextmenu', clickR);
-        document.removeEventListener('keypress', enter);
-      }
-    };
-    //右・左・Enterそれぞれの実行
-    document.addEventListener('click', clickL);
-    document.addEventListener('contextmenu', clickR);
-    inputTab.addEventListener('keypress', enter);
-  }
+  // function newFileCreate(id) {
+  //   let li = document.createElement('li');
+  //   let span = document.createElement('span');
+  //   li.setAttribute('class', 'last');
+  //   span.classList.add('list_title', 'file');
+  //   const inputTab = document.createElement('input');
+  //   inputTab.setAttribute('type', 'text');
+  //   inputTab.setAttribute('id', 'inputTab');
+  //   inputTab.setAttribute('name', 'list_title');
+  //   inputTab.setAttribute('maxlength', '20');
+  //   inputTab.setAttribute('size', '20');
+  //   inputTab.setAttribute('onfocus', 'this.select();');
+  //   inputTab.style.display = 'block';
+  //   inputTab.setAttribute('value', 'NewNote');
+  //   document.getElementById(id).appendChild(li);
+  //   li.appendChild(span);
+  //   span.appendChild(inputTab);
+  //   //テキストエリアにフォーカスを当ててカーソルを末尾へ;
+  //   let len = inputTab.value.length;
+  //   document.getElementById('inputTab').focus();
+  //   document.getElementById('inputTab').setSelectionRange(len, len);
+  //   //左クリック
+  //   //inputTab以外をクリックした場合
+  //   const clickL = function (e) {
+  //     e.preventDefault();
+  //     if (fileFlg && !e.target.closest('#inputTab')) {
+  //       console.log('左クリック');
+  //       newCreateFile2(inputTab, span, id);
+  //       fileFlg = false;
+  //     }
+  //     //addEnentLisnterが残る!?ので削除する。
+  //     if (fileFlg == false) {
+  //       document.removeEventListener('click', clickL);
+  //       document.removeEventListener('contextmenu', clickR);
+  //       document.removeEventListener('keypress', enter);
+  //     }
+  //   };
+  //   //右クリック
+  //   const clickR = function (e) {
+  //     e.preventDefault();
+  //     //console.log('2' + folderFlg);
+  //     if (fileFlg && !e.target.closest('#inputTab')) {
+  //       console.log('右クリック');
+  //       newCreateFile2(inputTab, span, id);
+  //       fileFlg = false;
+  //     }
+  //     if (fileFlg == false) {
+  //       document.removeEventListener('click', clickL);
+  //       document.removeEventListener('contextmenu', clickR);
+  //       document.removeEventListener('keypress', enter);
+  //     }
+  //   };
+  //   //エンター押下時
+  //   const enter = function (e) {
+  //     //e.preventDefault(); //これがあると入力できない？？
+  //     if (fileFlg) {
+  //       if (e.keyCode === 13) {
+  //         newCreateFile2(inputTab, span, id);
+  //         fileFlg = false;
+  //       }
+  //     }
+  //     if (fileFlg == false) {
+  //       document.removeEventListener('click', clickL);
+  //       document.removeEventListener('contextmenu', clickR);
+  //       document.removeEventListener('keypress', enter);
+  //     }
+  //   };
+  //   //右・左・Enterそれぞれの実行
+  //   document.addEventListener('click', clickL);
+  //   document.addEventListener('contextmenu', clickR);
+  //   inputTab.addEventListener('keypress', enter);
+  // }
 
-  function newCreateFile2(inputTab, span, parentId) {
-    //何も入力されていない時や空白や改行のみの入力
-    if (!inputTab.value || !inputTab.value.match(/\S/g)) {
-      alert('タイトルを入力してください');
-    } else {
-      $.ajax({
-        url: '/notePostController/',
-        type: 'POST',
-        dataType: 'Json',
-        contentType: 'application/json',
-        data: JSON.stringify({
-          data: 'note',
-          flg: 'newNote',
-          pattern: 'new',
-          title: inputTab.value,
-          parentId,
-        }),
-        success: function (res) {
-          //console.log(`success受信(title) : "${res.response1}"`);
-          span.setAttribute('id', `li${res.response2.id}`);
-          span.setAttribute('value', res.response2.id);
-          inputTab.remove();
-          span.innerHTML = res.response1;
-          span.parentNode.setAttribute(
-            'class',
-            `parent${res.response2.parent_id}`
-          );
-          let elements = document.getElementsByClassName(
-            `parent${res.response2.parent_id}`
-          );
-          //newIndex は並び替え(D&D) 後の配列の順番
-          let newIndex = [].slice.call(elements).indexOf(span.parentNode);
-          console.log(newIndex);
-          newIndex++;
-          jQueryUIOptionsFunc();
-          fileContextmenu(tabArray, tabFocus);
-          fileClick();
-          updateTime(res.response2.id);
-          $.ajax({
-            url: '/notePostController/',
-            type: 'POST',
-            dataType: 'Json',
-            contentType: 'application/json',
-            data: JSON.stringify({
-              data: 'note',
-              flg: 'newNote',
-              pattern: 'order',
-              folderName: inputTab.value,
-              id: res.response2.id,
-              order: newIndex,
-            }),
-            success: function (res) {
-              //一度listを全て削除して、再び新しく追加している→jQueryUIがうまく適用されないため
-              const node = document.getElementById('0');
-              while (node.firstChild) {
-                node.removeChild(node.firstChild);
-              }
-              listCreate();
-            },
-          });
-        },
-      });
-    }
-  }
+  // function newCreateFile2(inputTab, span, parentId) {
+  //   //何も入力されていない時や空白や改行のみの入力
+  //   if (!inputTab.value || !inputTab.value.match(/\S/g)) {
+  //     alert('タイトルを入力してください');
+  //   } else {
+  //     $.ajax({
+  //       url: '/notePostController/',
+  //       type: 'POST',
+  //       dataType: 'Json',
+  //       contentType: 'application/json',
+  //       data: JSON.stringify({
+  //         data: 'note',
+  //         flg: 'newNote',
+  //         pattern: 'new',
+  //         title: inputTab.value,
+  //         parentId,
+  //       }),
+  //       success: function (res) {
+  //         //console.log(`success受信(title) : "${res.response1}"`);
+  //         span.setAttribute('id', `li${res.response2.id}`);
+  //         span.setAttribute('value', res.response2.id);
+  //         inputTab.remove();
+  //         span.innerHTML = res.response1;
+  //         span.parentNode.setAttribute(
+  //           'class',
+  //           `parent${res.response2.parent_id}`
+  //         );
+  //         let elements = document.getElementsByClassName(
+  //           `parent${res.response2.parent_id}`
+  //         );
+  //         //newIndex は並び替え(D&D) 後の配列の順番
+  //         let newIndex = [].slice.call(elements).indexOf(span.parentNode);
+  //         console.log(newIndex);
+  //         newIndex++;
+  //         jQueryUIOptionsFunc();
+  //         fileContextmenu(tabArray, tabFocus);
+  //         fileClick();
+  //         updateTime(res.response2.id);
+  //         $.ajax({
+  //           url: '/notePostController/',
+  //           type: 'POST',
+  //           dataType: 'Json',
+  //           contentType: 'application/json',
+  //           data: JSON.stringify({
+  //             data: 'note',
+  //             flg: 'newNote',
+  //             pattern: 'order',
+  //             folderName: inputTab.value,
+  //             id: res.response2.id,
+  //             order: newIndex,
+  //           }),
+  //           success: function (res) {
+  //             //一度listを全て削除して、再び新しく追加している→jQueryUIがうまく適用されないため
+  //             const node = document.getElementById('0');
+  //             while (node.firstChild) {
+  //               node.removeChild(node.firstChild);
+  //             }
+  //             listCreate();
+  //           },
+  //         });
+  //       },
+  //     });
+  //   }
+  // }
 
   //「フォルダ追加」ボタン押下時(rootに参加)
   createbutton.addEventListener(
@@ -778,7 +781,7 @@ window.addEventListener('DOMContentLoaded', function () {
         let id = 0;
         e.stopPropagation();
         fileFlg = true;
-        newFileCreate(id);
+        newFileCreateFunc(id, fileFlg, tabArray, tabFocus);
       }
     },
     false
@@ -813,12 +816,12 @@ window.addEventListener('DOMContentLoaded', function () {
 
   //[折り畳む]ボタン押下後、DB全て折り畳む値追加
   $('.collapsable').click(function () {
-    updateDBFunc('/folderPostController/', 'folder', 'collapsableALL');
+    valuePassToServerOnly('/folderPostController/', 'folder', 'collapsableALL');
   });
 
   //[展開する]ボタン押下、DB全て展開する値追加
   $('.expandable').click(function () {
-    updateDBFunc('/folderPostController/', 'folder', 'expandableALL');
+    valuePassToServerOnly('/folderPostController/', 'folder', 'expandableALL');
   });
 
   $('.hamburger').click(() => {
@@ -845,11 +848,11 @@ window.addEventListener('DOMContentLoaded', function () {
 
   //[ログアウト]押下後、サーバーでCookieを削除
   document.getElementById('logout').addEventListener('click', () => {
-    updateDBFunc('/mypage/', 'cookiedelete');
+    valuePassToServerOnly('/mypage/', 'cookiedelete');
   });
 
   //サーバーとのやり取りをするだけの関数(レスポンスなしが好ましい)
-  const updateDBFunc = (url, str1, str2) => {
+  const valuePassToServerOnly = (url, str1, str2) => {
     $.ajax({
       url,
       type: 'POST',
