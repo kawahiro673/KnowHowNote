@@ -1,4 +1,7 @@
 import { jQueryUIOptionsFunc } from './jQueryUI_func.js';
+import { fileContextmenu } from './note_contextmenu.js';
+import { updateTime } from './tab_func.js';
+import { listCreate, fileClick } from './main.js';
 
 export const newFileCreateFunc = (id, fileFlg, tabArray, tabFocus) => {
   const li = document.createElement('li');
