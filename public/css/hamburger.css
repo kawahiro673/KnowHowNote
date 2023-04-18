@@ -1,5 +1,5 @@
 /* CSSコード */
-.header {
+/* .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,7 +9,7 @@
 
 .logo {
   font-size: 24px;
-}
+} */
 
 /* ここから下がハンバーガーメニューに関するCSS */
 
@@ -72,14 +72,16 @@
 
 /* メニューのデザイン*/
 .nav_content {
-  width: 100%;
-  height: 100%;
-  position: fixed;
+  width: 150px;
+  height: 200px;
   top: 0;
-  left: 100%; /* メニューを画面の外に飛ばす */
+  right: 0;
+  position: absolute;
   z-index: 99;
   background: #fff;
-  transition: 0.5s;
+  border: 1px solid #000;
+  display: none;
+  border-radius: 10px 0px 10px 10px;
 }
 
 /* メニュー黒ポチを消す */
@@ -89,5 +91,5 @@
 
 /* アイコンがクリックされたらメニューを表示 */
 #drawer_input:checked ~ .nav_content {
-  left: 0; /* メニューを画面に入れる */
+  display: block;
 }
