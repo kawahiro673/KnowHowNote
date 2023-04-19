@@ -29,10 +29,13 @@ export const newFileCreateFunc = (id, fileFlg, tabArray) => {
 
   //左クリック
   const clickL = function (e) {
+    console.log('ノート追加おうか1', fileFlg);
     e.preventDefault();
     if (fileFlg && !e.target.closest('#inputTab')) {
       newCreateFile2(inputTab, span, id, tabArray);
+      console.log('ノート追加おうか2', fileFlg);
       fileFlg = false;
+      console.log('ノート追加おうか3', fileFlg);
     }
     //addEnentLisnterが残る!?ので削除する。
     if (fileFlg === false) {
