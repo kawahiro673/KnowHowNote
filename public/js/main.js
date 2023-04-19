@@ -498,6 +498,7 @@ createfilebutton.addEventListener(
       e.stopPropagation();
       fileFlg = true;
       newFileCreateFunc(0, fileFlg, tabArray);
+      console.log('ノート追加おうか5', fileFlg);
     }
   },
   false

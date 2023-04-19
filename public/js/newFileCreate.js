@@ -76,6 +76,7 @@ export const newFileCreateFunc = (id, fileFlg, tabArray) => {
   document.addEventListener('click', clickL);
   document.addEventListener('contextmenu', clickR);
   inputTab.addEventListener('keypress', enter);
+  console.log('ノート追加おうか3', fileFlg);
 };
 
 const newCreateFile2 = (inputTab, span, parentId, tabArray) => {
@@ -134,6 +135,7 @@ const newCreateFile2 = (inputTab, span, parentId, tabArray) => {
               node.removeChild(node.firstChild);
             }
             listCreate();
+            console.log('ノート追加おうか4', fileFlg);
           },
         });
       },
