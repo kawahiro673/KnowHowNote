@@ -261,8 +261,9 @@ export const closeTab = (id, index, tabFocus, tabArray) => {
   });
   const elements = document.getElementsByClassName('tab-label');
   for (let i = 0; i < elements.length; i++) {
-    console.log(elements[i].style.backgroundColor);
-    if (elements[i].style.backgroundColor === 'white') {
+    const style = window.getComputedStyle(elements[i]);
+    console.log(style);
+    if (style === 'white') {
       console.log(elements[i].innerHTML);
     }
   }
