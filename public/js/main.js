@@ -21,7 +21,6 @@ import { newFolderCreateFunc } from './newFolderCreate.js';
 
 import { orderGet } from './stringUtils.js';
 
-let tab = document.getElementById('tab');
 let conme = document.getElementById('contextmenu');
 let conme2 = document.getElementById('contextmenu2');
 let conme3 = document.getElementById('contextmenu3');
@@ -268,7 +267,7 @@ $('html').on('click contextmenu', function (e) {
 const noTab = document.createElement('p');
 noTab.innerHTML = 'こちらにnoteが出力されます';
 noTab.setAttribute('id', 'notab');
-tab.appendChild(noTab);
+document.getElementById('tab').appendChild(noTab);
 
 //ファイルクリック時にタブを表示
 export const fileClick = () => {
@@ -467,18 +466,18 @@ async function titleClick(id, title) {
   });
 }
 
-//フォルダー新規作成
+//右クリックから「フォルダ新規作成」押下
 document.getElementById('newfolder').onclick = function (e) {
   e.stopPropagation();
   newFolderCreateFunc(0, folderFlg, fileFlg, tabArray);
 };
-//ファイル新規作成
+//右クリックから「ファイル新規作成」押下
 document.getElementById('newfile').onclick = function () {
   e.stopPropagation();
   newFileCreateFunc(0, fileFlg, tabArray);
 };
 
-//「フォルダ追加」ボタン押下時(rootに参加)
+//「フォルダ追加」ボタン押下時(rootに作成)
 createbutton.addEventListener(
   'click',
   (e) => {
@@ -491,10 +490,11 @@ createbutton.addEventListener(
   },
   false
 );
-//「ノート追加」ボタン押下時(rootに参加)
+//「ノート追加」ボタン押下時(rootに作成)
 createfilebutton.addEventListener(
   'click',
   (e) => {
+    console.log('ノート追加おうか');
     if (!fileFlg) {
       let id = 0;
       e.stopPropagation();
@@ -504,7 +504,7 @@ createfilebutton.addEventListener(
   },
   false
 );
-//全削除ボタン押下
+//[全削除]ボタン押下時。ノートフォルダタブ全て削除
 $('.container-delete').click(function () {
   let btn = confirm('ノートやフォルダが全て削除されますが本当に削除しますか？');
   //はいを押した場合(true)

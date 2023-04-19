@@ -105,7 +105,6 @@ const newCreateFile2 = (inputTab, span, parentId, tabArray) => {
         );
         //newIndex は並び替え(D&D) 後の配列の順番
         let newIndex = [].slice.call(elements).indexOf(span.parentNode);
-        console.log(newIndex);
         newIndex++;
         jQueryUIOptionsFunc();
         fileContextmenu(tabArray);
