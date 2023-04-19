@@ -482,10 +482,9 @@ createbutton.addEventListener(
   'click',
   (e) => {
     if (!folderFlg) {
-      let id = 0;
       e.stopPropagation();
       folderFlg = true;
-      newFolderCreateFunc(id, folderFlg, fileFlg, tabArray);
+      newFolderCreateFunc(0, folderFlg, fileFlg, tabArray);
     }
   },
   false
@@ -496,10 +495,9 @@ createfilebutton.addEventListener(
   (e) => {
     console.log('ノート追加おうか');
     if (!fileFlg) {
-      let id = 0;
       e.stopPropagation();
       fileFlg = true;
-      newFileCreateFunc(id, fileFlg, tabArray);
+      newFileCreateFunc(0, fileFlg, tabArray);
     }
   },
   false

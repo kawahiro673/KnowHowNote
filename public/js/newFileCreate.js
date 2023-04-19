@@ -35,7 +35,7 @@ export const newFileCreateFunc = (id, fileFlg, tabArray) => {
       fileFlg = false;
     }
     //addEnentLisnterが残る!?ので削除する。
-    if (fileFlg == false) {
+    if (fileFlg === false) {
       document.removeEventListener('click', clickL);
       document.removeEventListener('contextmenu', clickR);
       document.removeEventListener('keypress', enter);
@@ -48,7 +48,7 @@ export const newFileCreateFunc = (id, fileFlg, tabArray) => {
       newCreateFile2(inputTab, span, id, tabArray);
       fileFlg = false;
     }
-    if (fileFlg == false) {
+    if (fileFlg === false) {
       document.removeEventListener('click', clickL);
       document.removeEventListener('contextmenu', clickR);
       document.removeEventListener('keypress', enter);
