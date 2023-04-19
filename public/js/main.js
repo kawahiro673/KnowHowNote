@@ -21,10 +21,6 @@ import { newFolderCreateFunc } from './newFolderCreate.js';
 
 import { orderGet } from './stringUtils.js';
 
-let conme = document.getElementById('contextmenu');
-let conme2 = document.getElementById('contextmenu2');
-let conme3 = document.getElementById('contextmenu3');
-let conme4 = document.getElementById('contextmenu4');
 var tabArray = []; //tab生成時にidを配列へ格納
 let fileFlg = false;
 let folderFlg = false;
@@ -214,7 +210,11 @@ listCreate();
 tabUpload();
 shareListCreate();
 
-$('#right').on('click contextmenu', function (e) {
+let conme = document.getElementById('contextmenu');
+let conme2 = document.getElementById('contextmenu2');
+let conme3 = document.getElementById('contextmenu3');
+let conme4 = document.getElementById('contextmenu4');
+$('#right').on('click contextmenu', (e) => {
   //ノート上で右クッリク
   if (e.target.closest('.list_title')) {
     conme.style.left = e.pageX + 'px';
@@ -252,7 +252,7 @@ $('#right').on('click contextmenu', function (e) {
     conme4.style.display = 'none';
   });
 });
-$('html').on('click contextmenu', function (e) {
+$('html').on('click contextmenu', (e) => {
   let a = $(event.target).closest('#right').length;
   if (a) {
     //rightの上
@@ -493,13 +493,11 @@ createbutton.addEventListener(
 createfilebutton.addEventListener(
   'click',
   (e) => {
-    console.log('ノート追加おうか', fileFlg);
-    if (!fileFlg) {
-      e.stopPropagation();
-      fileFlg = true;
-      newFileCreateFunc(0, fileFlg, tabArray);
-      console.log('ノート追加おうか5', fileFlg);
-    }
+    //   if (!fileFlg) {
+    e.stopPropagation();
+    //  fileFlg = true;
+    newFileCreateFunc(0, fileFlg, tabArray);
+    //  }
   },
   false
 );

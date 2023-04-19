@@ -29,20 +29,17 @@ export const newFileCreateFunc = (id, fileFlg, tabArray) => {
 
   //左クリック
   const clickL = function (e) {
-    console.log('ノート追加おうか1', fileFlg);
     e.preventDefault();
-    if (fileFlg && !e.target.closest('#inputTab')) {
+    if (!e.target.closest('#inputTab')) {
       newCreateFile2(inputTab, span, id, tabArray);
-      console.log('ノート追加おうか2', fileFlg);
-      fileFlg = false;
-      console.log('ノート追加おうか3', fileFlg);
+      //  fileFlg = false;
     }
     //addEnentLisnterが残る!?ので削除する。
-    if (fileFlg === false) {
-      document.removeEventListener('click', clickL);
-      document.removeEventListener('contextmenu', clickR);
-      document.removeEventListener('keypress', enter);
-    }
+    // if (fileFlg === false) {
+    document.removeEventListener('click', clickL);
+    document.removeEventListener('contextmenu', clickR);
+    document.removeEventListener('keypress', enter);
+    // }
   };
   //右クリック
   const clickR = function (e) {
@@ -60,23 +57,22 @@ export const newFileCreateFunc = (id, fileFlg, tabArray) => {
   //エンター押下時
   const enter = function (e) {
     //e.preventDefault(); //これがあると入力できない？？
-    if (fileFlg) {
-      if (e.keyCode === 13) {
-        newCreateFile2(inputTab, span, id, tabArray);
-        fileFlg = false;
-      }
+    // if (fileFlg) {
+    if (e.keyCode === 13) {
+      newCreateFile2(inputTab, span, id, tabArray);
+      fileFlg = false;
     }
-    if (fileFlg == false) {
-      document.removeEventListener('click', clickL);
-      document.removeEventListener('contextmenu', clickR);
-      document.removeEventListener('keypress', enter);
-    }
+    // }
+    // if (fileFlg == false) {
+    document.removeEventListener('click', clickL);
+    document.removeEventListener('contextmenu', clickR);
+    document.removeEventListener('keypress', enter);
+    // }
   };
   //右・左・Enterそれぞれの実行
   document.addEventListener('click', clickL);
   document.addEventListener('contextmenu', clickR);
   inputTab.addEventListener('keypress', enter);
-  console.log('ノート追加おうか3', fileFlg);
 };
 
 const newCreateFile2 = (inputTab, span, parentId, tabArray) => {
@@ -135,7 +131,6 @@ const newCreateFile2 = (inputTab, span, parentId, tabArray) => {
               node.removeChild(node.firstChild);
             }
             listCreate();
-            console.log('ノート追加おうか4', fileFlg);
           },
         });
       },
