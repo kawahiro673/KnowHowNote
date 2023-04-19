@@ -493,7 +493,7 @@ createbutton.addEventListener(
 createfilebutton.addEventListener(
   'click',
   (e) => {
-    console.log('ノート追加おうか');
+    console.log('ノート追加おうか', fileFlg);
     if (!fileFlg) {
       e.stopPropagation();
       fileFlg = true;
