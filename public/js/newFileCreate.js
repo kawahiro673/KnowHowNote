@@ -4,7 +4,6 @@ import { updateTime } from './tab_func.js';
 import { listCreate, fileClick } from './main.js';
 
 export const newFileCreateFunc = (id, fileFlg, tabArray) => {
-  console.log('ya1');
   const li = document.createElement('li');
   const span = document.createElement('span');
   li.setAttribute('class', 'last');
@@ -27,55 +26,10 @@ export const newFileCreateFunc = (id, fileFlg, tabArray) => {
   document.getElementById('inputTab').focus();
   document.getElementById('inputTab').setSelectionRange(len, len);
 
-  //左クリック
-  const clickL = function (e) {
-    e.preventDefault();
-    if (fileFlg && !e.target.closest('#inputTab')) {
-      newCreateFile2(inputTab, span, id, tabArray);
-      //  fileFlg = false;
-    }
-    //addEnentLisnterが残る!?ので削除する。
-    // if (fileFlg === false) {
-    document.removeEventListener('click', clickL);
-    document.removeEventListener('contextmenu', clickR);
-    document.removeEventListener('keypress', enter);
-    // }
-  };
-  //右クリック
-  const clickR = function (e) {
-    e.preventDefault();
-    if (fileFlg && !e.target.closest('#inputTab')) {
-      newCreateFile2(inputTab, span, id, tabArray);
-      fileFlg = false;
-    }
-    if (fileFlg === false) {
-      document.removeEventListener('click', clickL);
-      document.removeEventListener('contextmenu', clickR);
-      document.removeEventListener('keypress', enter);
-    }
-  };
-  //エンター押下時
-  const enter = function (e) {
-    //e.preventDefault(); //これがあると入力できない？？
-    // if (fileFlg) {
-    if (e.keyCode === 13) {
-      newCreateFile2(inputTab, span, id, tabArray);
-      fileFlg = false;
-    }
-    // }
-    // if (fileFlg == false) {
-    document.removeEventListener('click', clickL);
-    document.removeEventListener('contextmenu', clickR);
-    document.removeEventListener('keypress', enter);
-    // }
-  };
-  //右・左・Enterそれぞれの実行
-  document.addEventListener('click', clickL);
-  document.addEventListener('contextmenu', clickR);
-  inputTab.addEventListener('keypress', enter);
+  return [inputTab, span, id, tabArray];
 };
 
-const newCreateFile2 = (inputTab, span, parentId, tabArray) => {
+export const newCreateFile2 = (inputTab, span, parentId, tabArray) => {
   //何も入力されていない時や空白や改行のみ
   if (!inputTab.value || !inputTab.value.match(/\S/g)) {
     alert('タイトルを入力してください');

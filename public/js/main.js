@@ -16,7 +16,7 @@ import { folderContextmenu } from './folder_contextmenu.js';
 
 import { jQueryUIOptionsFunc } from './jQueryUI_func.js';
 
-import { newFileCreateFunc } from './newFileCreate.js';
+import { newFileCreateFunc, newCreateFile2 } from './newFileCreate.js';
 import { newFolderCreateFunc } from './newFolderCreate.js';
 
 import { orderGet } from './stringUtils.js';
@@ -489,6 +489,7 @@ createbutton.addEventListener(
   },
   false
 );
+
 //「ノート追加」ボタン押下時(rootに作成)
 createfilebutton.addEventListener(
   'click',
@@ -496,8 +497,59 @@ createfilebutton.addEventListener(
     if (!fileFlg) {
       e.stopPropagation();
       fileFlg = true;
-      newFileCreateFunc(0, fileFlg, tabArray);
-      fileFlg = false;
+      const [inputTab, span, id, tabArray] = newFileCreateFunc(
+        0,
+        fileFlg,
+        tabArray
+      );
+
+      //左クリック
+      const clickL = function (e) {
+        e.preventDefault();
+        if (fileFlg && !e.target.closest('#inputTab')) {
+          newCreateFile2(inputTab, span, id, tabArray);
+          fileFlg = false;
+        }
+        //addEnentLisnterが残る!?ので削除する。
+        if (fileFlg === false) {
+          document.removeEventListener('click', clickL);
+          document.removeEventListener('contextmenu', clickR);
+          document.removeEventListener('keypress', enter);
+        }
+      };
+
+      //右クリック
+      const clickR = function (e) {
+        e.preventDefault();
+        if (fileFlg && !e.target.closest('#inputTab')) {
+          newCreateFile2(inputTab, span, id, tabArray);
+          fileFlg = false;
+        }
+        if (fileFlg === false) {
+          document.removeEventListener('click', clickL);
+          document.removeEventListener('contextmenu', clickR);
+          document.removeEventListener('keypress', enter);
+        }
+      };
+      //エンター押下時
+      const enter = function (e) {
+        //e.preventDefault(); //これがあると入力できない？？
+        if (fileFlg) {
+          if (e.keyCode === 13) {
+            newCreateFile2(inputTab, span, id, tabArray);
+            fileFlg = false;
+          }
+        }
+        if (fileFlg == false) {
+          document.removeEventListener('click', clickL);
+          document.removeEventListener('contextmenu', clickR);
+          document.removeEventListener('keypress', enter);
+        }
+      };
+      //右・左・Enterそれぞれの実行
+      document.addEventListener('click', clickL);
+      document.addEventListener('contextmenu', clickR);
+      inputTab.addEventListener('keypress', enter);
     }
   },
   false
