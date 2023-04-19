@@ -263,7 +263,7 @@ export const closeTab = (id, index, tabFocus, tabArray) => {
   for (let i = 0; i < elements.length; i++) {
     const style = window.getComputedStyle(elements[i]);
     console.log(style.backgroundColor);
-    if (style === 'white') {
+    if (style.backgroundColor === 'rgb(255, 255, 255)') {
       console.log(elements[i].innerHTML);
     }
   }
