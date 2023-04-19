@@ -11,7 +11,7 @@ let conme2 = document.getElementById('contextmenu2');
 let conme3 = document.getElementById('contextmenu3');
 let conme4 = document.getElementById('contextmenu4');
 
-export const folderContextmenu = (tabArray, tabFocus, fileFlg, folderFlg) => {
+export const folderContextmenu = (tabArray, fileFlg, folderFlg) => {
   $('.folder').on('contextmenu', function () {
     console.log(
       `"${$(this).html()}" ${$(this).attr('value')} を右クリックしました`
@@ -37,7 +37,7 @@ export const folderContextmenu = (tabArray, tabFocus, fileFlg, folderFlg) => {
     );
 
     document.getElementById('folderDelete').onclick = function () {
-      folderDelete(folderList, index, tabArray, tabFocus);
+      folderDelete(folderList, index, tabArray);
     };
 
     $(document).ready(function () {
@@ -58,7 +58,7 @@ export const folderContextmenu = (tabArray, tabFocus, fileFlg, folderFlg) => {
         }
         fileFlg = true;
 
-        newFileCreateFunc(folderList.folderId, fileFlg, tabArray, tabFocus);
+        newFileCreateFunc(folderList.folderId, fileFlg, tabArray);
         conme.style.display = 'none';
         conme2.style.display = 'none';
         conme3.style.display = 'none';
@@ -76,13 +76,7 @@ export const folderContextmenu = (tabArray, tabFocus, fileFlg, folderFlg) => {
         }
         folderFlg = true;
 
-        newFolderCreateFunc(
-          folderList.folderId,
-          folderFlg,
-          fileFlg,
-          tabArray,
-          tabFocus
-        );
+        newFolderCreateFunc(folderList.folderId, folderFlg, fileFlg, tabArray);
         conme.style.display = 'none';
         conme2.style.display = 'none';
         conme3.style.display = 'none';
@@ -101,7 +95,7 @@ export const folderContextmenu = (tabArray, tabFocus, fileFlg, folderFlg) => {
   });
 };
 
-const folderDelete = (folderList, index, tabArray, tabFocus) => {
+const folderDelete = (folderList, index, tabArray) => {
   let btn = confirm(
     `${folderList.folderTitle} 配下のフォルダやノートも全て削除されますが本当に削除しますか？`
   );
@@ -141,7 +135,7 @@ const folderDelete = (folderList, index, tabArray, tabFocus) => {
             for (let i = 0; i < res.response.length; i++) {
               //idArrayが文字列で格納されているため、num→String変換
               if (tabArray.includes(String(res.response[i]))) {
-                closeTab(res.response[i], undefined, tabFocus, tabArray);
+                closeTab(res.response[i], undefined, tabArray);
                 //idArrayの中にあるlistTitle.idを削除
                 tabArray = deleteTabArray(String(res.response[i]), tabArray);
               }

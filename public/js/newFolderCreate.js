@@ -2,13 +2,7 @@ import { jQueryUIOptionsFunc } from './jQueryUI_func.js';
 import { folderContextmenu } from './folder_contextmenu.js';
 import { listCreate } from './main.js';
 
-export const newFolderCreateFunc = (
-  id,
-  folderFlg,
-  fileFlg,
-  tabArray,
-  tabFocus
-) => {
+export const newFolderCreateFunc = (id, folderFlg, fileFlg, tabArray) => {
   console.log('フォルダー作成押下' + id);
   let li = document.createElement('li');
   li.setAttribute('class', 'closed');
@@ -46,8 +40,7 @@ export const newFolderCreateFunc = (
         id,
         folderFlg,
         fileFlg,
-        tabArray,
-        tabFocus
+        tabArray
       );
       folderFlg = false;
     }
@@ -72,8 +65,7 @@ export const newFolderCreateFunc = (
         id,
         folderFlg,
         fileFlg,
-        tabArray,
-        tabFocus
+        tabArray
       );
       folderFlg = false;
     }
@@ -97,8 +89,7 @@ export const newFolderCreateFunc = (
           id,
           folderFlg,
           fileFlg,
-          tabArray,
-          tabFocus
+          tabArray
         );
         folderFlg = false;
       }
@@ -123,8 +114,7 @@ function newCreateFolder2(
   parentId,
   folderFlg,
   fileFlg,
-  tabArray,
-  tabFocus
+  tabArray
 ) {
   //何も入力されていない時や空白や改行のみの入力
   if (!inputTab.value || !inputTab.value.match(/\S/g)) {
@@ -161,7 +151,7 @@ function newCreateFolder2(
         let newIndex = [].slice.call(elements).indexOf(span.parentNode);
         newIndex++;
         jQueryUIOptionsFunc();
-        folderContextmenu(tabArray, tabFocus, fileFlg, folderFlg);
+        folderContextmenu(tabArray, fileFlg, folderFlg);
         $.ajax({
           url: '/folderPostController/',
           type: 'POST',

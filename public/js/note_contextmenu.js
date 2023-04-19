@@ -4,7 +4,7 @@ import { orderGet } from './stringUtils.js';
 let tmp1;
 let tmp2;
 
-export const fileContextmenu = (tabArray, tabFocus) => {
+export const fileContextmenu = (tabArray) => {
   $('.list_title').on('contextmenu', function () {
     console.log(
       `"${$(this).html()}" ${$(this).attr('value')} を右クリックしました`
@@ -26,7 +26,7 @@ export const fileContextmenu = (tabArray, tabFocus) => {
 
     document.getElementById('delete').onclick = () => {
       let tabIndex = orderGet('tab-content', `Tab-ID${listTitle.id}`);
-      noteDelete(listTitle, tabIndex, index, tabArray, tabFocus);
+      noteDelete(listTitle, tabIndex, index, tabArray);
     };
 
     $(document).ready(function () {
@@ -57,7 +57,7 @@ export const fileContextmenu = (tabArray, tabFocus) => {
   });
 };
 
-const noteDelete = (listTitle, tabIndex, index, tabArray, tabFocus) => {
+const noteDelete = (listTitle, tabIndex, index, tabArray) => {
   //はいを押した場合(true)
   //まずはタブ削除
   let btn = confirm(`${listTitle.title} を本当に削除しますか？`);
@@ -80,7 +80,7 @@ const noteDelete = (listTitle, tabIndex, index, tabArray, tabFocus) => {
 
         listTitle.id = Number(listTitle.id);
         if (tabArray.includes(listTitle.id)) {
-          closeTab(listTitle.id, tabIndex, tabFocus, tabArray);
+          closeTab(listTitle.id, tabIndex, tabArray);
           //idArrayの中にあるlistTitle.idを削除
           tabArray = deleteTabArray(listTitle.id, tabArray);
         }

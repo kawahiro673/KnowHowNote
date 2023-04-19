@@ -3,7 +3,7 @@ import { fileContextmenu } from './note_contextmenu.js';
 import { updateTime } from './tab_func.js';
 import { listCreate, fileClick } from './main.js';
 
-export const newFileCreateFunc = (id, fileFlg, tabArray, tabFocus) => {
+export const newFileCreateFunc = (id, fileFlg, tabArray) => {
   const li = document.createElement('li');
   const span = document.createElement('span');
   li.setAttribute('class', 'last');
@@ -30,7 +30,7 @@ export const newFileCreateFunc = (id, fileFlg, tabArray, tabFocus) => {
   const clickL = function (e) {
     e.preventDefault();
     if (fileFlg && !e.target.closest('#inputTab')) {
-      newCreateFile2(inputTab, span, id, tabArray, tabFocus);
+      newCreateFile2(inputTab, span, id, tabArray);
       fileFlg = false;
     }
     //addEnentLisnterが残る!?ので削除する。
@@ -44,7 +44,7 @@ export const newFileCreateFunc = (id, fileFlg, tabArray, tabFocus) => {
   const clickR = function (e) {
     e.preventDefault();
     if (fileFlg && !e.target.closest('#inputTab')) {
-      newCreateFile2(inputTab, span, id, tabArray, tabFocus);
+      newCreateFile2(inputTab, span, id, tabArray);
       fileFlg = false;
     }
     if (fileFlg == false) {
@@ -58,7 +58,7 @@ export const newFileCreateFunc = (id, fileFlg, tabArray, tabFocus) => {
     //e.preventDefault(); //これがあると入力できない？？
     if (fileFlg) {
       if (e.keyCode === 13) {
-        newCreateFile2(inputTab, span, id, tabArray, tabFocus);
+        newCreateFile2(inputTab, span, id, tabArray);
         fileFlg = false;
       }
     }
@@ -74,7 +74,7 @@ export const newFileCreateFunc = (id, fileFlg, tabArray, tabFocus) => {
   inputTab.addEventListener('keypress', enter);
 };
 
-const newCreateFile2 = (inputTab, span, parentId, tabArray, tabFocus) => {
+const newCreateFile2 = (inputTab, span, parentId, tabArray) => {
   //何も入力されていない時や空白や改行のみ
   if (!inputTab.value || !inputTab.value.match(/\S/g)) {
     alert('タイトルを入力してください');
@@ -108,7 +108,7 @@ const newCreateFile2 = (inputTab, span, parentId, tabArray, tabFocus) => {
         console.log(newIndex);
         newIndex++;
         jQueryUIOptionsFunc();
-        fileContextmenu(tabArray, tabFocus);
+        fileContextmenu(tabArray);
         fileClick();
         updateTime(res.response2.id);
         $.ajax({

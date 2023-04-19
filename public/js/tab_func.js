@@ -240,12 +240,11 @@ export const updateTime = (id, time) => {
   });
 };
 
-//タブ削除時に、focusの操作
-export const closeTab = (id, index, tabFocus, tabArray) => {
+//フォーカスの当たっているタブを削除する際には違うタブにフォーカスを当てる
+export const closeTab = (id, index, tabArray) => {
   document.getElementById('TAB-ID' + id).remove();
   document.getElementById('tab-ID' + id).remove();
   document.getElementById('Tab-ID' + id).remove();
-
   $.ajax({
     url: '/tabPostController/',
     type: 'POST',
@@ -258,7 +257,6 @@ export const closeTab = (id, index, tabFocus, tabArray) => {
       order: index,
     }),
     success: function (res) {
-      console.log(res.tabResult.focus);
       const focusFlg = res.tabResult.focus;
       let result = tabArray.indexOf(id);
       if (focusFlg === 1) {
@@ -271,33 +269,15 @@ export const closeTab = (id, index, tabFocus, tabArray) => {
       }
     },
   });
-
-  // const focusTabID = focusTabGet();
-  // console.log(focusTabID);
-  // if (tabFocus == undefined) {
-  //   tabFocus = id;
-  // }
-  //フォーカスがあっているタブを削除する際に他のタブへフォーカスを変更
-  // let result = tabArray.indexOf(id);
-  // console.log(result);
-  //if (focusTabID === null) {
-  //tabArrayが０番目じゃない場合(上に他のタブがまだある場合)
-  // if (result !== 0) {
-  //   $(`#tab-ID${tabArray[result - 1]}`).trigger('click');
-  //   //tabArrayの０番目の場合。タブの一番上の場合
-  // } else {
-  //   $(`#tab-ID${tabArray[result + 1]}`).trigger('click');
-  // }
-  // }
 };
 
 //タブ上の✖️ボタン押下時
-export const closeButton = (id, title, tabFocus, tabArray) => {
+export const closeButton = (id, title, tabArray) => {
   let tabelements = document.getElementsByClassName('tab-content');
   let tabId = document.getElementById(`Tab-ID${id}`);
   let index = [].slice.call(tabelements).indexOf(tabId);
   index = index + 1;
-  closeTab(id, index, tabFocus, tabArray);
+  closeTab(id, index, tabArray);
   $.ajax({
     url: '/tabPostController/',
     type: 'POST',
@@ -314,15 +294,9 @@ export const closeButton = (id, title, tabFocus, tabArray) => {
 };
 
 //タブクリック時
-export const tabClick = (e, id, title, tabFocus) => {
+export const tabClick = (e, id, title) => {
   //タブの「✖️」ボタン以外押下時
   if (!e.target.closest('.buttonTab')) {
-    var a = $(event.target).closest(`#button${id}`).length;
-    if (a) {
-      //nameをクリック
-    } else {
-      tabFocus = id;
-    }
     //パスを取得する関数
     let pass = passGet(id, document.getElementById('tabname' + id).innerHTML);
     //クリックしたTabのfocusを1へ、その他を0へ。passも更新
@@ -357,21 +331,4 @@ export const deleteTabArray = (id, tabArray) => {
     document.getElementById('notepass').innerHTML = '';
   }
   return tabArray;
-};
-
-//フォーカスの当たっているタブのIDを返す。ない場合はnull。(フォーカスのタブを閉じるとnullが帰ることがあり。)
-const focusTabGet = () => {
-  const elements = document.getElementsByClassName('tab-label');
-  for (let i = 0; i < elements.length; i++) {
-    //styleを取得後に背景をrgbで取得。rgb(255, 255, 255)は「白」!!
-    const style = window.getComputedStyle(elements[i]);
-    if (style.backgroundColor === 'rgb(255, 255, 255)') {
-      //文字列からすべての数値を抽出(int型)
-      const regex = /[^0-9]/g;
-      const result = elements[i].id.replace(regex, '');
-      const number = parseInt(result);
-      return number;
-    }
-  }
-  return null;
 };

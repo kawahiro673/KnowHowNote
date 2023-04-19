@@ -27,7 +27,6 @@ let conme2 = document.getElementById('contextmenu2');
 let conme3 = document.getElementById('contextmenu3');
 let conme4 = document.getElementById('contextmenu4');
 var tabArray = []; //tab生成時にidを配列へ格納
-let tabFocus;
 let fileFlg = false;
 let folderFlg = false;
 
@@ -144,8 +143,8 @@ export const listCreate = () => {
         array = resTmp.concat(resTmp2);
       }
       jQueryUIOptionsFunc(); //jQueryUIを付与
-      fileContextmenu(tabArray, tabFocus); //ファイルの右クリックメニュー
-      folderContextmenu(tabArray, tabFocus, fileFlg, folderFlg); //フォルダーの右クリックメニュー
+      fileContextmenu(tabArray); //ファイルの右クリックメニュー
+      folderContextmenu(tabArray, fileFlg, folderFlg); //フォルダーの右クリックメニュー
       fileClick(); //メモクリック時のTab表示
 
       //時間差でclosedのoffを開く＆フォルダ押下のclick関数作成
@@ -450,13 +449,13 @@ async function titleClick(id, title) {
 
           //タブ上の「✖️」ボタン押下
           buttonTab.onclick = () => {
-            closeButton(id, title, tabFocus, tabArray);
+            closeButton(id, title, tabArray);
             tabArray = deleteTabArray(id, tabArray);
           };
 
           //タブをクリックした際の処理
           document.getElementById(`tab-ID${id}`).onclick = (e) => {
-            tabClick(e, id, title, tabFocus);
+            tabClick(e, id, title);
           };
         },
       });
@@ -471,12 +470,12 @@ async function titleClick(id, title) {
 //フォルダー新規作成
 document.getElementById('newfolder').onclick = function (e) {
   e.stopPropagation();
-  newFolderCreateFunc(0, folderFlg, fileFlg, tabArray, tabFocus);
+  newFolderCreateFunc(0, folderFlg, fileFlg, tabArray);
 };
 //ファイル新規作成
 document.getElementById('newfile').onclick = function () {
   e.stopPropagation();
-  newFileCreateFunc(0, fileFlg, tabArray, tabFocus);
+  newFileCreateFunc(0, fileFlg, tabArray);
 };
 
 //「フォルダ追加」ボタン押下時(rootに参加)
@@ -487,7 +486,7 @@ createbutton.addEventListener(
       let id = 0;
       e.stopPropagation();
       folderFlg = true;
-      newFolderCreateFunc(id, folderFlg, fileFlg, tabArray, tabFocus);
+      newFolderCreateFunc(id, folderFlg, fileFlg, tabArray);
     }
   },
   false
@@ -500,7 +499,7 @@ createfilebutton.addEventListener(
       let id = 0;
       e.stopPropagation();
       fileFlg = true;
-      newFileCreateFunc(id, fileFlg, tabArray, tabFocus);
+      newFileCreateFunc(id, fileFlg, tabArray);
     }
   },
   false
