@@ -252,19 +252,41 @@ router.post('/', (req, res) => {
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
             pool.query(
+              'SELECT * FROM tab_hold WHERE id = ?',
+              [req.body.id],
+              (error, tabResult) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  resolve({
+                    resultDecoded: resultDecoded,
+                    tabResult: tabResult,
+                  });
+                }
+              }
+            );
+          });
+        })
+        .then(({ resultDecoded, tabResult }) => {
+          return new Promise((resolve, reject) => {
+            pool.query(
               'DELETE from tab_hold where id = ?',
               [req.body.id],
               (error, result) => {
                 if (error) {
                   reject(error);
                 } else {
-                  resolve({ result: result, resultDecoded: resultDecoded });
+                  resolve({
+                    result: result,
+                    resultDecoded: resultDecoded,
+                    tabResult: tabResult,
+                  });
                 }
               }
             );
           });
         })
-        .then(({ result, resultDecoded }) => {
+        .then(({ result, resultDecoded, tabResult }) => {
           return new Promise((resolve, reject) => {
             pool.query(
               'UPDATE tab_hold SET tabOrder = tabOrder - 1 WHERE tabOrder > ? AND (UserID = ?); ',
@@ -273,7 +295,7 @@ router.post('/', (req, res) => {
                 if (error) {
                   reject(error);
                 } else {
-                  res.send({ response: result });
+                  res.send({ response: result, tabResult: tabResult });
                 }
               }
             );

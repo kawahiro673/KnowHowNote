@@ -257,25 +257,38 @@ export const closeTab = (id, index, tabFocus, tabArray) => {
       id,
       order: index,
     }),
-    success: function (res) {},
+    success: function (res) {
+      console.log(res.tabResult.focus);
+      const focusFlg = res.tabResult.focus;
+      let result = tabArray.indexOf(id);
+      if (focusFlg === 1) {
+        if (result !== 0) {
+          $(`#tab-ID${tabArray[result - 1]}`).trigger('click');
+          //tabArrayの０番目の場合。タブの一番上の場合
+        } else {
+          $(`#tab-ID${tabArray[result + 1]}`).trigger('click');
+        }
+      }
+    },
   });
 
-  const focusTabID = focusTabGet();
-  console.log(focusTabID);
+  // const focusTabID = focusTabGet();
+  // console.log(focusTabID);
   // if (tabFocus == undefined) {
   //   tabFocus = id;
   // }
   //フォーカスがあっているタブを削除する際に他のタブへフォーカスを変更
-  let result = tabArray.indexOf(focusTabID);
-  if (focusTabID === null) {
-    //tabArrayが０番目じゃない場合(上に他のタブがまだある場合)
-    if (result !== 0) {
-      $(`#tab-ID${tabArray[result - 1]}`).trigger('click');
-      //tabArrayの０番目の場合。タブの一番上の場合
-    } else {
-      $(`#tab-ID${tabArray[result + 1]}`).trigger('click');
-    }
-  }
+  // let result = tabArray.indexOf(id);
+  // console.log(result);
+  //if (focusTabID === null) {
+  //tabArrayが０番目じゃない場合(上に他のタブがまだある場合)
+  // if (result !== 0) {
+  //   $(`#tab-ID${tabArray[result - 1]}`).trigger('click');
+  //   //tabArrayの０番目の場合。タブの一番上の場合
+  // } else {
+  //   $(`#tab-ID${tabArray[result + 1]}`).trigger('click');
+  // }
+  // }
 };
 
 //タブ上の✖️ボタン押下時
