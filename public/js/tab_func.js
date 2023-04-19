@@ -259,23 +259,17 @@ export const closeTab = (id, index, tabFocus, tabArray) => {
     }),
     success: function (res) {},
   });
-  const elements = document.getElementsByClassName('tab-label');
-  for (let i = 0; i < elements.length; i++) {
-    const style = window.getComputedStyle(elements[i]);
-    console.log(style.backgroundColor);
-    if (style.backgroundColor === 'rgb(255, 255, 255)') {
-      console.log(elements[i].innerHTML);
-    }
-  }
 
-  if (tabFocus == undefined) {
-    tabFocus = id;
-  }
+  const focusTabID = focusTabGet();
+  console.log(focusTabID);
+  // if (tabFocus == undefined) {
+  //   tabFocus = id;
+  // }
   //フォーカスがあっているタブを削除する際に他のタブへフォーカスを変更
   let result = tabArray.indexOf(id);
-  if (id == tabFocus) {
+  if (id === focusTabID) {
     //tabArrayが０番目じゃない場合(上に他のタブがまだある場合)
-    if (result != 0) {
+    if (result !== 0) {
       $(`#tab-ID${tabArray[result - 1]}`).trigger('click');
       //tabArrayの０番目の場合。タブの一番上の場合
     } else {
@@ -350,4 +344,22 @@ export const deleteTabArray = (id, tabArray) => {
     document.getElementById('notepass').innerHTML = '';
   }
   return tabArray;
+};
+
+//フォーカスの当たっているタブのIDを返す。ない場合はnull。(フォーカスのタブを閉じるとnullが帰ることがあり。)
+const focusTabGet = () => {
+  const elements = document.getElementsByClassName('tab-label');
+  for (let i = 0; i < elements.length; i++) {
+    //styleを取得後に背景をrgbで取得。rgb(255, 255, 255)は「白」!!
+    const style = window.getComputedStyle(elements[i]);
+    if (style.backgroundColor === 'rgb(255, 255, 255)') {
+      //文字列からすべての数値を抽出(int型)
+      const str = 'Hello_123_World_456_!!!';
+      const regex = /[^0-9]/g;
+      const result = str.replace(regex, '');
+      const number = parseInt(result);
+      return number;
+    }
+  }
+  return null;
 };
