@@ -267,7 +267,7 @@ export const closeTab = (id, index, tabFocus, tabArray) => {
   // }
   //フォーカスがあっているタブを削除する際に他のタブへフォーカスを変更
   let result = tabArray.indexOf(focusTabID);
-  if (null === focusTabID) {
+  if (focusTabID === null) {
     //tabArrayが０番目じゃない場合(上に他のタブがまだある場合)
     if (result !== 0) {
       $(`#tab-ID${tabArray[result - 1]}`).trigger('click');
