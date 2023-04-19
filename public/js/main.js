@@ -472,7 +472,7 @@ document.getElementById('newfolder').onclick = function (e) {
   newFolderCreateFunc(0, folderFlg, fileFlg, tabArray);
 };
 //右クリックから「ファイル新規作成」押下
-document.getElementById('newfile').onclick = function () {
+document.getElementById('newfile').onclick = function (e) {
   e.stopPropagation();
   newFileCreateFunc(0, fileFlg, tabArray);
 };
