@@ -259,6 +259,14 @@ export const closeTab = (id, index, tabFocus, tabArray) => {
     }),
     success: function (res) {},
   });
+  const elements = document.getElementsByClassName('tab-label');
+  for (let i = 0; i < elements.length; i++) {
+    console.log(elements[i].style.backgroundColor);
+    if (elements[i].style.backgroundColor === 'white') {
+      console.log(elements[i].innerHTML);
+    }
+  }
+
   if (tabFocus == undefined) {
     tabFocus = id;
   }
