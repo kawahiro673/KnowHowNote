@@ -26,7 +26,7 @@ export const newFileCreateFunc = (id, fileFlg, tabArray) => {
   document.getElementById('inputTab').focus();
   document.getElementById('inputTab').setSelectionRange(len, len);
 
-  return [inputTab, span, id, tabArray];
+  return [inputTab, span];
 };
 
 export const newCreateFile2 = (inputTab, span, parentId, tabArray) => {

@@ -497,17 +497,13 @@ createfilebutton.addEventListener(
     if (!fileFlg) {
       e.stopPropagation();
       fileFlg = true;
-      const [inputTab, span, id, tabArray] = newFileCreateFunc(
-        0,
-        fileFlg,
-        tabArray
-      );
+      const [inputTab, span] = newFileCreateFunc(0, fileFlg, tabArray);
 
       //左クリック
       const clickL = function (e) {
         e.preventDefault();
         if (fileFlg && !e.target.closest('#inputTab')) {
-          newCreateFile2(inputTab, span, id, tabArray);
+          newCreateFile2(inputTab, span, 0, tabArray);
           fileFlg = false;
         }
         //addEnentLisnterが残る!?ので削除する。
@@ -522,7 +518,7 @@ createfilebutton.addEventListener(
       const clickR = function (e) {
         e.preventDefault();
         if (fileFlg && !e.target.closest('#inputTab')) {
-          newCreateFile2(inputTab, span, id, tabArray);
+          newCreateFile2(inputTab, span, 0, tabArray);
           fileFlg = false;
         }
         if (fileFlg === false) {
@@ -536,7 +532,7 @@ createfilebutton.addEventListener(
         //e.preventDefault(); //これがあると入力できない？？
         if (fileFlg) {
           if (e.keyCode === 13) {
-            newCreateFile2(inputTab, span, id, tabArray);
+            newCreateFile2(inputTab, span, 0, tabArray);
             fileFlg = false;
           }
         }
