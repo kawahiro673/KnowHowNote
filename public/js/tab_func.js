@@ -266,8 +266,8 @@ export const closeTab = (id, index, tabFocus, tabArray) => {
   //   tabFocus = id;
   // }
   //フォーカスがあっているタブを削除する際に他のタブへフォーカスを変更
-  let result = tabArray.indexOf(id);
-  if (id === focusTabID) {
+  let result = tabArray.indexOf(focusTabID);
+  if (null === focusTabID) {
     //tabArrayが０番目じゃない場合(上に他のタブがまだある場合)
     if (result !== 0) {
       $(`#tab-ID${tabArray[result - 1]}`).trigger('click');
@@ -354,9 +354,8 @@ const focusTabGet = () => {
     const style = window.getComputedStyle(elements[i]);
     if (style.backgroundColor === 'rgb(255, 255, 255)') {
       //文字列からすべての数値を抽出(int型)
-      const str = 'Hello_123_World_456_!!!';
       const regex = /[^0-9]/g;
-      const result = str.replace(regex, '');
+      const result = elements[i].id.replace(regex, '');
       const number = parseInt(result);
       return number;
     }
