@@ -30,7 +30,7 @@ export const newFileCreateFunc = (id, fileFlg, tabArray) => {
   //左クリック
   const clickL = function (e) {
     e.preventDefault();
-    if (!e.target.closest('#inputTab')) {
+    if (fileFlg && !e.target.closest('#inputTab')) {
       newCreateFile2(inputTab, span, id, tabArray);
       //  fileFlg = false;
     }

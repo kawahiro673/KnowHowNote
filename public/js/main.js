@@ -493,14 +493,16 @@ createbutton.addEventListener(
 createfilebutton.addEventListener(
   'click',
   (e) => {
-    //   if (!fileFlg) {
-    e.stopPropagation();
-    //  fileFlg = true;
-    newFileCreateFunc(0, fileFlg, tabArray);
-    //  }
+    if (!fileFlg) {
+      e.stopPropagation();
+      fileFlg = true;
+      newFileCreateFunc(0, fileFlg, tabArray);
+      fileFlg = false;
+    }
   },
   false
 );
+
 //[全削除]ボタン押下時。ノートフォルダタブ全て削除
 $('.container-delete').click(function () {
   let btn = confirm('ノートやフォルダが全て削除されますが本当に削除しますか？');
