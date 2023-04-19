@@ -295,7 +295,7 @@ router.post('/', (req, res) => {
                 if (error) {
                   reject(error);
                 } else {
-                  res.send({ response: result, tabResult: tabResult });
+                  res.send({ response: result, tabResult: tabResult[0] });
                 }
               }
             );
