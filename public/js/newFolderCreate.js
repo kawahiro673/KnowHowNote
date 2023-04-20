@@ -104,6 +104,8 @@ export const newFolderCreateFunc = (id, folderFlg, fileFlg, tabArray) => {
   document.addEventListener('click', clickL);
   document.addEventListener('contextmenu', clickR);
   inputTab.addEventListener('keypress', enter);
+
+  return folderFlg;
 };
 
 function newCreateFolder2(

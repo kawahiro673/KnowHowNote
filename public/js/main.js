@@ -484,7 +484,7 @@ createbutton.addEventListener(
     if (!folderFlg) {
       e.stopPropagation();
       folderFlg = true;
-      newFolderCreateFunc(0, folderFlg, fileFlg, tabArray);
+      folderFlg = newFolderCreateFunc(0, folderFlg, fileFlg, tabArray);
     }
   },
   false
