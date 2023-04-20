@@ -494,59 +494,59 @@ createbutton.addEventListener(
 createfilebutton.addEventListener(
   'click',
   (e) => {
-    if (!fileFlg) {
-      e.stopPropagation();
-      fileFlg = true;
-      const [inputTab, span] = newFileCreateFunc(0, fileFlg, tabArray);
+    //  if (!fileFlg) {
+    e.stopPropagation();
+    // fileFlg = true;
+    const [inputTab, span] = newFileCreateFunc(0, fileFlg, tabArray);
 
-      //左クリック
-      const clickL = function (e) {
-        e.preventDefault();
-        if (fileFlg && !e.target.closest('#inputTab')) {
+    //左クリック
+    const clickL = function (e) {
+      e.preventDefault();
+      if (!e.target.closest('#inputTab')) {
+        newCreateFile2(inputTab, span, 0, tabArray);
+        //   fileFlg = false;
+        document.removeEventListener('click', clickL);
+        document.removeEventListener('contextmenu', clickR);
+        document.removeEventListener('keypress', enter);
+      }
+      //addEnentLisnterが残る!?ので削除する。
+      // if (fileFlg === false) {
+      //  }
+    };
+
+    //右クリック
+    const clickR = function (e) {
+      e.preventDefault();
+      if (fileFlg && !e.target.closest('#inputTab')) {
+        newCreateFile2(inputTab, span, 0, tabArray);
+        fileFlg = false;
+      }
+      if (fileFlg === false) {
+        document.removeEventListener('click', clickL);
+        document.removeEventListener('contextmenu', clickR);
+        document.removeEventListener('keypress', enter);
+      }
+    };
+    //エンター押下時
+    const enter = function (e) {
+      //e.preventDefault(); //これがあると入力できない？？
+      if (fileFlg) {
+        if (e.keyCode === 13) {
           newCreateFile2(inputTab, span, 0, tabArray);
           fileFlg = false;
         }
-        //addEnentLisnterが残る!?ので削除する。
-        if (fileFlg === false) {
-          document.removeEventListener('click', clickL);
-          document.removeEventListener('contextmenu', clickR);
-          document.removeEventListener('keypress', enter);
-        }
-      };
-
-      //右クリック
-      const clickR = function (e) {
-        e.preventDefault();
-        if (fileFlg && !e.target.closest('#inputTab')) {
-          newCreateFile2(inputTab, span, 0, tabArray);
-          fileFlg = false;
-        }
-        if (fileFlg === false) {
-          document.removeEventListener('click', clickL);
-          document.removeEventListener('contextmenu', clickR);
-          document.removeEventListener('keypress', enter);
-        }
-      };
-      //エンター押下時
-      const enter = function (e) {
-        //e.preventDefault(); //これがあると入力できない？？
-        if (fileFlg) {
-          if (e.keyCode === 13) {
-            newCreateFile2(inputTab, span, 0, tabArray);
-            fileFlg = false;
-          }
-        }
-        if (fileFlg == false) {
-          document.removeEventListener('click', clickL);
-          document.removeEventListener('contextmenu', clickR);
-          document.removeEventListener('keypress', enter);
-        }
-      };
-      //右・左・Enterそれぞれの実行
-      document.addEventListener('click', clickL);
-      document.addEventListener('contextmenu', clickR);
-      inputTab.addEventListener('keypress', enter);
-    }
+      }
+      if (fileFlg == false) {
+        document.removeEventListener('click', clickL);
+        document.removeEventListener('contextmenu', clickR);
+        document.removeEventListener('keypress', enter);
+      }
+    };
+    //右・左・Enterそれぞれの実行
+    document.addEventListener('click', clickL);
+    document.addEventListener('contextmenu', clickR);
+    inputTab.addEventListener('keypress', enter);
+    //   }
   },
   false
 );
