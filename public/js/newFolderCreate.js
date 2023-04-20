@@ -49,6 +49,7 @@ export const newFolderCreateFunc = (id, folderFlg, fileFlg, tabArray) => {
       document.removeEventListener('click', clickL);
       document.removeEventListener('contextmenu', clickR);
       document.removeEventListener('keypress', enter);
+      return folderFlg;
     }
   };
   //右クリック
@@ -73,6 +74,7 @@ export const newFolderCreateFunc = (id, folderFlg, fileFlg, tabArray) => {
       document.removeEventListener('click', clickL);
       document.removeEventListener('contextmenu', clickR);
       document.removeEventListener('keypress', enter);
+      return folderFlg;
     }
   };
   //エンター押下時
@@ -98,14 +100,13 @@ export const newFolderCreateFunc = (id, folderFlg, fileFlg, tabArray) => {
       document.removeEventListener('click', clickL);
       document.removeEventListener('contextmenu', clickR);
       document.removeEventListener('keypress', enter);
+      return folderFlg;
     }
   };
   //右・左・Enterそれぞれの実行
   document.addEventListener('click', clickL);
   document.addEventListener('contextmenu', clickR);
   inputTab.addEventListener('keypress', enter);
-
-  return folderFlg;
 };
 
 function newCreateFolder2(
