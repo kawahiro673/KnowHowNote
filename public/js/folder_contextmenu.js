@@ -3,7 +3,7 @@ import { closeTab, deleteTabArray } from './tab_func.js';
 import { newFileCreateFunc } from './newFileCreate.js';
 import { newFolderCreateFunc } from './newFolderCreate.js';
 
-import { newCreateFile } from './main.js';
+//import { newCreateFile } from './main.js';
 
 let tmp1;
 let tmp2;
