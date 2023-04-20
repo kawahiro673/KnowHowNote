@@ -502,9 +502,9 @@ const functionName = (e) => {
     if (!e.target.closest('#inputTab')) {
       newCreateFile2(inputTab, span, 0, tabArray);
 
-      document.removeEventListener('click', clickL);
-      document.removeEventListener('contextmenu', clickR);
-      document.removeEventListener('keypress', enter);
+      // document.removeEventListener('click', clickL);
+      // document.removeEventListener('contextmenu', clickR);
+      // document.removeEventListener('keypress', enter);
     }
   };
 
@@ -543,7 +543,7 @@ const functionName = (e) => {
   //   }
 };
 
-createfilebutton.addEventListener('click', functionName, { once: true });
+createfilebutton.addEventListener('click', functionName);
 
 //[全削除]ボタン押下時。ノートフォルダタブ全て削除
 $('.container-delete').click(function () {
