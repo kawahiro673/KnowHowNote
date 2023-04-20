@@ -543,7 +543,7 @@ const functionName = (e) => {
   //   }
 };
 
-createfilebutton.addEventListener('click', functionName(e));
+createfilebutton.addEventListener('click', functionName);
 
 //[全削除]ボタン押下時。ノートフォルダタブ全て削除
 $('.container-delete').click(function () {
