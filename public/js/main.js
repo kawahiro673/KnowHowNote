@@ -20,7 +20,6 @@ import { newFileCreateFunc, newCreateFile2 } from './newFileCreate.js';
 import { newFolderCreateFunc } from './newFolderCreate.js';
 
 import { orderGet } from './stringUtils.js';
-import { reject } from 'bcrypt/promises';
 
 var tabArray = []; //tab生成時にidを配列へ格納
 let fileFlg = false; //ファイルのinput要素が出ているかどうか
