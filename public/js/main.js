@@ -542,8 +542,8 @@ const functionName = (e) => {
   inputTab.addEventListener('keypress', enter);
   //   }
 };
-createfilebutton.removeEventListener('click', functionName);
-createfilebutton.addEventListener('click', functionName);
+
+createfilebutton.addEventListener('click', functionName, { once: true });
 
 //[全削除]ボタン押下時。ノートフォルダタブ全て削除
 $('.container-delete').click(function () {
