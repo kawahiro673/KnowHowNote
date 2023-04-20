@@ -26,10 +26,87 @@ export const newFolderCreateFunc = (id, folderFlg, fileFlg, tabArray) => {
   document.getElementById('inputTab').focus();
   document.getElementById('inputTab').setSelectionRange(len, len);
 
-  return [inputTab, span, tabArray, fileFlg, folderFlg];
+  //左クリック
+  const clickL = function (e) {
+    e.preventDefault();
+    console.log('1' + folderFlg);
+    if (folderFlg && !e.target.closest('#inputTab')) {
+      console.log('左クリック');
+      newCreateFolder2(
+        inputTab,
+        span,
+        li,
+        ul,
+        id,
+        folderFlg,
+        fileFlg,
+        tabArray
+      );
+      folderFlg = false;
+    }
+    //addEnentLisnterが残る!?ので削除する。
+    if (folderFlg == false) {
+      document.removeEventListener('click', clickL);
+      document.removeEventListener('contextmenu', clickR);
+      document.removeEventListener('keypress', enter);
+    }
+  };
+  //右クリック
+  const clickR = function (e) {
+    e.preventDefault();
+    console.log('2' + folderFlg);
+    if (folderFlg && !e.target.closest('#inputTab')) {
+      console.log('右クリック');
+      newCreateFolder2(
+        inputTab,
+        span,
+        li,
+        ul,
+        id,
+        folderFlg,
+        fileFlg,
+        tabArray
+      );
+      folderFlg = false;
+    }
+    if (folderFlg == false) {
+      document.removeEventListener('click', clickL);
+      document.removeEventListener('contextmenu', clickR);
+      document.removeEventListener('keypress', enter);
+    }
+  };
+  //エンター押下時
+  const enter = function (e) {
+    //e.preventDefault(); //これがあると入力できない？？
+    console.log('3');
+    if (folderFlg) {
+      if (e.keyCode === 13) {
+        newCreateFolder2(
+          inputTab,
+          span,
+          li,
+          ul,
+          id,
+          folderFlg,
+          fileFlg,
+          tabArray
+        );
+        folderFlg = false;
+      }
+    }
+    if (folderFlg == false) {
+      document.removeEventListener('click', clickL);
+      document.removeEventListener('contextmenu', clickR);
+      document.removeEventListener('keypress', enter);
+    }
+  };
+  //右・左・Enterそれぞれの実行
+  document.addEventListener('click', clickL);
+  document.addEventListener('contextmenu', clickR);
+  inputTab.addEventListener('keypress', enter);
 };
 
-export const newCreateFolder2 = (
+function newCreateFolder2(
   inputTab,
   span,
   li,
@@ -38,7 +115,7 @@ export const newCreateFolder2 = (
   folderFlg,
   fileFlg,
   tabArray
-) => {
+) {
   //何も入力されていない時や空白や改行のみの入力
   if (!inputTab.value || !inputTab.value.match(/\S/g)) {
     alert('フォルダ名を入力してください');
@@ -100,4 +177,4 @@ export const newCreateFolder2 = (
       },
     });
   }
-};
+}

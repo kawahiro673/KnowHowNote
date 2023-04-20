@@ -17,7 +17,7 @@ import { folderContextmenu } from './folder_contextmenu.js';
 import { jQueryUIOptionsFunc } from './jQueryUI_func.js';
 
 import { newFileCreateFunc, newCreateFile2 } from './newFileCreate.js';
-import { newFolderCreateFunc, newCreateFolder2 } from './newFolderCreate.js';
+import { newFolderCreateFunc } from './newFolderCreate.js';
 
 import { orderGet } from './stringUtils.js';
 
@@ -484,82 +484,7 @@ createbutton.addEventListener(
     if (!folderFlg) {
       e.stopPropagation();
       folderFlg = true;
-      const [inputTab, span, tabArray, fileFlg, folderFlg] =
-        newFolderCreateFunc(0, folderFlg, fileFlg, tabArray);
-
-      //左クリック
-      const clickL = function (e) {
-        e.preventDefault();
-        if (folderFlg && !e.target.closest('#inputTab')) {
-          newCreateFolder2(
-            inputTab,
-            span,
-            li,
-            ul,
-            id,
-            folderFlg,
-            fileFlg,
-            tabArray
-          );
-          folderFlg = false;
-        }
-        //addEnentLisnterが残る!?ので削除する。
-        if (folderFlg == false) {
-          document.removeEventListener('click', clickL);
-          document.removeEventListener('contextmenu', clickR);
-          document.removeEventListener('keypress', enter);
-        }
-      };
-      //右クリック
-      const clickR = function (e) {
-        e.preventDefault();
-        if (folderFlg && !e.target.closest('#inputTab')) {
-          newCreateFolder2(
-            inputTab,
-            span,
-            li,
-            ul,
-            id,
-            folderFlg,
-            fileFlg,
-            tabArray
-          );
-          folderFlg = false;
-        }
-        if (folderFlg == false) {
-          document.removeEventListener('click', clickL);
-          document.removeEventListener('contextmenu', clickR);
-          document.removeEventListener('keypress', enter);
-        }
-      };
-      //エンター押下時
-      const enter = function (e) {
-        //e.preventDefault(); //これがあると入力できない？？
-        if (folderFlg) {
-          if (e.keyCode === 13) {
-            newCreateFolder2(
-              inputTab,
-              span,
-              li,
-              ul,
-              id,
-              folderFlg,
-              fileFlg,
-              tabArray
-            );
-            folderFlg = false;
-          }
-        }
-        if (folderFlg == false) {
-          document.removeEventListener('click', clickL);
-          document.removeEventListener('contextmenu', clickR);
-          document.removeEventListener('keypress', enter);
-        }
-      };
-      //右・左・Enterそれぞれの実行
-      document.addEventListener('click', clickL);
-      document.addEventListener('contextmenu', clickR);
-      inputTab.addEventListener('keypress', enter);
+      newFolderCreateFunc(0, folderFlg, fileFlg, tabArray);
     }
   },
   false
