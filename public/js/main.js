@@ -502,7 +502,7 @@ const functionName = (e) => {
     if (!e.target.closest('#inputTab')) {
       newCreateFile2(inputTab, span, 0, tabArray);
 
-      // document.removeEventListener('click', clickL);
+      document.removeEventListener('click', clickL);
       // document.removeEventListener('contextmenu', clickR);
       // document.removeEventListener('keypress', enter);
     }
