@@ -495,13 +495,13 @@ const functionName = (e) => {
   e.stopPropagation();
 
   const [inputTab, span] = newFileCreateFunc(0, fileFlg, tabArray);
-
+  console.log('a');
   //左クリック
   const clickL = function (e) {
     e.preventDefault();
     if (!e.target.closest('#inputTab')) {
       newCreateFile2(inputTab, span, 0, tabArray);
-
+      console.log('b');
       document.removeEventListener('click', clickL);
       // document.removeEventListener('contextmenu', clickR);
       // document.removeEventListener('keypress', enter);
