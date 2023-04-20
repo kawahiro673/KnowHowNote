@@ -151,6 +151,7 @@ export const listCreate = () => {
           });
         })
         .then(() => {
+          console.log('実行されています');
           //時間差でclosedのoffを開く＆フォルダ押下のclick関数作成
           expandableArray.forEach((ex) => {
             document.getElementById(`folder${ex}`).click();
