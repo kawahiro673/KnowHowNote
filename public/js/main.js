@@ -20,10 +20,11 @@ import { newFileCreateFunc, newCreateFile2 } from './newFileCreate.js';
 import { newFolderCreateFunc } from './newFolderCreate.js';
 
 import { orderGet } from './stringUtils.js';
+import { reject } from 'bcrypt/promises';
 
 var tabArray = []; //tab生成時にidを配列へ格納
-let fileFlg = false;
-let folderFlg = false;
+let fileFlg = false; //ファイルのinput要素が出ているかどうか
+let folderFlg = false; //フォルダのinputが出てるかどうか
 
 export const listCreate = () => {
   $.ajax({
@@ -52,130 +53,137 @@ export const listCreate = () => {
 
       parentIdArray.push(0); //rootである0を追加
 
-      //folderとfileを全て作成するまで(resTmpとresTmp2の結合配列arrayが空になるまで)
-      while (array.length !== 0) {
-        parentIdArray.forEach((parentId) => {
-          //console.log('やあ' + parentId);
-          orderNumber = 0;
-          //要素が作成される間繰り返す(file or folder)
-          while (crFlg == true) {
-            crFlg = false;
-            orderNumber++;
-            for (const hoge of Object.keys(res.response)) {
-              const folder = res.response[hoge];
-              //parentIdが合致すれば子要素として追加
-              if (
-                folder.parent_id == parentId &&
-                orderNumber == folder.folder_order
-              ) {
-                //要素作成
-                let li = document.createElement('li');
-                li.setAttribute('class', `parent${folder.parent_id}`);
-                li.setAttribute('id', `parent${folder.parent_id}`);
-                let span = document.createElement('span');
-                span.setAttribute('class', 'folder');
-                span.setAttribute('id', `folder${folder.id}`);
-                span.setAttribute('value', `${folder.id}`);
-                span.innerHTML = folder.folder_name;
-                let ul = document.createElement('ul');
-                ul.setAttribute('id', `${folder.id}`);
-                ul.setAttribute('class', `f_${folder.id}`);
-                //追加
-                document.getElementById(`${parentId}`).appendChild(li);
-                li.appendChild(span);
-                li.appendChild(ul);
-                //重複していなければ追加
-                if (parentIdArray.indexOf(folder.id) == -1) {
-                  parentIdArray.push(folder.id);
+      let promise = new Promise((resolve, reject) => {
+        resolve();
+      })
+        .then(() => {
+          return new Promise((resolve, reject) => {
+            //folderとfileを全て作成するまで(resTmpとresTmp2の結合配列arrayが空になるまで)
+            while (array.length !== 0) {
+              parentIdArray.forEach((parentId) => {
+                //console.log('やあ' + parentId);
+                orderNumber = 0;
+                //要素が作成される間繰り返す(file or folder)
+                while (crFlg == true) {
+                  crFlg = false;
+                  orderNumber++;
+                  for (const hoge of Object.keys(res.response)) {
+                    const folder = res.response[hoge];
+                    //parentIdが合致すれば子要素として追加
+                    if (
+                      folder.parent_id == parentId &&
+                      orderNumber == folder.folder_order
+                    ) {
+                      //要素作成
+                      let li = document.createElement('li');
+                      li.setAttribute('class', `parent${folder.parent_id}`);
+                      li.setAttribute('id', `parent${folder.parent_id}`);
+                      let span = document.createElement('span');
+                      span.setAttribute('class', 'folder');
+                      span.setAttribute('id', `folder${folder.id}`);
+                      span.setAttribute('value', `${folder.id}`);
+                      span.innerHTML = folder.folder_name;
+                      let ul = document.createElement('ul');
+                      ul.setAttribute('id', `${folder.id}`);
+                      ul.setAttribute('class', `f_${folder.id}`);
+                      //追加
+                      document.getElementById(`${parentId}`).appendChild(li);
+                      li.appendChild(span);
+                      li.appendChild(ul);
+                      //重複していなければ追加
+                      if (parentIdArray.indexOf(folder.id) == -1) {
+                        parentIdArray.push(folder.id);
+                      }
+                      resTmp.splice(resTmp.indexOf(folder), 1);
+                      crFlg = true;
+
+                      //リストの開き設定
+                      if (folder.closed == 'off') {
+                        expandableArray.push(folder.id);
+                      }
+                    }
+                  }
+                  //file追加
+                  for (const hoge of Object.keys(resTmp2)) {
+                    const file = resTmp2[hoge];
+                    //for (const file of resTmp2) {
+                    if (
+                      file.parent_id == parentId &&
+                      orderNumber == file.folder_order &&
+                      crFlg == false //フォルダで未作成の場合
+                    ) {
+                      //要素作成
+                      let li = document.createElement('li');
+                      li.setAttribute('class', `parent${file.parent_id}`);
+                      let span = document.createElement('span');
+                      span.setAttribute('class', 'list_title file');
+                      span.setAttribute('id', `li${file.id}`);
+                      span.style.color = file.title_color;
+                      span.setAttribute('value', `${file.id}`);
+                      span.innerHTML = file.title;
+                      document.getElementById(`${parentId}`).appendChild(li);
+                      li.appendChild(span);
+                      deleteArray.push(file);
+                      crFlg = true;
+                    }
+                  }
+                  //一度表示したファイルをresTmp2から削除(forEach内で削除すると配列番号がズレてバグるため)
+                  deleteArray.forEach((file) => {
+                    if (resTmp2.includes(file)) {
+                      resTmp2.splice(resTmp2.indexOf(file), 1);
+                    }
+                  });
+                  deleteArray = [];
                 }
-                resTmp.splice(resTmp.indexOf(folder), 1);
-                crFlg = true;
-
-                //リストの開き設定
-                if (folder.closed == 'off') {
-                  expandableArray.push(folder.id);
+                //要素が作成されなければ配列から削除
+                if (crFlg == false) {
+                  parentIdArray.splice(parentIdArray.indexOf(parentId), 1);
                 }
-              }
-            }
-            //file追加
-            for (const hoge of Object.keys(resTmp2)) {
-              const file = resTmp2[hoge];
-              //for (const file of resTmp2) {
-              if (
-                file.parent_id == parentId &&
-                orderNumber == file.folder_order &&
-                crFlg == false //フォルダで未作成の場合
-              ) {
-                //要素作成
-                let li = document.createElement('li');
-                li.setAttribute('class', `parent${file.parent_id}`);
-                let span = document.createElement('span');
-                span.setAttribute('class', 'list_title file');
-                span.setAttribute('id', `li${file.id}`);
-                span.style.color = file.title_color;
-                span.setAttribute('value', `${file.id}`);
-                span.innerHTML = file.title;
-                document.getElementById(`${parentId}`).appendChild(li);
-                li.appendChild(span);
-                deleteArray.push(file);
                 crFlg = true;
-              }
+              });
+              array = resTmp.concat(resTmp2);
             }
-            //一度表示したファイルをresTmp2から削除(forEach内で削除すると配列番号がズレてバグるため)
-            deleteArray.forEach((file) => {
-              if (resTmp2.includes(file)) {
-                resTmp2.splice(resTmp2.indexOf(file), 1);
-              }
-            });
-            deleteArray = [];
-          }
-          //要素が作成されなければ配列から削除
-          if (crFlg == false) {
-            parentIdArray.splice(parentIdArray.indexOf(parentId), 1);
-          }
-          crFlg = true;
-        });
-        array = resTmp.concat(resTmp2);
-      }
-      jQueryUIOptionsFunc(); //jQueryUIを付与
-      fileContextmenu(tabArray); //ファイルの右クリックメニュー
-      folderContextmenu(tabArray, fileFlg, folderFlg); //フォルダーの右クリックメニュー
-      fileClick(); //メモクリック時のTab表示
-
-      //時間差でclosedのoffを開く＆フォルダ押下のclick関数作成
-      window.setTimeout(function () {
-        expandableArray.forEach((ex) => {
-          document.getElementById(`folder${ex}`).click();
-        });
-
-        let fol = document.getElementsByClassName('folder');
-        for (let i = 0; i < fol.length; i++) {
-          fol[i].addEventListener('click', function () {
-            let closedFlg = 0;
-            console.log(this.id.replace(/[^0-9]/g, ''));
-            //folderが閉じているとflg=1
-            if (this.parentNode.classList.contains('expandable')) {
-              closedFlg = 1;
-            }
-
-            $.ajax({
-              url: '/folderPostController/',
-              type: 'POST',
-              dataType: 'Json',
-              contentType: 'application/json',
-              data: JSON.stringify({
-                data: 'folder',
-                flg: 'closed',
-                id: this.id.replace(/[^0-9]/g, ''),
-                closedFlg,
-              }),
-              success: function (res) {
-                console.log(res.response);
-              },
-            });
+            jQueryUIOptionsFunc(); //jQueryUIを付与
+            fileContextmenu(tabArray); //ファイルの右クリックメニュー
+            folderContextmenu(tabArray, fileFlg, folderFlg); //フォルダーの右クリックメニュー
+            fileClick(); //メモクリック時のTab表示
+            resolve();
           });
-        }
-      }, 300);
+        })
+        .then(() => {
+          //時間差でclosedのoffを開く＆フォルダ押下のclick関数作成
+          expandableArray.forEach((ex) => {
+            document.getElementById(`folder${ex}`).click();
+          });
+
+          let fol = document.getElementsByClassName('folder');
+          for (let i = 0; i < fol.length; i++) {
+            fol[i].addEventListener('click', function () {
+              let closedFlg = 0;
+              //folderが閉じているとflg=1
+              if (this.parentNode.classList.contains('expandable')) {
+                closedFlg = 1;
+              }
+
+              $.ajax({
+                url: '/folderPostController/',
+                type: 'POST',
+                dataType: 'Json',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                  data: 'folder',
+                  flg: 'closed',
+                  id: this.id.replace(/[^0-9]/g, ''),
+                  closedFlg,
+                }),
+                success: function (res) {},
+              });
+            });
+          }
+        })
+        .catch(() => {
+          console.log('fileAndFolderListsCreate');
+        });
     },
   });
 };
@@ -486,7 +494,6 @@ createbutton.addEventListener(
       e.stopPropagation();
       folderFlg = true;
       folderFlg = newFolderCreateFunc(0, folderFlg, fileFlg, tabArray);
-      console.log(folderFlg);
     }
   },
   false
