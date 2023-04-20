@@ -498,14 +498,14 @@ createfilebutton.addEventListener(
     //  if (!fileFlg) {
     e.stopPropagation();
     // fileFlg = true;
-    const [inputTab, span] = newFileCreateFunc(0, fileFlg, tabArray);
+    // const [inputTab, span] = newFileCreateFunc(0, fileFlg, tabArray);
     console.log('ひん３');
     //左クリック
     const clickL = function (e) {
       console.log('ひん１');
       e.preventDefault();
       if (!e.target.closest('#inputTab')) {
-        newCreateFile2(inputTab, span, 0, tabArray);
+        //    newCreateFile2(inputTab, span, 0, tabArray);
         //   fileFlg = false;
         console.log('やあ０');
         document.removeEventListener('click', clickL);
