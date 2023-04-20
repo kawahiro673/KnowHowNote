@@ -505,10 +505,14 @@ createfilebutton.addEventListener(
       if (!e.target.closest('#inputTab')) {
         newCreateFile2(inputTab, span, 0, tabArray);
         //   fileFlg = false;
+        console.log('やあ０');
         document.removeEventListener('click', clickL);
         document.removeEventListener('contextmenu', clickR);
         document.removeEventListener('keypress', enter);
+
+        console.log('やあ１');
       }
+      console.log('やあ２');
       //addEnentLisnterが残る!?ので削除する。
       // if (fileFlg === false) {
       //  }
