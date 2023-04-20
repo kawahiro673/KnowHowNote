@@ -22,8 +22,8 @@ import { newFolderCreateFunc } from './newFolderCreate.js';
 import { orderGet } from './stringUtils.js';
 
 var tabArray = []; //tab生成時にidを配列へ格納
-let fileFlg = false; //ファイルのinput要素が出ているかどうか
-let folderFlg = false; //フォルダのinput
+let fileFlg = false;
+let folderFlg = false;
 
 export const listCreate = () => {
   $.ajax({
@@ -481,11 +481,10 @@ document.getElementById('newfile').onclick = function (e) {
 createbutton.addEventListener(
   'click',
   (e) => {
-    console.log(folderFlg);
     if (!folderFlg) {
       e.stopPropagation();
       folderFlg = true;
-      folderFlg = newFolderCreateFunc(0, folderFlg, fileFlg, tabArray);
+      newFolderCreateFunc(0, folderFlg, fileFlg, tabArray);
     }
   },
   false
