@@ -491,61 +491,65 @@ createbutton.addEventListener(
 );
 
 //「ノート追加」ボタン押下時(rootに作成)
-const functionName = (e) => {
-  e.stopPropagation();
+createfilebutton.addEventListener(
+  'click',
+  (e) => {
+    if (!fileFlg) {
+      e.stopPropagation();
+      fileFlg = true;
+      const [inputTab, span] = newFileCreateFunc(0, fileFlg, tabArray);
 
-  const [inputTab, span] = newFileCreateFunc(0, fileFlg, tabArray);
-  console.log('a');
-  //左クリック
-  const clickL = function (e) {
-    e.preventDefault();
-    if (!e.target.closest('#inputTab')) {
-      newCreateFile2(inputTab, span, 0, tabArray);
-      console.log('b');
-      document.removeEventListener('click', clickL);
-      createfilebutton.addEventListener('click', functionName);
-      // document.removeEventListener('contextmenu', clickR);
-      // document.removeEventListener('keypress', enter);
-    }
-  };
+      //左クリック
+      const clickL = function (e) {
+        e.preventDefault();
+        if (fileFlg && !e.target.closest('#inputTab')) {
+          newCreateFile2(inputTab, span, 0, tabArray);
+          fileFlg = false;
+        }
+        //addEnentLisnterが残る!?ので削除する。
+        if (fileFlg === false) {
+          document.removeEventListener('click', clickL);
+          document.removeEventListener('contextmenu', clickR);
+          document.removeEventListener('keypress', enter);
+        }
+      };
 
-  //右クリック
-  const clickR = function (e) {
-    e.preventDefault();
-    if (fileFlg && !e.target.closest('#inputTab')) {
-      newCreateFile2(inputTab, span, 0, tabArray);
-      fileFlg = false;
+      //右クリック
+      const clickR = function (e) {
+        e.preventDefault();
+        if (fileFlg && !e.target.closest('#inputTab')) {
+          newCreateFile2(inputTab, span, 0, tabArray);
+          fileFlg = false;
+        }
+        if (fileFlg === false) {
+          document.removeEventListener('click', clickL);
+          document.removeEventListener('contextmenu', clickR);
+          document.removeEventListener('keypress', enter);
+        }
+      };
+      //エンター押下時
+      const enter = function (e) {
+        //e.preventDefault(); //これがあると入力できない？？
+        if (fileFlg) {
+          if (e.keyCode === 13) {
+            newCreateFile2(inputTab, span, 0, tabArray);
+            fileFlg = false;
+          }
+        }
+        if (fileFlg == false) {
+          document.removeEventListener('click', clickL);
+          document.removeEventListener('contextmenu', clickR);
+          document.removeEventListener('keypress', enter);
+        }
+      };
+      //右・左・Enterそれぞれの実行
+      document.addEventListener('click', clickL);
+      document.addEventListener('contextmenu', clickR);
+      inputTab.addEventListener('keypress', enter);
     }
-    if (fileFlg === false) {
-      document.removeEventListener('click', clickL);
-      document.removeEventListener('contextmenu', clickR);
-      document.removeEventListener('keypress', enter);
-    }
-  };
-  //エンター押下時
-  const enter = function (e) {
-    //e.preventDefault(); //これがあると入力できない？？
-    if (fileFlg) {
-      if (e.keyCode === 13) {
-        newCreateFile2(inputTab, span, 0, tabArray);
-        fileFlg = false;
-      }
-    }
-    if (fileFlg == false) {
-      document.removeEventListener('click', clickL);
-      document.removeEventListener('contextmenu', clickR);
-      document.removeEventListener('keypress', enter);
-    }
-  };
-  //右・左・Enterそれぞれの実行
-  document.addEventListener('click', clickL);
-  document.addEventListener('contextmenu', clickR);
-  inputTab.addEventListener('keypress', enter);
-  createfilebutton.removeEventListener('click', functionName);
-  //   }
-};
-
-createfilebutton.addEventListener('click', functionName);
+  },
+  false
+);
 
 //[全削除]ボタン押下時。ノートフォルダタブ全て削除
 $('.container-delete').click(function () {
