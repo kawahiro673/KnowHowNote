@@ -53,11 +53,12 @@ export const listCreate = () => {
 
       parentIdArray.push(0); //rootである0を追加
 
-      let promise = new Promise((resolve, reject) => {
+      let promise = new Promise((resolve) => {
         resolve();
-      })
+      });
+      promise
         .then(() => {
-          return new Promise((resolve, reject) => {
+          return new Promise((resolve) => {
             //folderとfileを全て作成するまで(resTmpとresTmp2の結合配列arrayが空になるまで)
             while (array.length !== 0) {
               parentIdArray.forEach((parentId) => {
