@@ -481,10 +481,12 @@ document.getElementById('newfile').onclick = function (e) {
 createbutton.addEventListener(
   'click',
   (e) => {
+    console.log(folderFlg);
     if (!folderFlg) {
       e.stopPropagation();
       folderFlg = true;
       folderFlg = newFolderCreateFunc(0, folderFlg, fileFlg, tabArray);
+      console.log(folderFlg);
     }
   },
   false
