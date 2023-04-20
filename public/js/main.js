@@ -503,6 +503,7 @@ const functionName = (e) => {
       newCreateFile2(inputTab, span, 0, tabArray);
       console.log('b');
       document.removeEventListener('click', clickL);
+      createfilebutton.addEventListener('click', functionName);
       // document.removeEventListener('contextmenu', clickR);
       // document.removeEventListener('keypress', enter);
     }
@@ -540,6 +541,7 @@ const functionName = (e) => {
   document.addEventListener('click', clickL);
   document.addEventListener('contextmenu', clickR);
   inputTab.addEventListener('keypress', enter);
+  createfilebutton.removeEventListener('click', functionName);
   //   }
 };
 
