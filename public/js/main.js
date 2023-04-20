@@ -547,8 +547,8 @@ createfilebutton.addEventListener(
       document.addEventListener('contextmenu', clickR);
       inputTab.addEventListener('keypress', enter);
     }
-  },
-  false
+  }
+  // false
 );
 
 //[全削除]ボタン押下時。ノートフォルダタブ全て削除
