@@ -3,6 +3,8 @@ import { closeTab, deleteTabArray } from './tab_func.js';
 import { newFileCreateFunc } from './newFileCreate.js';
 import { newFolderCreateFunc } from './newFolderCreate.js';
 
+import { newCreateFile } from './main.js';
+
 let tmp1;
 let tmp2;
 
@@ -57,8 +59,8 @@ export const folderContextmenu = (tabArray, fileFlg, folderFlg) => {
           fID.click();
         }
         fileFlg = true;
-
-        newFileCreateFunc(folderList.folderId, fileFlg, tabArray);
+        newCreateFile(folderList.folderId, fileFlg, tabArray);
+        //newFileCreateFunc(folderList.folderId, fileFlg, tabArray);
         conme.style.display = 'none';
         conme2.style.display = 'none';
         conme3.style.display = 'none';
