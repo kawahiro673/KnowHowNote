@@ -151,36 +151,38 @@ export const listCreate = () => {
           });
         })
         .then(() => {
-          console.log('実行されています');
-          //時間差でclosedのoffを開く＆フォルダ押下のclick関数作成
-          expandableArray.forEach((ex) => {
-            document.getElementById(`folder${ex}`).click();
-          });
-
-          let fol = document.getElementsByClassName('folder');
-          for (let i = 0; i < fol.length; i++) {
-            fol[i].addEventListener('click', function () {
-              let closedFlg = 0;
-              //folderが閉じているとflg=1
-              if (this.parentNode.classList.contains('expandable')) {
-                closedFlg = 1;
-              }
-
-              $.ajax({
-                url: '/folderPostController/',
-                type: 'POST',
-                dataType: 'Json',
-                contentType: 'application/json',
-                data: JSON.stringify({
-                  data: 'folder',
-                  flg: 'closed',
-                  id: this.id.replace(/[^0-9]/g, ''),
-                  closedFlg,
-                }),
-                success: function (res) {},
-              });
+          return new Promise((resolve) => {
+            console.log('実行されています');
+            //時間差でclosedのoffを開く＆フォルダ押下のclick関数作成
+            expandableArray.forEach((ex) => {
+              document.getElementById(`folder${ex}`).click();
             });
-          }
+
+            let fol = document.getElementsByClassName('folder');
+            for (let i = 0; i < fol.length; i++) {
+              fol[i].addEventListener('click', function () {
+                let closedFlg = 0;
+                //folderが閉じているとflg=1
+                if (this.parentNode.classList.contains('expandable')) {
+                  closedFlg = 1;
+                }
+
+                $.ajax({
+                  url: '/folderPostController/',
+                  type: 'POST',
+                  dataType: 'Json',
+                  contentType: 'application/json',
+                  data: JSON.stringify({
+                    data: 'folder',
+                    flg: 'closed',
+                    id: this.id.replace(/[^0-9]/g, ''),
+                    closedFlg,
+                  }),
+                  success: function (res) {},
+                });
+              });
+            }
+          });
         })
         .catch(() => {
           console.log('fileAndFolderListsCreate');
