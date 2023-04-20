@@ -490,8 +490,6 @@ createbutton.addEventListener(
   false
 );
 
-createfilebutton.addEventListener('click', functionName(e));
-
 //「ノート追加」ボタン押下時(rootに作成)
 const functionName = (e) => {
   e.stopPropagation();
@@ -544,6 +542,8 @@ const functionName = (e) => {
   inputTab.addEventListener('keypress', enter);
   //   }
 };
+
+createfilebutton.addEventListener('click', functionName(e));
 
 //[全削除]ボタン押下時。ノートフォルダタブ全て削除
 $('.container-delete').click(function () {
