@@ -137,13 +137,14 @@ export const listCreate = () => {
         });
         array = resTmp.concat(resTmp2);
       }
-      jQueryUIOptionsFunc(); //jQueryUIを付与
-      fileContextmenu(tabIdArray); //ファイルの右クリックメニュー
-      folderContextmenu(tabIdArray, fileInputExistFlg, folderInputExistFlgFlg); //フォルダーの右クリックメニュー
-      fileClick(); //メモクリック時のTab表示
+      // jQueryUIOptionsFunc(); //jQueryUIを付与
+      // fileContextmenu(tabIdArray); //ファイルの右クリックメニュー
+      // folderContextmenu(tabIdArray, fileInputExistFlg, folderInputExistFlgFlg); //フォルダーの右クリックメニュー
+      // fileClick(); //メモクリック時のTab表示
 
       //時間差でclosedのoffを開く＆フォルダ押下のclick関数作成
-      window.setTimeout(function () {
+      const expandableALL = async () => {
+        // window.setTimeout(function () {
         expandableArray.forEach((ex) => {
           document.getElementById(`folder${ex}`).click();
         });
@@ -175,7 +176,13 @@ export const listCreate = () => {
             });
           });
         }
-      }, 300);
+        //  }, 300);
+      };
+      const reloadMypageLists = async () => {
+        await jQueryUIOptionsFunc();
+        await expandableALL();
+      };
+      reloadMypageLists();
     },
   });
 };

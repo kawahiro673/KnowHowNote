@@ -1,6 +1,6 @@
 import { passGet } from './tab_func.js';
 
-export const jQueryUIOptionsFunc = () => {
+export const jQueryUIOptionsFunc = async () => {
   let initial_index;
   let parent_id_Tmp;
   let tmpArray = [];

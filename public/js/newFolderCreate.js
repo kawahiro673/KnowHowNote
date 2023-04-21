@@ -110,7 +110,6 @@ function newCreateFolder2(
   if (!inputTab.value || !inputTab.value.match(/\S/g)) {
     alert('フォルダ名を入力してください');
   } else {
-    console.log('入力されました');
     $.ajax({
       url: '/folderPostController/',
       type: 'POST',
