@@ -496,20 +496,19 @@ createfilebutton.addEventListener(
   (e) => {
     if (!fileFlg) {
       e.stopPropagation();
-      fileFlg = true;
       const [inputTab, span] = newFileCreateFunc(0, fileFlg, tabArray);
-
+      fileFlg = true;
       //左クリック
       const clickL = function (e) {
         e.preventDefault();
         if (fileFlg && !e.target.closest('#inputTab')) {
           newCreateFile2(inputTab, span, 0, tabArray);
+          document.removeEventListener('click', clickL);
           fileFlg = false;
         }
         //addEnentLisnterが残る!?ので削除する。
-        if (fileFlg === false) {
-          document.removeEventListener('click', clickL);
-        }
+        // if (fileFlg === false) {
+        // }
       };
 
       //右クリック
