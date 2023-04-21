@@ -3,7 +3,7 @@ import { fileContextmenu } from './note_contextmenu.js';
 import { updateTime } from './tab_func.js';
 import { listCreate, fileClick } from './main.js';
 
-export const newFileCreateFunc = (id, fileFlg, tabArray) => {
+export const newFileCreateFunc = (id, fileInputExistFlg,  tabIdArray) => {
   const li = document.createElement('li');
   const span = document.createElement('span');
   li.setAttribute('class', 'last');
@@ -28,38 +28,41 @@ export const newFileCreateFunc = (id, fileFlg, tabArray) => {
 
   const clickL = (e) => {
     e.preventDefault();
-    if (fileFlg && !e.target.closest('#inputTab')) {
-      newCreateFile2(inputTab, span, 0, tabArray);
+    if (fileInputExistFlg && !e.target.closest('#inputTab')) {
+      newCreateFile2(inputTab, span, 0,  tabIdArray);
       document.removeEventListener('click', clickL);
       document.removeEventListener('contextmenu', clickR);
       document.removeEventListener('keypress', enter);
-      fileFlg = false;
-      return fileFlg;
+      // fileFlg = false;
+      // return fileFlg;
+      return false;
     }
   };
 
   const clickR = (e) => {
     e.preventDefault();
-    if (fileFlg && !e.target.closest('#inputTab')) {
-      newCreateFile2(inputTab, span, 0, tabArray);
+    if (fileInputExistFlg && !e.target.closest('#inputTab')) {
+      newCreateFile2(inputTab, span, 0,  tabIdArray);
       document.removeEventListener('click', clickL);
       document.removeEventListener('contextmenu', clickR);
       document.removeEventListener('keypress', enter);
-      fileFlg = false;
-      return fileFlg;
+      // fileFlg = false;
+      // return fileFlg;
+      return false;
     }
   };
 
   const enter = (e) => {
     //e.preventDefault(); //これがあると入力できない？？
-    if (fileFlg) {
+    if (fileInputExistFlg) {
       if (e.keyCode === 13) {
-        newCreateFile2(inputTab, span, 0, tabArray);
+        newCreateFile2(inputTab, span, 0,  tabIdArray;
         document.removeEventListener('click', clickL);
         document.removeEventListener('contextmenu', clickR);
         document.removeEventListener('keypress', enter);
-        fileFlg = false;
-        return fileFlg;
+        // fileFlg = false;
+        // return fileFlg;
+        return false;
       }
     }
   };
@@ -68,7 +71,7 @@ export const newFileCreateFunc = (id, fileFlg, tabArray) => {
   inputTab.addEventListener('keypress', enter);
 };
 
-export const newCreateFile2 = (inputTab, span, parentId, tabArray) => {
+export const newCreateFile2 = (inputTab, span, parentId,  tabIdArray) => {
   //何も入力されていない時や空白や改行のみ
   if (!inputTab.value || !inputTab.value.match(/\S/g)) {
     alert('タイトルを入力してください');

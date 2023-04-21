@@ -16,14 +16,14 @@ import { folderContextmenu } from './folder_contextmenu.js';
 
 import { jQueryUIOptionsFunc } from './jQueryUI_func.js';
 
-import { newFileCreateFunc, newCreateFile2 } from './newFileCreate.js';
+import { newFileCreateFunc } from './newFileCreate.js';
 import { newFolderCreateFunc } from './newFolderCreate.js';
 
 import { orderGet } from './stringUtils.js';
 
-var tabArray = []; //tab生成時にidを配列へ格納
-let fileFlg = false;
-let folderFlg = false;
+var tabIdArray = []; //タブが生成されているファイルのIDを格納
+let fileInputExistFlg = false; //ファイル作成時のInputタブが出力しているかの有無　true=有,false=無
+let folderInputExistFlgFlg = false; //↑のフォルダ版
 
 export const listCreate = () => {
   $.ajax({
@@ -138,8 +138,8 @@ export const listCreate = () => {
         array = resTmp.concat(resTmp2);
       }
       jQueryUIOptionsFunc(); //jQueryUIを付与
-      fileContextmenu(tabArray); //ファイルの右クリックメニュー
-      folderContextmenu(tabArray, fileFlg, folderFlg); //フォルダーの右クリックメニュー
+      fileContextmenu(tabIdArray); //ファイルの右クリックメニュー
+      folderContextmenu(tabIdArray, fileInputExistFlg, folderInputExistFlgFlg); //フォルダーの右クリックメニュー
       fileClick(); //メモクリック時のTab表示
 
       //時間差でclosedのoffを開く＆フォルダ押下のclick関数作成
@@ -358,7 +358,7 @@ function tabUpload() {
 async function titleClick(id, title) {
   return new Promise((resolve, reject) => {
     //タブ生成しておらず、・・・じゃないとき
-    if (tabArray.includes(id) == false) {
+    if (tabIdArray.includes(id) == false) {
       $.ajax({
         url: '/notePostController/',
         type: 'POST',
@@ -383,7 +383,7 @@ async function titleClick(id, title) {
 
           document.getElementById('notab').style.display = 'none';
 
-          tabArray.push(id);
+          tabIdArray.push(id);
           //「編集する」ボタンクリック
           inputEdit.onclick = function () {
             let p1 = document.createElement('p');
@@ -448,8 +448,8 @@ async function titleClick(id, title) {
 
           //タブ上の「✖️」ボタン押下
           buttonTab.onclick = () => {
-            closeButton(id, title, tabArray);
-            tabArray = deleteTabArray(id, tabArray);
+            closeButton(id, title, tabIdArray);
+            tabIdArray = deleteTabArray(id, tabIdArray);
           };
 
           //タブをクリックした際の処理
@@ -466,39 +466,54 @@ async function titleClick(id, title) {
   });
 }
 
-//右クリックから「フォルダ新規作成」押下
-document.getElementById('newfolder').onclick = function (e) {
+//フォルダの右クリックから「フォルダ新規作成」押下
+document.getElementById('newfolder').onclick = (e) => {
+  const id = 0;
   e.stopPropagation();
-  newFolderCreateFunc(0, folderFlg, fileFlg, tabArray);
+  newFolderCreateFunc(
+    id,
+    folderInputExistFlgFlg,
+    fileInputExistFlg,
+    tabIdArray
+  );
 };
-//右クリックから「ファイル新規作成」押下
-document.getElementById('newfile').onclick = function (e) {
+//フォルダの右クリックから「ファイル新規作成」押下
+document.getElementById('newfile').onclick = (e) => {
+  const id = 0;
   e.stopPropagation();
-  newFileCreateFunc(0, fileFlg, tabArray);
+  newFileCreateFunc(id, fileInputExistFlg, tabIdArray);
 };
 
-//「フォルダ追加」ボタン押下時(rootに作成)
+//「フォルダ追加」ボタン押下時(root(id=0)に作成)
+//folderInputExistFlg=true時はファイルを作らせない → 連続でボタンクリックした時にフォルダを２個同時に作らせないため
 createbutton.addEventListener(
   'click',
   (e) => {
-    if (!folderFlg) {
+    if (!folderInputExistFlgFlg) {
+      const id = 0;
       e.stopPropagation();
-      folderFlg = true;
-      newFolderCreateFunc(0, folderFlg, fileFlg, tabArray);
+      folderInputExistFlgFlg = true;
+      newFolderCreateFunc(
+        id,
+        folderInputExistFlgFlg,
+        fileInputExistFlg,
+        tabIdArray
+      );
     }
   },
   false
 );
 
-//「ノート追加」ボタン押下時(rootに作成)
+//「ノート追加」ボタン押下時(root(id=0)に作成)
+//fileInputExistFlg=true時はファイルを作らせない → 連続でボタンクリックした時にファイルを２個同時に作らせないため
 createfilebutton.addEventListener(
   'click',
   (e) => {
-    if (!fileFlg) {
+    if (!fileInputExistFlg) {
       const id = 0;
       e.stopPropagation();
-      fileFlg = true;
-      fileFlg = newFileCreateFunc(id, fileFlg, tabArray);
+      fileInputExistFlg = true;
+      fileInputExistFlg = newFileCreateFunc(id, fileInputExistFlg, tabIdArray);
     }
   },
   false
