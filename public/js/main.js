@@ -509,6 +509,7 @@ createbutton.addEventListener(
 createfilebutton.addEventListener(
   'click',
   (e) => {
+    console.log(fileInputExistFlg);
     if (!fileInputExistFlg) {
       const id = 0;
       e.stopPropagation();

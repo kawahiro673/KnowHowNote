@@ -4,7 +4,7 @@ import { listCreate } from './main.js';
 
 export const newFolderCreateFunc = (
   id,
-  folderInputExistFlgFlg,
+  folderInputExistFlg,
   fileInputExistFlg,
   tabIdArray
 ) => {
@@ -31,14 +31,14 @@ export const newFolderCreateFunc = (
 
   const clickL = function (e) {
     e.preventDefault();
-    if (folderInputExistFlgFlg && !e.target.closest('#inputTab')) {
+    if (folderInputExistFlg && !e.target.closest('#inputTab')) {
       newCreateFolder2(
         inputTab,
         span,
         li,
         ul,
         id,
-        folderInputExistFlgFlg,
+        folderInputExistFlg,
         fileInputExistFlg,
         tabIdArray
       );
@@ -58,14 +58,14 @@ export const newFolderCreateFunc = (
   const clickR = function (e) {
     e.preventDefault();
 
-    if (folderInputExistFlgFlg && !e.target.closest('#inputTab')) {
+    if (folderInputExistFlg && !e.target.closest('#inputTab')) {
       newCreateFolder2(
         inputTab,
         span,
         li,
         ul,
         id,
-        folderInputExistFlgFlg,
+        folderInputExistFlg,
         fileInputExistFlg,
         tabIdArray
       );
@@ -84,7 +84,7 @@ export const newFolderCreateFunc = (
   const enter = function (e) {
     //e.preventDefault(); //これがあると入力できない？？
 
-    if (folderInputExistFlgFlg) {
+    if (folderInputExistFlg) {
       if (e.keyCode === 13) {
         newCreateFolder2(
           inputTab,
@@ -92,7 +92,7 @@ export const newFolderCreateFunc = (
           li,
           ul,
           id,
-          folderInputExistFlgFlg,
+          folderInputExistFlg,
           fileInputExistFlg,
           tabIdArray
         );
@@ -121,7 +121,7 @@ function newCreateFolder2(
   li,
   ul,
   parentId,
-  folderInputExistFlgFlg,
+  folderInputExistFlg,
   fileInputExistFlg,
   tabIdArray
 ) {
@@ -160,11 +160,7 @@ function newCreateFolder2(
         let newIndex = [].slice.call(elements).indexOf(span.parentNode);
         newIndex++;
         jQueryUIOptionsFunc();
-        folderContextmenu(
-          tabIdArray,
-          fileInputExistFlg,
-          folderInputExistFlgFlg
-        );
+        folderContextmenu(tabIdArray, fileInputExistFlg, folderInputExistFlg);
         $.ajax({
           url: '/folderPostController/',
           type: 'POST',
