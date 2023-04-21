@@ -137,54 +137,55 @@ export const listCreate = () => {
         });
         array = resTmp.concat(resTmp2);
       }
-      await jQueryUIOptionsFunc();
+      //await
+      jQueryUIOptionsFunc();
       //jQueryUIOptionsFunc(); //jQueryUIを付与
       fileContextmenu(tabIdArray); //ファイルの右クリックメニュー
       folderContextmenu(tabIdArray, fileInputExistFlg, folderInputExistFlgFlg); //フォルダーの右クリックメニュー
       //fileClick(); //メモクリック時のTab表示
       fileClick();
 
-      const aaa = () => {
-        //時間差でclosedのoffを開く＆フォルダ押下時にclick
-        return new Promise((resolve, reject) => {
-          // window.setTimeout(function () {
-          expandableArray.forEach((ex) => {
-            document.getElementById(`folder${ex}`).click();
-          });
-
-          let fol = document.getElementsByClassName('folder');
-          for (let i = 0; i < fol.length; i++) {
-            fol[i].addEventListener('click', function () {
-              let closedFlg = 0;
-              console.log(this.id.replace(/[^0-9]/g, ''));
-              //folderが閉じているとflg=1
-              if (this.parentNode.classList.contains('expandable')) {
-                closedFlg = 1;
-              }
-
-              $.ajax({
-                url: '/folderPostController/',
-                type: 'POST',
-                dataType: 'Json',
-                contentType: 'application/json',
-                data: JSON.stringify({
-                  data: 'folder',
-                  flg: 'closed',
-                  id: this.id.replace(/[^0-9]/g, ''),
-                  closedFlg,
-                }),
-                success: function (res) {
-                  console.log(res.response);
-                },
-              });
-            });
-          }
-          resolve();
-          // }, 300);
+      // const aaa = () => {
+      //時間差でclosedのoffを開く＆フォルダ押下時にclick
+      //return new Promise((resolve, reject) => {
+      window.setTimeout(function () {
+        expandableArray.forEach((ex) => {
+          document.getElementById(`folder${ex}`).click();
         });
-      };
 
-      await aaa();
+        let fol = document.getElementsByClassName('folder');
+        for (let i = 0; i < fol.length; i++) {
+          fol[i].addEventListener('click', function () {
+            let closedFlg = 0;
+            console.log(this.id.replace(/[^0-9]/g, ''));
+            //folderが閉じているとflg=1
+            if (this.parentNode.classList.contains('expandable')) {
+              closedFlg = 1;
+            }
+
+            $.ajax({
+              url: '/folderPostController/',
+              type: 'POST',
+              dataType: 'Json',
+              contentType: 'application/json',
+              data: JSON.stringify({
+                data: 'folder',
+                flg: 'closed',
+                id: this.id.replace(/[^0-9]/g, ''),
+                closedFlg,
+              }),
+              success: function (res) {
+                console.log(res.response);
+              },
+            });
+          });
+        }
+        resolve();
+      }, 300);
+      //});
+      //  };
+
+      //  await aaa();
     },
   });
 };
