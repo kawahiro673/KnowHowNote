@@ -509,8 +509,6 @@ createfilebutton.addEventListener(
         //addEnentLisnterが残る!?ので削除する。
         if (fileFlg === false) {
           document.removeEventListener('click', clickL);
-          document.removeEventListener('contextmenu', clickR);
-          document.removeEventListener('keypress', enter);
         }
       };
 
