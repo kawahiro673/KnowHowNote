@@ -330,10 +330,12 @@ function tabUpload() {
       flg: 'tabDesc',
     }),
     success: async function (res) {
-      for (const tab of res.response) {
-        await titleClick(tab.id, tab.tabTitle);
-      }
-
+      const aaa = async () => {
+        for (const tab of res.response) {
+          await titleClick(tab.id, tab.tabTitle);
+        }
+      };
+      await aaa();
       const tabFocusAfterClick = async () => {
         if (res.response.length != 0) {
           await $.ajax({
