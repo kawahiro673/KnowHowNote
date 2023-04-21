@@ -495,65 +495,10 @@ createfilebutton.addEventListener(
   'click',
   (e) => {
     if (!fileFlg) {
+      const id = 0;
       e.stopPropagation();
-      const [inputTab, span] = newFileCreateFunc(0, fileFlg, tabArray);
       fileFlg = true;
-      //左クリック
-      const clickL = function (e) {
-        e.preventDefault();
-        if (fileFlg && !e.target.closest('#inputTab')) {
-          newCreateFile2(inputTab, span, 0, tabArray);
-          document.removeEventListener('click', clickL);
-          document.removeEventListener('contextmenu', clickR);
-          document.removeEventListener('keypress', enter);
-          fileFlg = false;
-        }
-        //addEnentLisnterが残る!?ので削除する。
-        // if (fileFlg === false) {
-        //   document.removeEventListener('click', clickL);
-        //   document.removeEventListener('contextmenu', clickR);
-        //   document.removeEventListener('keypress', enter);
-        // }
-      };
-
-      //右クリック
-      const clickR = function (e) {
-        e.preventDefault();
-        if (fileFlg && !e.target.closest('#inputTab')) {
-          newCreateFile2(inputTab, span, 0, tabArray);
-          document.removeEventListener('click', clickL);
-          document.removeEventListener('contextmenu', clickR);
-          document.removeEventListener('keypress', enter);
-          fileFlg = false;
-        }
-        // if (fileFlg === false) {
-        //   document.removeEventListener('click', clickL);
-        //   document.removeEventListener('contextmenu', clickR);
-        //   document.removeEventListener('keypress', enter);
-        //}
-      };
-      //エンター押下時
-      const enter = function (e) {
-        //e.preventDefault(); //これがあると入力できない？？
-        if (fileFlg) {
-          if (e.keyCode === 13) {
-            newCreateFile2(inputTab, span, 0, tabArray);
-            document.removeEventListener('click', clickL);
-            document.removeEventListener('contextmenu', clickR);
-            document.removeEventListener('keypress', enter);
-            fileFlg = false;
-          }
-        }
-        // if (fileFlg === false) {
-        //   document.removeEventListener('click', clickL);
-        //   document.removeEventListener('contextmenu', clickR);
-        //   document.removeEventListener('keypress', enter);
-        // }
-      };
-      //右・左・Enterそれぞれの実行
-      document.addEventListener('click', clickL);
-      document.addEventListener('contextmenu', clickR);
-      inputTab.addEventListener('keypress', enter);
+      const fileFlg = newFileCreateElement(id, fileFlg, tabArray);
     }
   },
   false
