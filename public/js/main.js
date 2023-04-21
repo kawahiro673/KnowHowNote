@@ -137,14 +137,8 @@ export const listCreate = () => {
         });
         array = resTmp.concat(resTmp2);
       }
-      await jQueryUIOptionsFunc();
-      //jQueryUIOptionsFunc(); //jQueryUIを付与
-      fileContextmenu(tabIdArray); //ファイルの右クリックメニュー
-      folderContextmenu(tabIdArray, fileInputExistFlg, folderInputExistFlgFlg); //フォルダーの右クリックメニュー
-      //fileClick(); //メモクリック時のTab表示
-      fileClick();
 
-      const aaa = () => {
+      const expandableAdaptation = () => {
         //時間差でclosedのoffを開く＆フォルダ押下時にclick
         return new Promise((resolve, reject) => {
           expandableArray.forEach((ex) => {
@@ -181,7 +175,11 @@ export const listCreate = () => {
           resolve();
         });
       };
-      await aaa();
+
+      await jQueryUIOptionsFunc();
+      fileContextmenu(tabIdArray);
+      folderContextmenu(tabIdArray, fileInputExistFlg, folderInputExistFlgFlg);
+      await expandableAdaptation();
     },
   });
 };

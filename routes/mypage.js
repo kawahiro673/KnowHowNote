@@ -373,65 +373,19 @@ router
                       parentIdArray.splice(parentIdArray.indexOf(parentId), 1);
                     });
                   }
-                  setTimeout(() => {
-                    res.send({ response: idArray });
-                  }, 500);
+                  resolve();
                 }
               }
             );
           });
         })
+        .then(() => {
+          res.send({ response: idArray });
+        })
         .catch((error) => {
           console.error(error);
           res.status(500).send('Internal Server Error.(noteChild)');
         });
-      // pool.query(
-      //   'SELECT * FROM register_user WHERE Email = ?;',
-      //   [decoded.email],
-      //   (error, resultDecoded) => {
-      //     pool.query(
-      //       'SELECT * FROM folder WHERE UserID = ?;',
-      //       [resultDecoded[0].id],
-      //       (error, result_folder) => {
-      //         pool.query(
-      //           'SELECT * FROM it_memo WHERE UserID = ?;',
-      //           [resultDecoded[0].id],
-      //           (error, result_note) => {
-      //             while (parentIdArray.length !== 0) {
-      //               parentIdArray.forEach((parentId) => {
-      //                 //まず配下のノート格納
-      //                 result_note.forEach((note) => {
-      //                   if (parentId == note.parent_id) {
-      //                     //重複していないなら格納する
-      //                     if (idArray.indexOf(note.id) == -1) {
-      //                       //idArray.push({ id: note.id, title: note.title });
-      //                       idArray.push(note.id);
-      //                     }
-      //                   }
-      //                 });
-      //                 console.log(idArray);
-      //                 result_folder.forEach((folder) => {
-      //                   if (parentId == folder.parent_id) {
-      //                     //重複していないなら格納する
-      //                     if (parentIdArray.indexOf(folder.id) == -1) {
-      //                       parentIdArray.push(folder.id);
-      //                     }
-      //                   }
-      //                 });
-      //                 //console.log(parentIdArray);
-      //                 parentIdArray.splice(parentIdArray.indexOf(parentId), 1);
-      //               });
-      //             }
-      //             setTimeout(() => {
-      //               console.log(idArray);
-      //               res.send({ response: idArray });
-      //             }, 500);
-      //           }
-      //         );
-      //       }
-      //     );
-      //   }
-      // );
     } else if (req.body.data === 'list') {
       //cookieの有効期限が切れたら自動的にログアウト
       //仕様上、期限切れ時に自動でログアウトされては困るので、リロードの際にのみログアウトする
