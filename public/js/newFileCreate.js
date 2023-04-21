@@ -4,7 +4,6 @@ import { updateTime } from './tab_func.js';
 import { listCreate, fileClick } from './main.js';
 
 export const newFileCreateFunc = (id, fileInputExistFlg, tabIdArray) => {
-  fileInputExistFlg = true;
   const li = document.createElement('li');
   const span = document.createElement('span');
   li.setAttribute('class', 'last');
