@@ -104,7 +104,7 @@ export const newCreateFile2 = (inputTab, span, parentId, tabIdArray) => {
         let newIndex = [].slice.call(elements).indexOf(span.parentNode);
         newIndex++;
         jQueryUIOptionsFunc();
-        fileContextmenu(tabArray);
+        fileContextmenu(tabIdArray);
         fileClick();
         updateTime(res.response2.id);
         $.ajax({
