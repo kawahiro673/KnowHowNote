@@ -530,7 +530,7 @@ createfilebutton.addEventListener(
         //   document.removeEventListener('click', clickL);
         //   document.removeEventListener('contextmenu', clickR);
         //   document.removeEventListener('keypress', enter);
-        }
+        //}
       };
       //エンター押下時
       const enter = function (e) {
