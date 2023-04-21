@@ -34,7 +34,7 @@ export const listCreate = () => {
     data: JSON.stringify({
       data: 'list',
     }),
-    success: function (res) {
+    success: async (res) => {
       if (res.status === 500) {
         console.log('ログイン画面に戻ります');
         location.href = 'https://nodejs-itnote-app.herokuapp.com/login';
@@ -137,45 +137,54 @@ export const listCreate = () => {
         });
         array = resTmp.concat(resTmp2);
       }
-      jQueryUIOptionsFunc(); //jQueryUIを付与
+      await jQueryUIOptionsFunc();
+      //jQueryUIOptionsFunc(); //jQueryUIを付与
       fileContextmenu(tabIdArray); //ファイルの右クリックメニュー
       folderContextmenu(tabIdArray, fileInputExistFlg, folderInputExistFlgFlg); //フォルダーの右クリックメニュー
-      fileClick(); //メモクリック時のTab表示
+      //fileClick(); //メモクリック時のTab表示
+      fileClick();
 
-      //時間差でclosedのoffを開く＆フォルダ押下のclick関数作成
-      window.setTimeout(function () {
-        expandableArray.forEach((ex) => {
-          document.getElementById(`folder${ex}`).click();
-        });
-
-        let fol = document.getElementsByClassName('folder');
-        for (let i = 0; i < fol.length; i++) {
-          fol[i].addEventListener('click', function () {
-            let closedFlg = 0;
-            console.log(this.id.replace(/[^0-9]/g, ''));
-            //folderが閉じているとflg=1
-            if (this.parentNode.classList.contains('expandable')) {
-              closedFlg = 1;
-            }
-
-            $.ajax({
-              url: '/folderPostController/',
-              type: 'POST',
-              dataType: 'Json',
-              contentType: 'application/json',
-              data: JSON.stringify({
-                data: 'folder',
-                flg: 'closed',
-                id: this.id.replace(/[^0-9]/g, ''),
-                closedFlg,
-              }),
-              success: function (res) {
-                console.log(res.response);
-              },
-            });
+      const aaa = () => {
+        //時間差でclosedのoffを開く＆フォルダ押下時にclick
+        return new Promise((resolve, reject) => {
+          // window.setTimeout(function () {
+          expandableArray.forEach((ex) => {
+            document.getElementById(`folder${ex}`).click();
           });
-        }
-      }, 300);
+
+          let fol = document.getElementsByClassName('folder');
+          for (let i = 0; i < fol.length; i++) {
+            fol[i].addEventListener('click', function () {
+              let closedFlg = 0;
+              console.log(this.id.replace(/[^0-9]/g, ''));
+              //folderが閉じているとflg=1
+              if (this.parentNode.classList.contains('expandable')) {
+                closedFlg = 1;
+              }
+
+              $.ajax({
+                url: '/folderPostController/',
+                type: 'POST',
+                dataType: 'Json',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                  data: 'folder',
+                  flg: 'closed',
+                  id: this.id.replace(/[^0-9]/g, ''),
+                  closedFlg,
+                }),
+                success: function (res) {
+                  console.log(res.response);
+                },
+              });
+            });
+          }
+          resolve();
+          // }, 300);
+        });
+      };
+
+      await aaa();
     },
   });
 };
@@ -330,13 +339,12 @@ function tabUpload() {
       flg: 'tabDesc',
     }),
     success: async function (res) {
-      const aaa = async () => {
+      const createTheFirstTab = async () => {
         for (const tab of res.response) {
           await titleClick(tab.id, tab.tabTitle);
         }
       };
-      await aaa();
-      const tabFocusAfterClick = async () => {
+      const tabFocusOn = async () => {
         if (res.response.length != 0) {
           await $.ajax({
             url: '/tabPostController/',
@@ -353,7 +361,8 @@ function tabUpload() {
           });
         }
       };
-      await tabFocusAfterClick();
+      await createTheFirstTab();
+      await tabFocusOn();
     },
   });
 }
