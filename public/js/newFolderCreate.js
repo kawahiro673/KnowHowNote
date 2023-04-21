@@ -8,84 +8,31 @@ export const newFolderCreateFunc = (
   fileInputExistFlg,
   tabIdArray
 ) => {
-  let li = document.createElement('li');
-  li.setAttribute('class', 'closed');
-  let span = document.createElement('span');
-  span.setAttribute('class', 'folder');
-  let ul = document.createElement('ul');
-  let inputTab = document.createElement('input');
-  inputTab.setAttribute('type', 'text');
-  inputTab.setAttribute('id', 'inputTab');
-  inputTab.setAttribute('maxlength', '20');
-  inputTab.setAttribute('size', '20');
-  inputTab.style.display = 'block';
-  inputTab.setAttribute('value', 'NewFolder');
+  return new Promise((resolve, reject) => {
+    let li = document.createElement('li');
+    li.setAttribute('class', 'closed');
+    let span = document.createElement('span');
+    span.setAttribute('class', 'folder');
+    let ul = document.createElement('ul');
+    let inputTab = document.createElement('input');
+    inputTab.setAttribute('type', 'text');
+    inputTab.setAttribute('id', 'inputTab');
+    inputTab.setAttribute('maxlength', '20');
+    inputTab.setAttribute('size', '20');
+    inputTab.style.display = 'block';
+    inputTab.setAttribute('value', 'NewFolder');
 
-  document.getElementById(id).appendChild(li);
-  li.appendChild(span);
-  span.appendChild(inputTab);
-  //テキストエリアにフォーカスを当ててカーソルを末尾へ
-  let len = inputTab.value.length;
-  document.getElementById('inputTab').focus();
-  document.getElementById('inputTab').setSelectionRange(len, len);
+    document.getElementById(id).appendChild(li);
+    li.appendChild(span);
+    span.appendChild(inputTab);
+    //テキストエリアにフォーカスを当ててカーソルを末尾へ
+    let len = inputTab.value.length;
+    document.getElementById('inputTab').focus();
+    document.getElementById('inputTab').setSelectionRange(len, len);
 
-  const clickL = function (e) {
-    e.preventDefault();
-    if (folderInputExistFlg && !e.target.closest('#inputTab')) {
-      newCreateFolder2(
-        inputTab,
-        span,
-        li,
-        ul,
-        id,
-        folderInputExistFlg,
-        fileInputExistFlg,
-        tabIdArray
-      );
-      document.removeEventListener('click', clickL);
-      document.removeEventListener('contextmenu', clickR);
-      document.removeEventListener('keypress', enter);
-      return false;
-    }
-    //addEnentLisnterが残る!?ので削除する。
-    // if (folderInputExistFlgFlg == false) {
-    //   document.removeEventListener('click', clickL);
-    //   document.removeEventListener('contextmenu', clickR);
-    //   document.removeEventListener('keypress', enter);
-    //   return folderInputExistFlgFlg;
-    // }
-  };
-  const clickR = function (e) {
-    e.preventDefault();
-
-    if (folderInputExistFlg && !e.target.closest('#inputTab')) {
-      newCreateFolder2(
-        inputTab,
-        span,
-        li,
-        ul,
-        id,
-        folderInputExistFlg,
-        fileInputExistFlg,
-        tabIdArray
-      );
-      document.removeEventListener('click', clickL);
-      document.removeEventListener('contextmenu', clickR);
-      document.removeEventListener('keypress', enter);
-      return false;
-    }
-    // if (folderInputExistFlgFlg == false) {
-    //   document.removeEventListener('click', clickL);
-    //   document.removeEventListener('contextmenu', clickR);
-    //   document.removeEventListener('keypress', enter);
-    //   return folderInputExistFlgFlg;
-    // }
-  };
-  const enter = function (e) {
-    //e.preventDefault(); //これがあると入力できない？？
-
-    if (folderInputExistFlg) {
-      if (e.keyCode === 13) {
+    const clickL = (e) => {
+      e.preventDefault();
+      if (folderInputExistFlg && !e.target.closest('#inputTab')) {
         newCreateFolder2(
           inputTab,
           span,
@@ -99,20 +46,54 @@ export const newFolderCreateFunc = (
         document.removeEventListener('click', clickL);
         document.removeEventListener('contextmenu', clickR);
         document.removeEventListener('keypress', enter);
-        return false;
+        resolve();
       }
-    }
-    // if (folderInputExistFlgFlg == false) {
-    //   document.removeEventListener('click', clickL);
-    //   document.removeEventListener('contextmenu', clickR);
-    //   document.removeEventListener('keypress', enter);
-    //   return folderInputExistFlgFlg;
-    // }
-  };
+    };
+    const clickR = (e) => {
+      e.preventDefault();
+      if (folderInputExistFlg && !e.target.closest('#inputTab')) {
+        newCreateFolder2(
+          inputTab,
+          span,
+          li,
+          ul,
+          id,
+          folderInputExistFlg,
+          fileInputExistFlg,
+          tabIdArray
+        );
+        document.removeEventListener('click', clickL);
+        document.removeEventListener('contextmenu', clickR);
+        document.removeEventListener('keypress', enter);
+        resolve();
+      }
+    };
+    const enter = (e) => {
+      //e.preventDefault(); //これがあると入力できない？？
+      if (folderInputExistFlg) {
+        if (e.keyCode === 13) {
+          newCreateFolder2(
+            inputTab,
+            span,
+            li,
+            ul,
+            id,
+            folderInputExistFlg,
+            fileInputExistFlg,
+            tabIdArray
+          );
+          document.removeEventListener('click', clickL);
+          document.removeEventListener('contextmenu', clickR);
+          document.removeEventListener('keypress', enter);
+          resolve();
+        }
+      }
+    };
 
-  document.addEventListener('click', clickL);
-  document.addEventListener('contextmenu', clickR);
-  inputTab.addEventListener('keypress', enter);
+    document.addEventListener('click', clickL);
+    document.addEventListener('contextmenu', clickR);
+    inputTab.addEventListener('keypress', enter);
+  });
 };
 
 function newCreateFolder2(

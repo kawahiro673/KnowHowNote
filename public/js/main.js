@@ -488,17 +488,18 @@ document.getElementById('newfile').onclick = (e) => {
 //folderInputExistFlg=true時はファイルを作らせない → 連続でボタンクリックした時にフォルダを２個同時に作らせないため
 createbutton.addEventListener(
   'click',
-  (e) => {
+  async (e) => {
     if (!folderInputExistFlgFlg) {
       const id = 0;
       e.stopPropagation();
       folderInputExistFlgFlg = true;
-      newFolderCreateFunc(
+      await newFolderCreateFunc(
         id,
         folderInputExistFlgFlg,
         fileInputExistFlg,
         tabIdArray
       );
+      folderInputExistFlgFlg = false;
     }
   },
   false
@@ -509,11 +510,11 @@ createbutton.addEventListener(
 createfilebutton.addEventListener(
   'click',
   async (e) => {
-    console.log(fileInputExistFlg);
     if (!fileInputExistFlg) {
       const id = 0;
       e.stopPropagation();
       fileInputExistFlg = true;
+      //awaitはPromiseが返ってくるまで待つ。関数内でPromise化し、resolveのタイミングでPromiseが返る
       await newFileCreateFunc(id, fileInputExistFlg, tabIdArray);
       fileInputExistFlg = false;
     }
