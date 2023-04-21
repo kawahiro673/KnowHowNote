@@ -46,8 +46,8 @@ export const newFileCreateFunc = (id, fileInputExistFlg, tabIdArray) => {
       document.removeEventListener('click', clickL);
       document.removeEventListener('contextmenu', clickR);
       document.removeEventListener('keypress', enter);
-      fileFlg = false;
-      return fileFlg;
+      fileInputExistFlg = false;
+      return fileInputExistFlg;
       // return false;
     }
   };
