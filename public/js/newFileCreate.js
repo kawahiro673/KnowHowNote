@@ -4,62 +4,67 @@ import { updateTime } from './tab_func.js';
 import { listCreate, fileClick } from './main.js';
 
 export const newFileCreateFunc = (id, fileInputExistFlg, tabIdArray) => {
-  const li = document.createElement('li');
-  const span = document.createElement('span');
-  li.setAttribute('class', 'last');
-  span.classList.add('list_title', 'file');
+  return new Promise((resolve, reject) => {
+    const li = document.createElement('li');
+    const span = document.createElement('span');
+    li.setAttribute('class', 'last');
+    span.classList.add('list_title', 'file');
 
-  const inputTab = document.createElement('input');
-  inputTab.setAttribute('type', 'text');
-  inputTab.setAttribute('id', 'inputTab');
-  inputTab.setAttribute('name', 'list_title');
-  inputTab.setAttribute('maxlength', '20');
-  inputTab.setAttribute('size', '20');
-  inputTab.style.display = 'block';
-  inputTab.setAttribute('value', 'NewNote');
+    const inputTab = document.createElement('input');
+    inputTab.setAttribute('type', 'text');
+    inputTab.setAttribute('id', 'inputTab');
+    inputTab.setAttribute('name', 'list_title');
+    inputTab.setAttribute('maxlength', '20');
+    inputTab.setAttribute('size', '20');
+    inputTab.style.display = 'block';
+    inputTab.setAttribute('value', 'NewNote');
 
-  document.getElementById(id).appendChild(li);
-  li.appendChild(span);
-  span.appendChild(inputTab);
+    document.getElementById(id).appendChild(li);
+    li.appendChild(span);
+    span.appendChild(inputTab);
 
-  let len = inputTab.value.length;
-  document.getElementById('inputTab').focus();
-  document.getElementById('inputTab').setSelectionRange(len, len);
+    let len = inputTab.value.length;
+    document.getElementById('inputTab').focus();
+    document.getElementById('inputTab').setSelectionRange(len, len);
 
-  const clickL = (e) => {
-    e.preventDefault();
-    if (fileInputExistFlg && !e.target.closest('#inputTab')) {
-      newCreateFile2(inputTab, span, 0, tabIdArray);
-      document.removeEventListener('click', clickL);
-      document.removeEventListener('contextmenu', clickR);
-      document.removeEventListener('keypress', enter);
-    }
-  };
-
-  const clickR = (e) => {
-    e.preventDefault();
-    if (fileInputExistFlg && !e.target.closest('#inputTab')) {
-      newCreateFile2(inputTab, span, 0, tabIdArray);
-      document.removeEventListener('click', clickL);
-      document.removeEventListener('contextmenu', clickR);
-      document.removeEventListener('keypress', enter);
-    }
-  };
-
-  const enter = (e) => {
-    //e.preventDefault(); //これがあると入力できない？？
-    if (fileInputExistFlg) {
-      if (e.keyCode === 13) {
+    const clickL = (e) => {
+      e.preventDefault();
+      if (fileInputExistFlg && !e.target.closest('#inputTab')) {
         newCreateFile2(inputTab, span, 0, tabIdArray);
         document.removeEventListener('click', clickL);
         document.removeEventListener('contextmenu', clickR);
         document.removeEventListener('keypress', enter);
+        resolve();
       }
-    }
-  };
-  document.addEventListener('click', clickL);
-  document.addEventListener('contextmenu', clickR);
-  inputTab.addEventListener('keypress', enter);
+    };
+
+    const clickR = (e) => {
+      e.preventDefault();
+      if (fileInputExistFlg && !e.target.closest('#inputTab')) {
+        newCreateFile2(inputTab, span, 0, tabIdArray);
+        document.removeEventListener('click', clickL);
+        document.removeEventListener('contextmenu', clickR);
+        document.removeEventListener('keypress', enter);
+        resolve();
+      }
+    };
+
+    const enter = (e) => {
+      //e.preventDefault(); //これがあると入力できない？？
+      if (fileInputExistFlg) {
+        if (e.keyCode === 13) {
+          newCreateFile2(inputTab, span, 0, tabIdArray);
+          document.removeEventListener('click', clickL);
+          document.removeEventListener('contextmenu', clickR);
+          document.removeEventListener('keypress', enter);
+          resolve();
+        }
+      }
+    };
+    document.addEventListener('click', clickL);
+    document.addEventListener('contextmenu', clickR);
+    inputTab.addEventListener('keypress', enter);
+  });
 };
 
 export const newCreateFile2 = (inputTab, span, parentId, tabIdArray) => {

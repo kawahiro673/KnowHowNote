@@ -508,13 +508,13 @@ createbutton.addEventListener(
 //fileInputExistFlg=true時はファイルを作らせない → 連続でボタンクリックした時にファイルを２個同時に作らせないため
 createfilebutton.addEventListener(
   'click',
-  (e) => {
+  async (e) => {
     console.log(fileInputExistFlg);
     if (!fileInputExistFlg) {
       const id = 0;
       e.stopPropagation();
       fileInputExistFlg = true;
-      newFileCreateFunc(id, fileInputExistFlg, tabIdArray);
+      await newFileCreateFunc(id, fileInputExistFlg, tabIdArray);
       fileInputExistFlg = false;
     }
   },
