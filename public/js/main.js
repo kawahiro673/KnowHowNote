@@ -515,6 +515,7 @@ createfilebutton.addEventListener(
       e.stopPropagation();
       fileInputExistFlg = true;
       fileInputExistFlg = newFileCreateFunc(id, fileInputExistFlg, tabIdArray);
+      console.log(fileInputExistFlg);
     }
   },
   false
