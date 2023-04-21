@@ -498,7 +498,7 @@ createfilebutton.addEventListener(
       const id = 0;
       e.stopPropagation();
       fileFlg = true;
-      fileFlg = newFileCreateElement(id, fileFlg, tabArray);
+      fileFlg = newFileCreateFunc(id, fileFlg, tabArray);
     }
   },
   false
