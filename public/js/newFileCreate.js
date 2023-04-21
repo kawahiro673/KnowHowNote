@@ -33,9 +33,6 @@ export const newFileCreateFunc = (id, fileInputExistFlg, tabIdArray) => {
       document.removeEventListener('click', clickL);
       document.removeEventListener('contextmenu', clickR);
       document.removeEventListener('keypress', enter);
-      // fileFlg = false;
-      // return fileFlg;
-      return false;
     }
   };
 
@@ -46,9 +43,6 @@ export const newFileCreateFunc = (id, fileInputExistFlg, tabIdArray) => {
       document.removeEventListener('click', clickL);
       document.removeEventListener('contextmenu', clickR);
       document.removeEventListener('keypress', enter);
-      fileInputExistFlg = false;
-      return fileInputExistFlg;
-      // return false;
     }
   };
 
@@ -60,9 +54,6 @@ export const newFileCreateFunc = (id, fileInputExistFlg, tabIdArray) => {
         document.removeEventListener('click', clickL);
         document.removeEventListener('contextmenu', clickR);
         document.removeEventListener('keypress', enter);
-        // fileFlg = false;
-        // return fileFlg;
-        return false;
       }
     }
   };
