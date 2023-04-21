@@ -137,14 +137,13 @@ export const listCreate = () => {
         });
         array = resTmp.concat(resTmp2);
       }
-      // jQueryUIOptionsFunc(); //jQueryUIを付与
-      // fileContextmenu(tabIdArray); //ファイルの右クリックメニュー
-      // folderContextmenu(tabIdArray, fileInputExistFlg, folderInputExistFlgFlg); //フォルダーの右クリックメニュー
-      // fileClick(); //メモクリック時のTab表示
+      jQueryUIOptionsFunc(); //jQueryUIを付与
+      fileContextmenu(tabIdArray); //ファイルの右クリックメニュー
+      folderContextmenu(tabIdArray, fileInputExistFlg, folderInputExistFlgFlg); //フォルダーの右クリックメニュー
+      fileClick(); //メモクリック時のTab表示
 
       //時間差でclosedのoffを開く＆フォルダ押下のclick関数作成
-      const expandableALL = async () => {
-        // window.setTimeout(function () {
+      window.setTimeout(function () {
         expandableArray.forEach((ex) => {
           document.getElementById(`folder${ex}`).click();
         });
@@ -176,13 +175,7 @@ export const listCreate = () => {
             });
           });
         }
-        //  }, 300);
-      };
-      const reloadMypageLists = async () => {
-        await jQueryUIOptionsFunc();
-        await expandableALL();
-      };
-      reloadMypageLists();
+      }, 300);
     },
   });
 };
@@ -340,9 +333,10 @@ function tabUpload() {
       for (const tab of res.response) {
         await titleClick(tab.id, tab.tabTitle);
       }
-      if (res.response.length != 0) {
-        setTimeout(() => {
-          $.ajax({
+
+      const tabFocusAfterClick = async () => {
+        if (res.response.length != 0) {
+          await $.ajax({
             url: '/tabPostController/',
             type: 'POST',
             dataType: 'Json',
@@ -355,8 +349,9 @@ function tabUpload() {
               $(`#tab-ID${res.response.id}`).trigger('click');
             },
           });
-        }, 500);
-      }
+        }
+      };
+      await tabFocusAfterClick();
     },
   });
 }
