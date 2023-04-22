@@ -355,7 +355,7 @@ router.post('/', (req, res) => {
             res.status(500).send('Internal Server Error.(tabAdd)');
           });
       }
-      res.end(); // 何も送信しない
+      res.send({ response: '更新しません' }); // 何も送信しない
     }
   }
 });
