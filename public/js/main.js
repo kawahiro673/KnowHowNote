@@ -275,13 +275,14 @@ document.getElementById('tab').appendChild(noTab);
 
 //ファイルクリック時にタブを表示
 export const fileClick = () => {
+  console.log('クリックされました');
   $('.list_title').on('click', function () {
     let listTitle = {
       title: $(this).html(),
       id: $(this).attr('value'),
       titleThis: this,
     };
-    //console.log(`"${listTitle.title}"がクリックされました。`);
+    console.log(`"${listTitle.title}"がクリックされました。`);
     let ID = Number(listTitle.id);
     titleClick(ID, listTitle.title);
     let pass = passGet(listTitle.id, listTitle.title);
