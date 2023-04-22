@@ -256,7 +256,7 @@ $('#right').on('click contextmenu', (e) => {
   });
 });
 $('html').on('click contextmenu', (e) => {
-  let a = $(event.target).closest('#right').length;
+  let a = $(e.target).closest('#right').length;
   if (a) {
     //rightの上
   } else {
@@ -474,18 +474,21 @@ async function titleClick(id, title) {
   });
 }
 
-//フォルダの右クリックから「フォルダ新規作成」押下
+//rootの右クリックから「フォルダ新規作成」押下
 document.getElementById('newfolder').onclick = (e) => {
   const id = 0;
   e.stopPropagation();
+
   newFolderCreateFunc(id, folderInputExistFlg, fileInputExistFlg, tabIdArray);
 };
 
-//フォルダの右クリックから「ファイル新規作成」押下
-document.getElementById('newfile').onclick = (e) => {
+//rootの右クリックから「ファイル新規作成」押下
+document.getElementById('newfile').onclick = async (e) => {
   const id = 0;
   e.stopPropagation();
-  newFileCreateFunc(id, fileInputExistFlg, tabIdArray);
+  fileInputExistFlg = true;
+  await newFileCreateFunc(id, fileInputExistFlg, tabIdArray);
+  fileInputExistFlg = false;
 };
 
 //「フォルダ追加」ボタン押下時(root(id=0)に作成)
