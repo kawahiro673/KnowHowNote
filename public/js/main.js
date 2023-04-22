@@ -175,7 +175,6 @@ export const listCreate = () => {
           resolve();
         });
       };
-
       await jQueryUIOptionsFunc();
       fileContextmenu(tabIdArray);
       folderContextmenu(tabIdArray, fileInputExistFlg, folderInputExistFlg);
@@ -187,7 +186,6 @@ export const listCreate = () => {
 
 //「マイノウハウ」タブにファイル/フォルダ全て表示
 //DBから全ての情報を取得
-
 function shareListCreate() {
   $.ajax({
     url: '/mypage/',
