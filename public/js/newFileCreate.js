@@ -30,7 +30,7 @@ export const newFileCreateFunc = (id, fileInputExistFlg, tabIdArray) => {
     const clickL = (e) => {
       e.preventDefault();
       if (fileInputExistFlg && !e.target.closest('#inputTab')) {
-        newCreateFile2(inputTab, span, 0, tabIdArray);
+        newCreateFile2(inputTab, span, id, tabIdArray);
         document.removeEventListener('click', clickL);
         document.removeEventListener('contextmenu', clickR);
         document.removeEventListener('keypress', enter);
@@ -41,7 +41,7 @@ export const newFileCreateFunc = (id, fileInputExistFlg, tabIdArray) => {
     const clickR = (e) => {
       e.preventDefault();
       if (fileInputExistFlg && !e.target.closest('#inputTab')) {
-        newCreateFile2(inputTab, span, 0, tabIdArray);
+        newCreateFile2(inputTab, span, id, tabIdArray);
         document.removeEventListener('click', clickL);
         document.removeEventListener('contextmenu', clickR);
         document.removeEventListener('keypress', enter);
@@ -53,7 +53,7 @@ export const newFileCreateFunc = (id, fileInputExistFlg, tabIdArray) => {
       //e.preventDefault(); //これがあると入力できない？？
       if (fileInputExistFlg) {
         if (e.keyCode === 13) {
-          newCreateFile2(inputTab, span, 0, tabIdArray);
+          newCreateFile2(inputTab, span, id, tabIdArray);
           document.removeEventListener('click', clickL);
           document.removeEventListener('contextmenu', clickR);
           document.removeEventListener('keypress', enter);
@@ -61,6 +61,7 @@ export const newFileCreateFunc = (id, fileInputExistFlg, tabIdArray) => {
         }
       }
     };
+
     document.addEventListener('click', clickL);
     document.addEventListener('contextmenu', clickR);
     inputTab.addEventListener('keypress', enter);

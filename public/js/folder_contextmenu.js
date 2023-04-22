@@ -53,22 +53,26 @@ export const folderContextmenu = (
       });
     });
 
-    $(document).ready(function () {
+    $(document).ready(() => {
       $('#createNote').off('click');
-      $('#createNote').on('click', function (event) {
-        event.stopPropagation();
+      $('#createNote').on('click', (e) => {
+        e.stopPropagation();
         let fID = document.getElementById(`folder${folderList.folderId}`);
         //expandableの場合に配下の要素を開く
-        if (fID.parentNode.classList.contains('expandable') == true) {
+        if (fID.parentNode.classList.contains('expandable') === true) {
           fID.click();
         }
         fileInputExistFlg = true;
+        // await
         newFileCreateFunc(folderList.folderId, fileInputExistFlg, tabIdArray);
+
         conme.style.display = 'none';
         conme2.style.display = 'none';
         conme3.style.display = 'none';
+        conme4.style.display = 'none';
       });
     });
+
     $(document).ready(function () {
       $('#createfolder').off('click');
       $('#createfolder').on('click', function (event) {
@@ -80,7 +84,6 @@ export const folderContextmenu = (
           fID.click();
         }
         folderInputExistFlgFlg = true;
-
         newFolderCreateFunc(
           folderList.folderId,
           folderInputExistFlgFlg,
