@@ -286,8 +286,9 @@ export const fileClick = () => {
     console.log(`"${listTitle.title}"がクリックされました。`);
     let ID = Number(listTitle.id);
     titleClick(ID, listTitle.title);
-    let order;
+    let order = orderGet('tab-content', `Tab-ID${ID}`);
     let pass = passGet(listTitle.id, listTitle.title);
+
     if (!tabIdArray.includes(ID)) {
       $.ajax({
         url: '/tabPostController/',
@@ -300,9 +301,7 @@ export const fileClick = () => {
           id: ID,
           title: listTitle.title,
         }),
-        success: function (res) {
-          order = orderGet('tab-content', `Tab-ID${ID}`);
-        },
+        success: function (res) {},
       });
     }
     //order,passを更新し、focus=1へ
