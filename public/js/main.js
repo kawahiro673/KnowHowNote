@@ -475,11 +475,17 @@ async function titleClick(id, title) {
 }
 
 //rootの右クリックから「フォルダ新規作成」押下
-document.getElementById('newfolder').onclick = (e) => {
+document.getElementById('newfolder').onclick = async (e) => {
   const id = 0;
   e.stopPropagation();
-
-  newFolderCreateFunc(id, folderInputExistFlg, fileInputExistFlg, tabIdArray);
+  fileInputExistFlg = true;
+  await newFolderCreateFunc(
+    id,
+    folderInputExistFlg,
+    fileInputExistFlg,
+    tabIdArray
+  );
+  fileInputExistFlg = false;
 };
 
 //rootの右クリックから「ファイル新規作成」押下
