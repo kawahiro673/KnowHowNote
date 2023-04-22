@@ -276,7 +276,6 @@ document.getElementById('tab').appendChild(noTab);
 
 //ファイルクリック時にタブを表示
 export const fileClick = () => {
-  console.log('クリックされました');
   $('.list_title').on('click', function () {
     let listTitle = {
       title: $(this).html(),
@@ -288,8 +287,6 @@ export const fileClick = () => {
     titleClick(ID, listTitle.title);
     const pass = passGet(listTitle.id, listTitle.title);
     let isSomething = tabIdArray.includes(ID);
-    console.log(tabIdArray);
-    console.log(isSomething);
     $.ajax({
       url: '/tabPostController/',
       type: 'POST',
@@ -490,6 +487,7 @@ document.getElementById('newfolder').onclick = (e) => {
     tabIdArray
   );
 };
+
 //フォルダの右クリックから「ファイル新規作成」押下
 document.getElementById('newfile').onclick = (e) => {
   const id = 0;

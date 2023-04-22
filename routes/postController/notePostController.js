@@ -110,13 +110,13 @@ router.post('/', (req, res) => {
                 if (error) {
                   reject(error);
                 } else {
-                  resolve();
+                  resolve(result);
                 }
               }
             );
           });
         })
-        .then(() => {
+        .then((result) => {
           return new Promise((resolve, reject) => {
             pool.query(
               'UPDATE tab_hold SET tabTitle = ?, pass = ? WHERE id = ?;',
