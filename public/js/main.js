@@ -202,7 +202,6 @@ function shareListCreate() {
         let li = document.createElement('li');
         let span = document.createElement('span');
         span.setAttribute('class', 'sharenote file');
-        span.setAttribute('id', 'share_list');
         span.innerHTML = file.title;
         document.getElementById('sharelist').appendChild(li);
         li.appendChild(span);
@@ -573,27 +572,27 @@ $('.expandable').click(function () {
   valuePassToServerOnly('/folderPostController/', 'folder', 'expandableALL');
 });
 
-$('.hamburger').click(() => {
-  console.log('ハンバーガー押下');
-  fetch('/mypage/', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      data: 'humburger',
-    }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      // レスポンスを処理するコード
-      alert(data.msg);
-    })
-    .catch((error) => {
-      console.error(error);
-      // エラー処理を行うコード
-    });
-});
+// $('.hamburger').click(() => {
+//   console.log('ハンバーガー押下');
+//   fetch('/mypage/', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify({
+//       data: 'humburger',
+//     }),
+//   })
+//     .then((response) => response.json())
+//     .then((data) => {
+//       // レスポンスを処理するコード
+//       alert(data.msg);
+//     })
+//     .catch((error) => {
+//       console.error(error);
+//       // エラー処理を行うコード
+//     });
+// });
 
 //[ログアウト]押下後、サーバーでCookieを削除
 document.getElementById('logout').addEventListener('click', () => {

@@ -1,5 +1,5 @@
 export const shareContextmenu = () => {
-  document.getElementById('share_list').addEventListener('contextmenu', (e) => {
+  $('.sharenote').on('contextmenu', () => {
     e.preventDefault();
     console.log('シェア右クリック');
   });
