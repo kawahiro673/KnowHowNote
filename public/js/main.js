@@ -13,6 +13,7 @@ import {
 
 import { fileContextmenu } from './note_contextmenu.js';
 import { folderContextmenu } from './folder_contextmenu.js';
+import { shareContextmenu } from './share_contextmenu.js';
 
 import { jQueryUIOptionsFunc } from './jQueryUI_func.js';
 
@@ -201,6 +202,7 @@ function shareListCreate() {
         let li = document.createElement('li');
         let span = document.createElement('span');
         span.setAttribute('class', 'sharenote file');
+        span.setAttribute('id', 'share_list');
         span.innerHTML = file.title;
         document.getElementById('sharelist').appendChild(li);
         li.appendChild(span);
