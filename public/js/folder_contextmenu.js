@@ -34,6 +34,7 @@ export const folderContextmenu = (
     let elements = document.getElementsByClassName(
       `parent${folderList.folderThis.parentNode.parentNode.id}`
     );
+
     let index = [].slice
       .call(elements)
       .indexOf(folderList.folderThis.parentNode);

@@ -518,20 +518,16 @@ createbutton.addEventListener(
 
 //「ノート追加」ボタン押下時(root(id=0)に作成)
 //fileInputExistFlg=true時はファイルを作らせない → 連続でボタンクリックした時にファイルを２個同時に作らせないため
-createfilebutton.addEventListener(
-  'click',
-  async (e) => {
-    if (!fileInputExistFlg) {
-      const id = 0;
-      e.stopPropagation();
-      fileInputExistFlg = true;
-      //awaitはPromiseが返ってくるまで待つ。関数内でPromise化し、resolveのタイミングでPromiseが返る
-      await newFileCreateFunc(id, fileInputExistFlg, tabIdArray);
-      fileInputExistFlg = false;
-    }
+createfilebutton.addEventListener('click', async (e) => {
+  if (!fileInputExistFlg) {
+    const id = 0;
+    e.stopPropagation();
+    fileInputExistFlg = true;
+    //awaitはPromiseが返ってくるまで待つ。関数内でPromise化し、resolveのタイミングでPromiseが返る
+    await newFileCreateFunc(id, fileInputExistFlg, tabIdArray);
+    fileInputExistFlg = false;
   }
-  // false
-);
+});
 
 //[全削除]ボタン押下時。ノートフォルダタブ全て削除
 $('.container-delete').click(function () {
