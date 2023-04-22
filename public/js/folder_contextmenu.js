@@ -65,6 +65,13 @@ export const folderContextmenu = (
         }
         fileInputExistFlg = true;
         // await
+        const createfilebutton = document.getElementById('createfilebutton');
+
+        createfilebutton.onclick = function (event) {
+          event.preventDefault();
+          console.log('リンクがクリックされましたが、動作を無効にしました。');
+        };
+
         newFileCreateFunc(folderList.folderId, fileInputExistFlg, tabIdArray);
 
         conme.style.display = 'none';
