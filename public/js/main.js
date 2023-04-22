@@ -288,7 +288,7 @@ export const fileClick = () => {
     titleClick(ID, listTitle.title);
     let order;
     let pass = passGet(listTitle.id, listTitle.title);
-    if (!tabIdArray.includes(id)) {
+    if (!tabIdArray.includes(ID)) {
       $.ajax({
         url: '/tabPostController/',
         type: 'POST',
