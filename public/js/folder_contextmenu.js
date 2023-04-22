@@ -64,9 +64,8 @@ export const folderContextmenu = (
           fID.click();
         }
         fileInputExistFlg = true;
-        // await
-        const createfilebutton = document.getElementById('createfilebutton');
 
+        const createfilebutton = document.getElementById('createfilebutton');
         createfilebutton.onclick = function (event) {
           event.preventDefault();
           console.log('リンクがクリックされましたが、動作を無効にしました。');
