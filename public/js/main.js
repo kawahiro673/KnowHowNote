@@ -519,8 +519,8 @@ createbutton.addEventListener(
 //「ノート追加」ボタン押下時(root(id=0)に作成)
 //fileInputExistFlg=true時はファイルを作らせない → 連続でボタンクリックした時にファイルを２個同時に作らせないため
 createfilebutton.addEventListener('click', async (e) => {
-  const hasTwoOrMoreInputs = countInputElements(document.getElementById('0'));
-  console.log(hasTwoOrMoreInputs);
+  const root = document.querySelector(document.getElementById('0'));
+  console.log(hasInput(root)); // true
   if (!fileInputExistFlg) {
     const id = 0;
     e.stopPropagation();
@@ -609,23 +609,15 @@ const valuePassToServerOnly = (url, str1, str2) => {
   });
 };
 
-function countInputElements(parentElement) {
-  let count = 0;
-  for (let i = 0; i < parentElement.children.length; i++) {
-    const child = parentElement.children[i];
-    if (child.tagName.toLowerCase() === 'input') {
-      count++;
-      if (count >= 2) {
-        return true;
-      }
-    }
-    if (child.children) {
-      const childCount = countInputElements(child);
-      count += childCount;
-      if (count >= 2) {
+function hasInput(elem) {
+  if (elem.tagName === 'INPUT') {
+    return true;
+  } else if (elem.children.length > 0) {
+    for (let i = 0; i < elem.children.length; i++) {
+      if (hasInput(elem.children[i])) {
         return true;
       }
     }
   }
-  return count >= 2;
+  return false;
 }
