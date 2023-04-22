@@ -23,7 +23,7 @@ import { orderGet } from './stringUtils.js';
 
 var tabIdArray = []; //タブが生成されているファイルのIDを格納
 let fileInputExistFlg = false; //ファイル作成時のInputタブが出力しているかの有無　true=有,false=無
-let folderInputExistFlgFlg = false; //↑のフォルダ版
+let folderInputExistFlg = false; //↑のフォルダ版
 
 export const listCreate = () => {
   $.ajax({
@@ -167,7 +167,7 @@ export const listCreate = () => {
                   closedFlg,
                 }),
                 success: function (res) {
-                  console.log(res.response);
+                  //console.log(res.response);
                 },
               });
             });
@@ -178,7 +178,7 @@ export const listCreate = () => {
 
       await jQueryUIOptionsFunc();
       fileContextmenu(tabIdArray);
-      folderContextmenu(tabIdArray, fileInputExistFlg, folderInputExistFlgFlg);
+      folderContextmenu(tabIdArray, fileInputExistFlg, folderInputExistFlg);
       fileClick();
       await expandableAdaptation();
     },
@@ -480,12 +480,7 @@ async function titleClick(id, title) {
 document.getElementById('newfolder').onclick = (e) => {
   const id = 0;
   e.stopPropagation();
-  newFolderCreateFunc(
-    id,
-    folderInputExistFlgFlg,
-    fileInputExistFlg,
-    tabIdArray
-  );
+  newFolderCreateFunc(id, folderInputExistFlg, fileInputExistFlg, tabIdArray);
 };
 
 //フォルダの右クリックから「ファイル新規作成」押下
@@ -500,17 +495,18 @@ document.getElementById('newfile').onclick = (e) => {
 createbutton.addEventListener(
   'click',
   async (e) => {
-    if (!folderInputExistFlgFlg) {
+    const root = hasInput(document.getElementById('0'));
+    if (!folderInputExistFlg && !root) {
       const id = 0;
       e.stopPropagation();
-      folderInputExistFlgFlg = true;
+      folderInputExistFlg = true;
       await newFolderCreateFunc(
         id,
-        folderInputExistFlgFlg,
+        folderInputExistFlg,
         fileInputExistFlg,
         tabIdArray
       );
-      folderInputExistFlgFlg = false;
+      folderInputExistFlg = false;
     }
   },
   false
@@ -518,9 +514,9 @@ createbutton.addEventListener(
 
 //「ノート追加」ボタン押下時(root(id=0)に作成)
 //fileInputExistFlg=true時はファイルを作らせない → 連続でボタンクリックした時にファイルを２個同時に作らせないため
+// hasInputは、input要素の有無を確認している
 createfilebutton.addEventListener('click', async (e) => {
   const root = hasInput(document.getElementById('0'));
-  console.log(root); // true
   if (!fileInputExistFlg && !root) {
     const id = 0;
     e.stopPropagation();
@@ -552,6 +548,7 @@ $('.container-delete').click(function () {
         p.setAttribute('id', 'notab');
         p.innerHTML = 'こちらにnoteが出力されます';
         document.getElementById('tab').appendChild(p);
+        document.getElementById('notepass').innerHTML = '';
       },
     });
   }
@@ -609,6 +606,7 @@ const valuePassToServerOnly = (url, str1, str2) => {
   });
 };
 
+//elemの全ての配下要素を再起的に参照し、inputタブが配下にあればtrue,なければfalse
 function hasInput(elem) {
   if (elem.tagName === 'INPUT') {
     return true;
