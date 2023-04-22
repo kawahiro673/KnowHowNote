@@ -286,25 +286,8 @@ export const fileClick = () => {
     console.log(`"${listTitle.title}"がクリックされました。`);
     let ID = Number(listTitle.id);
     titleClick(ID, listTitle.title);
-    let order = orderGet('tab-content', `Tab-ID${ID}`);
-    let pass = passGet(listTitle.id, listTitle.title);
-
-    if (!tabIdArray.includes(ID)) {
-      $.ajax({
-        url: '/tabPostController/',
-        type: 'POST',
-        dataType: 'Json',
-        contentType: 'application/json',
-        data: JSON.stringify({
-          data: 'tab',
-          flg: 'tabAdd',
-          id: ID,
-          title: listTitle.title,
-        }),
-        success: function (res) {},
-      });
-    }
-    //order,passを更新し、focus=1へ
+    const pass = passGet(listTitle.id, listTitle.title);
+    let isSomething = tabIdArray.includes(ID);
     $.ajax({
       url: '/tabPostController/',
       type: 'POST',
@@ -312,14 +295,31 @@ export const fileClick = () => {
       contentType: 'application/json',
       data: JSON.stringify({
         data: 'tab',
-        flg: 'clickTab',
+        flg: 'tabAdd',
+        isSomething,
         id: ID,
-        order,
         title: listTitle.title,
         pass,
       }),
       success: function (res) {
-        document.getElementById('notepass').innerHTML = pass;
+        const order = orderGet('tab-content', `Tab-ID${ID}`);
+        //orderを格納し、focus=1へ
+        $.ajax({
+          url: '/tabPostController/',
+          type: 'POST',
+          dataType: 'Json',
+          contentType: 'application/json',
+          data: JSON.stringify({
+            data: 'tab',
+            flg: 'clickTab',
+            id: ID,
+            order,
+            title: listTitle.title,
+          }),
+          success: function (res) {
+            document.getElementById('notepass').innerHTML = pass;
+          },
+        });
       },
     });
   });

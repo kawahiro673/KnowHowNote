@@ -306,47 +306,56 @@ router.post('/', (req, res) => {
           res.status(500).send('Internal Server Error.(tabDel)');
         });
     } else if (req.body.flg === 'tabAdd') {
-      const token = req.cookies.token;
-      const decoded = JWT.verify(token, 'SECRET_KEY');
-      let promise = new Promise((resolve, reject) => {
-        resolve();
-      });
-
-      promise
-        .then(() => {
-          return new Promise((resolve, reject) => {
-            pool.query(
-              'SELECT * FROM register_user WHERE Email = ?;',
-              [decoded.email],
-              (error, resultDecoded) => {
-                if (error) {
-                  reject(error);
-                } else {
-                  resolve(resultDecoded);
-                }
-              }
-            );
-          });
-        })
-        .then((resultDecoded) => {
-          return new Promise((resolve, reject) => {
-            pool.query(
-              'INSERT into tab_hold(id, tabTitle, UserID) values(?, ?, ?);',
-              [req.body.id, req.body.title, resultDecoded[0].id],
-              (error, results) => {
-                if (error) {
-                  reject(error);
-                } else {
-                  res.send({ response: results });
-                }
-              }
-            );
-          });
-        })
-        .catch((error) => {
-          console.error(error);
-          res.status(500).send('Internal Server Error.(tabAdd)');
+      //タブが生成されていなければ実施(INSERT処理のため)
+      if (!req.body.isSomething) {
+        const token = req.cookies.token;
+        const decoded = JWT.verify(token, 'SECRET_KEY');
+        let promise = new Promise((resolve, reject) => {
+          resolve();
         });
+
+        promise
+          .then(() => {
+            return new Promise((resolve, reject) => {
+              pool.query(
+                'SELECT * FROM register_user WHERE Email = ?;',
+                [decoded.email],
+                (error, resultDecoded) => {
+                  if (error) {
+                    reject(error);
+                  } else {
+                    resolve(resultDecoded);
+                  }
+                }
+              );
+            });
+          })
+          .then((resultDecoded) => {
+            return new Promise((resolve, reject) => {
+              pool.query(
+                'INSERT into tab_hold(id, tabTitle, pass, UserID) values(?, ?, ?);',
+                [
+                  req.body.id,
+                  req.body.title,
+                  req.body.pass,
+                  resultDecoded[0].id,
+                ],
+                (error, results) => {
+                  if (error) {
+                    reject(error);
+                  } else {
+                    res.send({ response: results });
+                  }
+                }
+              );
+            });
+          })
+          .catch((error) => {
+            console.error(error);
+            res.status(500).send('Internal Server Error.(tabAdd)');
+          });
+      }
+      response.end(); // 何も送信しない
     }
   }
 });
