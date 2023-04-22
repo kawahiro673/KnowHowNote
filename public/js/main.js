@@ -478,14 +478,14 @@ async function titleClick(id, title) {
 document.getElementById('newfolder').onclick = async (e) => {
   const id = 0;
   e.stopPropagation();
-  fileInputExistFlg = true;
+  folderInputExistFlg = true;
   await newFolderCreateFunc(
     id,
     folderInputExistFlg,
     fileInputExistFlg,
     tabIdArray
   );
-  fileInputExistFlg = false;
+  folderInputExistFlg = false;
 };
 
 //rootの右クリックから「ファイル新規作成」押下
