@@ -13,7 +13,11 @@ let conme2 = document.getElementById('contextmenu2');
 let conme3 = document.getElementById('contextmenu3');
 let conme4 = document.getElementById('contextmenu4');
 
-export const folderContextmenu = (tabArray, fileFlg, folderFlg) => {
+export const folderContextmenu = (
+  tabIdArray,
+  fileInputExistFlg,
+  folderInputExistFlgFlg
+) => {
   $('.folder').on('contextmenu', function () {
     console.log(
       `"${$(this).html()}" ${$(this).attr('value')} を右クリックしました`
@@ -39,7 +43,7 @@ export const folderContextmenu = (tabArray, fileFlg, folderFlg) => {
     );
 
     document.getElementById('folderDelete').onclick = function () {
-      folderDelete(folderList, index, tabArray);
+      folderDelete(folderList, index, tabIdArray);
     };
 
     $(document).ready(function () {
@@ -58,9 +62,8 @@ export const folderContextmenu = (tabArray, fileFlg, folderFlg) => {
         if (fID.parentNode.classList.contains('expandable') == true) {
           fID.click();
         }
-        fileFlg = true;
-        newCreateFile(folderList.folderId, fileFlg, tabArray);
-        //newFileCreateFunc(folderList.folderId, fileFlg, tabArray);
+        fileInputExistFlg = true;
+        newFileCreateFunc(folderList.folderId, fileInputExistFlg, tabIdArray);
         conme.style.display = 'none';
         conme2.style.display = 'none';
         conme3.style.display = 'none';
@@ -76,12 +79,18 @@ export const folderContextmenu = (tabArray, fileFlg, folderFlg) => {
         if (fID.parentNode.classList.contains('expandable') == true) {
           fID.click();
         }
-        folderFlg = true;
+        folderInputExistFlgFlg = true;
 
-        newFolderCreateFunc(folderList.folderId, folderFlg, fileFlg, tabArray);
+        newFolderCreateFunc(
+          folderList.folderId,
+          folderInputExistFlgFlg,
+          fileInputExistFlg,
+          tabIdArray
+        );
         conme.style.display = 'none';
         conme2.style.display = 'none';
         conme3.style.display = 'none';
+        conme4.style.display = 'none';
       });
     });
 
@@ -97,7 +106,7 @@ export const folderContextmenu = (tabArray, fileFlg, folderFlg) => {
   });
 };
 
-const folderDelete = (folderList, index, tabArray) => {
+const folderDelete = (folderList, index, tabIdArray) => {
   let btn = confirm(
     `${folderList.folderTitle} 配下のフォルダやノートも全て削除されますが本当に削除しますか？`
   );
@@ -136,10 +145,13 @@ const folderDelete = (folderList, index, tabArray) => {
             //削除されたファイルのタブを削除する
             for (let i = 0; i < res.response.length; i++) {
               //idArrayが文字列で格納されているため、num→String変換
-              if (tabArray.includes(String(res.response[i]))) {
-                closeTab(res.response[i], undefined, tabArray);
+              if (tabIdArray.includes(String(res.response[i]))) {
+                closeTab(res.response[i], undefined, tabIdArray);
                 //idArrayの中にあるlistTitle.idを削除
-                tabArray = deleteTabArray(String(res.response[i]), tabArray);
+                tabIdArray = deleteTabArray(
+                  String(res.response[i]),
+                  tabIdArray
+                );
               }
             }
           },
