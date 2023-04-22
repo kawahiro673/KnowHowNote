@@ -288,6 +288,8 @@ export const fileClick = () => {
     titleClick(ID, listTitle.title);
     const pass = passGet(listTitle.id, listTitle.title);
     let isSomething = tabIdArray.includes(ID);
+    console.log(tabIdArray);
+    console.log(isSomething);
     $.ajax({
       url: '/tabPostController/',
       type: 'POST',
