@@ -205,6 +205,7 @@ function shareListCreate() {
         span.innerHTML = file.title;
         document.getElementById('sharelist').appendChild(li);
         li.appendChild(span);
+        shareContextmenu();
       });
     },
   });
