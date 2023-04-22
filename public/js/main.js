@@ -529,8 +529,8 @@ createfilebutton.addEventListener(
       await newFileCreateFunc(id, fileInputExistFlg, tabIdArray);
       fileInputExistFlg = false;
     }
-  },
-  false
+  }
+  // false
 );
 
 //[全削除]ボタン押下時。ノートフォルダタブ全て削除
