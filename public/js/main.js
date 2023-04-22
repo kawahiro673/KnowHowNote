@@ -286,8 +286,26 @@ export const fileClick = () => {
     console.log(`"${listTitle.title}"がクリックされました。`);
     let ID = Number(listTitle.id);
     titleClick(ID, listTitle.title);
+    let order;
     let pass = passGet(listTitle.id, listTitle.title);
-    //id((主キー)が同じ場合は更新してくれる(既にtab_holdに格納時みの場合)
+    if (!tabIdArray.includes(id)) {
+      $.ajax({
+        url: '/tabPostController/',
+        type: 'POST',
+        dataType: 'Json',
+        contentType: 'application/json',
+        data: JSON.stringify({
+          data: 'tab',
+          flg: 'tabAdd',
+          id: ID,
+          title: listTitle.title,
+        }),
+        success: function (res) {
+          order = orderGet('tab-content', `Tab-ID${ID}`);
+        },
+      });
+    }
+    //order,passを更新し、focus=1へ
     $.ajax({
       url: '/tabPostController/',
       type: 'POST',
@@ -295,30 +313,14 @@ export const fileClick = () => {
       contentType: 'application/json',
       data: JSON.stringify({
         data: 'tab',
-        flg: 'tabAdd',
+        flg: 'clickTab',
         id: ID,
+        order,
         title: listTitle.title,
         pass,
       }),
       success: function (res) {
-        let index = orderGet('tab-content', `Tab-ID${ID}`);
-        //orderを格納し、focus=1へ
-        $.ajax({
-          url: '/tabPostController/',
-          type: 'POST',
-          dataType: 'Json',
-          contentType: 'application/json',
-          data: JSON.stringify({
-            data: 'tab',
-            flg: 'clickTab',
-            id: ID,
-            order: index,
-            title: listTitle.title,
-          }),
-          success: function (res) {
-            document.getElementById('notepass').innerHTML = pass;
-          },
-        });
+        document.getElementById('notepass').innerHTML = pass;
       },
     });
   });

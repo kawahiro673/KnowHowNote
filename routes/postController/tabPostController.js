@@ -30,8 +30,8 @@ router.post('/', (req, res) => {
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'UPDATE tab_hold SET tabOrder = ?,focus = 1 where id = ?',
-              [req.body.order, req.body.id],
+              'UPDATE tab_hold SET tabOrder = ?, pass = ?, focus = 1 where id = ?',
+              [req.body.order, req.body.pass, req.body.id],
               (error, results) => {
                 if (error) {
                   reject(error);
@@ -331,8 +331,8 @@ router.post('/', (req, res) => {
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'INSERT into tab_hold(id, tabTitle, pass, UserID) values(?, ?, ?, ?);',
-              [req.body.id, req.body.title, req.body.pass, resultDecoded[0].id],
+              'INSERT into tab_hold(id, tabTitle, UserID) values(?, ?, ?);',
+              [req.body.id, req.body.title, resultDecoded[0].id],
               (error, results) => {
                 if (error) {
                   reject(error);
