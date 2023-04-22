@@ -333,7 +333,7 @@ router.post('/', (req, res) => {
           .then((resultDecoded) => {
             return new Promise((resolve, reject) => {
               pool.query(
-                'INSERT into tab_hold(id, tabTitle, pass, UserID) values(?, ?, ?);',
+                'INSERT into tab_hold(id, tabTitle, pass, UserID) values(?, ?, ?, ?);',
                 [
                   req.body.id,
                   req.body.title,
