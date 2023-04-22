@@ -519,7 +519,7 @@ createbutton.addEventListener(
 //「ノート追加」ボタン押下時(root(id=0)に作成)
 //fileInputExistFlg=true時はファイルを作らせない → 連続でボタンクリックした時にファイルを２個同時に作らせないため
 createfilebutton.addEventListener('click', async (e) => {
-  const root = document.querySelector('0');
+  const root = document.getElementById('0');
   console.log(hasInput(root)); // true
   if (!fileInputExistFlg) {
     const id = 0;
