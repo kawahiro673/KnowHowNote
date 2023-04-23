@@ -415,7 +415,8 @@ router
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'select * from folder WHERE (Type NOT LIKE '%\'Share\'%') AND(UserID = ?) order by folder_order ASC;',
+              ('select * from folder WHERE Type NOT LIKE ' % Share) %
+                ' AND(UserID = ?) order by folder_order ASC;',
               [resultDecoded[0].id],
               (error, results) => {
                 if (error) {
@@ -430,7 +431,8 @@ router
         .then(({ results, resultDecoded }) => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'select * from it_memo WHERE (Type NOT LIKE '%\'Share\'%') AND(UserID = ?) order by folder_order ASC;',
+              ('SELECT * FROM it_memo WHERE Type NOT LIKE ' % Share) %
+                ' AND UserID = ? ORDER BY folder_order ASC;',
               [resultDecoded[0].id],
               (error, result) => {
                 if (error) {
