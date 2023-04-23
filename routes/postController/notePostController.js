@@ -508,10 +508,10 @@ router.post('/', (req, res) => {
                   //タブを生成済みであれば(tab_holdに格納されていれば)
                   if (results.length != 0) {
                     //passカラムの値の変更前のタイトルを変更後に変換
-                    let ans = results[0].pass.replace(
-                      req.body.oldTitle,
-                      req.body.title
-                    );
+                    // let ans = results[0].pass.replace(
+                    //   req.body.oldTitle,
+                    //   req.body.title
+                    // );
                     let promise1 = new Promise((resolve, reject) => {
                       resolve();
                     });
@@ -534,8 +534,10 @@ router.post('/', (req, res) => {
                       .then(() => {
                         return new Promise((resolve, reject) => {
                           pool.query(
-                            'UPDATE tab_hold SET tabTitle = ?, pass = ? WHERE id = ?',
-                            [req.body.title, ans, req.body.id],
+                            // 'UPDATE tab_hold SET tabTitle = ?, pass = ? WHERE id = ?',
+                            // [req.body.title, ans, req.body.id],
+                            'UPDATE tab_hold SET tabTitle = ? WHERE id = ?',
+                            [req.body.title, req.body.id],
                             (error, result) => {
                               if (error) {
                                 reject(error);
