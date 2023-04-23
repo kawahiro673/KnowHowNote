@@ -68,7 +68,7 @@ router.post('/', (req, res) => {
       } else {
         pool.query(
           'UPDATE it_memo SET folder_order = ? WHERE id = ?',
-          [req.body.order, req.body.id], //この値が？に入る
+          [req.body.order, req.body.id],
           (error, results) => {
             res.send({
               response: req.body.order,

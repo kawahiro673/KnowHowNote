@@ -39,8 +39,8 @@ export const fileContextmenu = (tabArray) => {
     $(document).ready(function () {
       //重複してしまうため色変更イベントを一時削除
       $('#color').off('click');
-      $('#color').on('click', function (event) {
-        event.preventDefault();
+      $('#color').on('click', function (e) {
+        e.preventDefault();
         noteColorChange(listTitle);
       });
     });

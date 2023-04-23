@@ -1,5 +1,4 @@
-const mysql = require('mysql'); //mysqlを使うためのやーつ
-
+const mysql = require('mysql');
 const pool = mysql.createPool({
   host: process.env.DB_HOSTNAME,
   port: Number(process.env.DB_PORT), ///文字列でもいけてる？？

@@ -3,8 +3,6 @@ import { closeTab, deleteTabArray } from './tab_func.js';
 import { newFileCreateFunc } from './newFileCreate.js';
 import { newFolderCreateFunc } from './newFolderCreate.js';
 
-//import { newCreateFile } from './main.js';
-
 let tmp1;
 let tmp2;
 
@@ -64,12 +62,6 @@ export const folderContextmenu = (
           fID.click();
         }
         fileInputExistFlg = true;
-
-        const createfilebutton = document.getElementById('createfilebutton');
-        createfilebutton.onclick = function (event) {
-          event.preventDefault();
-          console.log('リンクがクリックされましたが、動作を無効にしました。');
-        };
 
         newFileCreateFunc(folderList.folderId, fileInputExistFlg, tabIdArray);
 

@@ -113,7 +113,6 @@ export const newCreateFile2 = (inputTab, span, parentId, tabIdArray) => {
             data: 'note',
             flg: 'newNote',
             pattern: 'order',
-            folderName: inputTab.value,
             id: res.response2.id,
             order: newIndex,
           }),

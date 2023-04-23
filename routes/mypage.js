@@ -8,6 +8,8 @@ const res = require('express/lib/response');
 const { reject } = require('bcrypt/promises');
 const { off } = require('../db.js');
 const rules = require('nodemon/lib/rules');
+const Connection = require('mysql/lib/Connection');
+const PoolCluster = require('mysql/lib/PoolCluster');
 
 router
   .route('/')
@@ -449,71 +451,6 @@ router
           console.error(error);
           res.status(500).send('Internal Server Error.(list)');
         });
-    } else if (req.body.data === 'sharelist') {
-      //cookieの有効期限が切れたら自動的にログアウト
-      //仕様上、自動でログアウトされては困るので、リロードの際にのみログアウトする
-      const token = req.cookies.token;
-      const decoded = JWT.verify(token, 'SECRET_KEY');
-      let promise = new Promise((resolve, reject) => {
-        resolve();
-      });
-
-      promise
-        .then(() => {
-          return new Promise((resolve, rejct) => {
-            pool.query(
-              'SELECT * FROM register_user WHERE Email = ?;',
-              [decoded.email],
-              (error, resultDecoded) => {
-                if (error) {
-                  rejct(error);
-                } else {
-                  resolve(resultDecoded);
-                }
-              }
-            );
-          });
-        })
-        .then((resultDecoded) => {
-          return new Promise((resolve, rejct) => {
-            pool.query(
-              'select * from folder WHERE (UserID = ?) AND (Type = "Share") order by folder_order ASC ',
-              [resultDecoded[0].id],
-              (error, results) => {
-                if (error) {
-                  rejct(error);
-                } else {
-                  resolve({ results: results, resultDecoded: resultDecoded });
-                }
-              }
-            );
-          });
-        })
-        .then(({ results, resultDecoded }) => {
-          return new Promise((resolve, rejct) => {
-            pool.query(
-              'select * from it_memo WHERE (UserID = ?) AND (Type = "Share") order by folder_order ASC',
-              [resultDecoded[0].id],
-              (error, result) => {
-                if (error) {
-                  reject(error);
-                } else {
-                  res.send({
-                    response: results,
-                    response2: result,
-                    userName: resultDecoded[0].UserName,
-                    id: resultDecoded[0].id,
-                  });
-                }
-              }
-            );
-          });
-        })
-        .catch((error) => {
-          console.error(error);
-          res.status(500).send('Internal Server Error.(list)');
-        });
-      //全削除ボタン
     } else if (req.body.data === 'deleteALL') {
       const token = req.cookies.token;
       const decoded = JWT.verify(token, 'SECRET_KEY');
@@ -622,7 +559,6 @@ router
         .then((user) => {
           return new Promise((resolve, reject) => {
             pool.query(
-              //レコードをコピーして新しいレコードとして挿入
               'INSERT INTO it_memo (title, memo_text, Type, UserID) (SELECT title, memo_text, ?, ? FROM it_memo WHERE id = ?);',
               ['Share', user.id, req.body.id],
               (error, result) => {
@@ -638,20 +574,6 @@ router
         .catch((error) => {
           console.error(error);
           res.status(500).send('Internal Server Error.(getuser)');
-        });
-    } else if (req.body.data === 'humburger') {
-      res.send({ msg: 'ハンバーガー押しましたね！？' });
-      let promise = new Promise((resolve, reject) => {
-        resolve();
-      });
-
-      promise
-        .then(() => {
-          throw Error('error');
-        })
-        .catch((error) => {
-          console.Console(error);
-          res.status(500).send('errorですよ〜');
         });
     } else {
       console.log('dataで何も受け取ってません');
