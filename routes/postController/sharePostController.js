@@ -26,13 +26,17 @@ router.post('/', (req, res) => {
       })
       .then(() => {
         return new Promise((resolve, reject) => {
-          pool.query('SELECT * FROM it_memo WHERE id = ?;', (error, result) => {
-            if (error) {
-              reject(error);
-            } else {
-              res.send({ response: result });
+          pool.query(
+            'SELECT * FROM it_memo WHERE id = ?;',
+            [req.body.id],
+            (error, result) => {
+              if (error) {
+                reject(error);
+              } else {
+                res.send({ response: result });
+              }
             }
-          });
+          );
         });
       })
       .catch((error) => {
