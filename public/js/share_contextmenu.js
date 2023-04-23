@@ -52,6 +52,7 @@ const mynoteAddFunc = (id, tabIdArray) => {
       let order = [].slice.call(elements).indexOf(span.parentNode);
       order++;
       console.log(order);
+      console.log(res.response.id);
       jQueryUIOptionsFunc();
       fileContextmenu(tabIdArray);
       fileClick();
