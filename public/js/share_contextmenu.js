@@ -37,13 +37,12 @@ const mynoteAddFunc = (id, tabIdArray) => {
       const li = document.createElement('li');
       const span = document.createElement('span');
       li.setAttribute('class', 'last');
+      li.setAttribute('class', `parent0`);
       span.classList.add('list_title', 'file');
 
       span.setAttribute('id', `li${res.response.id}`);
       span.setAttribute('value', res.response.id);
       span.innerHTML = res.response.title;
-
-      span.parentNode.setAttribute('class', `parent0`);
 
       document.getElementById('0').appendChild(li);
       li.appendChild(span);
