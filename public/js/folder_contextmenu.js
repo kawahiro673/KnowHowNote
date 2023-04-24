@@ -61,7 +61,6 @@ export const folderContextmenu = (
         if (fID.parentNode.classList.contains('expandable') === true) {
           fID.click();
         }
-        fileInputExistFlg = true;
 
         newFileCreateFunc(folderList.folderId, fileInputExistFlg, tabIdArray);
 
@@ -82,7 +81,7 @@ export const folderContextmenu = (
         if (fID.parentNode.classList.contains('expandable') == true) {
           fID.click();
         }
-        folderInputExistFlgFlg = true;
+
         newFolderCreateFunc(folderList.folderId, folderInputExistFlgFlg);
         conme.style.display = 'none';
         conme2.style.display = 'none';

@@ -48,14 +48,12 @@ export const newFileCreateFunc = (id, fileInputExistFlg) => {
 
     const enter = (e) => {
       //e.preventDefault(); //これがあると入力できない？？
-      if (fileInputExistFlg) {
-        if (e.keyCode === 13) {
-          newCreateFile2(inputTab, span, id);
-          document.removeEventListener('click', clickL);
-          document.removeEventListener('contextmenu', clickR);
-          document.removeEventListener('keypress', enter);
-          resolve();
-        }
+      if (e.keyCode === 13) {
+        newCreateFile2(inputTab, span, id);
+        document.removeEventListener('click', clickL);
+        document.removeEventListener('contextmenu', clickR);
+        document.removeEventListener('keypress', enter);
+        resolve();
       }
     };
 

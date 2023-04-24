@@ -481,18 +481,15 @@ async function titleClick(id, title) {
 document.getElementById('newfolder').onclick = async (e) => {
   const id = 0;
   e.stopPropagation();
-  folderInputExistFlg = true;
   await newFolderCreateFunc(id, folderInputExistFlg);
-  folderInputExistFlg = false;
 };
 
 //rootの右クリックから「ファイル新規作成」押下
 document.getElementById('newfile').onclick = async (e) => {
   const id = 0;
   e.stopPropagation();
-  fileInputExistFlg = true;
+
   await newFileCreateFunc(id, fileInputExistFlg);
-  fileInputExistFlg = false;
 };
 
 //「フォルダ追加」ボタン押下時(root(id=0)に作成)
@@ -504,9 +501,7 @@ createbutton.addEventListener(
     if (!root) {
       const id = 0;
       e.stopPropagation();
-      folderInputExistFlg = true;
       await newFolderCreateFunc(id, folderInputExistFlg);
-      folderInputExistFlg = false;
     }
   },
   false
@@ -520,10 +515,8 @@ createfilebutton.addEventListener('click', async (e) => {
   if (!root) {
     const id = 0;
     e.stopPropagation();
-    fileInputExistFlg = true;
     //awaitはPromiseが返ってくるまで待つ。関数内でPromise化し、resolveのタイミングでPromiseが返る
     await newFileCreateFunc(id, fileInputExistFlg);
-    fileInputExistFlg = false;
   }
 });
 
