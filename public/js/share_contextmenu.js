@@ -11,7 +11,8 @@ export const shareContextmenu = (tabIdArray) => {
       id: $(this).attr('value'),
       shareThis: this,
     };
-
+    console.log($(this).attr('value'));
+    console.log(share.id);
     $(document).ready(function () {
       $('#MyNoteAdd').off('click');
       $('#MyNoteAdd').on('click', function (event) {
