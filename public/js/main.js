@@ -501,7 +501,7 @@ createbutton.addEventListener(
   'click',
   async (e) => {
     const root = hasInput(document.getElementById('0'));
-    if (!folderInputExistFlg && !root) {
+    if (!root) {
       const id = 0;
       e.stopPropagation();
       folderInputExistFlg = true;
@@ -517,7 +517,7 @@ createbutton.addEventListener(
 // hasInputは、input要素の有無を確認している
 createfilebutton.addEventListener('click', async (e) => {
   const root = hasInput(document.getElementById('0'));
-  if (!fileInputExistFlg && !root) {
+  if (!root) {
     const id = 0;
     e.stopPropagation();
     fileInputExistFlg = true;
@@ -584,7 +584,7 @@ const valuePassToServerOnly = (url, str1, str2) => {
   });
 };
 
-//elemの全ての配下要素を再起的に参照し、inputタブが配下にあればtrue,なければfalse
+//elemの全ての配下要素を再起的に参照。inputタブが配下にあればtrue,なければfalse
 function hasInput(elem) {
   if (elem.tagName === 'INPUT') {
     return true;

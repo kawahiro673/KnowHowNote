@@ -26,7 +26,7 @@ export const newFileCreateFunc = (id, fileInputExistFlg) => {
 
     const clickL = (e) => {
       e.preventDefault();
-      if (fileInputExistFlg && !e.target.closest('#inputTab')) {
+      if (!e.target.closest('#inputTab')) {
         newCreateFile2(inputTab, span, id);
         document.removeEventListener('click', clickL);
         document.removeEventListener('contextmenu', clickR);
@@ -37,7 +37,7 @@ export const newFileCreateFunc = (id, fileInputExistFlg) => {
 
     const clickR = (e) => {
       e.preventDefault();
-      if (fileInputExistFlg && !e.target.closest('#inputTab')) {
+      if (!e.target.closest('#inputTab')) {
         newCreateFile2(inputTab, span, id);
         document.removeEventListener('click', clickL);
         document.removeEventListener('contextmenu', clickR);
