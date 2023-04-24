@@ -71,7 +71,6 @@ router.post('/', (req, res) => {
           });
         //order
       } else {
-        console.log(req.body.order, req.body.id);
         pool.query(
           'UPDATE it_memo SET folder_order = ? WHERE id = ?',
           [req.body.order, req.body.id],

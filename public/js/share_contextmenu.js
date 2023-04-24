@@ -34,9 +34,6 @@ const mynoteAddFunc = (id, tabIdArray) => {
       id,
     }),
     success: function (res) {
-      console.log(res.response);
-      console.log(res.response.id);
-
       const li = document.createElement('li');
       const span = document.createElement('span');
       li.setAttribute('class', 'last');
@@ -54,8 +51,6 @@ const mynoteAddFunc = (id, tabIdArray) => {
       //MyPage追加後の順番
       let order = [].slice.call(elements).indexOf(span.parentNode);
       order++;
-      console.log(order);
-      console.log(res.response.id);
       jQueryUIOptionsFunc();
       fileContextmenu(tabIdArray);
       fileClick();
