@@ -124,8 +124,8 @@ router.post('/', (req, res) => {
         .then((result) => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'UPDATE tab_hold SET tabTitle = ?, pass = ? WHERE id = ?;',
-              [req.body.titleContent, req.body.pass, req.body.id],
+              'UPDATE tab_hold SET tabTitle = ? WHERE id = ?;',
+              [req.body.titleContent, req.body.id],
               (error, no_Result) => {
                 if (error) {
                   reject(error);
@@ -507,11 +507,6 @@ router.post('/', (req, res) => {
                 } else {
                   //タブを生成済みであれば(tab_holdに格納されていれば)
                   if (results.length != 0) {
-                    //passカラムの値の変更前のタイトルを変更後に変換
-                    // let ans = results[0].pass.replace(
-                    //   req.body.oldTitle,
-                    //   req.body.title
-                    // );
                     let promise1 = new Promise((resolve, reject) => {
                       resolve();
                     });
@@ -534,8 +529,6 @@ router.post('/', (req, res) => {
                       .then(() => {
                         return new Promise((resolve, reject) => {
                           pool.query(
-                            // 'UPDATE tab_hold SET tabTitle = ?, pass = ? WHERE id = ?',
-                            // [req.body.title, ans, req.body.id],
                             'UPDATE tab_hold SET tabTitle = ? WHERE id = ?',
                             [req.body.title, req.body.id],
                             (error, result) => {
@@ -559,8 +552,7 @@ router.post('/', (req, res) => {
                               } else {
                                 res.send({
                                   response1: req.body.title,
-                                  response2: result[0].pass,
-                                  response3: result[0].focus,
+                                  tabResult: result[0],
                                 });
                               }
                             }
@@ -592,15 +584,6 @@ router.post('/', (req, res) => {
           console.error(error);
           res.status(500).send('Internal Server Error.(name)');
         });
-      //タブ押下時にメモの内容を表示する
-    } else if (req.body.flg === 'updatePass') {
-      pool.query(
-        'UPDATE tab_hold SET pass = ? WHERE id = ?;',
-        [req.body.pass, req.body.id],
-        (error, result) => {
-          res.send({ response: req.body.time });
-        }
-      );
     } else if (req.body.flg === 'info') {
       pool.query(
         'SELECT * FROM it_memo WHERE id = ?;',

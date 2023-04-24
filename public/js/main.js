@@ -282,10 +282,10 @@ export const fileClick = () => {
       titleThis: this,
     };
     console.log(`"${listTitle.title}"がクリックされました。`);
-    let ID = Number(listTitle.id);
-    titleClick(ID, listTitle.title);
+    let id = Number(listTitle.id);
+    titleClick(id, listTitle.title);
     const pass = passGet(listTitle.id, listTitle.title);
-    let isSomething = tabIdArray.includes(ID);
+    let isSomething = tabIdArray.includes(id);
     $.ajax({
       url: '/tabPostController/',
       type: 'POST',
@@ -295,12 +295,11 @@ export const fileClick = () => {
         data: 'tab',
         flg: 'tabAdd',
         isSomething,
-        id: ID,
+        id,
         title: listTitle.title,
-        pass,
       }),
       success: function (res) {
-        const order = orderGet('tab-content', `Tab-ID${ID}`);
+        const order = orderGet('tab-content', `Tab-ID${id}`);
         //orderを格納し、focus=1へ
         $.ajax({
           url: '/tabPostController/',
@@ -310,7 +309,7 @@ export const fileClick = () => {
           data: JSON.stringify({
             data: 'tab',
             flg: 'clickTab',
-            id: ID,
+            id,
             order,
             title: listTitle.title,
           }),

@@ -1,4 +1,4 @@
-import { closeTab, deleteTabArray } from './tab_func.js';
+import { closeTab, deleteTabArray, passGet } from './tab_func.js';
 import { orderGet } from './stringUtils.js';
 
 let tmp1;
@@ -147,8 +147,6 @@ const noteNameChange = (listTitle) => {
             oldTitle: listTitle.title, //変更前のタイトル
           }),
           success: function (res) {
-            //console.log(`success受信(title) : "${res.response1}"`);
-
             listTitle.titleThis.style.display = 'block';
             listTitle.titleThis.innerHTML = res.response1;
             inputTab.remove();
@@ -163,13 +161,19 @@ const noteNameChange = (listTitle) => {
 
               //passを正しく表示する2点セット
               //1.focusが当たってたらパス更新
-              if (res.response3 == 1) {
-                document.getElementById('notepass').innerHTML = res.response2;
+              if (res.tabResult.focus == 1) {
+                document.getElementById('notepass').innerHTML = passGet(
+                  res.tabResult.id,
+                  res.tabResult.tabTitle
+                );
               }
               //2.タブクリック時にパス更新
               document.getElementById(`tab-ID${listTitle.id}`).onclick =
                 function (e) {
-                  document.getElementById('notepass').innerHTML = res.response2;
+                  document.getElementById('notepass').innerHTML = passGet(
+                    res.tabResult.id,
+                    res.tabResult.tabTitle
+                  );
                 };
             }
           },

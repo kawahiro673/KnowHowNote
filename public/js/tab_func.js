@@ -107,7 +107,6 @@ export const keepButton = (
       id,
       titleContent: newTitle, //p.innerHTML,
       memoContent: textarea.value, //ここに入力した値が入る
-      pass,
     }),
     success: function (res) {
       //console.log(res.response2);
@@ -310,7 +309,6 @@ export const tabClick = (e, id, title) => {
         flg: 'updateFocus',
         id,
         title,
-        pass,
       }),
       success: function (res) {
         //console.log('タブクリックしたぞ(ajax)');
