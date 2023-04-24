@@ -25,6 +25,7 @@ router.post('/', (req, res) => {
         });
       })
       .then(() => {
+        console.log(req.body.id);
         return new Promise((resolve, reject) => {
           pool.query(
             'SELECT * FROM it_memo WHERE id = ?;',
@@ -33,6 +34,7 @@ router.post('/', (req, res) => {
               if (error) {
                 reject(error);
               } else {
+                console.log(result);
                 res.send({ response: result });
               }
             }
