@@ -1,5 +1,3 @@
-import { jQueryUIOptionsFunc } from './jQueryUI_func.js';
-import { folderContextmenu } from './folder_contextmenu.js';
 import { listCreate } from './main.js';
 
 export const newFolderCreateFunc = (
@@ -33,16 +31,7 @@ export const newFolderCreateFunc = (
     const clickL = (e) => {
       e.preventDefault();
       if (folderInputExistFlg && !e.target.closest('#inputTab')) {
-        newCreateFolder2(
-          inputTab,
-          span,
-          li,
-          ul,
-          id,
-          folderInputExistFlg,
-          fileInputExistFlg,
-          tabIdArray
-        );
+        newCreateFolder2(inputTab, span, li, ul, id);
         document.removeEventListener('click', clickL);
         document.removeEventListener('contextmenu', clickR);
         document.removeEventListener('keypress', enter);
@@ -52,16 +41,7 @@ export const newFolderCreateFunc = (
     const clickR = (e) => {
       e.preventDefault();
       if (folderInputExistFlg && !e.target.closest('#inputTab')) {
-        newCreateFolder2(
-          inputTab,
-          span,
-          li,
-          ul,
-          id,
-          folderInputExistFlg,
-          fileInputExistFlg,
-          tabIdArray
-        );
+        newCreateFolder2(inputTab, span, li, ul, id);
         document.removeEventListener('click', clickL);
         document.removeEventListener('contextmenu', clickR);
         document.removeEventListener('keypress', enter);
@@ -72,16 +52,7 @@ export const newFolderCreateFunc = (
       //e.preventDefault(); //これがあると入力できない？？
       if (folderInputExistFlg) {
         if (e.keyCode === 13) {
-          newCreateFolder2(
-            inputTab,
-            span,
-            li,
-            ul,
-            id,
-            folderInputExistFlg,
-            fileInputExistFlg,
-            tabIdArray
-          );
+          newCreateFolder2(inputTab, span, li, ul, id);
           document.removeEventListener('click', clickL);
           document.removeEventListener('contextmenu', clickR);
           document.removeEventListener('keypress', enter);
@@ -96,16 +67,7 @@ export const newFolderCreateFunc = (
   });
 };
 
-function newCreateFolder2(
-  inputTab,
-  span,
-  li,
-  ul,
-  parentId,
-  folderInputExistFlg,
-  fileInputExistFlg,
-  tabIdArray
-) {
+function newCreateFolder2(inputTab, span, li, ul, parentId) {
   //何も入力されていない時や空白や改行のみの入力
   if (!inputTab.value || !inputTab.value.match(/\S/g)) {
     alert('フォルダ名を入力してください');
@@ -137,10 +99,9 @@ function newCreateFolder2(
           `parent${res.response2.parent_id}`
         );
         //newIndex は並び替え(D&D) 後の配列の順番
-        let newIndex = [].slice.call(elements).indexOf(span.parentNode);
-        newIndex++;
-        // jQueryUIOptionsFunc();
-        // folderContextmenu(tabIdArray, fileInputExistFlg, folderInputExistFlg);
+        let order = [].slice.call(elements).indexOf(span.parentNode);
+        order++;
+
         $.ajax({
           url: '/folderPostController/',
           type: 'POST',

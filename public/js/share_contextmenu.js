@@ -8,11 +8,13 @@ export const shareContextmenu = () => {
       id: $(this).attr('value'),
       shareThis: this,
     };
-    console.log($(this).attr('value'));
-    console.log(share.id);
+
+    //[マイノートへ追加する]押下時
     $(document).ready(function () {
       $('#MyNoteAdd').off('click');
-      $('#MyNoteAdd').on('click', function (event) {
+      $('#MyNoteAdd').on('click', function (e) {
+        console.log(this);
+        share.shareThis.parentNode.removeChild(share.shareThis);
         mynoteAddFunc(share.id);
       });
     });
