@@ -30,7 +30,7 @@ export const newFolderCreateFunc = (
 
     const clickL = (e) => {
       e.preventDefault();
-      if (folderInputExistFlg && !e.target.closest('#inputTab')) {
+      if (!e.target.closest('#inputTab')) {
         newCreateFolder2(inputTab, span, li, ul, id);
         document.removeEventListener('click', clickL);
         document.removeEventListener('contextmenu', clickR);
@@ -40,7 +40,7 @@ export const newFolderCreateFunc = (
     };
     const clickR = (e) => {
       e.preventDefault();
-      if (folderInputExistFlg && !e.target.closest('#inputTab')) {
+      if (!e.target.closest('#inputTab')) {
         newCreateFolder2(inputTab, span, li, ul, id);
         document.removeEventListener('click', clickL);
         document.removeEventListener('contextmenu', clickR);
@@ -50,14 +50,13 @@ export const newFolderCreateFunc = (
     };
     const enter = (e) => {
       //e.preventDefault(); //これがあると入力できない？？
-      if (folderInputExistFlg) {
-        if (e.keyCode === 13) {
-          newCreateFolder2(inputTab, span, li, ul, id);
-          document.removeEventListener('click', clickL);
-          document.removeEventListener('contextmenu', clickR);
-          document.removeEventListener('keypress', enter);
-          resolve();
-        }
+
+      if (e.keyCode === 13) {
+        newCreateFolder2(inputTab, span, li, ul, id);
+        document.removeEventListener('click', clickL);
+        document.removeEventListener('contextmenu', clickR);
+        document.removeEventListener('keypress', enter);
+        resolve();
       }
     };
 

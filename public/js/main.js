@@ -488,7 +488,6 @@ document.getElementById('newfolder').onclick = async (e) => {
 document.getElementById('newfile').onclick = async (e) => {
   const id = 0;
   e.stopPropagation();
-
   await newFileCreateFunc(id, fileInputExistFlg);
 };
 
