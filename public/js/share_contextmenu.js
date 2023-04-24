@@ -35,6 +35,7 @@ const mynoteAddFunc = (id, tabIdArray) => {
     }),
     success: function (res) {
       console.log(res.response);
+      console.log(res.response.id);
 
       const li = document.createElement('li');
       const span = document.createElement('span');
