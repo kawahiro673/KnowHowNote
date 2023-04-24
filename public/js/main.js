@@ -482,12 +482,7 @@ document.getElementById('newfolder').onclick = async (e) => {
   const id = 0;
   e.stopPropagation();
   folderInputExistFlg = true;
-  await newFolderCreateFunc(
-    id,
-    folderInputExistFlg,
-    fileInputExistFlg,
-    tabIdArray
-  );
+  await newFolderCreateFunc(id, folderInputExistFlg);
   folderInputExistFlg = false;
 };
 
@@ -510,12 +505,7 @@ createbutton.addEventListener(
       const id = 0;
       e.stopPropagation();
       folderInputExistFlg = true;
-      await newFolderCreateFunc(
-        id,
-        folderInputExistFlg,
-        fileInputExistFlg,
-        tabIdArray
-      );
+      await newFolderCreateFunc(id, folderInputExistFlg);
       folderInputExistFlg = false;
     }
   },

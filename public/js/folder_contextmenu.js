@@ -33,21 +33,21 @@ export const folderContextmenu = (
       `parent${folderList.folderThis.parentNode.parentNode.id}`
     );
 
-    let index = [].slice
+    let order = [].slice
       .call(elements)
       .indexOf(folderList.folderThis.parentNode);
-    index++;
+    order++;
     console.log(
-      `id:${folderList.folderId},title:${folderList.folderTitle},order:${index},parent_id:${folderList.folderThis.parentNode.parentNode.id}`
+      `id:${folderList.folderId},title:${folderList.folderTitle},order:${order},parent_id:${folderList.folderThis.parentNode.parentNode.id}`
     );
 
     document.getElementById('folderDelete').onclick = function () {
-      folderDelete(folderList, index, tabIdArray);
+      folderDelete(folderList, order, tabIdArray);
     };
 
     $(document).ready(function () {
       $('#folderName').off('click');
-      $('#folderName').on('click', function (event) {
+      $('#folderName').on('click', function (e) {
         folderNameChange(folderList);
       });
     });
@@ -83,12 +83,7 @@ export const folderContextmenu = (
           fID.click();
         }
         folderInputExistFlgFlg = true;
-        newFolderCreateFunc(
-          folderList.folderId,
-          folderInputExistFlgFlg,
-          fileInputExistFlg,
-          tabIdArray
-        );
+        newFolderCreateFunc(folderList.folderId, folderInputExistFlgFlg);
         conme.style.display = 'none';
         conme2.style.display = 'none';
         conme3.style.display = 'none';
@@ -108,7 +103,7 @@ export const folderContextmenu = (
   });
 };
 
-const folderDelete = (folderList, index, tabIdArray) => {
+const folderDelete = (folderList, order, tabIdArray) => {
   let btn = confirm(
     `${folderList.folderTitle} 配下のフォルダやノートも全て削除されますが本当に削除しますか？`
   );
@@ -124,7 +119,7 @@ const folderDelete = (folderList, index, tabIdArray) => {
         flg: 'folderDel',
         id: folderList.folderId,
         title: folderList.folderTitle,
-        order: index,
+        order,
         parentId: folderList.folderThis.parentNode.parentNode.id,
       }),
       success: function (res) {
@@ -143,7 +138,6 @@ const folderDelete = (folderList, index, tabIdArray) => {
             folder: res.response2,
           }),
           success: function (res) {
-            console.log(res.response);
             //削除されたファイルのタブを削除する
             for (let i = 0; i < res.response.length; i++) {
               //idArrayが文字列で格納されているため、num→String変換
@@ -202,7 +196,6 @@ const folderNameChange = (folderList) => {
             title: inputTab.value,
           }),
           success: function (res) {
-            //console.log(`success受信(title) : "${res.response}"`);
             folderList.folderThis.style.display = 'block';
             folderList.folderThis.innerHTML = res.response;
             inputTab.remove();
