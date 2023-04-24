@@ -23,6 +23,7 @@ export const shareContextmenu = (tabIdArray) => {
 };
 
 const mynoteAddFunc = (id, tabIdArray) => {
+  console.log(typeof id);
   $.ajax({
     url: '/sharePostController/',
     type: 'POST',
