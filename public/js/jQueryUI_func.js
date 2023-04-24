@@ -190,7 +190,7 @@ export const jQueryUIOptionsFunc = () => {
                   );
                   //パス更新
                   let pass = passGet(id, item[0].childNodes[0].innerHTML);
-                  //console.log(pass);
+
                   $.ajax({
                     url: '/mypage/',
                     type: 'POST',
@@ -201,15 +201,13 @@ export const jQueryUIOptionsFunc = () => {
                       id,
                       parent_id: item[0].parentNode.id,
                       order: index,
-                      pass,
                       pattern: 'file',
                     }),
                     success: function (res) {
                       //passを正しく表示する2点セット
                       //1.focusが当たってたらパス更新
                       if (res.response2 !== undefined && res.response2 == 1) {
-                        document.getElementById('notepass').innerHTML =
-                          res.response1;
+                        document.getElementById('notepass').innerHTML = pass;
                       }
                     },
                   });

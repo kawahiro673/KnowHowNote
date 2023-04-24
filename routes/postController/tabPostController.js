@@ -30,8 +30,8 @@ router.post('/', (req, res) => {
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'UPDATE tab_hold SET tabOrder = ?, pass = ?, focus = 1 where id = ?',
-              [req.body.order, req.body.pass, req.body.id],
+              'UPDATE tab_hold SET tabOrder = ?, focus = 1 where id = ?',
+              [req.body.order, req.body.id],
               (error, results) => {
                 if (error) {
                   reject(error);

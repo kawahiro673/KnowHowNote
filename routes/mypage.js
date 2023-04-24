@@ -138,33 +138,15 @@ router
               .then(() => {
                 return new Promise((resolve, reject) => {
                   pool.query(
-                    'UPDATE tab_hold SET pass = ? WHERE id = ?',
-                    [req.body.pass, req.body.id],
-                    (error, result) => {
-                      if (error) {
-                        reject(error);
-                      } else {
-                        resolve();
-                      }
-                    }
-                  );
-                });
-              })
-              .then(() => {
-                return new Promise((resolve, reject) => {
-                  pool.query(
                     'SELECT * FROM tab_hold WHERE id = ?',
                     [req.body.id],
                     (error, result) => {
                       if (result[0] !== undefined) {
                         res.send({
-                          response1: req.body.pass,
                           response2: result[0].focus,
                         });
                       } else {
-                        res.send({
-                          response1: req.body.pass,
-                        });
+                        res.end();
                       }
                     }
                   );
