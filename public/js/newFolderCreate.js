@@ -139,8 +139,8 @@ function newCreateFolder2(
         //newIndex は並び替え(D&D) 後の配列の順番
         let newIndex = [].slice.call(elements).indexOf(span.parentNode);
         newIndex++;
-        jQueryUIOptionsFunc();
-        folderContextmenu(tabIdArray, fileInputExistFlg, folderInputExistFlg);
+        // jQueryUIOptionsFunc();
+        // folderContextmenu(tabIdArray, fileInputExistFlg, folderInputExistFlg);
         $.ajax({
           url: '/folderPostController/',
           type: 'POST',

@@ -100,10 +100,10 @@ export const newCreateFile2 = (inputTab, span, parentId, tabIdArray) => {
         //newIndex は並び替え(D&D) 後の配列の順番
         let newIndex = [].slice.call(elements).indexOf(span.parentNode);
         newIndex++;
-        jQueryUIOptionsFunc();
-        fileContextmenu(tabIdArray);
-        fileClick();
-        updateTime(res.response2.id);
+        // jQueryUIOptionsFunc();
+        // fileContextmenu(tabIdArray);
+        // fileClick();
+        // updateTime(res.response2.id);
         $.ajax({
           url: '/notePostController/',
           type: 'POST',

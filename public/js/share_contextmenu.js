@@ -23,7 +23,6 @@ export const shareContextmenu = (tabIdArray) => {
 };
 
 const mynoteAddFunc = (id, tabIdArray) => {
-  console.log(typeof id);
   $.ajax({
     url: '/sharePostController/',
     type: 'POST',
@@ -51,10 +50,11 @@ const mynoteAddFunc = (id, tabIdArray) => {
       //MyPage追加後の順番
       let order = [].slice.call(elements).indexOf(span.parentNode);
       order++;
-      jQueryUIOptionsFunc();
-      fileContextmenu(tabIdArray);
-      fileClick();
-      updateTime(res.response.id);
+
+      // jQueryUIOptionsFunc();
+      // fileContextmenu(tabIdArray);
+      // fileClick();
+      // updateTime(res.response.id);
       $.ajax({
         url: '/notePostController/',
         type: 'POST',
@@ -68,7 +68,6 @@ const mynoteAddFunc = (id, tabIdArray) => {
           order,
         }),
         success: function (res) {
-          console.log(res.response);
           //一度listを全て削除して、再び新しく追加している→jQueryUIがうまく適用されないため
           const node = document.getElementById('0');
           while (node.firstChild) {
