@@ -23,8 +23,6 @@ import { newFolderCreateFunc } from './newFolderCreate.js';
 import { orderGet } from './stringUtils.js';
 
 var tabIdArray = []; //タブが生成されているファイルのIDを格納
-let fileInputExistFlg = false; //ファイル作成時のInputタブが出力しているかの有無　true=有,false=無
-let folderInputExistFlg = false; //↑のフォルダ版
 
 export const listCreate = () => {
   $.ajax({
@@ -178,7 +176,7 @@ export const listCreate = () => {
       };
       await jQueryUIOptionsFunc();
       fileContextmenu(tabIdArray);
-      folderContextmenu(tabIdArray, fileInputExistFlg, folderInputExistFlg);
+      folderContextmenu(tabIdArray);
       fileClick();
       await expandableAdaptation();
     },
@@ -481,18 +479,18 @@ async function titleClick(id, title) {
 document.getElementById('newfolder').onclick = async (e) => {
   const id = 0;
   e.stopPropagation();
-  await newFolderCreateFunc(id, folderInputExistFlg);
+  await newFolderCreateFunc(id);
 };
 
 //rootの右クリックから「ファイル新規作成」押下
 document.getElementById('newfile').onclick = async (e) => {
   const id = 0;
   e.stopPropagation();
-  await newFileCreateFunc(id, fileInputExistFlg);
+  await newFileCreateFunc(id);
 };
 
 //「フォルダ追加」ボタン押下時(root(id=0)に作成)
-//folderInputExistFlg=true時はファイルを作らせない → 連続でボタンクリックした時にフォルダを２個同時に作らせないため
+
 createbutton.addEventListener(
   'click',
   async (e) => {
@@ -500,14 +498,13 @@ createbutton.addEventListener(
     if (!root) {
       const id = 0;
       e.stopPropagation();
-      await newFolderCreateFunc(id, folderInputExistFlg);
+      await newFolderCreateFunc(id);
     }
   },
   false
 );
 
 //「ノート追加」ボタン押下時(root(id=0)に作成)
-//fileInputExistFlg=true時はファイルを作らせない → 連続でボタンクリックした時にファイルを２個同時に作らせないため
 // hasInputは、input要素の有無を確認している
 createfilebutton.addEventListener('click', async (e) => {
   const root = hasInput(document.getElementById('0'));
@@ -515,7 +512,7 @@ createfilebutton.addEventListener('click', async (e) => {
     const id = 0;
     e.stopPropagation();
     //awaitはPromiseが返ってくるまで待つ。関数内でPromise化し、resolveのタイミングでPromiseが返る
-    await newFileCreateFunc(id, fileInputExistFlg);
+    await newFileCreateFunc(id);
   }
 });
 

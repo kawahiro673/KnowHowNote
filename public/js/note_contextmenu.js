@@ -21,12 +21,12 @@ export const fileContextmenu = (tabArray) => {
     let elements = document.getElementsByClassName(
       `parent${listTitle.titleThis.parentNode.parentNode.id}`
     );
-    let index = [].slice.call(elements).indexOf(listTitle.titleThis.parentNode);
-    index++;
+    let order = [].slice.call(elements).indexOf(listTitle.titleThis.parentNode);
+    order++;
 
     document.getElementById('delete').onclick = () => {
       let tabIndex = orderGet('tab-content', `Tab-ID${listTitle.id}`);
-      noteDelete(listTitle, tabIndex, index, tabArray);
+      noteDelete(listTitle, tabIndex, order, tabArray);
     };
 
     $(document).ready(function () {
@@ -57,7 +57,7 @@ export const fileContextmenu = (tabArray) => {
   });
 };
 
-const noteDelete = (listTitle, tabIndex, index, tabArray) => {
+const noteDelete = (listTitle, tabIndex, order, tabArray) => {
   //はいを押した場合(true)
   //まずはタブ削除
   let btn = confirm(`${listTitle.title} を本当に削除しますか？`);
@@ -94,7 +94,7 @@ const noteDelete = (listTitle, tabIndex, index, tabArray) => {
             data: 'note',
             flg: 'delete',
             id: listTitle.id,
-            order: index,
+            order,
             parentId: parentid,
           }),
           success: function (res) {

@@ -1,6 +1,6 @@
 import { listCreate } from './main.js';
 
-export const newFileCreateFunc = (id, fileInputExistFlg) => {
+export const newFileCreateFunc = (id) => {
   return new Promise((resolve, reject) => {
     const li = document.createElement('li');
     const span = document.createElement('span');

@@ -11,11 +11,7 @@ let conme2 = document.getElementById('contextmenu2');
 let conme3 = document.getElementById('contextmenu3');
 let conme4 = document.getElementById('contextmenu4');
 
-export const folderContextmenu = (
-  tabIdArray,
-  fileInputExistFlg,
-  folderInputExistFlgFlg
-) => {
+export const folderContextmenu = (tabIdArray) => {
   $('.folder').on('contextmenu', function () {
     console.log(
       `"${$(this).html()}" ${$(this).attr('value')} を右クリックしました`
@@ -37,9 +33,6 @@ export const folderContextmenu = (
       .call(elements)
       .indexOf(folderList.folderThis.parentNode);
     order++;
-    console.log(
-      `id:${folderList.folderId},title:${folderList.folderTitle},order:${order},parent_id:${folderList.folderThis.parentNode.parentNode.id}`
-    );
 
     document.getElementById('folderDelete').onclick = function () {
       folderDelete(folderList, order, tabIdArray);
@@ -62,7 +55,7 @@ export const folderContextmenu = (
           fID.click();
         }
 
-        newFileCreateFunc(folderList.folderId, fileInputExistFlg, tabIdArray);
+        newFileCreateFunc(folderList.folderId, tabIdArray);
 
         conme.style.display = 'none';
         conme2.style.display = 'none';
@@ -82,7 +75,7 @@ export const folderContextmenu = (
           fID.click();
         }
 
-        newFolderCreateFunc(folderList.folderId, folderInputExistFlgFlg);
+        newFolderCreateFunc(folderList.folderId);
         conme.style.display = 'none';
         conme2.style.display = 'none';
         conme3.style.display = 'none';

@@ -1,11 +1,6 @@
 import { listCreate } from './main.js';
 
-export const newFolderCreateFunc = (
-  id,
-  folderInputExistFlg,
-  fileInputExistFlg,
-  tabIdArray
-) => {
+export const newFolderCreateFunc = (id) => {
   return new Promise((resolve, reject) => {
     let li = document.createElement('li');
     li.setAttribute('class', 'closed');
