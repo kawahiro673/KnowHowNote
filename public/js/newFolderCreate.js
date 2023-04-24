@@ -113,7 +113,7 @@ function newCreateFolder2(inputTab, span, li, ul, parentId) {
             pattern: 'order',
             folderName: inputTab.value,
             id: res.response2.id,
-            order: newIndex,
+            order,
           }),
           success: function (res) {
             //一度listを全て削除して、再び新しく追加している→jQueryUIがうまく適用されないため
