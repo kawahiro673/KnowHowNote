@@ -1,9 +1,6 @@
-import { jQueryUIOptionsFunc } from './jQueryUI_func.js';
-import { fileContextmenu } from './note_contextmenu.js';
-import { updateTime } from './tab_func.js';
-import { listCreate, fileClick } from './main.js';
+import { listCreate } from './main.js';
 
-export const newFileCreateFunc = (id, fileInputExistFlg, tabIdArray) => {
+export const newFileCreateFunc = (id, fileInputExistFlg) => {
   return new Promise((resolve, reject) => {
     const li = document.createElement('li');
     const span = document.createElement('span');
@@ -30,7 +27,7 @@ export const newFileCreateFunc = (id, fileInputExistFlg, tabIdArray) => {
     const clickL = (e) => {
       e.preventDefault();
       if (fileInputExistFlg && !e.target.closest('#inputTab')) {
-        newCreateFile2(inputTab, span, id, tabIdArray);
+        newCreateFile2(inputTab, span, id);
         document.removeEventListener('click', clickL);
         document.removeEventListener('contextmenu', clickR);
         document.removeEventListener('keypress', enter);
@@ -41,7 +38,7 @@ export const newFileCreateFunc = (id, fileInputExistFlg, tabIdArray) => {
     const clickR = (e) => {
       e.preventDefault();
       if (fileInputExistFlg && !e.target.closest('#inputTab')) {
-        newCreateFile2(inputTab, span, id, tabIdArray);
+        newCreateFile2(inputTab, span, id);
         document.removeEventListener('click', clickL);
         document.removeEventListener('contextmenu', clickR);
         document.removeEventListener('keypress', enter);
@@ -53,7 +50,7 @@ export const newFileCreateFunc = (id, fileInputExistFlg, tabIdArray) => {
       //e.preventDefault(); //これがあると入力できない？？
       if (fileInputExistFlg) {
         if (e.keyCode === 13) {
-          newCreateFile2(inputTab, span, id, tabIdArray);
+          newCreateFile2(inputTab, span, id);
           document.removeEventListener('click', clickL);
           document.removeEventListener('contextmenu', clickR);
           document.removeEventListener('keypress', enter);
@@ -68,7 +65,7 @@ export const newFileCreateFunc = (id, fileInputExistFlg, tabIdArray) => {
   });
 };
 
-export const newCreateFile2 = (inputTab, span, parentId, tabIdArray) => {
+export const newCreateFile2 = (inputTab, span, parentId) => {
   //何も入力されていない時や空白や改行のみ
   if (!inputTab.value || !inputTab.value.match(/\S/g)) {
     alert('タイトルを入力してください');
@@ -97,13 +94,10 @@ export const newCreateFile2 = (inputTab, span, parentId, tabIdArray) => {
         let elements = document.getElementsByClassName(
           `parent${res.response2.parent_id}`
         );
-        //newIndex は並び替え(D&D) 後の配列の順番
-        let newIndex = [].slice.call(elements).indexOf(span.parentNode);
-        newIndex++;
-        // jQueryUIOptionsFunc();
-        // fileContextmenu(tabIdArray);
-        // fileClick();
-        // updateTime(res.response2.id);
+
+        let order = [].slice.call(elements).indexOf(span.parentNode);
+        order++;
+
         $.ajax({
           url: '/notePostController/',
           type: 'POST',
@@ -114,7 +108,7 @@ export const newCreateFile2 = (inputTab, span, parentId, tabIdArray) => {
             flg: 'newNote',
             pattern: 'order',
             id: res.response2.id,
-            order: newIndex,
+            order,
           }),
           success: function (res) {
             //一度listを全て削除して、再び新しく追加している→jQueryUIがうまく適用されないため

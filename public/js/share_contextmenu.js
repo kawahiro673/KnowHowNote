@@ -1,9 +1,6 @@
-import { jQueryUIOptionsFunc } from './jQueryUI_func.js';
-import { fileContextmenu } from './note_contextmenu.js';
-import { updateTime } from './tab_func.js';
-import { listCreate, fileClick } from './main.js';
+import { listCreate } from './main.js';
 
-export const shareContextmenu = (tabIdArray) => {
+export const shareContextmenu = () => {
   $('.sharenote').on('contextmenu', function () {
     console.log(`"${$(this).html()}" を右クリックしました`);
     let share = {
@@ -16,13 +13,13 @@ export const shareContextmenu = (tabIdArray) => {
     $(document).ready(function () {
       $('#MyNoteAdd').off('click');
       $('#MyNoteAdd').on('click', function (event) {
-        mynoteAddFunc(share.id, tabIdArray);
+        mynoteAddFunc(share.id);
       });
     });
   });
 };
 
-const mynoteAddFunc = (id, tabIdArray) => {
+const mynoteAddFunc = (id) => {
   $.ajax({
     url: '/sharePostController/',
     type: 'POST',
@@ -51,10 +48,6 @@ const mynoteAddFunc = (id, tabIdArray) => {
       let order = [].slice.call(elements).indexOf(span.parentNode);
       order++;
 
-      // jQueryUIOptionsFunc();
-      // fileContextmenu(tabIdArray);
-      // fileClick();
-      // updateTime(res.response.id);
       $.ajax({
         url: '/notePostController/',
         type: 'POST',

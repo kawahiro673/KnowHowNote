@@ -206,7 +206,7 @@ function shareListCreate() {
         span.innerHTML = file.title;
         document.getElementById('sharelist').appendChild(li);
         li.appendChild(span);
-        shareContextmenu(tabIdArray);
+        shareContextmenu();
       });
     },
   });
@@ -496,7 +496,7 @@ document.getElementById('newfile').onclick = async (e) => {
   const id = 0;
   e.stopPropagation();
   fileInputExistFlg = true;
-  await newFileCreateFunc(id, fileInputExistFlg, tabIdArray);
+  await newFileCreateFunc(id, fileInputExistFlg);
   fileInputExistFlg = false;
 };
 
@@ -532,7 +532,7 @@ createfilebutton.addEventListener('click', async (e) => {
     e.stopPropagation();
     fileInputExistFlg = true;
     //awaitはPromiseが返ってくるまで待つ。関数内でPromise化し、resolveのタイミングでPromiseが返る
-    await newFileCreateFunc(id, fileInputExistFlg, tabIdArray);
+    await newFileCreateFunc(id, fileInputExistFlg);
     fileInputExistFlg = false;
   }
 });
