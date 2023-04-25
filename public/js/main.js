@@ -2,7 +2,6 @@ import {
   keepButton,
   cancelButton,
   shareButton,
-  passGet,
   closeTab,
   closeButton,
   tabClick,
