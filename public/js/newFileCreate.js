@@ -1,6 +1,7 @@
 import { listCreate } from './main.js';
 
 export const newFileCreateFunc = (id) => {
+  console.log('yaa');
   return new Promise((resolve, reject) => {
     const li = document.createElement('li');
     const span = document.createElement('span');
@@ -64,6 +65,7 @@ export const newFileCreateFunc = (id) => {
 };
 
 export const newCreateFile2 = (inputTab, span, parentId) => {
+  console.log('yaa');
   //何も入力されていない時や空白や改行のみ
   if (!inputTab.value || !inputTab.value.match(/\S/g)) {
     alert('タイトルを入力してください');
@@ -95,7 +97,7 @@ export const newCreateFile2 = (inputTab, span, parentId) => {
 
         let order = [].slice.call(elements).indexOf(span.parentNode);
         order++;
-
+        console.log('yaa');
         $.ajax({
           url: '/notePostController/',
           type: 'POST',
@@ -109,6 +111,7 @@ export const newCreateFile2 = (inputTab, span, parentId) => {
             order,
           }),
           success: function (res) {
+            console.log('yaa');
             //一度listを全て削除して、再び新しく追加している→jQueryUIがうまく適用されないため
             const node = document.getElementById('0');
             while (node.firstChild) {
