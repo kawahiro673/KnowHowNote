@@ -267,11 +267,9 @@ export const jQueryUIOptionsFunc = () => {
                   parent_id: item[0].parentNode.id,
                   old_parent_id: parent_id_Tmp,
                   id,
-                  //order: index,
                   old_order: initial_index, //元order
                 }),
                 success: function (res) {
-                  console.log(`追加成功 parent_id: ${res.response}`);
                   item[0].classList.replace(
                     `parent${parent_id_Tmp}`,
                     `parent${item[0].parentNode.id}`
@@ -282,9 +280,7 @@ export const jQueryUIOptionsFunc = () => {
                   //index: D&D後のparent_id内での順番
                   let index = [].slice.call(elements).indexOf(item[0]);
                   index++;
-                  console.log(
-                    `移動後(folder)【order:${index}(違う階層の場合は0), parent_id: ${item[0].parentNode.id}】`
-                  );
+
                   $.ajax({
                     url: '/mypage/',
                     type: 'POST',

@@ -165,9 +165,7 @@ export const listCreate = () => {
                   id: this.id.replace(/[^0-9]/g, ''),
                   closedFlg,
                 }),
-                success: function (res) {
-                  //console.log(res.response);
-                },
+                success: function (res) {},
               });
             });
           }
@@ -362,11 +360,10 @@ function tabUpload() {
   });
 }
 
-//*********** タブ生成関数(ページリロード時) ************
 async function titleClick(id, title) {
   return new Promise((resolve, reject) => {
-    //タブ生成しておらず、・・・じゃないとき
-    if (tabIdArray.includes(id) == false) {
+    //タブ未生成時
+    if (!tabIdArray.includes(id)) {
       $.ajax({
         url: '/notePostController/',
         type: 'POST',

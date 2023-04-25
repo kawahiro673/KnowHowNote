@@ -124,8 +124,8 @@ router.post('/', (req, res) => {
             pool.query(
               'UPDATE tab_hold SET tabTitle = ? WHERE id = ?;',
               [req.body.titleContent, req.body.id],
-              (error) => {
-                if ((error, result)) {
+              (error, result) => {
+                if (error) {
                   reject(error);
                 } else {
                   res.end();
