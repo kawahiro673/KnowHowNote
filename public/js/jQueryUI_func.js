@@ -125,7 +125,9 @@ export const jQueryUIOptionsFunc = () => {
                     move: 'down',
                     order: index,
                   }),
-                  success: function (res) {},
+                  success: function (res) {
+                    //console.log(`parent_id追加成功!! ${res.response}`);
+                  },
                 });
                 //上へD＆D
               } else if (initial_index > index) {
@@ -145,7 +147,9 @@ export const jQueryUIOptionsFunc = () => {
                     move: 'up',
                     order: index,
                   }),
-                  success: function (res) {},
+                  success: function (res) {
+                    //console.log(`parent_id追加成功!! ${res.response}`);
+                  },
                 });
               } else {
                 console.log('順番は変化していません');
@@ -170,6 +174,7 @@ export const jQueryUIOptionsFunc = () => {
                   old_order: initial_index,
                 }),
                 success: function (res) {
+                  console.log(`追加成功 parent_id: ${res.response1}`);
                   item[0].classList.replace(
                     `parent${parent_id_Tmp}`,
                     `parent${item[0].parentNode.id}`
@@ -178,8 +183,11 @@ export const jQueryUIOptionsFunc = () => {
                     `parent${item[0].parentNode.id}`
                   );
                   //index: D&D後のparent_id内での順番
-                  let order = [].slice.call(elements).indexOf(item[0]);
-                  order++;
+                  let index = [].slice.call(elements).indexOf(item[0]);
+                  index++;
+                  console.log(
+                    `移動後(folder)【order:${index}(違う階層の場合は0), parent_id: ${item[0].parentNode.id}】`
+                  );
                   //パス更新
                   let pass = passGet(id, item[0].childNodes[0].innerHTML);
 
@@ -192,7 +200,7 @@ export const jQueryUIOptionsFunc = () => {
                       data: 'addOrder',
                       id,
                       parent_id: item[0].parentNode.id,
-                      order,
+                      order: index,
                       pattern: 'file',
                     }),
                     success: function (res) {
@@ -229,7 +237,9 @@ export const jQueryUIOptionsFunc = () => {
                     order: index,
                     move: 'down',
                   }),
-                  success: function (res) {},
+                  success: function (res) {
+                    console.log(`追加成功 parent_id: ${res.response1}`);
+                  },
                 });
                 //orderが小さくなる場合(上へD＆D)
               } else if (initial_index > index) {
@@ -247,7 +257,9 @@ export const jQueryUIOptionsFunc = () => {
                     order: index,
                     move: 'up',
                   }),
-                  success: function (res) {},
+                  success: function (res) {
+                    console.log(`追加成功 parent_id: ${res.response1}`);
+                  },
                 });
               } else {
                 console.log('順番は変化していません');
@@ -267,9 +279,11 @@ export const jQueryUIOptionsFunc = () => {
                   parent_id: item[0].parentNode.id,
                   old_parent_id: parent_id_Tmp,
                   id,
+                  //order: index,
                   old_order: initial_index, //元order
                 }),
                 success: function (res) {
+                  console.log(`追加成功 parent_id: ${res.response}`);
                   item[0].classList.replace(
                     `parent${parent_id_Tmp}`,
                     `parent${item[0].parentNode.id}`
@@ -280,7 +294,9 @@ export const jQueryUIOptionsFunc = () => {
                   //index: D&D後のparent_id内での順番
                   let index = [].slice.call(elements).indexOf(item[0]);
                   index++;
-
+                  console.log(
+                    `移動後(folder)【order:${index}(違う階層の場合は0), parent_id: ${item[0].parentNode.id}】`
+                  );
                   $.ajax({
                     url: '/mypage/',
                     type: 'POST',
