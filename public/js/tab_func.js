@@ -210,6 +210,7 @@ export const passGet = (id, title) => {
       answer = ` > ${hoge}` + answer;
     }
   });
+  if (!answer) return title;
   return answer + ' > ' + title;
 };
 
@@ -274,9 +275,9 @@ export const closeTab = (id, index, tabArray) => {
 export const closeButton = (id, title, tabArray) => {
   let tabelements = document.getElementsByClassName('tab-content');
   let tabId = document.getElementById(`Tab-ID${id}`);
-  let index = [].slice.call(tabelements).indexOf(tabId);
-  index = index + 1;
-  closeTab(id, index, tabArray);
+  let order = [].slice.call(tabelements).indexOf(tabId);
+  order++;
+  closeTab(id, order, tabArray);
   $.ajax({
     url: '/tabPostController/',
     type: 'POST',
