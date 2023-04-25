@@ -1,4 +1,4 @@
-import { passGet } from './tab_func.js';
+import { passGet } from './stringUtils.js';
 
 export const jQueryUIOptionsFunc = () => {
   return new Promise((resolve, reject) => {
