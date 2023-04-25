@@ -210,6 +210,9 @@ export const passGet = (id, title) => {
       answer = ` > ${hoge}` + answer;
     }
   });
+  if (!answer) {
+    return title;
+  }
   return answer + ' > ' + title;
 };
 
