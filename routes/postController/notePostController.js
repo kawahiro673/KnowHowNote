@@ -265,7 +265,7 @@ router.post('/', (req, res) => {
                   reject(error);
                 } else {
                   resolve({
-                    fileResult: fileResult[0],
+                    fileResult: fileResult,
                     resultDecoded: resultDecoded,
                   });
                 }
@@ -283,7 +283,7 @@ router.post('/', (req, res) => {
                   reject(error);
                 } else {
                   //D&Dした結果parent_idが変わった結果(移動していない場合でないとき)
-                  if (req.body.order !== fileResult.folder_order) {
+                  if (req.body.order !== fileResult[0].folder_order) {
                     if (req.body.move === 'down') {
                       let promise1 = new Promise((resolve, reject) => {
                         resolve();
@@ -296,7 +296,7 @@ router.post('/', (req, res) => {
                               [
                                 req.body.parent_id,
                                 req.body.id,
-                                fileResult.folder_order,
+                                fileResult[0].folder_order,
                                 req.body.order,
                                 resultDecoded[0].id,
                               ],
@@ -317,7 +317,7 @@ router.post('/', (req, res) => {
                               [
                                 req.body.parent_id,
                                 req.body.id,
-                                fileResult.folder_order,
+                                fileResult[0].folder_order,
                                 req.body.order,
                                 resultDecoded[0].id,
                               ],
@@ -351,7 +351,7 @@ router.post('/', (req, res) => {
                               req.body.parent_id,
                               req.body.id,
                               req.body.order,
-                              fileResult.folder_order,
+                              fileResult[0].folder_order,
                               resultDecoded[0].id,
                             ],
                             (error, result) => {
@@ -372,7 +372,7 @@ router.post('/', (req, res) => {
                               req.body.parent_id,
                               req.body.id,
                               req.body.order,
-                              fileResult.folder_order,
+                              fileResult[0].folder_order,
                               resultDecoded[0].id,
                             ],
                             (error, result) => {
