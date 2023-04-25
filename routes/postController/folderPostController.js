@@ -72,7 +72,7 @@ router.post('/', (req, res) => {
           'UPDATE folder SET folder_order = ? WHERE id = ?',
           [req.body.order, req.body.id],
           (error, result) => {
-            res.end();
+            res.send({ msg: '成功' });
           }
         );
       }
@@ -179,7 +179,7 @@ router.post('/', (req, res) => {
                         if (error) {
                           reject(error);
                         } else {
-                          res.end();
+                          res.send({ msg: '成功' });
                         }
                       }
                     );
@@ -232,7 +232,7 @@ router.post('/', (req, res) => {
                       if (error) {
                         reject(error);
                       } else {
-                        res.end();
+                        res.send({ msg: '成功' });
                       }
                     }
                   );
@@ -312,7 +312,7 @@ router.post('/', (req, res) => {
                 if (error) {
                   reject(error);
                 } else {
-                  res.end();
+                  res.send({ msg: '成功' });
                 }
               }
             );
@@ -327,7 +327,7 @@ router.post('/', (req, res) => {
         'UPDATE folder SET folder_name=? WHERE id = ?',
         [req.body.title, req.body.id],
         (error, results) => {
-          res.end();
+          res.send({ msg: '成功' });
         }
       );
     } else if (req.body.flg === 'folderDel') {
@@ -459,7 +459,7 @@ router.post('/', (req, res) => {
                 if (error) {
                   reject(error);
                 } else {
-                  res.end();
+                  res.send({ msg: '成功' });
                 }
               }
             );
@@ -500,7 +500,7 @@ router.post('/', (req, res) => {
                 if (error) {
                   reject(error);
                 } else {
-                  res.end();
+                  res.send({ msg: '成功' });
                 }
               }
             );
@@ -517,7 +517,7 @@ router.post('/', (req, res) => {
           'UPDATE folder SET closed = "on" WHERE id = ?;',
           [req.body.id],
           (error, result) => {
-            res.end();
+            res.send({ msg: '成功' });
           }
         );
         //開く→閉じる
@@ -526,7 +526,7 @@ router.post('/', (req, res) => {
           'UPDATE folder SET closed = "off" WHERE id = ?;',
           [req.body.id],
           (error, result) => {
-            res.end();
+            res.send({ msg: '成功' });
           }
         );
       }

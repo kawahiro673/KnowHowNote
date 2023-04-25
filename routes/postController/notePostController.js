@@ -128,7 +128,7 @@ router.post('/', (req, res) => {
                 if (error) {
                   reject(error);
                 } else {
-                  res.end();
+                  res.send({ msg: '成功' });
                 }
               }
             );
@@ -223,7 +223,7 @@ router.post('/', (req, res) => {
               if (error) {
                 reject(error);
               } else {
-                res.end();
+                res.send({ msg: '成功' });
               }
             });
           });
@@ -325,7 +325,7 @@ router.post('/', (req, res) => {
                                 if (error) {
                                   reject(error);
                                 } else {
-                                  res.end();
+                                  res.send({ msg: '成功' });
                                 }
                               }
                             );
@@ -379,7 +379,7 @@ router.post('/', (req, res) => {
                               if (error) {
                                 reject(error);
                               } else {
-                                res.end();
+                                res.send({ msg: '成功' });
                               }
                             }
                           );
@@ -466,7 +466,7 @@ router.post('/', (req, res) => {
                 if (error) {
                   reject(error);
                 } else {
-                  res.end();
+                  res.send({ msg: '成功' });
                 }
               }
             );
@@ -482,7 +482,7 @@ router.post('/', (req, res) => {
         'UPDATE it_memo SET saved_time = ? WHERE id = ?;',
         [req.body.time, req.body.id],
         (error, result) => {
-          res.end();
+          res.send({ msg: '成功' });
         }
       );
     } else if (req.body.flg === 'name') {
