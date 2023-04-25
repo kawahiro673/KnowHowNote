@@ -137,11 +137,48 @@ export const listCreate = () => {
         array = resTmp.concat(resTmp2);
       }
 
+      const expandableAdaptation = () => {
+        //時間差でclosedのoffを開く＆フォルダ押下時にclick
+        return new Promise((resolve, reject) => {
+          expandableArray.forEach((ex) => {
+            document.getElementById(`folder${ex}`).click();
+          });
+
+          let fol = document.getElementsByClassName('folder');
+          for (let i = 0; i < fol.length; i++) {
+            fol[i].addEventListener('click', function () {
+              let closedFlg = 0;
+              console.log(this.id.replace(/[^0-9]/g, ''));
+              //folderが閉じているとflg=1
+              if (this.parentNode.classList.contains('expandable')) {
+                closedFlg = 1;
+              }
+
+              $.ajax({
+                url: '/folderPostController/',
+                type: 'POST',
+                dataType: 'Json',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                  data: 'folder',
+                  flg: 'closed',
+                  id: this.id.replace(/[^0-9]/g, ''),
+                  closedFlg,
+                }),
+                success: function (res) {
+                  //console.log(res.response);
+                },
+              });
+            });
+          }
+          resolve();
+        });
+      };
       await jQueryUIOptionsFunc();
       fileContextmenu(tabIdArray);
       folderContextmenu(tabIdArray);
       fileClick();
-      await expandableAdaptation(expandableArray);
+      await expandableAdaptation();
     },
   });
 };
@@ -325,10 +362,11 @@ function tabUpload() {
   });
 }
 
+//*********** タブ生成関数(ページリロード時) ************
 async function titleClick(id, title) {
   return new Promise((resolve, reject) => {
-    //タブ未生成時
-    if (!tabIdArray.includes(id)) {
+    //タブ生成しておらず、・・・じゃないとき
+    if (tabIdArray.includes(id) == false) {
       $.ajax({
         url: '/notePostController/',
         type: 'POST',
@@ -349,7 +387,7 @@ async function titleClick(id, title) {
             time,
             inputShare,
             buttonTab,
-          ] = tabCreate(id, title, res.fileResult);
+          ] = tabCreate(id, title, res.response);
 
           document.getElementById('notab').style.display = 'none';
 
@@ -547,38 +585,3 @@ function hasInput(elem) {
   }
   return false;
 }
-
-const expandableAdaptation = (expandableArray) => {
-  //時間差でclosedのoffを開く＆フォルダ押下時にclick
-  return new Promise((resolve, reject) => {
-    expandableArray.forEach((ex) => {
-      document.getElementById(`folder${ex}`).click();
-    });
-
-    let fol = document.getElementsByClassName('folder');
-    for (let i = 0; i < fol.length; i++) {
-      fol[i].addEventListener('click', function () {
-        let closedFlg = 0;
-        //folderが閉じているとflg=1
-        if (this.parentNode.classList.contains('expandable')) {
-          closedFlg = 1;
-        }
-
-        $.ajax({
-          url: '/folderPostController/',
-          type: 'POST',
-          dataType: 'Json',
-          contentType: 'application/json',
-          data: JSON.stringify({
-            data: 'folder',
-            flg: 'closed',
-            id: this.id.replace(/[^0-9]/g, ''),
-            closedFlg,
-          }),
-          success: function (res) {},
-        });
-      });
-    }
-    resolve();
-  });
-};

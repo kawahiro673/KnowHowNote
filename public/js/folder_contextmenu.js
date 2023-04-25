@@ -116,7 +116,7 @@ const folderDelete = (folderList, order, tabIdArray) => {
       }),
       success: function (res) {
         //成功！！ここにリストから消した際のタブ削除と、リスト削除を記載→タブの✖️を押下したことにすれば良いのでは？？
-        $(`#folder${folderList.folderId}`).parent().remove();
+        $(`#folder${res.response}`).parent().remove();
 
         $.ajax({
           url: '/mypage/',
@@ -126,8 +126,8 @@ const folderDelete = (folderList, order, tabIdArray) => {
           data: JSON.stringify({
             data: 'childFolder',
             id: folderList.folderId,
-            file: fileResults,
-            folder: folderResults,
+            file: res.response1,
+            folder: res.response2,
           }),
           success: function (res) {
             //削除されたファイルのタブを削除する
@@ -189,7 +189,7 @@ const folderNameChange = (folderList) => {
           }),
           success: function (res) {
             folderList.folderThis.style.display = 'block';
-            folderList.folderThis.innerHTML = inputTab.value;
+            folderList.folderThis.innerHTML = res.response;
             inputTab.remove();
           },
         });
