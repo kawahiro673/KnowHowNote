@@ -273,6 +273,7 @@ router.post('/', (req, res) => {
                 if (error) {
                   reject(error);
                 } else {
+                  console.log('old_order', results[0].folder_order);
                   resolve({ results: results, resultDecoded: resultDecoded });
                 }
               }
@@ -288,9 +289,10 @@ router.post('/', (req, res) => {
                 if (error) {
                   reject(error);
                 } else {
-                  //D&Dした結果parent_idが変わった結果(移動していない場合でないとき)
+                  //D＆Dで移動した時
                   if (req.body.order != results[0].folder_order) {
-                    if (req.body.move == 'down') {
+                    //下へD＆D
+                    if (req.body.move === 'down') {
                       let promise1 = new Promise((resolve, reject) => {
                         resolve();
                       });
@@ -343,60 +345,63 @@ router.post('/', (req, res) => {
                             .status(500)
                             .send('Internal Server Error.(parentIDSame)');
                         });
-                    } //上へD&D
-                  } else {
-                    let promise1 = new Promise((resolve, reject) => {
-                      resolve();
-                    });
-                    promise1
-                      .then(() => {
-                        return new Promise((resolve, reject) => {
-                          pool.query(
-                            'UPDATE it_memo SET folder_order =  folder_order + 1 where (parent_id = ?) AND (id != ?) AND ( ? <= folder_order AND  folder_order < ? ) AND (UserID = ?)',
-                            [
-                              req.body.parent_id,
-                              req.body.id,
-                              req.body.order,
-                              results[0].folder_order,
-                              resultDecoded[0].id,
-                            ],
-                            (error, result) => {
-                              if (error) {
-                                reject(error);
-                              } else {
-                                resolve();
-                              }
-                            }
-                          );
-                        });
-                      })
-                      .then(() => {
-                        return new Promise((resolve, reject) => {
-                          pool.query(
-                            'UPDATE folder SET folder_order =  folder_order + 1 where (parent_id = ?) AND (id != ?) AND ( ? <= folder_order AND  folder_order < ? ) AND (UserID = ?)',
-                            [
-                              req.body.parent_id,
-                              req.body.id,
-                              req.body.order,
-                              results[0].folder_order,
-                              resultDecoded[0].id,
-                            ],
-                            (error, result_se) => {
-                              if (error) {
-                                reject(error);
-                              } else {
-                                res.send({ response: req.body.parent_id });
-                              }
-                            }
-                          );
-                        });
-                      })
-                      .catch((error) => {
-                        console.error(error);
-                        res
-                          .status(500)
-                          .send('Internal Server Error.(parentIDSame)');
+                    } else {
+                      console.log('上へのやつ');
+                      let promise1 = new Promise((resolve, reject) => {
+                        resolve();
                       });
+                      promise1
+                        .then(() => {
+                          return new Promise((resolve, reject) => {
+                            pool.query(
+                              'UPDATE it_memo SET folder_order =  folder_order + 1 where (parent_id = ?) AND (id != ?) AND ( ? <= folder_order AND  folder_order < ? ) AND (UserID = ?)',
+                              [
+                                req.body.parent_id,
+                                req.body.id,
+                                req.body.order,
+                                results[0].folder_order,
+                                resultDecoded[0].id,
+                              ],
+                              (error, result) => {
+                                if (error) {
+                                  reject(error);
+                                } else {
+                                  resolve();
+                                }
+                              }
+                            );
+                          });
+                        })
+                        .then(() => {
+                          return new Promise((resolve, reject) => {
+                            pool.query(
+                              'UPDATE folder SET folder_order =  folder_order + 1 where (parent_id = ?) AND (id != ?) AND ( ? <= folder_order AND  folder_order < ? ) AND (UserID = ?)',
+                              [
+                                req.body.parent_id,
+                                req.body.id,
+                                req.body.order,
+                                results[0].folder_order,
+                                resultDecoded[0].id,
+                              ],
+                              (error, result_se) => {
+                                if (error) {
+                                  reject(error);
+                                } else {
+                                  res.send({ response: req.body.parent_id });
+                                }
+                              }
+                            );
+                          });
+                        })
+                        .catch((error) => {
+                          console.error(error);
+                          res
+                            .status(500)
+                            .send('Internal Server Error.(parentIDSame)');
+                        });
+                    }
+                  } else {
+                    console.log('orderは変化なし');
                   }
                 }
               }

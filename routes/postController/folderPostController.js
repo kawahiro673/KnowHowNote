@@ -188,62 +188,63 @@ router.post('/', (req, res) => {
                   console.error(error);
                   res.status(500).send('Internal Server Error.(newFolder)');
                 });
-            }
-            //上へD&D
-          } else {
-            let promise1 = new Promise((resolve, reject) => {
-              resolve();
-            });
-            promise1
-              .then(() => {
-                return new Promise((resolve, reject) => {
-                  pool.query(
-                    'UPDATE it_memo SET folder_order =  folder_order + 1 where (parent_id = ?) AND (id != ?) AND ( ? <= folder_order AND  folder_order < ? )  AND (UserID = ?)',
-                    [
-                      req.body.parent_id,
-                      req.body.id,
-                      req.body.order,
-                      results[0].folder_order,
-                      resultDecoded[0].id,
-                    ],
-                    (error, result) => {
-                      if (error) {
-                        reject(error);
-                      } else {
-                        resolve();
-                      }
-                    }
-                  );
-                });
-              })
-              .then(() => {
-                return new Promise((resolve, reject) => {
-                  pool.query(
-                    'UPDATE folder SET folder_order =  folder_order + 1 where (parent_id = ?) AND (id != ?) AND ( ? <= folder_order AND  folder_order < ? )  AND (UserID = ?)',
-                    [
-                      req.body.parent_id,
-                      req.body.id,
-                      req.body.order,
-                      results[0].folder_order,
-                      resultDecoded[0].id,
-                    ],
-                    (error, result) => {
-                      if (error) {
-                        reject(error);
-                      } else {
-                        res.send({
-                          response1: req.body.parent_id,
-                          response2: req.body.order,
-                        });
-                      }
-                    }
-                  );
-                });
-              })
-              .catch((error) => {
-                console.error(error);
-                res.status(500).send('Internal Server Error.(newFolder)');
+            } else {
+              let promise1 = new Promise((resolve, reject) => {
+                resolve();
               });
+              promise1
+                .then(() => {
+                  return new Promise((resolve, reject) => {
+                    pool.query(
+                      'UPDATE it_memo SET folder_order =  folder_order + 1 where (parent_id = ?) AND (id != ?) AND ( ? <= folder_order AND  folder_order < ? )  AND (UserID = ?)',
+                      [
+                        req.body.parent_id,
+                        req.body.id,
+                        req.body.order,
+                        results[0].folder_order,
+                        resultDecoded[0].id,
+                      ],
+                      (error, result) => {
+                        if (error) {
+                          reject(error);
+                        } else {
+                          resolve();
+                        }
+                      }
+                    );
+                  });
+                })
+                .then(() => {
+                  return new Promise((resolve, reject) => {
+                    pool.query(
+                      'UPDATE folder SET folder_order =  folder_order + 1 where (parent_id = ?) AND (id != ?) AND ( ? <= folder_order AND  folder_order < ? )  AND (UserID = ?)',
+                      [
+                        req.body.parent_id,
+                        req.body.id,
+                        req.body.order,
+                        results[0].folder_order,
+                        resultDecoded[0].id,
+                      ],
+                      (error, result) => {
+                        if (error) {
+                          reject(error);
+                        } else {
+                          res.send({
+                            response1: req.body.parent_id,
+                            response2: req.body.order,
+                          });
+                        }
+                      }
+                    );
+                  });
+                })
+                .catch((error) => {
+                  console.error(error);
+                  res.status(500).send('Internal Server Error.(newFolder)');
+                });
+            }
+          } else {
+            console.log('orderは変化なし');
           }
         })
         .catch((error) => {
