@@ -1,5 +1,5 @@
 //タブで必要な関数まとめ
-
+import { updateTime, passGet } from './stringUtils.js';
 //タブ生成
 export const tabCreate = (id, title, res) => {
   const inputTab = document.createElement('input');
@@ -185,57 +185,6 @@ export const shareButton = (id) => {
     }),
     success: function (res) {
       alert(res.message);
-    },
-  });
-};
-
-//passを取得する関数
-export const passGet = (id, title) => {
-  let pass = document.getElementById(`li${id}`);
-  let parentArray = [];
-  let answer = '';
-  let i = 0;
-
-  while (pass.parentNode.parentNode.id != '0') {
-    parentArray.push(
-      pass.parentNode.parentNode.previousElementSibling.innerHTML
-    );
-    pass = pass.parentNode.parentNode.previousElementSibling;
-  }
-  parentArray.forEach((hoge) => {
-    i++;
-    if (i == parentArray.length) {
-      answer = `  ${hoge}` + answer;
-    } else {
-      answer = ` > ${hoge}` + answer;
-    }
-  });
-  if (!answer) return title;
-  return answer + ' > ' + title;
-};
-
-//現在日時取得＆DB格納
-export const updateTime = (id, time) => {
-  let now = new Date();
-  let Year = now.getFullYear();
-  let Month = now.getMonth() + 1;
-  let DATE = now.getDate();
-  let Hour = now.getHours();
-  let Min = now.getMinutes();
-  $.ajax({
-    url: '/notePostController/',
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      data: 'note',
-      flg: 'updatetime',
-      id,
-      time: `${Year}年${Month}月${DATE}日 ${Hour}:${Min}`,
-    }),
-    success: function (res) {
-      //timeが空だと実行しない(ファイル作成時でtabを生成していないとき)
-      if (time) time.innerHTML = res.response;
     },
   });
 };
