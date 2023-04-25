@@ -339,6 +339,7 @@ router.post('/', (req, res) => {
                         });
                     } //上へD&D
                   } else {
+                    console.log('やあ');
                     let promise1 = new Promise((resolve, reject) => {
                       resolve();
                     });
