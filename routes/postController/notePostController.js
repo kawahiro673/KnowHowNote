@@ -283,7 +283,7 @@ router.post('/', (req, res) => {
                   reject(error);
                 } else {
                   //D&Dした結果parent_idが変わった結果(移動していない場合でないとき)
-                  if (req.body.order !== fileResult[0].folder_order) {
+                  if (req.body.order != fileResult[0].folder_order) {
                     if (req.body.move === 'down') {
                       let promise1 = new Promise((resolve, reject) => {
                         resolve();
@@ -339,7 +339,6 @@ router.post('/', (req, res) => {
                         });
                     } //上へD&D
                   } else {
-                    console.log('やあ');
                     let promise1 = new Promise((resolve, reject) => {
                       resolve();
                     });
