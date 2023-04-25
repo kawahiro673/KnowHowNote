@@ -1,5 +1,5 @@
-import { closeTab, deleteTabArray, passGet } from './tab_func.js';
-import { orderGet } from './stringUtils.js';
+import { closeTab, deleteTabArray } from './tab_func.js';
+import { orderGet, passGet } from './stringUtils.js';
 
 let tmp1;
 let tmp2;
