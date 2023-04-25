@@ -266,7 +266,7 @@ router.post('/', (req, res) => {
                 } else {
                   resolve({
                     fileResult: fileResult[0],
-                    resultDecoded: resultDecoded[0],
+                    resultDecoded: resultDecoded,
                   });
                 }
               }
@@ -298,7 +298,7 @@ router.post('/', (req, res) => {
                                 req.body.id,
                                 fileResult.folder_order,
                                 req.body.order,
-                                resultDecoded.id,
+                                resultDecoded[0].id,
                               ],
                               (error, result) => {
                                 if (error) {
@@ -319,7 +319,7 @@ router.post('/', (req, res) => {
                                 req.body.id,
                                 fileResult.folder_order,
                                 req.body.order,
-                                resultDecoded.id,
+                                resultDecoded[0].id,
                               ],
                               (error, result) => {
                                 if (error) {
@@ -352,7 +352,7 @@ router.post('/', (req, res) => {
                               req.body.id,
                               req.body.order,
                               fileResult.folder_order,
-                              resultDecoded.id,
+                              resultDecoded[0].id,
                             ],
                             (error, result) => {
                               if (error) {
@@ -373,7 +373,7 @@ router.post('/', (req, res) => {
                               req.body.id,
                               req.body.order,
                               fileResult.folder_order,
-                              resultDecoded.id,
+                              resultDecoded[0].id,
                             ],
                             (error, result) => {
                               if (error) {
