@@ -265,7 +265,7 @@ router.post('/', (req, res) => {
                   reject(error);
                 } else {
                   resolve({
-                    fileResult: fileResult,
+                    fileResult: fileResult[0],
                     resultDecoded: resultDecoded,
                   });
                 }
