@@ -75,7 +75,7 @@ router.post('/', (req, res) => {
           'UPDATE it_memo SET folder_order = ? WHERE id = ?',
           [req.body.order, req.body.id],
           (error, result) => {
-            res.end();
+            res.send({ res: result });
           }
         );
       }
