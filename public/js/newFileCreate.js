@@ -81,16 +81,16 @@ export const newCreateFile2 = (inputTab, span, parentId) => {
         parentId,
       }),
       success: function (res) {
-        span.setAttribute('id', `li${res.response2.id}`);
-        span.setAttribute('value', res.response2.id);
+        span.setAttribute('id', `li${res.fileResult.id}`);
+        span.setAttribute('value', res.fileResult.id);
         inputTab.remove();
-        span.innerHTML = res.response1;
+        span.innerHTML = inputTab.value;
         span.parentNode.setAttribute(
           'class',
-          `parent${res.response2.parent_id}`
+          `parent${res.fileResult.parent_id}`
         );
         let elements = document.getElementsByClassName(
-          `parent${res.response2.parent_id}`
+          `parent${res.fileResult.parent_id}`
         );
 
         let order = [].slice.call(elements).indexOf(span.parentNode);
@@ -105,7 +105,7 @@ export const newCreateFile2 = (inputTab, span, parentId) => {
             data: 'note',
             flg: 'newNote',
             pattern: 'order',
-            id: res.response2.id,
+            id: res.fileResult.id,
             order,
           }),
           success: function (res) {

@@ -125,9 +125,7 @@ export const jQueryUIOptionsFunc = () => {
                     move: 'down',
                     order: index,
                   }),
-                  success: function (res) {
-                    //console.log(`parent_id追加成功!! ${res.response}`);
-                  },
+                  success: function (res) {},
                 });
                 //上へD＆D
               } else if (initial_index > index) {
@@ -147,9 +145,7 @@ export const jQueryUIOptionsFunc = () => {
                     move: 'up',
                     order: index,
                   }),
-                  success: function (res) {
-                    //console.log(`parent_id追加成功!! ${res.response}`);
-                  },
+                  success: function (res) {},
                 });
               } else {
                 console.log('順番は変化していません');
@@ -174,7 +170,6 @@ export const jQueryUIOptionsFunc = () => {
                   old_order: initial_index,
                 }),
                 success: function (res) {
-                  console.log(`追加成功 parent_id: ${res.response1}`);
                   item[0].classList.replace(
                     `parent${parent_id_Tmp}`,
                     `parent${item[0].parentNode.id}`
@@ -183,11 +178,8 @@ export const jQueryUIOptionsFunc = () => {
                     `parent${item[0].parentNode.id}`
                   );
                   //index: D&D後のparent_id内での順番
-                  let index = [].slice.call(elements).indexOf(item[0]);
-                  index++;
-                  console.log(
-                    `移動後(folder)【order:${index}(違う階層の場合は0), parent_id: ${item[0].parentNode.id}】`
-                  );
+                  let order = [].slice.call(elements).indexOf(item[0]);
+                  order++;
                   //パス更新
                   let pass = passGet(id, item[0].childNodes[0].innerHTML);
 
@@ -200,7 +192,7 @@ export const jQueryUIOptionsFunc = () => {
                       data: 'addOrder',
                       id,
                       parent_id: item[0].parentNode.id,
-                      order: index,
+                      order,
                       pattern: 'file',
                     }),
                     success: function (res) {
@@ -237,9 +229,7 @@ export const jQueryUIOptionsFunc = () => {
                     order: index,
                     move: 'down',
                   }),
-                  success: function (res) {
-                    console.log(`追加成功 parent_id: ${res.response1}`);
-                  },
+                  success: function (res) {},
                 });
                 //orderが小さくなる場合(上へD＆D)
               } else if (initial_index > index) {
@@ -257,9 +247,7 @@ export const jQueryUIOptionsFunc = () => {
                     order: index,
                     move: 'up',
                   }),
-                  success: function (res) {
-                    console.log(`追加成功 parent_id: ${res.response1}`);
-                  },
+                  success: function (res) {},
                 });
               } else {
                 console.log('順番は変化していません');

@@ -157,7 +157,7 @@ export const cancelButton = (
         id,
       }),
       success: function (res) {
-        textarea.value = res.response.memo_text;
+        textarea.value = res.fileResult.memo_text;
       },
     });
     document.getElementById(`tabP${id}`).style.display = 'block';
@@ -234,7 +234,7 @@ export const updateTime = (id, time) => {
     }),
     success: function (res) {
       //timeが空だと実行しない(ファイル作成時でtabを生成していないとき)
-      if (time) time.innerHTML = res.response;
+      if (time) time.innerHTML = `${Year}年${Month}月${DATE}日 ${Hour}:${Min}`;
     },
   });
 };
