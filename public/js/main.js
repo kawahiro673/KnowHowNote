@@ -69,7 +69,7 @@ export const listCreate = () => {
                 //要素作成
                 let li = document.createElement('li');
                 li.setAttribute('class', `parent${folder.parent_id}`);
-                //li.setAttribute('id', `parent${folder.parent_id}`);
+                li.setAttribute('id', `foli${folder.id}`);
                 let span = document.createElement('span');
                 span.setAttribute('class', 'folder');
                 span.setAttribute('id', `folder${folder.id}`);

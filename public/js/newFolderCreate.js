@@ -45,7 +45,7 @@ export const newFolderCreateFunc = (id) => {
     };
     const enter = (e) => {
       //e.preventDefault(); //これがあると入力できない？？
-
+      li.setAttribute('class', 'closed');
       if (e.keyCode === 13) {
         newCreateFolder2(inputTab, span, li, ul, id);
         document.removeEventListener('click', clickL);
@@ -79,6 +79,7 @@ function newCreateFolder2(inputTab, span, li, ul, parentId) {
         parentId,
       }),
       success: function (res) {
+        li.setAttribute('id', `foli${folderResults.id}`);
         span.setAttribute('id', `folder${res.folderResults.id}`);
         span.setAttribute('value', res.folderResults.id);
         inputTab.remove();
@@ -95,11 +96,11 @@ function newCreateFolder2(inputTab, span, li, ul, parentId) {
         let order = [].slice.call(elements).indexOf(span.parentNode);
         order++;
 
-        // const order = orderGet(
-        //   `parent${res.fileResult.parent_id}`,
-        //   `li${res.fileResult.id}`
-        // );
-
+        const order1 = orderGet(
+          `parent${res.folderResults.parent_id}`,
+          `foli${res.folderResults.id}`
+        );
+        console.log(order1);
         $.ajax({
           url: '/folderPostController/',
           type: 'POST',
