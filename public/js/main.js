@@ -349,7 +349,7 @@ async function titleClick(id, title) {
             time,
             inputShare,
             buttonTab,
-          ] = tabCreate(id, title, res.response);
+          ] = tabCreate(id, title, res.fileResult);
 
           document.getElementById('notab').style.display = 'none';
 
