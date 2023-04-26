@@ -38,9 +38,9 @@ const mynoteAddFunc = (id) => {
       li.setAttribute('class', `parent0`);
       span.classList.add('list_title', 'file');
 
-      span.setAttribute('id', `li${res.response.id}`);
-      span.setAttribute('value', res.response.id);
-      span.innerHTML = res.response.title;
+      span.setAttribute('id', `li${res.fileResult.id}`);
+      span.setAttribute('value', res.fileResult.id);
+      span.innerHTML = res.fileResult.title;
 
       document.getElementById('0').appendChild(li);
       li.appendChild(span);
@@ -59,7 +59,7 @@ const mynoteAddFunc = (id) => {
           data: 'note',
           flg: 'newNote',
           pattern: 'order',
-          id: res.response.id,
+          id: res.fileResult.id,
           order,
         }),
         success: function (res) {

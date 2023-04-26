@@ -31,10 +31,11 @@ router.post('/', (req, res) => {
           .then((resultDecoded) => {
             return new Promise((resolve, reject) => {
               pool.query(
-                'INSERT into it_memo(title, parent_id, Type, UserID) values(?, ?, ?, ?); ', // 挿入
+                'INSERT into it_memo(title, parent_id, saved_time, Type, UserID) values(?, ?, ?, ?, ?); ', // 挿入
                 [
                   req.body.title,
                   req.body.parentId,
+                  req.body.time,
                   'Original',
                   resultDecoded[0].id,
                 ], //この値が？に入る

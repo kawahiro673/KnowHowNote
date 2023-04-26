@@ -158,7 +158,7 @@ function shareListCreate() {
       data: 'sharelist',
     }),
     success: function (res) {
-      res.response2.forEach((file) => {
+      res.fileResult.forEach((file) => {
         //要素作成
         let li = document.createElement('li');
         let span = document.createElement('span');

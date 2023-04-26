@@ -1,4 +1,5 @@
 import { listCreate } from './main.js';
+import { orderGet, updateTime, passGet } from './stringUtils.js';
 
 export const newFileCreateFunc = (id) => {
   return new Promise((resolve, reject) => {
@@ -68,6 +69,8 @@ export const newCreateFile2 = (inputTab, span, parentId) => {
   if (!inputTab.value || !inputTab.value.match(/\S/g)) {
     alert('タイトルを入力してください');
   } else {
+    const time = updateTime();
+
     $.ajax({
       url: '/notePostController/',
       type: 'POST',
@@ -79,6 +82,7 @@ export const newCreateFile2 = (inputTab, span, parentId) => {
         pattern: 'new',
         title: inputTab.value,
         parentId,
+        time,
       }),
       success: function (res) {
         span.setAttribute('id', `li${res.fileResult.id}`);
@@ -95,6 +99,7 @@ export const newCreateFile2 = (inputTab, span, parentId) => {
 
         let order = [].slice.call(elements).indexOf(span.parentNode);
         order++;
+        //orderGet(`parent${res.fileResult.parent_id}`,)
 
         $.ajax({
           url: '/notePostController/',

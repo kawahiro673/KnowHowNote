@@ -14,22 +14,8 @@ export const updateTime = (id, time) => {
   let DATE = now.getDate();
   let Hour = now.getHours();
   let Min = now.getMinutes();
-  $.ajax({
-    url: '/notePostController/',
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      data: 'note',
-      flg: 'updatetime',
-      id,
-      time: `${Year}年${Month}月${DATE}日 ${Hour}:${Min}`,
-    }),
-    success: function (res) {
-      //timeが空だと実行しない(ファイル作成時でtabを生成していないとき)
-      if (time) time.innerHTML = `${Year}年${Month}月${DATE}日 ${Hour}:${Min}`;
-    },
-  });
+
+  return `${Year}年${Month}月${DATE}日 ${Hour}:${Min}`;
 };
 
 //タブクリック時にrootからパスを取得して返す

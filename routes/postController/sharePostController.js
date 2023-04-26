@@ -33,7 +33,7 @@ router.post('/', (req, res) => {
               if (error) {
                 reject(error);
               } else {
-                res.send({ response: result[0] });
+                res.send({ fileResult: result[0] });
               }
             }
           );
@@ -71,30 +71,30 @@ router.post('/', (req, res) => {
           pool.query(
             'select * from folder WHERE (UserID = ?) AND (Type = "Share") order by folder_order ASC ',
             [resultDecoded[0].id],
-            (error, results) => {
+            (error, folderResults) => {
               if (error) {
                 rejct(error);
               } else {
-                resolve({ results: results, resultDecoded: resultDecoded });
+                resolve({
+                  folderResults: folderResults,
+                  resultDecoded: resultDecoded,
+                });
               }
             }
           );
         });
       })
-      .then(({ results, resultDecoded }) => {
+      .then(({ folderResults, resultDecoded }) => {
         return new Promise((resolve, rejct) => {
           pool.query(
             'select * from it_memo WHERE (UserID = ?) AND (Type = "Share") order by folder_order ASC',
             [resultDecoded[0].id],
-            (error, result) => {
+            (error, fileResult) => {
               if (error) {
                 reject(error);
               } else {
                 res.send({
-                  response: results,
-                  response2: result,
-                  userName: resultDecoded[0].UserName,
-                  id: resultDecoded[0].id,
+                  fileResult: fileResult,
                 });
               }
             }
