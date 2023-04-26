@@ -44,9 +44,10 @@ export const passGet = (id, title) => {
 };
 
 export const classNameGet = (element) => {
+  console.log(element);
   const classList = element.classList;
   for (let i = 0; i < classList.length; i++) {
-    if (classList[i].contains('example')) {
+    if (classList[i].contains('parent')) {
       const className = classList[i];
       //console.log(className);
       return className;
