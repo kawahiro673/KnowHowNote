@@ -20,7 +20,7 @@ export const updateTime = (id, time) => {
 
 //タブクリック時にrootからパスを取得して返す
 export const passGet = (id, title) => {
-  let pass = document.getElementById(`li${id}`);
+  let pass = document.getElementById(`file${id}`);
   let parentArray = [];
   let answer = '';
   let i = 0;
