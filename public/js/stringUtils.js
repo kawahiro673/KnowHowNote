@@ -42,3 +42,14 @@ export const passGet = (id, title) => {
   if (!answer) return title;
   return answer + ' > ' + title;
 };
+
+export const classNameGet = (element) => {
+  const classList = element.classList;
+  for (let i = 0; i < classList.length; i++) {
+    if (classList[i].contains('example')) {
+      const className = classList[i];
+      //console.log(className);
+      return className;
+    }
+  }
+};
