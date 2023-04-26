@@ -28,7 +28,7 @@ export const newFileCreateFunc = (id) => {
     const clickL = (e) => {
       e.preventDefault();
       if (!e.target.closest('#inputTab')) {
-        newCreateFile2(inputTab, span, id);
+        newCreateFile2(inputTab, span, id, li);
         document.removeEventListener('click', clickL);
         document.removeEventListener('contextmenu', clickR);
         document.removeEventListener('keypress', enter);
@@ -39,7 +39,7 @@ export const newFileCreateFunc = (id) => {
     const clickR = (e) => {
       e.preventDefault();
       if (!e.target.closest('#inputTab')) {
-        newCreateFile2(inputTab, span, id);
+        newCreateFile2(inputTab, span, id, li);
         document.removeEventListener('click', clickL);
         document.removeEventListener('contextmenu', clickR);
         document.removeEventListener('keypress', enter);
@@ -50,7 +50,7 @@ export const newFileCreateFunc = (id) => {
     const enter = (e) => {
       //e.preventDefault(); //これがあると入力できない？？
       if (e.keyCode === 13) {
-        newCreateFile2(inputTab, span, id);
+        newCreateFile2(inputTab, span, id, li);
         document.removeEventListener('click', clickL);
         document.removeEventListener('contextmenu', clickR);
         document.removeEventListener('keypress', enter);
@@ -85,6 +85,7 @@ export const newCreateFile2 = (inputTab, span, parentId) => {
         time,
       }),
       success: function (res) {
+        li.setAttribute('id', `li${res.fileResult.id}`);
         span.setAttribute('id', `file${res.fileResult.id}`);
         span.setAttribute('value', res.fileResult.id);
         inputTab.remove();
