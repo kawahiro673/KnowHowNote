@@ -1,4 +1,4 @@
-import { passGet } from './stringUtils.js';
+import { orderGet, passGet } from './stringUtils.js';
 
 export const jQueryUIOptionsFunc = () => {
   return new Promise((resolve, reject) => {
@@ -22,6 +22,11 @@ export const jQueryUIOptionsFunc = () => {
           const regex = /[^0-9]/g;
           let id = str.replace(regex, '');
           console.log(item[0]);
+          console.log(id);
+          const order = orderGet(item[0].class, item[0].id);
+          console.log(order);
+          console.log(item[0].class);
+          console.log(item[0].id);
           //initial_index はD&D前の順番
           initial_index = [].slice.call(elements).indexOf(item[0]);
           initial_index++;
