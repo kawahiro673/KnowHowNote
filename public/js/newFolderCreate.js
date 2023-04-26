@@ -79,18 +79,17 @@ function newCreateFolder2(inputTab, span, li, ul, parentId) {
         parentId,
       }),
       success: function (res) {
-        console.log(`success受信(folderName) : "${res.response1}"`);
-        span.setAttribute('id', `folder${res.response2.id}`);
-        span.setAttribute('value', res.response2.id);
+        span.setAttribute('id', `folder${res.folderResults.id}`);
+        span.setAttribute('value', res.folderResults.id);
         inputTab.remove();
-        span.innerHTML = res.response1;
+        span.innerHTML = inputTab.value;
         li.appendChild(ul);
         span.parentNode.setAttribute(
           'class',
-          `parent${res.response2.parent_id}`
+          `parent${res.folderResults.parent_id}`
         );
         let elements = document.getElementsByClassName(
-          `parent${res.response2.parent_id}`
+          `parent${res.folderResults.parent_id}`
         );
         //newIndex は並び替え(D&D) 後の配列の順番
         let order = [].slice.call(elements).indexOf(span.parentNode);
@@ -106,7 +105,7 @@ function newCreateFolder2(inputTab, span, li, ul, parentId) {
             flg: 'newFolder',
             pattern: 'order',
             folderName: inputTab.value,
-            id: res.response2.id,
+            id: res.folderResults.id,
             order,
           }),
           success: function (res) {

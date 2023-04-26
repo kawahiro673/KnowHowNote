@@ -232,9 +232,7 @@ export const jQueryUIOptionsFunc = () => {
                     order: index,
                     move: 'down',
                   }),
-                  success: function (res) {
-                    console.log(`追加成功 parent_id: ${res.response1}`);
-                  },
+                  success: function (res) {},
                 });
                 //orderが小さくなる場合(上へD＆D)
               } else if (initial_index > index) {
@@ -252,9 +250,7 @@ export const jQueryUIOptionsFunc = () => {
                     order: index,
                     move: 'up',
                   }),
-                  success: function (res) {
-                    console.log(`追加成功 parent_id: ${res.response1}`);
-                  },
+                  success: function (res) {},
                 });
               } else {
                 console.log('順番は変化していません');
@@ -274,11 +270,9 @@ export const jQueryUIOptionsFunc = () => {
                   parent_id: item[0].parentNode.id,
                   old_parent_id: parent_id_Tmp,
                   id,
-                  //order: index,
                   old_order: initial_index, //元order
                 }),
                 success: function (res) {
-                  console.log(`追加成功 parent_id: ${res.response}`);
                   item[0].classList.replace(
                     `parent${parent_id_Tmp}`,
                     `parent${item[0].parentNode.id}`
@@ -304,9 +298,7 @@ export const jQueryUIOptionsFunc = () => {
                       order: index,
                       pattern: 'folder',
                     }),
-                    success: function (res) {
-                      //console.log(res.response);
-                    },
+                    success: function (res) {},
                   });
                 },
               });

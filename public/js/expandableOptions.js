@@ -26,9 +26,7 @@ export const expandableAdaptation = (expandableArray) => {
             id: this.id.replace(/[^0-9]/g, ''),
             closedFlg,
           }),
-          success: function (res) {
-            //console.log(res.response);
-          },
+          success: function (res) {},
         });
       });
     }

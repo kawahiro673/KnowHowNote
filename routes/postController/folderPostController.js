@@ -6,7 +6,7 @@ const { reject } = require('bcrypt/promises');
 router.post('/', (req, res) => {
   if (req.body.data === 'folder') {
     if (req.body.flg === 'newFolder') {
-      if (req.body.pattern == 'new') {
+      if (req.body.pattern === 'new') {
         const token = req.cookies.token;
         const decoded = JWT.verify(token, 'SECRET_KEY');
         let promise = new Promise((resolve, reject) => {
@@ -34,7 +34,7 @@ router.post('/', (req, res) => {
               pool.query(
                 'INSERT into folder(folder_name, parent_id, UserID) values(?, ?, ?);',
                 [req.body.folderName, req.body.parentId, resultDecoded[0].id],
-                (error, results) => {
+                (error, result) => {
                   if (error) {
                     reject(error);
                   } else {
@@ -54,8 +54,7 @@ router.post('/', (req, res) => {
                     reject(error);
                   } else {
                     res.send({
-                      response1: req.body.folderName,
-                      response2: result[0],
+                      folderResults: result[0],
                     });
                   }
                 }
@@ -73,7 +72,7 @@ router.post('/', (req, res) => {
           [req.body.order, req.body.id],
           (error, results) => {
             res.send({
-              response: results,
+              msg: '成功しました',
             });
           }
         );
@@ -105,36 +104,42 @@ router.post('/', (req, res) => {
             pool.query(
               'SELECT * FROM folder WHERE id = ?', //D&D前の情報保持のため
               [req.body.id],
-              (error, results) => {
+              (error, folderResult) => {
                 if (error) {
                   reject(error);
                 } else {
-                  resolve({ results: results, resultDecoded: resultDecoded });
+                  resolve({
+                    folderResult: folderResult,
+                    resultDecoded: resultDecoded,
+                  });
                 }
               }
             );
           });
         })
-        .then(({ results, resultDecoded }) => {
+        .then(({ folderResult, resultDecoded }) => {
           return new Promise((resolve, reject) => {
             pool.query(
               'UPDATE folder SET parent_id = ?, folder_order = ? WHERE id = ?',
               [req.body.parent_id, req.body.order, req.body.id],
-              (error, nonResult) => {
+              (error, nouse) => {
                 if (error) {
                   reject(error);
                 } else {
-                  resolve({ results: results, resultDecoded: resultDecoded });
+                  resolve({
+                    folderResult: folderResult,
+                    resultDecoded: resultDecoded,
+                  });
                 }
               }
             );
           });
         })
-        .then(({ results, resultDecoded }) => {
+        .then(({ folderResult, resultDecoded }) => {
           //D&Dしたフォルダのorderより大きいレコードにorderプラス１する。D&D前のorderとD&D後のorderが違う場合にプラス１
-          if (req.body.order != results[0].folder_order) {
+          if (req.body.order != folderResult[0].folder_order) {
             //下へD&D
-            if (req.body.move == 'down') {
+            if (req.body.move === 'down') {
               let promise1 = new Promise((resolve, reject) => {
                 resolve();
               });
@@ -146,7 +151,7 @@ router.post('/', (req, res) => {
                       [
                         req.body.parent_id,
                         req.body.id,
-                        results[0].folder_order,
+                        folderResult[0].folder_order,
                         req.body.order,
                         resultDecoded[0].id,
                       ],
@@ -167,7 +172,7 @@ router.post('/', (req, res) => {
                       [
                         req.body.parent_id,
                         req.body.id,
-                        results[0].folder_order,
+                        folderResult[0].folder_order,
                         req.body.order,
                         resultDecoded[0].id,
                       ],
@@ -176,8 +181,7 @@ router.post('/', (req, res) => {
                           reject(error);
                         } else {
                           res.send({
-                            response1: req.body.parent_id,
-                            response2: req.body.order,
+                            msg: '成功しました',
                           });
                         }
                       }
@@ -201,7 +205,7 @@ router.post('/', (req, res) => {
                         req.body.parent_id,
                         req.body.id,
                         req.body.order,
-                        results[0].folder_order,
+                        folderResult[0].folder_order,
                         resultDecoded[0].id,
                       ],
                       (error, result) => {
@@ -222,7 +226,7 @@ router.post('/', (req, res) => {
                         req.body.parent_id,
                         req.body.id,
                         req.body.order,
-                        results[0].folder_order,
+                        folderResult[0].folder_order,
                         resultDecoded[0].id,
                       ],
                       (error, result) => {
@@ -230,8 +234,7 @@ router.post('/', (req, res) => {
                           reject(error);
                         } else {
                           res.send({
-                            response1: req.body.parent_id,
-                            response2: req.body.order,
+                            msg: '成功しました',
                           });
                         }
                       }
@@ -315,7 +318,7 @@ router.post('/', (req, res) => {
                 if (error) {
                   reject(error);
                 } else {
-                  res.send({ response: req.body.parent_id });
+                  res.send({ msg: '成功しました' });
                 }
               }
             );
@@ -330,7 +333,7 @@ router.post('/', (req, res) => {
         'UPDATE folder SET folder_name=? WHERE id = ?',
         [req.body.title, req.body.id],
         (error, results) => {
-          res.send({ response: req.body.title });
+          res.send({ msg: '成功しました' });
         }
       );
     } else if (req.body.flg === 'folderDel') {
@@ -360,7 +363,7 @@ router.post('/', (req, res) => {
             pool.query(
               'UPDATE folder SET folder_order = folder_order - 1 where parent_id = ? AND folder_order > ? AND (UserID = ?)',
               [req.body.parentId, req.body.order, resultDecoded[0].id],
-              (error, results) => {
+              (error, result) => {
                 if (error) {
                   reject(error);
                 } else {
@@ -375,7 +378,7 @@ router.post('/', (req, res) => {
             pool.query(
               'UPDATE it_memo SET folder_order = folder_order - 1 where parent_id = ? AND folder_order > ? AND (UserID = ?)',
               [req.body.parentId, req.body.order, resultDecoded[0].id],
-              (error, results) => {
+              (error, result) => {
                 if (error) {
                   reject(error);
                 } else {
@@ -390,7 +393,7 @@ router.post('/', (req, res) => {
             pool.query(
               'DELETE from folder where id = ?',
               [req.body.id],
-              (error, results) => {
+              (error, result) => {
                 if (error) {
                   reject(error);
                 } else {
@@ -402,25 +405,25 @@ router.post('/', (req, res) => {
         })
         .then(() => {
           return new Promise((resolve, reject) => {
-            pool.query('select * from it_memo', (error, result_n) => {
+            pool.query('select * from it_memo;', (error, fileResults) => {
               if (error) {
                 reject(error);
               } else {
-                resolve(result_n);
+                resolve(fileResults);
               }
             });
           });
         })
-        .then((result_n) => {
+        .then((fileResults) => {
           return new Promise((resolve, reject) => {
-            pool.query('select * from folder', (error, result_f) => {
+            pool.query('select * from folder;', (error, folderResults) => {
               if (error) {
                 reject(error);
               } else {
                 res.send({
                   response: req.body.id,
-                  response1: result_n,
-                  response2: result_f,
+                  fileResults: fileResults,
+                  folderResults: folderResults,
                 });
               }
             });
@@ -431,7 +434,6 @@ router.post('/', (req, res) => {
           res.status(500).send('Internal Server Error.(folderDel)');
         });
     } else if (req.body.flg === 'collapsableALL') {
-      //console.log('全て折り畳む');
       const token = req.cookies.token;
       const decoded = JWT.verify(token, 'SECRET_KEY');
       let promise = new Promise((resolve, reject) => {
@@ -462,7 +464,7 @@ router.post('/', (req, res) => {
                 if (error) {
                   reject(error);
                 } else {
-                  res.send({ response: '閉じました' });
+                  res.send({ msg: '成功しました' });
                 }
               }
             );
@@ -503,7 +505,7 @@ router.post('/', (req, res) => {
                 if (error) {
                   reject(error);
                 } else {
-                  res.send({ response: '開きました' });
+                  res.send({ msg: '成功しました' });
                 }
               }
             );
@@ -514,14 +516,13 @@ router.post('/', (req, res) => {
           res.status(500).send('Internal Server Error.(expandableALL)');
         });
     } else if (req.body.flg === 'closed') {
-      //console.log('リストの開きを保存');
       //開く→閉じる
       if (req.body.closedFlg == 1) {
         pool.query(
           'UPDATE folder SET closed = "on" WHERE id = ?;',
           [req.body.id],
           (error, result) => {
-            res.send({ response: '閉じました' });
+            res.send({ msg: '成功しました' });
           }
         );
         //開く→閉じる
@@ -530,7 +531,7 @@ router.post('/', (req, res) => {
           'UPDATE folder SET closed = "off" WHERE id = ?;',
           [req.body.id],
           (error, result) => {
-            res.send({ response: '開きました' });
+            res.send({ msg: '成功しました' });
           }
         );
       }
