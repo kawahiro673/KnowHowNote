@@ -110,7 +110,7 @@ export const listCreate = () => {
                 li.setAttribute('class', `parent${file.parent_id}`);
                 let span = document.createElement('span');
                 span.setAttribute('class', 'list_title file');
-                span.setAttribute('id', `li${file.id}`);
+                span.setAttribute('id', `file${file.id}`);
                 span.style.color = file.title_color;
                 span.setAttribute('value', `${file.id}`);
                 span.innerHTML = file.title;

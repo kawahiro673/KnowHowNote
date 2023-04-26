@@ -38,7 +38,7 @@ const mynoteAddFunc = (id) => {
       li.setAttribute('class', `parent0`);
       span.classList.add('list_title', 'file');
 
-      span.setAttribute('id', `li${res.fileResult.id}`);
+      span.setAttribute('id', `file${res.fileResult.id}`);
       span.setAttribute('value', res.fileResult.id);
       span.innerHTML = res.fileResult.title;
 

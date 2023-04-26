@@ -123,7 +123,7 @@ export const keepButton = (
   document.getElementById(`tabP${id}`).innerHTML = newTitle;
   document.getElementById(`tabP${id}`).style.display = 'block';
   document.getElementById(`tabname${id}`).innerHTML = newTitle;
-  document.getElementById(`li${id}`).innerHTML = newTitle;
+  document.getElementById(`file${id}`).innerHTML = newTitle;
   titletext.remove();
   inputEdit.style.display = 'block';
   textarea.readOnly = true;

@@ -76,7 +76,7 @@ const noteDelete = (listTitle, tabIndex, order, tabArray) => {
       success: function (res) {
         //成功！！ここにリストから消した際のタブ削除と、リスト削除を記載→タブの✖️を押下したことにすれば良いのでは？？
         let parentid = listTitle.titleThis.parentNode.parentNode.id;
-        $(`#li${listTitle.id}`).parent().remove();
+        $(`#file${listTitle.id}`).parent().remove();
 
         listTitle.id = Number(listTitle.id);
         if (tabArray.includes(listTitle.id)) {

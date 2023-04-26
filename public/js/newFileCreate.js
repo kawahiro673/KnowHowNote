@@ -85,7 +85,7 @@ export const newCreateFile2 = (inputTab, span, parentId) => {
         time,
       }),
       success: function (res) {
-        span.setAttribute('id', `li${res.fileResult.id}`);
+        span.setAttribute('id', `file${res.fileResult.id}`);
         span.setAttribute('value', res.fileResult.id);
         inputTab.remove();
         span.innerHTML = inputTab.value;
