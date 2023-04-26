@@ -21,13 +21,9 @@ export const jQueryUIOptionsFunc = () => {
           let str = item.prevObject[0].id;
           const regex = /[^0-9]/g;
           let id = str.replace(regex, '');
-          console.log(item[0]);
-          console.log(id);
-          const order = orderGet(item[0].class, item[0].id);
+          const className = classNameGet(document.getElementById(item[0].id));
+          const order = orderGet(className, item[0].id);
           console.log(order);
-          const a = classNameGet(document.getElementById(item[0].id));
-          console.log(a);
-          console.log(item[0].id);
           //initial_index はD&D前の順番
           initial_index = [].slice.call(elements).indexOf(item[0]);
           initial_index++;
