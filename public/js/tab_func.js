@@ -109,7 +109,6 @@ export const keepButton = (
       memoContent: textarea.value, //ここに入力した値が入る
     }),
     success: function (res) {
-      //console.log(res.response2);
       fadeFont.style.visibility = 'visible';
       //1000ミリ秒後に表示を隠す
       setTimeout(function () {
@@ -157,7 +156,7 @@ export const cancelButton = (
         id,
       }),
       success: function (res) {
-        textarea.value = res.response.memo_text;
+        textarea.value = res.fileResult.memo_text;
       },
     });
     document.getElementById(`tabP${id}`).style.display = 'block';

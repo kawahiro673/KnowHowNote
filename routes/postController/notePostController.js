@@ -38,7 +38,7 @@ router.post('/', (req, res) => {
                   'Original',
                   resultDecoded[0].id,
                 ], //この値が？に入る
-                (error, results) => {
+                (error, result) => {
                   if (error) {
                     reject(error);
                   } else {
@@ -51,14 +51,14 @@ router.post('/', (req, res) => {
           .then(() => {
             return new Promise((resolve, reject) => {
               pool.query(
+                //追加したばかりのノートはidが一番大きいため、上を取得
                 'SELECT * FROM  it_memo ORDER BY id DESC;',
                 (error, result) => {
                   if (error) {
                     reject(error);
                   } else {
                     res.send({
-                      response1: req.body.title,
-                      response2: result[0],
+                      fileResult: result[0],
                     });
                   }
                 }
@@ -74,9 +74,9 @@ router.post('/', (req, res) => {
         pool.query(
           'UPDATE it_memo SET folder_order = ? WHERE id = ?',
           [req.body.order, req.body.id],
-          (error, results) => {
+          (error, result) => {
             res.send({
-              response: req.body.order,
+              msg: '成功しました',
             });
           }
         );
@@ -96,7 +96,7 @@ router.post('/', (req, res) => {
                 req.body.time,
                 req.body.id,
               ],
-              (error, results) => {
+              (error, result) => {
                 if (error) {
                   reject(error);
                 } else {
@@ -126,13 +126,12 @@ router.post('/', (req, res) => {
             pool.query(
               'UPDATE tab_hold SET tabTitle = ? WHERE id = ?;',
               [req.body.titleContent, req.body.id],
-              (error, no_Result) => {
+              (error, nouse) => {
                 if (error) {
                   reject(error);
                 } else {
                   res.send({
-                    response1: req.body.time,
-                    response2: result[0],
+                    fileResult: result[0],
                   });
                 }
               }
@@ -171,7 +170,7 @@ router.post('/', (req, res) => {
             pool.query(
               'UPDATE folder SET folder_order = folder_order - 1 where parent_id = ? AND folder_order > ? AND UserID = ?',
               [req.body.parentId, req.body.order, resultDecoded[0].id],
-              (error, results) => {
+              (error, result) => {
                 if (error) {
                   reject(error);
                 } else {
@@ -186,7 +185,7 @@ router.post('/', (req, res) => {
             pool.query(
               'UPDATE it_memo SET folder_order = folder_order - 1 where parent_id = ? AND folder_order > ? AND UserID = ?',
               [req.body.parentId, req.body.order, resultDecoded[0].id],
-              (error, results) => {
+              (error, result) => {
                 if (error) {
                   reject(error);
                 } else {
@@ -201,7 +200,7 @@ router.post('/', (req, res) => {
             pool.query(
               'DELETE from it_memo where id = ?',
               [req.body.id],
-              (error, results) => {
+              (error, result) => {
                 if (error) {
                   reject(error);
                 } else {
@@ -213,25 +212,23 @@ router.post('/', (req, res) => {
         })
         .then(() => {
           return new Promise((resolve, reject) => {
-            pool.query('select * from it_memo', (error, result_n) => {
+            pool.query('select * from it_memo', (error, result) => {
               if (error) {
                 reject(error);
               } else {
-                resolve(result_n);
+                resolve();
               }
             });
           });
         })
-        .then((result_n) => {
+        .then(() => {
           return new Promise((resolve, reject) => {
-            pool.query('select * from folder', (error, result_f) => {
+            pool.query('select * from folder', (error, result) => {
               if (error) {
                 reject(error);
               } else {
                 res.send({
-                  response: req.body.id,
-                  response1: result_n,
-                  response2: result_f,
+                  msg: '成功しました',
                 });
               }
             });
@@ -269,18 +266,20 @@ router.post('/', (req, res) => {
             pool.query(
               'SELECT * from it_memo where id = ?',
               [req.body.id],
-              (error, results) => {
+              (error, fileResult) => {
                 if (error) {
                   reject(error);
                 } else {
-                  console.log('old_order', results[0].folder_order);
-                  resolve({ results: results, resultDecoded: resultDecoded });
+                  resolve({
+                    fileResult: fileResult,
+                    resultDecoded: resultDecoded,
+                  });
                 }
               }
             );
           });
         })
-        .then(({ results, resultDecoded }) => {
+        .then(({ fileResult, resultDecoded }) => {
           return new Promise((resolve, reject) => {
             pool.query(
               'UPDATE it_memo SET parent_id = ?, folder_order = ?  WHERE id = ?',
@@ -290,7 +289,7 @@ router.post('/', (req, res) => {
                   reject(error);
                 } else {
                   //D＆Dで移動した時
-                  if (req.body.order != results[0].folder_order) {
+                  if (req.body.order != fileResult[0].folder_order) {
                     //下へD＆D
                     if (req.body.move === 'down') {
                       let promise1 = new Promise((resolve, reject) => {
@@ -304,7 +303,7 @@ router.post('/', (req, res) => {
                               [
                                 req.body.parent_id,
                                 req.body.id,
-                                results[0].folder_order,
+                                fileResult[0].folder_order,
                                 req.body.order,
                                 resultDecoded[0].id,
                               ],
@@ -325,7 +324,7 @@ router.post('/', (req, res) => {
                               [
                                 req.body.parent_id,
                                 req.body.id,
-                                results[0].folder_order,
+                                fileResult[0].folder_order,
                                 req.body.order,
                                 resultDecoded[0].id,
                               ],
@@ -333,7 +332,7 @@ router.post('/', (req, res) => {
                                 if (error) {
                                   reject(error);
                                 } else {
-                                  res.send({ response: req.body.parent_id });
+                                  res.send({ msg: '成功しました' });
                                 }
                               }
                             );
@@ -359,7 +358,7 @@ router.post('/', (req, res) => {
                                 req.body.parent_id,
                                 req.body.id,
                                 req.body.order,
-                                results[0].folder_order,
+                                fileResult[0].folder_order,
                                 resultDecoded[0].id,
                               ],
                               (error, result) => {
@@ -380,14 +379,14 @@ router.post('/', (req, res) => {
                                 req.body.parent_id,
                                 req.body.id,
                                 req.body.order,
-                                results[0].folder_order,
+                                fileResult[0].folder_order,
                                 resultDecoded[0].id,
                               ],
-                              (error, result_se) => {
+                              (error, result) => {
                                 if (error) {
                                   reject(error);
                                 } else {
-                                  res.send({ response: req.body.parent_id });
+                                  res.send({ msg: '成功しました' });
                                 }
                               }
                             );
@@ -443,7 +442,7 @@ router.post('/', (req, res) => {
               //移動前の階層での変化。対象の要素より、順番が大きいもののorderを-１する
               'UPDATE folder SET folder_order = folder_order -1 where (parent_id = ?) AND (folder_order > ?) AND (UserID = ?)',
               [req.body.old_parent_id, req.body.old_order, resultDecoded[0].id],
-              (error, result_se) => {
+              (error, result) => {
                 if (error) {
                   reject(error);
                 } else {
@@ -458,7 +457,7 @@ router.post('/', (req, res) => {
             pool.query(
               'UPDATE it_memo SET folder_order = folder_order -1 where (parent_id = ?) AND (folder_order > ?) AND (UserID = ?)',
               [req.body.old_parent_id, req.body.old_order, resultDecoded[0].id],
-              (error, result_se) => {
+              (error, result) => {
                 if (error) {
                   reject(error);
                 } else {
@@ -477,7 +476,7 @@ router.post('/', (req, res) => {
                 if (error) {
                   reject(error);
                 } else {
-                  res.send({ response1: req.body.parent_id });
+                  res.send({ msg: '成功しました' });
                 }
               }
             );
@@ -493,7 +492,7 @@ router.post('/', (req, res) => {
         'UPDATE it_memo SET saved_time = ? WHERE id = ?;',
         [req.body.time, req.body.id],
         (error, result) => {
-          res.send({ response: req.body.time });
+          res.send({ msg: '成功しました' });
         }
       );
     } else if (req.body.flg === 'name') {
@@ -506,12 +505,12 @@ router.post('/', (req, res) => {
             pool.query(
               'SELECT * FROM tab_hold WHERE id = ?',
               [req.body.id],
-              (error, results) => {
+              (error, tabResult) => {
                 if (error) {
                   reject(error);
                 } else {
                   //タブを生成済みであれば(tab_holdに格納されていれば)
-                  if (results.length != 0) {
+                  if (tabResult.length != 0) {
                     let promise1 = new Promise((resolve, reject) => {
                       resolve();
                     });
@@ -556,7 +555,6 @@ router.post('/', (req, res) => {
                                 reject(error);
                               } else {
                                 res.send({
-                                  response1: req.body.title,
                                   tabResult: result[0],
                                 });
                               }
@@ -574,8 +572,7 @@ router.post('/', (req, res) => {
                       [req.body.title, req.body.id],
                       (error, result) => {
                         res.send({
-                          response1: req.body.title,
-                          response2: undefined,
+                          tabResult: undefined,
                         });
                       }
                     );
@@ -594,7 +591,7 @@ router.post('/', (req, res) => {
         'SELECT * FROM it_memo WHERE id = ?;',
         [req.body.id],
         (error, result) => {
-          res.send({ response: result[0] });
+          res.send({ fileResult: result[0] });
         }
       );
     }

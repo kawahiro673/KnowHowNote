@@ -97,9 +97,7 @@ const noteDelete = (listTitle, tabIndex, order, tabArray) => {
             order,
             parentId: parentid,
           }),
-          success: function (res) {
-            console.log(`${res.response}を削除しました`);
-          },
+          success: function (res) {},
         });
       },
     });
@@ -148,16 +146,16 @@ const noteNameChange = (listTitle) => {
           }),
           success: function (res) {
             listTitle.titleThis.style.display = 'block';
-            listTitle.titleThis.innerHTML = res.response1;
+            listTitle.titleThis.innerHTML = inputTab.value;
             inputTab.remove();
             //タブが生成済みの場合
-            if (res.response2 != undefined) {
+            if (res.tabResult != undefined) {
               //リアルタイムにタイトル更新
               document.getElementById(`tabname${listTitle.id}`).innerHTML =
-                res.response1;
+                inputTab.value;
 
               document.getElementById(`tabP${listTitle.id}`).innerHTML =
-                res.response1;
+                inputTab.value;
 
               //passを正しく表示する2点セット
               //1.focusが当たってたらパス更新
