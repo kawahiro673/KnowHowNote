@@ -79,7 +79,7 @@ function newCreateFolder2(inputTab, span, li, ul, parentId) {
         parentId,
       }),
       success: function (res) {
-        li.setAttribute('id', `foli${folderResults.id}`);
+        li.setAttribute('id', `foli${res.folderResults.id}`);
         span.setAttribute('id', `folder${res.folderResults.id}`);
         span.setAttribute('value', res.folderResults.id);
         inputTab.remove();
