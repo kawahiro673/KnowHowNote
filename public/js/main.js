@@ -108,6 +108,7 @@ export const listCreate = () => {
                 //要素作成
                 let li = document.createElement('li');
                 li.setAttribute('class', `parent${file.parent_id}`);
+                li.setAttribute('id', `li${file.id}`);
                 let span = document.createElement('span');
                 span.setAttribute('class', 'list_title file');
                 span.setAttribute('id', `file${file.id}`);

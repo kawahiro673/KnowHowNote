@@ -36,6 +36,7 @@ const mynoteAddFunc = (id) => {
       const span = document.createElement('span');
       li.setAttribute('class', 'last');
       li.setAttribute('class', `parent0`);
+      li.setAttribute('id', `li${id}`);
       span.classList.add('list_title', 'file');
 
       span.setAttribute('id', `file${res.fileResult.id}`);

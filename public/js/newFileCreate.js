@@ -6,6 +6,7 @@ export const newFileCreateFunc = (id) => {
     const li = document.createElement('li');
     const span = document.createElement('span');
     li.setAttribute('class', 'last');
+    li.setAttribute('id', `li${id}`);
     span.classList.add('list_title', 'file');
 
     const inputTab = document.createElement('input');
