@@ -2,7 +2,7 @@ import { orderGet, passGet, classNameGet } from './stringUtils.js';
 
 export const jQueryUIOptionsFunc = () => {
   return new Promise((resolve, reject) => {
-    let initial_index;
+    let beforeOrder;
     let parent_id_Tmp;
     let tmpArray = [];
     $(function () {
@@ -22,11 +22,11 @@ export const jQueryUIOptionsFunc = () => {
           const regex = /[^0-9]/g;
           let id = str.replace(regex, '');
           const className = classNameGet(document.getElementById(item[0].id));
-          const order = orderGet(className, item[0].id);
-          console.log(order);
+          beforeOrder = orderGet(className, item[0].id);
+          console.log(beforeOrder);
           //initial_index はD&D前の順番
-          initial_index = [].slice.call(elements).indexOf(item[0]);
-          initial_index++;
+          // initial_index = [].slice.call(elements).indexOf(item[0]);
+          // initial_index++;
           parent_id_Tmp = item[0].parentNode.id;
           $.ajax({
             url: '/mypage/',
@@ -111,7 +111,7 @@ export const jQueryUIOptionsFunc = () => {
             //移動後も同じparent_id
             if (parent_id_Tmp == item[0].parentNode.id) {
               //下へD＆D
-              if (initial_index < index) {
+              if (beforeOrder < index) {
                 console.log('ファイル:下へD&D');
                 let id = item[0].childNodes[0].getAttribute('value');
 
@@ -131,7 +131,7 @@ export const jQueryUIOptionsFunc = () => {
                   success: function (res) {},
                 });
                 //上へD＆D
-              } else if (initial_index > index) {
+              } else if (beforeOrder > index) {
                 console.log('ファイル:上へD&D');
                 let id = item[0].childNodes[0].getAttribute('value');
                 console.log(index);
@@ -170,7 +170,7 @@ export const jQueryUIOptionsFunc = () => {
                   old_parent_id: parent_id_Tmp,
                   id,
                   order: index,
-                  old_order: initial_index,
+                  old_order: beforeOrder,
                 }),
                 success: function (res) {
                   item[0].classList.replace(
@@ -220,7 +220,7 @@ export const jQueryUIOptionsFunc = () => {
             //移動後も同じparent_id
             if (parent_id_Tmp == item[0].parentNode.id) {
               //orderが大きくなる場合(下へD＆D);
-              if (initial_index < index) {
+              if (beforeOrder < index) {
                 console.log('フォルダ:下へD&D');
                 $.ajax({
                   url: '/folderPostController/',
@@ -238,7 +238,7 @@ export const jQueryUIOptionsFunc = () => {
                   success: function (res) {},
                 });
                 //orderが小さくなる場合(上へD＆D)
-              } else if (initial_index > index) {
+              } else if (beforeOrder > index) {
                 console.log('フォルダ:上へD&D');
                 $.ajax({
                   url: '/folderPostController/',
@@ -273,7 +273,7 @@ export const jQueryUIOptionsFunc = () => {
                   parent_id: item[0].parentNode.id,
                   old_parent_id: parent_id_Tmp,
                   id,
-                  old_order: initial_index, //元order
+                  old_order: beforeOrder, //元order
                 }),
                 success: function (res) {
                   item[0].classList.replace(
