@@ -21,6 +21,7 @@ export const jQueryUIOptionsFunc = () => {
           let str = item.prevObject[0].id;
           const regex = /[^0-9]/g;
           let id = str.replace(regex, '');
+          console.log(item[0]);
           //initial_index はD&D前の順番
           initial_index = [].slice.call(elements).indexOf(item[0]);
           initial_index++;
@@ -89,7 +90,7 @@ export const jQueryUIOptionsFunc = () => {
           let elements = document.getElementsByClassName(
             `parent${item[0].parentNode.id}`
           );
-
+          console.log(item[0]);
           //index: D&D後の配列の順番
           let index = [].slice.call(elements).indexOf(item[0]);
           index++;
@@ -184,7 +185,7 @@ export const jQueryUIOptionsFunc = () => {
                     `移動後(folder)【order:${index}(違う階層の場合は0), parent_id: ${item[0].parentNode.id}】`
                   );
                   //パス更新
-                  let pass = passGet(id, item[0].childNodes[0].innerHTML);
+                  const pass = passGet(id, item[0].childNodes[0].innerHTML);
 
                   $.ajax({
                     url: '/mypage/',

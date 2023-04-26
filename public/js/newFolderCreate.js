@@ -90,18 +90,12 @@ function newCreateFolder2(inputTab, span, li, ul, parentId) {
           'class',
           `parent${res.folderResults.parent_id}`
         );
-        let elements = document.getElementsByClassName(
-          `parent${res.folderResults.parent_id}`
-        );
-        //newIndex は並び替え(D&D) 後の配列の順番
-        let order = [].slice.call(elements).indexOf(span.parentNode);
-        order++;
 
-        const order1 = orderGet(
+        const order = orderGet(
           `parent${res.folderResults.parent_id}`,
           `foli${res.folderResults.id}`
         );
-        console.log(order1);
+
         $.ajax({
           url: '/folderPostController/',
           type: 'POST',
