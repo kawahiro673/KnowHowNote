@@ -64,7 +64,7 @@ export const newFileCreateFunc = (id) => {
   });
 };
 
-export const newCreateFile2 = (inputTab, span, parentId) => {
+export const newCreateFile2 = (inputTab, span, parentId, li) => {
   //何も入力されていない時や空白や改行のみ
   if (!inputTab.value || !inputTab.value.match(/\S/g)) {
     alert('タイトルを入力してください');
