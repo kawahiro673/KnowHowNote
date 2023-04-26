@@ -54,7 +54,6 @@ export const listCreate = () => {
       //folderとfileを全て作成するまで(resTmpとresTmp2の結合配列arrayが空になるまで)
       while (array.length !== 0) {
         parentIdArray.forEach((parentId) => {
-          //console.log('やあ' + parentId);
           orderNumber = 0;
           //要素が作成される間繰り返す(file or folder)
           while (crFlg == true) {
@@ -70,7 +69,7 @@ export const listCreate = () => {
                 //要素作成
                 let li = document.createElement('li');
                 li.setAttribute('class', `parent${folder.parent_id}`);
-                li.setAttribute('id', `parent${folder.parent_id}`);
+                //li.setAttribute('id', `parent${folder.parent_id}`);
                 let span = document.createElement('span');
                 span.setAttribute('class', 'folder');
                 span.setAttribute('id', `folder${folder.id}`);

@@ -95,6 +95,11 @@ function newCreateFolder2(inputTab, span, li, ul, parentId) {
         let order = [].slice.call(elements).indexOf(span.parentNode);
         order++;
 
+        // const order = orderGet(
+        //   `parent${res.fileResult.parent_id}`,
+        //   `li${res.fileResult.id}`
+        // );
+
         $.ajax({
           url: '/folderPostController/',
           type: 'POST',

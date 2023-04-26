@@ -94,17 +94,12 @@ export const newCreateFile2 = (inputTab, span, parentId, li) => {
           'class',
           `parent${res.fileResult.parent_id}`
         );
-        let elements = document.getElementsByClassName(
-          `parent${res.fileResult.parent_id}`
-        );
 
-        let order = [].slice.call(elements).indexOf(span.parentNode);
-        order++;
-        const order1 = orderGet(
+        const order = orderGet(
           `parent${res.fileResult.parent_id}`,
           `li${res.fileResult.id}`
         );
-        console.log(order1);
+
         $.ajax({
           url: '/notePostController/',
           type: 'POST',
