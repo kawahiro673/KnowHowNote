@@ -47,9 +47,9 @@ export const classNameGet = (element) => {
   console.log(element);
   const classList = element.classList;
   for (let i = 0; i < classList.length; i++) {
-    if (classList[i].contains('parent')) {
+    if (classList[i].toString().indexOf('parent') !== -1) {
       const className = classList[i];
-      //console.log(className);
+      console.log(className);
       return className;
     }
   }
