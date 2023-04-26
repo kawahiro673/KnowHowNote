@@ -101,7 +101,7 @@ export const newCreateFile2 = (inputTab, span, parentId) => {
         order++;
         const order1 = orderGet(
           `parent${res.fileResult.parent_id}`,
-          `${res.fileResult.id}`
+          `li${res.fileResult.id}`
         );
         console.log(order1);
         $.ajax({
