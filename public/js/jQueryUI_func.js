@@ -122,7 +122,7 @@ export const jQueryUIOptionsFunc = () => {
               } else if (beforeOrder > afterOrder) {
                 console.log('ファイル:上へD&D');
                 let id = item[0].childNodes[0].getAttribute('value');
-                // console.log(index);
+
                 $.ajax({
                   url: '/notePostController/',
                   type: 'POST',

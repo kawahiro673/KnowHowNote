@@ -23,6 +23,7 @@ import { orderGet, updateTime, passGet } from './stringUtils.js';
 import { expandableAdaptation } from './expandableOptions.js';
 
 let tabIdArray = []; //タブが生成されているファイルのIDを格納
+let tabFocusID; //　フォーカスが当たっているタブのIDを常に保持。フォルダ名の名前変更・D&D時のパス変更に使用。
 
 export const listCreate = () => {
   $.ajax({
@@ -278,6 +279,7 @@ export const fileClick = () => {
           }),
           success: function (res) {
             document.getElementById('notepass').innerHTML = pass;
+            tabFocusID = id;
           },
         });
       },
@@ -298,12 +300,12 @@ function tabUpload() {
     }),
     success: async function (res) {
       const createTheFirstTab = async () => {
-        for (const tab of res.response) {
+        for (const tab of res.tabResult) {
           await titleClick(tab.id, tab.tabTitle);
         }
       };
       const tabFocusOn = async () => {
-        if (res.response.length != 0) {
+        if (res.tabResult.length != 0) {
           await $.ajax({
             url: '/tabPostController/',
             type: 'POST',
@@ -314,7 +316,8 @@ function tabUpload() {
               flg: 'focusTab',
             }),
             success: function (res) {
-              $(`#tab-ID${res.response.id}`).trigger('click');
+              $(`#tab-ID${res.tabResult.id}`).trigger('click');
+              tabFocusID = res.tabResult.id;
             },
           });
         }
@@ -425,6 +428,7 @@ async function titleClick(id, title) {
           //タブをクリックした際の処理
           document.getElementById(`tab-ID${id}`).onclick = (e) => {
             tabClick(e, id, title);
+            tabFocusID = id;
           };
         },
       });

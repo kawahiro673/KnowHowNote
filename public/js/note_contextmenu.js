@@ -4,7 +4,7 @@ import { orderGet, passGet } from './stringUtils.js';
 let tmp1;
 let tmp2;
 
-export const fileContextmenu = (tabArray) => {
+export const fileContextmenu = (tabIdArray) => {
   $('.list_title').on('contextmenu', function () {
     console.log(
       `"${$(this).html()}" ${$(this).attr('value')} を右クリックしました`
@@ -26,7 +26,7 @@ export const fileContextmenu = (tabArray) => {
 
     document.getElementById('delete').onclick = () => {
       let tabIndex = orderGet('tab-content', `Tab-ID${file.id}`);
-      noteDelete(file, tabIndex, order, tabArray);
+      noteDelete(file, tabIndex, order, tabIdArray);
     };
 
     $(document).ready(function () {
@@ -57,7 +57,7 @@ export const fileContextmenu = (tabArray) => {
   });
 };
 
-const noteDelete = (file, tabIndex, order, tabArray) => {
+const noteDelete = (file, tabIndex, order, tabIdArray) => {
   //はいを押した場合(true)
   //まずはタブ削除
   let btn = confirm(`${file.title} を本当に削除しますか？`);
@@ -79,10 +79,10 @@ const noteDelete = (file, tabIndex, order, tabArray) => {
         $(`#file${file.id}`).parent().remove();
 
         file.id = Number(file.id);
-        if (tabArray.includes(file.id)) {
-          closeTab(file.id, tabIndex, tabArray);
+        if (tabIdArray.includes(file.id)) {
+          closeTab(file.id, tabIndex, tabIdArray);
           //idArrayの中にあるfile.idを削除
-          tabArray = deleteTabArray(file.id, tabArray);
+          tabIdArray = deleteTabArray(file.id, tabIdArray);
         }
 
         $.ajax({

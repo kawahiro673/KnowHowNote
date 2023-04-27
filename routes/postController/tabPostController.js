@@ -32,7 +32,7 @@ router.post('/', (req, res) => {
             pool.query(
               'UPDATE tab_hold SET tabOrder = ?, focus = 1 where id = ?',
               [req.body.order, req.body.id],
-              (error, results) => {
+              (error, result) => {
                 if (error) {
                   reject(error);
                 } else {
@@ -47,11 +47,11 @@ router.post('/', (req, res) => {
             pool.query(
               'UPDATE tab_hold SET focus = 0 where id != ? AND (UserID = ?)',
               [req.body.id, resultDecoded[0].id],
-              (error, results) => {
+              (error, result) => {
                 if (error) {
                   reject(error);
                 } else {
-                  res.send({ response: results });
+                  res.send({ msg: '成功しました' });
                 }
               }
             );
@@ -92,22 +92,22 @@ router.post('/', (req, res) => {
                 if (error) {
                   reject(error);
                 } else {
-                  resolve({ result: result, resultDecoded: resultDecoded });
+                  resolve(resultDecoded);
                 }
               }
             );
           });
         })
-        .then(({ result, resultDecoded }) => {
+        .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
             pool.query(
               'UPDATE tab_hold SET focus = ? where id != ? AND (UserID = ?)',
               [0, req.body.id, resultDecoded[0].id],
-              (error, results) => {
+              (error, result) => {
                 if (error) {
                   reject(error);
                 } else {
-                  res.send({ response: result });
+                  res.send({ msg: '成功しました' });
                 }
               }
             );
@@ -117,14 +117,6 @@ router.post('/', (req, res) => {
           console.error(error);
           res.status(500).send('Internal Server Error.(addOrder)');
         });
-    } else if (req.body.flg === 'updateOrder') {
-      pool.query(
-        'UPDATE tab_hold SET tabOrder = ? where id = ?',
-        [req.body.order, req.body.id],
-        (error, results) => {
-          res.send({ response: results });
-        }
-      );
     } else if (req.body.flg === 'tabDesc') {
       const token = req.cookies.token;
       const decoded = JWT.verify(token, 'SECRET_KEY');
@@ -152,11 +144,11 @@ router.post('/', (req, res) => {
             pool.query(
               'SELECT * FROM tab_hold WHERE UserID = ? ORDER BY tabOrder;',
               [resultDecoded[0].id],
-              (error, results) => {
+              (error, result) => {
                 if (error) {
                   reject(error);
                 } else {
-                  res.send({ response: results });
+                  res.send({ tabResult: result });
                 }
               }
             );
@@ -166,10 +158,6 @@ router.post('/', (req, res) => {
           console.error(error);
           res.status(500).send('Internal Server Error.(tabDesc)');
         });
-    } else if (req.body.flg === 'info') {
-      pool.query('SELECT * FROM tab_hold;', (error, result) => {
-        res.send({ response: result });
-      });
     } else if (req.body.flg === 'focusTab') {
       const token = req.cookies.token;
       const decoded = JWT.verify(token, 'SECRET_KEY');
@@ -201,7 +189,7 @@ router.post('/', (req, res) => {
                 if (error) {
                   reject(error);
                 } else {
-                  res.send({ response: result[0] });
+                  res.send({ tabResult: result[0] });
                 }
               }
             );
@@ -211,7 +199,7 @@ router.post('/', (req, res) => {
           console.error(error);
           res.status(500).send('Internal Server Error.(focusTab)');
         });
-    } else if (req.body.flg === 'tabDel') {
+    } else if (req.body.flg === 'tabDelete') {
       const token = req.cookies.token;
       const decoded = JWT.verify(token, 'SECRET_KEY');
       let promise = new Promise((resolve, reject) => {
@@ -239,7 +227,7 @@ router.post('/', (req, res) => {
             pool.query(
               'SELECT * FROM it_memo WHERE id = ?',
               [req.body.id],
-              (error, resultFocus) => {
+              (error, result) => {
                 if (error) {
                   reject(error);
                 } else {
@@ -277,7 +265,6 @@ router.post('/', (req, res) => {
                   reject(error);
                 } else {
                   resolve({
-                    result: result,
                     resultDecoded: resultDecoded,
                     tabResult: tabResult,
                   });
@@ -286,16 +273,16 @@ router.post('/', (req, res) => {
             );
           });
         })
-        .then(({ result, resultDecoded, tabResult }) => {
+        .then(({ resultDecoded, tabResult }) => {
           return new Promise((resolve, reject) => {
             pool.query(
               'UPDATE tab_hold SET tabOrder = tabOrder - 1 WHERE tabOrder > ? AND (UserID = ?); ',
               [req.body.order, resultDecoded[0].id],
-              (error, results) => {
+              (error, result) => {
                 if (error) {
                   reject(error);
                 } else {
-                  res.send({ response: result, tabResult: tabResult[0] });
+                  res.send({ tabResult: tabResult[0] });
                 }
               }
             );
@@ -335,11 +322,11 @@ router.post('/', (req, res) => {
               pool.query(
                 'INSERT into tab_hold(id, tabTitle, UserID) values(?, ?, ?);',
                 [req.body.id, req.body.title, resultDecoded[0].id],
-                (error, results) => {
+                (error, result) => {
                   if (error) {
                     reject(error);
                   } else {
-                    res.send({ response: results });
+                    res.send({ msg: '成功しました' });
                   }
                 }
               );

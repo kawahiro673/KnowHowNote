@@ -189,7 +189,7 @@ export const shareButton = (id) => {
 };
 
 //フォーカスの当たっているタブを削除する際には違うタブにフォーカスを当てる
-export const closeTab = (id, index, tabArray) => {
+export const closeTab = (id, order, tabIdArray) => {
   document.getElementById('TAB-ID' + id).remove();
   document.getElementById('tab-ID' + id).remove();
   document.getElementById('Tab-ID' + id).remove();
@@ -200,19 +200,19 @@ export const closeTab = (id, index, tabArray) => {
     contentType: 'application/json',
     data: JSON.stringify({
       data: 'tab',
-      flg: 'tabDel',
+      flg: 'tabDelete',
       id,
-      order: index,
+      order,
     }),
     success: function (res) {
       const focusFlg = res.tabResult.focus;
-      let result = tabArray.indexOf(id);
+      let result = tabIdArray.indexOf(id);
       if (focusFlg === 1) {
         if (result !== 0) {
-          $(`#tab-ID${tabArray[result - 1]}`).trigger('click');
+          $(`#tab-ID${tabIdArray[result - 1]}`).trigger('click');
           //tabArrayの０番目の場合。タブの一番上の場合
         } else {
-          $(`#tab-ID${tabArray[result + 1]}`).trigger('click');
+          $(`#tab-ID${tabIdArray[result + 1]}`).trigger('click');
         }
       }
     },
@@ -226,19 +226,6 @@ export const closeButton = (id, title, tabArray) => {
   let order = [].slice.call(tabelements).indexOf(tabId);
   order++;
   closeTab(id, order, tabArray);
-  $.ajax({
-    url: '/tabPostController/',
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      data: 'tab',
-      flg: 'info',
-      id,
-      title,
-    }),
-    success: function (res) {},
-  });
 };
 
 //タブクリック時
@@ -260,7 +247,6 @@ export const tabClick = (e, id, title) => {
         title,
       }),
       success: function (res) {
-        //console.log('タブクリックしたぞ(ajax)');
         document.getElementById('notepass').innerHTML = pass;
       },
     });
