@@ -94,7 +94,7 @@ export const jQueryUIOptionsFunc = () => {
           index++;
 
           //const className = classNameGet(document.getElementById(item[0].id));
-          afterOrder = orderGet(className, item[0].id);
+          let afterOrder = orderGet(className, item[0].id);
           console.log(afterOrder);
 
           console.log(`rootから"${i / 2}"個下の階層です`);
