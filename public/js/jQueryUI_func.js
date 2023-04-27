@@ -94,8 +94,6 @@ export const jQueryUIOptionsFunc = () => {
           index++;
 
           //const className = classNameGet(document.getElementById(item[0].id));
-          let afterOrder = orderGet(className, item[0].id);
-          console.log(afterOrder);
 
           console.log(`rootから"${i / 2}"個下の階層です`);
           console.log(
@@ -111,6 +109,9 @@ export const jQueryUIOptionsFunc = () => {
           if (item.prevObject[0].className.indexOf('file') != -1) {
             //移動後も同じparent_id
             if (parent_id_Tmp == item[0].parentNode.id) {
+              //同じparent_id内でD＆D後の順番
+              let afterOrder = orderGet(className, item[0].id);
+              console.log(afterOrder);
               //下へD＆D
               if (beforeOrder < index) {
                 console.log('ファイル:下へD&D');
@@ -158,7 +159,8 @@ export const jQueryUIOptionsFunc = () => {
             } else if (parent_id_Tmp != item[0].parentNode.id) {
               console.log('ファイル:違うParentID');
               let id = item[0].childNodes[0].getAttribute('value');
-
+              let afterOrder = orderGet(className, item[0].id);
+              console.log(afterOrder);
               $.ajax({
                 url: '/notePostController/',
                 type: 'POST',
@@ -220,6 +222,8 @@ export const jQueryUIOptionsFunc = () => {
           } else {
             //移動後も同じparent_id
             if (parent_id_Tmp == item[0].parentNode.id) {
+              let afterOrder = orderGet(className, item[0].id);
+              console.log(afterOrder);
               //orderが大きくなる場合(下へD＆D);
               if (beforeOrder < index) {
                 console.log('フォルダ:下へD&D');
@@ -261,6 +265,8 @@ export const jQueryUIOptionsFunc = () => {
               }
               //移動後は違うparent_id
             } else if (parent_id_Tmp != item[0].parentNode.id) {
+              let afterOrder = orderGet(className, item[0].id);
+              console.log(afterOrder);
               console.log('フォルダ:違うParentID');
               //D&D後に新しく追加された側のorderの動き
               $.ajax({
