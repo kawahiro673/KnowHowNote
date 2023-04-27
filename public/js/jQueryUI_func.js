@@ -3,7 +3,7 @@ import { orderGet, passGet, classNameGet } from './stringUtils.js';
 export const jQueryUIOptionsFunc = () => {
   return new Promise((resolve, reject) => {
     let beforeOrder; //D&D前の順番
-    let className;
+    let className; //順番(oderGet)を取得するために
     let parent_id_Tmp;
     let tmpArray = [];
     $(function () {
@@ -86,19 +86,6 @@ export const jQueryUIOptionsFunc = () => {
 
           let id = item.prevObject[0].getAttribute('value');
 
-          // let elements = document.getElementsByClassName(
-          //   `parent${item[0].parentNode.id}`
-          // );
-          // console.log(item[0]);
-          //index: D&D後の配列の順番
-          // let index = [].slice.call(elements).indexOf(item[0]);
-          // index++;
-          //const className = classNameGet(document.getElementById(item[0].id));
-          // console.log(`rootから"${i / 2}"個下の階層です`);
-          // console.log(
-          //   `移動後(folder)【order:${index}(違う階層の場合は0), parent_id: ${item[0].parentNode.id}】`
-          // );
-
           //リストの+−ボタンを押下してもドラッグできるようにした(次の兄弟のspan要素を代入している)
           if (item.prevObject[0].classList.contains('hitarea')) {
             item.prevObject[0] = item.prevObject[0].nextElementSibling;
@@ -177,18 +164,9 @@ export const jQueryUIOptionsFunc = () => {
                     `parent${parent_id_Tmp}`,
                     `parent${item[0].parentNode.id}`
                   );
-                  // let elements = document.getElementsByClassName(
-                  //   `parent${item[0].parentNode.id}`
-                  // );
-                  // //index: D&D後のparent_id内での順番
-                  // let index = [].slice.call(elements).indexOf(item[0]);
-                  // index++;
+
                   className = classNameGet(document.getElementById(item[0].id));
                   let afterOrder = orderGet(className, item[0].id);
-                  // console.log(afterOrder);
-                  // console.log(
-                  //   `移動後(folder)【order:${index}(違う階層の場合は0), parent_id: ${item[0].parentNode.id}】`
-                  // );
 
                   //パス更新
                   const pass = passGet(id, item[0].childNodes[0].innerHTML);
@@ -215,16 +193,12 @@ export const jQueryUIOptionsFunc = () => {
                   });
                 },
               });
-            } else {
-              console.log('例外');
             }
-
             //*************************フォルダ移動の場合******************************
           } else {
             //移動後も同じparent_id
             if (parent_id_Tmp == item[0].parentNode.id) {
               let afterOrder = orderGet(className, item[0].id);
-              // console.log(afterOrder);
               //orderが大きくなる場合(下へD＆D);
               if (beforeOrder < afterOrder) {
                 console.log('フォルダ:下へD&D');
@@ -286,18 +260,10 @@ export const jQueryUIOptionsFunc = () => {
                     `parent${parent_id_Tmp}`,
                     `parent${item[0].parentNode.id}`
                   );
-                  // let elements = document.getElementsByClassName(
-                  //   `parent${item[0].parentNode.id}`
-                  // );
-                  // //index: D&D後のparent_id内での順番
-                  // let index = [].slice.call(elements).indexOf(item[0]);
-                  // index++;
+
                   className = classNameGet(document.getElementById(item[0].id));
                   let afterOrder = orderGet(className, item[0].id);
-                  // console.log(afterOrder);
-                  // console.log(
-                  //   `移動後(folder)【order:${index}(違う階層の場合は0), parent_id: ${item[0].parentNode.id}】`
-                  // );
+
                   $.ajax({
                     url: '/mypage/',
                     type: 'POST',
@@ -314,8 +280,6 @@ export const jQueryUIOptionsFunc = () => {
                   });
                 },
               });
-            } else {
-              console.log('例外');
             }
           }
         },

@@ -46,8 +46,8 @@ const mynoteAddFunc = (id) => {
       document.getElementById('0').appendChild(li);
       li.appendChild(span);
 
-      let elements = document.getElementsByClassName(`parent0`);
       //MyPage追加後の順番
+      let elements = document.getElementsByClassName(`parent0`);
       let order = [].slice.call(elements).indexOf(span.parentNode);
       order++;
 

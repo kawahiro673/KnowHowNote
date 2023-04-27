@@ -5,6 +5,19 @@ export const orderGet = (group, target) => {
   let index = [].slice.call(elements).indexOf(element);
   return index + 1;
 };
+//複数のclassを持つelementで、parentの付いたclass名を取得する関数
+//classを複数持つ要素はclassを
+export const classNameGet = (element) => {
+  console.log(element);
+  const classList = element.classList;
+  for (let i = 0; i < classList.length; i++) {
+    if (classList[i].toString().indexOf('parent') !== -1) {
+      const className = classList[i];
+      console.log(className);
+      return className;
+    }
+  }
+};
 
 //現在日時取得＆DB格納
 export const updateTime = (id, time) => {
@@ -41,16 +54,4 @@ export const passGet = (id, title) => {
   });
   if (!answer) return title;
   return answer + ' > ' + title;
-};
-
-export const classNameGet = (element) => {
-  console.log(element);
-  const classList = element.classList;
-  for (let i = 0; i < classList.length; i++) {
-    if (classList[i].toString().indexOf('parent') !== -1) {
-      const className = classList[i];
-      console.log(className);
-      return className;
-    }
-  }
 };
