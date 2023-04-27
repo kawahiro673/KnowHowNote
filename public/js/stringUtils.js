@@ -83,8 +83,10 @@ export const searchSpans = (element) => {
   if (children.length > 0) {
     for (let i = 0; i < children.length; i++) {
       const child = children[i];
-      if (child.tagName === 'SPAN') {
-        spans.push(child);
+      if (child.tagName === 'SPAN' && child.classList.contains('list_title')) {
+        const str = child.id;
+        const ret = str.replace(/[^0-9]/g, '');
+        spans.push(parseInt(ret));
       }
       const foundSpans = searchSpans(child);
       spans.push(...foundSpans);
