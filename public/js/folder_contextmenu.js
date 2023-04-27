@@ -168,7 +168,7 @@ const folderNameChange = (folder) => {
   document
     .getElementById('inputTab')
     .addEventListener('focus', (event) => event.target.select());
-  document.getElementById('inputTab').click();
+  document.getElementById('inputTab').focus();
 
   //Enter押下で変更する
   inputTab.addEventListener('keypress', function (e) {
