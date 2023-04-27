@@ -149,7 +149,7 @@ const folderDelete = (folder, order, tabIdArray) => {
 
 const folderNameChange = (folder) => {
   console.log('folderNameをクリックしました');
-  //テキストの作成
+
   const inputTab = document.createElement('input');
   inputTab.setAttribute('type', 'text');
   inputTab.setAttribute('id', 'inputTab');
@@ -165,6 +165,9 @@ const folderNameChange = (folder) => {
   let len = inputTab.value.length;
   document.getElementById('inputTab').focus();
   document.getElementById('inputTab').setSelectionRange(len, len);
+  document
+    .getElementById('inputTab')
+    .addEventListener('focus', (event) => event.target.select());
 
   //Enter押下で変更する
   inputTab.addEventListener('keypress', function (e) {
