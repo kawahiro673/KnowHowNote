@@ -18,17 +18,10 @@ export const fileContextmenu = (tabIdArray) => {
     file.elem.style.backgroundColor = '#A7F1FF';
     file.elem.style.borderRadius = '10px';
 
-    let elements = document.getElementsByClassName(
-      `parent${file.elem.parentNode.parentNode.id}`
-    );
-    let order = [].slice.call(elements).indexOf(file.elem.parentNode);
-    order++;
-
-    const order1 = orderGet(
+    const order = orderGet(
       `parent${file.elem.parentNode.parentNode.id}`,
       file.elem.parentNode.id
     );
-    console.log(order1);
 
     document.getElementById('delete').onclick = () => {
       let tabIndex = orderGet('tab-content', `Tab-ID${file.id}`);

@@ -2,6 +2,7 @@ import { closeTab, deleteTabArray } from './tab_func.js';
 
 import { newFileCreateFunc } from './newFileCreate.js';
 import { newFolderCreateFunc } from './newFolderCreate.js';
+import { orderGet } from './stringUtils.js';
 
 let tmp1;
 let tmp2;
@@ -25,12 +26,18 @@ export const folderContextmenu = (tabIdArray) => {
     folder.elem.style.backgroundColor = '#A7F1FF';
     folder.elem.style.borderRadius = '10px';
 
-    let elements = document.getElementsByClassName(
-      `parent${folder.elem.parentNode.parentNode.id}`
-    );
+    // let elements = document.getElementsByClassName(
+    //   `parent${folder.elem.parentNode.parentNode.id}`
+    // );
 
-    let order = [].slice.call(elements).indexOf(folder.elem.parentNode);
-    order++;
+    // let order = [].slice.call(elements).indexOf(folder.elem.parentNode);
+    // order++;
+
+    const order1 = orderGet(
+      `parent${folder.elem.parentNode.parentNode.id}`,
+      folder.elem.parentNode.id
+    );
+    console.log(order1);
 
     document.getElementById('folderDelete').onclick = function () {
       folderDelete(folder, order, tabIdArray);
