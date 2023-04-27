@@ -85,20 +85,19 @@ export const jQueryUIOptionsFunc = () => {
           }
 
           let id = item.prevObject[0].getAttribute('value');
-          let elements = document.getElementsByClassName(
-            `parent${item[0].parentNode.id}`
-          );
-          console.log(item[0]);
+
+          // let elements = document.getElementsByClassName(
+          //   `parent${item[0].parentNode.id}`
+          // );
+          // console.log(item[0]);
           //index: D&D後の配列の順番
-          let index = [].slice.call(elements).indexOf(item[0]);
-          index++;
-
+          // let index = [].slice.call(elements).indexOf(item[0]);
+          // index++;
           //const className = classNameGet(document.getElementById(item[0].id));
-
-          console.log(`rootから"${i / 2}"個下の階層です`);
-          console.log(
-            `移動後(folder)【order:${index}(違う階層の場合は0), parent_id: ${item[0].parentNode.id}】`
-          );
+          // console.log(`rootから"${i / 2}"個下の階層です`);
+          // console.log(
+          //   `移動後(folder)【order:${index}(違う階層の場合は0), parent_id: ${item[0].parentNode.id}】`
+          // );
 
           //リストの+−ボタンを押下してもドラッグできるようにした(次の兄弟のspan要素を代入している)
           if (item.prevObject[0].classList.contains('hitarea')) {
@@ -111,9 +110,9 @@ export const jQueryUIOptionsFunc = () => {
             if (parent_id_Tmp == item[0].parentNode.id) {
               //同じparent_id内でD＆D後の順番
               let afterOrder = orderGet(className, item[0].id);
-              console.log(afterOrder);
+
               //下へD＆D
-              if (beforeOrder < index) {
+              if (beforeOrder < afterOrder) {
                 console.log('ファイル:下へD&D');
                 let id = item[0].childNodes[0].getAttribute('value');
 
@@ -128,15 +127,15 @@ export const jQueryUIOptionsFunc = () => {
                     parent_id: item[0].parentNode.id,
                     id,
                     move: 'down',
-                    order: index,
+                    order: afterOrder,
                   }),
                   success: function (res) {},
                 });
                 //上へD＆D
-              } else if (beforeOrder > index) {
+              } else if (beforeOrder > afterOrder) {
                 console.log('ファイル:上へD&D');
                 let id = item[0].childNodes[0].getAttribute('value');
-                console.log(index);
+                // console.log(index);
                 $.ajax({
                   url: '/notePostController/',
                   type: 'POST',
@@ -148,7 +147,7 @@ export const jQueryUIOptionsFunc = () => {
                     parent_id: item[0].parentNode.id,
                     id,
                     move: 'up',
-                    order: index,
+                    order: afterOrder,
                   }),
                   success: function (res) {},
                 });
@@ -171,7 +170,6 @@ export const jQueryUIOptionsFunc = () => {
                   parent_id: item[0].parentNode.id,
                   old_parent_id: parent_id_Tmp,
                   id,
-                  order: index,
                   old_order: beforeOrder,
                 }),
                 success: function (res) {
@@ -179,18 +177,19 @@ export const jQueryUIOptionsFunc = () => {
                     `parent${parent_id_Tmp}`,
                     `parent${item[0].parentNode.id}`
                   );
-                  let elements = document.getElementsByClassName(
-                    `parent${item[0].parentNode.id}`
-                  );
-                  //index: D&D後のparent_id内での順番
-                  let index = [].slice.call(elements).indexOf(item[0]);
-                  index++;
+                  // let elements = document.getElementsByClassName(
+                  //   `parent${item[0].parentNode.id}`
+                  // );
+                  // //index: D&D後のparent_id内での順番
+                  // let index = [].slice.call(elements).indexOf(item[0]);
+                  // index++;
                   className = classNameGet(document.getElementById(item[0].id));
                   let afterOrder = orderGet(className, item[0].id);
-                  console.log(afterOrder);
-                  console.log(
-                    `移動後(folder)【order:${index}(違う階層の場合は0), parent_id: ${item[0].parentNode.id}】`
-                  );
+                  // console.log(afterOrder);
+                  // console.log(
+                  //   `移動後(folder)【order:${index}(違う階層の場合は0), parent_id: ${item[0].parentNode.id}】`
+                  // );
+
                   //パス更新
                   const pass = passGet(id, item[0].childNodes[0].innerHTML);
 
@@ -203,7 +202,7 @@ export const jQueryUIOptionsFunc = () => {
                       data: 'addOrder',
                       id,
                       parent_id: item[0].parentNode.id,
-                      order: index,
+                      order: afterOrder,
                       pattern: 'file',
                     }),
                     success: function (res) {
@@ -225,9 +224,9 @@ export const jQueryUIOptionsFunc = () => {
             //移動後も同じparent_id
             if (parent_id_Tmp == item[0].parentNode.id) {
               let afterOrder = orderGet(className, item[0].id);
-              console.log(afterOrder);
+              // console.log(afterOrder);
               //orderが大きくなる場合(下へD＆D);
-              if (beforeOrder < index) {
+              if (beforeOrder < afterOrder) {
                 console.log('フォルダ:下へD&D');
                 $.ajax({
                   url: '/folderPostController/',
@@ -239,13 +238,13 @@ export const jQueryUIOptionsFunc = () => {
                     flg: 'parentIDSame',
                     parent_id: item[0].parentNode.id,
                     id,
-                    order: index,
+                    order: afterOrder,
                     move: 'down',
                   }),
                   success: function (res) {},
                 });
                 //orderが小さくなる場合(上へD＆D)
-              } else if (beforeOrder > index) {
+              } else if (beforeOrder > afterOrder) {
                 console.log('フォルダ:上へD&D');
                 $.ajax({
                   url: '/folderPostController/',
@@ -257,7 +256,7 @@ export const jQueryUIOptionsFunc = () => {
                     flg: 'parentIDSame',
                     parent_id: item[0].parentNode.id,
                     id,
-                    order: index,
+                    order: afterOrder,
                     move: 'up',
                   }),
                   success: function (res) {},
@@ -287,18 +286,18 @@ export const jQueryUIOptionsFunc = () => {
                     `parent${parent_id_Tmp}`,
                     `parent${item[0].parentNode.id}`
                   );
-                  let elements = document.getElementsByClassName(
-                    `parent${item[0].parentNode.id}`
-                  );
-                  //index: D&D後のparent_id内での順番
-                  let index = [].slice.call(elements).indexOf(item[0]);
-                  index++;
+                  // let elements = document.getElementsByClassName(
+                  //   `parent${item[0].parentNode.id}`
+                  // );
+                  // //index: D&D後のparent_id内での順番
+                  // let index = [].slice.call(elements).indexOf(item[0]);
+                  // index++;
                   className = classNameGet(document.getElementById(item[0].id));
                   let afterOrder = orderGet(className, item[0].id);
-                  console.log(afterOrder);
-                  console.log(
-                    `移動後(folder)【order:${index}(違う階層の場合は0), parent_id: ${item[0].parentNode.id}】`
-                  );
+                  // console.log(afterOrder);
+                  // console.log(
+                  //   `移動後(folder)【order:${index}(違う階層の場合は0), parent_id: ${item[0].parentNode.id}】`
+                  // );
                   $.ajax({
                     url: '/mypage/',
                     type: 'POST',
@@ -308,7 +307,7 @@ export const jQueryUIOptionsFunc = () => {
                       data: 'addOrder',
                       id: id,
                       parent_id: item[0].parentNode.id,
-                      order: index,
+                      order: afterOrder,
                       pattern: 'folder',
                     }),
                     success: function (res) {},
