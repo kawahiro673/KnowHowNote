@@ -242,7 +242,7 @@ export const fileClick = () => {
     let file = {
       title: $(this).html(),
       id: $(this).attr('value'),
-      element: this,
+      elem: this,
     };
     console.log(`"${file.title}"がクリックされました。`);
     let id = Number(file.id);
