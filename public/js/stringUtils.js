@@ -5,6 +5,7 @@ export const orderGet = (group, target) => {
   let index = [].slice.call(elements).indexOf(element);
   return index + 1;
 };
+
 //複数のclassを持つelementで、parentの付いたclass名を取得する関数
 //classを複数持つ要素はclassを
 export const classNameGet = (element) => {
@@ -13,7 +14,6 @@ export const classNameGet = (element) => {
   for (let i = 0; i < classList.length; i++) {
     if (classList[i].toString().indexOf('parent') !== -1) {
       const className = classList[i];
-      console.log(className);
       return className;
     }
   }
@@ -27,7 +27,6 @@ export const updateTime = (id, time) => {
   let DATE = now.getDate();
   let Hour = now.getHours();
   let Min = now.getMinutes();
-
   return `${Year}年${Month}月${DATE}日 ${Hour}:${Min}`;
 };
 

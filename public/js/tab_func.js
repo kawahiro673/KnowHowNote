@@ -1,5 +1,5 @@
 //タブで必要な関数まとめ
-import { updateTime, passGet } from './stringUtils.js';
+import { updateTime, passGet, orderGet } from './stringUtils.js';
 //タブ生成
 export const tabCreate = (id, title, res) => {
   const inputTab = document.createElement('input');
@@ -221,10 +221,11 @@ export const closeTab = (id, order, tabIdArray) => {
 
 //タブ上の✖️ボタン押下時
 export const closeButton = (id, title, tabArray) => {
-  let tabelements = document.getElementsByClassName('tab-content');
-  let tabId = document.getElementById(`Tab-ID${id}`);
-  let order = [].slice.call(tabelements).indexOf(tabId);
-  order++;
+  // let tabelements = document.getElementsByClassName('tab-content');
+  // let tabId = document.getElementById(`Tab-ID${id}`);
+  // let order = [].slice.call(tabelements).indexOf(tabId);
+  // order++;
+  const order = orderGet('tab-content', `Tab-ID${id}`);
   closeTab(id, order, tabArray);
 };
 

@@ -24,6 +24,12 @@ export const fileContextmenu = (tabIdArray) => {
     let order = [].slice.call(elements).indexOf(file.elem.parentNode);
     order++;
 
+    const order1 = orderGet(
+      `parent${file.elem.parentNode.parentNode.id}`,
+      file.elem.parentNode.id
+    );
+    console.log(order1);
+
     document.getElementById('delete').onclick = () => {
       let tabIndex = orderGet('tab-content', `Tab-ID${file.id}`);
       noteDelete(file, tabIndex, order, tabIdArray);
