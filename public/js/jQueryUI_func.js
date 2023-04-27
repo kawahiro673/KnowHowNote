@@ -2,7 +2,8 @@ import { orderGet, passGet, classNameGet } from './stringUtils.js';
 
 export const jQueryUIOptionsFunc = () => {
   return new Promise((resolve, reject) => {
-    let beforeOrder;
+    let beforeOrder; //D&D前の順番
+    let className;
     let parent_id_Tmp;
     let tmpArray = [];
     $(function () {
@@ -15,18 +16,13 @@ export const jQueryUIOptionsFunc = () => {
       $('#0').sortable({
         delay: 500,
         onDragStart: function (item) {
-          let elements = document.getElementsByClassName(
-            `parent${item[0].parentNode.id}`
-          );
           let str = item.prevObject[0].id;
           const regex = /[^0-9]/g;
           let id = str.replace(regex, '');
-          const className = classNameGet(document.getElementById(item[0].id));
+
+          className = classNameGet(document.getElementById(item[0].id));
           beforeOrder = orderGet(className, item[0].id);
-          console.log(beforeOrder);
-          //initial_index はD&D前の順番
-          // initial_index = [].slice.call(elements).indexOf(item[0]);
-          // initial_index++;
+
           parent_id_Tmp = item[0].parentNode.id;
           $.ajax({
             url: '/mypage/',
@@ -96,6 +92,11 @@ export const jQueryUIOptionsFunc = () => {
           //index: D&D後の配列の順番
           let index = [].slice.call(elements).indexOf(item[0]);
           index++;
+
+          //const className = classNameGet(document.getElementById(item[0].id));
+          afterOrder = orderGet(className, item[0].id);
+          console.log(afterOrder);
+
           console.log(`rootから"${i / 2}"個下の階層です`);
           console.log(
             `移動後(folder)【order:${index}(違う階層の場合は0), parent_id: ${item[0].parentNode.id}】`
