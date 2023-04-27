@@ -22,7 +22,7 @@ import { orderGet, updateTime, passGet } from './stringUtils.js';
 
 import { expandableAdaptation } from './expandableOptions.js';
 
-var tabIdArray = []; //タブが生成されているファイルのIDを格納
+let tabIdArray = []; //タブが生成されているファイルのIDを格納
 
 export const listCreate = () => {
   $.ajax({

@@ -119,10 +119,11 @@ const noteNameChange = (file) => {
   file.elem.after(inputTab);
   file.elem.style.display = 'none';
 
-  //テキストエリアにフォーカスを当ててカーソルを末尾へ
-  let len = inputTab.value.length;
+  //inputにフォーカスを当てて全選択
+  document
+    .getElementById('inputTab')
+    .addEventListener('focus', (event) => event.target.select());
   document.getElementById('inputTab').focus();
-  document.getElementById('inputTab').setSelectionRange(len, len);
 
   //Enter押下で変更する
   inputTab.addEventListener('keypress', function (e) {

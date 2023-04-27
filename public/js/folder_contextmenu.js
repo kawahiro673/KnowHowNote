@@ -162,9 +162,7 @@ const folderNameChange = (folder) => {
   folder.elem.after(inputTab);
   folder.elem.style.display = 'none';
 
-  let len = inputTab.value.length;
-  // document.getElementById('inputTab').focus();
-  // document.getElementById('inputTab').setSelectionRange(len, len);
+  //inputにフォーカスを当てて全選択
   document
     .getElementById('inputTab')
     .addEventListener('focus', (event) => event.target.select());

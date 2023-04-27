@@ -19,10 +19,12 @@ export const newFolderCreateFunc = (id) => {
     document.getElementById(id).appendChild(li);
     li.appendChild(span);
     span.appendChild(inputTab);
-    //テキストエリアにフォーカスを当ててカーソルを末尾へ
-    let len = inputTab.value.length;
+
+    //inputにフォーカスを当てて全選択
+    document
+      .getElementById('inputTab')
+      .addEventListener('focus', (event) => event.target.select());
     document.getElementById('inputTab').focus();
-    document.getElementById('inputTab').setSelectionRange(len, len);
 
     const clickL = (e) => {
       e.preventDefault();

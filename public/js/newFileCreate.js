@@ -21,9 +21,11 @@ export const newFileCreateFunc = (id) => {
     li.appendChild(span);
     span.appendChild(inputTab);
 
-    let len = inputTab.value.length;
+    //inputにフォーカスを当てて全選択
+    document
+      .getElementById('inputTab')
+      .addEventListener('focus', (event) => event.target.select());
     document.getElementById('inputTab').focus();
-    document.getElementById('inputTab').setSelectionRange(len, len);
 
     const clickL = (e) => {
       e.preventDefault();
