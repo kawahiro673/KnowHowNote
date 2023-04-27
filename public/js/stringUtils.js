@@ -55,12 +55,12 @@ export const passGet = (id, title) => {
   return answer + ' > ' + title;
 };
 
-export const fileIDUnderTheFolder = (element) => {
+//elemの配下の全てのファイルIDを再起的に取得し、fileIDsに格納し返す
+export const fileIDUnderTheFolder = (elem) => {
   const fileIDs = [];
   // element の子要素を全て取得
-  const children = element.children;
+  const children = elem.children;
 
-  // 子要素がある場合は再起的に検索
   if (children.length > 0) {
     for (let i = 0; i < children.length; i++) {
       const child = children[i];
