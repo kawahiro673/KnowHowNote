@@ -9,30 +9,30 @@ export const fileContextmenu = (tabArray) => {
     console.log(
       `"${$(this).html()}" ${$(this).attr('value')} を右クリックしました`
     );
-    let listTitle = {
+    let file = {
       title: $(this).html(),
       id: $(this).attr('value'),
-      titleThis: this,
+      elem: this,
     };
 
-    listTitle.titleThis.style.backgroundColor = '#A7F1FF';
-    listTitle.titleThis.style.borderRadius = '10px';
+    file.elem.style.backgroundColor = '#A7F1FF';
+    file.elem.style.borderRadius = '10px';
 
     let elements = document.getElementsByClassName(
-      `parent${listTitle.titleThis.parentNode.parentNode.id}`
+      `parent${file.elem.parentNode.parentNode.id}`
     );
-    let order = [].slice.call(elements).indexOf(listTitle.titleThis.parentNode);
+    let order = [].slice.call(elements).indexOf(file.elem.parentNode);
     order++;
 
     document.getElementById('delete').onclick = () => {
-      let tabIndex = orderGet('tab-content', `Tab-ID${listTitle.id}`);
-      noteDelete(listTitle, tabIndex, order, tabArray);
+      let tabIndex = orderGet('tab-content', `Tab-ID${file.id}`);
+      noteDelete(file, tabIndex, order, tabArray);
     };
 
     $(document).ready(function () {
       $('#name').off('click');
       $('#name').on('click', function (event) {
-        noteNameChange(listTitle);
+        noteNameChange(file);
       });
     });
 
@@ -41,7 +41,7 @@ export const fileContextmenu = (tabArray) => {
       $('#color').off('click');
       $('#color').on('click', function (e) {
         e.preventDefault();
-        noteColorChange(listTitle);
+        noteColorChange(file);
       });
     });
 
@@ -49,18 +49,18 @@ export const fileContextmenu = (tabArray) => {
       'mousedown',
       (e) => {
         let flg = false;
-        if (e.target == listTitle.titleThis) flg = true;
-        bodyClickJuge(listTitle.titleThis, null, flg, 'backgroundColor');
+        if (e.target == file.elem) flg = true;
+        bodyClickJuge(file.elem, null, flg, 'backgroundColor');
       },
       { once: true }
     );
   });
 };
 
-const noteDelete = (listTitle, tabIndex, order, tabArray) => {
+const noteDelete = (file, tabIndex, order, tabArray) => {
   //はいを押した場合(true)
   //まずはタブ削除
-  let btn = confirm(`${listTitle.title} を本当に削除しますか？`);
+  let btn = confirm(`${file.title} を本当に削除しますか？`);
   if (btn) {
     $.ajax({
       url: '/tabPostController/',
@@ -70,19 +70,19 @@ const noteDelete = (listTitle, tabIndex, order, tabArray) => {
       data: JSON.stringify({
         data: 'tab',
         flg: 'tabDel',
-        id: listTitle.id,
+        id: file.id,
         order: tabIndex,
       }),
       success: function (res) {
         //成功！！ここにリストから消した際のタブ削除と、リスト削除を記載→タブの✖️を押下したことにすれば良いのでは？？
-        let parentid = listTitle.titleThis.parentNode.parentNode.id;
-        $(`#file${listTitle.id}`).parent().remove();
+        let parentid = file.elem.parentNode.parentNode.id;
+        $(`#file${file.id}`).parent().remove();
 
-        listTitle.id = Number(listTitle.id);
-        if (tabArray.includes(listTitle.id)) {
-          closeTab(listTitle.id, tabIndex, tabArray);
-          //idArrayの中にあるlistTitle.idを削除
-          tabArray = deleteTabArray(listTitle.id, tabArray);
+        file.id = Number(file.id);
+        if (tabArray.includes(file.id)) {
+          closeTab(file.id, tabIndex, tabArray);
+          //idArrayの中にあるfile.idを削除
+          tabArray = deleteTabArray(file.id, tabArray);
         }
 
         $.ajax({
@@ -93,7 +93,7 @@ const noteDelete = (listTitle, tabIndex, order, tabArray) => {
           data: JSON.stringify({
             data: 'note',
             flg: 'delete',
-            id: listTitle.id,
+            id: file.id,
             order,
             parentId: parentid,
           }),
@@ -104,7 +104,7 @@ const noteDelete = (listTitle, tabIndex, order, tabArray) => {
   }
 };
 
-const noteNameChange = (listTitle) => {
+const noteNameChange = (file) => {
   console.log('nameをクリックしました');
   //テキストの作成
   const inputTab = document.createElement('input');
@@ -114,10 +114,10 @@ const noteNameChange = (listTitle) => {
   inputTab.setAttribute('maxlength', '20');
   inputTab.setAttribute('size', '20');
   inputTab.style.display = 'block';
-  inputTab.setAttribute('value', listTitle.title);
+  inputTab.setAttribute('value', file.title);
 
-  listTitle.titleThis.after(inputTab);
-  listTitle.titleThis.style.display = 'none';
+  file.elem.after(inputTab);
+  file.elem.style.display = 'none';
 
   //テキストエリアにフォーカスを当ててカーソルを末尾へ
   let len = inputTab.value.length;
@@ -140,21 +140,21 @@ const noteNameChange = (listTitle) => {
           data: JSON.stringify({
             data: 'note',
             flg: 'name',
-            id: listTitle.id,
+            id: file.id,
             title: inputTab.value,
-            oldTitle: listTitle.title, //変更前のタイトル
+            oldTitle: file.title, //変更前のタイトル
           }),
           success: function (res) {
-            listTitle.titleThis.style.display = 'block';
-            listTitle.titleThis.innerHTML = inputTab.value;
+            file.elem.style.display = 'block';
+            file.elem.innerHTML = inputTab.value;
             inputTab.remove();
             //タブが生成済みの場合
             if (res.tabResult != undefined) {
               //リアルタイムにタイトル更新
-              document.getElementById(`tabname${listTitle.id}`).innerHTML =
+              document.getElementById(`tabname${file.id}`).innerHTML =
                 inputTab.value;
 
-              document.getElementById(`tabP${listTitle.id}`).innerHTML =
+              document.getElementById(`tabP${file.id}`).innerHTML =
                 inputTab.value;
 
               //passを正しく表示する2点セット
@@ -166,13 +166,14 @@ const noteNameChange = (listTitle) => {
                 );
               }
               //2.タブクリック時にパス更新
-              document.getElementById(`tab-ID${listTitle.id}`).onclick =
-                function (e) {
-                  document.getElementById('notepass').innerHTML = passGet(
-                    res.tabResult.id,
-                    res.tabResult.tabTitle
-                  );
-                };
+              document.getElementById(`tab-ID${file.id}`).onclick = function (
+                e
+              ) {
+                document.getElementById('notepass').innerHTML = passGet(
+                  res.tabResult.id,
+                  res.tabResult.tabTitle
+                );
+              };
             }
           },
         });
@@ -180,7 +181,7 @@ const noteNameChange = (listTitle) => {
     }
   });
   tmp1 = inputTab;
-  tmp2 = listTitle.titleThis;
+  tmp2 = file.elem;
   document.addEventListener('mousedown', eventFunc);
 };
 
@@ -206,10 +207,10 @@ const bodyClickJuge = (target1, target2, flg1, flg2) => {
   }
 };
 
-const noteColorChange = (listTitle) => {
+const noteColorChange = (file) => {
   console.log('colorクリック!');
   //タイトルが赤色だった場合
-  if (listTitle.titleThis.style.color == 'red') {
+  if (file.elem.style.color == 'red') {
     $.ajax({
       url: '/mypage/',
       type: 'POST',
@@ -217,12 +218,12 @@ const noteColorChange = (listTitle) => {
       contentType: 'application/json',
       data: JSON.stringify({
         data: 'color',
-        id: listTitle.id,
+        id: file.id,
         color: 'black',
       }),
       success: function (res) {
         console.log(`success受信(color) : "${res.response}"`);
-        listTitle.titleThis.style.color = res.response;
+        file.elem.style.color = res.response;
       },
     });
     //タイトルが黒の場合に実行
@@ -235,12 +236,12 @@ const noteColorChange = (listTitle) => {
       contentType: 'application/json',
       data: JSON.stringify({
         data: 'color',
-        id: listTitle.id,
+        id: file.id,
         color: 'red',
       }),
       success: function (res) {
         console.log(`success受信(color) : "${res.response}"`);
-        listTitle.titleThis.style.color = res.response;
+        file.elem.style.color = res.response;
       },
     });
   }

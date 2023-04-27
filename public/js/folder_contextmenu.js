@@ -16,32 +16,30 @@ export const folderContextmenu = (tabIdArray) => {
     console.log(
       `"${$(this).html()}" ${$(this).attr('value')} を右クリックしました`
     );
-    let folderList = {
-      folderTitle: $(this).html(),
-      folderId: $(this).attr('value'),
-      folderThis: this,
+    let folder = {
+      title: $(this).html(),
+      id: $(this).attr('value'),
+      elem: this,
     };
 
-    folderList.folderThis.style.backgroundColor = '#A7F1FF';
-    folderList.folderThis.style.borderRadius = '10px';
+    folder.elem.style.backgroundColor = '#A7F1FF';
+    folder.elem.style.borderRadius = '10px';
 
     let elements = document.getElementsByClassName(
-      `parent${folderList.folderThis.parentNode.parentNode.id}`
+      `parent${folder.elem.parentNode.parentNode.id}`
     );
 
-    let order = [].slice
-      .call(elements)
-      .indexOf(folderList.folderThis.parentNode);
+    let order = [].slice.call(elements).indexOf(folder.elem.parentNode);
     order++;
 
     document.getElementById('folderDelete').onclick = function () {
-      folderDelete(folderList, order, tabIdArray);
+      folderDelete(folder, order, tabIdArray);
     };
 
     $(document).ready(function () {
       $('#folderName').off('click');
       $('#folderName').on('click', function (e) {
-        folderNameChange(folderList);
+        folderNameChange(folder);
       });
     });
 
@@ -49,13 +47,13 @@ export const folderContextmenu = (tabIdArray) => {
       $('#createNote').off('click');
       $('#createNote').on('click', (e) => {
         e.stopPropagation();
-        let fID = document.getElementById(`folder${folderList.folderId}`);
+        let fID = document.getElementById(`folder${folder.id}`);
         //expandableの場合に配下の要素を開く
         if (fID.parentNode.classList.contains('expandable') === true) {
           fID.click();
         }
 
-        newFileCreateFunc(folderList.folderId, tabIdArray);
+        newFileCreateFunc(folder.id, tabIdArray);
 
         conme.style.display = 'none';
         conme2.style.display = 'none';
@@ -69,13 +67,13 @@ export const folderContextmenu = (tabIdArray) => {
       $('#createfolder').on('click', function (event) {
         //console.log('"フォルダを作成する"押下');
         event.stopPropagation();
-        let fID = document.getElementById(`folder${folderList.folderId}`);
+        let fID = document.getElementById(`folder${folder.id}`);
         //expandableの場合に配下の要素を開く
         if (fID.parentNode.classList.contains('expandable') == true) {
           fID.click();
         }
 
-        newFolderCreateFunc(folderList.folderId);
+        newFolderCreateFunc(folder.id);
         conme.style.display = 'none';
         conme2.style.display = 'none';
         conme3.style.display = 'none';
@@ -87,17 +85,17 @@ export const folderContextmenu = (tabIdArray) => {
       'mousedown',
       (e) => {
         let flg = false;
-        if (e.target == folderList.folderThis) flg = true;
-        bodyClickJuge(folderList.folderThis, null, flg, 'backgroundColor');
+        if (e.target == folder.elem) flg = true;
+        bodyClickJuge(folder.elem, null, flg, 'backgroundColor');
       },
       { once: true }
     );
   });
 };
 
-const folderDelete = (folderList, order, tabIdArray) => {
+const folderDelete = (folder, order, tabIdArray) => {
   let btn = confirm(
-    `${folderList.folderTitle} 配下のフォルダやノートも全て削除されますが本当に削除しますか？`
+    `${folder.title} 配下のフォルダやノートも全て削除されますが本当に削除しますか？`
   );
   //はいを押した場合(true)
   if (btn) {
@@ -109,14 +107,14 @@ const folderDelete = (folderList, order, tabIdArray) => {
       data: JSON.stringify({
         data: 'folder',
         flg: 'folderDel',
-        id: folderList.folderId,
-        title: folderList.folderTitle,
+        id: folder.id,
+        title: folder.title,
         order,
-        parentId: folderList.folderThis.parentNode.parentNode.id,
+        parentId: folder.elem.parentNode.parentNode.id,
       }),
       success: function (res) {
         //成功！！ここにリストから消した際のタブ削除と、リスト削除を記載→タブの✖️を押下したことにすれば良いのでは？？
-        $(`#folder${folderList.folderId}`).parent().remove();
+        $(`#folder${folder.id}`).parent().remove();
 
         $.ajax({
           url: '/mypage/',
@@ -125,7 +123,7 @@ const folderDelete = (folderList, order, tabIdArray) => {
           contentType: 'application/json',
           data: JSON.stringify({
             data: 'childFolder',
-            id: folderList.folderId,
+            id: folder.id,
             file: res.fileResults,
             folder: res.folderResults,
           }),
@@ -149,7 +147,7 @@ const folderDelete = (folderList, order, tabIdArray) => {
   }
 };
 
-const folderNameChange = (folderList) => {
+const folderNameChange = (folder) => {
   console.log('folderNameをクリックしました');
   //テキストの作成
   const inputTab = document.createElement('input');
@@ -159,10 +157,10 @@ const folderNameChange = (folderList) => {
   inputTab.setAttribute('maxlength', '20');
   inputTab.setAttribute('size', '20');
   inputTab.style.display = 'block';
-  inputTab.setAttribute('value', folderList.folderTitle);
+  inputTab.setAttribute('value', folder.title);
 
-  folderList.folderThis.after(inputTab);
-  folderList.folderThis.style.display = 'none';
+  folder.elem.after(inputTab);
+  folder.elem.style.display = 'none';
 
   let len = inputTab.value.length;
   document.getElementById('inputTab').focus();
@@ -184,12 +182,12 @@ const folderNameChange = (folderList) => {
           data: JSON.stringify({
             data: 'folder',
             flg: 'changeName',
-            id: folderList.folderId,
+            id: folder.id,
             title: inputTab.value,
           }),
           success: function (res) {
-            folderList.folderThis.style.display = 'block';
-            folderList.folderThis.innerHTML = inputTab.value;
+            folder.elem.style.display = 'block';
+            folder.elem.innerHTML = inputTab.value;
             inputTab.remove();
           },
         });
@@ -197,7 +195,7 @@ const folderNameChange = (folderList) => {
     }
   });
   tmp1 = inputTab;
-  tmp2 = folderList.folderThis;
+  tmp2 = folder.elem;
   document.addEventListener('mousedown', eventFunc);
 };
 

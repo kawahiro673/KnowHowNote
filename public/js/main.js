@@ -239,15 +239,15 @@ document.getElementById('tab').appendChild(noTab);
 //ファイルクリック時にタブを表示
 export const fileClick = () => {
   $('.list_title').on('click', function () {
-    let listTitle = {
+    let file = {
       title: $(this).html(),
       id: $(this).attr('value'),
-      titleThis: this,
+      element: this,
     };
-    console.log(`"${listTitle.title}"がクリックされました。`);
-    let id = Number(listTitle.id);
-    titleClick(id, listTitle.title);
-    const pass = passGet(listTitle.id, listTitle.title);
+    console.log(`"${file.title}"がクリックされました。`);
+    let id = Number(file.id);
+    titleClick(id, file.title);
+    const pass = passGet(file.id, file.title);
     let isSomething = tabIdArray.includes(id);
     $.ajax({
       url: '/tabPostController/',
@@ -259,7 +259,7 @@ export const fileClick = () => {
         flg: 'tabAdd',
         isSomething,
         id,
-        title: listTitle.title,
+        title: file.title,
       }),
       success: function (res) {
         const order = orderGet('tab-content', `Tab-ID${id}`);
@@ -274,7 +274,7 @@ export const fileClick = () => {
             flg: 'clickTab',
             id,
             order,
-            title: listTitle.title,
+            title: file.title,
           }),
           success: function (res) {
             document.getElementById('notepass').innerHTML = pass;
