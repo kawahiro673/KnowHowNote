@@ -185,6 +185,7 @@ export const jQueryUIOptionsFunc = () => {
                   //index: D&D後のparent_id内での順番
                   let index = [].slice.call(elements).indexOf(item[0]);
                   index++;
+                  className = classNameGet(document.getElementById(item[0].id));
                   let afterOrder = orderGet(className, item[0].id);
                   console.log(afterOrder);
                   console.log(
@@ -279,7 +280,7 @@ export const jQueryUIOptionsFunc = () => {
                   parent_id: item[0].parentNode.id,
                   old_parent_id: parent_id_Tmp,
                   id,
-                  old_order: beforeOrder, //元order
+                  old_order: beforeOrder,
                 }),
                 success: function (res) {
                   item[0].classList.replace(
@@ -292,6 +293,7 @@ export const jQueryUIOptionsFunc = () => {
                   //index: D&D後のparent_id内での順番
                   let index = [].slice.call(elements).indexOf(item[0]);
                   index++;
+                  className = classNameGet(document.getElementById(item[0].id));
                   let afterOrder = orderGet(className, item[0].id);
                   console.log(afterOrder);
                   console.log(
