@@ -2,7 +2,7 @@ import { closeTab, deleteTabArray } from './tab_func.js';
 
 import { newFileCreateFunc } from './newFileCreate.js';
 import { newFolderCreateFunc } from './newFolderCreate.js';
-import { orderGet } from './stringUtils.js';
+import { orderGet, searchSpans } from './stringUtils.js';
 
 let tmp1;
 let tmp2;
@@ -26,18 +26,10 @@ export const folderContextmenu = (tabIdArray) => {
     folder.elem.style.backgroundColor = '#A7F1FF';
     folder.elem.style.borderRadius = '10px';
 
-    // let elements = document.getElementsByClassName(
-    //   `parent${folder.elem.parentNode.parentNode.id}`
-    // );
-
-    // let order = [].slice.call(elements).indexOf(folder.elem.parentNode);
-    // order++;
-
-    const order1 = orderGet(
+    const order = orderGet(
       `parent${folder.elem.parentNode.parentNode.id}`,
       folder.elem.parentNode.id
     );
-    console.log(order1);
 
     document.getElementById('folderDelete').onclick = function () {
       folderDelete(folder, order, tabIdArray);
@@ -155,8 +147,6 @@ const folderDelete = (folder, order, tabIdArray) => {
 };
 
 const folderNameChange = (folder) => {
-  console.log('folderNameをクリックしました');
-
   const inputTab = document.createElement('input');
   inputTab.setAttribute('type', 'text');
   inputTab.setAttribute('id', 'inputTab');
@@ -177,7 +167,6 @@ const folderNameChange = (folder) => {
 
   //Enter押下で変更する
   inputTab.addEventListener('keypress', function (e) {
-    //Enter判定
     if (e.keyCode === 13) {
       //何も入力されていない時や空白や改行のみの入力
       if (!inputTab.value || !inputTab.value.match(/\S/g)) {
@@ -198,6 +187,8 @@ const folderNameChange = (folder) => {
             folder.elem.style.display = 'block';
             folder.elem.innerHTML = inputTab.value;
             inputTab.remove();
+            const spans = searchSpans(folder.elem.parentNode);
+            console.log(spans);
           },
         });
       }

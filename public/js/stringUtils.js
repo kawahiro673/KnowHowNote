@@ -54,3 +54,41 @@ export const passGet = (id, title) => {
   if (!answer) return title;
   return answer + ' > ' + title;
 };
+
+export const fileIDUnderTheFolder = (elem) => {
+  const fileIDArray = [];
+  const children = element.children;
+
+  // 子要素がある場合は再起的に検索
+  if (children.length > 0) {
+    for (let i = 0; i < children.length; i++) {
+      const child = children[i];
+      if (child.tagName === 'SPAN') {
+        spans.push(child);
+      }
+      const foundSpans = searchSpans(child);
+      spans.push(...foundSpans);
+    }
+  }
+
+  return spans;
+};
+
+function searchSpans(element) {
+  const spans = [];
+  // element の子要素を全て取得
+  const children = element.children;
+
+  // 子要素がある場合は再起的に検索
+  if (children.length > 0) {
+    for (let i = 0; i < children.length; i++) {
+      const child = children[i];
+      if (child.tagName === 'SPAN') {
+        spans.push(child);
+      }
+      const foundSpans = searchSpans(child);
+      spans.push(...foundSpans);
+    }
+  }
+  return spans;
+}
