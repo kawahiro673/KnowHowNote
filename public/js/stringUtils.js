@@ -55,27 +55,8 @@ export const passGet = (id, title) => {
   return answer + ' > ' + title;
 };
 
-export const fileIDUnderTheFolder = (elem) => {
-  const fileIDArray = [];
-  const children = element.children;
-
-  // 子要素がある場合は再起的に検索
-  if (children.length > 0) {
-    for (let i = 0; i < children.length; i++) {
-      const child = children[i];
-      if (child.tagName === 'SPAN') {
-        spans.push(child);
-      }
-      const foundSpans = searchSpans(child);
-      spans.push(...foundSpans);
-    }
-  }
-
-  return spans;
-};
-
-export const searchSpans = (element) => {
-  const spans = [];
+export const fileIDUnderTheFolder = (element) => {
+  const fileIDs = [];
   // element の子要素を全て取得
   const children = element.children;
 
@@ -86,11 +67,11 @@ export const searchSpans = (element) => {
       if (child.tagName === 'SPAN' && child.classList.contains('list_title')) {
         const str = child.id;
         const ret = str.replace(/[^0-9]/g, '');
-        spans.push(parseInt(ret));
+        fileIDs.push(parseInt(ret));
       }
-      const foundSpans = searchSpans(child);
-      spans.push(...foundSpans);
+      const foundfileIDs = fileIDUnderTheFolder(child);
+      fileIDs.push(...foundfileIDs);
     }
   }
-  return spans;
+  return fileIDs;
 };

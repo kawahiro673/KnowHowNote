@@ -2,7 +2,7 @@ import { closeTab, deleteTabArray } from './tab_func.js';
 
 import { newFileCreateFunc } from './newFileCreate.js';
 import { newFolderCreateFunc } from './newFolderCreate.js';
-import { orderGet, searchSpans } from './stringUtils.js';
+import { orderGet, fileIDUnderTheFolder } from './stringUtils.js';
 
 let tmp1;
 let tmp2;
@@ -187,7 +187,7 @@ const folderNameChange = (folder) => {
             folder.elem.style.display = 'block';
             folder.elem.innerHTML = inputTab.value;
             inputTab.remove();
-            const spans = searchSpans(folder.elem.parentNode);
+            const spans = fileIDUnderTheFolder(folder.elem.parentNode);
             console.log(spans);
           },
         });
