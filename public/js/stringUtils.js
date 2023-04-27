@@ -74,7 +74,7 @@ export const fileIDUnderTheFolder = (elem) => {
   return spans;
 };
 
-function searchSpans(element) {
+export const searchSpans = (element) => {
   const spans = [];
   // element の子要素を全て取得
   const children = element.children;
@@ -91,4 +91,4 @@ function searchSpans(element) {
     }
   }
   return spans;
-}
+};
