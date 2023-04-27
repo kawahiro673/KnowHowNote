@@ -163,8 +163,8 @@ const folderNameChange = (folder) => {
   folder.elem.style.display = 'none';
 
   let len = inputTab.value.length;
-  document.getElementById('inputTab').focus();
-  document.getElementById('inputTab').setSelectionRange(len, len);
+  // document.getElementById('inputTab').focus();
+  // document.getElementById('inputTab').setSelectionRange(len, len);
   document
     .getElementById('inputTab')
     .addEventListener('focus', (event) => event.target.select());
