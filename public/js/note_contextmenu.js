@@ -152,8 +152,6 @@ const noteNameChange = (file) => {
                 inputTab.value;
               document.getElementById(`tabP${file.id}`).innerHTML =
                 inputTab.value;
-              document.getElementsByClassName(`time${file.id}`).innerHTML =
-                time;
             }
             //ファイルの名前変更時にパス更新
             const tabFocusID = tabFocusIDGet();
