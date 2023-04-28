@@ -178,6 +178,8 @@ export const jQueryUIOptionsFunc = () => {
                       // if (res.response2 !== undefined && res.response2 == 1) {
                       //   document.getElementById('notepass').innerHTML = pass;
                       // }
+                      console.log(id, tabFocusIDGet);
+                      console.log(id === tabFocusIDGet());
                       if (id === tabFocusIDGet()) {
                         $(`#tab-ID${id}`).trigger('click');
                       }
