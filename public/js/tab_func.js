@@ -60,6 +60,7 @@ export const tabCreate = (id, title, res) => {
   fadeFont.style.visibility = 'hidden';
   let time = document.createElement('p');
   time.setAttribute('class', 'updatetime');
+  time.setAttribute('id', `time${id}`);
   time.style.color = 'black';
   time.innerHTML = res.saved_time;
 
@@ -127,6 +128,7 @@ export const keepButton = (
   titletext.remove();
   inputEdit.style.display = 'block';
   textarea.readOnly = true;
+  document.getElementById(`time${id}`).innerHTML = time;
   document.getElementById('notepass').innerHTML = pass;
 };
 

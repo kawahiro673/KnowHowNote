@@ -157,7 +157,8 @@ const noteNameChange = (file) => {
             const tabFocusID = tabFocusIDGet();
             if (tabFocusID === Number(file.id)) {
               $(`#tab-ID${tabFocusID}`).trigger('click');
-              document.getElementsByClassName('updatetime').innerHTML = time;
+              document.getElementsByClassName(`time${file.id}`).innerHTML =
+                time;
             }
           },
         });
