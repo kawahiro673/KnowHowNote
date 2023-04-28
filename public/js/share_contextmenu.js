@@ -28,7 +28,7 @@ const mynoteAddFunc = (id) => {
     dataType: 'Json',
     contentType: 'application/json',
     data: JSON.stringify({
-      data: 'shareAdd',
+      flg: 'shareAdd',
       id,
     }),
     success: function (res) {
@@ -57,7 +57,6 @@ const mynoteAddFunc = (id) => {
         dataType: 'Json',
         contentType: 'application/json',
         data: JSON.stringify({
-          data: 'note',
           flg: 'newNote',
           pattern: 'order',
           id: res.fileResult.id,

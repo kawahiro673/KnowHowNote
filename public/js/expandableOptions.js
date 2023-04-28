@@ -21,7 +21,6 @@ export const expandableAdaptation = (expandableArray) => {
           dataType: 'Json',
           contentType: 'application/json',
           data: JSON.stringify({
-            data: 'folder',
             flg: 'closed',
             id: this.id.replace(/[^0-9]/g, ''),
             closedFlg,
@@ -42,7 +41,6 @@ $('.collapsable').click(function () {
     dataType: 'Json',
     contentType: 'application/json',
     data: JSON.stringify({
-      data: 'folder',
       flg: 'collapsableALL',
     }),
     success: function (res) {},
@@ -57,7 +55,6 @@ $('.expandable').click(function () {
     dataType: 'Json',
     contentType: 'application/json',
     data: JSON.stringify({
-      data: 'folder',
       flg: 'expandableALL',
     }),
     success: function (res) {},

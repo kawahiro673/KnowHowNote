@@ -57,7 +57,6 @@ export const fileContextmenu = (tabIdArray) => {
 };
 
 const noteDelete = (file, tabIndex, order, tabIdArray) => {
-  //はいを押した場合(true)
   //まずはタブ削除
   let btn = confirm(`${file.title} を本当に削除しますか？`);
   if (btn) {
@@ -67,8 +66,7 @@ const noteDelete = (file, tabIndex, order, tabIdArray) => {
       dataType: 'Json',
       contentType: 'application/json',
       data: JSON.stringify({
-        data: 'tab',
-        flg: 'tabDel',
+        flg: 'tabDelete',
         id: file.id,
         order: tabIndex,
       }),
@@ -90,7 +88,6 @@ const noteDelete = (file, tabIndex, order, tabIdArray) => {
           dataType: 'Json',
           contentType: 'application/json',
           data: JSON.stringify({
-            data: 'note',
             flg: 'delete',
             id: file.id,
             order,
@@ -138,7 +135,6 @@ const noteNameChange = (file) => {
           dataType: 'Json',
           contentType: 'application/json',
           data: JSON.stringify({
-            data: 'note',
             flg: 'name',
             id: file.id,
             title: inputTab.value,
@@ -217,7 +213,7 @@ const noteColorChange = (file) => {
       dataType: 'Json',
       contentType: 'application/json',
       data: JSON.stringify({
-        data: 'color',
+        flg: 'color',
         id: file.id,
         color: 'black',
       }),
@@ -235,7 +231,7 @@ const noteColorChange = (file) => {
       dataType: 'Json',
       contentType: 'application/json',
       data: JSON.stringify({
-        data: 'color',
+        flg: 'color',
         id: file.id,
         color: 'red',
       }),

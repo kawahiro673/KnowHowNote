@@ -4,7 +4,7 @@ const JWT = require('jsonwebtoken');
 const { reject } = require('bcrypt/promises');
 
 router.post('/', (req, res) => {
-  if (req.body.data === 'shareAdd') {
+  if (req.body.flg === 'shareAdd') {
     let promise = new Promise((resolve, reject) => {
       resolve();
     });
@@ -43,7 +43,7 @@ router.post('/', (req, res) => {
         console.log(error);
         res.status(500).send('Internal Server Error.(shareAdd)');
       });
-  } else if (req.body.data === 'sharelist') {
+  } else if (req.body.flg === 'sharelist') {
     const token = req.cookies.token;
     const decoded = JWT.verify(token, 'SECRET_KEY');
     let promise = new Promise((resolve, reject) => {

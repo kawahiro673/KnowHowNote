@@ -106,7 +106,6 @@ const folderDelete = (folder, order, tabIdArray) => {
       dataType: 'Json',
       contentType: 'application/json',
       data: JSON.stringify({
-        data: 'folder',
         flg: 'folderDel',
         id: folder.id,
         title: folder.title,
@@ -123,7 +122,7 @@ const folderDelete = (folder, order, tabIdArray) => {
           dataType: 'Json',
           contentType: 'application/json',
           data: JSON.stringify({
-            data: 'childFolder',
+            flg: 'childFolder',
             id: folder.id,
             file: res.fileResults,
             folder: res.folderResults,
@@ -180,7 +179,6 @@ const folderNameChange = (folder) => {
           dataType: 'Json',
           contentType: 'application/json',
           data: JSON.stringify({
-            data: 'folder',
             flg: 'changeName',
             id: folder.id,
             title: inputTab.value,
@@ -192,8 +190,6 @@ const folderNameChange = (folder) => {
             //フォルダの名前変更時に、タブのフォーカスが当たっているファイルがあればパスを変更する(対象のタブをクリックする)
             const fileUnder = fileIDUnderTheFolder(folder.elem.parentNode);
             const tabFocusID = tabFocusIDGet();
-            console.log(fileUnder, tabFocusID);
-            console.log(fileUnder.includes(tabFocusID));
             if (fileUnder.includes(tabFocusID)) {
               $(`#tab-ID${tabFocusID}`).trigger('click');
             }

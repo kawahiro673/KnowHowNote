@@ -102,7 +102,6 @@ export const keepButton = (
     dataType: 'Json',
     contentType: 'application/json',
     data: JSON.stringify({
-      data: 'note',
       flg: 'noteKeep',
       id,
       titleContent: newTitle, //p.innerHTML,
@@ -151,7 +150,6 @@ export const cancelButton = (
       dataType: 'Json',
       contentType: 'application/json',
       data: JSON.stringify({
-        data: 'note',
         flg: 'info',
         id,
       }),
@@ -178,7 +176,7 @@ export const shareButton = (id) => {
     dataType: 'Json',
     contentType: 'application/json',
     data: JSON.stringify({
-      data: 'getuser',
+      flg: 'getuser',
       id,
       name,
     }),
@@ -199,7 +197,6 @@ export const closeTab = (id, order, tabIdArray) => {
     dataType: 'Json',
     contentType: 'application/json',
     data: JSON.stringify({
-      data: 'tab',
       flg: 'tabDelete',
       id,
       order,
@@ -242,7 +239,6 @@ export const tabClick = (e, id, title) => {
       dataType: 'Json',
       contentType: 'application/json',
       data: JSON.stringify({
-        data: 'tab',
         flg: 'updateFocus',
         id,
         title,

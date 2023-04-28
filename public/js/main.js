@@ -32,7 +32,7 @@ export const listCreate = () => {
     dataType: 'Json',
     contentType: 'application/json',
     data: JSON.stringify({
-      data: 'list',
+      flg: 'list',
     }),
     success: async (res) => {
       if (res.status === 500) {
@@ -156,7 +156,7 @@ function shareListCreate() {
     dataType: 'Json',
     contentType: 'application/json',
     data: JSON.stringify({
-      data: 'sharelist',
+      flg: 'sharelist',
     }),
     success: function (res) {
       res.fileResult.forEach((file) => {
@@ -256,7 +256,6 @@ export const fileClick = () => {
       dataType: 'Json',
       contentType: 'application/json',
       data: JSON.stringify({
-        data: 'tab',
         flg: 'tabAdd',
         isSomething,
         id,
@@ -271,7 +270,6 @@ export const fileClick = () => {
           dataType: 'Json',
           contentType: 'application/json',
           data: JSON.stringify({
-            data: 'tab',
             flg: 'clickTab',
             id,
             order,
@@ -295,7 +293,6 @@ function tabUpload() {
     dataType: 'Json',
     contentType: 'application/json',
     data: JSON.stringify({
-      data: 'tab',
       flg: 'tabDesc',
     }),
     success: async function (res) {
@@ -312,7 +309,6 @@ function tabUpload() {
             dataType: 'Json',
             contentType: 'application/json',
             data: JSON.stringify({
-              data: 'tab',
               flg: 'focusTab',
             }),
             success: function (res) {
@@ -338,7 +334,6 @@ async function titleClick(id, title) {
         dataType: 'Json',
         contentType: 'application/json',
         data: JSON.stringify({
-          data: 'note',
           flg: 'info',
           id,
         }),
@@ -491,7 +486,7 @@ $('.container-delete').click(function () {
       dataType: 'Json',
       contentType: 'application/json',
       data: JSON.stringify({
-        data: 'deleteALL',
+        flg: 'deleteALL',
       }),
       success: function (res) {
         //全削除
@@ -515,7 +510,7 @@ document.getElementById('logout').addEventListener('click', () => {
     dataType: 'Json',
     contentType: 'application/json',
     data: JSON.stringify({
-      data: 'cookiedelete',
+      flg: 'cookiedelete',
     }),
     success: function (res) {},
   });

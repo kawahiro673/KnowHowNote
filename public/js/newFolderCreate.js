@@ -75,7 +75,6 @@ function newCreateFolder2(inputTab, span, li, ul, parentId) {
       dataType: 'Json',
       contentType: 'application/json',
       data: JSON.stringify({
-        data: 'folder',
         flg: 'newFolder',
         pattern: 'new',
         folderName: inputTab.value,
@@ -104,7 +103,6 @@ function newCreateFolder2(inputTab, span, li, ul, parentId) {
           dataType: 'Json',
           contentType: 'application/json',
           data: JSON.stringify({
-            data: 'folder',
             flg: 'newFolder',
             pattern: 'order',
             folderName: inputTab.value,

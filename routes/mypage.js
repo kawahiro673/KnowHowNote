@@ -17,15 +17,15 @@ router
     res.render('index.ejs');
   })
   .post((req, res) => {
-    if (req.body.data === 'color') {
+    if (req.body.flg === 'color') {
       pool.query(
         'UPDATE it_memo SET title_color=? WHERE id=?',
         [req.body.color, req.body.id],
-        (error, results) => {
+        (error, result) => {
           res.send({ response: req.body.color });
         }
       );
-    } else if (req.body.data === 'addOrder') {
+    } else if (req.body.flg === 'addOrder') {
       const token = req.cookies.token;
       const decoded = JWT.verify(token, 'SECRET_KEY');
       let promise = new Promise((resolve, reject) => {
@@ -164,7 +164,7 @@ router
         });
     }
     //削除したフォルダの配下のファイルとフォルダを全て削除
-    else if (req.body.data === 'childFolder') {
+    else if (req.body.flg === 'childFolder') {
       let tmpIdArray = [];
       let fileArray = [];
       let folderArray = [];
@@ -222,7 +222,7 @@ router
       res.send({ response: fileArray });
 
       //配下のフォルダのidを全て配列に格納している
-    } else if (req.body.data === 'folderChild') {
+    } else if (req.body.flg === 'folderChild') {
       let idArray = []; //最終的にmain.jsに返す値
       let parentIdArray = [];
       parentIdArray.push(req.body.id);
@@ -283,7 +283,7 @@ router
           res.status(500).send('Internal Server Error.(folderChild)');
         });
       //フォルダの子ノートを全て取得する(passの更新に使用するため)
-    } else if (req.body.data === 'noteChild') {
+    } else if (req.body.flg === 'noteChild') {
       let idArray = []; //最終的にcodejsに返す値
       let parentIdArray = [];
       parentIdArray.push(req.body.id);
@@ -370,7 +370,7 @@ router
           console.error(error);
           res.status(500).send('Internal Server Error.(noteChild)');
         });
-    } else if (req.body.data === 'list') {
+    } else if (req.body.flg === 'list') {
       //cookieの有効期限が切れたら自動的にログアウト
       //仕様上、期限切れ時に自動でログアウトされては困るので、リロードの際にのみログアウトする
       const token = req.cookies.token;
@@ -433,7 +433,7 @@ router
           console.error(error);
           res.status(500).send('Internal Server Error.(list)');
         });
-    } else if (req.body.data === 'deleteALL') {
+    } else if (req.body.flg === 'deleteALL') {
       const token = req.cookies.token;
       const decoded = JWT.verify(token, 'SECRET_KEY');
       let promise = new Promise((resolve, reject) => {
@@ -504,17 +504,16 @@ router
           console.error(error);
           res.status(500).send('Internal Server Error.(sharelist)');
         });
-      //フォルダの開き/閉じ判定
 
       //ログアウト時にcookie削除
-    } else if (req.body.data === 'cookiedelete') {
+    } else if (req.body.flg === 'cookiedelete') {
       //cookie削除
       res.setHeader(
         'Set-Cookie',
         'token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; Path=/'
       );
       res.end();
-    } else if (req.body.data === 'getuser') {
+    } else if (req.body.flg === 'getuser') {
       let promise = new Promise((resolve, reject) => {
         resolve();
       });
@@ -558,7 +557,7 @@ router
           res.status(500).send('Internal Server Error.(getuser)');
         });
     } else {
-      console.log('dataで何も受け取ってません');
+      console.log('flgで何も受け取ってません');
     }
   });
 

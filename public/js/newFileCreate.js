@@ -79,7 +79,6 @@ export const newCreateFile2 = (inputTab, span, parentId, li) => {
       dataType: 'Json',
       contentType: 'application/json',
       data: JSON.stringify({
-        data: 'note',
         flg: 'newNote',
         pattern: 'new',
         title: inputTab.value,
@@ -108,7 +107,6 @@ export const newCreateFile2 = (inputTab, span, parentId, li) => {
           dataType: 'Json',
           contentType: 'application/json',
           data: JSON.stringify({
-            data: 'note',
             flg: 'newNote',
             pattern: 'order',
             id: res.fileResult.id,

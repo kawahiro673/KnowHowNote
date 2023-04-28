@@ -30,7 +30,7 @@ export const jQueryUIOptionsFunc = () => {
             dataType: 'Json',
             contentType: 'application/json',
             data: JSON.stringify({
-              data: 'folderChild',
+              flg: 'folderChild',
               id,
             }),
             success: function (res) {
@@ -45,7 +45,7 @@ export const jQueryUIOptionsFunc = () => {
             dataType: 'Json',
             contentType: 'application/json',
             data: JSON.stringify({
-              data: 'noteChild',
+              flg: 'noteChild',
               id,
             }),
             success: function (res) {
@@ -109,7 +109,6 @@ export const jQueryUIOptionsFunc = () => {
                   dataType: 'Json',
                   contentType: 'application/json',
                   data: JSON.stringify({
-                    data: 'note',
                     flg: 'parentIDSame',
                     parent_id: item[0].parentNode.id,
                     id,
@@ -129,7 +128,6 @@ export const jQueryUIOptionsFunc = () => {
                   dataType: 'Json',
                   contentType: 'application/json',
                   data: JSON.stringify({
-                    data: 'note',
                     flg: 'parentIDSame',
                     parent_id: item[0].parentNode.id,
                     id,
@@ -152,7 +150,6 @@ export const jQueryUIOptionsFunc = () => {
                 dataType: 'Json',
                 contentType: 'application/json',
                 data: JSON.stringify({
-                  data: 'note',
                   flg: 'parentIDDiffer',
                   parent_id: item[0].parentNode.id,
                   old_parent_id: parent_id_Tmp,
@@ -177,7 +174,7 @@ export const jQueryUIOptionsFunc = () => {
                     dataType: 'Json',
                     contentType: 'application/json',
                     data: JSON.stringify({
-                      data: 'addOrder',
+                      flg: 'addOrder',
                       id,
                       parent_id: item[0].parentNode.id,
                       order: afterOrder,
@@ -208,7 +205,6 @@ export const jQueryUIOptionsFunc = () => {
                   dataType: 'Json',
                   contentType: 'application/json',
                   data: JSON.stringify({
-                    data: 'folder',
                     flg: 'parentIDSame',
                     parent_id: item[0].parentNode.id,
                     id,
@@ -226,7 +222,6 @@ export const jQueryUIOptionsFunc = () => {
                   dataType: 'Json',
                   contentType: 'application/json',
                   data: JSON.stringify({
-                    data: 'folder',
                     flg: 'parentIDSame',
                     parent_id: item[0].parentNode.id,
                     id,
@@ -248,7 +243,6 @@ export const jQueryUIOptionsFunc = () => {
                 dataType: 'Json',
                 contentType: 'application/json',
                 data: JSON.stringify({
-                  data: 'folder',
                   flg: 'parentIDDiffer',
                   parent_id: item[0].parentNode.id,
                   old_parent_id: parent_id_Tmp,
@@ -270,8 +264,8 @@ export const jQueryUIOptionsFunc = () => {
                     dataType: 'Json',
                     contentType: 'application/json',
                     data: JSON.stringify({
-                      data: 'addOrder',
-                      id: id,
+                      flg: 'addOrder',
+                      id,
                       parent_id: item[0].parentNode.id,
                       order: afterOrder,
                       pattern: 'folder',
