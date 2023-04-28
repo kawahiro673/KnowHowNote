@@ -12,7 +12,7 @@ export const jQueryUIOptionsFunc = () => {
     let beforeOrder; //D&D前の順番
     let className; //順番(oderGet)を取得するために
     let parent_id_Tmp;
-    let tmpArray = [];
+    let tmpArray = []; //配下のフォルダの子要素を入れるやつ？必要？？
     $(function () {
       $('#0').treeview({
         animated: 'fast',
@@ -41,7 +41,6 @@ export const jQueryUIOptionsFunc = () => {
               id,
             }),
             success: function (res) {
-              console.log(`配下のフォルダの子要素は ${res.response}`);
               tmpArray = res.response;
             },
           });
@@ -55,9 +54,7 @@ export const jQueryUIOptionsFunc = () => {
               flg: 'noteChild',
               id,
             }),
-            success: function (res) {
-              console.log(`配下のファイルの子要素は ${res.response}`);
-            },
+            success: function (res) {},
           });
         },
         //自分のfolder配下にはD&Dをできないようにしている
@@ -83,14 +80,6 @@ export const jQueryUIOptionsFunc = () => {
         },
         //ファイル・フォルダをD&D後の処理
         onDrop: function (item, container, _super, event) {
-          let a = item[0].parentNode;
-          let i = 0;
-          //treeview(root)までの階層を調べる
-          while (!a.classList.contains('treeview')) {
-            a = a.parentNode;
-            i++;
-          }
-
           let id = item.prevObject[0].getAttribute('value');
 
           //リストの+−ボタンを押下してもドラッグできるようにした(次の兄弟のspan要素を代入している)
@@ -186,8 +175,11 @@ export const jQueryUIOptionsFunc = () => {
                     success: function (res) {
                       //passを正しく表示する2点セット
                       //1.focusが当たってたらパス更新
-                      if (res.response2 !== undefined && res.response2 == 1) {
-                        document.getElementById('notepass').innerHTML = pass;
+                      // if (res.response2 !== undefined && res.response2 == 1) {
+                      //   document.getElementById('notepass').innerHTML = pass;
+                      // }
+                      if (id === tabFocusIDGet()) {
+                        $(`#tab-ID${id}`).trigger('click');
                       }
                     },
                   });
