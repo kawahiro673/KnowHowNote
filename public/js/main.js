@@ -140,7 +140,7 @@ export const listCreate = () => {
 
       await jQueryUIOptionsFunc();
       fileContextmenu(tabIdArray);
-      folderContextmenu(tabIdArray, tabFocusID);
+      folderContextmenu(tabIdArray);
       fileClick();
       await expandableAdaptation(expandableArray);
     },
@@ -533,4 +533,8 @@ function hasInput(elem) {
     }
   }
   return false;
+}
+
+export function tabFocusIDGet() {
+  return tabFocusID;
 }

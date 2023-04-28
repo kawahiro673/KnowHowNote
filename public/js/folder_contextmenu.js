@@ -4,6 +4,8 @@ import { newFileCreateFunc } from './newFileCreate.js';
 import { newFolderCreateFunc } from './newFolderCreate.js';
 import { orderGet, fileIDUnderTheFolder } from './stringUtils.js';
 
+import { tabFocusIDGet } from './main.js';
+
 let tmp1;
 let tmp2;
 
@@ -12,7 +14,7 @@ let conme2 = document.getElementById('contextmenu2');
 let conme3 = document.getElementById('contextmenu3');
 let conme4 = document.getElementById('contextmenu4');
 
-export const folderContextmenu = (tabIdArray, tabFocusID) => {
+export const folderContextmenu = (tabIdArray) => {
   $('.folder').on('contextmenu', function () {
     console.log(
       `"${$(this).html()}" ${$(this).attr('value')} を右クリックしました`
@@ -38,7 +40,7 @@ export const folderContextmenu = (tabIdArray, tabFocusID) => {
     $(document).ready(function () {
       $('#folderName').off('click');
       $('#folderName').on('click', function (e) {
-        folderNameChange(folder, tabFocusID);
+        folderNameChange(folder);
       });
     });
 
@@ -146,7 +148,7 @@ const folderDelete = (folder, order, tabIdArray) => {
   }
 };
 
-const folderNameChange = (folder, tabFocusID) => {
+const folderNameChange = (folder) => {
   const inputTab = document.createElement('input');
   inputTab.setAttribute('type', 'text');
   inputTab.setAttribute('id', 'inputTab');
@@ -189,6 +191,7 @@ const folderNameChange = (folder, tabFocusID) => {
             inputTab.remove();
             //フォルダの名前変更時に、タブのフォーカスが当たっているファイルがあればパスを変更する(対象のタブをクリックする)
             const fileUnder = fileIDUnderTheFolder(folder.elem.parentNode);
+            const tabFocusID = tabFocusIDGet();
             console.log(fileUnder, tabFocusID);
             console.log(fileUnder.includes(tabFocusID));
             if (fileUnder.includes(tabFocusID)) {
