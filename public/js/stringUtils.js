@@ -19,7 +19,7 @@ export const classNameGet = (element) => {
 };
 
 //現在日時取得＆DB格納
-export const updateTime = (id, time) => {
+export const currentTimeGet = () => {
   let now = new Date();
   let Year = now.getFullYear();
   let Month = now.getMonth() + 1;

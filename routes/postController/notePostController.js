@@ -5,7 +5,7 @@ const { reject } = require('bcrypt/promises');
 
 router.post('/', (req, res) => {
   if (req.body.flg === 'newNote') {
-    if (req.body.pattern == 'new') {
+    if (req.body.pattern === 'new') {
       const token = req.cookies.token;
       const decoded = JWT.verify(token, 'SECRET_KEY');
       let promise = new Promise((resolve, reject) => {
@@ -69,7 +69,7 @@ router.post('/', (req, res) => {
           console.error(error);
           res.status(500).send('Internal Server Error.(newNote)');
         });
-      //order
+      //orderを更新するため
     } else {
       pool.query(
         'UPDATE it_memo SET folder_order = ? WHERE id = ?',
@@ -518,8 +518,8 @@ router.post('/', (req, res) => {
                     .then(() => {
                       return new Promise((resolve, reject) => {
                         pool.query(
-                          'UPDATE it_memo SET title = ?  WHERE id = ?',
-                          [req.body.title, req.body.id],
+                          'UPDATE it_memo SET title = ?,  saved_time = ?  WHERE id = ?',
+                          [req.body.title, req.body.time, req.body.id],
                           (error, result) => {
                             if (error) {
                               reject(error);

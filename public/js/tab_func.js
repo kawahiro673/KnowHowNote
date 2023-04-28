@@ -1,5 +1,5 @@
 //タブで必要な関数まとめ
-import { updateTime, passGet, orderGet } from './stringUtils.js';
+import { currentTimeGet, passGet, orderGet } from './stringUtils.js';
 //タブ生成
 export const tabCreate = (id, title, res) => {
   const inputTab = document.createElement('input');
@@ -79,7 +79,7 @@ export const tabCreate = (id, title, res) => {
   divFade.appendChild(fadeFont);
   div.appendChild(time);
 
-  return [inputEdit, div, textarea, fadeFont, time, inputShare, buttonTab];
+  return [inputEdit, div, textarea, fadeFont, inputShare, buttonTab];
 };
 
 //タブエリアの[保存]ボタン押下時
@@ -91,11 +91,11 @@ export const keepButton = (
   inputKeep,
   inputCancel,
   inputEdit,
-  time,
   newTitle,
   titletext
 ) => {
-  let pass = passGet(id, newTitle);
+  const pass = passGet(id, newTitle);
+  const time = currentTimeGet();
   $.ajax({
     url: '/notePostController/',
     type: 'POST',
@@ -106,6 +106,7 @@ export const keepButton = (
       id,
       titleContent: newTitle, //p.innerHTML,
       memoContent: textarea.value, //ここに入力した値が入る
+      time,
     }),
     success: function (res) {
       fadeFont.style.visibility = 'visible';
@@ -126,7 +127,6 @@ export const keepButton = (
   titletext.remove();
   inputEdit.style.display = 'block';
   textarea.readOnly = true;
-  updateTime(id, time);
   document.getElementById('notepass').innerHTML = pass;
 };
 
@@ -218,10 +218,6 @@ export const closeTab = (id, order, tabIdArray) => {
 
 //タブ上の✖️ボタン押下時
 export const closeButton = (id, title, tabArray) => {
-  // let tabelements = document.getElementsByClassName('tab-content');
-  // let tabId = document.getElementById(`Tab-ID${id}`);
-  // let order = [].slice.call(tabelements).indexOf(tabId);
-  // order++;
   const order = orderGet('tab-content', `Tab-ID${id}`);
   closeTab(id, order, tabArray);
 };

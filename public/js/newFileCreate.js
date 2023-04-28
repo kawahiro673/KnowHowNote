@@ -1,5 +1,5 @@
 import { listCreate } from './main.js';
-import { orderGet, updateTime, passGet } from './stringUtils.js';
+import { orderGet, currentTimeGet, passGet } from './stringUtils.js';
 
 export const newFileCreateFunc = (id) => {
   return new Promise((resolve, reject) => {
@@ -71,8 +71,7 @@ export const newCreateFile2 = (inputTab, span, parentId, li) => {
   if (!inputTab.value || !inputTab.value.match(/\S/g)) {
     alert('タイトルを入力してください');
   } else {
-    const time = updateTime();
-
+    const time = currentTimeGet();
     $.ajax({
       url: '/notePostController/',
       type: 'POST',

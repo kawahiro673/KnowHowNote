@@ -1,5 +1,5 @@
 import { closeTab, deleteTabArray } from './tab_func.js';
-import { orderGet, passGet } from './stringUtils.js';
+import { currentTimeGet, orderGet, passGet } from './stringUtils.js';
 import { tabFocusIDGet } from './main.js';
 
 let tmp1;
@@ -128,6 +128,7 @@ const noteNameChange = (file) => {
       if (!inputTab.value || !inputTab.value.match(/\S/g)) {
         alert('タイトルを入力してください');
       } else {
+        const time = currentTimeGet();
         $.ajax({
           url: '/notePostController/',
           type: 'POST',
@@ -138,6 +139,7 @@ const noteNameChange = (file) => {
             id: file.id,
             title: inputTab.value,
             oldTitle: file.title, //変更前のタイトル
+            time,
           }),
           success: function (res) {
             file.elem.style.display = 'block';
@@ -155,6 +157,7 @@ const noteNameChange = (file) => {
             const tabFocusID = tabFocusIDGet();
             if (tabFocusID === Number(file.id)) {
               $(`#tab-ID${tabFocusID}`).trigger('click');
+              document.getElementsByClassName('updatetime').innerHTML = time;
             }
           },
         });
@@ -203,7 +206,6 @@ const noteColorChange = (file) => {
         color: 'black',
       }),
       success: function (res) {
-        console.log(`success受信(color) : "${res.response}"`);
         file.elem.style.color = res.response;
       },
     });

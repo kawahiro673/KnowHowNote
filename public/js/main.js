@@ -18,7 +18,7 @@ import { jQueryUIOptionsFunc } from './jQueryUI_func.js';
 import { newFileCreateFunc } from './newFileCreate.js';
 import { newFolderCreateFunc } from './newFolderCreate.js';
 
-import { orderGet, updateTime, passGet } from './stringUtils.js';
+import { orderGet, currentTimeGet, passGet } from './stringUtils.js';
 
 import { expandableAdaptation } from './expandableOptions.js';
 
@@ -339,15 +339,8 @@ async function titleClick(id, title) {
         }),
         success: function (res) {
           resolve();
-          const [
-            inputEdit,
-            div,
-            textarea,
-            fadeFont,
-            time,
-            inputShare,
-            buttonTab,
-          ] = tabCreate(id, title, res.fileResult);
+          const [inputEdit, div, textarea, fadeFont, inputShare, buttonTab] =
+            tabCreate(id, title, res.fileResult);
 
           document.getElementById('notab').style.display = 'none';
 
@@ -391,7 +384,6 @@ async function titleClick(id, title) {
                 inputKeep,
                 inputCancel,
                 inputEdit,
-                time,
                 titletext.value,
                 titletext
               );
