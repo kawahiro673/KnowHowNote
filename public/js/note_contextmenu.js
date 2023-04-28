@@ -144,31 +144,12 @@ const noteNameChange = (file) => {
             file.elem.innerHTML = inputTab.value;
             inputTab.remove();
 
-            //タブが生成済みの場合
+            //タブが生成済みの場合リアルタイムにタイトル更新(タブも)
             if (res.tabResult !== null) {
-              //リアルタイムにタイトル更新
               document.getElementById(`tabname${file.id}`).innerHTML =
                 inputTab.value;
               document.getElementById(`tabP${file.id}`).innerHTML =
                 inputTab.value;
-
-              // //passを正しく表示する2点セット
-              // //1.focusが当たってたらパス更新
-              // if (res.tabResult.focus == 1) {
-              //   document.getElementById('notepass').innerHTML = passGet(
-              //     res.tabResult.id,
-              //     res.tabResult.tabTitle
-              //   );
-              // }
-              // //2.タブクリック時にパス更新
-              // document.getElementById(`tab-ID${file.id}`).onclick = function (
-              //   e
-              // ) {
-              //   document.getElementById('notepass').innerHTML = passGet(
-              //     res.tabResult.id,
-              //     res.tabResult.tabTitle
-              //   );
-              // };
             }
             //ファイルの名前変更時にパス更新
             const tabFocusID = tabFocusIDGet();
