@@ -1,4 +1,10 @@
-import { orderGet, passGet, classNameGet } from './stringUtils.js';
+import {
+  orderGet,
+  passGet,
+  classNameGet,
+  fileIDUnderTheFolder,
+} from './stringUtils.js';
+
 import { tabFocusIDGet } from './main.js';
 
 export const jQueryUIOptionsFunc = () => {
