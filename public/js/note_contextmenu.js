@@ -1,5 +1,6 @@
 import { closeTab, deleteTabArray } from './tab_func.js';
 import { orderGet, passGet } from './stringUtils.js';
+import { tabFocusIDGet } from './main.js';
 
 let tmp1;
 let tmp2;
@@ -101,8 +102,6 @@ const noteDelete = (file, tabIndex, order, tabIdArray) => {
 };
 
 const noteNameChange = (file) => {
-  console.log('nameをクリックしました');
-  //テキストの作成
   const inputTab = document.createElement('input');
   inputTab.setAttribute('type', 'text');
   inputTab.setAttribute('id', 'inputTab');
@@ -144,32 +143,37 @@ const noteNameChange = (file) => {
             file.elem.style.display = 'block';
             file.elem.innerHTML = inputTab.value;
             inputTab.remove();
+
             //タブが生成済みの場合
-            if (res.tabResult != undefined) {
+            if (res.tabResult !== null) {
               //リアルタイムにタイトル更新
               document.getElementById(`tabname${file.id}`).innerHTML =
                 inputTab.value;
-
               document.getElementById(`tabP${file.id}`).innerHTML =
                 inputTab.value;
 
-              //passを正しく表示する2点セット
-              //1.focusが当たってたらパス更新
-              if (res.tabResult.focus == 1) {
-                document.getElementById('notepass').innerHTML = passGet(
-                  res.tabResult.id,
-                  res.tabResult.tabTitle
-                );
-              }
-              //2.タブクリック時にパス更新
-              document.getElementById(`tab-ID${file.id}`).onclick = function (
-                e
-              ) {
-                document.getElementById('notepass').innerHTML = passGet(
-                  res.tabResult.id,
-                  res.tabResult.tabTitle
-                );
-              };
+              // //passを正しく表示する2点セット
+              // //1.focusが当たってたらパス更新
+              // if (res.tabResult.focus == 1) {
+              //   document.getElementById('notepass').innerHTML = passGet(
+              //     res.tabResult.id,
+              //     res.tabResult.tabTitle
+              //   );
+              // }
+              // //2.タブクリック時にパス更新
+              // document.getElementById(`tab-ID${file.id}`).onclick = function (
+              //   e
+              // ) {
+              //   document.getElementById('notepass').innerHTML = passGet(
+              //     res.tabResult.id,
+              //     res.tabResult.tabTitle
+              //   );
+              // };
+            }
+            //ファイルの名前変更時にパス更新
+            const tabFocusID = tabFocusIDGet();
+            if (tabFocusID === id) {
+              $(`#tab-ID${tabFocusID}`).trigger('click');
             }
           },
         });

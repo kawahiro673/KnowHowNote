@@ -114,7 +114,7 @@ router.post('/', (req, res) => {
       })
       .catch((error) => {
         console.error(error);
-        res.status(500).send('Internal Server Error.(addOrder)');
+        res.status(500).send('Internal Server Error.(updateFocus)');
       });
   } else if (req.body.flg === 'tabDesc') {
     const token = req.cookies.token;

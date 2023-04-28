@@ -108,8 +108,7 @@ router
                     [resultDecoded[0].id],
                     (error, result) => {
                       res.send({
-                        response: req.body.order,
-                        response: result.id,
+                        msg: '成功しました',
                       });
                     }
                   );
@@ -141,13 +140,9 @@ router
                     'SELECT * FROM tab_hold WHERE id = ?',
                     [req.body.id],
                     (error, result) => {
-                      if (result[0] !== undefined) {
-                        res.send({
-                          response2: result[0].focus,
-                        });
-                      } else {
-                        res.end();
-                      }
+                      res.send({
+                        msg: '成功しました',
+                      });
                     }
                   );
                 });

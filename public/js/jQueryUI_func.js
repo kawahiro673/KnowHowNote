@@ -173,15 +173,9 @@ export const jQueryUIOptionsFunc = () => {
                       pattern: 'file',
                     }),
                     success: function (res) {
-                      //passを正しく表示する2点セット
-                      //1.focusが当たってたらパス更新
-                      // if (res.response2 !== undefined && res.response2 == 1) {
-                      //   document.getElementById('notepass').innerHTML = pass;
-                      // }
+                      //passの取得
                       const focusId = tabFocusIDGet();
-                      console.log(id, focusId);
-                      console.log(id === tabFocusIDGet());
-                      if (id === tabFocusIDGet()) {
+                      if (id === focusId) {
                         $(`#tab-ID${id}`).trigger('click');
                       }
                     },

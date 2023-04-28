@@ -572,7 +572,7 @@ router.post('/', (req, res) => {
                     [req.body.title, req.body.id],
                     (error, result) => {
                       res.send({
-                        tabResult: undefined,
+                        tabResult: null,
                       });
                     }
                   );
