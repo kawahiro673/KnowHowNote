@@ -172,7 +172,7 @@ const noteNameChange = (file) => {
             }
             //ファイルの名前変更時にパス更新
             const tabFocusID = tabFocusIDGet();
-            if (tabFocusID === id) {
+            if (tabFocusID === Number(file.id)) {
               $(`#tab-ID${tabFocusID}`).trigger('click');
             }
           },

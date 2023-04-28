@@ -175,11 +175,7 @@ export const jQueryUIOptionsFunc = () => {
                     success: function (res) {
                       //passの取得
                       const focusId = tabFocusIDGet();
-                      console.log(id, focusId);
-                      console.log(typeof id);
-                      console.log(typeof focusId);
-                      console.log(id === focusId);
-                      if (id === focusId) {
+                      if (Number(id) === focusId) {
                         $(`#tab-ID${id}`).trigger('click');
                       }
                     },
