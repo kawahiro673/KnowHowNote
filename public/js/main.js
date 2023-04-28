@@ -140,7 +140,7 @@ export const listCreate = () => {
 
       await jQueryUIOptionsFunc();
       fileContextmenu(tabIdArray);
-      folderContextmenu(tabIdArray);
+      folderContextmenu(tabIdArray, tabFocusID);
       fileClick();
       await expandableAdaptation(expandableArray);
     },

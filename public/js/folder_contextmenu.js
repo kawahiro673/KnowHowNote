@@ -12,7 +12,7 @@ let conme2 = document.getElementById('contextmenu2');
 let conme3 = document.getElementById('contextmenu3');
 let conme4 = document.getElementById('contextmenu4');
 
-export const folderContextmenu = (tabIdArray) => {
+export const folderContextmenu = (tabIdArray, tabFocusID) => {
   $('.folder').on('contextmenu', function () {
     console.log(
       `"${$(this).html()}" ${$(this).attr('value')} を右クリックしました`
@@ -38,7 +38,7 @@ export const folderContextmenu = (tabIdArray) => {
     $(document).ready(function () {
       $('#folderName').off('click');
       $('#folderName').on('click', function (e) {
-        folderNameChange(folder);
+        folderNameChange(folder, tabFocusID);
       });
     });
 
@@ -146,7 +146,7 @@ const folderDelete = (folder, order, tabIdArray) => {
   }
 };
 
-const folderNameChange = (folder) => {
+const folderNameChange = (folder, tabFocusID) => {
   const inputTab = document.createElement('input');
   inputTab.setAttribute('type', 'text');
   inputTab.setAttribute('id', 'inputTab');
@@ -187,8 +187,11 @@ const folderNameChange = (folder) => {
             folder.elem.style.display = 'block';
             folder.elem.innerHTML = inputTab.value;
             inputTab.remove();
-            const spans = fileIDUnderTheFolder(folder.elem.parentNode);
-            console.log(spans);
+            //フォルダの名前変更時に、タブのフォーカスが当たっているファイルがあればパスを変更する(対象のタブをクリックする)
+            const fileUnder = fileIDUnderTheFolder(folder.elem.parentNode);
+            if (fileUnder.include(tabFocusID)) {
+              $(`#tab-ID${tabFocusID}`).trigger('click');
+            }
           },
         });
       }
