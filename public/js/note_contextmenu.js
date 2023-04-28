@@ -152,13 +152,13 @@ const noteNameChange = (file) => {
                 inputTab.value;
               document.getElementById(`tabP${file.id}`).innerHTML =
                 inputTab.value;
+              document.getElementsByClassName(`time${file.id}`).innerHTML =
+                time;
             }
             //ファイルの名前変更時にパス更新
             const tabFocusID = tabFocusIDGet();
             if (tabFocusID === Number(file.id)) {
               $(`#tab-ID${tabFocusID}`).trigger('click');
-              document.getElementsByClassName(`time${file.id}`).innerHTML =
-                time;
             }
           },
         });
