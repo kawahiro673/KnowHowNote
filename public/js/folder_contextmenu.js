@@ -190,7 +190,7 @@ const folderNameChange = (folder, tabFocusID) => {
             //フォルダの名前変更時に、タブのフォーカスが当たっているファイルがあればパスを変更する(対象のタブをクリックする)
             const fileUnder = fileIDUnderTheFolder(folder.elem.parentNode);
             console.log(fileUnder, tabFocusID);
-            console.log(ileUnder.includes(tabFocusID));
+            console.log(fileUnder.includes(tabFocusID));
             if (fileUnder.includes(tabFocusID)) {
               $(`#tab-ID${tabFocusID}`).trigger('click');
             }
