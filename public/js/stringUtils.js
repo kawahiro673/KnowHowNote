@@ -9,7 +9,6 @@ export const orderGet = (group, target) => {
 //複数のclassを持つelementで、parentの付いたclass名を取得する関数
 //classを複数持つ要素はclassを
 export const classNameGet = (element) => {
-  console.log(element);
   const classList = element.classList;
   for (let i = 0; i < classList.length; i++) {
     if (classList[i].toString().indexOf('parent') !== -1) {
@@ -58,7 +57,7 @@ export const passGet = (id, title) => {
 //elemの配下の全てのファイルIDを再起的に取得し、fileIDsに格納し返す
 export const fileIDUnderTheFolder = (elem) => {
   const fileIDs = [];
-  // element の子要素を全て取得
+  // elementの子要素を全て取得
   const children = elem.children;
 
   if (children.length > 0) {

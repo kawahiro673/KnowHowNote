@@ -1,4 +1,5 @@
 import { orderGet, passGet, classNameGet } from './stringUtils.js';
+import { tabFocusIDGet } from './main.js';
 
 export const jQueryUIOptionsFunc = () => {
   return new Promise((resolve, reject) => {
@@ -98,9 +99,8 @@ export const jQueryUIOptionsFunc = () => {
               //同じparent_id内でD＆D後の順番
               let afterOrder = orderGet(className, item[0].id);
 
-              //下へD＆D
+              //現在いる場所より下へD＆D
               if (beforeOrder < afterOrder) {
-                console.log('ファイル:下へD&D');
                 let id = item[0].childNodes[0].getAttribute('value');
 
                 $.ajax({
@@ -117,9 +117,8 @@ export const jQueryUIOptionsFunc = () => {
                   }),
                   success: function (res) {},
                 });
-                //上へD＆D
+                //現在いる場所より上へD＆D
               } else if (beforeOrder > afterOrder) {
-                console.log('ファイル:上へD&D');
                 let id = item[0].childNodes[0].getAttribute('value');
 
                 $.ajax({
@@ -139,9 +138,8 @@ export const jQueryUIOptionsFunc = () => {
               } else {
                 console.log('順番は変化していません');
               }
-              //移動後は違うparent_id
+              //D&D後は違うフォルダ(parent_id)へ移動した時
             } else if (parent_id_Tmp != item[0].parentNode.id) {
-              console.log('ファイル:違うParentID');
               let id = item[0].childNodes[0].getAttribute('value');
 
               $.ajax({
@@ -165,7 +163,6 @@ export const jQueryUIOptionsFunc = () => {
                   className = classNameGet(document.getElementById(item[0].id));
                   let afterOrder = orderGet(className, item[0].id);
 
-                  //パス更新
                   const pass = passGet(id, item[0].childNodes[0].innerHTML);
 
                   $.ajax({
@@ -198,7 +195,6 @@ export const jQueryUIOptionsFunc = () => {
               let afterOrder = orderGet(className, item[0].id);
               //orderが大きくなる場合(下へD＆D);
               if (beforeOrder < afterOrder) {
-                console.log('フォルダ:下へD&D');
                 $.ajax({
                   url: '/folderPostController/',
                   type: 'POST',
@@ -215,7 +211,6 @@ export const jQueryUIOptionsFunc = () => {
                 });
                 //orderが小さくなる場合(上へD＆D)
               } else if (beforeOrder > afterOrder) {
-                console.log('フォルダ:上へD&D');
                 $.ajax({
                   url: '/folderPostController/',
                   type: 'POST',
@@ -233,9 +228,8 @@ export const jQueryUIOptionsFunc = () => {
               } else {
                 console.log('順番は変化していません');
               }
-              //移動後は違うparent_id
+              //D&D後は違うフォルダ(parent_id)へ移動した時
             } else if (parent_id_Tmp != item[0].parentNode.id) {
-              console.log('フォルダ:違うParentID');
               //D&D後に新しく追加された側のorderの動き
               $.ajax({
                 url: '/folderPostController/',
@@ -255,8 +249,16 @@ export const jQueryUIOptionsFunc = () => {
                     `parent${item[0].parentNode.id}`
                   );
 
+                  //D&D後の順番を取得
                   className = classNameGet(document.getElementById(item[0].id));
                   let afterOrder = orderGet(className, item[0].id);
+
+                  //フォルダのD&D時に、タブのフォーカスが当たっているファイルが配下にあればパスを変更する(対象のタブをクリックする)
+                  const fileUnder = fileIDUnderTheFolder(item[0].parentNode);
+                  const tabFocusID = tabFocusIDGet();
+                  if (fileUnder.includes(tabFocusID)) {
+                    $(`#tab-ID${tabFocusID}`).trigger('click');
+                  }
 
                   $.ajax({
                     url: '/mypage/',
