@@ -128,12 +128,12 @@ p {
 .username {
   margin-top: 25px;
 }
-.emailauth {
+.email_auth {
   margin-top: 20px;
 }
-.passwordauth {
+.password_auth {
   margin-top: 23px;
 }
-.passwordcheckauth {
+.confirmedPassword {
   margin-top: 20px;
 }

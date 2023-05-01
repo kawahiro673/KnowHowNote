@@ -118,7 +118,7 @@
   .cssbk input:checked + span + span {
     transform: perspective(1500px) rotateY(0deg);
   }
-  .tmp {
+  .note {
     padding: 20px;
     background-color: #fff;
     box-sizing: border-box;

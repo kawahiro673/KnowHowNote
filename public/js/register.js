@@ -1,6 +1,6 @@
 const userName = document.getElementById('username');
-const email = document.getElementById('email');
-const password = document.getElementById('password');
+const email = document.getElementById('email_auth');
+const password = document.getElementById('password_auth');
 const cfPassword = document.getElementById('confirmedPassword');
 
 document
