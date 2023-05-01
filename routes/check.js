@@ -18,7 +18,7 @@ function check(req, res, next) {
     next();
   } catch (err) {
     //return res.redirect('/login');
-    res.render('login.ejs');
+    res.render('top.ejs');
   }
 }
 

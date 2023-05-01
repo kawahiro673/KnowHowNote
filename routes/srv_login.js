@@ -6,10 +6,10 @@ const check = require('./check');
 const { redirect } = require('express/lib/response');
 
 //checkでCookieに保存されているトークンを確認し、自動ログインするか否か判断
-router.get('/', check, (req, res) => {
-  //res.render('index.ejs');
-  res.redirect('/mypage');
-});
+// router.get('/', check, (req, res) => {
+//   //res.render('index.ejs');
+//   res.redirect('/mypage');
+// });
 
 router.post('/', async (req, res) => {
   let email = req.body.email;
