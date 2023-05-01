@@ -7,21 +7,160 @@
     <title>KnowHowNote</title>
     <link rel="stylesheet" href="/css/sanitize.css" />
     <link rel="stylesheet" href="/css/top.css" />
+    <link rel="stylesheet" href="/css/login1.css" />
   </head>
   <body>
-    <!-- <a href="/login" class="login">ログイン</a> -->
     <div class="cssbk">
       <label>
-        <input type="checkbox" />
-        <span style="z-index: 99">表紙(タイトル書く)</span>
-        <span class="dummy">使い方</span>
+        <input type="checkbox" checked />
+        <span style="z-index: 100"> 表紙 </span>
+        <span class="dummy tmp">
+          <div class="content">使い方の説明</div>
+        </span>
       </label>
+
+      <label>
+        <input type="checkbox" checked />
+        <span style="z-index: 99" class="tmp">
+          <div class="content">使い方の説明</div>
+        </span>
+        <span class="dummy tmp">
+          <div class="content">
+            <h1>←使い方はこちらから</h1>
+          </div>
+        </span>
+      </label>
+
       <label>
         <input type="checkbox" />
-        <span style="z-index: 98">
-          <a href="/login" class="login">ログイン</a>
+        <span style="z-index: 98" class="tmp">
+          <div class="content">
+            <h1 class="login">　　　　ログインはこちらから →</h1>
+          </div>
         </span>
-        <span class="dummy">裏表紙</span>
+        <span class="dummy tmp">
+          <div class="content">
+            <h1>ログインする</h1>
+
+            <div class="control">
+              <label for="username"
+                >メールアドレス　<span class="required">必須</span></label
+              >
+              <input
+                class="logininput email"
+                id="email"
+                type="email"
+                name="emial"
+                placeholder="メールアドレス"
+                value=""
+              />
+            </div>
+
+            <div class="control">
+              <label for="password"
+                >パスワード　<span class="required">必須</span></label
+              >
+              <input
+                class="logininput password"
+                id="password"
+                type="password"
+                name="password"
+                placeholder="パスワード"
+                value=""
+              />
+            </div>
+
+            <div class="form-check checkbox">
+              <input
+                class="logininput form-check-input"
+                type="checkbox"
+                name="q"
+                id="q1"
+                value="login-save"
+              />
+              <label for="q1" class="form-check-label"
+                >ログイン状態を保持する</label
+              >
+            </div>
+
+            <div class="control">
+              <button type="submit" id="loginbtn1">ログインする</button>
+            </div>
+
+            <div class="passforgetdiv">
+              <a href=" " class="pass-forget">パスワードをお忘れの方</a>
+            </div>
+          </div>
+        </span>
+      </label>
+
+      <label>
+        <input type="checkbox" />
+        <span style="z-index: 97" class="tmp">
+          <div class="content">
+            <h1>新規登録する</h1>
+
+            <div class="control">
+              <label for="username"
+                >ユーザー名<span class="required">必須</span></label
+              >
+              <input
+                class="logininput username"
+                id="email"
+                type="email"
+                name="emial"
+                placeholder="ユーザー名"
+                value=""
+              />
+            </div>
+
+            <div class="control">
+              <label for="username"
+                >メールアドレス　<span class="required">必須</span></label
+              >
+              <input
+                class="logininput emailauth"
+                id="email"
+                type="email"
+                name="emial"
+                placeholder="メールアドレス"
+                value=""
+              />
+            </div>
+
+            <div class="control">
+              <label for="password"
+                >パスワード　<span class="required">必須</span></label
+              >
+              <input
+                class="logininput passwordauth"
+                id="password"
+                type="password"
+                name="password"
+                placeholder="パスワード"
+                value=""
+              />
+            </div>
+            <div class="control">
+              <label for="password"
+                >確認用パスワード<span class="required">必須</span></label
+              >
+              <input
+                class="logininput passwordcheckauth"
+                id="password"
+                type="password"
+                name="password"
+                placeholder="確認用パスワード"
+                value=""
+              />
+            </div>
+
+            <div class="control">
+              <button type="submit" id="loginbtn2">新規登録</button>
+            </div>
+          </div>
+        </span>
+        <span class="dummy"> 裏表紙 </span>
       </label>
     </div>
   </body>

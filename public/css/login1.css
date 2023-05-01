@@ -1,0 +1,129 @@
+h1 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 14px;
+}
+.content input {
+  display: initial;
+}
+
+.tmp {
+  padding: 20px;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.content {
+  background-color: #fff; /* 背景色 */
+  background-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 50%,
+      #fff 50%,
+      #fff 100%
+    ),
+    /* 点線1の色 */
+      linear-gradient(180deg, rgb(30, 194, 219) 1px, transparent 0.8px); /* 点線2の色と太さ */
+  background-size: 8px 100%, /* 点線1のサイズ */ 100% 2.5em; /* 点線2のサイズ */
+  line-height: 2.5em; /* 文字の高さ */
+  padding-bottom: 1px; /* 最終行の下にも罫線を引く */
+  height: 100%;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.logininput {
+  border: none;
+  border-bottom: 1px solid #d1d1d1;
+  font-size: 1.2em; /*文字が１.２倍の大きさ*/
+  width: 50%;
+  padding: 8px;
+}
+
+#loginbtn1 {
+  padding: 2em 10em;
+  background: #fff;
+  border-radius: 10px 70px/70px 10px;
+  border: dashed 2px #333;
+  background-color: #2096f3;
+}
+
+#loginbtn2 {
+  padding: 2em 10em;
+  background: #fff;
+  border-radius: 20px 50px/50px 20px;
+  border: dashed 2px #333;
+  background-color: #e32b2b;
+}
+
+.required {
+  color: #f33;
+  font-size: 0.9em;
+  padding: 3px;
+  background-color: #fee;
+  font-weight: bold;
+}
+
+.control {
+  margin-bottom: 1em;
+}
+
+.form-check {
+  display: flex; /* フレックスコンテナにする */
+  align-items: center; /* 垂直方向に中央揃えにする */
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+.form-check-input {
+  margin-right: auto;
+  width: 20%;
+  padding: 30px;
+}
+.form-check-label {
+  width: 80%;
+}
+
+.pass-forget {
+  padding: 0;
+}
+.passforgetdiv {
+  margin-top: 40px;
+}
+
+.new-account {
+  margin-bottom: 50px;
+}
+
+.new-account button {
+  width: 30%;
+  background-color: #f37819;
+  color: #fff;
+  padding: 15px;
+  border: 0;
+  border-radius: 3px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  float: right;
+}
+
+.email {
+  margin-top: 25px;
+}
+.password {
+  margin-top: 20px;
+}
+.username {
+  margin-top: 25px;
+}
+.emailauth {
+  margin-top: 20px;
+}
+.passwordauth {
+  margin-top: 23px;
+}
+.passwordcheckauth {
+  margin-top: 20px;
+}
