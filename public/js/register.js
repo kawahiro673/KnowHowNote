@@ -1,6 +1,6 @@
 const userName = document.getElementById('username');
-const email = document.getElementById('email_auth');
-const password = document.getElementById('password_auth');
+const email_auth = document.getElementById('email_auth');
+const password_auth = document.getElementById('password_auth');
 const cfPassword = document.getElementById('confirmedPassword');
 
 document
@@ -21,8 +21,8 @@ function registerButtonClick() {
       //未入力確認
       if (
         userName.value === '' ||
-        email.value === '' ||
-        password.value === '' ||
+        email_auth.value === '' ||
+        password_auth.value === '' ||
         cfPassword.value === ''
       ) {
         alert('入力されていない情報があります');
@@ -37,17 +37,17 @@ function registerButtonClick() {
         return false;
       }
       //emailバリデーションチェック
-      if (!email.value.match(/.+@.+\..+/)) {
+      if (!email_auth.value.match(/.+@.+\..+/)) {
         alert('正しいメールアドレスを入力してください');
         return false;
       }
       //確認用パスワード入力チェック
-      if (password.value !== cfPassword.value) {
+      if (password_auth.value !== cfPassword.value) {
         alert('パスワードの入力に誤りがあります');
         return false;
       }
       //既に登録されているemailがあれば「登録済み」とする
-      const mail = res.response.find((user) => user.Email === email.value);
+      const mail = res.response.find((user) => user.Email === email_auth.value);
       if (mail) {
         alert('既に登録されてあるメールアドレスです');
         return false;
@@ -62,8 +62,8 @@ function registerButtonClick() {
         data: JSON.stringify({
           flg: 'cipher',
           username: userName.value,
-          email: email.value,
-          password: password.value,
+          email: email_auth.value,
+          password: password_auth.value,
         }),
         success: function (res) {
           //console.log(res.token);
