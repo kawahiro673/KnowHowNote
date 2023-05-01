@@ -4,7 +4,7 @@ const password = document.getElementById('password');
 const cfPassword = document.getElementById('confirmedPassword');
 
 document
-  .getElementById('register')
+  .getElementById('registerbtn')
   .addEventListener('click', registerButtonClick);
 
 function registerButtonClick() {
