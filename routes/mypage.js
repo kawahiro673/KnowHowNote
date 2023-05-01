@@ -507,7 +507,7 @@ router
         'Set-Cookie',
         'token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; Path=/'
       );
-      res.end();
+      res.render('top.ejs');
     } else if (req.body.flg === 'getuser') {
       let promise = new Promise((resolve, reject) => {
         resolve();

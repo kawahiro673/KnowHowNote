@@ -2,14 +2,7 @@ const router = require('express').Router();
 const pool = require('../db');
 const bcrypt = require('bcrypt');
 const JWT = require('jsonwebtoken');
-const check = require('./check');
 const { redirect } = require('express/lib/response');
-
-//checkでCookieに保存されているトークンを確認し、自動ログインするか否か判断
-// router.get('/', check, (req, res) => {
-//   //res.render('index.ejs');
-//   res.redirect('/mypage');
-// });
 
 router.post('/', async (req, res) => {
   let email = req.body.email;
