@@ -5,7 +5,6 @@ const password = document.getElementById('password');
 loginbtn.addEventListener('click', loginButtonClick);
 
 function loginButtonClick() {
-  console.log('ログインボタンクリック');
   //console.log(document.cookie);
   $.ajax({
     url: '/login/',
@@ -23,7 +22,7 @@ function loginButtonClick() {
         alert(res.message);
       } else {
         //ajax通信を使用していると、nodejs(サーバーサイド)側でredirect()が使用できないっぽいのでこちらを使用
-        userName = res.response;
+        //userName = res.response;
         location.href = 'https://nodejs-itnote-app.herokuapp.com/mypage';
       }
     },
