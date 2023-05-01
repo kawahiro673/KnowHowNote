@@ -66,11 +66,15 @@
     font-family: Hannotate SC;
   }
 
-  button,
   input,
   select,
   textarea {
     font-family: Hannotate SC;
+  }
+
+  button {
+    font-family: Hannotate SC;
+    color: white;
   }
 
   .cssbk {
