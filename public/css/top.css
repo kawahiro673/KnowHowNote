@@ -52,7 +52,7 @@
     box-sizing: border-box;
   }
 
-  .tmp {
+  .note {
     border-top: 1px solid black;
     padding: 20px;
     background-color: #fff;
@@ -87,7 +87,7 @@
   }
 
   .cssbk input ~ span {
-    transition: 2s;
+    transition: 1.5s;
     -webkit-backface-visibility: hidden; /*要素が回転した場合に裏面が見えなくなる*/
     backface-visibility: hidden; /*要素が回転した場合に裏面が見えなくなる*/
     position: absolute;
@@ -113,5 +113,10 @@
   }
   .cssbk input:checked + span + span {
     transform: perspective(1500px) rotateY(0deg);
+  }
+  .tmp {
+    padding: 20px;
+    background-color: #fff;
+    box-sizing: border-box;
   }
 }
