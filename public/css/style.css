@@ -376,6 +376,7 @@ footer {
 
 .tab-content {
   display: none;
+  background-color: rgb(255, 255, 255);
 }
 
 /* アクティブなタブ */
@@ -399,9 +400,9 @@ footer {
   display: none;
 }
 
-.tab-wrap:not(.tab-content) {
-  background-color: #ccc; /* 背景色をグレーに設定 */
-}
+/* .tab-wrap:not(.tab-content) {
+  background-color: #ccc; 背景色をグレーに設定
+} */
 /************************リスト側のタブ******************************/
 /*タブのスタイル*/
 .container1 label:first-of-type {
