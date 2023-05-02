@@ -346,6 +346,7 @@ footer {
   border: 1px solid black;
 }
 
+/************************ノウハウ側のタブ******************************/
 .tab-wrap {
   height: 100%;
   min-height: 300px;
@@ -397,6 +398,9 @@ footer {
   display: none;
 }
 
+.tab-wrap:not(.tab-content) {
+  background-color: #ccc; /* 背景色をグレーに設定 */
+}
 /************************リスト側のタブ******************************/
 /*タブのスタイル*/
 .container1 label:first-of-type {
@@ -418,7 +422,7 @@ footer {
   border-radius: 4px 0 0 4px;
   display: inline-block;
   white-space: nowrap;
-  width: 70%;
+  width: 48%;
   box-sizing: border-box;
 }
 
