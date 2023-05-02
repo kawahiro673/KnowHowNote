@@ -348,11 +348,12 @@ footer {
 
 /************************ノウハウ側のタブ******************************/
 .tab-wrap {
-  height: 100%;
+  height: 500px;
   min-height: 300px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+  background-color: #00ffff;
 }
 
 .tab-label {
