@@ -1,69 +1,8 @@
-@media screen and (max-width: 1000px) {
-  body {
-    font-family: Hannotate SC;
-  }
-  .cssbk {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .cssbk > label {
-    display: flex;
-    flex-direction: column;
-    /* width: 500px; */
-    width: 100%; /* 親要素内いっぱいにする */
-    height: 1400px;
-    border: 1px solid black;
-    margin-bottom: 10px;
-  }
-
-  .cssbk > label > input[type='checkbox'] {
-    display: none;
-  }
-
-  .cssbk > label > span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    height: 50%;
-  }
-
-  .cssbk > label > span > .content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #fff; /* 背景色 */
-    background-image: linear-gradient(
-        90deg,
-        transparent 0%,
-        transparent 50%,
-        #fff 50%,
-        #fff 100%
-      ),
-      /* 点線1の色 */
-        linear-gradient(180deg, rgb(30, 194, 219) 1px, transparent 0.8px); /* 点線2の色と太さ */
-    background-size: 8px 100%, /* 点線1のサイズ */ 100% 2.5em; /* 点線2のサイズ */
-    line-height: 2.5em; /* 文字の高さ */
-    padding-bottom: 1px; /* 最終行の下にも罫線を引く */
-    height: 100%;
-    padding: 30px;
-    box-sizing: border-box;
-  }
-
-  .note {
-    border-top: 1px solid black;
-    padding: 20px;
-    background-color: #fff;
-    box-sizing: border-box;
-  }
-}
-
 @media screen and (min-width: 1000px) {
   body {
     overflow: hidden;
     font-family: Hannotate SC;
+    background-color: #f3eee1;
   }
 
   input,
@@ -119,8 +58,93 @@
     transform: perspective(1500px) rotateY(0deg);
   }
   .note {
-    padding: 20px;
+    /* padding: 20px; */
     background-color: #fff;
     box-sizing: border-box;
+  }
+
+  .spine {
+    background-color: #298af2;
+    width: 30px;
+    height: 700px;
+  }
+  .front_cover {
+    background-color: #d9eaf0;
+    color: #298af2;
+    position: relative;
+  }
+  .front_cover p {
+    position: absolute;
+    bottom: 0;
+    left: 50px;
+    font-size: 50px;
+    font-family: HiraMinProN-W6;
+  }
+  .spine_back {
+    background-color: #298af2;
+    width: 30px;
+    height: 700px;
+  }
+  .back_cover {
+    background-color: #d9eaf0;
+    color: #298af2;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .line {
+    padding: 0;
+    background: #d9eaf0;
+    position: absolute;
+    border-bottom: 1px solid #333;
+    right: 10px;
+    content: '';
+    display: block;
+    width: 300px;
+    height: 0;
+  }
+  .line1 {
+    top: 100px;
+    font-size: 50px;
+    color: black;
+  }
+  .line2 {
+    top: 200px;
+  }
+  .line3 {
+    top: 370px;
+  }
+  .line4 {
+    top: 390px;
+  }
+  .line5 {
+    top: 410px;
+  }
+  .line6 {
+    top: 430px;
+  }
+  .line7 {
+    top: 450px;
+  }
+  .line8 {
+    top: 510px;
+  }
+  .image {
+    background-image: url('../img/barcode.png');
+    background-size: 100px 50px;
+    width: 100px;
+    height: 50px;
+    position: absolute;
+    left: 30px;
+    bottom: 30px;
+  }
+  .line9 {
+    top: 450px;
+    right: 30px;
+  }
+  .line10 {
+    top: 510px;
+    right: 30px;
   }
 }

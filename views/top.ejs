@@ -6,14 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KnowHowNote</title>
     <link rel="stylesheet" href="/css/sanitize.css" />
-    <link rel="stylesheet" href="/css/top.css" />
+    <link rel="stylesheet" href="/css/top(min-width).css" />
+    <link rel="stylesheet" href="/css/top(max-width).css" />
     <link rel="stylesheet" href="/css/login.css" />
   </head>
   <body>
     <div class="cssbk">
       <label>
         <input type="checkbox" checked />
-        <span style="z-index: 100"> 表紙 </span>
+        <span style="z-index: 100">
+          <div class="front_cover">
+            <div class="spine"></div>
+            <div class="line line1">マイノート</div>
+            <div class="line line2"></div>
+            <div class="line line3"></div>
+            <div class="line line4"></div>
+            <div class="line line5"></div>
+            <div class="line line6"></div>
+            <div class="line line7"></div>
+            <div class="line line8"></div>
+            <p>KnowHowNote</p>
+          </div>
+        </span>
         <span class="dummy note">
           <div class="content">使い方の説明</div>
         </span>
@@ -100,6 +114,7 @@
         <!------------------- 「新規登録する」ページ --------------------->
         <span style="z-index: 97" class="note">
           <div class="content">
+            <h1 style="color: red">📕 未登録の方はこちらから！📕</h1>
             <h1>新規登録する</h1>
 
             <div class="control">
@@ -162,7 +177,14 @@
             </div>
           </div>
         </span>
-        <span class="dummy"> 裏表紙 </span>
+        <span class="dummy back">
+          <div class="back_cover">
+            <div class="spine_back"></div>
+            <div class="line line9"></div>
+            <div class="line line10"></div>
+            <div class="image"></div>
+          </div>
+        </span>
       </label>
     </div>
 
