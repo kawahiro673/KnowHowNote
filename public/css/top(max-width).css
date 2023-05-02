@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Hannotate+SC&display=swap');
+
 @media screen and (max-width: 1000px) {
   body {
-    font-family: Hannotate SC;
+    font-family: 'Hannotate SC', sans-serif;
     background-color: #f3eee1;
     position: relative;
   }
