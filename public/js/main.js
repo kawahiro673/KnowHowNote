@@ -321,16 +321,19 @@ function tabUpload() {
       };
       await createTheFirstTab();
       await tabFocusOn();
+      await tabLabelsColor();
     },
   });
 }
 
-const tabLabels = document.querySelectorAll('.tab-label');
-// // 各.tab-labelにランダムな色を割り当てる
-tabLabels.forEach((tabLabel) => {
-  const beforeElement = tabLabel.querySelector('::before');
-  beforeElement.style.backgroundColor = getRandomColor();
-});
+const tabLabelsColor = async () => {
+  const tabLabels = document.querySelectorAll('.tab-label');
+  // // 各.tab-labelにランダムな色を割り当てる
+  tabLabels.forEach((tabLabel) => {
+    const beforeElement = tabLabel.querySelector('::before');
+    beforeElement.style.backgroundColor = getRandomColor();
+  });
+};
 
 async function titleClick(id, title) {
   return new Promise((resolve, reject) => {
