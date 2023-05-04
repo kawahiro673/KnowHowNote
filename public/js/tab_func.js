@@ -15,6 +15,10 @@ export const tabCreate = (id, title, res) => {
   labelTab.setAttribute('for', 'TAB-ID' + id);
   labelTab.style.display = 'block';
 
+  const labelColor = document.createElement('div');
+  labelColor.setAttribute('class', 'label-color');
+  labelColor.setAttribute('id', 'label-color' + id);
+
   const tabname = document.createElement('p');
   tabname.setAttribute('class', 'tabname');
   tabname.setAttribute('id', 'tabname' + id);
@@ -69,6 +73,7 @@ export const tabCreate = (id, title, res) => {
   tab.appendChild(labelTab);
   labelTab.appendChild(tabname);
   labelTab.appendChild(buttonTab);
+  labelTab.appendChild(labelColor);
   tab.appendChild(div);
   div.appendChild(div1);
   div.appendChild(divFade);
