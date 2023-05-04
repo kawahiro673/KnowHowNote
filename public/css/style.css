@@ -363,8 +363,8 @@ footer {
   font-weight: bold;
   white-space: nowrap;
   text-align: center;
-  /* border: 1px solid Gray;
-  border-radius: 4px 0 0 4px; */
+  border: 1px solid Gray;
+  border-radius: 4px 0 0 4px;
   margin: 5px -1px 5px 1px;
   padding: 10px 0.5em;
   order: -1;
@@ -386,10 +386,10 @@ footer {
   z-index: -1;
 }
 
-.label-color {
+/* .label-color {
   background-color: #ccc;
   padding: 5px;
-}
+} */
 
 .tab-content {
   display: none;
@@ -408,7 +408,7 @@ footer {
   /* - ボタン幅 */
   height: 100%;
   padding: 15px;
-  /* border-left: 1px solid Gray; */
+  border-left: 1px solid Gray;
   display: block;
 }
 
