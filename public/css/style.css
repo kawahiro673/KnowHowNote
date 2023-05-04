@@ -374,6 +374,23 @@ footer {
   float: left;
 }
 
+.tab-label::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 100%;
+  background-color: #f00;
+  z-index: -1;
+}
+
+.label-color {
+  background-color: #ccc;
+  padding: 5px;
+}
+
 .tab-content {
   display: none;
   background-color: rgb(255, 255, 255);
