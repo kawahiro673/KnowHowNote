@@ -326,6 +326,7 @@ function tabUpload() {
   });
 }
 
+//タブのラベルをランダムな色に付与する
 const tabLabelsColor = async () => {
   const tabLabels = document.querySelectorAll('.tab-label');
   // // 各.tab-labelにランダムな色を割り当てる
