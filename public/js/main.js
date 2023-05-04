@@ -330,8 +330,10 @@ const tabLabelsColor = async () => {
   const tabLabels = document.querySelectorAll('.tab-label');
   // // 各.tab-labelにランダムな色を割り当てる
   tabLabels.forEach((tabLabel) => {
-    const beforeElement = window.getComputedStyle(tabLabel, '::before');
-    beforeElement.backgroundColor = getRandomColor();
+    tabLabel.style.setProperty(
+      '--tab-label-background-color',
+      getRandomColor()
+    );
   });
 };
 
