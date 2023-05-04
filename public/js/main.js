@@ -7,6 +7,7 @@ import {
   tabClick,
   deleteTabArray,
   tabCreate,
+  getRandomColor,
 } from './tab_func.js';
 
 import { fileContextmenu } from './note_contextmenu.js';
@@ -324,6 +325,13 @@ function tabUpload() {
   });
 }
 
+const tabLabels = document.querySelectorAll('.tab-label');
+// // 各.tab-labelにランダムな色を割り当てる
+tabLabels.forEach((tabLabel) => {
+  const beforeElement = tabLabel.querySelector('::before');
+  beforeElement.style.backgroundColor = getRandomColor();
+});
+
 async function titleClick(id, title) {
   return new Promise((resolve, reject) => {
     //タブ未生成
@@ -373,6 +381,9 @@ async function titleClick(id, title) {
             div.appendChild(inputCancel);
 
             inputEdit.style.display = 'none';
+
+            // const beforeElement = tabLabel.querySelector('::before');
+            // beforeElement.style.backgroundColor = getRandomColor();
 
             //[保存する]ボタン押下
             inputKeep.onclick = () => {

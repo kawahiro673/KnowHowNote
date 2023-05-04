@@ -265,3 +265,13 @@ export const deleteTabArray = (id, tabArray) => {
   }
   return tabArray;
 };
+
+// 色をランダムに生成する関数
+export const getRandomColor = () => {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
