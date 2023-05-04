@@ -408,7 +408,7 @@ footer {
   /* - ボタン幅 */
   height: 100%;
   padding: 15px;
-  border-left: 1px solid Gray;
+  /* border-left: 1px solid Gray; */
   display: block;
 }
 
