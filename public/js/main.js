@@ -581,3 +581,20 @@ $('.tab-label').on('mousedown', function (e) {
     console.log(this.id);
   }
 });
+const label = document.getElementById('tab-ID7664');
+
+label.addEventListener('contextmenu', function (event) {
+  // 右クリックされたときの処理をここに記述する
+  event.preventDefault(); // デフォルトの右クリックメニューを表示させないようにする
+  console.log('右クリックしました');
+});
+
+const labels = document.querySelectorAll('.tab-label');
+
+labels.forEach(function (label) {
+  label.addEventListener('contextmenu', function (event) {
+    // 右クリックされたときの処理をここに記述する
+    event.preventDefault(); // デフォルトの右クリックメニューを表示させないようにする
+    console.log('右クリックしました');
+  });
+});
