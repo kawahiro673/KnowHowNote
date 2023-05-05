@@ -394,7 +394,7 @@ async function titleClick(id, title) {
             // const beforeElement = tabLabel.querySelector('::before');
             // beforeElement.style.backgroundColor = getRandomColor();
 
-            labelContextmenu(tabIdArray);
+            //labelContextmenu(tabIdArray);
 
             //[保存する]ボタン押下
             inputKeep.onclick = () => {
@@ -547,3 +547,16 @@ function hasInput(elem) {
 export function tabFocusIDGet() {
   return tabFocusID;
 }
+
+$('.tab-label').on('contextmenu', function () {
+  console.log('クリックしました');
+  console.log(this);
+  console.log(this.id);
+  // const regex = /(\d+)/;
+  // const idNum = tabId.match(regex)[0];
+  let label = {
+    title: $(this).html(),
+    id: $(this).attr('id'),
+    elem: this,
+  };
+});
