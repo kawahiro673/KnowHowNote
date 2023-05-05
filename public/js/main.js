@@ -394,6 +394,8 @@ async function titleClick(id, title) {
             // const beforeElement = tabLabel.querySelector('::before');
             // beforeElement.style.backgroundColor = getRandomColor();
 
+            labelContextmenu(tabIdArray);
+
             //[保存する]ボタン押下
             inputKeep.onclick = () => {
               keepButton(
