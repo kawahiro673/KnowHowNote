@@ -387,6 +387,10 @@ footer {
   background-color: var(--tab-label-background-color);
 }
 
+.parenttab {
+  padding: 30px;
+}
+
 .tab-content {
   display: none;
   background-color: rgb(255, 255, 255);
@@ -408,7 +412,7 @@ footer {
   line-height: 2.5em; /* 文字の高さ */
   padding-bottom: 1px; /* 最終行の下にも罫線を引く */
   /* height: 100%; */
-  padding: 30px;
+  /* padding: 30px; */
   box-sizing: border-box;
 }
 
