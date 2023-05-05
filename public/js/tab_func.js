@@ -31,8 +31,6 @@ export const tabCreate = (id, title, res) => {
   buttonTab.innerHTML = '×';
 
   // div要素を生成
-  const pdiv = document.createElement('div');
-  pdiv.className = 'parenttab'; //paddingのために作成
   let div = document.createElement('div');
   div.className = 'tab-content';
   div.setAttribute('id', 'Tab-ID' + id);
@@ -76,8 +74,7 @@ export const tabCreate = (id, title, res) => {
   labelTab.appendChild(tabname);
   labelTab.appendChild(buttonTab);
   labelTab.appendChild(labelColor);
-  tab.appendChild(pdiv);
-  pdiv.appendChild(div);
+  tab.appendChild(div);
   div.appendChild(div1);
   div.appendChild(divFade);
   div.appendChild(div2);
