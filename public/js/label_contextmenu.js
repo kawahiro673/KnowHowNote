@@ -21,15 +21,18 @@ export const labelContextmenu = (tabIdArray) => {
       elem: this,
     };
 
-    document.getElementById('pink').addEventListener('click', () => {
+    const labelPink = (e) => {
       tabLabelsColor(label.id, '#FF00FF');
-    });
-    document.getElementById('red').addEventListener('click', () => {
+      e.target.removeEventListener('click', labelPink);
+    };
+    const labelRed = (e) => {
       tabLabelsColor(label.id, '#FF0000');
-    });
-    document.getElementById('orange').addEventListener('click', () => {
+      e.target.removeEventListener('click', labelRed);
+    };
+    const labelOrange = (e) => {
       tabLabelsColor(label.id, '#FFA500');
-    });
+      e.target.removeEventListener('click', labelOrange);
+    };
     document.getElementById('yellow').addEventListener('click', () => {
       tabLabelsColor(label.id, '#FFFF00');
     });
@@ -37,7 +40,7 @@ export const labelContextmenu = (tabIdArray) => {
       tabLabelsColor(label.id, '#98FB98');
     });
     document.getElementById('green').addEventListener('click', () => {
-      tabLabelsColor(label.id, '#66CDAA');
+      tabLabelsColor(label.id, '#228B22');
     });
     document.getElementById('sky-blue').addEventListener('click', () => {
       tabLabelsColor(label.id, '#AFEEEE');
@@ -57,6 +60,24 @@ export const labelContextmenu = (tabIdArray) => {
     document.getElementById('black').addEventListener('click', () => {
       tabLabelsColor(label.id, '#000000');
     });
+    document.getElementById('black').addEventListener('click', () => {
+      //なしの処理
+    });
+    document.getElementById('pink').addEventListener('click', labelPink);
+    document.getElementById('red').addEventListener('click', labelRed);
+    document.getElementById('orange').addEventListener('click', labelOrange);
+    // document.getElementById('pink').addEventListener('click', labelPink);
+    // document.getElementById('pink').addEventListener('click', labelPink);
+    // document.getElementById('pink').addEventListener('click', labelPink);
+    // document.getElementById('pink').addEventListener('click', labelPink);
+    // document.getElementById('pink').addEventListener('click', labelPink);
+    // document.getElementById('pink').addEventListener('click', labelPink);
+    // document.getElementById('pink').addEventListener('click', labelPink);
+    // document.getElementById('pink').addEventListener('click', labelPink);
+    // document.getElementById('pink').addEventListener('click', labelPink);
+    // document.getElementById('pink').addEventListener('click', labelPink);
+    // document.getElementById('pink').addEventListener('click', labelPink);
+    // document.getElementById('pink').addEventListener('click', labelPink);
   });
 };
 
