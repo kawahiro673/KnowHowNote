@@ -267,7 +267,7 @@ footer {
   background-color: rgb(174, 171, 180);
 }
 
-#contextmenu {
+/* #contextmenu {
   display: none;
   position: fixed;
   left: 0px;
@@ -281,7 +281,7 @@ footer {
 }
 #contextmenu li {
   cursor: pointer;
-}
+} */
 #delete:hover {
   border: 1px solid black;
 }
@@ -291,7 +291,33 @@ footer {
 #color:hover {
   border: 1px solid black;
 }
-#contextmenu2 {
+
+#contextmenu,
+#contextmenu2,
+#contextmenu3,
+#contextmenu4,
+#contextmenu5 {
+  display: none;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 200px;
+  height: 180px;
+  border: 1px solid #000;
+  background-color: #fff;
+  border-radius: 5px;
+  z-index: 100;
+}
+
+#contextmenu li,
+#contextmenu2 li,
+#contextmenu3 li,
+#contextmenu4 li,
+#contextmenu5 li {
+  cursor: pointer;
+}
+
+/* #contextmenu2 {
   display: none;
   position: fixed;
   left: 0px;
@@ -337,7 +363,7 @@ footer {
 }
 #contextmenu4 li {
   cursor: pointer;
-}
+} */
 
 #folder:hover {
   border: 1px solid black;
