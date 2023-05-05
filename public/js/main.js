@@ -236,7 +236,6 @@ $('html').on('click contextmenu', (e) => {
     conme2.style.display = 'none';
     conme3.style.display = 'none';
     conme4.style.display = 'none';
-    conme5.style.display = 'none';
   }
 });
 

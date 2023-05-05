@@ -15,11 +15,20 @@ export const labelContextmenu = (tabIdArray) => {
     conme4.style.display = 'none';
 
     const idValue = this.id;
-    const id = idValue.replace(/[^0-9]/g, '');
     let label = {
       title: $(this).html(),
-      id,
+      id: idValue.replace(/[^0-9]/g, ''),
       elem: this,
     };
+
+    document.getElementById('pink').addEventListener('click', () => {
+      tabLabelsColor(label.id);
+    });
   });
+};
+
+const tabLabelsColor = (id) => {
+  const label = document.getElementById(`tab-ID${id}`);
+  // // 各.tab-labelにランダムな色を割り当てる
+  label.style.setProperty('--tab-label-background-color', '#FF00FF');
 };
