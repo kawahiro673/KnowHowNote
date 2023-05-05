@@ -548,15 +548,29 @@ export function tabFocusIDGet() {
   return tabFocusID;
 }
 
-$('.tab-label').on('contextmenu', function () {
-  console.log('クリックしました');
-  console.log(this);
-  console.log(this.id);
-  // const regex = /(\d+)/;
-  // const idNum = tabId.match(regex)[0];
-  let label = {
-    title: $(this).html(),
-    id: $(this).attr('id'),
-    elem: this,
-  };
+// $('.tab-label').on('contextmenu', function () {
+//   console.log('クリックしました');
+//   console.log(this);
+//   console.log(this.id);
+//   // const regex = /(\d+)/;
+//   // const idNum = tabId.match(regex)[0];
+//   let label = {
+//     title: $(this).html(),
+//     id: $(this).attr('id'),
+//     elem: this,
+//   };
+// });
+
+$('.tab-label').on('mousedown', function (event) {
+  if (event.which === 3) {
+    // 右クリックの場合
+    console.log('右クリックしました');
+    console.log(this);
+    console.log(this.id);
+    let label = {
+      title: $(this).html(),
+      id: $(this).attr('id'),
+      elem: this,
+    };
+  }
 });
