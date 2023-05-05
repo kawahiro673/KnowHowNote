@@ -560,41 +560,43 @@ export function tabFocusIDGet() {
 //     elem: this,
 //   };
 // });
-
-$('.tab-label').on('mousedown', function (event) {
-  if (event.which === 3) {
-    // 右クリックの場合
-    console.log('右クリックしました');
-    console.log(this);
-    console.log(this.id);
-    let label = {
-      title: $(this).html(),
-      id: $(this).attr('id'),
-      elem: this,
-    };
-  }
-});
-
-$('.tab-label').on('mousedown', function (e) {
-  if (e.button === 2) {
-    console.log('右クリックしました');
-    console.log(this.id);
-  }
-});
-const label = document.getElementById('tab-ID7664');
-
-label.addEventListener('contextmenu', function (event) {
-  // 右クリックされたときの処理をここに記述する
-  event.preventDefault(); // デフォルトの右クリックメニューを表示させないようにする
-  console.log('右クリックしました');
-});
-
-const labels = document.querySelectorAll('.tab-label');
-
-labels.forEach(function (label) {
-  label.addEventListener('contextmenu', function (event) {
-    // 右クリックされたときの処理をここに記述する
-    event.preventDefault(); // デフォルトの右クリックメニューを表示させないようにする
-    console.log('右クリックしました');
+setTimeout(function () {
+  // 実行したい処理をここに記述する
+  $('.tab-label').on('mousedown', function (event) {
+    if (event.which === 3) {
+      // 右クリックの場合
+      console.log('右クリックしました');
+      console.log(this);
+      console.log(this.id);
+      let label = {
+        title: $(this).html(),
+        id: $(this).attr('id'),
+        elem: this,
+      };
+    }
   });
-});
+}, 5000); // 1000ミリ秒(1秒)後に実行する
+
+// $('.tab-label').on('mousedown', function (e) {
+//   if (e.button === 2) {
+//     console.log('右クリックしました');
+//     console.log(this.id);
+//   }
+// });
+// const label = document.getElementById('tab-ID7664');
+
+// label.addEventListener('contextmenu', function (event) {
+//   // 右クリックされたときの処理をここに記述する
+//   event.preventDefault(); // デフォルトの右クリックメニューを表示させないようにする
+//   console.log('右クリックしました');
+// });
+
+// const labels = document.querySelectorAll('.tab-label');
+
+// labels.forEach(function (label) {
+//   label.addEventListener('contextmenu', function (event) {
+//     // 右クリックされたときの処理をここに記述する
+//     event.preventDefault(); // デフォルトの右クリックメニューを表示させないようにする
+//     console.log('右クリックしました');
+//   });
+// });
