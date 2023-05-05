@@ -179,11 +179,11 @@ listCreate();
 tabUpload();
 shareListCreate();
 
-let conme = document.getElementById('contextmenu');
-let conme2 = document.getElementById('contextmenu2');
-let conme3 = document.getElementById('contextmenu3');
-let conme4 = document.getElementById('contextmenu4');
-let conme5 = document.getElementById('contextmenu5');
+const conme = document.getElementById('contextmenu');
+const conme2 = document.getElementById('contextmenu2');
+const conme3 = document.getElementById('contextmenu3');
+const conme4 = document.getElementById('contextmenu4');
+const conme5 = document.getElementById('contextmenu5');
 $('#right').on('click contextmenu', (e) => {
   //ノート上で右クッリク
   if (e.target.closest('.list_title')) {
@@ -210,14 +210,6 @@ $('#right').on('click contextmenu', (e) => {
     conme2.style.display = 'none';
     conme3.style.display = 'none';
     conme5.style.display = 'none';
-  } else if (e.target.closest('.tab-label')) {
-    conme5.style.left = e.pageX + 'px';
-    conme5.style.top = e.pageY + 'px';
-    conme5.style.display = 'block';
-    conme.style.display = 'none';
-    conme2.style.display = 'none';
-    conme3.style.display = 'none';
-    conme4.style.display = 'none';
   } else {
     conme2.style.left = e.pageX + 'px';
     conme2.style.top = e.pageY + 'px';
@@ -244,7 +236,6 @@ $('html').on('click contextmenu', (e) => {
     conme2.style.display = 'none';
     conme3.style.display = 'none';
     conme4.style.display = 'none';
-    //conme5.style.display = 'none';
   }
 });
 
