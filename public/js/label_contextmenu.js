@@ -5,7 +5,7 @@ const conme4 = document.getElementById('contextmenu4');
 const conme5 = document.getElementById('contextmenu5');
 
 export const labelContextmenu = (tabIdArray) => {
-  $('.tab-label').on('contextmenu', function () {
+  $('.tab-label').on('contextmenu', function (e) {
     conme5.style.left = e.pageX + 'px';
     conme5.style.top = e.pageY + 'px';
     conme5.style.display = 'block';
