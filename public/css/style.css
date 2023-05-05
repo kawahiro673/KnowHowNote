@@ -390,6 +390,26 @@ footer {
 .tab-content {
   display: none;
   background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff; /* 背景色 */
+  background-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 50%,
+      #fff 50%,
+      #fff 100%
+    ),
+    /* 点線1の色 */
+      linear-gradient(180deg, rgb(30, 194, 219) 1px, transparent 0.8px); /* 点線2の色と太さ */
+  background-size: 8px 100%, /* 点線1のサイズ */ 100% 2.5em; /* 点線2のサイズ */
+  line-height: 2.5em; /* 文字の高さ */
+  padding-bottom: 1px; /* 最終行の下にも罫線を引く */
+  height: 100%;
+  padding: 30px;
+  box-sizing: border-box;
 }
 
 /* アクティブなタブ */
