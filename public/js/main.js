@@ -244,7 +244,7 @@ $('html').on('click contextmenu', (e) => {
     conme2.style.display = 'none';
     conme3.style.display = 'none';
     conme4.style.display = 'none';
-    conme5.style.display = 'none';
+    //conme5.style.display = 'none';
   }
 });
 
@@ -547,32 +547,3 @@ function hasInput(elem) {
 export function tabFocusIDGet() {
   return tabFocusID;
 }
-
-// $('.tab-label').on('contextmenu', function () {
-//   console.log('クリックしました');
-//   console.log(this);
-//   console.log(this.id);
-//   // const regex = /(\d+)/;
-//   // const idNum = tabId.match(regex)[0];
-//   let label = {
-//     title: $(this).html(),
-//     id: $(this).attr('id'),
-//     elem: this,
-//   };
-// });
-// setTimeout(function () {
-//   // 実行したい処理をここに記述する
-//   $('.tab-label').on('mousedown', function (event) {
-//     if (event.which === 3) {
-//       // 右クリックの場合
-//       console.log('右クリックしました');
-//       console.log(this);
-//       console.log(this.id);
-//       let label = {
-//         title: $(this).html(),
-//         id: $(this).attr('id'),
-//         elem: this,
-//       };
-//     }
-//   });
-// }, 5000);

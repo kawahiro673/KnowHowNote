@@ -2,12 +2,13 @@ export const labelContextmenu = (tabIdArray) => {
   $('.tab-label').on('contextmenu', function () {
     console.log(this);
     console.log(this.id);
-    // const regex = /(\d+)/;
-    // const idNum = tabId.match(regex)[0];
+    const idValue = this.id;
+    const id = idValue.replace(/[^0-9]/g, '');
     let label = {
       title: $(this).html(),
-      id: $(this).attr('id'),
+      id,
       elem: this,
     };
+    console.log(label.id);
   });
 };
