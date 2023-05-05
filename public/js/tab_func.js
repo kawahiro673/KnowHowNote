@@ -255,6 +255,18 @@ export const tabClick = (e, id, title) => {
   }
 };
 
+//タブのラベルをランダムな色に付与する
+export const tabLabelsColor = async () => {
+  const tabLabels = document.querySelectorAll('.tab-label');
+  // // 各.tab-labelにランダムな色を割り当てる
+  tabLabels.forEach((tabLabel) => {
+    tabLabel.style.setProperty(
+      '--tab-label-background-color',
+      getRandomColor()
+    );
+  });
+};
+
 //タブ削除したタイトルのIDをtabArrayから削除
 export const deleteTabArray = (id, tabArray) => {
   tabArray = tabArray.filter((n) => n !== id);
