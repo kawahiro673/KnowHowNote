@@ -423,7 +423,7 @@ footer {
   border-right-color: White;
 }
 
-.tab-switch:checked + .tab-label + .tab-content {
+.tab-switch:checked + .tab-label + .parenttab {
   width: calc(100% - 150px);
   /* - ボタン幅 */
   height: 100%;
