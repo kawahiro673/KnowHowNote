@@ -574,3 +574,10 @@ $('.tab-label').on('mousedown', function (event) {
     };
   }
 });
+
+$('.tab-label').on('mousedown', function (e) {
+  if (e.button === 2) {
+    console.log('右クリックしました');
+    console.log(this.id);
+  }
+});
