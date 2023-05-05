@@ -143,7 +143,7 @@ header h1 {
   width: 900px;
   background-color: white;
   margin-top: 0;
-  margin-right: 30px;
+  margin-right: 10px;
   margin-left: 30px;
   border-radius: 10px;
 }
@@ -357,7 +357,7 @@ footer {
 }
 
 .tab-label {
-  width: 200px;
+  width: 180px;
   color: White;
   background: LightGray;
   font-weight: bold;
