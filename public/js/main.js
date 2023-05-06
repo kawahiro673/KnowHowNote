@@ -326,7 +326,8 @@ function tabUpload() {
       };
       await createTheFirstTab();
       await tabFocusOn();
-      for (let i = 0; i < 22; i++) {
+      //バインダーのリング部分作成
+      for (let i = 0; i < 21; i++) {
         const imageContainer = document.createElement('div');
         imageContainer.classList.add('image-container');
 

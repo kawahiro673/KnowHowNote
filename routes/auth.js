@@ -2,7 +2,16 @@ const router = require('express').Router();
 const pool = require('../db');
 const bcrypt = require('bcrypt');
 const JWT = require('jsonwebtoken');
+const { reject } = require('bcrypt/promises');
 
+const currentDate = new Date();
+const year = currentDate.getFullYear();
+const month = currentDate.getMonth() + 1; // 0から始まるため、1を足す
+const day = currentDate.getDate();
+const hours = currentDate.getHours();
+const minutes = currentDate.getMinutes();
+
+const formattedDate = `${year}年${month}月${day}日 ${hours}:${minutes}`;
 router
   .route('/')
   .get((req, res) => {
@@ -33,11 +42,125 @@ router
         now.getSeconds();
 
       let hashedPassword = await bcrypt.hash(req.body.password, 10);
-      pool.query(
-        'INSERT INTO register_user (UserName, Email, HashedPassword, CreationDay) VALUES(?, ?, ?,?);',
-        [userName, email, hashedPassword, formattedDate],
-        (error, result) => {}
-      );
+
+      let promise = new Promise((resolve, reject) => {
+        resolve();
+      });
+      promise
+        .then(() => {
+          return new Promise(() => {
+            pool.query(
+              'INSERT INTO register_user (UserName, Email, HashedPassword, CreationDay) VALUES(?, ?, ?,?);',
+              [userName, email, hashedPassword, formattedDate],
+              (error, result) => {
+                if (error) {
+                  reject();
+                } else {
+                  resolve();
+                }
+              }
+            );
+          });
+        })
+        //登録ユーザーをidの降順にすることによって、追加したばかりのユーザーを取得している
+        .then(() => {
+          return new Promise(() => {
+            pool.query(
+              'SELCT * FROM register_user ORDER BY id DESC;',
+              (error, userResult) => {
+                if (error) {
+                  reject();
+                } else {
+                  resolve(userResult);
+                }
+              }
+            );
+          });
+        })
+        .then((userResult) => {
+          return new Promise(() => {
+            pool.query(
+              'INSERT INTO folder (folder_name, parent_id, folder_order, closed, UserID) VALUES(?, ?, ?, ?, ?);',
+              ['新しいフォルダ', 0, 1, 'off', userResult[0].id],
+              (error, result) => {
+                if (error) {
+                  reject();
+                } else {
+                  resolve(userResult);
+                }
+              }
+            );
+          });
+        })
+        .then((userResult) => {
+          return new Promise(() => {
+            pool.query(
+              'SELECT * FROM folder WHERE UserID = ?;',
+              [userResult[0].id],
+              (error, folderResult) => {
+                if (error) {
+                  reject();
+                } else {
+                  resolve({
+                    folderResult: folderResult,
+                    userResult: userResult,
+                  });
+                }
+              }
+            );
+          });
+        })
+        .then(({ folderResult, userResult }) => {
+          return new Promise(() => {
+            pool.query(
+              'INSERT INTO it_memo (title, memo_text, saved_time, parent_id, folder_order, Type, UserID) VALUES(?,?,?,?,?,?,?);',
+              [
+                'sample2',
+                'こちらはサンプルになります',
+                formattedDate,
+                folderResult[0].id,
+                1,
+                'Original',
+                userResult[0].id,
+              ],
+              (error, result) => {
+                if (error) {
+                  reject();
+                } else {
+                  resolve(userResult);
+                }
+              }
+            );
+          });
+        })
+        .then((userResult) => {
+          return new Promise(() => {
+            pool.query(
+              'INSERT INTO it_memo (title, memo_text, saved_time, parent_id, folder_order, Type, UserID) VALUES(?,?,?,?,?,?,?);',
+              [
+                'sample1',
+                'こちらはサンプルになります',
+                formattedDate,
+                0,
+                2,
+                'Original',
+                userResult[0].id,
+              ],
+              (error, result) => {
+                if (error) {
+                  reject();
+                } else {
+                  resolve();
+                }
+              }
+            );
+          });
+        })
+        .catch((error) => {
+          console.error(error);
+          res.status(500).send('Internal Server Error.(Register user)');
+        });
+
       //クライアントへJWTの発行(クライアント側のトークンはローカルストレージに保存するのはだめ。Cookieを使って保存する。)
       const token = await JWT.sign(
         {

@@ -213,6 +213,10 @@ header h1 {
   margin-left: -30px;
 }
 
+.updatetime {
+  margin-right: 30px;
+}
+
 footer {
   margin-top: 30px;
   text-align: center;
@@ -354,7 +358,6 @@ footer {
   width: 20%;
   height: 100%;
   z-index: -1;
-  /* background-color: #f00; */
   background-color: var(--tab-label-background-color);
 }
 
@@ -378,7 +381,6 @@ footer {
   background-size: 8px 100%, /* 点線1のサイズ */ 100% 2.5em; /* 点線2のサイズ */
   line-height: 2.5em; /* 文字の高さ */
   padding-bottom: 1px; /* 最終行の下にも罫線を引く */
-  /* height: 100%; */
   padding: 30px;
   box-sizing: border-box;
 }
