@@ -282,27 +282,15 @@ footer {
 #contextmenu3,
 #contextmenu4,
 #contextmenu5 {
-  /* display: none;
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  width: 200px;
-  height: 180px;
-  border: 1px solid #000;
-  background-color: rgb(247, 247, 247);
-  z-index: 100; */
   display: none;
   position: fixed;
   background-color: white;
   border: 1px solid #ccc;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 4px 0;
+  /* padding: 4px 0; */
+  padding: 6px; /* 余白のサイズを調整してください */
   font-size: 14px;
   z-index: 9999;
-}
-
-#contextmenu5 {
-  height: 320px;
 }
 
 #contextmenu li,
@@ -311,13 +299,6 @@ footer {
 #contextmenu4 li,
 #contextmenu5 li {
   cursor: pointer;
-}
-
-#contextmenu li,
-#contextmenu2 li,
-#contextmenu3 li,
-#contextmenu4 li,
-#contextmenu5 li {
   list-style: none;
 }
 
