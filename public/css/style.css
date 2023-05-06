@@ -7,6 +7,7 @@
 .container {
   background-color: aliceblue;
   max-width: 1200px;
+  max-height: 1200px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   margin: auto;
   /*以下の設定でcontainerを真ん中上部へ固定*/
@@ -16,6 +17,7 @@
   right: 0;
   border-radius: 10px;
   padding: 10px;
+  overflow-y: auto; /* 縦方向のスクロールバーを表示 */
 }
 
 header {
