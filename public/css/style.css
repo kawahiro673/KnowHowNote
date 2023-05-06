@@ -282,15 +282,22 @@ footer {
 #contextmenu3,
 #contextmenu4,
 #contextmenu5 {
-  display: none;
+  /* display: none;
   position: fixed;
   left: 0px;
   top: 0px;
   width: 200px;
   height: 180px;
   border: 1px solid #000;
-  background-color: rgb(235, 235, 235);
-  z-index: 100;
+  background-color: rgb(247, 247, 247);
+  z-index: 100; */
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 4px 0;
+  font-size: 14px;
+  z-index: 9999;
 }
 
 #contextmenu5 {
@@ -305,6 +312,8 @@ footer {
   cursor: pointer;
 }
 
+#newfolder:hover,
+#newfile:hover,
 #folderName:hover,
 #folderDelete:hover,
 #createNete:hover,
@@ -329,7 +338,8 @@ footer {
 #gray:hover,
 #black:hover,
 #white:hover {
-  background-color: rgb(255, 255, 255);
+  /* background-color: rgb(255, 255, 255); */
+  background-color: #f0f0f0;
 }
 
 /************************ノウハウ側のタブ******************************/
