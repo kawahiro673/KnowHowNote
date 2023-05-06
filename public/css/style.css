@@ -313,6 +313,22 @@ footer {
   cursor: pointer;
 }
 
+#contextmenu ul,
+#contextmenu2 ul,
+#contextmenu3 ul,
+#contextmenu4 ul,
+#contextmenu5 ul {
+  list-style: none;
+}
+
+#contextmenu ul li::before,
+#contextmenu2 ul li::before,
+#contextmenu3 ul li::before,
+#contextmenu4 ul li::before,
+#contextmenu5 ul li::before {
+  content: none;
+}
+
 #newfolder:hover,
 #newfile:hover,
 #folderName:hover,
