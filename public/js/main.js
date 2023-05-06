@@ -326,18 +326,7 @@ function tabUpload() {
       };
       await createTheFirstTab();
       await tabFocusOn();
-      //バインダーのリング部分作成
-      for (let i = 0; i < 21; i++) {
-        const imageContainer = document.createElement('div');
-        imageContainer.classList.add('image-container');
-
-        const image = document.createElement('img');
-        image.src = '../img/ringnote_w.gif';
-        image.alt = 'Image';
-
-        imageContainer.appendChild(image);
-        document.getElementById('tab').appendChild(imageContainer);
-      }
+      if (tabIdArray.length !== 0) binderCreate();
     },
   });
 }
@@ -361,6 +350,7 @@ async function titleClick(id, title) {
             tabCreate(id, title, res.fileResult);
 
           labelContextmenu();
+          if (tabIdArray.length !== 0) binderCreate();
 
           document.getElementById('notab').style.display = 'none';
 
@@ -544,6 +534,21 @@ function hasInput(elem) {
   }
   return false;
 }
+
+//バインダーのリング部分作成
+const binderCreate = () => {
+  for (let i = 0; i < 21; i++) {
+    const imageContainer = document.createElement('div');
+    imageContainer.classList.add('image-container');
+
+    const image = document.createElement('img');
+    image.src = '../img/ringnote_w.gif';
+    image.alt = 'Image';
+
+    imageContainer.appendChild(image);
+    document.getElementById('tab').appendChild(imageContainer);
+  }
+};
 
 export function tabFocusIDGet() {
   return tabFocusID;
