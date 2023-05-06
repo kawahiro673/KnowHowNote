@@ -79,6 +79,7 @@ header h1 {
 
 .container0 {
   display: flex;
+  height: 960px;
   margin-top: 0;
   padding-top: 0;
 }

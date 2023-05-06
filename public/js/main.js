@@ -490,31 +490,31 @@ createfilebutton.addEventListener('click', async (e) => {
 });
 
 //[全削除]ボタン押下時。ノートフォルダタブ全て削除
-$('.container-delete').click(function () {
-  let btn = confirm('ノートやフォルダが全て削除されますが本当に削除しますか？');
-  //はいを押した場合(true)
-  if (btn) {
-    $.ajax({
-      url: '/mypage/',
-      type: 'POST',
-      dataType: 'Json',
-      contentType: 'application/json',
-      data: JSON.stringify({
-        flg: 'deleteALL',
-      }),
-      success: function (res) {
-        //全削除
-        $('#0').empty();
-        $('#tab').empty();
-        let p = document.createElement('p');
-        p.setAttribute('id', 'notab');
-        p.innerHTML = 'こちらにnoteが出力されます';
-        document.getElementById('tab').appendChild(p);
-        document.getElementById('notepass').innerHTML = '';
-      },
-    });
-  }
-});
+// $('.container-delete').click(function () {
+//   let btn = confirm('ノートやフォルダが全て削除されますが本当に削除しますか？');
+//   //はいを押した場合(true)
+//   if (btn) {
+//     $.ajax({
+//       url: '/mypage/',
+//       type: 'POST',
+//       dataType: 'Json',
+//       contentType: 'application/json',
+//       data: JSON.stringify({
+//         flg: 'deleteALL',
+//       }),
+//       success: function (res) {
+//         //全削除
+//         $('#0').empty();
+//         $('#tab').empty();
+//         let p = document.createElement('p');
+//         p.setAttribute('id', 'notab');
+//         p.innerHTML = 'こちらにnoteが出力されます';
+//         document.getElementById('tab').appendChild(p);
+//         document.getElementById('notepass').innerHTML = '';
+//       },
+//     });
+//   }
+// });
 
 //[ログアウト]押下後、サーバーでCookieを削除
 document.getElementById('logout').addEventListener('click', () => {
