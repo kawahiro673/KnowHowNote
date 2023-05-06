@@ -30,7 +30,13 @@ export const labelContextmenu = (tabIdArray) => {
     $(document).ready(function () {
       $('#red').off('click');
       $('#red').on('click', function (event) {
-        tabLabelsColor(label.id, '#FF00FF');
+        tabLabelsColor(label.id, '#FF0000');
+      });
+    });
+    $(document).ready(function () {
+      $('#orange').off('click');
+      $('#orange').on('click', function (event) {
+        tabLabelsColor(label.id, '#FFA500');
       });
     });
     // const labelPink = (e) => {
@@ -41,10 +47,10 @@ export const labelContextmenu = (tabIdArray) => {
     //   tabLabelsColor(label.id, '#FF0000');
     //   e.target.removeEventListener('click', labelRed);
     // };
-    const labelOrange = (e) => {
-      tabLabelsColor(label.id, '#FFA500');
-      e.target.removeEventListener('click', labelOrange);
-    };
+    // const labelOrange = (e) => {
+    //   tabLabelsColor(label.id, '#FFA500');
+    //   e.target.removeEventListener('click', labelOrange);
+    // };
     document.getElementById('yellow').addEventListener('click', () => {
       tabLabelsColor(label.id, '#FFFF00');
     });
