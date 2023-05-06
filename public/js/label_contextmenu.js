@@ -21,14 +21,26 @@ export const labelContextmenu = (tabIdArray) => {
       elem: this,
     };
 
-    const labelPink = (e) => {
-      tabLabelsColor(label.id, '#FF00FF');
-      e.target.removeEventListener('click', labelPink);
-    };
-    const labelRed = (e) => {
-      tabLabelsColor(label.id, '#FF0000');
-      e.target.removeEventListener('click', labelRed);
-    };
+    $(document).ready(function () {
+      $('#pink').off('click');
+      $('#pink').on('click', function (event) {
+        tabLabelsColor(label.id, '#FF00FF');
+      });
+    });
+    $(document).ready(function () {
+      $('#red').off('click');
+      $('#red').on('click', function (event) {
+        tabLabelsColor(label.id, '#FF00FF');
+      });
+    });
+    // const labelPink = (e) => {
+    //   tabLabelsColor(label.id, '#FF00FF');
+    //   e.target.removeEventListener('click', labelPink);
+    // };
+    // const labelRed = (e) => {
+    //   tabLabelsColor(label.id, '#FF0000');
+    //   e.target.removeEventListener('click', labelRed);
+    // };
     const labelOrange = (e) => {
       tabLabelsColor(label.id, '#FFA500');
       e.target.removeEventListener('click', labelOrange);
@@ -63,9 +75,9 @@ export const labelContextmenu = (tabIdArray) => {
     document.getElementById('black').addEventListener('click', () => {
       //なしの処理
     });
-    document.getElementById('pink').addEventListener('click', labelPink);
-    document.getElementById('red').addEventListener('click', labelRed);
-    document.getElementById('orange').addEventListener('click', labelOrange);
+    // document.getElementById('pink').addEventListener('click', labelPink);
+    // document.getElementById('red').addEventListener('click', labelRed);
+    // document.getElementById('orange').addEventListener('click', labelOrange);
     // document.getElementById('pink').addEventListener('click', labelPink);
     // document.getElementById('pink').addEventListener('click', labelPink);
     // document.getElementById('pink').addEventListener('click', labelPink);
