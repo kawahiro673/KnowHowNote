@@ -207,14 +207,8 @@ header h1 {
   float: right;
 }
 
-/* .error_text {
-  color: red;
-  text-align: center;
-  margin: 30px;
-  padding: 10px;
-} */
-
 .image-container {
+  position: sticky;
   margin-bottom: 20px;
   margin-left: -30px;
 }
@@ -327,6 +321,7 @@ footer {
   height: 960px;
   min-height: 300px;
   display: flex;
+  position: relative;
   flex-wrap: wrap;
   flex-direction: column;
   background-color: aliceblue;
