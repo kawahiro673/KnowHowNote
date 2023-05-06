@@ -350,7 +350,14 @@ async function titleClick(id, title) {
             tabCreate(id, title, res.fileResult);
 
           labelContextmenu();
-          if (tabIdArray.length !== 0) binderCreate();
+          
+          //一度全てのバインダーリングを削除し、再構築
+          const elementsArray = Array.from(document.getElementsByClassName('image-container'););
+          elementsArray.forEach((element) => {
+            element.remove();
+          });
+
+          binderCreate();
 
           document.getElementById('notab').style.display = 'none';
 
