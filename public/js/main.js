@@ -6,7 +6,6 @@ import {
   tabClick,
   deleteTabArray,
   tabCreate,
-  tabLabelsColor,
 } from './tab_func.js';
 
 import { fileContextmenu } from './note_contextmenu.js';
