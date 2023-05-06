@@ -335,7 +335,7 @@ function tabUpload() {
         image.alt = 'Image';
 
         imageContainer.appendChild(image);
-        document.getElementById('container2').appendChild(imageContainer);
+        document.getElementById('tab').appendChild(imageContainer);
       }
     },
   });
