@@ -16,9 +16,6 @@ let conme4 = document.getElementById('contextmenu4');
 
 export const folderContextmenu = (tabIdArray) => {
   $('.folder').on('contextmenu', function () {
-    console.log(
-      `"${$(this).html()}" ${$(this).attr('value')} を右クリックしました`
-    );
     let folder = {
       title: $(this).html(),
       id: $(this).attr('value'),

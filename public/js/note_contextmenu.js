@@ -1,5 +1,5 @@
 import { closeTab, deleteTabArray } from './tab_func.js';
-import { currentTimeGet, orderGet, passGet } from './stringUtils.js';
+import { currentTimeGet, orderGet } from './stringUtils.js';
 import { tabFocusIDGet } from './main.js';
 
 let tmp1;
@@ -7,9 +7,6 @@ let tmp2;
 
 export const fileContextmenu = (tabIdArray) => {
   $('.list_title').on('contextmenu', function () {
-    console.log(
-      `"${$(this).html()}" ${$(this).attr('value')} を右クリックしました`
-    );
     let file = {
       title: $(this).html(),
       id: $(this).attr('value'),

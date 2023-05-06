@@ -21,6 +21,8 @@ export const labelContextmenu = () => {
       elem: this,
     };
 
+    label.elem.style.border = 'solid 3px  black';
+
     $(document).ready(function () {
       $('#pink').off('click');
       $('#pink').on('click', function (event) {

@@ -326,6 +326,17 @@ function tabUpload() {
       };
       await createTheFirstTab();
       await tabFocusOn();
+      for (let i = 0; i < 20; i++) {
+        const imageContainer = document.createElement('div');
+        imageContainer.classList.add('image-container');
+
+        const image = document.createElement('img');
+        image.src = '../img/ringnote_w.gif';
+        image.alt = 'Image';
+
+        imageContainer.appendChild(image);
+        document.getElementById('container2').appendChild(imageContainer);
+      }
     },
   });
 }
