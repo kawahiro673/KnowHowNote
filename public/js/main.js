@@ -326,7 +326,6 @@ function tabUpload() {
       };
       await createTheFirstTab();
       await tabFocusOn();
-      if (tabIdArray.length !== 0) binderCreate();
     },
   });
 }
@@ -358,7 +357,6 @@ async function titleClick(id, title) {
           elementsArray.forEach((element) => {
             element.remove();
           });
-
           binderCreate();
 
           document.getElementById('notab').style.display = 'none';
