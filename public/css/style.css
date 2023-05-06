@@ -291,6 +291,7 @@ footer {
   border: 1px solid #000;
   background-color: rgb(247, 247, 247);
   z-index: 100; */
+  display: none;
   position: fixed;
   background-color: white;
   border: 1px solid #ccc;
@@ -338,7 +339,6 @@ footer {
 #gray:hover,
 #black:hover,
 #white:hover {
-  /* background-color: rgb(255, 255, 255); */
   background-color: #f0f0f0;
 }
 
