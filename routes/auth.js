@@ -48,7 +48,7 @@ router
       });
       promise
         .then(() => {
-          return new Promise(() => {
+          return new Promise((resolve, reject) => {
             pool.query(
               'INSERT INTO register_user (UserName, Email, HashedPassword, CreationDay) VALUES(?, ?, ?,?);',
               [userName, email, hashedPassword, formattedDate],
@@ -64,7 +64,7 @@ router
         })
         //登録ユーザーをidの降順にすることによって、追加したばかりのユーザーを取得している
         .then(() => {
-          return new Promise(() => {
+          return new Promise((resolve, reject) => {
             pool.query(
               'SELCT * FROM register_user ORDER BY id DESC;',
               (error, userResult) => {
@@ -78,7 +78,7 @@ router
           });
         })
         .then((userResult) => {
-          return new Promise(() => {
+          return new Promise((resolve, reject) => {
             pool.query(
               'INSERT INTO folder (folder_name, parent_id, folder_order, closed, UserID) VALUES(?, ?, ?, ?, ?);',
               ['新しいフォルダ', 0, 1, 'off', userResult[0].id],
@@ -93,7 +93,7 @@ router
           });
         })
         .then((userResult) => {
-          return new Promise(() => {
+          return new Promise((resolve, reject) => {
             pool.query(
               'SELECT * FROM folder WHERE UserID = ?;',
               [userResult[0].id],
@@ -111,7 +111,7 @@ router
           });
         })
         .then(({ folderResult, userResult }) => {
-          return new Promise(() => {
+          return new Promise((resolve, reject) => {
             pool.query(
               'INSERT INTO it_memo (title, memo_text, saved_time, parent_id, folder_order, Type, UserID) VALUES(?,?,?,?,?,?,?);',
               [
@@ -134,7 +134,7 @@ router
           });
         })
         .then((userResult) => {
-          return new Promise(() => {
+          return new Promise((resolve, reject) => {
             pool.query(
               'INSERT INTO it_memo (title, memo_text, saved_time, parent_id, folder_order, Type, UserID) VALUES(?,?,?,?,?,?,?);',
               [
