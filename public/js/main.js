@@ -326,7 +326,7 @@ function tabUpload() {
       };
       await createTheFirstTab();
       await tabFocusOn();
-      for (let i = 0; i < 20; i++) {
+      for (let i = 0; i < 22; i++) {
         const imageContainer = document.createElement('div');
         imageContainer.classList.add('image-container');
 
