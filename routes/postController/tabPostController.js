@@ -343,7 +343,7 @@ router.post('/', (req, res) => {
       'UPDATE tab_hold SET label_color = ? WHERE id = ? ',
       [req.body.color, req.body.id],
       (error, result) => {
-        res.response({ msg: '成功しました' });
+        res.send({ msg: '成功しました' });
       }
     );
   }
