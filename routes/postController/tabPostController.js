@@ -338,6 +338,14 @@ router.post('/', (req, res) => {
     } else {
       res.end(); // 何も送信しない
     }
+  } else if (req.body.flg === 'labelColor') {
+    pool.query(
+      'UPDATE tab_hold SET label_color = ? WHERE id = ? ',
+      [req.body.color, req.body.id],
+      (error, result) => {
+        res.response({ msg: '成功しました' });
+      }
+    );
   }
 });
 
