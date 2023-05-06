@@ -33,6 +33,8 @@ router
         ':' +
         now.getSeconds();
 
+      let hashedPassword = await bcrypt.hash(req.body.password, 10);
+
       let promise = new Promise((resolve, reject) => {
         resolve();
       });
@@ -151,7 +153,6 @@ router
           // res.status(500).send('Internal Server Error.(Register user)');
         });
 
-      let hashedPassword = await bcrypt.hash(req.body.password, 10);
       //クライアントへJWTの発行(クライアント側のトークンはローカルストレージに保存するのはだめ。Cookieを使って保存する。)
       const token = await JWT.sign(
         {
