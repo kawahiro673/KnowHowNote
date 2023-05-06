@@ -291,7 +291,7 @@ footer {
   border: 1px solid #000;
   background-color: rgb(247, 247, 247);
   z-index: 100; */
-  position: absolute;
+  position: fixed;
   background-color: white;
   border: 1px solid #ccc;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
