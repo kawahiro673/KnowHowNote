@@ -4,14 +4,6 @@ const bcrypt = require('bcrypt');
 const JWT = require('jsonwebtoken');
 const { reject } = require('bcrypt/promises');
 
-const currentDate = new Date();
-const year = currentDate.getFullYear();
-const month = currentDate.getMonth() + 1; // 0から始まるため、1を足す
-const day = currentDate.getDate();
-const hours = currentDate.getHours();
-const minutes = currentDate.getMinutes();
-
-const formattedDate = `${year}年${month}月${day}日 ${hours}:${minutes}`;
 router
   .route('/')
   .get((req, res) => {
@@ -158,7 +150,7 @@ router
         })
         .catch((error) => {
           console.error(error);
-          res.status(500).send('Internal Server Error.(Register user)');
+          // res.status(500).send('Internal Server Error.(Register user)');
         });
 
       //クライアントへJWTの発行(クライアント側のトークンはローカルストレージに保存するのはだめ。Cookieを使って保存する。)
