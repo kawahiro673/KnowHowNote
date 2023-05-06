@@ -85,6 +85,8 @@ export const tabCreate = (id, title, res) => {
   divFade.appendChild(fadeFont);
   div.appendChild(time);
 
+  tabLabelColorGet(id);
+
   return [inputEdit, div, textarea, fadeFont, inputShare, buttonTab];
 };
 
@@ -256,14 +258,21 @@ export const tabClick = (e, id, title) => {
 };
 
 //タブのラベルをランダムな色に付与する
-export const tabLabelsColor = async () => {
-  const tabLabels = document.querySelectorAll('.tab-label');
-  // // 各.tab-labelにランダムな色を割り当てる
-  tabLabels.forEach((tabLabel) => {
-    tabLabel.style.setProperty(
-      '--tab-label-background-color',
-      getRandomColor()
-    );
+const tabLabelColorGet = (id) => {
+  $.ajax({
+    url: '/tabPostController/',
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'labelColorGet',
+      id,
+    }),
+    success: function (res) {
+      const label = document.getElementById(`tab-ID${id}`);
+      //tab-labelに色を割り当てる
+      label.style.setProperty('--tab-label-background-color', res.labelColor);
+    },
   });
 };
 
@@ -279,12 +288,12 @@ export const deleteTabArray = (id, tabArray) => {
 };
 
 // 色をランダムに生成する関数
-export const getRandomColor = () => {
-  const letters = '0123456789ABCDEF';
-  let color = '#';
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  console.log(color);
-  return color;
-};
+// export const getRandomColor = () => {
+//   const letters = '0123456789ABCDEF';
+//   let color = '#';
+//   for (let i = 0; i < 6; i++) {
+//     color += letters[Math.floor(Math.random() * 16)];
+//   }
+//   console.log(color);
+//   return color;
+// };

@@ -338,12 +338,20 @@ router.post('/', (req, res) => {
     } else {
       res.end(); // 何も送信しない
     }
-  } else if (req.body.flg === 'labelColor') {
+  } else if (req.body.flg === 'labelColorUpdate') {
     pool.query(
       'UPDATE tab_hold SET label_color = ? WHERE id = ? ',
       [req.body.color, req.body.id],
       (error, result) => {
         res.send({ msg: '成功しました' });
+      }
+    );
+  } else if (req.body.flg === 'labelColorGet') {
+    pool.query(
+      'SELECT * FROM tab_hold WHERE id = ?',
+      [req.body.id],
+      (error, result) => {
+        res.send({ labelColor: result[0].label_color });
       }
     );
   }

@@ -327,7 +327,6 @@ function tabUpload() {
       };
       await createTheFirstTab();
       await tabFocusOn();
-      await tabLabelsColor();
     },
   });
 }
@@ -350,7 +349,7 @@ async function titleClick(id, title) {
           const [inputEdit, div, textarea, fadeFont, inputShare, buttonTab] =
             tabCreate(id, title, res.fileResult);
 
-          labelContextmenu(tabIdArray);
+          labelContextmenu();
 
           document.getElementById('notab').style.display = 'none';
 
