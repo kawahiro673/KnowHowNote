@@ -1,151 +1,30 @@
-/* チェックボックスを非表示にする */
-.drawer_hidden {
-  display: none;
-}
-
-/* ハンバーガーアイコンの設置スペース */
-.drawer_open {
-  display: flex;
-  height: 60px;
-  width: 60px;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  z-index: 100; /* 重なり順を一番上にする */
-  cursor: pointer;
-}
-
-/* ハンバーガーメニューのアイコン */
-.drawer_open span,
-.drawer_open span:before,
-.drawer_open span:after {
-  content: '';
-  display: block;
-  height: 3px;
-  width: 25px;
-  border-radius: 3px;
-  background: #333;
-  transition: 0.5s;
-  position: absolute;
-}
-
-/* 三本線の一番上の棒の位置調整 */
-.drawer_open span:before {
-  bottom: 8px;
-}
-
-/* 三本線の一番下の棒の位置調整 */
-.drawer_open span:after {
-  top: 8px;
-}
-
-/* アイコンがクリックされたら真ん中の線を透明にする */
-#drawer_input:checked ~ .drawer_open span {
-  background: rgba(255, 255, 255, 0);
-}
-
-/* アイコンがクリックされたらアイコンが×印になように上下の線を回転 */
-#drawer_input:checked ~ .drawer_open span::before {
-  bottom: 0;
-  transform: rotate(45deg);
-}
-
-#drawer_input:checked ~ .drawer_open span::after {
-  top: 0;
-  transform: rotate(-45deg);
-}
-
-/* メニューのデザイン*/
-/* .nav_content {
-  width: 150px;
-  height: 200px;
-  top: 10px;
-  right: 0;
-  position: absolute;
-  z-index: 99;
-  background: #fff;
-  border: 1px solid #000;
-  display: none;
-  border-radius: 10px 0px 10px 10px;
-} */
-
-/* メニュー黒ポチを消す */
-.nav_list {
-  list-style: none;
-}
-
-/* アイコンがクリックされたらメニューを表示 */
-/* #drawer_input:checked ~ .nav_content {
-  display: block;
-} */
-
-/*************************** ハンバーガーボタン(三から✖️への変化) ***************************/
-.hamburgerButton {
-  text-align: center;
-}
-
-/* ハンバーガーメニューの線 */
-.hamburger span {
-  width: 100%;
-  height: 1px;
-  background-color: #000;
-  position: relative;
-  transition: ease 0.4s; /*ハンバーガーメニュークリック時の三本線の動きを遅延*/
-  display: block;
-}
-
-.hamburger span:nth-child(1) {
-  top: 0;
-}
-
-.hamburger span:nth-child(2) {
-  margin: 8px 0;
-}
-
-.hamburger span:nth-child(3) {
-  top: 0;
-}
-/* ハンバーガーメニュークリック後のスタイル */
-.hamburger_bar.active span:nth-child(1) {
-  top: 5px;
-  transform: rotate(45deg);
-}
-
-.hamburger_bar.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger_bar.active span:nth-child(3) {
-  top: -13px;
-  transform: rotate(-45deg);
-}
-
-
-/********************/
 .dropdown {
   display: inline-block;
   margin: 3em;
-  }
+}
 
 #tg {
   display: none;
-  }
+}
 
 .menu {
-  position: relative;
+  position: absolute; /* メニューを絶対位置に配置 */
+  top: 100%; /* メニューを親要素の下に配置 */
+  left: 0;
   visibility: hidden;
   opacity: 0;
-  top: -10px;
   list-style: none;
-  }
+  padding: 0;
+  margin: 0;
+}
 
 .dropInput:checked ~ .menu {
   visibility: visible;
   opacity: 1;
-  top: 0;
-  }
+}
 
-.dropLabel, .item {
+.dropLabel,
+.item {
   padding: 1em 1.5em;
   display: block;
   background-color: #fff;
@@ -153,20 +32,22 @@
   position: relative;
   color: #333;
   text-decoration: none;
-  }
+}
 
 .item:hover {
-  background-color: #3CB371;
+  background-color: #3cb371;
   color: #fff;
-  }
+}
 
-.dropLabel:hover, .dropInput:checked + label {
-  background: #008B8B;
+.dropLabel:hover,
+.dropInput:checked + label {
+  background: #008b8b;
   color: #fff;
-  }
+}
 
 .animation {
-  -webkit-transition: all .3s;
-  -moz-transition: all .3s;
-  -ms-transition: all .3s;
-  transition: all .3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  transition: all 0.3s;
+}
