@@ -564,12 +564,15 @@ export function tabFocusIDGet() {
 document.getElementById('version').addEventListener('click', () => {
   document.getElementById('popup-overlay').style.display = 'block';
 });
-document.getElementById('version').addEventListener('click', () => {
+
+document.getElementById('pop-delete').addEventListener('click', (e) => {
+  e.preventDefault(); // リンクのデフォルトの動作を無効化
   document.getElementById('popup-overlay').style.display = 'none';
 });
+
 document.getElementById('popup-overlay').addEventListener('click', (e) => {
   const popup = document.getElementById('popup-overlay');
-  if (e.target == popup) {
+  if (e.target === popup) {
     popup.style.display = 'none';
   }
 });
