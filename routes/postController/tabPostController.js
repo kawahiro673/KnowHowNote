@@ -10,6 +10,7 @@ router.post('/', (req, res) => {
     let promise = new Promise((resolve, reject) => {
       resolve();
     });
+
     promise
       .then(() => {
         return new Promise((resolve, reject) => {

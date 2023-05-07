@@ -35,12 +35,6 @@ router
 
       let hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-      // pool.query(
-      //   'INSERT INTO register_user (UserName, Email, HashedPassword, CreationDay) VALUES(?, ?, ?,?);',
-      //   [userName, email, hashedPassword, formattedDate],
-      //   (error, result) => {}
-      // );
-
       let promise = new Promise((resolve, reject) => {
         resolve();
       });
@@ -48,7 +42,7 @@ router
         .then(() => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'INSERT INTO register_user (UserName, Email, HashedPassword, CreationDay) VALUES(?, ?, ?,?);',
+              'INSERT INTO register_user (UserName, Email, HashedPassword, CreationDay) VALUES(?, ?, ?, ?);',
               [userName, email, hashedPassword, formattedDate],
               (error, result) => {
                 if (error) {
@@ -113,29 +107,6 @@ router
             pool.query(
               'INSERT INTO it_memo (title, memo_text, saved_time, parent_id, folder_order, Type, UserID) VALUES(?,?,?,?,?,?,?);',
               [
-                'sample2',
-                'こちらはサンプルになります',
-                formattedDate,
-                folderResult[0].id,
-                1,
-                'Original',
-                userResult[0].id,
-              ],
-              (error, result) => {
-                if (error) {
-                  reject();
-                } else {
-                  resolve(userResult);
-                }
-              }
-            );
-          });
-        })
-        .then((userResult) => {
-          return new Promise((resolve, reject) => {
-            pool.query(
-              'INSERT INTO it_memo (title, memo_text, saved_time, parent_id, folder_order, Type, UserID) VALUES(?,?,?,?,?,?,?);',
-              [
                 'sample1',
                 'こちらはサンプルになります',
                 formattedDate,
@@ -148,9 +119,66 @@ router
                 if (error) {
                   reject();
                 } else {
-                  resolve();
+                  resolve({
+                    folderResult: folderResult,
+                    userResult: userResult,
+                  });
                 }
               }
+            );
+          });
+        })
+        .then(({ folderResult, userResult }) => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'SELECT * FROM it_memo WHERE UserID = ? ORDER BY id DESC ;',
+              [userResult[0].id],
+              (error, fileResult) => {
+                if (error) {
+                  reject();
+                } else {
+                  resolve({
+                    folderResult: folderResult,
+                    userResult: userResult,
+                    fileResult: fileResult,
+                  });
+                }
+              }
+            );
+          });
+        })
+        .then(({ folderResult, userResult, fileResult }) => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'INSERT INTO tab_hold (id, focus, tabOrder, tabTitle, UserID, label_color) VALUES(?,?,?,?,?,?);',
+              [fileResult[0].id, 1, 1, 'sample1', userResult[0].id, '#0000FF'],
+              (error, result) => {
+                if (error) {
+                  reject();
+                } else {
+                  resolve({
+                    folderResult: folderResult,
+                    userResult: userResult,
+                  });
+                }
+              }
+            );
+          });
+        })
+        .then(({ folderResult, userResult }) => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'INSERT INTO it_memo (title, memo_text, saved_time, parent_id, folder_order, Type, UserID) VALUES(?,?,?,?,?,?,?);',
+              [
+                'sample2',
+                'こちらはサンプルになります',
+                formattedDate,
+                folderResult[0].id,
+                1,
+                'Original',
+                userResult[0].id,
+              ],
+              (error, result) => {}
             );
           });
         })

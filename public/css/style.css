@@ -320,7 +320,7 @@ footer {
   background-color: #f0f0f0;
 }
 
-/************************ノウハウ側のタブ******************************/
+/************************ ノート側 ******************************/
 .tab-wrap {
   height: 960px;
   min-height: 300px;
@@ -406,7 +406,7 @@ footer {
   display: none;
 }
 
-/************************リスト側のタブ******************************/
+/************************　タブ側　******************************/
 /*タブのスタイル*/
 .container1 label:first-of-type {
   margin-right: auto;
@@ -457,7 +457,7 @@ input[name='tab_item'] {
 /*選択されているタブのスタイルを変える*/
 .container1 input:checked + .tab_item {
   background-color: white;
-  color: Gray;
+  color: black;
   border-bottom-color: White;
 }
 
