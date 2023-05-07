@@ -58,11 +58,6 @@
 }
 
 /*********************MENUポップアップ*******************/
-/* a {
-  text-decoration: none;
-  color: #000;
-} */
-
 /* ポップアップが開いた時のオーバレイ */
 #popup-overlay {
   display: block;
