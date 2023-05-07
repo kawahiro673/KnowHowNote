@@ -1,6 +1,7 @@
 .dropdown {
   display: inline-block;
   margin: 3em;
+  position: relative;
 }
 
 #tg {
@@ -8,21 +9,21 @@
 }
 
 .menu {
-  position: absolute; /* メニューを絶対位置に配置 */
-  top: 100%; /* メニューを親要素の下に配置 */
+  position: absolute;
+  top: 100%;
   left: 0;
   visibility: hidden;
   opacity: 0;
   list-style: none;
   padding: 0;
   margin: 0;
-  transition: visibility 0s linear 0.3s, opacity 0.3s; /* 遅延して表示/非表示のトランジションを適用 */
+  transition: visibility 0s, opacity 0.3s; /* トランジションの遅延を削除 */
 }
 
 .dropInput:checked ~ .menu {
   visibility: visible;
   opacity: 1;
-  transition-delay: 0s; /* 表示を遅延させない */
+  transition-delay: 0s; /* 遅延を削除 */
 }
 
 .dropLabel,
