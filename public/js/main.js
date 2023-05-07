@@ -564,9 +564,12 @@ export function tabFocusIDGet() {
 document.getElementById('version').addEventListener('click', () => {
   document.getElementById('popup-overlay').style.display = 'block';
 });
-
-function popup_close() {
-  var popup = document.getElementById('popup-overlay');
-  popup.style.display = 'none';
-}
-popup_close();
+document.getElementById('version').addEventListener('click', () => {
+  document.getElementById('popup-overlay').style.display = 'none';
+});
+document.getElementById('popup-overlay').addEventListener('click', (e) => {
+  const popup = document.getElementById('popup-overlay');
+  if (e.target == popup) {
+    popup.style.display = 'none';
+  }
+});
