@@ -1,4 +1,4 @@
-.dropdown {
+/* .dropdown {
   display: inline-block;
   margin: 3px;
   position: relative;
@@ -16,15 +16,15 @@
   opacity: 0;
   list-style: none;
   padding: 0;
-  margin: 0;
-  transition: visibility 0s, opacity 0.3s; /* トランジションの遅延を削除 */
-  z-index: 1;
-}
+  margin: 0; */
+/* transition: visibility 0s, opacity 0.3s; トランジションの遅延を削除 */
+/* z-index: 1;
+} */
 
-.dropInput:checked ~ .menu {
+/* .dropInput:checked ~ .menu {
   visibility: visible;
-  opacity: 1;
-  transition-delay: 0s; /* 遅延を削除 */
+  opacity: 1; */
+/* transition-delay: 0s; 遅延を削除
 }
 
 .dropLabel,
@@ -51,4 +51,4 @@
 
 .animation {
   transition: all 0.3s;
-}
+} */
