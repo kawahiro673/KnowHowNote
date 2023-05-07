@@ -56,7 +56,7 @@
 }
 
 /* メニューのデザイン*/
-.nav_content {
+/* .nav_content {
   width: 150px;
   height: 200px;
   top: 10px;
@@ -67,7 +67,7 @@
   border: 1px solid #000;
   display: none;
   border-radius: 10px 0px 10px 10px;
-}
+} */
 
 /* メニュー黒ポチを消す */
 .nav_list {
@@ -75,9 +75,9 @@
 }
 
 /* アイコンがクリックされたらメニューを表示 */
-#drawer_input:checked ~ .nav_content {
+/* #drawer_input:checked ~ .nav_content {
   display: block;
-}
+} */
 
 /*************************** ハンバーガーボタン(三から✖️への変化) ***************************/
 .hamburgerButton {
@@ -119,3 +119,54 @@
   top: -13px;
   transform: rotate(-45deg);
 }
+
+
+/********************/
+.dropdown {
+  display: inline-block;
+  margin: 3em;
+  }
+
+#tg {
+  display: none;
+  }
+
+.menu {
+  position: relative;
+  visibility: hidden;
+  opacity: 0;
+  top: -10px;
+  list-style: none;
+  }
+
+.dropInput:checked ~ .menu {
+  visibility: visible;
+  opacity: 1;
+  top: 0;
+  }
+
+.dropLabel, .item {
+  padding: 1em 1.5em;
+  display: block;
+  background-color: #fff;
+  text-align: center;
+  position: relative;
+  color: #333;
+  text-decoration: none;
+  }
+
+.item:hover {
+  background-color: #3CB371;
+  color: #fff;
+  }
+
+.dropLabel:hover, .dropInput:checked + label {
+  background: #008B8B;
+  color: #fff;
+  }
+
+.animation {
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -ms-transition: all .3s;
+  transition: all .3s;
