@@ -507,8 +507,9 @@ router
         'Set-Cookie',
         'token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; Path=/'
       );
-      res.redirect('/');
-      // res.render('top.ejs');
+      setTimeout(() => {
+        res.render('top.ejs');
+      }, 1000); // 1秒後にtop.ejsを表示
     } else if (req.body.flg === 'getuser') {
       let promise = new Promise((resolve, reject) => {
         resolve();
