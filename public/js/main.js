@@ -515,18 +515,18 @@ createfilebutton.addEventListener('click', async (e) => {
 // });
 
 //[ログアウト]押下後、サーバーでCookieを削除
-document.getElementById('logout').addEventListener('click', () => {
-  $.ajax({
-    url: '/mypage/',
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      flg: 'cookiedelete',
-    }),
-    success: function (res) {},
-  });
-});
+// document.getElementById('logout').addEventListener('click', () => {
+//   $.ajax({
+//     url: '/mypage/',
+//     type: 'POST',
+//     dataType: 'Json',
+//     contentType: 'application/json',
+//     data: JSON.stringify({
+//       flg: 'cookiedelete',
+//     }),
+//     success: function (res) {},
+//   });
+// });
 
 //elemの全ての配下要素を再起的に参照。inputタブが配下にあればtrue,なければfalse
 function hasInput(elem) {
