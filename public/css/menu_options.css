@@ -1,0 +1,110 @@
+.dropdown {
+  display: inline-block;
+  margin: 3px;
+  position: relative;
+}
+
+#tg {
+  display: none;
+}
+
+.menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  visibility: hidden;
+  opacity: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  transition: visibility 0s, opacity 0.3s; /* トランジションの遅延を削除 */
+  z-index: 1; /* リストを最前面に持ってくる */
+}
+
+.dropInput:checked ~ .menu {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s; /* 遅延を削除 */
+}
+
+.dropLabel,
+.item {
+  padding: 1em 1.5em;
+  width: 150px;
+  display: block;
+  background-color: #fff;
+  text-align: center;
+  position: relative;
+  color: #333;
+  text-decoration: none;
+}
+.item {
+  padding: 0;
+}
+
+.item:hover {
+  background-color: #3cb371;
+  color: #fff;
+}
+
+.dropLabel:hover,
+.dropInput:checked + label {
+  background: #008b8b;
+  color: #fff;
+}
+
+.animation {
+  transition: all 0.3s;
+}
+
+/*********************MENUポップアップ*******************/
+/* a {
+  text-decoration: none;
+  color: #000;
+} */
+
+/* ポップアップが開いた時のオーバレイ */
+#popup-overlay {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* ポップアップ */
+.popup-window {
+  width: 500px;
+  height: 300px;
+  background-color: #fff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+}
+
+/* ポップアップのヘッダー */
+.popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px 10px 0 0;
+}
+
+/* ポップアップの見出し */
+.popup-header h2 {
+  font-size: 16px;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+/* ポップアップの内容 */
+.popup-body {
+  padding: 0 10px;
+}

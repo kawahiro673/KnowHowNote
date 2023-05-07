@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/sanitize.css" />
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/jQueryUI.css" />
-    <link rel="stylesheet" href="/css/hamburger.css" />
+    <link rel="stylesheet" href="/css/menu_options.css" />
 
     <link
       rel="stylesheet"
@@ -914,8 +914,9 @@
               <li><a class="item" href="#">共有履歴</a></li>
               <li><a class="item" href="#">使い方</a></li>
               <li><a class="item" href="#">問い合わせ</a></li>
-              <li><a class="item" href="#">バージョン</a></li>
-              <li><a class="item" href="#">ログアウト</a></li>
+              <li><a class="item" id="version" href="#">バージョン</a></li>
+              <li><a class="item" id="logout" href="#">ログアウト</a></li>
+              <li><a class="item" id="all-delete" href="#">全削除</a></li>
             </ul>
           </div>
         </header>
@@ -1024,9 +1025,20 @@
           </div>
         </div>
 
-        <!-- <div>
-          <button class="container-delete">全削除</button>
-        </div> -->
+        <div id="popup-overlay">
+          <div class="popup-window">
+            <div class="popup-header">
+              <h2>ポップアップの見出し</h2>
+              <div class="popup-close">
+                <a href="javascript:popup_close();">×</a>
+              </div>
+            </div>
+            <div class="popup-body">
+              <p>※ポップアップに表示する内容はこちらに記述します。</p>
+            </div>
+          </div>
+        </div>
+
         <footer>&copy; tomo</footer>
       </div>
     </div>

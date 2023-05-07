@@ -488,45 +488,45 @@ createfilebutton.addEventListener('click', async (e) => {
 });
 
 //[全削除]ボタン押下時。ノートフォルダタブ全て削除
-// $('.container-delete').click(function () {
-//   let btn = confirm('ノートやフォルダが全て削除されますが本当に削除しますか？');
-//   //はいを押した場合(true)
-//   if (btn) {
-//     $.ajax({
-//       url: '/mypage/',
-//       type: 'POST',
-//       dataType: 'Json',
-//       contentType: 'application/json',
-//       data: JSON.stringify({
-//         flg: 'deleteALL',
-//       }),
-//       success: function (res) {
-//         //全削除
-//         $('#0').empty();
-//         $('#tab').empty();
-//         let p = document.createElement('p');
-//         p.setAttribute('id', 'notab');
-//         p.innerHTML = 'こちらにnoteが出力されます';
-//         document.getElementById('tab').appendChild(p);
-//         document.getElementById('notepass').innerHTML = '';
-//       },
-//     });
-//   }
-// });
+document.getElementById('all-delete').addEventListener('click', () => {
+  let btn = confirm('ノートやフォルダが全て削除されますが本当に削除しますか？');
+  //はいを押した場合(true)
+  if (btn) {
+    $.ajax({
+      url: '/mypage/',
+      type: 'POST',
+      dataType: 'Json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        flg: 'deleteALL',
+      }),
+      success: function (res) {
+        //全削除
+        $('#0').empty();
+        $('#tab').empty();
+        let p = document.createElement('p');
+        p.setAttribute('id', 'notab');
+        p.innerHTML = 'こちらにnoteが出力されます';
+        document.getElementById('tab').appendChild(p);
+        document.getElementById('notepass').innerHTML = '';
+      },
+    });
+  }
+});
 
 //[ログアウト]押下後、サーバーでCookieを削除
-// document.getElementById('logout').addEventListener('click', () => {
-//   $.ajax({
-//     url: '/mypage/',
-//     type: 'POST',
-//     dataType: 'Json',
-//     contentType: 'application/json',
-//     data: JSON.stringify({
-//       flg: 'cookiedelete',
-//     }),
-//     success: function (res) {},
-//   });
-// });
+document.getElementById('logout').addEventListener('click', () => {
+  $.ajax({
+    url: '/mypage/',
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'cookiedelete',
+    }),
+    success: function (res) {},
+  });
+});
 
 //elemの全ての配下要素を再起的に参照。inputタブが配下にあればtrue,なければfalse
 function hasInput(elem) {
@@ -560,3 +560,13 @@ const binderCreate = () => {
 export function tabFocusIDGet() {
   return tabFocusID;
 }
+
+document.getElementById('version').addEventListener('click', () => {
+  document.getElementById('popup-overlay').style.display = 'block';
+});
+
+function popup_close() {
+  var popup = document.getElementById('popup-overlay');
+  popup.style.display = 'none';
+}
+popup_close();
