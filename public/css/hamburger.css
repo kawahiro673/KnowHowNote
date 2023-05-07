@@ -29,6 +29,7 @@
 
 .dropLabel,
 .item {
+  padding: 1em 1.5em;
   width: 150px;
   display: block;
   background-color: #fff;
@@ -36,6 +37,9 @@
   position: relative;
   color: #333;
   text-decoration: none;
+}
+.item {
+  padding: 0;
 }
 
 .item:hover {
