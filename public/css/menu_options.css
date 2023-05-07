@@ -59,7 +59,8 @@
 
 /*********************MENUポップアップ*******************/
 /* ポップアップが開いた時のオーバレイ */
-#popup-overlay {
+#popup-overlay_inquiry,
+#popup-overlay_version {
   display: block;
   position: fixed;
   top: 0;
@@ -70,7 +71,8 @@
 }
 
 /* ポップアップ */
-.popup-window {
+.popup-window_inquiry,
+.popup-window_version {
   width: 500px;
   height: 300px;
   background-color: #fff;
@@ -83,7 +85,8 @@
 }
 
 /* ポップアップのヘッダー */
-.popup-header {
+.popup-header_inquiry,
+.popup-header_version {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -93,14 +96,20 @@
 }
 
 /* ポップアップの見出し */
-.popup-header h2 {
+.popup-header_version h2 {
   font-size: 16px;
   font-weight: normal;
   margin: 0;
   padding: 0;
 }
 
+.popup-body_inquiry input {
+  width: 300px;
+  height: 200px;
+}
+
 /* ポップアップの内容 */
-.popup-body {
+.popup-body_inquiry,
+.popup-body_version {
   padding: 0 10px;
 }

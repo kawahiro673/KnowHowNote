@@ -561,18 +561,31 @@ export function tabFocusIDGet() {
   return tabFocusID;
 }
 
+//バージョンのポップアップ
 document.getElementById('version').addEventListener('click', () => {
-  document.getElementById('popup-overlay').style.display = 'block';
+  document.getElementById('popup-overlay_version').style.display = 'block';
 });
 
-document.getElementById('pop-delete').addEventListener('click', (e) => {
+document.getElementById('pop-delete_version').addEventListener('click', (e) => {
   e.preventDefault(); // リンクのデフォルトの動作を無効化
-  document.getElementById('popup-overlay').style.display = 'none';
+  document.getElementById('popup-overlay_version').style.display = 'none';
 });
 
-document.getElementById('popup-overlay').addEventListener('click', (e) => {
-  const popup = document.getElementById('popup-overlay');
-  if (e.target === popup) {
-    popup.style.display = 'none';
-  }
+document
+  .getElementById('popup-overlay_version')
+  .addEventListener('click', (e) => {
+    const popup = document.getElementById('popup-overlay_version');
+    if (e.target === popup) {
+      popup.style.display = 'none';
+    }
+  });
+
+//問い合わせのポップアップ出力
+document.getElementById('inquiry').addEventListener('click', () => {
+  document.getElementById('popup-overlay_inquiry').style.display = 'block';
+});
+
+document.getElementById('pop-delete_inquiry').addEventListener('click', (e) => {
+  e.preventDefault(); // リンクのデフォルトの動作を無効化
+  document.getElementById('popup-overlay_inquiry').style.display = 'none';
 });

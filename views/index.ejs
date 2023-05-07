@@ -913,7 +913,7 @@
               <li><a class="item" href="#">プロフィール</a></li>
               <li><a class="item" href="#">共有履歴</a></li>
               <li><a class="item" href="#">使い方</a></li>
-              <li><a class="item" href="#">問い合わせ</a></li>
+              <li><a class="item" id="inquiry" href="#">問い合わせ</a></li>
               <li><a class="item" id="version" href="#">バージョン</a></li>
               <li><a class="item" id="logout" href="#">ログアウト</a></li>
               <li><a class="item" id="all-delete" href="#">全削除</a></li>
@@ -1025,15 +1025,29 @@
           </div>
         </div>
 
-        <div id="popup-overlay" style="display: none">
-          <div class="popup-window">
-            <div class="popup-header">
-              <h2>バージョン情報</h2>
-              <div class="popup-close">
-                <a id="pop-delete" href="">×</a>
+        <div id="popup-overlay_inquiry" style="display: none">
+          <div class="popup-window_inquiry">
+            <div class="popup-header_inquiry">
+              <h2>問い合わせ</h2>
+              <div class="popup-close_inquiry">
+                <a id="pop-delete_inquiry" href="">×</a>
               </div>
             </div>
-            <div class="popup-body">
+            <div class="popup-body_inquiry">
+              <input type="text" />
+            </div>
+          </div>
+        </div>
+
+        <div id="popup-overlay_version" style="display: none">
+          <div class="popup-window_version">
+            <div class="popup-header_version">
+              <h2>バージョン情報</h2>
+              <div class="popup-close_version">
+                <a id="pop-delete_version" href="">×</a>
+              </div>
+            </div>
+            <div class="popup-body_version">
               <p>バージョン:1.0 (更新日時 6/1 00:00)</p>
             </div>
           </div>
