@@ -905,17 +905,26 @@
             ノウハウノート
             <span id="sab-title"></span>
           </h1>
+          <!-- ハンバーガーメニュー部分 -->
+          <div class="nav">
+            <!-- ハンバーガーメニューの表示・非表示を切り替えるチェックボックス -->
+            <input id="drawer_input" class="drawer_hidden" type="checkbox" />
 
-          <!-- メニュー -->
-          <!-- <div class="dropdown">
-            <input id="tg" class="dropInput" type="checkbox" />
-            <label for="tg" class="dropLabel">MENU</label>
-            <ul class="menu animation">
-              <li><a class="item" href="#">HTML</a></li>
-              <li><a class="item" href="#">CSS</a></li>
-              <li><a class="item" href="#">Javascript</a></li>
-            </ul>
-          </div> -->
+            <!-- ハンバーガーアイコン -->
+            <label for="drawer_input" class="drawer_open"><span></span></label>
+
+            <!-- メニュー -->
+            <nav class="nav_content">
+              <ul class="nav_list">
+                <li class="nav_item"><a href="">マイプロフィール</a></li>
+                <li class="nav_item"><a href="">共有履歴</a></li>
+                <li class="nav_item"><a href="">使い方</a></li>
+                <li class="nav_item"><a href="">問い合わせ</a></li>
+                <li class="nav_item"><a href="">バージョン</a></li>
+                <li id="logout"><a href="/">ログアウト</a></li>
+              </ul>
+            </nav>
+          </div>
         </header>
 
         <div class="container-list">
