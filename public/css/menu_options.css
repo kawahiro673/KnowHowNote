@@ -96,6 +96,7 @@
 }
 
 /* ポップアップの見出し */
+.popup-header_inquiry h2,
 .popup-header_version h2 {
   font-size: 16px;
   font-weight: normal;
@@ -104,12 +105,26 @@
 }
 
 .popup-body_inquiry input {
-  width: 300px;
-  height: 200px;
+  width: 400px;
+  height: 300px;
 }
 
 /* ポップアップの内容 */
 .popup-body_inquiry,
 .popup-body_version {
   padding: 0 10px;
+}
+
+.popup-body_inquiry button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
 }
