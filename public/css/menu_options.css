@@ -106,7 +106,8 @@
 
 .popup-body_inquiry input {
   width: 400px;
-  height: 300px;
+  height: 250px;
+  padding: 5px;
 }
 
 /* ポップアップの内容 */

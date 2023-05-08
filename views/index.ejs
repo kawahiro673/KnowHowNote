@@ -916,7 +916,11 @@
               <li><a class="item" id="inquiry" href="#">問い合わせ</a></li>
               <li><a class="item" id="version" href="#">バージョン</a></li>
               <li><a class="item" id="logout" href="#">ログアウト</a></li>
-              <li><a class="item" id="all-delete" href="#">全削除</a></li>
+              <li>
+                <a class="item" id="all-delete" style="color: red" href="#"
+                  >全削除</a
+                >
+              </li>
             </ul>
           </div>
         </header>
@@ -1050,6 +1054,22 @@
             </div>
             <div class="popup-body_version">
               <p>バージョン:1.0 (更新日時 6/1 00:00)</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="popup-overlay_delete" style="display: none">
+          <div class="popup-window_delete">
+            <div class="popup-header_delete">
+              <h2>全削除</h2>
+              <div class="popup-close_delete">
+                <a id="pop-delete_delete" href="">×</a>
+              </div>
+            </div>
+            <div class="popup-body_delete">
+              <p>ノートやフォルダが全て削除されますが本当に削除しますか？</p>
+              <button id="yes-button">はい</button>
+              <button id="no-button">いいえ</button>
             </div>
           </div>
         </div>
