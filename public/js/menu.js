@@ -151,6 +151,7 @@ document.getElementById('yes-button-delete').addEventListener('click', () => {
       p.innerHTML = 'こちらにnoteが出力されます';
       document.getElementById('tab').appendChild(p);
       document.getElementById('notepass').innerHTML = '';
+      document.getElementById('popup-overlay_delete').style.display = 'none';
     },
   });
 });
