@@ -910,9 +910,9 @@
             <input id="tg" class="dropInput" type="checkbox" />
             <label for="tg" class="dropLabel">MENU</label>
             <ul class="menu animation">
-              <li><a class="item" href="#">プロフィール</a></li>
-              <li><a class="item" href="#">共有履歴</a></li>
-              <li><a class="item" href="#">使い方</a></li>
+              <li><a class="item" id="profile" href="#">プロフィール</a></li>
+              <li><a class="item" id="share-history" href="#">共有履歴</a></li>
+              <li><a class="item" id="explanation" href="#">使い方</a></li>
               <li><a class="item" id="inquiry" href="#">問い合わせ</a></li>
               <li><a class="item" id="version" href="#">バージョン</a></li>
               <li><a class="item" id="logout" href="#">ログアウト</a></li>
@@ -1029,6 +1029,48 @@
           </div>
         </div>
 
+        <div id="popup-overlay_profile" style="display: none">
+          <div class="popup-window_profile">
+            <div class="popup-header_profile">
+              <h2>マイプロフィール</h2>
+              <div class="popup-close_profile">
+                <a id="pop-delete_profile" href="">×</a>
+              </div>
+            </div>
+            <div class="popup-body_profile">
+              <p>あなたの名前は〜です</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="popup-overlay_share-history" style="display: none">
+          <div class="popup-window_share-history">
+            <div class="popup-header_share-history">
+              <h2>共有履歴</h2>
+              <div class="popup-close_share-history">
+                <a id="pop-delete_share-history" href="">×</a>
+              </div>
+            </div>
+            <div class="popup-body_share-history">
+              <p>2023-05-08 川口　カレーの作り方</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="popup-overlay_explanation" style="display: none">
+          <div class="popup-window_explanation">
+            <div class="popup-header_explanation">
+              <h2>使い方</h2>
+              <div class="popup-close_explanation">
+                <a id="pop-delete_explanation" href="">×</a>
+              </div>
+            </div>
+            <div class="popup-body_explanation">
+              <p>〜〜〜</p>
+            </div>
+          </div>
+        </div>
+
         <div id="popup-overlay_inquiry" style="display: none">
           <div class="popup-window_inquiry">
             <div class="popup-header_inquiry">
@@ -1058,6 +1100,22 @@
           </div>
         </div>
 
+        <div id="popup-overlay_logout" style="display: none">
+          <div class="popup-window_logout">
+            <div class="popup-header_logout">
+              <h2>ログアウト</h2>
+              <div class="popup-close_logout">
+                <a id="pop-delete_logout" href="">×</a>
+              </div>
+            </div>
+            <div class="popup-body_logout">
+              <p>ログアウトしますか？</p>
+              <button id="yes-button-logout">はい</button>
+              <button id="no-button-logout">いいえ</button>
+            </div>
+          </div>
+        </div>
+
         <div id="popup-overlay_delete" style="display: none">
           <div class="popup-window_delete">
             <div class="popup-header_delete">
@@ -1068,8 +1126,8 @@
             </div>
             <div class="popup-body_delete">
               <p>ノートやフォルダが全て削除されますが本当に削除しますか？</p>
-              <button id="yes-button">はい</button>
-              <button id="no-button">いいえ</button>
+              <button id="yes-button-delete">はい</button>
+              <button id="no-button-delete">いいえ</button>
             </div>
           </div>
         </div>
@@ -1082,5 +1140,6 @@
     <script type="text/javascript" src="/js/jquery-sortable.js"></script>
     <script type="text/javascript" src="/js/jquery.treeview.js"></script>
     <script type="module" src="/js/main.js"></script>
+    <script type="module" src="/js/menu.js"></script>
   </body>
 </html>
