@@ -93,6 +93,14 @@
   border-radius: 10px;
   z-index: 10000;
 }
+.popup-window_version,
+.popup-window_delete {
+  height: 150px;
+}
+.popup-window_logout {
+  height: 150px;
+  width: 250px;
+}
 
 /* ポップアップのヘッダー */
 .popup-header_profile,
@@ -104,6 +112,7 @@
 .popup-header_delete {
   display: flex;
   align-items: center;
+  justify-content: center; /* 中央寄せに変更 */
   justify-content: space-between;
   padding: 10px;
   background-color: rgba(0, 0, 0, 0.1);
@@ -125,6 +134,7 @@
 }
 
 .popup-body_inquiry input {
+  text-align: left;
   width: 400px;
   height: 250px;
   padding: 5px;
@@ -159,7 +169,19 @@
   cursor: pointer;
 }
 
+#yes-button-logout,
+#no-button-logout,
+#yes-button-delete,
+#no-button-delete {
+  padding: 7px 14px;
+  font-size: 12px;
+}
+
 #no-button-logout,
 #no-button-delete {
   background-color: red;
+}
+
+.popup-body_profile a {
+  color: red;
 }
