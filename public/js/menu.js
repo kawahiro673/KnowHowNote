@@ -91,12 +91,9 @@ document.getElementById('pop-delete_inquiry').addEventListener('click', (e) => {
 });
 
 //ログアウトポップアップ
-document
-  .getElementById('popup-overlay_logout')
-  .addEventListener('click', () => {
-    //はいを押した場合(true)
-    document.getElementById('popup-overlay_logout').style.display = 'block';
-  });
+document.getElementById('logout').addEventListener('click', () => {
+  document.getElementById('popup-overlay_logout').style.display = 'block';
+});
 
 document.getElementById('yes-button-logout').addEventListener('click', () => {
   $.ajax({
@@ -131,12 +128,10 @@ document
   });
 
 //[全削除]ボタン押下時。ノート,フォルダ,タブ全て削除
-document
-  .getElementById('popup-overlay_delete')
-  .addEventListener('click', () => {
-    //はいを押した場合(true)
-    document.getElementById('popup-overlay_inquiry').style.display = 'block';
-  });
+document.getElementById('delete').addEventListener('click', () => {
+  //はいを押した場合(true)
+  document.getElementById('popup-overlay_delete').style.display = 'block';
+});
 
 document.getElementById('yes-button-delete').addEventListener('click', () => {
   $.ajax({
