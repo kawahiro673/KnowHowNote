@@ -128,7 +128,7 @@ document
   });
 
 //[全削除]ボタン押下時。ノート,フォルダ,タブ全て削除
-document.getElementById('delete').addEventListener('click', () => {
+document.getElementById('all-delete').addEventListener('click', () => {
   //はいを押した場合(true)
   document.getElementById('popup-overlay_delete').style.display = 'block';
 });
@@ -173,17 +173,3 @@ document
       popup.style.display = 'none';
     }
   });
-
-// //[ログアウト]押下後、サーバーでCookieを削除
-// document.getElementById('logout').addEventListener('click', () => {
-//   $.ajax({
-//     url: '/mypage/',
-//     type: 'POST',
-//     dataType: 'Json',
-//     contentType: 'application/json',
-//     data: JSON.stringify({
-//       flg: 'cookiedelete',
-//     }),
-//     success: function (res) {},
-//   });
-// });

@@ -141,7 +141,7 @@
   padding: 0 10px;
 }
 
-#yes-button-logput,
+#yes-button-logout,
 #no-button-logout,
 #yes-button-delete,
 #no-button-delete,
@@ -159,6 +159,7 @@
   cursor: pointer;
 }
 
-#no-button {
+#no-button-logout,
+#no-button-delete {
   background-color: red;
 }
