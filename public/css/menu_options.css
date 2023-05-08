@@ -99,7 +99,7 @@
 }
 .popup-window_logout {
   height: 150px;
-  width: 250px;
+  width: 300px;
 }
 
 /* ポップアップのヘッダー */
@@ -113,7 +113,6 @@
   display: flex;
   align-items: center;
   justify-content: center; /* 中央寄せに変更 */
-  justify-content: space-between;
   padding: 10px;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 10px 10px 0 0;
@@ -129,7 +128,7 @@
 .popup-header_delete h2 {
   font-size: 16px;
   font-weight: normal;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
 }
 
