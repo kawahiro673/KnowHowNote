@@ -224,10 +224,9 @@ header h1 {
   text-decoration: none;
   border: none;
   border-radius: 4px;
-
-  color: #fff;
+  color: rgb(0, 0, 0);
   cursor: pointer;
-  margin: 5px;
+  margin: 5px 1px;
 }
 
 .createfolder,
