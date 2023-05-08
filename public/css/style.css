@@ -18,6 +18,7 @@
   border-radius: 10px;
   padding: 10px;
   /* overflow-y: auto; 縦方向のスクロールバーを表示 */
+  display: flex;
 }
 
 header {
