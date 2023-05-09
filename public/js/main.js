@@ -345,7 +345,7 @@ async function titleClick(id, title) {
         }),
         success: function (res) {
           resolve();
-          const [inputEdit, div, textarea, fadeFont, inputShare, buttonTab] =
+          const [inputEdit, div, textarea, fadeFont, shareButton, buttonTab] =
             tabCreate(id, title, res.fileResult);
 
           labelContextmenu();
@@ -419,7 +419,7 @@ async function titleClick(id, title) {
             };
           };
 
-          inputShare.onclick = () => {
+          shareButton.onclick = () => {
             shareButton(id);
           };
 

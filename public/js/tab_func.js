@@ -43,10 +43,9 @@ export const tabCreate = (id, title, res) => {
   p.style.color = 'black';
   p.style.textAlign = 'left';
   p.setAttribute('id', 'tabP' + id);
-  let inputShare = document.createElement('button');
-  inputShare.setAttribute('class', 'sharebtn');
-  // inputShare.type = 'submit';
-  inputShare.value = '共有する';
+  let shareButton = document.createElement('button');
+  shareButton.setAttribute('class', 'sharebtn');
+  shareButton.innerHTML = '共有する';
   let divFade = document.createElement('div');
   let div2 = document.createElement('div');
   div2.setAttribute('class', 'form-group');
@@ -80,14 +79,14 @@ export const tabCreate = (id, title, res) => {
   div.appendChild(divFade);
   div.appendChild(div2);
   div1.appendChild(p);
-  div1.appendChild(inputShare);
+  div1.appendChild(shareButton);
   div2.appendChild(textarea);
   div.appendChild(inputEdit);
   divFade.appendChild(fadeFont);
   div.appendChild(time);
   tabLabelColorGet(id);
 
-  return [inputEdit, div, textarea, fadeFont, inputShare, buttonTab];
+  return [inputEdit, div, textarea, fadeFont, shareButton, buttonTab];
 };
 
 //タブエリアの[保存]ボタン押下時
