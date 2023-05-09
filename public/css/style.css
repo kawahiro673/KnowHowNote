@@ -110,6 +110,7 @@ header h1 {
 .title-txt {
   font-size: 1.2em;
   text-align: center;
+  font-family: 'Hannotate SC', sans-serif;
 }
 .title-edit {
   margin: 10px;
@@ -212,6 +213,7 @@ header h1 {
 
 .updatetime {
   margin-right: 30px;
+  font-family: 'Hannotate SC', sans-serif;
 }
 
 .createfolder a,
@@ -326,6 +328,7 @@ footer {
   color: White;
   background: LightGray;
   font-weight: bold;
+  font-family: 'Hannotate SC', sans-serif;
   white-space: nowrap;
   text-align: center;
   border: 1px solid Gray;
