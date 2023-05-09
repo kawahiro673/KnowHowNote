@@ -194,7 +194,12 @@ document.getElementById('share-send').addEventListener('click', (e) => {
       name: document.getElementsByClassName('share-input')[0].value,
     }),
     success: function (res) {
-      console.log(res.message);
+      if (res.message === '共有しました') {
+        document.getElementById('popup-overlay_share').style.display = 'none';
+      } else {
+        //ユーザーが見つからないパターン
+        alert(res.message);
+      }
     },
   });
 });
