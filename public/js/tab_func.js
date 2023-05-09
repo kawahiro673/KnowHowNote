@@ -196,6 +196,12 @@ document.getElementById('share-send').addEventListener('click', (e) => {
     success: function (res) {
       if (res.message === '共有しました') {
         document.getElementById('popup-overlay_share').style.display = 'none';
+        document.getElementById('popup-overlay_share_ans').style.display =
+          'block';
+        setTimeout(function () {
+          document.getElementById('popup-overlay_share_ans').style.display =
+            'none';
+        }, 1500);
       } else {
         //ユーザーが見つからないパターン
         alert(res.message);
