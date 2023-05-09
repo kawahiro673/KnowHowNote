@@ -381,8 +381,8 @@ async function titleClick(id, title) {
             const keepButton = document.createElement('button');
             const cancelButton = document.createElement('button');
 
-            keepButton.value = '保存する';
-            cancelButton.value = '取り消す';
+            keepButton.innerHTML = '保存する';
+            cancelButton.innerHTML = '取り消す';
             keepButton.setAttribute('class', 'keepbtn');
             cancelButton.setAttribute('class', 'cancelbtn');
 
