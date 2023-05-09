@@ -43,8 +43,9 @@ export const tabCreate = (id, title, res) => {
   p.style.color = 'black';
   p.style.textAlign = 'left';
   p.setAttribute('id', 'tabP' + id);
-  let inputShare = document.createElement('input');
-  inputShare.type = 'submit';
+  let inputShare = document.createElement('button');
+  inputShare.setAttribute('class', 'sharebtn');
+  // inputShare.type = 'submit';
   inputShare.value = '共有する';
   let divFade = document.createElement('div');
   let div2 = document.createElement('div');
