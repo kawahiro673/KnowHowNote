@@ -555,52 +555,52 @@ export function tabFocusIDGet() {
 //     });
 // });
 // クリックイベントのリスナーを追加する関数
-function addClickEventListener(element, eventHandler) {
-  element.addEventListener('click', eventHandler);
+
+// 要素を無効化する関数
+function disableElements() {
+  document
+    .getElementById('createbutton')
+    .addEventListener('click', preventDefault);
+  document
+    .getElementById('createfilebutton')
+    .addEventListener('click', preventDefault);
+  document
+    .getElementById('closed-button')
+    .addEventListener('click', preventDefault);
+  document
+    .getElementById('expandable-button')
+    .addEventListener('click', preventDefault);
 }
 
 // クリックイベントのデフォルト動作を無効化する関数
-function disableLink(event) {
+function preventDefault(event) {
   event.preventDefault();
 }
 
-// クリックイベントのリスナーを削除する関数
-function removeClickEventListener(element, eventHandler) {
-  element.removeEventListener('click', eventHandler);
+// 要素を有効化する関数
+function enableElements() {
+  document
+    .getElementById('createbutton')
+    .removeEventListener('click', preventDefault);
+  document
+    .getElementById('createfilebutton')
+    .removeEventListener('click', preventDefault);
+  document
+    .getElementById('closed-button')
+    .removeEventListener('click', preventDefault);
+  document
+    .getElementById('expandable-button')
+    .removeEventListener('click', preventDefault);
 }
 
-// 初期化時に要素のクリックイベントリスナーを追加
+// share-tab要素をクリックした際の処理
 document.getElementById('share-tab').addEventListener('click', () => {
-  console.log('クリック３');
-  addClickEventListener(document.getElementById('createbutton'), disableLink);
-  addClickEventListener(
-    document.getElementById('createfilebutton'),
-    disableLink
-  );
-  addClickEventListener(document.getElementById('closed-button'), disableLink);
-  addClickEventListener(
-    document.getElementById('expandable-button'),
-    disableLink
-  );
+  disableElements();
+  console.log('要素が無効化されました');
 });
 
-// リセット時に要素のクリックイベントリスナーを削除
+// nouhau要素をクリックした際の処理
 document.getElementById('nouhau').addEventListener('click', () => {
-  console.log('クリック２');
-  removeClickEventListener(
-    document.getElementById('createbutton'),
-    disableLink
-  );
-  removeClickEventListener(
-    document.getElementById('createfilebutton'),
-    disableLink
-  );
-  removeClickEventListener(
-    document.getElementById('closed-button'),
-    disableLink
-  );
-  removeClickEventListener(
-    document.getElementById('expandable-button'),
-    disableLink
-  );
+  enableElements();
+  console.log('要素が有効化されました');
 });
