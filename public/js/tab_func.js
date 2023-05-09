@@ -1,6 +1,6 @@
 //タブで必要な関数まとめ
 import { currentTimeGet, passGet, orderGet } from './stringUtils.js';
-//タブ生成
+
 export const tabCreate = (id, title, res) => {
   const inputTab = document.createElement('input');
   inputTab.setAttribute('id', 'TAB-ID' + id);
