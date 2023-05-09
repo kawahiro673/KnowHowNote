@@ -177,7 +177,7 @@ export const cancelButton = (
 
 //[共有する]ボタン押下時
 let shareId;
-export const shareButton = (id) => {
+export const shareButtonClick = (id) => {
   document.getElementById('popup-overlay_share').style.display = 'block';
   shareId = id;
 };

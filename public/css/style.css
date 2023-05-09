@@ -124,6 +124,7 @@ header h1 {
   margin: 30px 30px 0px 30px;
   display: flex;
   align-items: center; /* 要素の縦方向の中央揃え */
+  justify-content: space-between;
 }
 
 .titie input {

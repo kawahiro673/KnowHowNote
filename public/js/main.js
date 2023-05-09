@@ -1,7 +1,7 @@
 import {
   keepButton,
   cancelButton,
-  shareButton,
+  shareButtonClick,
   closeButton,
   tabClick,
   deleteTabArray,
@@ -420,7 +420,7 @@ async function titleClick(id, title) {
           };
 
           shareButton.onclick = () => {
-            shareButton(id);
+            shareButtonClick(id);
           };
 
           //タブ上の「✖️」ボタン押下
