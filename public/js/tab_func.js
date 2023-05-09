@@ -84,7 +84,6 @@ export const tabCreate = (id, title, res) => {
   div.appendChild(inputEdit);
   divFade.appendChild(fadeFont);
   div.appendChild(time);
-
   tabLabelColorGet(id);
 
   return [inputEdit, div, textarea, fadeFont, inputShare, buttonTab];
