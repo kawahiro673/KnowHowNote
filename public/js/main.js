@@ -517,40 +517,90 @@ export function tabFocusIDGet() {
   return tabFocusID;
 }
 
+// document.getElementById('share-tab').addEventListener('click', () => {
+//   console.log('クリック３');
+//   document.getElementById('createbutton').addEventListener('click', (e) => {
+//     e.preventDefault();
+//   });
+//   document.getElementById('createfilebutton').addEventListener('click', (e) => {
+//     e.preventDefault();
+//   });
+//   document.getElementById('closed-button').addEventListener('click', (e) => {
+//     e.preventDefault();
+//   });
+//   document
+//     .getElementById('expandable-button')
+//     .addEventListener('click', (e) => {
+//       e.preventDefault();
+//     });
+// });
+
+// document.getElementById('nouhau').addEventListener('click', () => {
+//   console.log('クリック２');
+//   document.getElementById('createbutton').removeEventListener('click', (e) => {
+//     e.preventDefault();
+//   });
+//   document
+//     .getElementById('createfilebutton')
+//     .removeEventListener('click', (e) => {
+//       e.preventDefault();
+//     });
+//   document.getElementById('closed-button').removeEventListener('click', (e) => {
+//     e.preventDefault();
+//   });
+//   document
+//     .getElementById('expandable-button')
+//     .removeEventListener('click', (e) => {
+//       e.preventDefault();
+//     });
+// });
+// クリックイベントのリスナーを追加する関数
+function addClickEventListener(element, eventHandler) {
+  element.addEventListener('click', eventHandler);
+}
+
+// クリックイベントのデフォルト動作を無効化する関数
+function disableLink(event) {
+  event.preventDefault();
+}
+
+// クリックイベントのリスナーを削除する関数
+function removeClickEventListener(element, eventHandler) {
+  element.removeEventListener('click', eventHandler);
+}
+
+// 初期化時に要素のクリックイベントリスナーを追加
 document.getElementById('share-tab').addEventListener('click', () => {
   console.log('クリック３');
-  document.getElementById('createbutton').addEventListener('click', (e) => {
-    e.preventDefault();
-  });
-  document.getElementById('createfilebutton').addEventListener('click', (e) => {
-    e.preventDefault();
-  });
-  document.getElementById('closed-button').addEventListener('click', (e) => {
-    e.preventDefault();
-  });
-  document
-    .getElementById('expandable-button')
-    .addEventListener('click', (e) => {
-      e.preventDefault();
-    });
+  addClickEventListener(document.getElementById('createbutton'), disableLink);
+  addClickEventListener(
+    document.getElementById('createfilebutton'),
+    disableLink
+  );
+  addClickEventListener(document.getElementById('closed-button'), disableLink);
+  addClickEventListener(
+    document.getElementById('expandable-button'),
+    disableLink
+  );
 });
 
+// リセット時に要素のクリックイベントリスナーを削除
 document.getElementById('nouhau').addEventListener('click', () => {
   console.log('クリック２');
-  document.getElementById('createbutton').removeEventListener('click', (e) => {
-    e.preventDefault();
-  });
-  document
-    .getElementById('createfilebutton')
-    .removeEventListener('click', (e) => {
-      e.preventDefault();
-    });
-  document.getElementById('closed-button').removeEventListener('click', (e) => {
-    e.preventDefault();
-  });
-  document
-    .getElementById('expandable-button')
-    .removeEventListener('click', (e) => {
-      e.preventDefault();
-    });
+  removeClickEventListener(
+    document.getElementById('createbutton'),
+    disableLink
+  );
+  removeClickEventListener(
+    document.getElementById('createfilebutton'),
+    disableLink
+  );
+  removeClickEventListener(
+    document.getElementById('closed-button'),
+    disableLink
+  );
+  removeClickEventListener(
+    document.getElementById('expandable-button'),
+    disableLink
+  );
 });
