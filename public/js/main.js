@@ -535,7 +535,7 @@ document.getElementById('share-tab').addEventListener('click', () => {
     });
 });
 
-document.getElementById(nouhau).addEventListener('click', () => {
+document.getElementById('nouhau').addEventListener('click', () => {
   console.log('クリック２');
   document.getElementById('createbutton').removeEventListener('click', (e) => {
     e.preventDefault();
