@@ -15,6 +15,7 @@
 .editbtn,
 .sharebtn {
   padding: 10px 20px;
+  margin: 10px;
   font-size: 16px;
   font-family: 'Hannotate SC', sans-serif;
   font-weight: bold;
@@ -29,11 +30,9 @@
 
 .keepbtn {
   background-color: #71f26c;
-  margin-right: 5px;
 }
 .cancelbtn {
   background-color: #f48269;
-  margin-left: 5px;
 }
 
 #popup-overlay_share {
