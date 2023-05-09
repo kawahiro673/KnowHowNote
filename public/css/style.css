@@ -65,12 +65,9 @@ header h1 {
 
 .container-list {
   background-color: white;
-  width: 1120px;
   padding: 5px;
   margin: 10px;
-  text-align: center;
   display: flex;
-  justify-content: space-between;
 }
 
 .container0 {
