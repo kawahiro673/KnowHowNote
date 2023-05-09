@@ -557,40 +557,24 @@ export function tabFocusIDGet() {
 // クリックイベントのリスナーを追加する関数
 
 // 要素を無効化する関数
+// 要素を無効化する関数
 function disableElements() {
-  document
-    .getElementById('createbutton')
-    .addEventListener('click', preventDefault);
+  document.getElementById('createbutton').setAttribute('disabled', 'disabled');
   document
     .getElementById('createfilebutton')
-    .addEventListener('click', preventDefault);
-  document
-    .getElementById('closed-button')
-    .addEventListener('click', preventDefault);
+    .setAttribute('disabled', 'disabled');
+  document.getElementById('closed-button').setAttribute('disabled', 'disabled');
   document
     .getElementById('expandable-button')
-    .addEventListener('click', preventDefault);
-}
-
-// クリックイベントのデフォルト動作を無効化する関数
-function preventDefault(event) {
-  event.preventDefault();
+    .setAttribute('disabled', 'disabled');
 }
 
 // 要素を有効化する関数
 function enableElements() {
-  document
-    .getElementById('createbutton')
-    .removeEventListener('click', preventDefault);
-  document
-    .getElementById('createfilebutton')
-    .removeEventListener('click', preventDefault);
-  document
-    .getElementById('closed-button')
-    .removeEventListener('click', preventDefault);
-  document
-    .getElementById('expandable-button')
-    .removeEventListener('click', preventDefault);
+  document.getElementById('createbutton').removeAttribute('disabled');
+  document.getElementById('createfilebutton').removeAttribute('disabled');
+  document.getElementById('closed-button').removeAttribute('disabled');
+  document.getElementById('expandable-button').removeAttribute('disabled');
 }
 
 // share-tab要素をクリックした際の処理
