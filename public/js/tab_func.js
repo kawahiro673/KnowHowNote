@@ -176,8 +176,12 @@ export const cancelButton = (
 };
 
 //[共有する]ボタン押下時
+let shareId;
 export const shareButton = (id) => {
-  let name = prompt('共有する相手のユーザー名を入力してください');
+  document.getElementById('popup-overlay_profile').style.display = 'block';
+  shareId = id;
+};
+document.getElementById('share-send').addEventListener('click', (e) => {
   $.ajax({
     url: '/mypage/',
     type: 'POST',
@@ -185,21 +189,18 @@ export const shareButton = (id) => {
     contentType: 'application/json',
     data: JSON.stringify({
       flg: 'getuser',
-      id,
-      name,
+      id: shareId,
+      name: document.getElementsByClassName('share-input')[0].value,
     }),
     success: function (res) {
-      alert(res.message);
+      console.log(res.message);
     },
   });
-
-  document.getElementById('popup-overlay_profile').style.display = 'block';
-
-  document.getElementById('pop-delete_share').addEventListener('click', (e) => {
-    e.preventDefault(); // リンクのデフォルトの動作を無効化
-    document.getElementById('popup-overlay_profile').style.display = 'none';
-  });
-};
+});
+document.getElementById('pop-delete_share').addEventListener('click', (e) => {
+  e.preventDefault(); // リンクのデフォルトの動作を無効化
+  document.getElementById('popup-overlay_profile').style.display = 'none';
+});
 
 //フォーカスの当たっているタブを削除する際には違うタブにフォーカスを当てる
 export const closeTab = (id, order, tabIdArray) => {
