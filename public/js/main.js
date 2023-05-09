@@ -391,9 +391,6 @@ async function titleClick(id, title) {
 
             inputEdit.style.display = 'none';
 
-            // const beforeElement = tabLabel.querySelector('::before');
-            // beforeElement.style.backgroundColor = getRandomColor();
-
             //[保存する]ボタン押下
             inputKeep.onclick = () => {
               keepButton(

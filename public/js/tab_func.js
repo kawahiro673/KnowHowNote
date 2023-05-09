@@ -181,6 +181,7 @@ export const shareButton = (id) => {
   document.getElementById('popup-overlay_share').style.display = 'block';
   shareId = id;
 };
+
 document.getElementById('share-send').addEventListener('click', (e) => {
   $.ajax({
     url: '/mypage/',
