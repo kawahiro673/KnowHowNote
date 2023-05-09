@@ -122,6 +122,7 @@ header h1 {
 }
 
 .title {
+  font-size: 18px;
   margin: 30px 30px 0px 30px;
   display: flex;
   align-items: center; /* 要素の縦方向の中央揃え */
@@ -325,6 +326,7 @@ footer {
 
 .tab-label {
   width: 150px;
+  font-size: 14px;
   color: White;
   background: LightGray;
   font-weight: bold;
@@ -503,4 +505,5 @@ section .row div {
 .fade-out-font {
   margin: 0;
   padding: 0;
+  font-family: 'Hannotate SC', sans-serif;
 }

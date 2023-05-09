@@ -52,9 +52,9 @@ export const tabCreate = (id, title, res) => {
   let textarea = document.createElement('textarea');
   textarea.readOnly = true;
   textarea.style.height = '500px';
-  let inputEdit = document.createElement('input');
-  inputEdit.type = 'submit';
-  inputEdit.value = '編集する';
+  let editButton = document.createElement('button');
+  editButton.setAttribute('class', 'editbtn');
+  editButton.innerHTML = '編集する';
   p.innerHTML = res.title;
   textarea.innerHTML = res.memo_text;
   let fadeFont = document.createElement('p');
@@ -81,23 +81,23 @@ export const tabCreate = (id, title, res) => {
   div1.appendChild(p);
   div1.appendChild(shareButton);
   div2.appendChild(textarea);
-  div.appendChild(inputEdit);
+  div.appendChild(editButton);
   divFade.appendChild(fadeFont);
   div.appendChild(time);
   tabLabelColorGet(id);
 
-  return [inputEdit, div, textarea, fadeFont, shareButton, buttonTab];
+  return [editButton, div, textarea, fadeFont, shareButton, buttonTab];
 };
 
 //タブエリアの[保存]ボタン押下時
-export const keepButton = (
+export const keepButtonClick = (
   id,
   textarea,
   p1,
   fadeFont,
-  inputKeep,
-  inputCancel,
-  inputEdit,
+  keepButton,
+  cancelButton,
+  editButton,
   newTitle,
   titletext
 ) => {
@@ -125,26 +125,26 @@ export const keepButton = (
     },
   });
   p1.remove();
-  inputKeep.remove();
-  inputCancel.remove();
+  keepButton.remove();
+  cancelButton.remove();
   document.getElementById(`tabP${id}`).innerHTML = newTitle;
   document.getElementById(`tabP${id}`).style.display = 'block';
   document.getElementById(`tabname${id}`).innerHTML = newTitle;
   document.getElementById(`file${id}`).innerHTML = newTitle;
   titletext.remove();
-  inputEdit.style.display = 'block';
+  editButton.style.display = 'block';
   textarea.readOnly = true;
   document.getElementById(`time${id}`).innerHTML = time;
   document.getElementById('notepass').innerHTML = pass;
 };
 
 //タブエリアの[取り消し]ボタン押下時
-export const cancelButton = (
+export const cancelButtonClick = (
   id,
   p1,
-  inputKeep,
-  inputCancel,
-  inputEdit,
+  keepButton,
+  cancelButton,
+  editButton,
   textarea,
   titletext
 ) => {
@@ -167,10 +167,10 @@ export const cancelButton = (
     });
     document.getElementById(`tabP${id}`).style.display = 'block';
     p1.remove();
-    inputKeep.remove();
-    inputCancel.remove();
+    keepButton.remove();
+    cancelButton.remove();
     titletext.remove();
-    inputEdit.style.display = 'block';
+    editButton.style.display = 'block';
     textarea.readOnly = true;
   }
 };

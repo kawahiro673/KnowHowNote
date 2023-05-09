@@ -1,6 +1,6 @@
 import {
-  keepButton,
-  cancelButton,
+  keepButtonClick,
+  cancelButtonClick,
   shareButtonClick,
   closeButton,
   tabClick,
@@ -345,7 +345,7 @@ async function titleClick(id, title) {
         }),
         success: function (res) {
           resolve();
-          const [inputEdit, div, textarea, fadeFont, shareButton, buttonTab] =
+          const [editButton, div, textarea, fadeFont, shareButton, buttonTab] =
             tabCreate(id, title, res.fileResult);
 
           labelContextmenu();
@@ -362,9 +362,10 @@ async function titleClick(id, title) {
           document.getElementById('notab').style.display = 'none';
 
           tabIdArray.push(id);
-          //「編集する」ボタンクリック
-          inputEdit.onclick = function () {
-            let p1 = document.createElement('p');
+
+          editButton.onclick = function () {
+            const p1 = document.createElement('p');
+            p1.setAttribute('class', 'eidt-text');
             p1.innerHTML =
               '※現在編集中です。編集完了後【保存する】ボタンを押してください';
             div.appendChild(p1);
@@ -377,42 +378,41 @@ async function titleClick(id, title) {
             document.getElementById(`tabP${id}`).after(titletext);
             document.getElementById(`tabP${id}`).style.display = 'none';
 
-            let inputKeep = document.createElement('input');
-            let inputCancel = document.createElement('input');
-            inputKeep.type = 'submit';
-            inputKeep.value = '保存する';
-            inputCancel.type = 'submit';
-            inputCancel.value = '取り消す';
-            inputKeep.setAttribute('class', 'keepbtn');
-            inputCancel.setAttribute('class', 'cancelbtn');
+            const keepButton = document.createElement('button');
+            const cancelButton = document.createElement('button');
 
-            div.appendChild(inputKeep);
-            div.appendChild(inputCancel);
+            keepButton.value = '保存する';
+            cancelButton.value = '取り消す';
+            keepButton.setAttribute('class', 'keepbtn');
+            cancelButton.setAttribute('class', 'cancelbtn');
 
-            inputEdit.style.display = 'none';
+            div.appendChild(keepButton);
+            div.appendChild(cancelButton);
+
+            editButton.style.display = 'none';
 
             //[保存する]ボタン押下
-            inputKeep.onclick = () => {
-              keepButton(
+            keepButton.onclick = () => {
+              keepButtonClick(
                 id,
                 textarea,
                 p1,
                 fadeFont,
-                inputKeep,
-                inputCancel,
-                inputEdit,
+                keepButton,
+                cancelButton,
+                editButton,
                 titletext.value,
                 titletext
               );
             };
             //[取り消す]ボタン押下
-            inputCancel.onclick = () => {
-              cancelButton(
+            cancelButton.onclick = () => {
+              cancelButtonClick(
                 id,
                 p1,
-                inputKeep,
-                inputCancel,
-                inputEdit,
+                keepButton,
+                cancelButton,
+                editButton,
                 textarea,
                 titletext
               );
