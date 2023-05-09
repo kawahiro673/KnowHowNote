@@ -930,7 +930,6 @@
           <div class="pass">
             <p id="notepass"></p>
           </div>
-          <p>ようこそ</p>
         </div>
 
         <div class="createfolder">
@@ -943,10 +942,20 @@
         </div>
 
         <div class="treecontrol">
-          <a title="ツリー全体を折りたたむ" href="#" class="toggle collapsable"
+          <a
+            id="closed-button"
+            title="ツリー全体を折りたたむ"
+            href="#"
+            class="toggle collapsable"
             >閉</a
           >
-          <a title="ツリー全体を展開" href="#" class="toggle expandable">開</a>
+          <a
+            id="expandable-button"
+            title="ツリー全体を展開"
+            href="#"
+            class="toggle expandable"
+            >開</a
+          >
           <!-- <a title="Toggle the tree below" href="#" class="hide1">開/閉</a> -->
         </div>
 
@@ -955,7 +964,9 @@
             <input id="nouhau" type="radio" name="tab_item" checked />
             <label class="tab_item" for="nouhau">マイノウハウ</label>
             <input id="share" type="radio" name="tab_item" />
-            <label class="tab_item" for="share">シェアノウハウ</label>
+            <label class="tab_item" id="share-tab" for="share"
+              >シェアノウハウ</label
+            >
 
             <div class="tab_content" id="nouhau_content">
               <div class="tab_content_description">
@@ -1066,7 +1077,7 @@
               </div>
             </div>
             <div class="popup-body_explanation">
-              <p>〜〜〜</p>
+              <p>〜調整中〜</p>
             </div>
           </div>
         </div>

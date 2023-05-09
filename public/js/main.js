@@ -516,3 +516,39 @@ const binderCreate = () => {
 export function tabFocusIDGet() {
   return tabFocusID;
 }
+
+document.getElementById('share-tab').addEventListener('click', () => {
+  document.getElementById('createbutton').addEventListener('click', (e) => {
+    e.preventDefault();
+  });
+  document.getElementById('createfilebutton').addEventListener('click', (e) => {
+    e.preventDefault();
+  });
+  document.getElementById('closed-button').addEventListener('click', (e) => {
+    e.preventDefault();
+  });
+  document
+    .getElementById('expandable-button')
+    .addEventListener('click', (e) => {
+      e.preventDefault();
+    });
+});
+
+document.getElementById(nouhau).addEventListener('click', () => {
+  document.getElementById('createbutton').removeEventListener('click', (e) => {
+    e.preventDefault();
+  });
+  document
+    .getElementById('createfilebutton')
+    .removeEventListener('click', (e) => {
+      e.preventDefault();
+    });
+  document.getElementById('closed-button').removeEventListener('click', (e) => {
+    e.preventDefault();
+  });
+  document
+    .getElementById('expandable-button')
+    .removeEventListener('click', (e) => {
+      e.preventDefault();
+    });
+});
