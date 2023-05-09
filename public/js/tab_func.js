@@ -46,6 +46,7 @@ export const tabCreate = (id, title, res) => {
   let inputShare = document.createElement('input');
   inputShare.type = 'submit';
   inputShare.value = '共有する';
+
   let divFade = document.createElement('div');
   let div2 = document.createElement('div');
   div2.setAttribute('class', 'form-group');
