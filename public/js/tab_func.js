@@ -178,7 +178,7 @@ export const cancelButton = (
 //[共有する]ボタン押下時
 let shareId;
 export const shareButton = (id) => {
-  document.getElementById('popup-overlay_profile').style.display = 'block';
+  document.getElementById('popup-overlay_share').style.display = 'block';
   shareId = id;
 };
 document.getElementById('share-send').addEventListener('click', (e) => {
@@ -199,7 +199,7 @@ document.getElementById('share-send').addEventListener('click', (e) => {
 });
 document.getElementById('pop-delete_share').addEventListener('click', (e) => {
   e.preventDefault(); // リンクのデフォルトの動作を無効化
-  document.getElementById('popup-overlay_profile').style.display = 'none';
+  document.getElementById('popup-overlay_share').style.display = 'none';
 });
 
 //フォーカスの当たっているタブを削除する際には違うタブにフォーカスを当てる
