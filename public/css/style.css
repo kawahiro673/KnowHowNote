@@ -108,7 +108,7 @@ header h1 {
 }
 
 .title-txt {
-  font-size: 1.2em;
+  font-size: 1.5em;
   text-align: center;
   font-family: 'Hannotate SC', sans-serif;
 }
@@ -122,7 +122,6 @@ header h1 {
 }
 
 .title {
-  font-size: 18px;
   margin: 30px 30px 0px 30px;
   display: flex;
   align-items: center; /* 要素の縦方向の中央揃え */
@@ -311,149 +310,6 @@ footer {
 #black:hover,
 #white:hover {
   background-color: #f0f0f0;
-}
-
-/************************ タブ側 ******************************/
-.tab-wrap {
-  height: 960px;
-  min-height: 300px;
-  display: flex;
-  position: relative;
-  flex-wrap: wrap;
-  flex-direction: column;
-  background-color: aliceblue;
-}
-
-.tab-label {
-  width: 150px;
-  font-size: 14px;
-  color: White;
-  background: LightGray;
-  font-weight: bold;
-  font-family: 'Hannotate SC', sans-serif;
-  white-space: nowrap;
-  text-align: center;
-  border: 1px solid Gray;
-  border-radius: 4px 0 0 4px;
-  margin: 5px -1px 5px 1px;
-  padding: 10px 0.5em;
-  order: -1;
-  position: relative;
-  /* z-index: 1; */
-  cursor: pointer;
-  float: left;
-}
-/* 要素の前に疑似要素を挿入し、その要素の左側20%に赤い背景色を適用 */
-.tab-label::before {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 20%;
-  height: 100%;
-  /* z-index: -1; */
-  background-color: var(--tab-label-background-color);
-}
-
-.tab-content {
-  display: none;
-  background-color: rgb(255, 255, 255);
-  /* position: absolute; */
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #fff; /* 背景色 */
-  background-image: linear-gradient(
-      90deg,
-      transparent 0%,
-      transparent 50%,
-      #fff 50%,
-      #fff 100%
-    ),
-    /* 点線1の色 */
-      linear-gradient(180deg, rgb(30, 194, 219) 1px, transparent 0.8px); /* 点線2の色と太さ */
-  background-size: 8px 100%, /* 点線1のサイズ */ 100% 2.5em; /* 点線2のサイズ */
-  line-height: 2.5em; /* 文字の高さ */
-  padding-bottom: 1px; /* 最終行の下にも罫線を引く */
-  padding: 30px;
-  box-sizing: border-box;
-}
-
-/* アクティブなタブ */
-.tab-switch:checked + .tab-label {
-  color: Gray;
-  background: White;
-  border-right-color: White;
-}
-
-.tab-switch:checked + .tab-label + .tab-content {
-  width: calc(100% - 150px);
-  /* - ボタン幅 */
-  height: 100%;
-  padding: 15px;
-  border-left: 1px solid Gray;
-  display: block;
-}
-
-/* ラジオボタン非表示 */
-.tab-switch {
-  display: none;
-}
-
-/************************　ノート側　******************************/
-/*タブのスタイル*/
-.container1 label:first-of-type {
-  margin-right: auto;
-}
-
-.container1 label:last-of-type {
-  margin-left: auto;
-}
-
-.tab_item {
-  border-bottom-color: 1px solid Gray;
-  background-color: gray;
-  line-height: 30px;
-  font-size: 16px;
-  text-align: center;
-  color: white;
-  font-weight: bold;
-  border-radius: 4px 0 0 4px;
-  display: inline-block;
-  white-space: nowrap;
-  width: 48%;
-  box-sizing: border-box;
-}
-
-.tab_item:hover {
-  opacity: 0.75;
-}
-
-/*ラジオボタンを全て消す*/
-input[name='tab_item'] {
-  display: none;
-}
-
-/*タブ切り替えの中身のスタイル*/
-.tab_content {
-  display: none;
-  padding: 0;
-  clear: both;
-  overflow: hidden;
-}
-
-/*選択されているタブのコンテンツのみを表示*/
-#nouhau:checked ~ #nouhau_content,
-#share:checked ~ #share_content {
-  display: block;
-}
-
-/*選択されているタブのスタイルを変える*/
-.container1 input:checked + .tab_item {
-  background-color: white;
-  color: black;
-  border-bottom-color: White;
 }
 
 /********************** 背景 ************************/
