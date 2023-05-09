@@ -46,6 +46,7 @@ export const tabCreate = (id, title, res) => {
   let inputShare = document.createElement('input');
   inputShare.type = 'submit';
   inputShare.value = '共有する';
+  input.setAttribute('id', 'ShareBtn' + id);
   let divFade = document.createElement('div');
   let div2 = document.createElement('div');
   div2.setAttribute('class', 'form-group');
@@ -192,6 +193,13 @@ export const shareButton = (id) => {
     success: function (res) {
       alert(res.message);
     },
+  });
+
+  document.getElementById('popup-overlay_profile').style.display = 'block';
+
+  document.getElementById('pop-delete_share').addEventListener('click', (e) => {
+    e.preventDefault(); // リンクのデフォルトの動作を無効化
+    document.getElementById('popup-overlay_profile').style.display = 'none';
   });
 };
 
