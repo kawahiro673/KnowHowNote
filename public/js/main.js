@@ -556,41 +556,33 @@ export function tabFocusIDGet() {
 // });
 // クリックイベントのリスナーを追加する関数
 
-// 要素を無効化する関数
-// 要素を無効化する関数
-document.addEventListener('DOMContentLoaded', function () {
-  function disableElements() {
-    document
-      .getElementById('createbutton')
-      .setAttribute('disabled', 'disabled');
-    document
-      .getElementById('createfilebutton')
-      .setAttribute('disabled', 'disabled');
-    document
-      .getElementById('closed-button')
-      .setAttribute('disabled', 'disabled');
-    document
-      .getElementById('expandable-button')
-      .setAttribute('disabled', 'disabled');
-  }
+function disableElements() {
+  document.getElementById('createbutton').setAttribute('disabled', 'disabled');
+  document
+    .getElementById('createfilebutton')
+    .setAttribute('disabled', 'disabled');
+  document.getElementById('closed-button').setAttribute('disabled', 'disabled');
+  document
+    .getElementById('expandable-button')
+    .setAttribute('disabled', 'disabled');
+}
 
-  // 要素を有効化する関数
-  function enableElements() {
-    document.getElementById('createbutton').removeAttribute('disabled');
-    document.getElementById('createfilebutton').removeAttribute('disabled');
-    document.getElementById('closed-button').removeAttribute('disabled');
-    document.getElementById('expandable-button').removeAttribute('disabled');
-  }
+// 要素を有効化する関数
+function enableElements() {
+  document.getElementById('createbutton').removeAttribute('disabled');
+  document.getElementById('createfilebutton').removeAttribute('disabled');
+  document.getElementById('closed-button').removeAttribute('disabled');
+  document.getElementById('expandable-button').removeAttribute('disabled');
+}
 
-  // share-tab要素をクリックした際の処理
-  document.getElementById('share-tab').addEventListener('click', () => {
-    disableElements();
-    console.log('要素が無効化されました');
-  });
+// share-tab要素をクリックした際の処理
+document.getElementById('share-tab').addEventListener('click', () => {
+  disableElements();
+  console.log('要素が無効化されました');
+});
 
-  // nouhau要素をクリックした際の処理
-  document.getElementById('nouhau').addEventListener('click', () => {
-    enableElements();
-    console.log('要素が有効化されました');
-  });
+// nouhau要素をクリックした際の処理
+document.getElementById('nouhau').addEventListener('click', () => {
+  enableElements();
+  console.log('要素が有効化されました');
 });
