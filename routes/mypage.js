@@ -569,7 +569,12 @@ router
           return new Promise((resolve, reject) => {
             pool.query(
               'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID) values(?, ?, ?, ?);',
-              [req.body.name, req.body.time, title, resultDecoded[0].id],
+              [
+                req.body.name,
+                req.body.time,
+                req.body.title,
+                resultDecoded[0].id,
+              ],
               (error, result) => {
                 if (error) {
                   reject(error);
