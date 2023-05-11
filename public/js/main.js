@@ -419,8 +419,8 @@ async function titleClick(id, title) {
             };
           };
 
-          shareButton.onclick = () => {
-            shareButtonClick(id);
+          shareButton.onclick = (event) => {
+            shareButtonClick(id, event);
           };
 
           //タブ上の「✖️」ボタン押下
