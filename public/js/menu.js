@@ -33,7 +33,7 @@ document.getElementById('share-history').addEventListener('click', () => {
       res.shareResult.forEach((share) => {
         const p = document.createElement('p');
         p.setAttribute('class', 'share-user-list');
-        p.innerHTML = `${share.date}     ${share.UserName}     ${share.ShareNoteTitle}`;
+        p.innerHTML = `${share.date}          ${share.UserName}          ${share.ShareNoteTitle}`;
         document.getElementById('share-history-list').appendChild(p);
       });
     },
@@ -60,11 +60,11 @@ document
     const popup = document.getElementById('popup-overlay_share-history');
     if (e.target === popup) {
       popup.style.display = 'none';
-      while (parentElement.firstChild) {
-        document
-          .getElementById('share-history-list')
-          .removeChild(parentElement.firstChild);
-      }
+    }
+    while (parentElement.firstChild) {
+      document
+        .getElementById('share-history-list')
+        .removeChild(parentElement.firstChild);
     }
   });
 
