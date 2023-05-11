@@ -178,13 +178,13 @@ export const cancelButtonClick = (
 //[共有する]ボタン押下時
 let shareId;
 let shareTitle;
-export const shareButtonClick = (id) => {
+export function shareButtonClick(id) {
   document.getElementById('popup-overlay_share').style.display = 'block';
   shareId = id;
   console.log(this);
   shareTitle = this.parentNode.innerHTML;
   console.log(shareTitle);
-};
+}
 
 document.getElementById('share-send').addEventListener('click', (e) => {
   const now = new Date();
