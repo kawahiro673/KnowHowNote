@@ -21,7 +21,7 @@ document
 document.getElementById('share-history').addEventListener('click', () => {
   document.getElementById('popup-overlay_share-history').style.display =
     'block';
-  const shareList = documnet.getElementById('share-history-list');
+  const shareList = document.getElementById('share-history-list');
   $.ajax({
     url: '/mypage/',
     type: 'POST',
