@@ -21,7 +21,6 @@ document
 document.getElementById('share-history').addEventListener('click', () => {
   document.getElementById('popup-overlay_share-history').style.display =
     'block';
-  const shareList = document.getElementById('share-history-list');
   $.ajax({
     url: '/mypage/',
     type: 'POST',
@@ -33,8 +32,9 @@ document.getElementById('share-history').addEventListener('click', () => {
     success: function (res) {
       res.shareResult.forEach((share) => {
         const p = document.createElement('p');
-        p.innerHTML = `${share.date} ${share.UserName} ${share.Title}`;
-        shareList.appendChild(p);
+        p.setAttribute('class', 'share-user-list');
+        p.innerHTML = `${share.date}     ${share.UserName}     ${share.ShareNoteTitle}`;
+        document.getElementById('share-history-list').appendChild(p);
       });
     },
   });
@@ -46,6 +46,12 @@ document
     e.preventDefault(); // リンクのデフォルトの動作を無効化
     document.getElementById('popup-overlay_share-history').style.display =
       'none';
+
+    while (parentElement.firstChild) {
+      document
+        .getElementById('share-history-list')
+        .removeChild(parentElement.firstChild);
+    }
   });
 
 document
@@ -54,6 +60,11 @@ document
     const popup = document.getElementById('popup-overlay_share-history');
     if (e.target === popup) {
       popup.style.display = 'none';
+      while (parentElement.firstChild) {
+        document
+          .getElementById('share-history-list')
+          .removeChild(parentElement.firstChild);
+      }
     }
   });
 
