@@ -47,10 +47,10 @@ document
     document.getElementById('popup-overlay_share-history').style.display =
       'none';
 
-    while (parentElement.firstChild) {
+    while (document.getElementById('share-history-list').firstChild) {
       document
         .getElementById('share-history-list')
-        .removeChild(parentElement.firstChild);
+        .removeChild(document.getElementById('share-history-list').firstChild);
     }
   });
 
