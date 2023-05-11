@@ -589,6 +589,43 @@ router
           console.error(error);
           res.status(500).send('Internal Server Error.(getuser)');
         });
+    } else if (req.body.flg === 'ShareList') {
+      const token = req.cookies.token;
+      const decoded = JWT.verify(token, 'SECRET_KEY');
+      let promise = new Promise((resolve, reject) => {
+        resolve();
+      });
+      promise
+        .then(() => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'SELECT * FROM register_user WHERE Email = ?;',
+              [decoded.email],
+              (error, resultDecoded) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  resolve(resultDecoded);
+                }
+              }
+            );
+          });
+        })
+        .then((resultDecoded) => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'SELECT * FROM share_user WHERE UserID = ?;',
+              [resultDecoded[0].id],
+              (error, result) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  res.send({ shareResult: result });
+                }
+              }
+            );
+          });
+        });
     } else {
       console.log('flgで何も受け取ってません');
     }

@@ -21,6 +21,23 @@ document
 document.getElementById('share-history').addEventListener('click', () => {
   document.getElementById('popup-overlay_share-history').style.display =
     'block';
+  const shareList = documnet.getElementById('share-history-list');
+  $.ajax({
+    url: '/mypage/',
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'ShareList',
+    }),
+    success: function (res) {
+      res.shareResult.forEach((share) => {
+        const p = document.createElement('p');
+        p.innerHTML = `${share.date} ${share.UserName} ${share.Title}`;
+        shareList.appendChild(p);
+      });
+    },
+  });
 });
 
 document
