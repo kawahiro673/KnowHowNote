@@ -177,12 +177,24 @@ export const cancelButtonClick = (
 
 //[共有する]ボタン押下時
 let shareId;
+let shareTitle;
 export const shareButtonClick = (id) => {
   document.getElementById('popup-overlay_share').style.display = 'block';
   shareId = id;
+  console.log(this);
+  shareTitle = this.parentNode.innerHTML;
+  console.log(shareTitle);
 };
 
 document.getElementById('share-send').addEventListener('click', (e) => {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+
+  const formattedDateTime = `${year}-${month}-${day}-${hours}:${minutes}`;
   $.ajax({
     url: '/mypage/',
     type: 'POST',
@@ -192,6 +204,8 @@ document.getElementById('share-send').addEventListener('click', (e) => {
       flg: 'getuser',
       id: shareId,
       name: document.getElementsByClassName('share-input')[0].value,
+      title,
+      time: formattedDateTime,
     }),
     success: function (res) {
       if (res.message === '共有しました') {
@@ -209,6 +223,7 @@ document.getElementById('share-send').addEventListener('click', (e) => {
     },
   });
 });
+
 document.getElementById('pop-delete_share').addEventListener('click', (e) => {
   e.preventDefault(); // リンクのデフォルトの動作を無効化
   document.getElementById('popup-overlay_share').style.display = 'none';

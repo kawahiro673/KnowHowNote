@@ -517,53 +517,11 @@ export function tabFocusIDGet() {
   return tabFocusID;
 }
 
-// document.getElementById('share-tab').addEventListener('click', () => {
-//   console.log('クリック３');
-//   document.getElementById('createbutton').addEventListener('click', (e) => {
-//     e.preventDefault();
-//   });
-//   document.getElementById('createfilebutton').addEventListener('click', (e) => {
-//     e.preventDefault();
-//   });
-//   document.getElementById('closed-button').addEventListener('click', (e) => {
-//     e.preventDefault();
-//   });
-//   document
-//     .getElementById('expandable-button')
-//     .addEventListener('click', (e) => {
-//       e.preventDefault();
-//     });
-// });
-
-// document.getElementById('nouhau').addEventListener('click', () => {
-//   console.log('クリック２');
-//   document.getElementById('createbutton').removeEventListener('click', (e) => {
-//     e.preventDefault();
-//   });
-//   document
-//     .getElementById('createfilebutton')
-//     .removeEventListener('click', (e) => {
-//       e.preventDefault();
-//     });
-//   document.getElementById('closed-button').removeEventListener('click', (e) => {
-//     e.preventDefault();
-//   });
-//   document
-//     .getElementById('expandable-button')
-//     .removeEventListener('click', (e) => {
-//       e.preventDefault();
-//     });
-// });
-// クリックイベントのリスナーを追加する関数
-
+//シェアタブを開いている時にボタンを無効化する
 function disableElements() {
   document.getElementById('createbutton').setAttribute('disabled', 'disabled');
   document
     .getElementById('createfilebutton')
-    .setAttribute('disabled', 'disabled');
-  document.getElementById('closed-button').setAttribute('disabled', 'disabled');
-  document
-    .getElementById('expandable-button')
     .setAttribute('disabled', 'disabled');
 }
 
@@ -571,8 +529,6 @@ function disableElements() {
 function enableElements() {
   document.getElementById('createbutton').removeAttribute('disabled');
   document.getElementById('createfilebutton').removeAttribute('disabled');
-  document.getElementById('closed-button').removeAttribute('disabled');
-  document.getElementById('expandable-button').removeAttribute('disabled');
 }
 
 // share-tab要素をクリックした際の処理

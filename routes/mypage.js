@@ -547,6 +547,21 @@ router
             );
           });
         })
+        .then(() => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID) values(?, ?, ?, ?);',
+              [req.body.name, req.body.time, req.body.id],
+              (error, result) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  res.send({ message: '共有しました' });
+                }
+              }
+            );
+          });
+        })
         .catch((error) => {
           console.error(error);
           res.status(500).send('Internal Server Error.(getuser)');
