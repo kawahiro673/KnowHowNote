@@ -544,7 +544,7 @@ router
                 if (error) {
                   reject(error);
                 } else {
-                  res.send({ message: '共有しました' });
+                  resolve();
                 }
               }
             );
