@@ -60,11 +60,13 @@ document
     const popup = document.getElementById('popup-overlay_share-history');
     if (e.target === popup) {
       popup.style.display = 'none';
-    }
-    while (parentElement.firstChild) {
-      document
-        .getElementById('share-history-list')
-        .removeChild(parentElement.firstChild);
+      while (document.getElementById('share-history-list').firstChild) {
+        document
+          .getElementById('share-history-list')
+          .removeChild(
+            document.getElementById('share-history-list').firstChild
+          );
+      }
     }
   });
 
