@@ -182,7 +182,7 @@ export function shareButtonClick(id, event) {
   document.getElementById('popup-overlay_share').style.display = 'block';
   shareId = id;
   console.log(event.target);
-  shareTitle = event.target.parentNode.innerHTML;
+  shareTitle = event.target.previousElementSibling.innerHTML;
   console.log(shareTitle);
 }
 
