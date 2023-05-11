@@ -181,9 +181,7 @@ let shareTitle;
 export function shareButtonClick(id, event) {
   document.getElementById('popup-overlay_share').style.display = 'block';
   shareId = id;
-  console.log(event.target);
   shareTitle = event.target.previousElementSibling.innerHTML;
-  console.log(shareTitle);
 }
 
 document.getElementById('share-send').addEventListener('click', (e) => {
@@ -204,7 +202,7 @@ document.getElementById('share-send').addEventListener('click', (e) => {
       flg: 'getuser',
       id: shareId,
       name: document.getElementsByClassName('share-input')[0].value,
-      title,
+      title: shareTitle,
       time: formattedDateTime,
     }),
     success: function (res) {

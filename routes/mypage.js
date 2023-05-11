@@ -509,6 +509,9 @@ router
       );
       res.render('top.ejs');
     } else if (req.body.flg === 'getuser') {
+      const token = req.cookies.token;
+      const decoded = JWT.verify(token, 'SECRET_KEY');
+
       let promise = new Promise((resolve, reject) => {
         resolve();
       });
@@ -550,8 +553,23 @@ router
         .then(() => {
           return new Promise((resolve, reject) => {
             pool.query(
+              'SELECT * FROM register_user WHERE Email = ?;',
+              [decoded.email],
+              (error, resultDecoded) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  resolve(resultDecoded);
+                }
+              }
+            );
+          });
+        })
+        .then((resultDecoded) => {
+          return new Promise((resolve, reject) => {
+            pool.query(
               'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID) values(?, ?, ?, ?);',
-              [req.body.name, req.body.time, req.body.id],
+              [req.body.name, req.body.time, title, resultDecoded[0].id],
               (error, result) => {
                 if (error) {
                   reject(error);
