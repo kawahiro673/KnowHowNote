@@ -320,13 +320,46 @@ export const deleteTabArray = (id, tabArray) => {
 };
 
 //共有履歴　ユーザー一覧
-document.getElementById('share-user-button').addEventListener('click', () => {
-  document.getElementById('popup-overlay_share-user').style.display = 'block';
-});
+// document.getElementById('share-user-button').addEventListener('click', () => {
+//   document.getElementById('popup-overlay_share-user').style.display = 'block';
+// });
 
-document
-  .getElementById('pop-delete_share-user')
-  .addEventListener('click', (e) => {
-    e.preventDefault(); // リンクのデフォルトの動作を無効化
-    document.getElementById('popup-overlay_share-user').style.display = 'none';
+// document
+//   .getElementById('pop-delete_share-user')
+//   .addEventListener('click', (e) => {
+//     e.preventDefault(); // リンクのデフォルトの動作を無効化
+//     document.getElementById('popup-overlay_share-user').style.display = 'none';
+//   });
+
+function makeDraggable(element) {
+  let isDragging = false;
+  let offset = { x: 0, y: 0 };
+
+  // マウスダウンイベント
+  element.addEventListener('mousedown', (event) => {
+    isDragging = true;
+
+    // マウスの位置と要素の位置の差を計算
+    const rect = element.getBoundingClientRect();
+    offset.x = event.clientX - rect.left;
+    offset.y = event.clientY - rect.top;
   });
+
+  // マウスムーブイベント
+  document.addEventListener('mousemove', (event) => {
+    if (isDragging) {
+      // マウスの位置に要素を移動
+      element.style.left = `${event.clientX - offset.x}px`;
+      element.style.top = `${event.clientY - offset.y}px`;
+    }
+  });
+
+  // マウスアップイベント
+  document.addEventListener('mouseup', () => {
+    isDragging = false;
+  });
+}
+
+// ポップアップ要素を取得してドラッグ可能にする
+const draggablePopup = document.getElementById('draggable-popup');
+makeDraggable(draggablePopup);
