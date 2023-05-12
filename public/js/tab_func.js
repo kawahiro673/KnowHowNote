@@ -333,32 +333,27 @@ document
 
 function makeDraggable(element) {
   let isDragging = false;
-  let offsetX = 0;
-  let offsetY = 0;
+  let offset = { x: 0, y: 0 };
 
-  // マウスダウンイベント
   element.addEventListener('mousedown', (event) => {
     isDragging = true;
-    offsetX = event.clientX - element.getBoundingClientRect().left;
-    offsetY = event.clientY - element.getBoundingClientRect().top;
+
+    const rect = element.getBoundingClientRect();
+    offset.x = event.clientX - rect.left;
+    offset.y = event.clientY - rect.top;
   });
 
-  // マウスムーブイベント
   document.addEventListener('mousemove', (event) => {
     if (isDragging) {
-      const left = event.clientX - offsetX;
-      const top = event.clientY - offsetY;
-      element.style.left = `${left}px`;
-      element.style.top = `${top}px`;
+      element.style.left = event.clientX - offset.x - 25 + 'px';
+      element.style.top = event.clientY - offset.y - 25 + 'px';
     }
   });
 
-  // マウスアップイベント
   document.addEventListener('mouseup', () => {
     isDragging = false;
   });
 }
 
-// ポップアップ要素を取得してドラッグ可能にする
 const draggablePopup = document.getElementById('draggable-popup');
 makeDraggable(draggablePopup);
