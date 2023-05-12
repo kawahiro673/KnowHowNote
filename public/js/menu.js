@@ -30,12 +30,20 @@ document.getElementById('share-history').addEventListener('click', () => {
       flg: 'ShareList',
     }),
     success: function (res) {
-      res.shareResult.forEach((share) => {
-        const p = document.createElement('p');
-        p.setAttribute('class', 'share-user-list');
-        p.innerHTML = `${share.date}          ${share.UserName}          ${share.ShareNoteTitle}`;
-        document.getElementById('share-history-list').appendChild(p);
-      });
+      //履歴が未作成の時(連続で押下するたびに作成されるため)
+      if (
+        !(
+          document
+            .getElementById('share-history-list')
+            .getElementsByTagName('p').length > 0
+        )
+      )
+        res.shareResult.forEach((share) => {
+          const p = document.createElement('p');
+          p.setAttribute('class', 'share-user-list');
+          p.innerHTML = `${share.date}          ${share.UserName}          ${share.ShareNoteTitle}`;
+          document.getElementById('share-history-list').appendChild(p);
+        });
     },
   });
 });

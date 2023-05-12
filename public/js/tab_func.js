@@ -318,3 +318,15 @@ export const deleteTabArray = (id, tabArray) => {
   }
   return tabArray;
 };
+
+//共有履歴　ユーザー一覧
+document.getElementById('share-user-button').addEventListener('click', () => {
+  document.getElementById('popup-overlay_share-user').style.display = 'block';
+});
+
+document
+  .getElementById('pop-delete_share-user')
+  .addEventListener('click', (e) => {
+    e.preventDefault(); // リンクのデフォルトの動作を無効化
+    document.getElementById('popup-overlay_share-user').style.display = 'none';
+  });

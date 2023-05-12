@@ -65,7 +65,8 @@
 #popup-overlay_inquiry,
 #popup-overlay_version,
 #popup-overlay_logout,
-#popup-overlay_delete {
+#popup-overlay_delete,
+#popup-overlay_share-user {
   display: block;
   position: fixed;
   top: 0;
@@ -82,7 +83,8 @@
 .popup-window_inquiry,
 .popup-window_version,
 .popup-window_logout,
-.popup-window_delete {
+.popup-window_delete,
+.popup-window_share-user {
   width: 500px;
   height: 300px;
   background-color: #fff;
@@ -109,7 +111,8 @@
 .popup-header_inquiry,
 .popup-header_version,
 .popup-header_logout,
-.popup-header_delete {
+.popup-header_delete,
+.popup-header_share-user {
   display: flex;
   align-items: center;
   justify-content: center; /* 中央寄せに変更 */
@@ -125,7 +128,8 @@
 .popup-header_inquiry h2,
 .popup-header_version h2,
 .popup-header_logout h2,
-.popup-header_delete h2 {
+.popup-header_delete h2,
+.popup-header_share-user h2 {
   font-size: 16px;
   font-weight: normal;
   margin: 0 auto;
@@ -146,7 +150,8 @@
 .popup-body_inquiry,
 .popup-body_version,
 .popup-body_logout,
-.popup-body_delete {
+.popup-body_delete,
+.popup-body_share-user {
   padding: 0 10px;
 }
 
@@ -154,7 +159,8 @@
 #no-button-logout,
 #yes-button-delete,
 #no-button-delete,
-.popup-body_inquiry button {
+.popup-body_inquiry button,
+#share-user-button {
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -171,7 +177,8 @@
 #yes-button-logout,
 #no-button-logout,
 #yes-button-delete,
-#no-button-delete {
+#no-button-delete,
+#share-user-button {
   padding: 7px 14px;
   font-size: 12px;
 }
