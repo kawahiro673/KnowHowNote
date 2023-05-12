@@ -341,8 +341,11 @@ function makeDraggable(element) {
 
     // マウスの位置と要素の位置の差を計算
     const rect = element.getBoundingClientRect();
-    offset.x = event.clientX - rect.left;
-    offset.y = event.clientY - rect.top;
+    const scrollLeft =
+      window.pageXOffset || document.documentElement.scrollLeft;
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    offset.x = event.clientX - rect.left - scrollLeft;
+    offset.y = event.clientY - rect.top - scrollTop;
   });
 
   // マウスムーブイベント
