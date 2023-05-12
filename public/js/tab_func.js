@@ -351,7 +351,8 @@ function makeDraggable(element) {
       // マウスの位置に要素を移動
       const newX = event.clientX - offset.x;
       const newY = event.clientY - offset.y;
-      element.style.transform = `translate(${newX}px, ${newY}px)`;
+      element.style.left = `${newX}px`;
+      element.style.top = `${newY}px`;
     }
   });
 
