@@ -191,3 +191,47 @@
 .popup-body_profile a {
   color: red;
 }
+
+/* lplp */
+#popup-overlay_share-user {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.popup-window_share-user {
+  width: 500px;
+  height: 300px;
+  background-color: #fff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  z-index: 10000;
+}
+
+.popup-header_share-user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px 10px 0 0;
+  cursor: move; /* ドラッグカーソルを設定 */
+}
+
+.popup-header_share-user h2 {
+  font-size: 16px;
+  font-weight: normal;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.popup-body_share-user {
+  padding: 0 10px;
+}
