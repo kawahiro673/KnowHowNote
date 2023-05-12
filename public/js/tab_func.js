@@ -335,22 +335,26 @@ function makeDraggable(element) {
   let isDragging = false;
   let offsetX = 0;
   let offsetY = 0;
+  let initialX = 0;
+  let initialY = 0;
 
   // マウスダウンイベント
   element.addEventListener('mousedown', (event) => {
     isDragging = true;
-
-    // マウスの位置と要素の位置の差を計算
-    offsetX = event.clientX - element.getBoundingClientRect().left;
-    offsetY = event.clientY - element.getBoundingClientRect().top;
+    initialX = event.clientX;
+    initialY = event.clientY;
+    offsetX = element.getBoundingClientRect().left;
+    offsetY = element.getBoundingClientRect().top;
   });
 
   // マウスムーブイベント
   document.addEventListener('mousemove', (event) => {
     if (isDragging) {
-      // マウスの位置に要素を移動
-      const left = event.clientX - offsetX;
-      const top = event.clientY - offsetY;
+      const dx = event.clientX - initialX;
+      const dy = event.clientY - initialY;
+
+      const left = offsetX + dx;
+      const top = offsetY + dy;
       element.style.transform = `translate(${left}px, ${top}px)`;
     }
   });
