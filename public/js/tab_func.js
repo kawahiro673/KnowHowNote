@@ -349,8 +349,9 @@ function makeDraggable(element) {
   document.addEventListener('mousemove', (event) => {
     if (isDragging) {
       // マウスの位置に要素を移動
-      element.style.left = `${event.clientX - offset.x}px`;
-      element.style.top = `${event.clientY - offset.y}px`;
+      const newX = event.clientX - offset.x;
+      const newY = event.clientY - offset.y;
+      element.style.transform = `translate(${newX}px, ${newY}px)`;
     }
   });
 
