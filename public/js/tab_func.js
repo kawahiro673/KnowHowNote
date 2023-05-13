@@ -320,6 +320,7 @@ export const deleteTabArray = (id, tabArray) => {
 };
 
 //共有履歴　ユーザー一覧
+let shareUserNameArray;
 document.getElementById('share-user-button').addEventListener('click', () => {
   document.getElementById('popup-overlay_share-user').style.display = 'block';
   $.ajax({
@@ -331,7 +332,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
       flg: 'ShareList',
     }),
     success: function (res) {
-      let shareUserNameArray = [];
+      shareUserNameArray = [];
       res.shareResult.forEach((share) => {
         if (!shareUserNameArray.includes(share.UserName)) {
           // チェックボックス要素の作成
@@ -354,11 +355,6 @@ document.getElementById('share-user-button').addEventListener('click', () => {
           shareUserNameArray.push(share.UserName);
         }
       });
-      // const button = document.createElement('button');
-      // checkbox.id = 'share-user-add-button';
-      // document
-      //   .getElementsByClassName('popup-body_share-user')[0]
-      //   .appendChild(button);
     },
   });
 });
@@ -369,18 +365,23 @@ document
     e.preventDefault(); // リンクのデフォルトの動作を無効化
     document.getElementById('popup-overlay_share-user').style.display = 'none';
     //配下の要素全削除。ボタン押すたびに追加されるため・・
-    while (document.querySelector('popup-body_share-user').firstChild) {
-      document
-        .querySelector('popup-body_share-user')
-        .removeChild(
-          document.querySelector('popup-body_share-user').firstChild
-        );
+    while (document.getElementById('share-user-div').firstChild) {
+      document.document
+        .getElementById('share-user-div')
+        .removeChild(document.getElementById('share-user-div').firstChild);
     }
   });
 
 document.getElementById('share-user-add').addEventListener('click', () => {
-  console.log('クリックしました');
-  document.getElementsByClassName('share-input')[0].value = 'chinko';
+  document.getElementsByClassName('share-input')[0].value =
+    shareUserNameArray.join(', ');
+
+  document.getElementById('popup-overlay_share-user').style.display = 'none';
+  while (document.getElementById('share-user-div').firstChild) {
+    document.document
+      .getElementById('share-user-div')
+      .removeChild(document.getElementById('share-user-div').firstChild);
+  }
 });
 
 //共有履歴ポップアップのカーソル移動
