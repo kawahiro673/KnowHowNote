@@ -372,17 +372,19 @@ document
     }
   });
 
-document.getElementById('share-user-add').addEventListener('click', () => {
-  document.getElementsByClassName('share-input')[0].value =
-    shareUserNameArray.join(', ');
+document
+  .getElementById('share-user-add-button')
+  .addEventListener('click', () => {
+    document.getElementsByClassName('share-input')[0].value =
+      shareUserNameArray.join(', ');
 
-  document.getElementById('popup-overlay_share-user').style.display = 'none';
-  while (document.getElementById('share-user-div').firstChild) {
-    document.document
-      .getElementById('share-user-div')
-      .removeChild(document.getElementById('share-user-div').firstChild);
-  }
-});
+    document.getElementById('popup-overlay_share-user').style.display = 'none';
+    while (document.getElementById('share-user-div').firstChild) {
+      document.document
+        .getElementById('share-user-div')
+        .removeChild(document.getElementById('share-user-div').firstChild);
+    }
+  });
 
 //共有履歴ポップアップのカーソル移動
 function makeDraggable(element) {
