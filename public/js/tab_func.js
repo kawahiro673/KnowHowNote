@@ -322,6 +322,33 @@ export const deleteTabArray = (id, tabArray) => {
 //共有履歴　ユーザー一覧
 document.getElementById('share-user-button').addEventListener('click', () => {
   document.getElementById('popup-overlay_share-user').style.display = 'block';
+  $.ajax({
+    url: '/mypage/',
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'ShareList',
+      id,
+    }),
+    success: function (res) {
+      let shareUserNameArray = [];
+      res.shareResult.fotEach((share) => {
+        if (!shareUserNameArray.includes(share.UserName)) {
+          const div = document.createElement('div');
+          div.setAttribute('class', 'share-history-div');
+          const p = document.createElement('p');
+          p.setAttribute('class', 'share-history-p');
+          p.innerHTML = share.UserName;
+          document
+            .getElementsByClassName('popup-body_share-user')[0]
+            .appendChild(div);
+          div.appendChild(p);
+          shareUserNameArray.push(share.UserName);
+        }
+      });
+    },
+  });
 });
 
 document
@@ -331,6 +358,7 @@ document
     document.getElementById('popup-overlay_share-user').style.display = 'none';
   });
 
+//共有履歴ポップアップのカーソル移動
 function makeDraggable(element) {
   let isDragging = false;
   let offset = { x: 0, y: 0 };
@@ -349,11 +377,9 @@ function makeDraggable(element) {
       element.style.top = event.clientY - offset.y - 25 + 'px';
     }
   });
-
   document.addEventListener('mouseup', () => {
     isDragging = false;
   });
 }
-
 const draggablePopup = document.getElementById('draggable-popup');
 makeDraggable(draggablePopup);
