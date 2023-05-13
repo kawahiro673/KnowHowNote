@@ -332,7 +332,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
     }),
     success: function (res) {
       let shareUserNameArray = [];
-      res.shareResult.fotEach((share) => {
+      res.shareResult.forEach((share) => {
         if (!shareUserNameArray.includes(share.UserName)) {
           // const div = document.createElement('div');
           // div.setAttribute('class', 'share-history-div');
