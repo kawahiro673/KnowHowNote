@@ -340,8 +340,9 @@ document.getElementById('share-user-button').addEventListener('click', () => {
           checkbox.type = 'checkbox';
           checkbox.id = `checkbox${share.UserName}`;
 
-          if (checkUser.includes(share.UserName)) checkbox.checked = true;
-
+          if (checkUser.includes(share.UserName)) {
+            checkbox.checked = true;
+          }
           // ラベル要素の作成
           const checkboxLabel = document.createElement('label');
           checkboxLabel.textContent = share.UserName;
@@ -365,7 +366,6 @@ document.getElementById('share-user-button').addEventListener('click', () => {
           shareUserNameArray.push(share.UserName);
         }
       });
-      checkUser = [];
     },
   });
 });
