@@ -354,9 +354,9 @@ document.getElementById('share-user-button').addEventListener('click', () => {
 
           checkbox.addEventListener('change', () => {
             if (checkbox.checked) {
-              console.log(`チェックされました: ${share.UserName}`);
+              checkUser.push(share.UserName);
             } else {
-              console.log(`チェックが解除されました: ${share.UserName}`);
+              //チェック解除
             }
           });
 
@@ -384,7 +384,7 @@ document
   .getElementById('share-user-add-button')
   .addEventListener('click', () => {
     document.getElementsByClassName('share-input')[0].value =
-      shareUserNameArray.join(', ');
+      checkUser.join(', ');
 
     document.getElementById('popup-overlay_share-user').style.display = 'none';
     while (document.getElementById('share-user-div').firstChild) {
