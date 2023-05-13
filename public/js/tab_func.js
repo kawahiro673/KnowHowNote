@@ -320,7 +320,7 @@ export const deleteTabArray = (id, tabArray) => {
 };
 
 //共有履歴　ユーザー一覧
-let shareUserNameArray;
+let checkUser = [];
 document.getElementById('share-user-button').addEventListener('click', () => {
   document.getElementById('popup-overlay_share-user').style.display = 'block';
   $.ajax({
@@ -332,7 +332,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
       flg: 'ShareList',
     }),
     success: function (res) {
-      shareUserNameArray = [];
+      let shareUserNameArray = [];
       res.shareResult.forEach((share) => {
         if (!shareUserNameArray.includes(share.UserName)) {
           // チェックボックス要素の作成
@@ -352,6 +352,14 @@ document.getElementById('share-user-button').addEventListener('click', () => {
             .getElementById('share-user-div')
             .appendChild(document.createElement('br'));
 
+          checkbox.addEventListener('change', () => {
+            if (checkbox.checked) {
+              console.log(`チェックされました: ${share.UserName}`);
+            } else {
+              console.log(`チェックが解除されました: ${share.UserName}`);
+            }
+          });
+
           shareUserNameArray.push(share.UserName);
         }
       });
@@ -366,7 +374,7 @@ document
     document.getElementById('popup-overlay_share-user').style.display = 'none';
     //配下の要素全削除。ボタン押すたびに追加されるため・・
     while (document.getElementById('share-user-div').firstChild) {
-      document.document
+      document
         .getElementById('share-user-div')
         .removeChild(document.getElementById('share-user-div').firstChild);
     }
@@ -380,7 +388,7 @@ document
 
     document.getElementById('popup-overlay_share-user').style.display = 'none';
     while (document.getElementById('share-user-div').firstChild) {
-      document.document
+      document
         .getElementById('share-user-div')
         .removeChild(document.getElementById('share-user-div').firstChild);
     }
