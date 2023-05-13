@@ -345,10 +345,10 @@ document.getElementById('share-user-button').addEventListener('click', () => {
           checkboxLabel.setAttribute('for', `checkbox${share.UserName}`);
 
           // 要素の追加
-          document.getElementsById('share-user-div').appendChild(checkbox);
-          document.getElementsById('share-user-div').appendChild(checkboxLabel);
+          document.getElementById('share-user-div').appendChild(checkbox);
+          document.getElementById('share-user-div').appendChild(checkboxLabel);
           document
-            .getElementsById('share-user-div')
+            .getElementById('share-user-div')
             .appendChild(document.createElement('br'));
 
           shareUserNameArray.push(share.UserName);
