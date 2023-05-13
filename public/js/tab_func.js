@@ -345,24 +345,20 @@ document.getElementById('share-user-button').addEventListener('click', () => {
           checkboxLabel.setAttribute('for', `checkbox${share.UserName}`);
 
           // 要素の追加
+          document.getElementsById('share-user-div').appendChild(checkbox);
+          document.getElementsById('share-user-div').appendChild(checkboxLabel);
           document
-            .getElementsByClassName('popup-body_share-user')[0]
-            .appendChild(checkbox);
-          document
-            .getElementsByClassName('popup-body_share-user')[0]
-            .appendChild(checkboxLabel);
-          document
-            .getElementsByClassName('popup-body_share-user')[0]
+            .getElementsById('share-user-div')
             .appendChild(document.createElement('br'));
 
           shareUserNameArray.push(share.UserName);
         }
       });
-      const button = document.createElement('button');
-      checkbox.id = 'share-user-add-button';
-      document
-        .getElementsByClassName('popup-body_share-user')[0]
-        .appendChild(button);
+      // const button = document.createElement('button');
+      // checkbox.id = 'share-user-add-button';
+      // document
+      //   .getElementsByClassName('popup-body_share-user')[0]
+      //   .appendChild(button);
     },
   });
 });
@@ -382,7 +378,10 @@ document
     }
   });
 
-document.getElementById('share-user-add').addEventListener('click', () => {});
+document.getElementById('share-user-add').addEventListener('click', () => {
+  console.log('クリックしました');
+  document.getElementsByClassName('share-input')[0].value = 'chinko';
+});
 
 //共有履歴ポップアップのカーソル移動
 function makeDraggable(element) {
