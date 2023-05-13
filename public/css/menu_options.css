@@ -164,7 +164,8 @@
 #yes-button-delete,
 #no-button-delete,
 .popup-body_inquiry button,
-#share-user-button {
+#share-user-button,
+#share-user-add-button {
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -182,7 +183,8 @@
 #no-button-logout,
 #yes-button-delete,
 #no-button-delete,
-#share-user-button {
+#share-user-button,
+#share-user-add-button {
   padding: 7px 14px;
   font-size: 12px;
 }

@@ -334,16 +334,6 @@ document.getElementById('share-user-button').addEventListener('click', () => {
       let shareUserNameArray = [];
       res.shareResult.forEach((share) => {
         if (!shareUserNameArray.includes(share.UserName)) {
-          // const div = document.createElement('div');
-          // div.setAttribute('class', 'share-history-div');
-          // const p = document.createElement('p');
-          // p.setAttribute('class', 'share-history-p');
-          // p.innerHTML = share.UserName;
-          // document
-          //   .getElementsByClassName('popup-body_share-user')[0]
-          //   .appendChild(div);
-          // div.appendChild(p);
-
           // チェックボックス要素の作成
           const checkbox = document.createElement('input');
           checkbox.type = 'checkbox';
@@ -361,10 +351,18 @@ document.getElementById('share-user-button').addEventListener('click', () => {
           document
             .getElementsByClassName('popup-body_share-user')[0]
             .appendChild(checkboxLabel);
+          document
+            .getElementsByClassName('popup-body_share-user')[0]
+            .appendChild(document.createElement('br'));
 
           shareUserNameArray.push(share.UserName);
         }
       });
+      const button = document.createElement('button');
+      checkbox.id = 'share-user-add-button';
+      document
+        .getElementsByClassName('popup-body_share-user')[0]
+        .appendChild(button);
     },
   });
 });
@@ -374,7 +372,17 @@ document
   .addEventListener('click', (e) => {
     e.preventDefault(); // リンクのデフォルトの動作を無効化
     document.getElementById('popup-overlay_share-user').style.display = 'none';
+    //配下の要素全削除。ボタン押すたびに追加されるため・・
+    while (document.querySelector('popup-body_share-user').firstChild) {
+      document
+        .querySelector('popup-body_share-user')
+        .removeChild(
+          document.querySelector('popup-body_share-user').firstChild
+        );
+    }
   });
+
+document.getElementById('share-user-add').addEventListener('click', () => {});
 
 //共有履歴ポップアップのカーソル移動
 function makeDraggable(element) {
