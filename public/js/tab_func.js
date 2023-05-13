@@ -329,21 +329,39 @@ document.getElementById('share-user-button').addEventListener('click', () => {
     contentType: 'application/json',
     data: JSON.stringify({
       flg: 'ShareList',
-      id,
     }),
     success: function (res) {
       let shareUserNameArray = [];
       res.shareResult.fotEach((share) => {
         if (!shareUserNameArray.includes(share.UserName)) {
-          const div = document.createElement('div');
-          div.setAttribute('class', 'share-history-div');
-          const p = document.createElement('p');
-          p.setAttribute('class', 'share-history-p');
-          p.innerHTML = share.UserName;
+          // const div = document.createElement('div');
+          // div.setAttribute('class', 'share-history-div');
+          // const p = document.createElement('p');
+          // p.setAttribute('class', 'share-history-p');
+          // p.innerHTML = share.UserName;
+          // document
+          //   .getElementsByClassName('popup-body_share-user')[0]
+          //   .appendChild(div);
+          // div.appendChild(p);
+
+          // チェックボックス要素の作成
+          const checkbox = document.createElement('input');
+          checkbox.type = 'checkbox';
+          checkbox.id = `checkbox${share.UserName}`;
+
+          // ラベル要素の作成
+          const checkboxLabel = document.createElement('label');
+          checkboxLabel.textContent = share.UserName;
+          checkboxLabel.setAttribute('for', `checkbox${share.UserName}`);
+
+          // 要素の追加
           document
             .getElementsByClassName('popup-body_share-user')[0]
-            .appendChild(div);
-          div.appendChild(p);
+            .appendChild(checkbox);
+          document
+            .getElementsByClassName('popup-body_share-user')[0]
+            .appendChild(checkboxLabel);
+
           shareUserNameArray.push(share.UserName);
         }
       });
