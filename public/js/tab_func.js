@@ -340,6 +340,8 @@ document.getElementById('share-user-button').addEventListener('click', () => {
           checkbox.type = 'checkbox';
           checkbox.id = `checkbox${share.UserName}`;
 
+          if (checkUser.includes(share.UserName)) checkbox.checked = true;
+
           // ラベル要素の作成
           const checkboxLabel = document.createElement('label');
           checkboxLabel.textContent = share.UserName;
@@ -352,6 +354,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
             .getElementById('share-user-div')
             .appendChild(document.createElement('br'));
 
+          //チェックが入っているユーザーをcheckUserに格納(inputタブに出力するため)
           checkbox.addEventListener('change', () => {
             if (checkbox.checked) {
               checkUser.push(share.UserName);
@@ -359,10 +362,10 @@ document.getElementById('share-user-button').addEventListener('click', () => {
               //チェック解除
             }
           });
-
           shareUserNameArray.push(share.UserName);
         }
       });
+      checkUser = [];
     },
   });
 });
@@ -383,6 +386,7 @@ document
 document
   .getElementById('share-user-add-button')
   .addEventListener('click', () => {
+    document.getElementsByClassName('share-input')[0].value = '';
     document.getElementsByClassName('share-input')[0].value =
       checkUser.join(', ');
 
