@@ -225,8 +225,13 @@ document.getElementById('share-send').addEventListener('click', (e) => {
     },
     error: function (jqXHR, textStatus, errorThrown) {
       // エラー時の処理
-      console.log('エラー:', textStatus, errorThrown);
-      alert(jqXHR.responseJSON.message);
+      // alert(jqXHR.responseJSON.message);
+      console.log(jqXHR.responseJSON.nothing);
+      document.getElementById('popup-overlay_share_no').style.display = 'block';
+      setTimeout(function () {
+        document.getElementById('popup-overlay_share_no').style.display =
+          'none';
+      }, 1500);
     },
   });
 });

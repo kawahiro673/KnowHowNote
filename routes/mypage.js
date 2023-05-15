@@ -509,95 +509,12 @@ router
       );
       res.render('top.ejs');
     } else if (req.body.flg === 'getuser') {
-      // const token = req.cookies.token;
-      // const decoded = JWT.verify(token, 'SECRET_KEY');
-
-      // console.log(req.body.name);
-
-      // let promise = new Promise((resolve, reject) => {
-      //   resolve();
-      // });
-      // promise
-      //   .then(() => {
-      //     return new Promise((resolve, reject) => {
-      //       pool.query('SELECT * FROM register_user;', (error, result) => {
-      //         if (error) {
-      //           reject(error);
-      //         } else {
-      //           const user = result.find(
-      //             (user) => user.UserName === req.body.name
-      //           );
-      //           if (!user) {
-      //             return res.send({
-      //               message: 'ユーザーが見つかりませんでした',
-      //             });
-      //           }
-      //           resolve(user);
-      //         }
-      //       });
-      //     });
-      //   })
-      //   .then((user) => {
-      //     return new Promise((resolve, reject) => {
-      //       pool.query(
-      //         'INSERT INTO it_memo (title, memo_text, Type, UserID) (SELECT title, memo_text, ?, ? FROM it_memo WHERE id = ?);',
-      //         ['Share', user.id, req.body.id],
-      //         (error, result) => {
-      //           if (error) {
-      //             reject(error);
-      //           } else {
-      //             resolve();
-      //           }
-      //         }
-      //       );
-      //     });
-      //   })
-      //   .then(() => {
-      //     return new Promise((resolve, reject) => {
-      //       pool.query(
-      //         'SELECT * FROM register_user WHERE Email = ?;',
-      //         [decoded.email],
-      //         (error, resultDecoded) => {
-      //           if (error) {
-      //             reject(error);
-      //           } else {
-      //             resolve(resultDecoded);
-      //           }
-      //         }
-      //       );
-      //     });
-      //   })
-      //   .then((resultDecoded) => {
-      //     return new Promise((resolve, reject) => {
-      //       pool.query(
-      //         'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID) values(?, ?, ?, ?);',
-      //         [
-      //           req.body.name,
-      //           req.body.time,
-      //           req.body.title,
-      //           resultDecoded[0].id,
-      //         ],
-      //         (error, result) => {
-      //           if (error) {
-      //             reject(error);
-      //           } else {
-      //             res.send({ message: '共有しました' });
-      //           }
-      //         }
-      //       );
-      //     });
-      //   })
-      //   .catch((error) => {
-      //     console.error(error);
-      //     res.status(500).send('Internal Server Error.(getuser)');
-      //   });
       let nothingUser = [];
       const token = req.cookies.token;
       const decoded = JWT.verify(token, 'SECRET_KEY');
       const userNames = Array.isArray(req.body.name)
         ? req.body.name
         : [req.body.name]; // 名前を配列として受け取る
-
       userNames
         .reduce((promiseChain, name) => {
           return promiseChain
@@ -610,7 +527,8 @@ router
                     const user = result.find((user) => user.UserName === name);
                     if (!user) {
                       nothingUser.push(name);
-                      reject(new Error('ユーザーが見つかりませんでした'));
+                      // reject(new Error('ユーザーが見つかりませんでした'));
+                      resolve(); // ユーザーが見つからなくても次のユーザーの処理に進む
                     } else {
                       resolve(user);
                     }
@@ -627,13 +545,13 @@ router
                     if (error) {
                       reject(error);
                     } else {
-                      resolve();
+                      resolve(user);
                     }
                   }
                 );
               });
             })
-            .then(() => {
+            .then((user) => {
               return new Promise((resolve, reject) => {
                 pool.query(
                   'SELECT * FROM register_user WHERE Email = ?;',
@@ -642,26 +560,29 @@ router
                     if (error) {
                       reject(error);
                     } else {
-                      resolve(resultDecoded);
+                      resolve({ resultDecoded: resultDecoded, user: user });
                     }
                   }
                 );
               });
             })
-            .then((resultDecoded) => {
-              return new Promise((resolve, reject) => {
-                pool.query(
-                  'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID) values(?, ?, ?, ?);',
-                  [name, req.body.time, req.body.title, resultDecoded[0].id],
-                  (error, result) => {
-                    if (error) {
-                      reject(error);
-                    } else {
-                      resolve();
+            .then(({ resultDecoded, user }) => {
+              //DBに格納されていないユーザーが参照してしまうと、余計な情報が格納されてしまうため(存在しないユーザーには共有されないようにしているため)
+              if (user) {
+                return new Promise((resolve, reject) => {
+                  pool.query(
+                    'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID) values(?, ?, ?, ?);',
+                    [name, req.body.time, req.body.title, resultDecoded[0].id],
+                    (error, result) => {
+                      if (error) {
+                        reject(error);
+                      } else {
+                        resolve();
+                      }
                     }
-                  }
-                );
-              });
+                  );
+                });
+              }
             });
         }, Promise.resolve())
         .then(() => {
@@ -669,7 +590,6 @@ router
         })
         .catch((error) => {
           console.error(error);
-          console.log(error.message);
           res
             .status(500)
             .json({ message: error.message, nothing: nothingUser });
