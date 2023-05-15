@@ -108,7 +108,7 @@
   background-color: rgba(0, 0, 0, 0.3);
 }
 .popup-window_share_ans,
-.popup-overlay_share_no {
+.popup-window_share_no {
   width: 300px;
   height: 200px;
   background-color: #fff;
@@ -120,7 +120,7 @@
   z-index: 10000;
 }
 .popup-header_share_ans,
-.popup-overlay_share_no {
+.popup-header_share_no {
   display: flex;
   align-items: center;
   justify-content: center; /* 中央寄せに変更 */
@@ -129,14 +129,14 @@
   border-radius: 10px 10px 0 0;
 }
 .popup-header_share_ans h2,
-.popup-overlay_share_no {
+.popup-header_share_no h2 {
   font-size: 16px;
   font-weight: normal;
   margin: 0 auto;
   padding: 0;
 }
 .popup-body_share_ans,
-.popup-overlay_share_no {
+.popup-body_share_no {
   padding: 0 10px;
 }
 

@@ -530,7 +530,7 @@ router
                       // reject(new Error('ユーザーが見つかりませんでした'));
                       resolve({ skip: true }); // ユーザーが見つからなくても次のユーザーの処理に進む
                     } else {
-                      resolve(user);
+                      resolve({ user });
                     }
                   }
                 });
@@ -548,7 +548,7 @@ router
                       if (error) {
                         reject(error);
                       } else {
-                        resolve(user);
+                        resolve({ user });
                       }
                     }
                   );
