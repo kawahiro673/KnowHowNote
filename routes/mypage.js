@@ -528,7 +528,7 @@ router
                     if (!user) {
                       nothingUser.push(name);
                       // reject(new Error('ユーザーが見つかりませんでした'));
-                      resolve(); // ユーザーが見つからなくても次のユーザーの処理に進む
+                      resolve({ skip: true }); // ユーザーが見つからなくても次のユーザーの処理に進む
                     } else {
                       resolve(user);
                     }
@@ -536,39 +536,49 @@ router
                 });
               });
             })
-            .then((user) => {
-              return new Promise((resolve, reject) => {
-                pool.query(
-                  'INSERT INTO it_memo (title, memo_text, Type, UserID) (SELECT title, memo_text, ?, ? FROM it_memo WHERE id = ?);',
-                  ['Share', user.id, req.body.id],
-                  (error, result) => {
-                    if (error) {
-                      reject(error);
-                    } else {
-                      resolve(user);
+            .then(({ skip, user }) => {
+              if (skip) {
+                return Promise.resolve();
+              } else {
+                return new Promise((resolve, reject) => {
+                  pool.query(
+                    'INSERT INTO it_memo (title, memo_text, Type, UserID) (SELECT title, memo_text, ?, ? FROM it_memo WHERE id = ?);',
+                    ['Share', user.id, req.body.id],
+                    (error, result) => {
+                      if (error) {
+                        reject(error);
+                      } else {
+                        resolve(user);
+                      }
                     }
-                  }
-                );
-              });
+                  );
+                });
+              }
             })
-            .then((user) => {
-              return new Promise((resolve, reject) => {
-                pool.query(
-                  'SELECT * FROM register_user WHERE Email = ?;',
-                  [decoded.email],
-                  (error, resultDecoded) => {
-                    if (error) {
-                      reject(error);
-                    } else {
-                      resolve({ resultDecoded: resultDecoded, user: user });
+            .then(({ skip, user }) => {
+              if (skip) {
+                return Promise.resolve({ skip: true });
+              } else {
+                return new Promise((resolve, reject) => {
+                  pool.query(
+                    'SELECT * FROM register_user WHERE Email = ?;',
+                    [decoded.email],
+                    (error, resultDecoded) => {
+                      if (error) {
+                        reject(error);
+                      } else {
+                        resolve({ resultDecoded: resultDecoded, user: user });
+                      }
                     }
-                  }
-                );
-              });
+                  );
+                });
+              }
             })
-            .then(({ resultDecoded, user }) => {
+            .then(({ skip, resultDecoded, user }) => {
               //DBに格納されていないユーザーが参照してしまうと、余計な情報が格納されてしまうため(存在しないユーザーには共有されないようにしているため)
-              if (user) {
+              if (skip) {
+                return Promise.resolve({ skip: true });
+              } else {
                 return new Promise((resolve, reject) => {
                   pool.query(
                     'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID) values(?, ?, ?, ?);',
