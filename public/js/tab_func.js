@@ -191,8 +191,17 @@ document.getElementById('share-send').addEventListener('click', (e) => {
   const day = String(now.getDate()).padStart(2, '0');
   const hours = String(now.getHours()).padStart(2, '0');
   const minutes = String(now.getMinutes()).padStart(2, '0');
-
   const formattedDateTime = `${year}-${month}-${day}-${hours}:${minutes}`;
+
+  let shareUserNames = [];
+  checkedElements.forEach((val) => {
+    const shareUserName = val.nextElementSibling.innerHTML;
+    shareUserNames.push(shareUserName);
+  });
+
+  const inputValue = document.getElementsByClassName('share-input')[0].value;
+  const inputValues = inputValue.split(',').map((value) => value.trim());
+  console.log(inputValues);
   $.ajax({
     url: '/mypage/',
     type: 'POST',
@@ -201,7 +210,7 @@ document.getElementById('share-send').addEventListener('click', (e) => {
     data: JSON.stringify({
       flg: 'getuser',
       id: shareId,
-      name: document.getElementsByClassName('share-input')[0].value,
+      names: document.getElementsByClassName('share-input')[0],
       title: shareTitle,
       time: formattedDateTime,
     }),
@@ -320,7 +329,6 @@ export const deleteTabArray = (id, tabArray) => {
 };
 
 //共有履歴　ユーザー一覧
-let checkUser = []; //チェックボックスにチェックを入れたユーザー
 document.getElementById('share-user-button').addEventListener('click', () => {
   document.getElementById('popup-overlay_share-user').style.display = 'block';
   $.ajax({
