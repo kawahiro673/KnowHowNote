@@ -320,7 +320,7 @@ export const deleteTabArray = (id, tabArray) => {
 };
 
 //共有履歴　ユーザー一覧
-let checkUser = [];
+let checkUser = []; //チェックボックスにチェックを入れたユーザー
 document.getElementById('share-user-button').addEventListener('click', () => {
   document.getElementById('popup-overlay_share-user').style.display = 'block';
   $.ajax({
@@ -332,7 +332,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
       flg: 'ShareList',
     }),
     success: function (res) {
-      let shareUserNameArray = [];
+      let shareUserNameArray = []; //全ての共有履歴のユーザーを一通り見るための配列(実行したら格納)
       res.shareResult.forEach((share) => {
         if (!shareUserNameArray.includes(share.UserName)) {
           // チェックボックス要素の作成
@@ -360,7 +360,11 @@ document.getElementById('share-user-button').addEventListener('click', () => {
             if (checkbox.checked) {
               checkUser.push(share.UserName);
             } else {
-              //チェック解除
+              //チェック解除した場合は配列から削除
+              const index = checkUser.indexOf(share.UserName);
+              if (index !== -1) {
+                checkUser.splice(index, 1);
+              }
             }
           });
           shareUserNameArray.push(share.UserName);
@@ -371,11 +375,13 @@ document.getElementById('share-user-button').addEventListener('click', () => {
 });
 
 document
-  .getElementById('pop-delete_share-user')
-  .addEventListener('click', (e) => {
-    e.preventDefault(); // リンクのデフォルトの動作を無効化
+  .getElementById('share-user-add-button')
+  .addEventListener('click', () => {
+    document.getElementsByClassName('share-input')[0].value = '';
+    document.getElementsByClassName('share-input')[0].value =
+      checkUser.join(', ');
+
     document.getElementById('popup-overlay_share-user').style.display = 'none';
-    //配下の要素全削除。ボタン押すたびに追加されるため・・
     while (document.getElementById('share-user-div').firstChild) {
       document
         .getElementById('share-user-div')
@@ -384,13 +390,11 @@ document
   });
 
 document
-  .getElementById('share-user-add-button')
-  .addEventListener('click', () => {
-    document.getElementsByClassName('share-input')[0].value = '';
-    document.getElementsByClassName('share-input')[0].value =
-      checkUser.join(', ');
-
+  .getElementById('pop-delete_share-user')
+  .addEventListener('click', (e) => {
+    e.preventDefault(); // リンクのデフォルトの動作を無効化
     document.getElementById('popup-overlay_share-user').style.display = 'none';
+    //配下の要素全削除。ボタン押すたびに追加されるため・・
     while (document.getElementById('share-user-div').firstChild) {
       document
         .getElementById('share-user-div')
