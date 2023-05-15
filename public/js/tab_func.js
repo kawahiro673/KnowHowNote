@@ -221,18 +221,18 @@ document.getElementById('share-send').addEventListener('click', (e) => {
         }, 1500);
       } else {
         //ユーザーが見つからないパターン
+        document.getElementById('popup-overlay_share_no').style.display =
+          'block';
+        document.getElementById(
+          'nothingUser'
+        ).innerHTML = `${res.nothingUser}が見つかりませんでした`;
+        setTimeout(function () {
+          document.getElementById('popup-overlay_share_no').style.display =
+            'none';
+        }, 1500);
       }
     },
-    error: function (jqXHR, textStatus, errorThrown) {
-      // エラー時の処理
-      // alert(jqXHR.responseJSON.message);
-      console.log(jqXHR.responseJSON.nothing);
-      document.getElementById('popup-overlay_share_no').style.display = 'block';
-      setTimeout(function () {
-        document.getElementById('popup-overlay_share_no').style.display =
-          'none';
-      }, 1500);
-    },
+    error: function (jqXHR, textStatus, errorThrown) {},
   });
 });
 

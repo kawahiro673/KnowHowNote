@@ -527,7 +527,6 @@ router
                     const user = result.find((user) => user.UserName === name);
                     if (!user) {
                       nothingUser.push(name);
-                      // reject(new Error('ユーザーが見つかりませんでした'));
                       resolve({ skip: true }); // ユーザーが見つからなくても次のユーザーの処理に進む
                     } else {
                       resolve({ user });
@@ -596,7 +595,7 @@ router
             });
         }, Promise.resolve())
         .then(() => {
-          res.send({ message: '共有しました' });
+          res.send({ message: '共有しました', nothingUser: nothingUser });
         })
         .catch((error) => {
           console.error(error);
