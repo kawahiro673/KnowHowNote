@@ -222,6 +222,7 @@ document.getElementById('share-send').addEventListener('click', (e) => {
       } else {
         //ユーザーが見つからないパターン
         alert(res.message);
+        console.log(res.nothing);
       }
     },
   });

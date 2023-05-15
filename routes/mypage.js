@@ -591,6 +591,7 @@ router
       //     console.error(error);
       //     res.status(500).send('Internal Server Error.(getuser)');
       //   });
+      let nothingUser = [];
       const token = req.cookies.token;
       const decoded = JWT.verify(token, 'SECRET_KEY');
       const userNames = Array.isArray(req.body.name)
@@ -608,6 +609,7 @@ router
                   } else {
                     const user = result.find((user) => user.UserName === name);
                     if (!user) {
+                      nothingUser.push(name);
                       reject(new Error('ユーザーが見つかりませんでした'));
                     } else {
                       resolve(user);
@@ -667,7 +669,9 @@ router
         })
         .catch((error) => {
           console.error(error);
-          res.status(500).send('Internal Server Error.(getuser)');
+          res
+            .status(500)
+            .send({ message: error.message, nothing: nothingUser });
         });
     } else if (req.body.flg === 'ShareList') {
       const token = req.cookies.token;
