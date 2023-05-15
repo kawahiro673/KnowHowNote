@@ -538,7 +538,7 @@ router
             })
             .then(({ skip, user }) => {
               if (skip) {
-                return Promise.resolve();
+                return Promise.resolve({ skip: true });
               } else {
                 return new Promise((resolve, reject) => {
                   pool.query(
