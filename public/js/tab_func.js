@@ -221,7 +221,7 @@ document.getElementById('share-send').addEventListener('click', (e) => {
         }, 1500);
       } else {
         //ユーザーが見つからないパターン
-        alert(res.message);
+        alert('ユーザーが見つかりませんでした');
         console.log(res.nothing);
       }
     },
