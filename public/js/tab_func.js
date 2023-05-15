@@ -205,8 +205,8 @@ document.getElementById('share-send').addEventListener('click', (e) => {
     data: JSON.stringify({
       flg: 'getuser',
       id: shareId,
-      name: document.getElementsByClassName('share-input')[0].value,
-      // name:inputValues,
+      // name: document.getElementsByClassName('share-input')[0].value,
+      name: inputValues,
       title: shareTitle,
       time: formattedDateTime,
     }),
