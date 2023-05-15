@@ -608,11 +608,10 @@ router
                   } else {
                     const user = result.find((user) => user.UserName === name);
                     if (!user) {
-                      return reject(
-                        new Error('ユーザーが見つかりませんでした')
-                      );
+                      reject(new Error('ユーザーが見つかりませんでした'));
+                    } else {
+                      resolve(user);
                     }
-                    resolve(user);
                   }
                 });
               });
