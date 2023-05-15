@@ -357,16 +357,12 @@ document.getElementById('share-user-button').addEventListener('click', () => {
       });
       const inputValue =
         document.getElementsByClassName('share-input')[0].value;
-
       const inputValues = inputValue.split(',');
 
       //全てのlabelタグのinnerHTMLを配列に格納(共有履歴のユーザー名)
       const labelInnerHTMLs = Array.from(
         document.querySelectorAll('#share-user-div label')
       ).map((label) => label.innerHTML);
-
-      console.log(inputValues);
-      console.log(labelInnerHTMLs);
 
       inputValues.forEach((val) => {
         if (labelInnerHTMLs.includes(val)) {
@@ -384,7 +380,7 @@ document
     const checkedElements = document.querySelectorAll(
       '#share-user-div input[type="checkbox"]:checked'
     );
-    let shareUserNames;
+    let shareUserNames = [];
     checkedElements.forEach((val) => {
       const shareUserName = val.nextElementSibling.innerHTML;
       shareUserNames.push(shareUserName);
