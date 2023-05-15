@@ -400,6 +400,17 @@ document
   });
 
 document
+  .getElementById('share-user-clear-button')
+  .addEventListener('click', () => {
+    const checkboxes = document.querySelectorAll(
+      '#share-user-div input[type="checkbox"]'
+    );
+    checkboxes.forEach((checkbox) => {
+      checkbox.checked = false;
+    });
+  });
+
+document
   .getElementById('pop-delete_share-user')
   .addEventListener('click', (e) => {
     e.preventDefault(); // リンクのデフォルトの動作を無効化
