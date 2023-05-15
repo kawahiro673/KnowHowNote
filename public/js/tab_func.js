@@ -209,22 +209,24 @@ document.getElementById('share-send').addEventListener('click', (e) => {
       name: inputValues,
       title: shareTitle,
       time: formattedDateTime,
-    }),
-    success: function (res) {
-      if (res.message === '共有しました') {
-        document.getElementById('popup-overlay_share').style.display = 'none';
-        document.getElementById('popup-overlay_share_ans').style.display =
-          'block';
-        setTimeout(function () {
+    })
+      .done(function (res) {
+        if (res.message === '共有しました') {
+          document.getElementById('popup-overlay_share').style.display = 'none';
           document.getElementById('popup-overlay_share_ans').style.display =
-            'none';
-        }, 1500);
-      } else {
-        //ユーザーが見つからないパターン
+            'block';
+          setTimeout(function () {
+            document.getElementById('popup-overlay_share_ans').style.display =
+              'none';
+          }, 1500);
+        }
+      })
+      .fail(function (jqXHR, textStatus, errorThrown) {
+        // 失敗時の処理
+        console.log('失敗:', textStatus, errorThrown);
+        // 他の処理をここに記述する
         alert('ユーザーが見つかりませんでした');
-        console.log(res.nothing);
-      }
-    },
+      }),
   });
 });
 
