@@ -671,7 +671,7 @@ router
           console.error(error);
           res
             .status(500)
-            .send({ message: error.message, nothing: nothingUser });
+            .json({ message: error.message, nothing: nothingUser });
         });
     } else if (req.body.flg === 'ShareList') {
       const token = req.cookies.token;

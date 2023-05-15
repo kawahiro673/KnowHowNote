@@ -209,25 +209,22 @@ document.getElementById('share-send').addEventListener('click', (e) => {
       name: inputValues,
       title: shareTitle,
       time: formattedDateTime,
-    })
-      .then(function (res) {
-        // 成功時の処理
-        if (res.message === '共有しました') {
-          document.getElementById('popup-overlay_share').style.display = 'none';
+    }),
+    success: function (res) {
+      if (res.message === '共有しました') {
+        document.getElementById('popup-overlay_share').style.display = 'none';
+        document.getElementById('popup-overlay_share_ans').style.display =
+          'block';
+        setTimeout(function () {
           document.getElementById('popup-overlay_share_ans').style.display =
-            'block';
-          setTimeout(function () {
-            document.getElementById('popup-overlay_share_ans').style.display =
-              'none';
-          }, 1500);
-        }
-      })
-      .catch(function (jqXHR, textStatus, errorThrown) {
-        // 失敗時の処理
-        console.log('失敗:', textStatus, errorThrown);
-        // 他の処理をここに記述する
-        alert('ユーザーが見つかりませんでした');
-      }),
+            'none';
+        }, 1500);
+      } else {
+        //ユーザーが見つからないパターン
+        alert(res.message);
+        console.log(res.nothing);
+      }
+    },
   });
 });
 
