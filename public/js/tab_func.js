@@ -355,9 +355,11 @@ document.getElementById('share-user-button').addEventListener('click', () => {
           shareUserNameArray.push(share.UserName);
         }
       });
+
       const inputValue =
         document.getElementsByClassName('share-input')[0].value;
-      const inputValues = inputValue.split(',');
+      const trimmedValue = inputValue.trim();
+      const inputValues = trimmedValue.split(',');
 
       //全てのlabelタグのinnerHTMLを配列に格納(共有履歴のユーザー名)
       const labelInnerHTMLs = Array.from(
