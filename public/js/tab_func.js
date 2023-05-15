@@ -340,10 +340,6 @@ document.getElementById('share-user-button').addEventListener('click', () => {
           checkbox.type = 'checkbox';
           checkbox.id = `checkbox${share.UserName}`;
 
-          // if (checkUser.includes(share.UserName)) {
-          //   checkbox.checked = true;
-          // }
-
           // ラベル要素の作成
           const checkboxLabel = document.createElement('label');
           checkboxLabel.textContent = share.UserName;
@@ -356,37 +352,25 @@ document.getElementById('share-user-button').addEventListener('click', () => {
             .getElementById('share-user-div')
             .appendChild(document.createElement('br'));
 
-          //チェックが入っているユーザーをcheckUserに格納(inputタブに出力するため)
-          // checkbox.addEventListener('change', () => {
-          //   if (checkbox.checked) {
-          //     checkUser.push(share.UserName);
-          //   } else {
-          //     //チェック解除した場合は配列から削除
-          //     const index = checkUser.indexOf(share.UserName);
-          //     if (index !== -1) {
-          //       checkUser.splice(index, 1);
-          //     }
-          //   }
-          // });
-
-          const inputValue =
-            document.getElementsByClassName('share-input')[0].value;
-
-          const inputValues = inputValue.split(',');
-          const labelElements = document.querySelectorAll(
-            '#share-user-div label'
-          );
-          const labelInnerHTMLs = Array.from(labelElements).map(
-            (label) => label.innerHTML
-          );
-
-          inputValues.forEach((val) => {
-            if (labelInnerHTMLs.includes(val)) {
-              checkbox.checked = true;
-            }
-          });
-
           shareUserNameArray.push(share.UserName);
+        }
+      });
+      const inputValue =
+        document.getElementsByClassName('share-input')[0].value;
+
+      const inputValues = inputValue.split(',');
+
+      //全てのlabelタグのinnerHTMLを配列に格納(共有履歴のユーザー名)
+      const labelInnerHTMLs = Array.from(
+        document.querySelectorAll('#share-user-div label')
+      ).map((label) => label.innerHTML);
+
+      console.log(inputValues);
+      console.log(labelInnerHTMLs);
+
+      inputValues.forEach((val) => {
+        if (labelInnerHTMLs.includes(val)) {
+          document.getElementById(`checkbox${val}`).checked = true;
         }
       });
     },
@@ -400,9 +384,14 @@ document
     const checkedElements = document.querySelectorAll(
       '#share-user-div input[type="checkbox"]:checked'
     );
-    console.log(checkedElements);
+    let shareUserNames;
+    checkedElements.forEach((val) => {
+      const shareUserName = val.nextElementSibling.innerHTML;
+      shareUserNames.push(shareUserName);
+    });
+
     document.getElementsByClassName('share-input')[0].value =
-      checkUser.join(', ');
+      shareUserNames.join(', ');
 
     document.getElementById('popup-overlay_share-user').style.display = 'none';
     while (document.getElementById('share-user-div').firstChild) {
