@@ -193,15 +193,10 @@ document.getElementById('share-send').addEventListener('click', (e) => {
   const minutes = String(now.getMinutes()).padStart(2, '0');
   const formattedDateTime = `${year}-${month}-${day}-${hours}:${minutes}`;
 
-  let shareUserNames = [];
-  checkedElements.forEach((val) => {
-    const shareUserName = val.nextElementSibling.innerHTML;
-    shareUserNames.push(shareUserName);
-  });
-
   const inputValue = document.getElementsByClassName('share-input')[0].value;
   const inputValues = inputValue.split(',').map((value) => value.trim());
   console.log(inputValues);
+
   $.ajax({
     url: '/mypage/',
     type: 'POST',
