@@ -512,6 +512,8 @@ router
       const token = req.cookies.token;
       const decoded = JWT.verify(token, 'SECRET_KEY');
 
+      console.log(req.body.name);
+
       let promise = new Promise((resolve, reject) => {
         resolve();
       });
