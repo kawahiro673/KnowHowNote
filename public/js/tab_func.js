@@ -219,6 +219,8 @@ document.getElementById('share-send').addEventListener('click', (e) => {
             document.getElementById('popup-overlay_share_ans').style.display =
               'none';
           }, 1500);
+        } else {
+          alert('ユーザーが見つかりませんでしたね');
         }
       })
       .fail(function (jqXHR, textStatus, errorThrown) {
