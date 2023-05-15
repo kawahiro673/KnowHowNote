@@ -221,9 +221,12 @@ document.getElementById('share-send').addEventListener('click', (e) => {
         }, 1500);
       } else {
         //ユーザーが見つからないパターン
-        alert(res.message);
-        console.log(res.nothing);
       }
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      // エラー時の処理
+      console.log('エラー:', textStatus, errorThrown);
+      alert(jqXHR.responseJSON.message);
     },
   });
 });

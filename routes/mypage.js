@@ -669,6 +669,7 @@ router
         })
         .catch((error) => {
           console.error(error);
+          console.log(error.message);
           res
             .status(500)
             .json({ message: error.message, nothing: nothingUser });
