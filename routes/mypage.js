@@ -73,7 +73,7 @@ router
                 } else {
                   resolve({
                     pattern: req.body.pattern,
-                    resultDecoded: resultDecoded,
+                    resultDecoded,
                   });
                 }
               }
@@ -313,8 +313,8 @@ router
                   reject(error);
                 } else {
                   resolve({
-                    result_folder: result_folder,
-                    resultDecoded: resultDecoded,
+                    result_folder,
+                    resultDecoded,
                   });
                 }
               }
@@ -398,7 +398,7 @@ router
                 if (error) {
                   reject(error);
                 } else {
-                  resolve({ results: results, resultDecoded: resultDecoded });
+                  resolve({ results, resultDecoded });
                 }
               }
             );
@@ -514,7 +514,8 @@ router
       const decoded = JWT.verify(token, 'SECRET_KEY');
       const userNames = Array.isArray(req.body.name)
         ? req.body.name
-        : [req.body.name]; // 名前を配列として受け取る
+        : [req.body.name];
+
       userNames
         .reduce((promiseChain, name) => {
           return promiseChain
@@ -566,7 +567,7 @@ router
                       if (error) {
                         reject(error);
                       } else {
-                        resolve({ resultDecoded: resultDecoded, user: user });
+                        resolve({ resultDecoded, user });
                       }
                     }
                   );
@@ -595,13 +596,11 @@ router
             });
         }, Promise.resolve())
         .then(() => {
-          res.send({ message: '共有しました', nothingUser: nothingUser });
+          res.send({ message: '共有しました', nothingUser });
         })
         .catch((error) => {
           console.error(error);
-          res
-            .status(500)
-            .json({ message: error.message, nothing: nothingUser });
+          res.status(500).json({ message: error.message, nothing });
         });
     } else if (req.body.flg === 'ShareList') {
       const token = req.cookies.token;

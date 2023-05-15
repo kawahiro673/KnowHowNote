@@ -230,7 +230,7 @@ document.getElementById('share-send').addEventListener('click', (e) => {
         setTimeout(function () {
           document.getElementById('popup-overlay_share_no').style.display =
             'none';
-        }, 1500);
+        }, 3000);
       }
     },
     error: function (jqXHR, textStatus, errorThrown) {},
