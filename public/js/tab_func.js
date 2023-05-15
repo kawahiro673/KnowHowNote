@@ -211,7 +211,7 @@ document.getElementById('share-send').addEventListener('click', (e) => {
       time: formattedDateTime,
     }),
     success: function (res) {
-      if (res.message === '共有しました') {
+      if (res.nothingUser.length === 0) {
         document.getElementById('popup-overlay_share').style.display = 'none';
         document.getElementById('popup-overlay_share_ans').style.display =
           'block';
@@ -225,7 +225,8 @@ document.getElementById('share-send').addEventListener('click', (e) => {
           'block';
         document.getElementById(
           'nothingUser'
-        ).innerHTML = `${res.nothingUser}が見つかりませんでした`;
+        ).innerHTML = `${res.nothingUser}が見つかりませんでした。
+        その他のユーザーには共有しました。`;
         setTimeout(function () {
           document.getElementById('popup-overlay_share_no').style.display =
             'none';
