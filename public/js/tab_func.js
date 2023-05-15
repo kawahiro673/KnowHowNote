@@ -372,7 +372,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
           const inputValue =
             document.getElementsByClassName('share-input')[0].value;
 
-          const shareUser = inputValue.split(',');
+          const inputValues = inputValue.split(',');
           const labelElements = document.querySelectorAll(
             '#share-user-div label'
           );
@@ -380,7 +380,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
             (label) => label.innerHTML
           );
 
-          inputValue.forEach((val) => {
+          inputValues.forEach((val) => {
             if (labelInnerHTMLs.includes(val)) {
               checkbox.checked = true;
             }
