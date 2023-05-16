@@ -120,7 +120,7 @@ header h1 {
 }
 
 .title {
-  margin: 30px 30px 0px 30px;
+  margin: 0px 30px;
   display: flex;
   align-items: center; /* 要素の縦方向の中央揃え */
   justify-content: space-between;
@@ -181,7 +181,7 @@ header h1 {
 .form-group {
   display: flex;
   flex-direction: column;
-  margin: 30px 30px 0px 30px;
+  margin: 0px 30px;
 }
 
 .edit-save-button {

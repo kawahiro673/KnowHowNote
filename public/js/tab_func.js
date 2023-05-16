@@ -196,7 +196,7 @@ document.getElementById('share-send').addEventListener('click', (e) => {
   const inputValue = document.getElementsByClassName('share-input')[0].value;
   const inputValues = inputValue.split(',').map((value) => value.trim());
 
-  if (!inputValues.includes()) {
+  if (!inputValues.includes(document.getElementById('sab-title').innerHTML)) {
     $.ajax({
       url: '/mypage/',
       type: 'POST',
@@ -205,7 +205,6 @@ document.getElementById('share-send').addEventListener('click', (e) => {
       data: JSON.stringify({
         flg: 'getuser',
         id: shareId,
-        // name: document.getElementsByClassName('share-input')[0].value,
         name: inputValues,
         title: shareTitle,
         time: formattedDateTime,
