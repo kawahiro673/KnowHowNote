@@ -61,7 +61,7 @@ export const tabCreate = (id, title, res) => {
   fadeFont.setAttribute('class', 'fade-out-font');
   fadeFont.innerHTML = `保存が完了いたしました`;
   fadeFont.classList.add('fadeout');
-  fadeFont.style.visibility = 'hidden';
+  // fadeFont.style.visibility = 'hidden';
   let time = document.createElement('p');
   time.setAttribute('class', 'updatetime');
   time.setAttribute('id', `time${id}`);
