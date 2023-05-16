@@ -157,6 +157,7 @@
 .popup-body_delete,
 .popup-body_share-user {
   padding: 0 10px;
+  overflow-y: scroll;
 }
 
 #yes-button-logout,

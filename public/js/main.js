@@ -37,9 +37,11 @@ export const listCreate = () => {
     success: async (res) => {
       if (res.status === 500) {
         console.log('ログイン画面に戻ります');
-        location.href = 'https://nodejs-itnote-app.herokuapp.com/login';
+        location.href = 'https://nodejs-itnote-app.herokuapp.com';
       }
-      document.getElementById('sab-title').innerHTML = res.userName;
+      document.getElementById(
+        'sab-title'
+      ).innerHTML = `ようこそ${res.userName}}さん`;
 
       let resTmp = Array.from(res.response);
       let resTmp2 = Array.from(res.response2);

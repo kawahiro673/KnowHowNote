@@ -195,46 +195,49 @@ document.getElementById('share-send').addEventListener('click', (e) => {
 
   const inputValue = document.getElementsByClassName('share-input')[0].value;
   const inputValues = inputValue.split(',').map((value) => value.trim());
-  console.log(inputValues);
 
-  $.ajax({
-    url: '/mypage/',
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      flg: 'getuser',
-      id: shareId,
-      // name: document.getElementsByClassName('share-input')[0].value,
-      name: inputValues,
-      title: shareTitle,
-      time: formattedDateTime,
-    }),
-    success: function (res) {
-      if (res.nothingUser.length === 0) {
-        document.getElementById('popup-overlay_share').style.display = 'none';
-        document.getElementById('popup-overlay_share_ans').style.display =
-          'block';
-        setTimeout(function () {
+  if (!inputValues.includes()) {
+    $.ajax({
+      url: '/mypage/',
+      type: 'POST',
+      dataType: 'Json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        flg: 'getuser',
+        id: shareId,
+        // name: document.getElementsByClassName('share-input')[0].value,
+        name: inputValues,
+        title: shareTitle,
+        time: formattedDateTime,
+      }),
+      success: function (res) {
+        if (res.nothingUser.length === 0) {
+          document.getElementById('popup-overlay_share').style.display = 'none';
           document.getElementById('popup-overlay_share_ans').style.display =
-            'none';
-        }, 1500);
-      } else {
-        //ユーザーが見つからないパターン
-        document.getElementById('popup-overlay_share_no').style.display =
-          'block';
-        document.getElementById(
-          'nothingUser'
-        ).innerHTML = `${res.nothingUser}が見つかりませんでした。
-        その他のユーザーには共有しました。`;
-        setTimeout(function () {
+            'block';
+          setTimeout(function () {
+            document.getElementById('popup-overlay_share_ans').style.display =
+              'none';
+          }, 1500);
+        } else {
+          //見つからないユーザーがあるパターン
           document.getElementById('popup-overlay_share_no').style.display =
-            'none';
-        }, 3000);
-      }
-    },
-    error: function (jqXHR, textStatus, errorThrown) {},
-  });
+            'block';
+          document.getElementById(
+            'nothingUser'
+          ).innerHTML = `${res.nothingUser}が見つかりませんでした。
+        その他のユーザーには共有しました。`;
+          setTimeout(function () {
+            document.getElementById('popup-overlay_share_no').style.display =
+              'none';
+          }, 3000);
+        }
+      },
+      error: function (jqXHR, textStatus, errorThrown) {},
+    });
+  } else {
+    alert('自分自身は共有できません');
+  }
 });
 
 document.getElementById('pop-delete_share').addEventListener('click', (e) => {
