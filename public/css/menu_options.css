@@ -157,6 +157,7 @@
 .popup-body_logout,
 .popup-body_delete,
 .popup-body_share-user {
+  height: 240px;
   padding: 0 10px;
   overflow-y: scroll;
 }

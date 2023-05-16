@@ -41,7 +41,7 @@ export const listCreate = () => {
       }
       document.getElementById(
         'sab-title'
-      ).innerHTML = `ようこそ${res.userName}}さん`;
+      ).innerHTML = `ようこそ${res.userName}さん`;
 
       let resTmp = Array.from(res.response);
       let resTmp2 = Array.from(res.response2);
