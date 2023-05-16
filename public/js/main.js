@@ -366,11 +366,13 @@ async function titleClick(id, title) {
           tabIdArray.push(id);
 
           editButton.onclick = function () {
-            const p1 = document.createElement('p');
-            p1.setAttribute('class', 'eidt-text');
-            p1.innerHTML =
+            // const p1 = document.createElement('p');
+            // p1.setAttribute('class', 'eidt-text');
+            // p1.innerHTML =
+            //   '※現在編集中です。編集完了後【保存する】ボタンを押してください';
+            // div.appendChild(p1);
+            document.querySelector('.fade-out-font').textContent =
               '※現在編集中です。編集完了後【保存する】ボタンを押してください';
-            div.appendChild(p1);
             textarea.readOnly = false;
             let titletext = document.createElement('input');
             titletext.setAttribute(
