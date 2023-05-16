@@ -68,6 +68,7 @@ header h1 {
   padding: 0;
   margin: 10px;
   display: flex;
+  justify-content: space-between;
 }
 
 .container0 {
