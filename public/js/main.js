@@ -373,8 +373,12 @@ async function titleClick(id, title) {
             // div.appendChild(p1);
             // document.querySelector('.fade-out-font').style.visibility =
             //   'visible';
-            document.querySelectorAll('.fade-out-font').textContent =
-              '※現在編集中です。編集完了後【保存する】ボタンを押してください';
+            const elements = document.querySelectorAll('.fade-out-font');
+            for (var i = 0; i < elements.length; i++) {
+              var element = elements[i];
+              element.textContent =
+                '※現在編集中です。編集完了後【保存する】ボタンを押してください';
+            }
 
             textarea.readOnly = false;
             let titletext = document.createElement('input');
