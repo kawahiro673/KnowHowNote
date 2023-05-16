@@ -371,9 +371,9 @@ async function titleClick(id, title) {
             // p1.innerHTML =
             //   '※現在編集中です。編集完了後【保存する】ボタンを押してください';
             // div.appendChild(p1);
-            document.querySelector('.fade-out-font').style.visibility =
-              'visible';
-            document.querySelector('.fade-out-font').textContent =
+            // document.querySelector('.fade-out-font').style.visibility =
+            //   'visible';
+            document.querySelectorAll('.fade-out-font').textContent =
               '※現在編集中です。編集完了後【保存する】ボタンを押してください';
 
             textarea.readOnly = false;
