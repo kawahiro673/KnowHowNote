@@ -400,7 +400,7 @@ async function titleClick(id, title) {
               keepButtonClick(
                 id,
                 textarea,
-                p1,
+                //p1,
                 fadeFont,
                 keepButton,
                 cancelButton,
@@ -413,7 +413,7 @@ async function titleClick(id, title) {
             cancelButton.onclick = () => {
               cancelButtonClick(
                 id,
-                p1,
+                //p1,
                 keepButton,
                 cancelButton,
                 editButton,
