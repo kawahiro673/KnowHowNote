@@ -61,7 +61,7 @@ export const tabCreate = (id, title, res) => {
   fadeFont.setAttribute('class', 'fade-out-font');
   fadeFont.innerHTML = `保存が完了いたしました`;
   fadeFont.classList.add('fadeout');
-  // fadeFont.style.visibility = 'hidden';
+  fadeFont.style.visibility = 'hidden';
   let time = document.createElement('p');
   time.setAttribute('class', 'updatetime');
   time.setAttribute('id', `time${id}`);
@@ -93,7 +93,6 @@ export const tabCreate = (id, title, res) => {
 export const keepButtonClick = (
   id,
   textarea,
-  //p1,
   fadeFont,
   keepButton,
   cancelButton,
@@ -124,7 +123,6 @@ export const keepButtonClick = (
       }, 1000);
     },
   });
-  // p1.remove();
   keepButton.remove();
   cancelButton.remove();
   document.getElementById(`tabP${id}`).innerHTML = newTitle;
@@ -141,7 +139,6 @@ export const keepButtonClick = (
 //タブエリアの[取り消し]ボタン押下時
 export const cancelButtonClick = (
   id,
-  //p1,
   keepButton,
   cancelButton,
   editButton,
@@ -166,7 +163,6 @@ export const cancelButtonClick = (
       },
     });
     document.getElementById(`tabP${id}`).style.display = 'block';
-    //p1.remove();
     keepButton.remove();
     cancelButton.remove();
     titletext.remove();
