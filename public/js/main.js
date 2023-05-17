@@ -368,6 +368,8 @@ async function titleClick(id, title) {
             document.getElementById(`fade${id}`).textContent =
               '※現在編集中です。編集完了後【保存する】ボタンを押してください';
 
+            document.getElementById(`share-button-${id}`).disabled = true;
+
             textarea.readOnly = false;
             let titletext = document.createElement('input');
             titletext.setAttribute(

@@ -45,6 +45,7 @@ export const tabCreate = (id, title, res) => {
   p.setAttribute('id', 'tabP' + id);
   let shareButton = document.createElement('button');
   shareButton.setAttribute('class', 'sharebtn');
+  shareButton.setAttribute('id', `share-button-${id}`);
   shareButton.innerHTML = '共有する';
   let divFade = document.createElement('div');
   let div2 = document.createElement('div');
@@ -123,6 +124,8 @@ export const keepButtonClick = (
       setTimeout(() => {
         fadeFont.style.visibility = 'hidden';
       }, 1000);
+
+      document.getElementById(`share-button-${id}`).disabled = false;
     },
   });
   keepButton.remove();
@@ -258,14 +261,16 @@ export const closeTab = (id, order, tabIdArray) => {
       order,
     }),
     success: function (res) {
-      const focusFlg = res.tabResult.focus;
-      let result = tabIdArray.indexOf(id);
-      if (focusFlg === 1) {
-        if (result !== 0) {
-          $(`#tab-ID${tabIdArray[result - 1]}`).trigger('click');
+      if (res.tabResult.focus === 1) {
+        if (tabIdArray.indexOf(id) !== 0) {
+          $(`#tab-ID${tabIdArray[tabIdArray.indexOf(id) - 1]}`).trigger(
+            'click'
+          );
           //tabArrayの０番目の場合。タブの一番上の場合
         } else {
-          $(`#tab-ID${tabIdArray[result + 1]}`).trigger('click');
+          $(`#tab-ID${tabIdArray[tabIdArray.indexOf(id) + 1]}`).trigger(
+            'click'
+          );
         }
       }
     },
