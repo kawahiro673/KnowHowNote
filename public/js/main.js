@@ -39,9 +39,7 @@ export const listCreate = () => {
         console.log('ログイン画面に戻ります');
         location.href = 'https://nodejs-itnote-app.herokuapp.com';
       }
-      document.getElementById(
-        'sab-title'
-      ).innerHTML = `ようこそ${res.userName}さん`;
+      document.getElementById('sab-title').innerHTML = res.userName;
 
       let resTmp = Array.from(res.response);
       let resTmp2 = Array.from(res.response2);
@@ -366,15 +364,14 @@ async function titleClick(id, title) {
           tabIdArray.push(id);
 
           editButton.onclick = function () {
-            // document.querySelector('.fade-out-font').style.visibility =
-            //   'visible';
+            document.querySelector('.fade-out-font').style.visibility =
+              'visible';
+            document.getElementById(`fade${id}`).textContent =
+              '※現在編集中です。編集完了後【保存する】ボタンを押してください';
 
-            const elements = document.querySelectorAll('.fade-out-font');
-            for (var i = 0; i < elements.length; i++) {
-              var element = elements[i];
-              element.textContent =
-                '※現在編集中です。編集完了後【保存する】ボタンを押してください';
-            }
+            setTimeout(() => {
+              document.getElementById(`fade${id}`).style.visibility = 'hidden';
+            }, 1000);
 
             textarea.readOnly = false;
             let titletext = document.createElement('input');

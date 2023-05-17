@@ -142,7 +142,9 @@ document.getElementById('yes-button-logout').addEventListener('click', () => {
     data: JSON.stringify({
       flg: 'cookiedelete',
     }),
-    success: function (res) {},
+    success: function (res) {
+      location.href = 'https://nodejs-itnote-app.herokuapp.com';
+    },
   });
 });
 
