@@ -369,10 +369,6 @@ async function titleClick(id, title) {
             document.getElementById(`fade${id}`).textContent =
               '※現在編集中です。編集完了後【保存する】ボタンを押してください';
 
-            setTimeout(() => {
-              document.getElementById(`fade${id}`).style.visibility = 'hidden';
-            }, 1000);
-
             textarea.readOnly = false;
             let titletext = document.createElement('input');
             titletext.setAttribute(
