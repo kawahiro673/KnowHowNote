@@ -369,6 +369,9 @@ async function titleClick(id, title) {
               '※現在編集中です。編集完了後【保存する】ボタンを押してください';
 
             document.getElementById(`share-button-${id}`).disabled = true;
+            document.getElementById(
+              `share-button-${id}`
+            ).style.backgroundColor = 'gray';
 
             textarea.readOnly = false;
             let titletext = document.createElement('input');

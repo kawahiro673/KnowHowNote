@@ -126,6 +126,8 @@ export const keepButtonClick = (
       }, 1000);
 
       document.getElementById(`share-button-${id}`).disabled = false;
+      document.getElementById(`share-button-${id}`).style.backgroundColor =
+        '#007bff';
     },
   });
   keepButton.remove();
