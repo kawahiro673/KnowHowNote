@@ -364,8 +364,7 @@ async function titleClick(id, title) {
           tabIdArray.push(id);
 
           editButton.onclick = function () {
-            document.querySelector('.fade-out-font').style.visibility =
-              'visible';
+            document.getElementById(`fade${id}`).style.visibility = 'visible';
             document.getElementById(`fade${id}`).textContent =
               '※現在編集中です。編集完了後【保存する】ボタンを押してください';
 
