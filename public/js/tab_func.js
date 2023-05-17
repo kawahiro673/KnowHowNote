@@ -59,7 +59,6 @@ export const tabCreate = (id, title, res) => {
   textarea.innerHTML = res.memo_text;
   let fadeFont = document.createElement('p');
   fadeFont.setAttribute('class', 'fade-out-font');
-  fadeFont.innerHTML = `保存が完了いたしました`;
   fadeFont.classList.add('fadeout');
   fadeFont.setAttribute('id', `fade${id}`);
   fadeFont.style.visibility = 'hidden';
@@ -116,8 +115,11 @@ export const keepButtonClick = (
       time,
     }),
     success: function (res) {
-      fadeFont.style.visibility = 'visible';
+      document.getElementById(`fade${id}`).style.visibility = 'visible';
       //1000ミリ秒後に表示を隠す
+      document.getElementById(`fade${id}`).textContent =
+        '保存が完了いたしました';
+
       setTimeout(() => {
         fadeFont.style.visibility = 'hidden';
       }, 1000);
