@@ -373,70 +373,85 @@ async function titleClick(id, title) {
               `share-button-${id}`
             ).style.backgroundColor = 'gray';
 
-            textarea.readOnly = false;
-            let titletext = document.createElement('input');
+            document.getElementById(`textarea${id}`).readOnly = false;
+
+            const titletext = document.createElement('input');
             titletext.setAttribute(
               'value',
               document.getElementById(`tabP${id}`).innerHTML
             );
+            titletext.setAttribute('id', `titletext${id}`);
+
             document.getElementById(`tabP${id}`).after(titletext);
             document.getElementById(`tabP${id}`).style.display = 'none';
 
-            const keepButton = document.createElement('button');
-            const cancelButton = document.createElement('button');
+            // const keepButton = document.createElement('button');
+            // const cancelButton = document.createElement('button');
 
-            keepButton.innerHTML = '保存する';
-            cancelButton.innerHTML = '取り消す';
-            keepButton.setAttribute('class', 'keepbtn');
-            cancelButton.setAttribute('class', 'cancelbtn');
+            // keepButton.innerHTML = '保存する';
+            // cancelButton.innerHTML = '取り消す';
+            // keepButton.setAttribute('class', 'keepbtn');
+            // cancelButton.setAttribute('class', 'cancelbtn');
 
-            div.appendChild(keepButton);
-            div.appendChild(cancelButton);
+            // div.appendChild(keepButton);
+            // div.appendChild(cancelButton);
 
             editButton.style.display = 'none';
 
+            document
+              .getElementById(`keep-note-btn${id}`)
+              .addEventListener((id) => {
+                keepButtonClick(id);
+              });
             //[保存する]ボタン押下
-            keepButton.onclick = () => {
-              keepButtonClick(
-                id,
-                textarea,
-                //p1,
-                fadeFont,
-                keepButton,
-                cancelButton,
-                editButton,
-                titletext.value,
-                titletext
-              );
-            };
+            // keepButton.onclick = () => {
+            //   keepButtonClick(
+            //     id,
+            //     textarea,
+            //     //p1,
+            //     fadeFont,
+            //     keepButton,
+            //     cancelButton,
+            //     editButton,
+            //     titletext.value,
+            //     titletext
+            //   );
+            // };
             //[取り消す]ボタン押下
-            cancelButton.onclick = () => {
-              cancelButtonClick(
-                id,
-                //p1,
-                keepButton,
-                cancelButton,
-                editButton,
-                textarea,
-                titletext
-              );
+
+            document
+              .getElementById(`cancel-note-btn${id}`)
+              .addEventListener((id) => {
+                cancelButtonClick(id);
+              });
+            //   cancelButton.onclick = () => {
+            //     cancelButtonClick(
+            //       id,
+            //       //p1,
+            //       keepButton,
+            //       cancelButton,
+            //       editButton,
+            //       textarea,
+            //       titletext
+            //     );
+            //   };
+            // };
+
+            shareButton.onclick = (event) => {
+              shareButtonClick(id, event);
             };
-          };
 
-          shareButton.onclick = (event) => {
-            shareButtonClick(id, event);
-          };
+            //タブ上の「✖️」ボタン押下
+            buttonTab.onclick = () => {
+              closeButton(id, title, tabIdArray);
+              tabIdArray = deleteTabArray(id, tabIdArray);
+            };
 
-          //タブ上の「✖️」ボタン押下
-          buttonTab.onclick = () => {
-            closeButton(id, title, tabIdArray);
-            tabIdArray = deleteTabArray(id, tabIdArray);
-          };
-
-          //タブをクリックした際の処理
-          document.getElementById(`tab-ID${id}`).onclick = (e) => {
-            tabClick(e, id, title);
-            tabFocusID = id;
+            //タブをクリックした際の処理
+            document.getElementById(`tab-ID${id}`).onclick = (e) => {
+              tabClick(e, id, title);
+              tabFocusID = id;
+            };
           };
         },
       });

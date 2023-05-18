@@ -20,13 +20,14 @@ export const classNameGet = (element) => {
 
 //現在日時取得＆DB格納
 export const currentTimeGet = () => {
-  let now = new Date();
-  let Year = now.getFullYear();
-  let Month = now.getMonth() + 1;
-  let DATE = now.getDate();
-  let Hour = now.getHours();
-  let Min = now.getMinutes();
-  return `${Year}年${Month}月${DATE}日 ${Hour}:${Min}`;
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+
+  return `${year}年${month}月${day}日 ${hours}:${minutes}`;
 };
 
 //タブクリック時にrootからパスを取得して返す

@@ -30,44 +30,64 @@ export const tabCreate = (id, title, res) => {
   buttonTab.setAttribute('id', 'button' + id);
   buttonTab.innerHTML = '×';
 
-  // div要素を生成
-  let div = document.createElement('div');
+  const div = document.createElement('div');
   div.className = 'tab-content';
   div.setAttribute('id', 'Tab-ID' + id);
   div.setAttribute('value', id);
-  let div1 = document.createElement('div');
+
+  const div1 = document.createElement('div');
   div1.setAttribute('class', 'title');
-  let p = document.createElement('p');
+
+  const p = document.createElement('p');
   p.setAttribute('class', 'title-txt');
   p.style.fontSize = '25px';
   p.style.color = 'black';
   p.style.textAlign = 'left';
   p.setAttribute('id', 'tabP' + id);
-  let shareButton = document.createElement('button');
+  p.innerHTML = res.title;
+
+  const shareButton = document.createElement('button');
   shareButton.setAttribute('class', 'sharebtn');
   shareButton.setAttribute('id', `share-button-${id}`);
   shareButton.innerHTML = '共有する';
-  let divFade = document.createElement('div');
-  let div2 = document.createElement('div');
+
+  const divFade = document.createElement('div');
+
+  const div2 = document.createElement('div');
   div2.setAttribute('class', 'form-group');
-  let textarea = document.createElement('textarea');
+
+  const textarea = document.createElement('textarea');
   textarea.readOnly = true;
   textarea.style.height = '500px';
-  let editButton = document.createElement('button');
-  editButton.setAttribute('class', 'editbtn');
-  editButton.innerHTML = '編集する';
-  p.innerHTML = res.title;
   textarea.innerHTML = res.memo_text;
-  let fadeFont = document.createElement('p');
+  textarea.setAttribute('id', `textarea${id}`);
+
+  const editButton = document.createElement('button');
+  editButton.setAttribute('class', 'editbtn');
+  editButton.setAttribute('id', `edit-note-btn${id}`);
+  editButton.innerHTML = '編集する';
+
+  const fadeFont = document.createElement('p');
   fadeFont.setAttribute('class', 'fade-out-font');
   fadeFont.classList.add('fadeout');
   fadeFont.setAttribute('id', `fade${id}`);
   fadeFont.style.visibility = 'hidden';
-  let time = document.createElement('p');
+
+  const time = document.createElement('p');
   time.setAttribute('class', 'updatetime');
   time.setAttribute('id', `time${id}`);
   time.style.color = 'black';
   time.innerHTML = res.saved_time;
+
+  const keepButton = document.createElement('button');
+  keepButton.innerHTML = '保存する';
+  keepButton.setAttribute('class', 'keepbtn');
+  keepButton.setAttribute('id', `keep-note-btn${id}`);
+
+  const cancelButton = document.createElement('button');
+  cancelButton.innerHTML = '取り消す';
+  cancelButton.setAttribute('class', 'cancelbtn');
+  cancelButton.setAttribute('id', `cancel-note-btn${id}`);
 
   //要素追加
   tab.appendChild(inputTab);
@@ -83,6 +103,8 @@ export const tabCreate = (id, title, res) => {
   div1.appendChild(shareButton);
   div2.appendChild(textarea);
   div.appendChild(editButton);
+  div.appendChild(keepButton);
+  div.appendChild(cancelButton);
   divFade.appendChild(fadeFont);
   div.appendChild(time);
   tabLabelColorGet(id);
@@ -91,18 +113,11 @@ export const tabCreate = (id, title, res) => {
 };
 
 //タブエリアの[保存]ボタン押下時
-export const keepButtonClick = (
-  id,
-  textarea,
-  fadeFont,
-  keepButton,
-  cancelButton,
-  editButton,
-  newTitle,
-  titletext
-) => {
+export const keepButtonClick = (id) => {
+  const newTitle = document.getElementById(`titletext${id}`).value;
   const pass = passGet(id, newTitle);
   const time = currentTimeGet();
+
   $.ajax({
     url: '/notePostController/',
     type: 'POST',
@@ -112,17 +127,17 @@ export const keepButtonClick = (
       flg: 'noteKeep',
       id,
       titleContent: newTitle, //p.innerHTML,
-      memoContent: textarea.value, //ここに入力した値が入る
+      memoContent: document.getElementById(`textarea${id}`).value, //ここに入力した値が入る
       time,
     }),
     success: function (res) {
       document.getElementById(`fade${id}`).style.visibility = 'visible';
-      //1000ミリ秒後に表示を隠す
+
       document.getElementById(`fade${id}`).textContent =
         '保存が完了いたしました';
 
       setTimeout(() => {
-        fadeFont.style.visibility = 'hidden';
+        document.getElementById(`fade${id}`).style.visibility = 'hidden';
       }, 1000);
 
       document.getElementById(`share-button-${id}`).disabled = false;
@@ -130,28 +145,21 @@ export const keepButtonClick = (
         '#007bff';
     },
   });
-  keepButton.remove();
-  cancelButton.remove();
+  document.getElementById(`keep-note-btn${id}`).remove();
+  document.getElementById(`cancel-note-btn${id}`).remove();
   document.getElementById(`tabP${id}`).innerHTML = newTitle;
   document.getElementById(`tabP${id}`).style.display = 'block';
   document.getElementById(`tabname${id}`).innerHTML = newTitle;
   document.getElementById(`file${id}`).innerHTML = newTitle;
-  titletext.remove();
-  editButton.style.display = 'block';
-  textarea.readOnly = true;
+  document.getElementById(`titletext${id}`).remove();
+  document.getElementById(`edit-note-btn${id}`).style.display = 'block';
+  document.getElementById(`textarea${id}`).readOnly = true;
   document.getElementById(`time${id}`).innerHTML = time;
   document.getElementById('notepass').innerHTML = pass;
 };
 
 //タブエリアの[取り消し]ボタン押下時
-export const cancelButtonClick = (
-  id,
-  keepButton,
-  cancelButton,
-  editButton,
-  textarea,
-  titletext
-) => {
+export const cancelButtonClick = (id) => {
   let btn = confirm(
     '本当に編集を取り消しますか？\n保存していないものは取り消されます。'
   );
@@ -166,15 +174,16 @@ export const cancelButtonClick = (
         id,
       }),
       success: function (res) {
-        textarea.value = res.fileResult.memo_text;
+        document.getElementById(`textarea${id}`).value =
+          res.fileResult.memo_text;
       },
     });
     document.getElementById(`tabP${id}`).style.display = 'block';
-    keepButton.remove();
-    cancelButton.remove();
-    titletext.remove();
-    editButton.style.display = 'block';
-    textarea.readOnly = true;
+    document.getElementById(`keep-note-btn${id}`).remove();
+    document.getElementById(`cancel-note-btn${id}`).remove();
+    document.getElementById(`titletext${id}`).remove();
+    document.getElementById(`edit-note-btn${id}`).style.display = 'block';
+    document.getElementById(`textarea${id}`).readOnly = true;
   }
 };
 
@@ -188,14 +197,6 @@ export function shareButtonClick(id, event) {
 }
 
 document.getElementById('share-send').addEventListener('click', (e) => {
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, '0');
-  const day = String(now.getDate()).padStart(2, '0');
-  const hours = String(now.getHours()).padStart(2, '0');
-  const minutes = String(now.getMinutes()).padStart(2, '0');
-  const formattedDateTime = `${year}-${month}-${day}-${hours}:${minutes}`;
-
   const inputValue = document.getElementsByClassName('share-input')[0].value;
   const inputValues = inputValue.split(',').map((value) => value.trim());
 
@@ -210,7 +211,7 @@ document.getElementById('share-send').addEventListener('click', (e) => {
         id: shareId,
         name: inputValues,
         title: shareTitle,
-        time: formattedDateTime,
+        time: currentTimeGet(),
       }),
       success: function (res) {
         if (res.nothingUser.length === 0) {
