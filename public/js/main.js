@@ -528,7 +528,13 @@ document.getElementById('nouhau').addEventListener('click', () => {
   console.log('要素が有効化されました');
 });
 
-function showDescription() {
-  document.querySelector('.description3').style.display = 'inline-block';
-  // 他のポップアップ位置の調整などが必要な場合はここに追加のコードを記述します
-}
+const sharedetails = document.getElementById('sharedetails');
+const description = document.querySelector('.description');
+
+sharedetails.addEventListener('mouseover', () => {
+  description.style.display = 'block';
+});
+
+sharedetails.addEventListener('mouseout', () => {
+  description.style.display = 'none';
+});
