@@ -83,11 +83,13 @@ export const tabCreate = (id, title, res) => {
   keepButton.innerHTML = '保存する';
   keepButton.setAttribute('class', 'keepbtn');
   keepButton.setAttribute('id', `keep-note-btn${id}`);
+  keepButton.style.display = 'none';
 
   const cancelButton = document.createElement('button');
   cancelButton.innerHTML = '取り消す';
   cancelButton.setAttribute('class', 'cancelbtn');
   cancelButton.setAttribute('id', `cancel-note-btn${id}`);
+  cancelButton.style.display = 'none';
 
   //要素追加
   tab.appendChild(inputTab);

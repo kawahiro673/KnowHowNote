@@ -398,6 +398,12 @@ async function titleClick(id, title) {
 
             editButton.style.display = 'none';
 
+            document.getElementById(`keep-note-btn${id}`).style.display =
+              'block';
+
+            document.getElementById(`cancel-note-btn${id}`).style.display =
+              'block';
+
             document
               .getElementById(`keep-note-btn${id}`)
               .addEventListener((id) => {
