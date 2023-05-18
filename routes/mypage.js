@@ -507,7 +507,8 @@ router
         'Set-Cookie',
         'token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; Path=/'
       );
-      res.render('top.ejs');
+      //res.render('top.ejs');
+      res.send({ msg: 'ログアウトします' });
     } else if (req.body.flg === 'getuser') {
       let nothingUser = [];
       const token = req.cookies.token;
