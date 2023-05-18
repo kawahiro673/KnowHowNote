@@ -527,3 +527,8 @@ document.getElementById('nouhau').addEventListener('click', () => {
   enableElements();
   console.log('要素が有効化されました');
 });
+
+function showDescription() {
+  document.querySelector('.description3').style.display = 'inline-block';
+  // 他のポップアップ位置の調整などが必要な場合はここに追加のコードを記述します
+}
