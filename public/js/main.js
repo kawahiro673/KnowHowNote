@@ -345,8 +345,11 @@ async function titleClick(id, title) {
         }),
         success: function (res) {
           resolve();
-          const [editButton, div, textarea, fadeFont, shareButton, buttonTab] =
-            tabCreate(id, title, res.fileResult);
+          const [editButton, shareButton, buttonTab] = tabCreate(
+            id,
+            title,
+            res.fileResult
+          );
 
           labelContextmenu();
 
@@ -375,32 +378,13 @@ async function titleClick(id, title) {
 
             document.getElementById(`textarea${id}`).readOnly = false;
 
-            const titletext = document.createElement('input');
-            titletext.setAttribute(
-              'value',
-              document.getElementById(`tabP${id}`).innerHTML
-            );
-            titletext.setAttribute('id', `titletext${id}`);
-
-            document.getElementById(`tabP${id}`).after(titletext);
             document.getElementById(`tabP${id}`).style.display = 'none';
-
-            // const keepButton = document.createElement('button');
-            // const cancelButton = document.createElement('button');
-
-            // keepButton.innerHTML = '保存する';
-            // cancelButton.innerHTML = '取り消す';
-            // keepButton.setAttribute('class', 'keepbtn');
-            // cancelButton.setAttribute('class', 'cancelbtn');
-
-            // div.appendChild(keepButton);
-            // div.appendChild(cancelButton);
+            document.getElementById(`titletext${id}`).style.display = 'block';
 
             editButton.style.display = 'none';
 
             document.getElementById(`keep-note-btn${id}`).style.display =
               'block';
-
             document.getElementById(`cancel-note-btn${id}`).style.display =
               'block';
 
@@ -409,39 +393,12 @@ async function titleClick(id, title) {
               .addEventListener('click', () => {
                 keepButtonClick(id);
               });
-            //[保存する]ボタン押下
-            // keepButton.onclick = () => {
-            //   keepButtonClick(
-            //     id,
-            //     textarea,
-            //     //p1,
-            //     fadeFont,
-            //     keepButton,
-            //     cancelButton,
-            //     editButton,
-            //     titletext.value,
-            //     titletext
-            //   );
-            // };
-            //[取り消す]ボタン押下
 
             document
               .getElementById(`cancel-note-btn${id}`)
               .addEventListener('click', () => {
                 cancelButtonClick(id);
               });
-            //   cancelButton.onclick = () => {
-            //     cancelButtonClick(
-            //       id,
-            //       //p1,
-            //       keepButton,
-            //       cancelButton,
-            //       editButton,
-            //       textarea,
-            //       titletext
-            //     );
-            //   };
-            // };
 
             shareButton.onclick = (event) => {
               shareButtonClick(id, event);

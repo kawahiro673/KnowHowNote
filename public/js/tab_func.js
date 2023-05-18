@@ -92,6 +92,14 @@ export const tabCreate = (id, title, res) => {
   cancelButton.setAttribute('id', `cancel-note-btn${id}`);
   cancelButton.style.display = 'none';
 
+  const titletext = document.createElement('input');
+  titletext.setAttribute(
+    'value',
+    document.getElementById(`tabP${id}`).innerHTML
+  );
+  titletext.setAttribute('id', `titletext${id}`);
+  titletext.style.display = 'none';
+
   //要素追加
   tab.appendChild(inputTab);
   tab.appendChild(labelTab);
@@ -103,6 +111,7 @@ export const tabCreate = (id, title, res) => {
   div.appendChild(divFade);
   div.appendChild(div2);
   div1.appendChild(p);
+  div1.appendChild(titletext);
   div1.appendChild(shareButton);
   div2.appendChild(textarea);
   div.appendChild(editButton);
@@ -112,7 +121,7 @@ export const tabCreate = (id, title, res) => {
   div.appendChild(time);
   tabLabelColorGet(id);
 
-  return [editButton, div, textarea, fadeFont, shareButton, buttonTab];
+  return [editButton, shareButton, buttonTab];
 };
 
 //タブエリアの[保存]ボタン押下時
@@ -163,10 +172,11 @@ export const keepButtonClick = (id) => {
 
 //タブエリアの[取り消し]ボタン押下時
 export const cancelButtonClick = (id) => {
-  let btn = confirm(
-    '本当に編集を取り消しますか？\n保存していないものは取り消されます。'
-  );
-  if (btn) {
+  if (
+    confirm(
+      '本当に編集を取り消しますか？\n保存していないものは取り消されます。'
+    )
+  ) {
     $.ajax({
       url: '/notePostController/',
       type: 'POST',
