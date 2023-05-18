@@ -34,7 +34,6 @@ header h1 {
   padding: 13px;
   margin: 0;
   font-family: 'Open Sans', sans-serifp;
-  /* z-index: 10px; */
 }
 
 .rightclick {
@@ -110,6 +109,11 @@ header h1 {
   text-align: center;
   font-family: 'Hannotate SC', sans-serif;
 }
+.titie input {
+  margin: 20px 0px;
+  font-size: 1.5em;
+}
+
 .title-edit {
   margin: 10px;
   width: 50px;
@@ -124,10 +128,6 @@ header h1 {
   display: flex;
   align-items: center; /* 要素の縦方向の中央揃え */
   justify-content: space-between;
-}
-
-.titie input {
-  margin: 20px 0px;
 }
 
 .tabname {
