@@ -75,6 +75,7 @@ header h1 {
   height: 960px;
   margin-top: 0;
   padding-top: 0;
+  position: relative;
 }
 
 .container1 {
@@ -260,7 +261,8 @@ footer {
   display: none;
   position: absolute;
   top: 0;
-  left: 100%;
+  left: 100%; /* 親要素の右側に位置するために変更 */
+  margin-left: 10px; /* 要素間の間隔を調整する場合は適宜変更 */
   padding: 10px;
   font-size: 12px;
   line-height: 1.6em;
