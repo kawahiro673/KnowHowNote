@@ -147,8 +147,8 @@ export const keepButtonClick = (id) => {
         '#007bff';
     },
   });
-  document.getElementById(`keep-note-btn${id}`).remove();
-  document.getElementById(`cancel-note-btn${id}`).remove();
+  document.getElementById(`keep-note-btn${id}`).style = none;
+  document.getElementById(`cancel-note-btn${id}`).style = none;
   document.getElementById(`tabP${id}`).innerHTML = newTitle;
   document.getElementById(`tabP${id}`).style.display = 'block';
   document.getElementById(`tabname${id}`).innerHTML = newTitle;
@@ -181,8 +181,8 @@ export const cancelButtonClick = (id) => {
       },
     });
     document.getElementById(`tabP${id}`).style.display = 'block';
-    document.getElementById(`keep-note-btn${id}`).remove();
-    document.getElementById(`cancel-note-btn${id}`).remove();
+    document.getElementById(`keep-note-btn${id}`).style = none;
+    document.getElementById(`cancel-note-btn${id}`).style = none;
     document.getElementById(`titletext${id}`).remove();
     document.getElementById(`edit-note-btn${id}`).style.display = 'block';
     document.getElementById(`textarea${id}`).readOnly = true;
