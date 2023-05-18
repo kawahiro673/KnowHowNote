@@ -345,11 +345,7 @@ async function titleClick(id, title) {
         }),
         success: function (res) {
           resolve();
-          const [editButton, shareButton, buttonTab] = tabCreate(
-            id,
-            title,
-            res.fileResult
-          );
+          tabCreate(id, title, res.fileResult);
 
           labelContextmenu();
 
@@ -366,7 +362,7 @@ async function titleClick(id, title) {
 
           tabIdArray.push(id);
 
-          editButton.onclick = function () {
+          document.getElementById(`edit-note-btn${id}`).onclick = function () {
             document.getElementById(`fade${id}`).style.visibility = 'visible';
             document.getElementById(`fade${id}`).textContent =
               '※現在編集中です。編集完了後【保存する】ボタンを押してください';
@@ -380,8 +376,15 @@ async function titleClick(id, title) {
 
             document.getElementById(`tabP${id}`).style.display = 'none';
             document.getElementById(`titletext${id}`).style.display = 'block';
+            document
+              .getElementById(`titletext${id}`)
+              .setAttribute(
+                'value',
+                document.getElementById(`tabP${id}`).innerHTML
+              );
 
-            editButton.style.display = 'none';
+            document.getElementById(`edit-note-btn${id}`).style.display =
+              'none';
 
             document.getElementById(`keep-note-btn${id}`).style.display =
               'block';
@@ -400,12 +403,12 @@ async function titleClick(id, title) {
                 cancelButtonClick(id);
               });
 
-            shareButton.onclick = (event) => {
+            document.getElementById(`share-button-${id}`).onclick = (event) => {
               shareButtonClick(id, event);
             };
 
             //タブ上の「✖️」ボタン押下
-            buttonTab.onclick = () => {
+            document.getElementById(`button${id}`).onclick = () => {
               closeButton(id, title, tabIdArray);
               tabIdArray = deleteTabArray(id, tabIdArray);
             };

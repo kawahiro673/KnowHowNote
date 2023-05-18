@@ -25,10 +25,10 @@ export const tabCreate = (id, title, res) => {
   tabname.innerHTML = title;
 
   //[✖️]ボタン作成
-  const buttonTab = document.createElement('button');
-  buttonTab.setAttribute('class', 'buttonTab');
-  buttonTab.setAttribute('id', 'button' + id);
-  buttonTab.innerHTML = '×';
+  const tabClosebutton = document.createElement('button');
+  tabClosebutton.setAttribute('class', 'tabClosebutton');
+  tabClosebutton.setAttribute('id', 'button' + id);
+  tabClosebutton.innerHTML = '×';
 
   const div = document.createElement('div');
   div.className = 'tab-content';
@@ -93,10 +93,7 @@ export const tabCreate = (id, title, res) => {
   cancelButton.style.display = 'none';
 
   const titletext = document.createElement('input');
-  titletext.setAttribute(
-    'value',
-    document.getElementById(`tabP${id}`).innerHTML
-  );
+
   titletext.setAttribute('id', `titletext${id}`);
   titletext.style.display = 'none';
 
@@ -104,7 +101,7 @@ export const tabCreate = (id, title, res) => {
   tab.appendChild(inputTab);
   tab.appendChild(labelTab);
   labelTab.appendChild(tabname);
-  labelTab.appendChild(buttonTab);
+  labelTab.appendChild(tabClosebutton);
   labelTab.appendChild(labelColor);
   tab.appendChild(div);
   div.appendChild(div1);
@@ -121,7 +118,7 @@ export const tabCreate = (id, title, res) => {
   div.appendChild(time);
   tabLabelColorGet(id);
 
-  return [editButton, shareButton, buttonTab];
+  return [editButton, shareButton, tabClosebutton];
 };
 
 //タブエリアの[保存]ボタン押下時
@@ -163,7 +160,7 @@ export const keepButtonClick = (id) => {
   document.getElementById(`tabP${id}`).style.display = 'block';
   document.getElementById(`tabname${id}`).innerHTML = newTitle;
   document.getElementById(`file${id}`).innerHTML = newTitle;
-  document.getElementById(`titletext${id}`).remove();
+  document.getElementById(`titletext${id}`).style.display = 'none';
   document.getElementById(`edit-note-btn${id}`).style.display = 'block';
   document.getElementById(`textarea${id}`).readOnly = true;
   document.getElementById(`time${id}`).innerHTML = time;
@@ -194,7 +191,7 @@ export const cancelButtonClick = (id) => {
     document.getElementById(`tabP${id}`).style.display = 'block';
     document.getElementById(`keep-note-btn${id}`).style.display = 'none';
     document.getElementById(`cancel-note-btn${id}`).style.display = 'none';
-    document.getElementById(`titletext${id}`).remove();
+    document.getElementById(`titletext${id}`).style.display = 'none';
     document.getElementById(`edit-note-btn${id}`).style.display = 'block';
     document.getElementById(`textarea${id}`).readOnly = true;
   }
@@ -302,7 +299,7 @@ export const closeButton = (id, title, tabArray) => {
 //タブクリック時
 export const tabClick = (e, id, title) => {
   //タブの「✖️」ボタン以外押下時
-  if (!e.target.closest('.buttonTab')) {
+  if (!e.target.closest('.tabClosebutton')) {
     //パスを取得する関数
     let pass = passGet(id, document.getElementById('tabname' + id).innerHTML);
     //クリックしたTabのfocusを1へ、その他を0へ。passも更新
