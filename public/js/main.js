@@ -406,7 +406,7 @@ async function titleClick(id, title) {
 
             document
               .getElementById(`keep-note-btn${id}`)
-              .addEventListener((id) => {
+              .addEventListener('click', () => {
                 keepButtonClick(id);
               });
             //[保存する]ボタン押下
@@ -427,7 +427,7 @@ async function titleClick(id, title) {
 
             document
               .getElementById(`cancel-note-btn${id}`)
-              .addEventListener((id) => {
+              .addEventListener('click', () => {
                 cancelButtonClick(id);
               });
             //   cancelButton.onclick = () => {
