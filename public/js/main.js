@@ -387,9 +387,9 @@ async function titleClick(id, title) {
               'none';
 
             document.getElementById(`keep-note-btn${id}`).style.display =
-              'block';
+              'inline-block';
             document.getElementById(`cancel-note-btn${id}`).style.display =
-              'block';
+              'inline-block';
 
             document
               .getElementById(`keep-note-btn${id}`)

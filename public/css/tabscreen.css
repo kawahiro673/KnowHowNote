@@ -35,11 +35,6 @@
   background-color: #f48269;
 }
 
-.keepbtn,
-.cancelbtn {
-  display: inline-block;
-}
-
 #popup-overlay_share {
   display: block;
   position: fixed;

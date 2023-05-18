@@ -256,6 +256,42 @@ footer {
   background-color: rgb(174, 171, 180);
 }
 
+.Sample3 {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+}
+.Sample3 p {
+  margin: 0;
+  padding: 0;
+}
+.description3 {
+  display: none;
+  position: absolute;
+  padding: 10px;
+  font-size: 12px;
+  line-height: 1.6em;
+  color: #fff;
+  border-radius: 5px;
+  background: #000;
+  width: 100px;
+}
+.description3:before {
+  content: '';
+  position: absolute;
+  top: 0%;
+  right: 95%;
+  border: 15px solid transparent;
+  border-top: 15px solid #000;
+  margin-left: -15px;
+  transform: rotateZ(90deg);
+}
+.Sample3:hover .description3 {
+  display: inline-block;
+  top: 0px;
+  left: 80px;
+}
+
 /****************************右クリックメニュー******************************/
 
 #contextmenu,
