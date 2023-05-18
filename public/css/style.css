@@ -134,7 +134,7 @@ header h1 {
   margin: 0;
 }
 
-.buttonTab {
+.tabClosebutton {
   margin: 0;
   padding: 0;
   text-align: center;
@@ -150,7 +150,7 @@ header h1 {
   outline: none;
   background: transparent;
 }
-.buttonTab:hover {
+.tabClosebutton:hover {
   color: black;
   font-weight: bold;
   background-color: gray;
