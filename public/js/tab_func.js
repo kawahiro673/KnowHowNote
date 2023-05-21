@@ -293,7 +293,6 @@ export const closeTab = (id, order, tabIdArray) => {
 
 //タブ上の✖️ボタン押下時
 export const closeButton = (id, title, tabArray) => {
-  console.log('closeおうか2');
   const order = orderGet('tab-content', `Tab-ID${id}`);
   closeTab(id, order, tabArray);
 };
