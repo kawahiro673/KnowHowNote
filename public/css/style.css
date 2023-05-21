@@ -261,8 +261,10 @@ footer {
   display: none;
   position: absolute;
   top: 0;
-  left: 100%; /* 子要素の右側に配置するため、leftプロパティを変更 */
-  margin-left: 10px; /* calc関数を削除して固定のマージンを指定 */
+  left: calc(
+    100% + 10px
+  ); /* .share-contextmenuの右側に配置するため、leftプロパティを変更 */
+  margin-left: 10px; /* 固定のマージンを指定 */
   padding: 10px;
   font-size: 12px;
   line-height: 1.6em;
@@ -270,6 +272,10 @@ footer {
   border-radius: 5px;
   background: #000;
   width: 100px;
+}
+
+.share-contextmenu {
+  position: relative; /* 子要素に対して相対的に配置するため、positionプロパティを追加 */
 }
 
 /****************************右クリックメニュー******************************/
