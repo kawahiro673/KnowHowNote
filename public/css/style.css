@@ -273,14 +273,6 @@ footer {
   width: 100px;
 }
 
-.container {
-  display: flex;
-  height: 960px;
-  margin-top: 0;
-  padding-top: 0;
-  position: relative;
-}
-
 #sharedetails:hover + .description {
   display: block;
 }
