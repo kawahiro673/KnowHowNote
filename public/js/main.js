@@ -303,6 +303,7 @@ function tabUpload() {
     }),
     success: async function (res) {
       const createTheFirstTab = async () => {
+        console.log('ya10');
         for (const tab of res.tabResult) {
           await titleClick(tab.id, tab.tabTitle);
         }
@@ -332,6 +333,7 @@ function tabUpload() {
 
 async function titleClick(id, title) {
   return new Promise((resolve, reject) => {
+    console.log('ya1');
     //タブ未生成
     if (!tabIdArray.includes(id)) {
       $.ajax({
@@ -344,6 +346,7 @@ async function titleClick(id, title) {
           id,
         }),
         success: function (res) {
+          console.log('ya2');
           resolve();
           tabCreate(id, title, res.fileResult);
 
@@ -406,7 +409,7 @@ async function titleClick(id, title) {
             document.getElementById(`share-button-${id}`).onclick = (event) => {
               shareButtonClick(id, event);
             };
-
+            console.log('ya4');
             //タブ上の「✖️」ボタン押下
             document.getElementById(`button${id}`).onclick = () => {
               console.log('closeおうか');
@@ -429,12 +432,6 @@ async function titleClick(id, title) {
     }
   });
 }
-
-document.getElementById(`button9584`).onclick = () => {
-  console.log('closeおうか');
-  // closeButton(id, title, tabIdArray);
-  // tabIdArray = deleteTabArray(id, tabIdArray);
-};
 
 //rootの右クリックから「フォルダ新規作成」押下
 document.getElementById('newfolder').onclick = async (e) => {
