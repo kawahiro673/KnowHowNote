@@ -261,9 +261,7 @@ footer {
   display: none;
   position: absolute;
   top: 0;
-  left: calc(
-    100% + 10px
-  ); /* .share-contextmenuの右側に配置するため、leftプロパティを変更 */
+  left: 100%; /* .share-contextmenuの右側に配置するため、leftプロパティを変更 */
   margin-left: 10px; /* 固定のマージンを指定 */
   padding: 10px;
   font-size: 12px;
@@ -272,6 +270,7 @@ footer {
   border-radius: 5px;
   background: #000;
   width: 100px;
+  z-index: 9999; /* ポップアップが他の要素の上に表示されるようにz-indexを指定 */
 }
 
 .share-contextmenu {
