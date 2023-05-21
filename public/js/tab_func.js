@@ -286,14 +286,6 @@ export const closeTab = (id, order, tabIdArray) => {
           );
         }
       }
-      console.log(tabIdArray);
-      if (tabIdArray.length === 0) {
-        //タブのリング全て削除
-        console.log('全て削除');
-        document.querySelectorAll('.image-container').forEach((container) => {
-          container.remove();
-        });
-      }
     },
   });
 };
@@ -356,6 +348,9 @@ export const deleteTabArray = (id, tabArray) => {
   if (tabArray.length == 0) {
     document.getElementById('notab').style.display = 'block';
     document.getElementById('notepass').innerHTML = '';
+    document.querySelectorAll('.image-container').forEach((container) => {
+      container.remove();
+    });
   }
   return tabArray;
 };
