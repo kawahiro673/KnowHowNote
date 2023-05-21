@@ -213,6 +213,7 @@ export function shareButtonClick(id, event) {
 document.getElementById('share-send').addEventListener('click', (e) => {
   const inputValue = document.getElementsByClassName('share-input')[0].value;
   const inputValues = inputValue.split(',').map((value) => value.trim());
+  const shareMessage = document.getElementById('myTextarea').value;
 
   if (!inputValues.includes(document.getElementById('sab-title').innerHTML)) {
     $.ajax({
@@ -225,6 +226,7 @@ document.getElementById('share-send').addEventListener('click', (e) => {
         id: shareId,
         name: inputValues,
         title: shareTitle,
+        message: shareMessage,
         time: currentTimeGet(),
       }),
       success: function (res) {
@@ -244,7 +246,7 @@ document.getElementById('share-send').addEventListener('click', (e) => {
             'nothingUser'
           ).innerHTML = `${res.nothingUser}が見つかりませんでした。
         その他のユーザーには共有しました。`;
-          setTimeout(function () {
+          setTimeout(() => {
             document.getElementById('popup-overlay_share_no').style.display =
               'none';
           }, 3000);

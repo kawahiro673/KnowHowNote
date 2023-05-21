@@ -276,6 +276,10 @@ footer {
   position: relative;
 }
 
+.container:hover .description {
+  display: block;
+}
+
 /****************************右クリックメニュー******************************/
 
 #contextmenu,
