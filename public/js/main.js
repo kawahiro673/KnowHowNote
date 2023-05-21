@@ -532,6 +532,10 @@ const sharedetails = document.getElementById('sharedetails');
 const description = document.querySelector('.description');
 
 sharedetails.addEventListener('mouseover', () => {
+  const rect = sharedetails.getBoundingClientRect();
+  const parentRect = sharedetails.parentElement.getBoundingClientRect();
+  description.style.top = `${rect.top - parentRect.top}px`; // 上端の位置を調整
+  description.style.left = `${rect.right - parentRect.left}px`; // 右端の位置を調整
   description.style.display = 'block';
 });
 
