@@ -186,6 +186,9 @@ export const cancelButtonClick = (id) => {
       success: function (res) {
         document.getElementById(`textarea${id}`).value =
           res.fileResult.memo_text;
+        document.getElementById(`share-button-${id}`).disabled = false;
+        document.getElementById(`share-button-${id}`).style.backgroundColor =
+          '#007bff';
       },
     });
     document.getElementById(`tabP${id}`).style.display = 'block';
@@ -194,6 +197,7 @@ export const cancelButtonClick = (id) => {
     document.getElementById(`titletext${id}`).style.display = 'none';
     document.getElementById(`edit-note-btn${id}`).style.display = 'block';
     document.getElementById(`textarea${id}`).readOnly = true;
+    document.getElementById(`fade${id}`).style.display = 'none';
   }
 };
 
@@ -345,7 +349,7 @@ const tabLabelColorGet = (id) => {
 export const deleteTabArray = (id, tabArray) => {
   tabArray = tabArray.filter((n) => n !== id);
   //タブを全削除したらnotabを表示。「ここにノートの情報が〜」のやつ
-  if (tabArray.length == 0) {
+  if (tabArray.length === 0) {
     document.getElementById('notab').style.display = 'block';
     document.getElementById('notepass').innerHTML = '';
     document.querySelectorAll('.image-container').forEach((container) => {
