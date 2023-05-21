@@ -286,8 +286,10 @@ export const closeTab = (id, order, tabIdArray) => {
           );
         }
       }
+      console.log(tabIdArray);
       if (tabIdArray.length === 0) {
         //タブのリング全て削除
+        console.log('全て削除');
         document.querySelectorAll('.image-container').forEach((container) => {
           container.remove();
         });
