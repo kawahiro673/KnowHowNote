@@ -528,13 +528,13 @@ document.getElementById('nouhau').addEventListener('click', () => {
   console.log('要素が有効化されました');
 });
 
-// const sharedetails = document.getElementById('sharedetails');
-// const description = document.querySelector('.description');
+const sharedetails = document.getElementById('sharedetails');
+const description = document.querySelector('.description');
 
-// sharedetails.addEventListener('mouseover', () => {
-//   description.style.display = 'block';
-// });
+sharedetails.addEventListener('mouseover', () => {
+  description.style.display = 'block';
+});
 
-// sharedetails.addEventListener('mouseout', () => {
-//   description.style.display = 'none';
-// });
+sharedetails.addEventListener('mouseout', () => {
+  description.style.display = 'none';
+});
