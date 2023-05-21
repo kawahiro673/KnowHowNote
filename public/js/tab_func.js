@@ -263,7 +263,6 @@ export const closeTab = (id, order, tabIdArray) => {
   document.getElementById('TAB-ID' + id).remove();
   document.getElementById('tab-ID' + id).remove();
   document.getElementById('Tab-ID' + id).remove();
-  console.lof('closeouk');
   $.ajax({
     url: '/tabPostController/',
     type: 'POST',
