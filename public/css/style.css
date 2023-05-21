@@ -261,8 +261,7 @@ footer {
   display: none;
   position: absolute;
   top: 0;
-  left: 0;
-  margin-left: 100%;
+  left: 100%;
   transform: translateX(10px);
   padding: 10px;
   font-size: 12px;
@@ -271,6 +270,10 @@ footer {
   border-radius: 5px;
   background: #000;
   width: 100px;
+}
+
+.share-contextmenu {
+  position: relative;
 }
 
 /****************************右クリックメニュー******************************/
