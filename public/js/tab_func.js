@@ -197,7 +197,7 @@ export const cancelButtonClick = (id) => {
     document.getElementById(`titletext${id}`).style.display = 'none';
     document.getElementById(`edit-note-btn${id}`).style.display = 'block';
     document.getElementById(`textarea${id}`).readOnly = true;
-    document.getElementById(`fade${id}`).style.display = 'none';
+    document.getElementById(`fade${id}`).style.visibility = 'hidden';
   }
 };
 
