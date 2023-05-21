@@ -256,7 +256,6 @@ footer {
   font-size: 80%;
   background-color: rgb(174, 171, 180);
 }
-
 .description {
   display: none;
   position: absolute;
@@ -270,6 +269,7 @@ footer {
   border-radius: 5px;
   background: #000;
   width: 100px;
+  z-index: 9999;
 }
 
 .share-contextmenu {

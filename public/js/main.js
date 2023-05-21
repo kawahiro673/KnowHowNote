@@ -533,8 +533,11 @@ const description = document.querySelector('.description');
 
 sharedetails.addEventListener('mouseover', () => {
   const rect = sharedetails.getBoundingClientRect();
-  description.style.top = `${rect.top}px`;
-  description.style.left = `${rect.right}px`;
+  const parentRect = sharedetails.parentElement.getBoundingClientRect();
+  const top = rect.top - parentRect.top;
+  const left = rect.right - parentRect.left;
+  description.style.top = `${top}px`;
+  description.style.left = `${left}px`;
   description.style.display = 'block';
 });
 
