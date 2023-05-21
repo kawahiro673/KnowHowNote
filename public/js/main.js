@@ -430,6 +430,12 @@ async function titleClick(id, title) {
   });
 }
 
+document.getElementById(`button9584`).onclick = () => {
+  console.log('closeおうか');
+  // closeButton(id, title, tabIdArray);
+  // tabIdArray = deleteTabArray(id, tabIdArray);
+};
+
 //rootの右クリックから「フォルダ新規作成」押下
 document.getElementById('newfolder').onclick = async (e) => {
   const id = 0;
