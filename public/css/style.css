@@ -261,8 +261,9 @@ footer {
   display: none;
   position: absolute;
   top: 0;
-  left: 100%;
-  transform: translateX(10px);
+  left: 0;
+  transform: translateX(100%);
+  margin-left: 10px;
   padding: 10px;
   font-size: 12px;
   line-height: 1.6em;
@@ -272,11 +273,15 @@ footer {
   width: 100px;
 }
 
-.share-contextmenu {
+.container {
+  display: flex;
+  height: 960px;
+  margin-top: 0;
+  padding-top: 0;
   position: relative;
 }
 
-.container:hover .description {
+#sharedetails:hover + .description {
   display: block;
 }
 

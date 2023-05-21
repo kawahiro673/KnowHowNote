@@ -213,7 +213,7 @@ export function shareButtonClick(id, event) {
 document.getElementById('share-send').addEventListener('click', (e) => {
   const inputValue = document.getElementsByClassName('share-input')[0].value;
   const inputValues = inputValue.split(',').map((value) => value.trim());
-  const shareMessage = document.getElementById('myTextarea').value;
+  const shareMessage = document.getElementById('share-message').value;
 
   if (!inputValues.includes(document.getElementById('sab-title').innerHTML)) {
     $.ajax({
