@@ -409,6 +409,7 @@ async function titleClick(id, title) {
 
             //タブ上の「✖️」ボタン押下
             document.getElementById(`button${id}`).onclick = () => {
+              console.log('closeおうか');
               closeButton(id, title, tabIdArray);
               tabIdArray = deleteTabArray(id, tabIdArray);
             };
