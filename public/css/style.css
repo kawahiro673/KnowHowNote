@@ -261,9 +261,8 @@ footer {
   display: none;
   position: absolute;
   top: 0;
-  left: 100%; /* 親要素の右側に位置するために変更 */
-  margin-left: 10px; /* 要素間の間隔を調整する場合は適宜変更 */
-  padding: 10px;
+  left: 100%;
+  transform: translateX(10px); /* 右に10px移動させる */
   font-size: 12px;
   line-height: 1.6em;
   color: #fff;
@@ -272,9 +271,6 @@ footer {
   width: 100px;
 }
 
-.share-contextmenu {
-  position: relative;
-}
 /****************************右クリックメニュー******************************/
 
 #contextmenu,

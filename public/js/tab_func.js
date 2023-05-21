@@ -286,6 +286,12 @@ export const closeTab = (id, order, tabIdArray) => {
           );
         }
       }
+      if (tabIdArray.length === 0) {
+        //タブのリング全て削除
+        document.querySelectorAll('.image-container').forEach((container) => {
+          container.remove();
+        });
+      }
     },
   });
 };
