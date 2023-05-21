@@ -207,7 +207,7 @@ let shareTitle;
 export function shareButtonClick(id, event) {
   document.getElementById('popup-overlay_share').style.display = 'block';
   shareId = id;
-  shareTitle = event.target.previousElementSibling.innerHTML;
+  shareTitle = event.target.parentNode.querySelectorAll('p')[0].innerHTML;
 }
 
 document.getElementById('share-send').addEventListener('click', (e) => {
