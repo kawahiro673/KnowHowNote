@@ -544,3 +544,8 @@ sharedetails.addEventListener('mouseover', () => {
 sharedetails.addEventListener('mouseout', () => {
   description.style.display = 'none';
 });
+
+window.onload = () => {
+  const loader = document.getElementById('loader');
+  loader.classList.add('loaded');
+};
