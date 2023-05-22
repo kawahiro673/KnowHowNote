@@ -21,9 +21,9 @@
   z-index: 9999;
 }
 
-/* #loader.loaded {
+#loader.loaded {
   animation: fadeOut 1s forwards;
-} */
+}
 
 .spinner {
   margin: 0 auto;

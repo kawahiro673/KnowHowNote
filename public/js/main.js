@@ -326,7 +326,7 @@ function tabUpload() {
       };
       await createTheFirstTab();
       await tabFocusOn();
-      document.getElementById('loader').remove();
+      document.getElementById('loader').classList.add('loaded');
     },
   });
 }
@@ -545,8 +545,3 @@ sharedetails.addEventListener('mouseover', () => {
 sharedetails.addEventListener('mouseout', () => {
   description.style.display = 'none';
 });
-
-// window.onload = () => {
-//   const loader = document.getElementById('loader');
-//   loader.classList.add('loaded');
-// };
