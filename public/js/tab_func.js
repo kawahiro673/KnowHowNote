@@ -285,6 +285,7 @@ export const closeTab = (id, order, tabIdArray) => {
       if (res.tabResult.focus === 1) {
         console.log(1);
         console.log(tabIdArray.indexOf(id));
+        console.log(typeof id);
         if (tabIdArray.indexOf(id) !== 0) {
           $(`#tab-ID${tabIdArray[tabIdArray.indexOf(id) - 1]}`).trigger(
             'click'
