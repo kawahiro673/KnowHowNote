@@ -17,7 +17,7 @@
 }
 
 #loader.loaded {
-  animation: fadeOut 3s forwards;
+  animation: fadeOut 1s forwards;
 }
 
 .spinner {

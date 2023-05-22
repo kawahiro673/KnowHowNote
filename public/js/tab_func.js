@@ -283,15 +283,18 @@ export const closeTab = (id, order, tabIdArray) => {
       console.log(res.tabResult);
       console.log(tabIdArray);
       if (res.tabResult.focus === 1) {
+        console.log(1);
         if (tabIdArray.indexOf(id) !== 0) {
           $(`#tab-ID${tabIdArray[tabIdArray.indexOf(id) - 1]}`).trigger(
             'click'
           );
+          console.log(2);
           //tabArrayの０番目の場合。タブの一番上の場合
         } else {
           $(`#tab-ID${tabIdArray[tabIdArray.indexOf(id) + 1]}`).trigger(
             'click'
           );
+          console.log(3);
         }
       }
     },

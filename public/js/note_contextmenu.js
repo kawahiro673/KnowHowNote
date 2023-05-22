@@ -58,12 +58,12 @@ const noteDelete = (file, tabIndex, order, tabIdArray) => {
   //まずはタブ削除
   let btn = confirm(`${file.title} を本当に削除しますか？`);
 
-  if (tabIdArray.includes(Number(file.id))) {
-    closeTab(file.id, tabIndex, tabIdArray);
-    //idArrayの中にあるfile.idを削除
-    tabIdArray = deleteTabArray(file.id, tabIdArray);
-  }
   if (btn) {
+    if (tabIdArray.includes(Number(file.id))) {
+      closeTab(file.id, tabIndex, tabIdArray);
+      //idArrayの中にあるfile.idを削除
+      tabIdArray = deleteTabArray(file.id, tabIdArray);
+    }
     $.ajax({
       url: '/tabPostController/',
       type: 'POST',
