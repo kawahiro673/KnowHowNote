@@ -543,14 +543,8 @@ router
               } else {
                 return new Promise((resolve, reject) => {
                   pool.query(
-                    'INSERT INTO it_memo (title, memo_text, Type, Message, UserID) (SELECT ?, memo_text, ?, ?, ? FROM it_memo WHERE id = ?);',
-                    [
-                      `${req.body.title}_(共有者:${user.UserName})`,
-                      'Share',
-                      req.body.message,
-                      user.id,
-                      req.body.id,
-                    ],
+                    'INSERT INTO it_memo (title, memo_text, Type, Message, UserID) (SELECT title, memo_text, ?, ?, ? FROM it_memo WHERE id = ?);',
+                    ['Share', req.body.message, user.id, req.body.id],
                     (error, result) => {
                       if (error) {
                         reject(error);

@@ -266,6 +266,14 @@ document.getElementById('pop-delete_share').addEventListener('click', (e) => {
 
 //フォーカスの当たっているタブを削除する際には違うタブにフォーカスを当てる
 export const closeTab = (id, order, tabIdArray) => {
+  console.log(
+    id,
+    order,
+    tabIdArray,
+    typeof id,
+    typeof order,
+    typeof tabIdArray
+  );
   document.getElementById('TAB-ID' + id).remove();
   document.getElementById('tab-ID' + id).remove();
   document.getElementById('Tab-ID' + id).remove();
