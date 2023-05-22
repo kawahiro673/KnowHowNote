@@ -60,7 +60,7 @@ const noteDelete = (file, tabIndex, order, tabIdArray) => {
 
   if (btn) {
     if (tabIdArray.includes(Number(file.id))) {
-      closeTab(file.id, tabIndex, tabIdArray);
+      closeTab(Number(file.id), tabIndex, tabIdArray);
       //idArrayの中にあるfile.idを削除
       tabIdArray = deleteTabArray(file.id, tabIdArray);
     }
