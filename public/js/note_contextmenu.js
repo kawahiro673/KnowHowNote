@@ -57,6 +57,12 @@ export const fileContextmenu = (tabIdArray) => {
 const noteDelete = (file, tabIndex, order, tabIdArray) => {
   //まずはタブ削除
   let btn = confirm(`${file.title} を本当に削除しますか？`);
+
+  if (tabIdArray.includes(Number(file.id))) {
+    closeTab(file.id, tabIndex, tabIdArray);
+    //idArrayの中にあるfile.idを削除
+    tabIdArray = deleteTabArray(file.id, tabIdArray);
+  }
   if (btn) {
     $.ajax({
       url: '/tabPostController/',
@@ -72,13 +78,6 @@ const noteDelete = (file, tabIndex, order, tabIdArray) => {
         //成功！！ここにリストから消した際のタブ削除と、リスト削除を記載→タブの✖️を押下したことにすれば良いのでは？？
         let parentid = file.elem.parentNode.parentNode.id;
         $(`#file${file.id}`).parent().remove();
-
-        file.id = Number(file.id);
-        if (tabIdArray.includes(file.id)) {
-          closeTab(file.id, tabIndex, tabIdArray);
-          //idArrayの中にあるfile.idを削除
-          tabIdArray = deleteTabArray(file.id, tabIdArray);
-        }
 
         $.ajax({
           url: '/notePostController/',
