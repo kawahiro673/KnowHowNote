@@ -326,6 +326,7 @@ function tabUpload() {
       };
       await createTheFirstTab();
       await tabFocusOn();
+      document.getElementById('loader').remove();
     },
   });
 }
@@ -545,7 +546,7 @@ sharedetails.addEventListener('mouseout', () => {
   description.style.display = 'none';
 });
 
-window.onload = () => {
-  const loader = document.getElementById('loader');
-  loader.classList.add('loaded');
-};
+// window.onload = () => {
+//   const loader = document.getElementById('loader');
+//   loader.classList.add('loaded');
+// };
