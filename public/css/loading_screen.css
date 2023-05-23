@@ -21,19 +21,7 @@
   z-index: 9999;
 }
 
-#list-loader {
-  width: 100%;
-  height: 100%;
-  transition: all 1s;
-  background-color: #ffffff;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-}
-
-#loader.loaded,
-#list-loader.loaded {
+#loader.loaded {
   animation: fadeOut 1s forwards;
 }
 
@@ -46,9 +34,7 @@
 }
 
 .cube1,
-.cube2,
-.cube3,
-.cube4 {
+.cube2 {
   background-color: #ffffff;
   width: 15px;
   height: 15px;
@@ -59,13 +45,7 @@
   animation: sk-cubemove 1.8s infinite ease-in-out;
 }
 
-.cube3,
-.cube4 {
-  background-color: rgb(162, 241, 241);
-}
-
-.cube2,
-.cube4 {
+.cube2 {
   -webkit-animation-delay: -0.9s;
   animation-delay: -0.9s;
 }
