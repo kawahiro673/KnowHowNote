@@ -143,6 +143,7 @@ export const listCreate = () => {
       folderContextmenu(tabIdArray);
       fileClick();
       await expandableAdaptation(expandableArray);
+      document.getElementById('list-loader').classList.add('loaded');
     },
   });
 };
