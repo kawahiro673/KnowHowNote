@@ -39,7 +39,6 @@ export const listCreate = () => {
         console.log('ログイン画面に戻ります');
         location.href = 'https://nodejs-itnote-app.herokuapp.com';
       }
-      document.getElementById('sab-title').innerHTML = res.userName;
 
       let resTmp = Array.from(res.response);
       let resTmp2 = Array.from(res.response2);
