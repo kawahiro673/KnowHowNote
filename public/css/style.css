@@ -53,11 +53,6 @@ header h1 {
   border-radius: 10px;
 }
 
-.pass {
-  text-align: center;
-  height: 32px;
-}
-
 .hide1 {
   display: none;
 }
@@ -230,6 +225,14 @@ header h1 {
   color: rgb(0, 0, 0);
   cursor: pointer;
   margin: 5px 1px;
+}
+
+.pass {
+  display: inline-block;
+  text-align: center;
+  height: 32px;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .createfolder,
