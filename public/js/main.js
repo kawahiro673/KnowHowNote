@@ -146,7 +146,7 @@ export const listCreate = () => {
       document.getElementById('list-loader').classList.add('loaded');
       setTimeout(() => {
         document.getElementById('list-loader').classList.remove('loaded');
-      }, 1500);
+      }, 3000);
     },
   });
 };
