@@ -144,6 +144,9 @@ export const listCreate = () => {
       fileClick();
       await expandableAdaptation(expandableArray);
       document.getElementById('list-loader').classList.add('loaded');
+      setTimeout(() => {
+        document.getElementById('list-loader').classList.remove('loaded');
+      }, 1500);
     },
   });
 };
