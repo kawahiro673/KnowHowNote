@@ -463,9 +463,11 @@ createfilebutton.addEventListener('click', async (e) => {
   const root = hasInput(document.getElementById('0'));
   if (!root) {
     const id = 0;
+    disableElements();
     e.stopPropagation();
     //awaitはPromiseが返ってくるまで待つ。関数内でPromise化し、resolveのタイミングでPromiseが返る
     await newFileCreateFunc(id);
+    enableElements();
   }
 });
 
