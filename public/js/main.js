@@ -6,6 +6,7 @@ import {
   tabClick,
   deleteTabArray,
   tabCreate,
+  binderCreate,
 } from './tab_func.js';
 
 import { fileContextmenu } from './note_contextmenu.js';
@@ -429,20 +430,6 @@ async function titleClick(id, title) {
   });
 }
 
-//rootの右クリックから「フォルダ新規作成」押下
-document.getElementById('newfolder').onclick = async (e) => {
-  const id = 0;
-  e.stopPropagation();
-  await newFolderCreateFunc(id);
-};
-
-//rootの右クリックから「ファイル新規作成」押下
-document.getElementById('newfile').onclick = async (e) => {
-  const id = 0;
-  e.stopPropagation();
-  await newFileCreateFunc(id);
-};
-
 //「フォルダ追加」ボタン押下時(root(id=0)に作成)
 createbutton.addEventListener(
   'click',
@@ -490,21 +477,6 @@ function hasInput(elem) {
   }
   return false;
 }
-
-//バインダーのリング部分作成
-const binderCreate = () => {
-  for (let i = 0; i < 21; i++) {
-    const imageContainer = document.createElement('div');
-    imageContainer.classList.add('image-container');
-
-    const image = document.createElement('img');
-    image.src = '../img/ringnote_w.gif';
-    image.alt = 'Image';
-
-    imageContainer.appendChild(image);
-    document.getElementById('tab').appendChild(imageContainer);
-  }
-};
 
 export function tabFocusIDGet() {
   return tabFocusID;

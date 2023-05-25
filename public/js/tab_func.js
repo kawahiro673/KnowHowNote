@@ -464,6 +464,21 @@ document
     }
   });
 
+//バインダーのリング部分作成
+export const binderCreate = () => {
+  for (let i = 0; i < 21; i++) {
+    const imageContainer = document.createElement('div');
+    imageContainer.classList.add('image-container');
+
+    const image = document.createElement('img');
+    image.src = '../img/ringnote_w.gif';
+    image.alt = 'Image';
+
+    imageContainer.appendChild(image);
+    document.getElementById('tab').appendChild(imageContainer);
+  }
+};
+
 //共有履歴ポップアップのカーソル移動
 function makeDraggable(element) {
   let isDragging = false;

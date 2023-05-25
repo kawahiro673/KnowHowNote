@@ -7,6 +7,8 @@ import { orderGet, fileIDUnderTheFolder } from './stringUtils.js';
 import { tabFocusIDGet } from './main.js';
 import { disableElements, enableElements } from './main.js';
 
+import { newFolderCreateFunc } from './newFolderCreate.js';
+
 let tmp1;
 let tmp2;
 
@@ -53,15 +55,14 @@ export const folderContextmenu = (tabIdArray) => {
           fID.click();
         }
 
-        await newFileCreateFunc(folder.id);
-        setTimeout(() => {
-          enableElements();
-        }, 1500);
-
         conme.style.display = 'none';
         conme2.style.display = 'none';
         conme3.style.display = 'none';
         conme4.style.display = 'none';
+        await newFileCreateFunc(folder.id);
+        setTimeout(() => {
+          enableElements();
+        }, 1500);
       });
     });
 
@@ -75,16 +76,15 @@ export const folderContextmenu = (tabIdArray) => {
         if (fID.parentNode.classList.contains('expandable') == true) {
           fID.click();
         }
+        conme.style.display = 'none';
+        conme2.style.display = 'none';
+        conme3.style.display = 'none';
+        conme4.style.display = 'none';
 
         await newFolderCreateFunc(folder.id);
         setTimeout(() => {
           enableElements();
         }, 1500);
-
-        conme.style.display = 'none';
-        conme2.style.display = 'none';
-        conme3.style.display = 'none';
-        conme4.style.display = 'none';
       });
     });
 
@@ -230,4 +230,11 @@ const bodyClickJuge = (target1, target2, flg1, flg2) => {
       target2.style.display = 'block';
     }
   }
+};
+
+//rootの右クリックから「フォルダ新規作成」押下
+document.getElementById('newfolder').onclick = async (e) => {
+  const id = 0;
+  e.stopPropagation();
+  await newFolderCreateFunc(id);
 };

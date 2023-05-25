@@ -2,6 +2,8 @@ import { closeTab, deleteTabArray } from './tab_func.js';
 import { currentTimeGet, orderGet } from './stringUtils.js';
 import { tabFocusIDGet } from './main.js';
 
+import { newFileCreateFunc } from './newFileCreate.js';
+
 let tmp1;
 let tmp2;
 
@@ -223,4 +225,11 @@ const noteColorChange = (file) => {
       },
     });
   }
+};
+
+//rootの右クリックから「ファイル新規作成」押下
+document.getElementById('newfile').onclick = async (e) => {
+  const id = 0;
+  e.stopPropagation();
+  await newFileCreateFunc(id);
 };
