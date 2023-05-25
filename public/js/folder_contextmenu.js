@@ -5,6 +5,7 @@ import { newFolderCreateFunc } from './newFolderCreate.js';
 import { orderGet, fileIDUnderTheFolder } from './stringUtils.js';
 
 import { tabFocusIDGet } from './main.js';
+import { disableElements, enableElements } from './main.js';
 
 let tmp1;
 let tmp2;
@@ -43,7 +44,8 @@ export const folderContextmenu = (tabIdArray) => {
 
     $(document).ready(() => {
       $('#createNote').off('click');
-      $('#createNote').on('click', (e) => {
+      $('#createNote').on('click', async (e) => {
+        disableElements();
         e.stopPropagation();
         let fID = document.getElementById(`folder${folder.id}`);
         //expandableの場合に配下の要素を開く
@@ -51,7 +53,10 @@ export const folderContextmenu = (tabIdArray) => {
           fID.click();
         }
 
-        newFileCreateFunc(folder.id, tabIdArray);
+        await newFileCreateFunc(folder.id);
+        setTimeout(() => {
+          enableElements();
+        }, 1500);
 
         conme.style.display = 'none';
         conme2.style.display = 'none';
@@ -62,8 +67,8 @@ export const folderContextmenu = (tabIdArray) => {
 
     $(document).ready(function () {
       $('#createfolder').off('click');
-      $('#createfolder').on('click', function (event) {
-        //console.log('"フォルダを作成する"押下');
+      $('#createfolder').on('click', async (event) => {
+        disableElements();
         event.stopPropagation();
         let fID = document.getElementById(`folder${folder.id}`);
         //expandableの場合に配下の要素を開く
@@ -71,7 +76,11 @@ export const folderContextmenu = (tabIdArray) => {
           fID.click();
         }
 
-        newFolderCreateFunc(folder.id);
+        await newFolderCreateFunc(folder.id);
+        setTimeout(() => {
+          enableElements();
+        }, 1500);
+
         conme.style.display = 'none';
         conme2.style.display = 'none';
         conme3.style.display = 'none';

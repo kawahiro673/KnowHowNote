@@ -511,7 +511,7 @@ export function tabFocusIDGet() {
 }
 
 //シェアタブを開いている時にボタンを無効化する
-function disableElements() {
+export function disableElements() {
   document.getElementById('createbutton').setAttribute('disabled', 'disabled');
   document
     .getElementById('createfilebutton')
@@ -519,7 +519,7 @@ function disableElements() {
 }
 
 // 要素を有効化する関数
-function enableElements() {
+export function enableElements() {
   document.getElementById('createbutton').removeAttribute('disabled');
   document.getElementById('createfilebutton').removeAttribute('disabled');
 }
