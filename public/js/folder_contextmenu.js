@@ -7,8 +7,6 @@ import { orderGet, fileIDUnderTheFolder } from './stringUtils.js';
 import { tabFocusIDGet } from './main.js';
 import { disableElements, enableElements } from './main.js';
 
-import { newFolderCreateFunc } from './newFolderCreate.js';
-
 let tmp1;
 let tmp2;
 
