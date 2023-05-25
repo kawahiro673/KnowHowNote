@@ -40,7 +40,6 @@ export const listCreate = () => {
         location.href = 'https://nodejs-itnote-app.herokuapp.com';
       }
 
-      disableElements();
       let resTmp = Array.from(res.response);
       let resTmp2 = Array.from(res.response2);
       let parentIdArray = []; //親フォルダになりうるフォルダを追加
@@ -143,7 +142,6 @@ export const listCreate = () => {
       folderContextmenu(tabIdArray);
       fileClick();
       await expandableAdaptation(expandableArray);
-      enableElements();
     },
   });
 };
@@ -452,8 +450,10 @@ createbutton.addEventListener(
     const root = hasInput(document.getElementById('0'));
     if (!root) {
       const id = 0;
+      disableElements();
       e.stopPropagation();
       await newFolderCreateFunc(id);
+      enableElements();
     }
   },
   false
@@ -465,9 +465,11 @@ createfilebutton.addEventListener('click', async (e) => {
   const root = hasInput(document.getElementById('0'));
   if (!root) {
     const id = 0;
+    disableElements();
     e.stopPropagation();
     //awaitはPromiseが返ってくるまで待つ。関数内でPromise化し、resolveのタイミングでPromiseが返る
     await newFileCreateFunc(id);
+    enableElements();
   }
 });
 
