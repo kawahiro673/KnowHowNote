@@ -453,7 +453,9 @@ createbutton.addEventListener(
       disableElements();
       e.stopPropagation();
       await newFolderCreateFunc(id);
-      enableElements();
+      setTimeout(() => {
+        enableElements();
+      }, 1500);
     }
   },
   false
@@ -469,7 +471,9 @@ createfilebutton.addEventListener('click', async (e) => {
     e.stopPropagation();
     //awaitはPromiseが返ってくるまで待つ。関数内でPromise化し、resolveのタイミングでPromiseが返る
     await newFileCreateFunc(id);
-    enableElements();
+    setTimeout(() => {
+      enableElements();
+    }, 1500);
   }
 });
 
