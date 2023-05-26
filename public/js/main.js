@@ -42,7 +42,7 @@ export const listCreate = () => {
         location.href = 'https://nodejs-itnote-app.herokuapp.com';
       }
 
-      document.getElementById('user_name').innerHTML = res.userName;
+      // document.getElementById('user_name').innerHTML = res.userName;
 
       let resTmp = Array.from(res.response);
       let resTmp2 = Array.from(res.response2);
