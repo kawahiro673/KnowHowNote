@@ -22,6 +22,7 @@ import { newFolderCreateFunc } from './newFolderCreate.js';
 import { orderGet, passGet } from './stringUtils.js';
 
 import { expandableAdaptation } from './expandableOptions.js';
+import { use } from 'bcrypt/promises';
 
 let tabIdArray = []; //タブが生成されているファイルのIDを格納
 let tabFocusID; //　フォーカスが当たっているタブのIDを常に保持。フォルダ名の名前変更・D&D時のパス変更に使用。
@@ -40,6 +41,8 @@ export const listCreate = () => {
         console.log('ログイン画面に戻ります');
         location.href = 'https://nodejs-itnote-app.herokuapp.com';
       }
+
+      document.getElementById('user_name').innerHTML = res.userName;
 
       let resTmp = Array.from(res.response);
       let resTmp2 = Array.from(res.response2);

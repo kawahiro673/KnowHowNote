@@ -215,7 +215,7 @@ document.getElementById('share-send').addEventListener('click', (e) => {
   const inputValues = inputValue.split(',').map((value) => value.trim());
   const shareMessage = document.getElementById('share-message').value;
 
-  if (!inputValues.includes(document.getElementById('sab-title').innerHTML)) {
+  if (!inputValues.includes(document.getElementById('user_name').innerHTML)) {
     $.ajax({
       url: '/mypage/',
       type: 'POST',
