@@ -188,8 +188,8 @@ const conme5 = document.getElementById('contextmenu5');
 
 $('#right').on('click contextmenu', (e) => {
   if (e.target.closest('.list_title')) {
-    conme.style.left = e.pageX + 'px';
-    conme.style.top = e.pageY + 'px';
+    conme.style.left = e.clientX + 'px';
+    conme.style.top = e.clientY + 'px';
     conme.style.display = 'block';
     conme2.style.display = 'none';
     conme3.style.display = 'none';
@@ -238,6 +238,10 @@ $('html').on('click contextmenu', (e) => {
     conme3.style.display = 'none';
     conme4.style.display = 'none';
   }
+});
+
+window.addEventListener('scroll', function () {
+  conme.style.display = 'none';
 });
 
 const noTab = document.createElement('p');

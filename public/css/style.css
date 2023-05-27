@@ -344,7 +344,7 @@ footer {
   transition: 1.2s;
 }
 
-#sharedetails > li:hover > ul > li > a {
+#sharedetails:hover > ul > li > a {
   display: block;
 }
 
