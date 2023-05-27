@@ -348,6 +348,13 @@ footer {
   display: block;
 }
 
+#sharedetails:hover > ul {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 100%;
+}
+
 /********************** 背景 ************************/
 section {
   min-height: 100vh;

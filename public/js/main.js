@@ -196,24 +196,24 @@ $('#right').on('click contextmenu', (e) => {
     conme4.style.display = 'none';
     conme5.style.display = 'none';
   } else if (e.target.closest('.folder')) {
-    conme3.style.left = e.pageX + 'px';
-    conme3.style.top = e.pageY + 'px';
+    conme3.style.left = e.clientX + 'px';
+    conme3.style.top = e.clientY + 'px';
     conme3.style.display = 'block';
     conme.style.display = 'none';
     conme2.style.display = 'none';
     conme4.style.display = 'none';
     conme5.style.display = 'none';
   } else if (e.target.closest('.sharenote')) {
-    conme4.style.left = e.pageX + 'px';
-    conme4.style.top = e.pageY + 'px';
+    conme4.style.left = e.clientX + 'px';
+    conme4.style.top = e.clientY + 'px';
     conme4.style.display = 'block';
     conme.style.display = 'none';
     conme2.style.display = 'none';
     conme3.style.display = 'none';
     conme5.style.display = 'none';
   } else {
-    conme2.style.left = e.pageX + 'px';
-    conme2.style.top = e.pageY + 'px';
+    conme2.style.left = e.clientX + 'px';
+    conme2.style.top = e.clientY + 'px';
     conme2.style.display = 'block';
     conme.style.display = 'none';
     conme3.style.display = 'none';
@@ -242,6 +242,10 @@ $('html').on('click contextmenu', (e) => {
 
 window.addEventListener('scroll', function () {
   conme.style.display = 'none';
+  conme2.style.display = 'none';
+  conme3.style.display = 'none';
+  conme4.style.display = 'none';
+  conme5.style.display = 'none';
 });
 
 const noTab = document.createElement('p');
