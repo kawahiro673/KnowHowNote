@@ -261,7 +261,7 @@ footer {
   background-color: rgb(174, 171, 180);
 }
 
-.description {
+/* .description {
   display: none;
   position: absolute;
   top: 0;
@@ -275,11 +275,11 @@ footer {
   background: #000;
   width: 100px;
   z-index: 9999;
-}
+} */
 
-.share-contextmenu {
+/* .share-contextmenu {
   position: relative;
-}
+} */
 
 /****************************右クリックメニュー******************************/
 
