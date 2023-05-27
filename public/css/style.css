@@ -260,6 +260,7 @@ footer {
   font-size: 80%;
   background-color: rgb(174, 171, 180);
 }
+
 .description {
   display: none;
   position: absolute;
@@ -333,6 +334,18 @@ footer {
 #black:hover,
 #white:hover {
   background-color: #f0f0f0;
+}
+
+#sharedetails > ul > li > a {
+  display: none;
+  padding: 5px 15px 5px 15px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: 1.2s;
+}
+
+#sharedetails > li:hover > ul > li > a {
+  display: block;
 }
 
 /********************** 背景 ************************/
