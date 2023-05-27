@@ -336,6 +336,11 @@ footer {
   background-color: #f0f0f0;
 }
 
+#sharedetails > ul {
+  list-style: none;
+  padding: 0px 0px 0px 0px;
+}
+
 #sharedetails > ul > li > a {
   display: none;
   padding: 5px 15px 5px 15px;
@@ -346,6 +351,7 @@ footer {
 
 #sharedetails:hover > ul > li > a {
   display: block;
+  background-color: white;
 }
 
 #sharedetails:hover > ul {
@@ -353,6 +359,10 @@ footer {
   position: absolute;
   top: 0;
   left: 100%;
+}
+
+#sharedetails:hover > ul > li {
+  height: 28px;
 }
 
 /********************** 背景 ************************/
