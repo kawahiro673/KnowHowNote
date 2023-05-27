@@ -336,6 +336,7 @@ footer {
 #sharedetails:hover > ul > li > a {
   display: block;
   background-color: white;
+  border: 1px solid #ccc;
 }
 
 #sharedetails:hover > ul {
