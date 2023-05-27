@@ -4,10 +4,6 @@
   position: relative;
 }
 
-#tg {
-  display: none;
-}
-
 .menu {
   position: absolute;
   top: 100%;
@@ -17,17 +13,24 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  transition: visibility 0s, opacity 0.3s; /* トランジションの遅延を削除 */
-  z-index: 1; /* リストを最前面に持ってくる */
+  transition: visibility 0s, opacity 0.2s;
 }
 
 .dropInput:checked ~ .menu {
   visibility: visible;
   opacity: 1;
-  transition-delay: 0s; /* 遅延を削除 */
 }
 
-.dropLabel,
+li {
+  height: 0px;
+  transition: height 0.2s;
+  overflow: hidden;
+}
+
+.menu li {
+  height: auto;
+}
+
 .item {
   padding: 1em 1.5em;
   width: 150px;
@@ -37,16 +40,6 @@
   position: relative;
   color: #333;
   text-decoration: none;
-
-  height: 0px;
-  -moz-transition: 0.2s;
-  -webkit-transition: 0.2s;
-  -o-transition: 0.2s;
-  -ms-transition: 0.2s;
-  transition: 0.2s;
-}
-.item {
-  padding: 0;
 }
 
 .item:hover {
