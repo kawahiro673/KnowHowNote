@@ -501,28 +501,26 @@ export function enableElements() {
 // share-tab要素をクリックした際の処理
 document.getElementById('share-tab').addEventListener('click', () => {
   disableElements();
-  console.log('要素が無効化されました');
 });
 
 // nouhau要素をクリックした際の処理
 document.getElementById('nouhau').addEventListener('click', () => {
   enableElements();
-  console.log('要素が有効化されました');
 });
 
-const sharedetails = document.getElementById('sharedetails');
-const description = document.querySelector('.description');
+// const sharedetails = document.getElementById('sharedetails');
+// const description = document.querySelector('.description');
 
-sharedetails.addEventListener('mouseover', () => {
-  const rect = sharedetails.getBoundingClientRect();
-  const parentRect = sharedetails.parentElement.getBoundingClientRect();
-  const top = rect.top - parentRect.top;
-  const left = rect.right - parentRect.left;
-  description.style.top = `${top}px`;
-  description.style.left = `${left}px`;
-  description.style.display = 'block';
-});
+// sharedetails.addEventListener('mouseover', () => {
+//   const rect = sharedetails.getBoundingClientRect();
+//   const parentRect = sharedetails.parentElement.getBoundingClientRect();
+//   const top = rect.top - parentRect.top;
+//   const left = rect.right - parentRect.left;
+//   description.style.top = `${top}px`;
+//   description.style.left = `${left}px`;
+//   description.style.display = 'block';
+// });
 
-sharedetails.addEventListener('mouseout', () => {
-  description.style.display = 'none';
-});
+// sharedetails.addEventListener('mouseout', () => {
+//   description.style.display = 'none';
+// });
