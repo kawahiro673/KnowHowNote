@@ -261,26 +261,6 @@ footer {
   background-color: rgb(174, 171, 180);
 }
 
-/* .description {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin-left: 10px;
-  padding: 10px;
-  font-size: 12px;
-  line-height: 1.6em;
-  color: #fff;
-  border-radius: 5px;
-  background: #000;
-  width: 100px;
-  z-index: 9999;
-} */
-
-/* .share-contextmenu {
-  position: relative;
-} */
-
 /****************************右クリックメニュー******************************/
 
 #contextmenu,
@@ -339,6 +319,10 @@ footer {
 #sharedetails > ul {
   list-style: none;
   padding: 0px 0px 0px 0px;
+}
+
+#sharedetails {
+  position: relative; /*これ重要*/
 }
 
 #sharedetails > ul > li > a {

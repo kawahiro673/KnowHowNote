@@ -1,5 +1,19 @@
+const conme = document.getElementById('contextmenu');
+const conme2 = document.getElementById('contextmenu2');
+const conme3 = document.getElementById('contextmenu3');
+const conme4 = document.getElementById('contextmenu4');
+const conme5 = document.getElementById('contextmenu5');
+
 export const labelContextmenu = () => {
   $('.tab-label').on('contextmenu', function (e) {
+    conme5.style.left = e.clientX + 'px';
+    conme5.style.top = e.clientY + 'px';
+    conme5.style.display = 'block';
+    conme.style.display = 'none';
+    conme2.style.display = 'none';
+    conme3.style.display = 'none';
+    conme4.style.display = 'none';
+
     const idValue = this.id;
     let label = {
       title: $(this).html(),

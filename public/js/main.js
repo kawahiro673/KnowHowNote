@@ -211,14 +211,6 @@ $('#right').on('click contextmenu', (e) => {
     conme2.style.display = 'none';
     conme3.style.display = 'none';
     conme5.style.display = 'none';
-  } else if (e.target.closest('.tab-label')) {
-    conme5.style.left = e.clientX + 'px';
-    conme5.style.top = e.clientY + 'px';
-    conme5.style.display = 'block';
-    conme.style.display = 'none';
-    conme2.style.display = 'none';
-    conme3.style.display = 'none';
-    conme4.style.display = 'none';
   } else {
     conme2.style.left = e.clientX + 'px';
     conme2.style.top = e.clientY + 'px';
@@ -245,6 +237,7 @@ $('html').on('click contextmenu', (e) => {
     conme2.style.display = 'none';
     conme3.style.display = 'none';
     conme4.style.display = 'none';
+    conme5.style.display = 'none';
   }
 });
 
