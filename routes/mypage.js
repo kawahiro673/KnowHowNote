@@ -529,7 +529,7 @@ router
                     const user = result.find((user) => user.UserName === name);
                     if (!user) {
                       nothingUser.push(name);
-                      resolve({ skip: true }); // ユーザーが見つからなくても次のユーザーの処理に進む
+                      resolve({ skip: true }); // ユーザーが見つからい場合、次のユーザーの処理に進む
                     } else {
                       resolve({ user });
                     }
@@ -543,8 +543,15 @@ router
               } else {
                 return new Promise((resolve, reject) => {
                   pool.query(
-                    'INSERT INTO it_memo (title, memo_text, Type, Message, UserID) (SELECT title, memo_text, ?, ?, ? FROM it_memo WHERE id = ?);',
-                    ['Share', req.body.message, user.id, req.body.id],
+                    'INSERT INTO it_memo (title, memo_text, Type, Message, UserID, Share_User, saved_time) (SELECT title, memo_text, ?, ?, ?, ?, ? FROM it_memo WHERE id = ?);',
+                    [
+                      'Share',
+                      req.body.message,
+                      user.id,
+                      req.body.myName,
+                      req.body.time,
+                      req.body.id,
+                    ],
                     (error, result) => {
                       if (error) {
                         reject(error);

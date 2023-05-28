@@ -18,6 +18,11 @@ export const shareContextmenu = () => {
         mynoteAddFunc(share.id);
       });
     });
+    const shareInfo = getShareUser(share.id);
+    document.getElementById('share-user-contenxtmenu').innerHTML =
+      shareInfo.Share_User;
+    document.getElementById('share-message').innerHTML = shareInfo.Message;
+    document.getElementById('share-time').innerHTML = shareInfo.saved_time;
   });
 };
 
@@ -71,6 +76,22 @@ const mynoteAddFunc = (id) => {
           listCreate();
         },
       });
+    },
+  });
+};
+
+const getShareUser = (id) => {
+  $.ajax({
+    url: '/sharePostController/',
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'shareNoteInfoGet',
+      id,
+    }),
+    success: function (res) {
+      return res.fileResult;
     },
   });
 };

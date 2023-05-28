@@ -105,6 +105,16 @@ router.post('/', (req, res) => {
         console.error(error);
         res.status(500).send('Internal Server Error.(list)');
       });
+  } else if (req.body.flg === 'shareNoteInfoGet') {
+    pool.query(
+      'SELECT * FROM it_memo WHERE id = ?',
+      [req.body.id],
+      (error, fileResult) => {
+        res.send({
+          fileResult: fileResult,
+        });
+      }
+    );
   }
 });
 

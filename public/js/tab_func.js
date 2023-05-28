@@ -224,6 +224,7 @@ document.getElementById('share-send').addEventListener('click', (e) => {
       data: JSON.stringify({
         flg: 'getuser',
         id: shareId,
+        myName: document.getElementById('user_name').innerHTML,
         name: inputValues,
         title: shareTitle,
         message: shareMessage,
