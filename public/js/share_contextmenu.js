@@ -13,7 +13,6 @@ export const shareContextmenu = () => {
     $(document).ready(function () {
       $('#MyNoteAdd').off('click');
       $('#MyNoteAdd').on('click', function (e) {
-        console.log(this);
         share.shareThis.parentNode.removeChild(share.shareThis);
         mynoteAddFunc(share.id);
       });
@@ -99,7 +98,6 @@ const getShareUser = async (id) => {
         id,
       }),
     });
-
     return response.fileResult;
   } catch (error) {
     // エラーハンドリング
