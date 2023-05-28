@@ -236,6 +236,11 @@ header h1 {
   margin-left: 150px;
 }
 
+.not-saved {
+  display: inline-block;
+  margin-right: 5px; /* 左側の余白を設定 */
+}
+
 .createfolder,
 .treecontrol {
   display: inline-block;
