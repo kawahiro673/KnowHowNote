@@ -111,7 +111,7 @@ router.post('/', (req, res) => {
       [req.body.id],
       (error, fileResult) => {
         res.send({
-          fileResult: fileResult,
+          fileResult: fileResult[0],
         });
       }
     );
