@@ -19,6 +19,8 @@ export const shareContextmenu = () => {
       });
     });
     const shareInfo = getShareUser(share.id);
+    console.log(shareInfo);
+    console.log(shareInfo.Share_User);
     document.getElementById('share-user-contenxtmenu').innerHTML =
       shareInfo.Share_User;
     document.getElementById('share-message').innerHTML = shareInfo.Message;

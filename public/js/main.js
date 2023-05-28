@@ -25,6 +25,7 @@ import { expandableAdaptation } from './expandableOptions.js';
 
 let tabIdArray = []; //タブが生成されているファイルのIDを格納
 let tabFocusID; //　フォーカスが当たっているタブのIDを常に保持。フォルダ名の名前変更・D&D時のパス変更に使用。
+let notSavedFile = [];
 
 export const listCreate = () => {
   $.ajax({
@@ -374,6 +375,8 @@ async function titleClick(id, title) {
           tabIdArray.push(id);
 
           document.getElementById(`edit-note-btn${id}`).onclick = function () {
+            notSavedFile.push(title);
+
             document.getElementById(`fade${id}`).style.visibility = 'visible';
             document.getElementById(`fade${id}`).textContent =
               '※現在編集中です。編集完了後【保存する】ボタンを押してください';
@@ -406,6 +409,11 @@ async function titleClick(id, title) {
               .getElementById(`keep-note-btn${id}`)
               .addEventListener('click', () => {
                 keepButtonClick(id);
+                //対象のものを配列から削除。なお同じタイトルのものが複数ある場合でも、１つづ削除していく
+                if (notSavedFile.indexOf(title) >= 0) {
+                  notSavedFile.splice(notSavedFile.indexOf(title), 1);
+                }
+                console.log(notSavedFile);
               });
 
             document
