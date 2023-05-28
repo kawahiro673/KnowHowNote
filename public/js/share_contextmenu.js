@@ -18,13 +18,6 @@ export const shareContextmenu = () => {
         mynoteAddFunc(share.id);
       });
     });
-    // const shareInfo = getShareUser(share.id);
-    // console.log(shareInfo);
-    // console.log(shareInfo.Share_User);
-    // document.getElementById('share-user-contenxtmenu').innerHTML =
-    //   shareInfo.Share_User;
-    // document.getElementById('share-message').innerHTML = shareInfo.Message;
-    // document.getElementById('share-time').innerHTML = shareInfo.saved_time;
 
     (async () => {
       try {
@@ -34,7 +27,6 @@ export const shareContextmenu = () => {
         document.getElementById('share-message').innerHTML = shareInfo.Message;
         document.getElementById('share-time').innerHTML = shareInfo.saved_time;
       } catch (error) {
-        // エラーハンドリング
         console.error(error);
       }
     })();
@@ -95,23 +87,6 @@ const mynoteAddFunc = (id) => {
   });
 };
 
-// const getShareUser = (id) => {
-//   $.ajax({
-//     url: '/sharePostController/',
-//     type: 'POST',
-//     dataType: 'Json',
-//     contentType: 'application/json',
-//     data: JSON.stringify({
-//       flg: 'shareNoteInfoGet',
-//       id,
-//     }),
-//     success: function (res) {
-//       console.log(res.fileResult);
-//       return res.fileResult;
-//     },
-//   });
-// };
-
 const getShareUser = async (id) => {
   try {
     const response = await $.ajax({
@@ -125,7 +100,6 @@ const getShareUser = async (id) => {
       }),
     });
 
-    console.log(response.fileResult);
     return response.fileResult;
   } catch (error) {
     // エラーハンドリング
