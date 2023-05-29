@@ -237,10 +237,9 @@ header h1 {
 }
 
 .not-saved {
-  display: inline-block;
   position: absolute;
-  right: 5px; /* 親要素との間隔を調整 */
   top: 0;
+  right: 0;
   transform: translateX(100%);
 }
 

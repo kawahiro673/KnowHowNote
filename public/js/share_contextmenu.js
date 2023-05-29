@@ -18,6 +18,13 @@ export const shareContextmenu = () => {
       });
     });
 
+    document
+      .getElementById('Add-from-Details')
+      .addEventListener('click', () => {
+        share.shareThis.parentNode.removeChild(share.shareThis);
+        mynoteAddFunc(share.id);
+      });
+
     (async () => {
       try {
         const shareInfo = await getShareUser(share.id);
