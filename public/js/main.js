@@ -374,8 +374,6 @@ async function titleClick(id, title) {
           tabIdArray.push(id);
 
           document.getElementById(`edit-note-btn${id}`).onclick = function () {
-            notSavedFile.push(title);
-
             document.getElementById(`tabname${id}`).style.color = red;
 
             document.getElementById(`fade${id}`).style.visibility = 'visible';
