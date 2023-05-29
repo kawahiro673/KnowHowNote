@@ -169,7 +169,8 @@
 .popup-body_inquiry button,
 #share-user-button,
 #share-user-add-button,
-#share-user-clear-button {
+#share-user-clear-button,
+#Add-from-Details {
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
