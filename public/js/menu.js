@@ -13,8 +13,9 @@ document.getElementById('profile').addEventListener('click', () => {
       console.log(res.user);
       document.getElementById('myName').innerHTML = res.user.UserName;
       document.getElementById('mail').innerHTML = res.email;
+      const date = new Date(res.user.CreationDay);
       document.getElementById('RegistrationDate').innerHTML =
-        res.user.CreationDay;
+        date.toLocaleDateString('ja-JP');
     },
   });
 });
