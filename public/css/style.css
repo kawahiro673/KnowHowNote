@@ -239,10 +239,9 @@ header h1 {
 .not-saved {
   display: inline-block;
   position: absolute;
-  right: 0;
+  right: 5px; /* 親要素との間隔を調整 */
   top: 0;
   transform: translateX(100%);
-  margin-right: 5px; /* 親要素との間隔を調整 */
 }
 
 .createfolder,

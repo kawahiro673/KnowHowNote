@@ -647,6 +647,19 @@ router
             );
           });
         });
+    } else if (req.body.flg === 'RegisterUser') {
+      const token = req.cookies.token;
+      const decoded = JWT.verify(token, 'SECRET_KEY');
+      pool.query(
+        'SELECT * FROM register_user WHERE Email = ?;',
+        [decoded.email],
+        (error, resultDecoded) => {
+          res.send({
+            user: resultDecoded[0],
+            email: decoded.email,
+          });
+        }
+      );
     } else {
       console.log('flgで何も受け取ってません');
     }

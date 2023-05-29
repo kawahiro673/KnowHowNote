@@ -1,6 +1,22 @@
 //プロフィールのポップアップ
 document.getElementById('profile').addEventListener('click', () => {
   document.getElementById('popup-overlay_profile').style.display = 'block';
+  $.ajax({
+    url: '/mypage/',
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'RegisterUser',
+    }),
+    success: function (res) {
+      console.log(res.user);
+      document.getElementById('myName').innerHTML = res.user.UserName;
+      document.getElementById('mail').innerHTML = res.email;
+      document.getElementById('RegistrationDate').innerHTML =
+        res.user.CreationDay;
+    },
+  });
 });
 
 document.getElementById('pop-delete_profile').addEventListener('click', (e) => {
