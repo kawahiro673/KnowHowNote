@@ -236,10 +236,6 @@ header h1 {
   margin-left: 150px;
 }
 
-.not-saved {
-  color: red;
-}
-
 .createfolder,
 .treecontrol {
   display: inline-block;
