@@ -153,7 +153,7 @@
 
 .tab-label {
   width: 150px;
-  font-size: 18px;
+  font-size: 20px;
   color: White;
   background: LightGray;
   font-weight: bold;
@@ -171,6 +171,10 @@
   float: left;
 }
 
+.tab-label-name {
+  color: White;
+}
+
 /* 要素の前に疑似要素を挿入し、その要素の左側20%に赤い背景色を適用 */
 .tab-label::before {
   content: '';
@@ -180,7 +184,7 @@
   left: 0;
   width: 20%;
   height: 100%;
-  /* z-index: -1; */
+  z-index: -1;
   background-color: var(--tab-label-background-color);
 }
 
@@ -208,13 +212,13 @@
 }
 
 /* アクティブなタブ */
-.tab-switch:checked + .tab-label {
+.tab-switch:checked + .tab-label-name {
   color: Gray;
   background: White;
   border-right-color: White;
 }
 
-.tab-switch:checked + .tab-label + .tab-content {
+.tab-switch:checked + .tab-label-name + .tab-content {
   width: calc(100% - 150px);
   /* - ボタン幅 */
   height: 100%;

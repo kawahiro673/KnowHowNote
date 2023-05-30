@@ -10,7 +10,7 @@ export const tabCreate = (id, title, res) => {
   inputTab.setAttribute('checked', 'checked');
 
   const labelTab = document.createElement('label');
-  labelTab.classList.add('tab-label');
+  labelTab.classList.add('tab-label', 'tab-label-name');
   labelTab.setAttribute('id', 'tab-ID' + id);
   labelTab.setAttribute('for', 'TAB-ID' + id);
   labelTab.style.display = 'block';
