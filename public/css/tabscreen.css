@@ -154,7 +154,7 @@
 .tab-label {
   width: 150px;
   font-size: 24px;
-  color: White;
+  color: black;
   background: LightGray;
   font-weight: bold;
   font-family: 'Hannotate SC', sans-serif;
@@ -209,7 +209,8 @@
 
 /* アクティブなタブ */
 .tab-switch:checked + .tab-label {
-  color: Gray;
+  /* color: Gray; */
+  color: black;
   background: White;
   border-right-color: White;
 }
@@ -226,12 +227,6 @@
 /* ラジオボタン非表示 */
 .tab-switch {
   display: none;
-}
-
-.tabname {
-  text-shadow: 1px 1px 0px #000, -1px -1px 0px #000, -1px 1px 0px #000,
-    1px -1px 0px #000, 1px 0px 0px #000, -1px 0px 0px #000, 0px 1px 0px #000,
-    0px -1px 0px #000;
 }
 
 /************************　ノート側　******************************/
