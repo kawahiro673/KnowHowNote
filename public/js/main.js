@@ -374,7 +374,9 @@ async function titleClick(id, title) {
           tabIdArray.push(id);
 
           document.getElementById(`edit-note-btn${id}`).onclick = function () {
-            document.getElementById(`tabname${id}`).style.color = 'red';
+            document.querySelector(
+              `[data-tabname = tabnamedata${id}]`
+            ).style.color = 'red';
 
             document.getElementById(`fade${id}`).style.visibility = 'visible';
             document.getElementById(`fade${id}`).textContent =
@@ -408,14 +410,18 @@ async function titleClick(id, title) {
               .getElementById(`keep-note-btn${id}`)
               .addEventListener('click', () => {
                 keepButtonClick(id);
-                document.getElementById(`tab-ID${id}`).style.color = null;
+                document
+                  .querySelector(`[data-tabname = tabnamedata${id}]`)
+                  .removeAttribute('data-tabname');
               });
 
             document
               .getElementById(`cancel-note-btn${id}`)
               .addEventListener('click', () => {
                 cancelButtonClick(id);
-                document.getElementById(`tabname${id}`).style.color = null;
+                document
+                  .querySelector(`[data-tabname = tabnamedata${id}]`)
+                  .removeAttribute('data-tabname');
               });
           };
 

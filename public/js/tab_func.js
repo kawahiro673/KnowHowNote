@@ -11,6 +11,7 @@ export const tabCreate = (id, title, res) => {
 
   const labelTab = document.createElement('label');
   labelTab.classList.add('tab-label', 'tab-label-name');
+
   labelTab.setAttribute('id', 'tab-ID' + id);
   labelTab.setAttribute('for', 'TAB-ID' + id);
   labelTab.style.display = 'block';
@@ -22,6 +23,7 @@ export const tabCreate = (id, title, res) => {
   const tabname = document.createElement('p');
   tabname.setAttribute('class', 'tabname');
   tabname.setAttribute('id', 'tabname' + id);
+  tabname.setAttribute('data-tabname', 'tabnamedata' + id);
   tabname.innerHTML = title;
 
   //[✖️]ボタン作成
