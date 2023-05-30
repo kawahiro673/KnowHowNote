@@ -408,16 +408,14 @@ async function titleClick(id, title) {
               .getElementById(`keep-note-btn${id}`)
               .addEventListener('click', () => {
                 keepButtonClick(id);
-                document.getElementById(`tab-ID${id}`).remove('tab-label');
-                document.getElementById(`tab-ID${id}`).add('tab-label');
+                document.getElementById(`tab-ID${id}`).style.color = 'black';
               });
 
             document
               .getElementById(`cancel-note-btn${id}`)
               .addEventListener('click', () => {
                 cancelButtonClick(id);
-                document.getElementById(`tab-ID${id}`).remove('tab-label');
-                document.getElementById(`tab-ID${id}`).add('tab-label');
+                document.getElementById(`tabname${id}`).style.color = 'black';
               });
           };
 
