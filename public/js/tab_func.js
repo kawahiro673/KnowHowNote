@@ -262,6 +262,11 @@ document.getElementById('share-send').addEventListener('click', (e) => {
   }
 });
 
+document.getElementById('pop-delete_share').addEventListener('click', (e) => {
+  e.preventDefault(); // リンクのデフォルトの動作を無効化
+  document.getElementById('popup-overlay_share').style.display = 'none';
+});
+
 //フォーカスの当たっているタブを削除する際には違うタブにフォーカスを当てる
 export const closeTab = (id, order, tabIdArray) => {
   document.getElementById('TAB-ID' + id).remove();
