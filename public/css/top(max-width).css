@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Hannotate+SC&display=swap');
 
+@font-face {
+  font-family: 'Zen_Kurenaido';
+  src: url('../fonts/Zen_Kurenaido/ZenKurenaido-Regular.ttf') format('truetype');
+}
+
 @media screen and (max-width: 1000px) {
   body {
-    font-family: 'Hannotate SC', sans-serif;
+    font-family: 'Zen_Kurenaido', 'Hannotate SC', sans-serif;
     background-color: #f3eee1;
     position: relative;
   }

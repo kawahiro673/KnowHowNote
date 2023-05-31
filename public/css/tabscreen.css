@@ -1,11 +1,10 @@
 @font-face {
   font-family: 'Zen_Kurenaido';
   src: url('../fonts/Zen_Kurenaido/ZenKurenaido-Regular.ttf') format('truetype');
-  /* 追加のフォーマットやフォントファイルへのパスを指定することもあります */
 }
 
 .eidt-text {
-  font-family: 'Hannotate SC', sans-serif;
+  font-family: 'Zen_Kurenaido', 'Hannotate SC', sans-serif;
 }
 
 .share-input {
@@ -23,8 +22,7 @@
   padding: 10px 20px;
   margin: 10px;
   font-size: 16px;
-  /* font-family: 'Hannotate SC', sans-serif; */
-  font-family: 'Zen_Kurenaido', sans-serif;
+  font-family: 'Zen_Kurenaido', 'Hannotate SC', sans-serif;
   font-weight: bold;
   text-align: center;
   text-decoration: none;
@@ -164,7 +162,7 @@
   color: black;
   background: LightGray;
   font-weight: bold;
-  font-family: 'Hannotate SC', sans-serif;
+  font-family: 'Zen_Kurenaido', 'Hannotate SC', sans-serif;
   white-space: nowrap;
   text-align: center;
   border: 1px solid Gray;

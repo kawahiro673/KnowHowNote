@@ -1,20 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Hannotate+SC&display=swap');
 
+@font-face {
+  font-family: 'Zen_Kurenaido';
+  src: url('../fonts/Zen_Kurenaido/ZenKurenaido-Regular.ttf') format('truetype');
+}
+
 @media screen and (min-width: 1000px) {
   body {
     overflow: hidden;
-    font-family: 'Hannotate SC', sans-serif;
+    font-family: 'Zen_Kurenaido', 'Hannotate SC', sans-serif;
     background-color: #f3eee1;
   }
 
   input,
   select,
   textarea {
-    font-family: 'Hannotate SC', sans-serif;
+    font-family: 'Zen_Kurenaido', 'Hannotate SC', sans-serif;
   }
 
   button {
-    font-family: 'Hannotate SC', sans-serif;
+    font-family: 'Zen_Kurenaido', 'Hannotate SC', sans-serif;
     color: white;
   }
 
