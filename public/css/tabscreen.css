@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'FontName';
+  src: url('../fonts/Zen_Kurenaido/ZenKurenaido-Regular.ttf') format('truetype');
+  /* 追加のフォーマットやフォントファイルへのパスを指定することもあります */
+}
+
 .eidt-text {
   font-family: 'Hannotate SC', sans-serif;
 }
@@ -17,7 +23,8 @@
   padding: 10px 20px;
   margin: 10px;
   font-size: 16px;
-  font-family: 'Hannotate SC', sans-serif;
+  /* font-family: 'Hannotate SC', sans-serif; */
+  font-family: 'Zen_Kurenaido', sans-serif;
   font-weight: bold;
   text-align: center;
   text-decoration: none;

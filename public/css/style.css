@@ -1,5 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&family=Sriracha&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&family=Sriracha&display=swap'); */
 
+@font-face {
+  font-family: 'FontName';
+  src: url('../fonts/Zen_Kurenaido/ZenKurenaido-Regular.ttf') format('truetype');
+  /* 追加のフォーマットやフォントファイルへのパスを指定することもあります */
+}
 .window {
   position: relative;
 }
