@@ -319,15 +319,18 @@ footer {
   background-color: #f0f0f0;
 }
 
+#notedetails > ul,
 #sharedetails > ul {
   list-style: none;
   padding: 0px 0px 0px 0px;
 }
 
+#notedetails,
 #sharedetails {
   position: relative; /*これ重要*/
 }
 
+#notedetails > ul > li > div,
 #sharedetails > ul > li > div {
   display: none;
   padding: 5px 15px 5px 15px;
@@ -336,12 +339,14 @@ footer {
   transition: 1.2s;
 }
 
+#notedetails:hover > ul > li > div,
 #sharedetails:hover > ul > li > div {
   display: block;
   background-color: white;
   border: 1px solid #ccc;
 }
 
+#notedetails:hover > ul,
 #sharedetails:hover > ul {
   display: block;
   position: absolute;
@@ -349,6 +354,7 @@ footer {
   left: 100%;
 }
 
+#notedetails:hover > ul > li,
 #sharedetails:hover > ul > li {
   height: 300px;
 }
