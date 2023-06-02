@@ -255,10 +255,10 @@ header h1 {
   /* display: inline-block; */
   /* position: relative; */
   text-decoration: none;
-  color: #7fb9fb;
+  color: #0b0869;
   border-radius: 5px;
-  text-align: center;
-  overflow: hidden;
+  /* text-align: center;
+  overflow: hidden; */
   font-weight: bold;
   background: linear-gradient(#7cc5f6 0%, #7ccbff 100%);
   text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
