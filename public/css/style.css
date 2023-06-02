@@ -244,16 +244,12 @@ header h1 {
   display: inline-block;
 }
 
-/* #createbutton {
-  background-color: #f3f18d;
-} */
-
 #createbutton {
   text-decoration: none;
-  color: #0b0869;
+  color: #286400;
   border-radius: 5px;
   font-weight: bold;
-  background: linear-gradient(#61a6f5 0%, #007bff 100%);
+  background: linear-gradient(#b1ff7a 0%, #84ff00 100%);
   text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
 }
@@ -262,7 +258,24 @@ header h1 {
   -webkit-transform: translateY(2px);
   transform: translateY(3px);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
-  background-image: linear-gradient(#6adaff 0%, #a8dbff 100%);
+  background-image: linear-gradient(#b9ff81 0%, #e2fcc7 100%);
+}
+
+#createfilebutton {
+  text-decoration: none;
+  color: #666800;
+  border-radius: 5px;
+  font-weight: bold;
+  background: linear-gradient(#ffff79 0%, #fffb00 100%);
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+}
+
+#createfilebutton:active {
+  -webkit-transform: translateY(2px);
+  transform: translateY(3px);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  background-image: linear-gradient(#fff97e 0%, #faffb4 100%);
 }
 
 #createfilebutton {
