@@ -244,9 +244,27 @@ header h1 {
   display: inline-block;
 }
 
-#createbutton {
+/* #createbutton {
   background-color: #f3f18d;
+} */
+
+#createbutton {
+  text-decoration: none;
+  color: #0b0869;
+  border-radius: 5px;
+  font-weight: bold;
+  background: linear-gradient(#61a6f5 0%, #007bff 100%);
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
 }
+
+#createbutton:active {
+  -webkit-transform: translateY(2px);
+  transform: translateY(3px);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  background-image: linear-gradient(#6adaff 0%, #a8dbff 100%);
+}
+
 #createfilebutton {
   background-color: #97f38d;
 }
