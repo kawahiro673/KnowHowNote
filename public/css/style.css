@@ -251,33 +251,41 @@ header h1 {
   background-color: #97f38d;
 }
 #closed-button {
-  /* background-color: #8de7f3; */
-  /* display: inline-block; */
-  /* position: relative; */
   text-decoration: none;
   color: #0b0869;
   border-radius: 5px;
-  /* text-align: center;
-  overflow: hidden; */
   font-weight: bold;
-  background: linear-gradient(#7cc5f6 0%, #7ccbff 100%);
+  background: linear-gradient(#61a6f5 0%, #007bff 100%);
   text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
 }
-
 #closed-button:active {
-  /*押したとき*/
   -webkit-transform: translateY(2px);
-  transform: translateY(2px); /*沈むように*/
+  transform: translateY(3px); /*沈むように*/
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
   background-image: linear-gradient(
-    #fed6e3 0%,
-    #ffbcbc 100%
+    #6adaff 0%,
+    #a8dbff 100%
   ); /*グラデーションを明るく*/
 }
 
-.expandable {
-  background-color: #f38d99;
+#expandable-button {
+  text-decoration: none;
+  color: #800000;
+  border-radius: 5px;
+  font-weight: bold;
+  background: linear-gradient(#f56161 0%, #ea1b1b 100%);
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+}
+#expandable-button:active {
+  -webkit-transform: translateY(2px);
+  transform: translateY(3px); /*沈むように*/
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  background-image: linear-gradient(
+    #ff8080 0%,
+    #ffaaaa 100%
+  ); /*グラデーションを明るく*/
 }
 
 footer {
