@@ -289,6 +289,7 @@ header h1 {
   background: linear-gradient(#61a6f5 0%, #007bff 100%);
   text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+  border: 2px solid black;
 }
 #closed-button:active {
   -webkit-transform: translateY(2px);
@@ -308,6 +309,7 @@ header h1 {
   background: linear-gradient(#f56161 0%, #ea1b1b 100%);
   text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+  border: 2px solid black;
 }
 #expandable-button:active {
   -webkit-transform: translateY(2px);
