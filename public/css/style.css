@@ -250,15 +250,12 @@ header h1 {
 #createfilebutton {
   background-color: #97f38d;
 }
-.collapsable {
+#closed-button {
   /* background-color: #8de7f3; */
   display: inline-block;
   position: relative;
   text-decoration: none;
   color: #f9a9ae;
-  width: 120px;
-  height: 50px;
-  line-height: 50px;
   border-radius: 5px;
   text-align: center;
   overflow: hidden;
@@ -267,7 +264,7 @@ header h1 {
   text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
 }
-.collapsable:active {
+#closed-button:active {
   /*押したとき*/
   -webkit-transform: translateY(2px);
   transform: translateY(2px); /*沈むように*/
