@@ -252,18 +252,19 @@ header h1 {
 }
 #closed-button {
   /* background-color: #8de7f3; */
-  display: inline-block;
-  position: relative;
+  /* display: inline-block; */
+  /* position: relative; */
   text-decoration: none;
-  color: #f9a9ae;
+  color: #7fb9fb;
   border-radius: 5px;
   text-align: center;
   overflow: hidden;
   font-weight: bold;
-  background: linear-gradient(#fed6e3 0%, #ffaaaa 100%);
+  background: linear-gradient(#7cc5f6 0%, #7ccbff 100%);
   text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
 }
+
 #closed-button:active {
   /*押したとき*/
   -webkit-transform: translateY(2px);
