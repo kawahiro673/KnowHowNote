@@ -251,8 +251,33 @@ header h1 {
   background-color: #97f38d;
 }
 .collapsable {
-  background-color: #8de7f3;
+  /* background-color: #8de7f3; */
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  color: #f9a9ae;
+  width: 120px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 5px;
+  text-align: center;
+  overflow: hidden;
+  font-weight: bold;
+  background: linear-gradient(#fed6e3 0%, #ffaaaa 100%);
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
 }
+.collapsable:active {
+  /*押したとき*/
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px); /*沈むように*/
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  background-image: linear-gradient(
+    #fed6e3 0%,
+    #ffbcbc 100%
+  ); /*グラデーションを明るく*/
+}
+
 .expandable {
   background-color: #f38d99;
 }

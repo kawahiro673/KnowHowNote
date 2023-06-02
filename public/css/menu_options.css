@@ -19,6 +19,7 @@
   margin: 0;
   transition: visibility 0s, opacity 0.3s; /* トランジションの遅延を削除 */
   z-index: 1; /* リストを最前面に持ってくる */
+  border: 1px solid black;
 }
 
 .dropInput:checked ~ .menu {
