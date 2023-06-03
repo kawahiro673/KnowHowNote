@@ -140,14 +140,12 @@ export const listCreate = () => {
         });
         array = resTmp.concat(resTmp2);
       }
-
+      document.getElementById('list_loader').style.display = 'block';
       await jQueryUIOptionsFunc();
       fileContextmenu(tabIdArray);
       folderContextmenu(tabIdArray);
       fileClick();
       await expandableAdaptation(expandableArray);
-
-      document.getElementById('list_loader').style.display = 'block';
       document.getElementById('list_loader').classList.add('loaded2');
     },
   });

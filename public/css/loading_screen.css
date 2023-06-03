@@ -37,7 +37,7 @@
 }
 
 #list_loader.loaded2 {
-  animation: fadeOut 1.5s forwards;
+  animation: fadeOut 0s forwards;
 }
 
 .spinner {
