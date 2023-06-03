@@ -336,7 +336,7 @@ function tabUpload() {
       };
       await createTheFirstTab();
       await tabFocusOn();
-      document.getElementById('loader').classList.add('loaded');
+      document.getElementById('reload_loader').classList.add('loaded');
     },
   });
 }
