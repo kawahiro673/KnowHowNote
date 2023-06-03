@@ -268,41 +268,50 @@ document.getElementById('pop-delete_share').addEventListener('click', (e) => {
 });
 
 //フォーカスの当たっているタブを削除する際には違うタブにフォーカスを当てる
-export const closeTab = (id, order, tabIdArray) => {
+export const closeTab = async (id, order, tabIdArray) => {
   document.getElementById('TAB-ID' + id).remove();
   document.getElementById('tab-ID' + id).remove();
   document.getElementById('Tab-ID' + id).remove();
-  $.ajax({
-    url: '/tabPostController/',
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      flg: 'tabDelete',
-      id,
-      order,
-    }),
-    success: function (res) {
-      if (res.tabResult.focus === 1) {
-        if (tabIdArray.indexOf(id) !== 0) {
-          $(`#tab-ID${tabIdArray[tabIdArray.indexOf(id) - 1]}`).trigger(
-            'click'
-          );
-          //tabArrayの０番目の場合。タブの一番上の場合
-        } else {
-          $(`#tab-ID${tabIdArray[tabIdArray.indexOf(id) + 1]}`).trigger(
-            'click'
-          );
+  // awaitを使ってajaxの処理を非同期待ち合わせ
+  await new Promise((resolve, reject) => {
+    $.ajax({
+      url: '/tabPostController/',
+      type: 'POST',
+      dataType: 'Json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        flg: 'tabDelete',
+        id,
+        order,
+      }),
+      success: function (res) {
+        if (res.tabResult.focus === 1) {
+          if (tabIdArray.indexOf(id) !== 0) {
+            $(`#tab-ID${tabIdArray[tabIdArray.indexOf(id) - 1]}`).trigger(
+              'click'
+            );
+            //tabArrayの０番目の場合。タブの一番上の場合
+          } else {
+            $(`#tab-ID${tabIdArray[tabIdArray.indexOf(id) + 1]}`).trigger(
+              'click'
+            );
+          }
         }
-      }
-    },
+        resolve();
+      },
+      error: function (err) {
+        reject(err); // 非同期処理が失敗した場合にreject()を呼ぶ
+      },
+    });
   });
 };
 
 //タブ上の✖️ボタン押下時
-export const closeButton = (id, title, tabArray) => {
+export const closeButton = async (id, title, tabArray) => {
   const order = orderGet('tab-content', `Tab-ID${id}`);
-  closeTab(id, order, tabArray);
+  document.getElementById('tab_loader').style.display = 'block';
+  await closeTab(id, order, tabArray);
+  document.getElementById('tab_loader').classList.add('loaded');
 };
 
 //タブクリック時

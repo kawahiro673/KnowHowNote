@@ -42,6 +42,7 @@ export const listCreate = () => {
       }
 
       document.getElementById('list_loader').style.display = 'none';
+      document.getElementById('tab_loader').style.display = 'none';
       document.getElementById('user_name').innerHTML = res.userName;
 
       let resTmp = Array.from(res.response);
@@ -459,7 +460,7 @@ createbutton.addEventListener(
         enableElements();
       }, 1500);
       document.getElementById('list_loader').style.display = 'block';
-      document.getElementById('list_loader').classList.add('loaded2');
+      document.getElementById('list_loader').classList.add('loaded');
     }
   },
   false
@@ -478,6 +479,8 @@ createfilebutton.addEventListener('click', async (e) => {
     setTimeout(() => {
       enableElements();
     }, 1500);
+    document.getElementById('list_loader').style.display = 'block';
+    document.getElementById('list_loader').classList.add('loaded');
   }
 });
 

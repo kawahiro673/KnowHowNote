@@ -21,10 +21,6 @@
   z-index: 9999;
 }
 
-#reload_loader.loaded {
-  animation: fadeOut 3s forwards;
-}
-
 #list_loader {
   transition: all 1s;
   background-color: rgb(255, 255, 255);
@@ -36,7 +32,20 @@
   z-index: 9999;
 }
 
-#list_loader.loaded2 {
+#tab_loader {
+  transition: all 1s;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+}
+
+#reload_loader.loaded,
+#list_loader.loaded,
+#tab_loader.loaded {
   animation: fadeOut 3s forwards;
 }
 
