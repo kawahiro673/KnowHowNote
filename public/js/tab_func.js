@@ -269,6 +269,8 @@ document.getElementById('pop-delete_share').addEventListener('click', (e) => {
 
 //フォーカスの当たっているタブを削除する際には違うタブにフォーカスを当てる
 export const closeTab = async (id, order, tabIdArray) => {
+  document.getElementById('tab_loader').style.display = 'block';
+
   document.getElementById('TAB-ID' + id).remove();
   document.getElementById('tab-ID' + id).remove();
   document.getElementById('Tab-ID' + id).remove();
@@ -286,6 +288,21 @@ export const closeTab = async (id, order, tabIdArray) => {
       }),
       success: function (res) {
         if (res.tabResult.focus === 1) {
+          // フェードアウト(cssのanimation)が完了したらdisplay=none
+          (async () => {
+            document.getElementById('tab_loader').classList.add('loaded');
+            await new Promise((resolve) => {
+              const tabLoader = document.getElementById('tab_loader');
+              tabLoader.addEventListener(
+                'animationend',
+                () => {
+                  document.getElementById('tab_loader').style.display = 'none';
+                  resolve();
+                },
+                { once: true }
+              );
+            });
+          })();
           if (tabIdArray.indexOf(id) !== 0) {
             $(`#tab-ID${tabIdArray[tabIdArray.indexOf(id) - 1]}`).trigger(
               'click'
@@ -309,24 +326,10 @@ export const closeTab = async (id, order, tabIdArray) => {
 //タブ上の✖️ボタン押下時
 export const closeButton = async (id, title, tabArray) => {
   const order = orderGet('tab-content', `Tab-ID${id}`);
-  document.getElementById('tab_loader').style.display = 'block';
+  // document.getElementById('tab_loader').style.display = 'block';
   await closeTab(id, order, tabArray);
-
-  // フェードアウト(cssのanimation)が完了したらdisplay=none
-  (async () => {
-    document.getElementById('tab_loader').classList.add('loaded');
-    await new Promise((resolve) => {
-      const tabLoader = document.getElementById('tab_loader');
-      tabLoader.addEventListener(
-        'animationend',
-        () => {
-          document.getElementById('tab_loader').style.display = 'none';
-          resolve();
-        },
-        { once: true }
-      );
-    });
-  })();
+  // document.getElementById('tab_loader').classList.add('loaded');
+  // document.getElementById('tab_loader').style.display = 'none';
 };
 
 //タブクリック時
