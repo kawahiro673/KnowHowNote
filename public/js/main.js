@@ -41,7 +41,7 @@ export const listCreate = () => {
         location.href = 'https://nodejs-itnote-app.herokuapp.com';
       }
 
-      document.getElementById('list_loader').style.display = 'none';
+      //document.getElementById('list_loader').style.display = 'none';
       document.getElementById('user_name').innerHTML = res.userName;
 
       let resTmp = Array.from(res.response);
@@ -146,7 +146,9 @@ export const listCreate = () => {
       folderContextmenu(tabIdArray);
       fileClick();
       await expandableAdaptation(expandableArray);
-      document.getElementById('list_loader').classList.add('loaded2');
+      setTimeout(() => {
+        document.getElementById('list_loader').classList.add('loaded2');
+      }, 3000);
     },
   });
 };
