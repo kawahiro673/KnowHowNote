@@ -27,7 +27,7 @@
 
 #list_loader {
   transition: all 1s;
-  background-color: rgb(162, 241, 241);
+  background-color: rgb(255, 255, 255);
   position: absolute;
   top: 0;
   left: 0;
@@ -49,7 +49,9 @@
 }
 
 .cube1,
-.cube2 {
+.cube2,
+.cube3,
+.cube4 {
   background-color: #ffffff;
   width: 15px;
   height: 15px;
@@ -60,7 +62,13 @@
   animation: sk-cubemove 1.8s infinite ease-in-out;
 }
 
-.cube2 {
+.cube3,
+.cube4 {
+  background-color: rgb(162, 241, 241);
+}
+
+.cube2,
+.cube4 {
   -webkit-animation-delay: -0.9s;
   animation-delay: -0.9s;
 }
