@@ -311,7 +311,22 @@ export const closeButton = async (id, title, tabArray) => {
   const order = orderGet('tab-content', `Tab-ID${id}`);
   document.getElementById('tab_loader').style.display = 'block';
   await closeTab(id, order, tabArray);
-  document.getElementById('tab_loader').classList.add('loaded');
+
+  // フェードアウト(cssのanimation)が完了したらdisplay=none
+  (async () => {
+    document.getElementById('tab_loader').classList.add('loaded');
+    await new Promise((resolve) => {
+      const tabLoader = document.getElementById('tab_loader');
+      tabLoader.addEventListener(
+        'animationend',
+        () => {
+          document.getElementById('tab_loader').style.display = 'none';
+          resolve();
+        },
+        { once: true }
+      );
+    });
+  })();
 };
 
 //タブクリック時
