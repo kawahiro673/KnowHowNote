@@ -146,7 +146,9 @@ export const listCreate = () => {
       folderContextmenu(tabIdArray);
       fileClick();
       await expandableAdaptation(expandableArray);
-      console.log('ya2');
+
+      document.getElementById('list_loader').style.display = 'block';
+      document.getElementById('list_loader').classList.add('loaded2');
     },
   });
 };
@@ -459,9 +461,9 @@ createbutton.addEventListener(
       setTimeout(() => {
         enableElements();
       }, 1500);
-      document.getElementById('list_loader').style.display = 'block';
-      console.log('ya1');
-      document.getElementById('list_loader').classList.add('loaded2');
+      // document.getElementById('list_loader').style.display = 'block';
+      // console.log('ya1');
+      // document.getElementById('list_loader').classList.add('loaded2');
     }
   },
   false
