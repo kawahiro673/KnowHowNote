@@ -269,9 +269,6 @@ document.getElementById('pop-delete_share').addEventListener('click', (e) => {
 
 //フォーカスの当たっているタブを削除する際には違うタブにフォーカスを当てる
 export const closeTab = async (id, order, tabIdArray) => {
-  document.getElementById('TAB-ID' + id).remove();
-  document.getElementById('tab-ID' + id).remove();
-  document.getElementById('Tab-ID' + id).remove();
   // awaitを使ってajaxの処理を非同期待ち合わせ
   await new Promise((resolve, reject) => {
     $.ajax({
@@ -285,6 +282,9 @@ export const closeTab = async (id, order, tabIdArray) => {
         order,
       }),
       success: function (res) {
+        document.getElementById('TAB-ID' + id).remove();
+        document.getElementById('tab-ID' + id).remove();
+        document.getElementById('Tab-ID' + id).remove();
         if (res.tabResult.focus === 1) {
           document.getElementById('tab_loader').style.display = 'block';
           // フェードアウト(cssのanimation)が完了したらdisplay=none
