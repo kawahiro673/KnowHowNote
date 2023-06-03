@@ -257,13 +257,13 @@ document.getElementById('tab').appendChild(noTab);
 
 //ファイルクリック時にタブを表示
 export const fileClick = () => {
-  $('.list_title').on('click', function () {
+  $('.list_title').on('click', function (event) {
+    event.preventDefault();
     let file = {
       title: $(this).html(),
       id: $(this).attr('value'),
       elem: this,
     };
-    console.log(`"${file.title}"がクリックされました。`);
     let id = Number(file.id);
     titleClick(id, file.title);
     const pass = passGet(file.id, file.title);
@@ -296,6 +296,7 @@ export const fileClick = () => {
           success: function (res) {
             document.getElementById('notepass').innerHTML = pass;
             tabFocusID = id;
+            $('.list_title').off('click');
           },
         });
       },
