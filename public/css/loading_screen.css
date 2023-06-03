@@ -22,7 +22,7 @@
 }
 
 #reload_loader.loaded {
-  animation: fadeOut 1s forwards;
+  animation: fadeOut 3s forwards;
 }
 
 #list_loader {
