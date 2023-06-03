@@ -140,15 +140,12 @@ export const listCreate = () => {
         });
         array = resTmp.concat(resTmp2);
       }
-      document.getElementById('list_loader').style.display = 'block';
+
       await jQueryUIOptionsFunc();
       fileContextmenu(tabIdArray);
       folderContextmenu(tabIdArray);
       fileClick();
       await expandableAdaptation(expandableArray);
-      setTimeout(() => {
-        document.getElementById('list_loader').classList.add('loaded2');
-      }, 3000);
     },
   });
 };
@@ -461,9 +458,8 @@ createbutton.addEventListener(
       setTimeout(() => {
         enableElements();
       }, 1500);
-      // document.getElementById('list_loader').style.display = 'block';
-      // console.log('ya1');
-      // document.getElementById('list_loader').classList.add('loaded2');
+      document.getElementById('list_loader').style.display = 'block';
+      document.getElementById('list_loader').classList.add('loaded2');
     }
   },
   false
