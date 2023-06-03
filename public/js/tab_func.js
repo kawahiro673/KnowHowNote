@@ -269,8 +269,6 @@ document.getElementById('pop-delete_share').addEventListener('click', (e) => {
 
 //フォーカスの当たっているタブを削除する際には違うタブにフォーカスを当てる
 export const closeTab = async (id, order, tabIdArray) => {
-  document.getElementById('tab_loader').style.display = 'block';
-
   document.getElementById('TAB-ID' + id).remove();
   document.getElementById('tab-ID' + id).remove();
   document.getElementById('Tab-ID' + id).remove();
@@ -288,6 +286,7 @@ export const closeTab = async (id, order, tabIdArray) => {
       }),
       success: function (res) {
         if (res.tabResult.focus === 1) {
+          document.getElementById('tab_loader').style.display = 'block';
           // フェードアウト(cssのanimation)が完了したらdisplay=none
           (async () => {
             document.getElementById('tab_loader').classList.add('loaded');
