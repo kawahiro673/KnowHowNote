@@ -457,9 +457,9 @@ createbutton.addEventListener(
       await newFolderCreateFunc(id);
       setTimeout(() => {
         enableElements();
-        listLoader.style.display = 'block';
-        document.getElementById('list_loader').classList.add('loaded2');
       }, 1500);
+      document.getElementById('list_loader').style.display = 'block';
+      document.getElementById('list_loader').classList.add('loaded2');
     }
   },
   false
