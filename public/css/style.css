@@ -328,15 +328,12 @@ footer {
   background-color: rgb(174, 171, 180);
 }
 
-#fileList li[draggable='true']:hover {
-  opacity: 0.5;
+.dragging {
+  opacity: 0.5; /* ゴースト要素の透明度 */
 }
 
-/* ドラッグ中のゴーストエフェクト用のスタイル */
-#fileList li[draggable='true'].dragging {
-  opacity: 0.5;
-  position: absolute;
-  pointer-events: none;
+.floating {
+  transition: top 0.3s, left 0.3s; /* アニメーションのプロパティと時間を設定 */
 }
 
 /****************************右クリックメニュー******************************/

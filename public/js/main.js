@@ -557,6 +557,7 @@ $(function () {
     });
 
     draggingElement.appendTo('body');
+    draggingElement.addClass('floating'); // ゴースト要素にアニメーション用のクラスを追加
 
     $(document).on('mousemove', function (e) {
       draggingElement.css({
