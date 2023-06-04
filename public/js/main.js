@@ -256,8 +256,63 @@ noTab.setAttribute('id', 'notab');
 document.getElementById('tab').appendChild(noTab);
 
 //ファイルクリック時にタブを表示
+// export const fileClick = () => {
+//   $('.list_title').on('click', function (event) {
+//     let file = {
+//       title: $(this).html(),
+//       id: $(this).attr('value'),
+//       elem: this,
+//     };
+//     let id = Number(file.id);
+//     titleClick(id, file.title);
+//     const pass = passGet(file.id, file.title);
+//     let isSomething = tabIdArray.includes(id);
+//     $.ajax({
+//       url: '/tabPostController/',
+//       type: 'POST',
+//       dataType: 'Json',
+//       contentType: 'application/json',
+//       data: JSON.stringify({
+//         flg: 'tabAdd',
+//         isSomething,
+//         id,
+//         title: file.title,
+//       }),
+//       success: function (res) {
+//         const order = orderGet('tab-content', `Tab-ID${id}`);
+//         //orderを格納し、focus=1へ
+//         $.ajax({
+//           url: '/tabPostController/',
+//           type: 'POST',
+//           dataType: 'Json',
+//           contentType: 'application/json',
+//           data: JSON.stringify({
+//             flg: 'clickTab',
+//             id,
+//             order,
+//             title: file.title,
+//           }),
+//           success: function (res) {
+//             document.getElementById('notepass').innerHTML = pass;
+//             tabFocusID = id;
+//           },
+//         });
+//       },
+//     });
+//   });
+// };
+
 export const fileClick = () => {
-  $('.list_title').on('click', function (event) {
+  let isClickEnabled = true; // クリックイベントの有効/無効フラグ
+
+  // クリックイベントの定義
+  function handleClick(event) {
+    if (!isClickEnabled) {
+      return; // クリックイベントが無効化されている場合は処理を終了
+    }
+
+    isClickEnabled = false; // クリックイベントを無効化
+
     let file = {
       title: $(this).html(),
       id: $(this).attr('value'),
@@ -298,8 +353,14 @@ export const fileClick = () => {
           },
         });
       },
+      complete: function () {
+        isClickEnabled = true; // クリックイベントを有効化
+      },
     });
-  });
+  }
+
+  // 初回のクリックイベントの設定
+  $('.list_title').one('click', handleClick);
 };
 
 //ページを更新した際に前回のタブ情報を載せる
@@ -346,7 +407,6 @@ async function titleClick(id, title) {
   return new Promise((resolve, reject) => {
     //タブ未生成
     if (!tabIdArray.includes(id)) {
-      tabIdArray.push(id);
       $.ajax({
         url: '/notePostController/',
         type: 'POST',
@@ -373,7 +433,7 @@ async function titleClick(id, title) {
 
           document.getElementById('notab').style.display = 'none';
 
-          // tabIdArray.push(id);
+          tabIdArray.push(id);
 
           document.getElementById(`edit-note-btn${id}`).onclick = function () {
             document.getElementById(`tabname${id}`).style.color = 'red';
