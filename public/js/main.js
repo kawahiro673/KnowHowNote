@@ -23,6 +23,8 @@ import { orderGet, passGet } from './stringUtils.js';
 
 import { expandableAdaptation } from './expandableOptions.js';
 
+import { hasInput } from './utilityFunction.js';
+
 let tabIdArray = []; //タブが生成されているファイルのIDを格納
 let tabFocusID; //　フォーカスが当たっているタブのIDを常に保持。フォルダ名の名前変更・D&D時のパス変更に使用。
 
@@ -513,82 +515,68 @@ async function titleClick(id, title) {
   });
 }
 
-//「フォルダ追加」ボタン押下時(root(id=0)に作成)
-createbutton.addEventListener(
-  'click',
-  async (e) => {
-    const root = hasInput(document.getElementById('0'));
-    if (!root) {
-      const id = 0;
-      disableElements();
-      e.stopPropagation();
-      await newFolderCreateFunc(id);
-      setTimeout(() => {
-        enableElements();
-      }, 1500);
-      document.getElementById('list_loader').style.display = 'block';
-      document.getElementById('list_loader').classList.add('loaded');
-    }
-  },
-  false
-);
+// //「フォルダ追加」ボタン押下時(root(id=0)に作成)
+// createbutton.addEventListener(
+//   'click',
+//   async (e) => {
+//     const root = hasInput(document.getElementById('0'));
+//     if (!root) {
+//       const id = 0;
+//       disableElements();
+//       e.stopPropagation();
+//       await newFolderCreateFunc(id);
+//       setTimeout(() => {
+//         enableElements();
+//       }, 1500);
+//       document.getElementById('list_loader').style.display = 'block';
+//       document.getElementById('list_loader').classList.add('loaded');
+//     }
+//   },
+//   false
+// );
 
 //「ノート追加」ボタン押下時(root(id=0)に作成)
 // hasInputは、input要素の有無を確認している
-createfilebutton.addEventListener('click', async (e) => {
-  const root = hasInput(document.getElementById('0'));
-  if (!root) {
-    const id = 0;
-    disableElements();
-    e.stopPropagation();
-    //awaitはPromiseが返ってくるまで待つ。関数内でPromise化し、resolveのタイミングでPromiseが返る
-    await newFileCreateFunc(id);
-    setTimeout(() => {
-      enableElements();
-    }, 1500);
-    document.getElementById('list_loader').style.display = 'block';
-    document.getElementById('list_loader').classList.add('loaded');
-  }
-});
-
-//elemの全ての配下要素を再起的に参照。inputタブが配下にあればtrue,なければfalse
-function hasInput(elem) {
-  if (elem.tagName === 'INPUT') {
-    return true;
-  } else if (elem.children.length > 0) {
-    for (let i = 0; i < elem.children.length; i++) {
-      if (hasInput(elem.children[i])) {
-        return true;
-      }
-    }
-  }
-  return false;
-}
+// createfilebutton.addEventListener('click', async (e) => {
+//   const root = hasInput(document.getElementById('0'));
+//   if (!root) {
+//     const id = 0;
+//     disableElements();
+//     e.stopPropagation();
+//     //awaitはPromiseが返ってくるまで待つ。関数内でPromise化し、resolveのタイミングでPromiseが返る
+//     await newFileCreateFunc(id);
+//     setTimeout(() => {
+//       enableElements();
+//     }, 1500);
+//     document.getElementById('list_loader').style.display = 'block';
+//     document.getElementById('list_loader').classList.add('loaded');
+//   }
+// });
 
 export function tabFocusIDGet() {
   return tabFocusID;
 }
 
-//シェアタブを開いている時にボタンを無効化する
-export function disableElements() {
-  document.getElementById('createbutton').setAttribute('disabled', 'disabled');
-  document
-    .getElementById('createfilebutton')
-    .setAttribute('disabled', 'disabled');
-}
+// //シェアタブを開いている時にボタンを無効化する
+// export function disableElements() {
+//   document.getElementById('createbutton').setAttribute('disabled', 'disabled');
+//   document
+//     .getElementById('createfilebutton')
+//     .setAttribute('disabled', 'disabled');
+// }
 
-// 要素を有効化する関数
-export function enableElements() {
-  document.getElementById('createbutton').removeAttribute('disabled');
-  document.getElementById('createfilebutton').removeAttribute('disabled');
-}
+// // 要素を有効化する関数
+// export function enableElements() {
+//   document.getElementById('createbutton').removeAttribute('disabled');
+//   document.getElementById('createfilebutton').removeAttribute('disabled');
+// }
 
-// share-tab要素をクリックした際の処理
-document.getElementById('share-tab').addEventListener('click', () => {
-  disableElements();
-});
+// // share-tab要素をクリックした際の処理
+// document.getElementById('share-tab').addEventListener('click', () => {
+//   disableElements();
+// });
 
-// nouhau要素をクリックした際の処理
-document.getElementById('nouhau').addEventListener('click', () => {
-  enableElements();
-});
+// // nouhau要素をクリックした際の処理
+// document.getElementById('nouhau').addEventListener('click', () => {
+//   enableElements();
+// });

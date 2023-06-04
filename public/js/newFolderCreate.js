@@ -1,5 +1,10 @@
 import { listCreate } from './main.js';
 import { orderGet } from './stringUtils.js';
+import {
+  hasInput,
+  disableElements,
+  enableElements,
+} from './utilityFunction.js';
 
 export const newFolderCreateFunc = (id) => {
   return new Promise((resolve, reject) => {
@@ -122,3 +127,23 @@ function newCreateFolder2(inputTab, span, li, ul, parentId) {
     });
   }
 }
+
+//「フォルダ追加」ボタン押下時(root(id=0)に作成)
+createbutton.addEventListener(
+  'click',
+  async (e) => {
+    const root = hasInput(document.getElementById('0'));
+    if (!root) {
+      const id = 0;
+      disableElements();
+      e.stopPropagation();
+      await newFolderCreateFunc(id);
+      setTimeout(() => {
+        enableElements();
+      }, 1500);
+      document.getElementById('list_loader').style.display = 'block';
+      document.getElementById('list_loader').classList.add('loaded');
+    }
+  },
+  false
+);

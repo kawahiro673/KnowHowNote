@@ -1,5 +1,10 @@
 import { listCreate } from './main.js';
 import { orderGet, currentTimeGet, passGet } from './stringUtils.js';
+import {
+  hasInput,
+  disableElements,
+  enableElements,
+} from './utilityFunction.js';
 
 export const newFileCreateFunc = (id) => {
   return new Promise((resolve, reject) => {
@@ -124,3 +129,21 @@ export const newCreateFile2 = (inputTab, span, parentId, li) => {
     });
   }
 };
+
+//「ノート追加」ボタン押下時(root(id=0)に作成)
+// hasInputは、input要素の有無を確認している
+createfilebutton.addEventListener('click', async (e) => {
+  const root = hasInput(document.getElementById('0'));
+  if (!root) {
+    const id = 0;
+    disableElements();
+    e.stopPropagation();
+    //awaitはPromiseが返ってくるまで待つ。関数内でPromise化し、resolveのタイミングでPromiseが返る
+    await newFileCreateFunc(id);
+    setTimeout(() => {
+      enableElements();
+    }, 1500);
+    document.getElementById('list_loader').style.display = 'block';
+    document.getElementById('list_loader').classList.add('loaded');
+  }
+});
