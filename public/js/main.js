@@ -346,6 +346,7 @@ async function titleClick(id, title) {
   return new Promise((resolve, reject) => {
     //タブ未生成
     if (!tabIdArray.includes(id)) {
+      tabIdArray.push(id);
       $.ajax({
         url: '/notePostController/',
         type: 'POST',
@@ -372,7 +373,7 @@ async function titleClick(id, title) {
 
           document.getElementById('notab').style.display = 'none';
 
-          tabIdArray.push(id);
+          // tabIdArray.push(id);
 
           document.getElementById(`edit-note-btn${id}`).onclick = function () {
             document.getElementById(`tabname${id}`).style.color = 'red';
