@@ -558,19 +558,25 @@ function endDrag(event) {
 }
 
 $(function () {
+  var draggingElement = null;
+
   $('#fileList li')
     .mousedown(function () {
-      $(this).addClass('dragging');
-      $(document).mousemove(function (e) {
-        var draggingElement = $('.dragging');
+      draggingElement = $(this).clone().addClass('dragging');
+      draggingElement.appendTo('body');
+    })
+    .mousemove(function (e) {
+      if (draggingElement) {
         draggingElement.css({
           top: e.clientY - draggingElement.height() / 2,
           left: e.clientX - draggingElement.width() / 2,
         });
-      });
+      }
     })
     .mouseup(function () {
-      $(this).removeClass('dragging');
-      $(document).unbind('mousemove');
+      if (draggingElement) {
+        draggingElement.remove();
+        draggingElement = null;
+      }
     });
 });
