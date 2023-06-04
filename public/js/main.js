@@ -113,15 +113,16 @@ export const listCreate = () => {
                 let li = document.createElement('li');
                 li.setAttribute('class', `parent${file.parent_id}`);
                 li.setAttribute('id', `li${file.id}`);
-                li.draggable = true;
-                li.addEventListener('dragstart', startDrag);
-                li.addEventListener('dragend', endDrag);
+
                 let span = document.createElement('span');
                 span.setAttribute('class', 'list_title file');
                 span.setAttribute('id', `file${file.id}`);
                 span.style.color = file.title_color;
                 span.setAttribute('value', `${file.id}`);
                 span.innerHTML = file.title;
+                span.draggable = true;
+                span.addEventListener('dragstart', startDrag);
+                span.addEventListener('dragend', endDrag);
                 document.getElementById(`${parentId}`).appendChild(li);
                 li.appendChild(span);
                 deleteArray.push(file);
@@ -542,14 +543,16 @@ document.getElementById('nouhau').addEventListener('click', () => {
   enableElements();
 });
 
-let draggingElement;
-
 function startDrag(event) {
-  draggingElement = event.target;
+  const draggingElement = event.target;
 
+  // ドラッグ中の要素のクラスに .dragging を追加
   draggingElement.classList.add('dragging');
 }
 
 function endDrag(event) {
+  const draggingElement = event.target;
+
+  // ドラッグ中の要素のクラスから .dragging を削除
   draggingElement.classList.remove('dragging');
 }
