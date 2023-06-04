@@ -121,8 +121,8 @@ export const listCreate = () => {
                 span.setAttribute('value', `${file.id}`);
                 span.innerHTML = file.title;
                 span.draggable = true;
-                span.addEventListener('dragstart', startDrag);
-                span.addEventListener('dragend', endDrag);
+                // span.addEventListener('dragstart', startDrag);
+                // span.addEventListener('dragend', endDrag);
                 document.getElementById(`${parentId}`).appendChild(li);
                 li.appendChild(span);
                 deleteArray.push(file);
@@ -556,3 +556,21 @@ function endDrag(event) {
   // ドラッグ中の要素のクラスから .dragging を削除
   draggingElement.classList.remove('dragging');
 }
+
+$(function () {
+  $('#fileList li')
+    .mousedown(function () {
+      $(this).addClass('dragging');
+      $(document).mousemove(function (e) {
+        var draggingElement = $('.dragging');
+        draggingElement.css({
+          top: e.clientY - draggingElement.height() / 2,
+          left: e.clientX - draggingElement.width() / 2,
+        });
+      });
+    })
+    .mouseup(function () {
+      $(this).removeClass('dragging');
+      $(document).unbind('mousemove');
+    });
+});
