@@ -1,11 +1,11 @@
-import { closeTab, deleteTabArray } from './tab_func.js';
+import { closeTab, deleteTabArray } from '../tab_func.js';
 
-import { newFileCreateFunc } from './newFileCreate.js';
-import { newFolderCreateFunc } from './newFolderCreate.js';
-import { orderGet, fileIDUnderTheFolder } from './stringUtils.js';
+import { newFileCreateFunc } from '../newFileCreate.js';
+import { newFolderCreateFunc } from '../newFolderCreate.js';
+import { orderGet, fileIDUnderTheFolder } from '../stringUtils.js';
 
-import { tabFocusIDGet } from './main.js';
-import { disableElements, enableElements } from './utilityFunction.js';
+import { tabFocusIDGet } from '../main.js';
+import { disableElements, enableElements } from '../utilityFunction.js';
 
 let tmp1;
 let tmp2;

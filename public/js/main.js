@@ -9,10 +9,10 @@ import {
   binderCreate,
 } from './tab_func.js';
 
-import { fileContextmenu } from './note_contextmenu.js';
-import { folderContextmenu } from './folder_contextmenu.js';
-import { shareContextmenu } from './share_contextmenu.js';
-import { labelContextmenu } from './label_contextmenu.js';
+import { fileContextmenu } from './contextmenu/note_contextmenu.js';
+import { folderContextmenu } from './contextmenu/folder_contextmenu.js';
+import { shareContextmenu } from './contextmenu/share_contextmenu.js';
+import { labelContextmenu } from './contextmenu/label_contextmenu.js';
 
 import { jQueryUIOptionsFunc } from './jQueryUI_func.js';
 

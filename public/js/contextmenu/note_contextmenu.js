@@ -1,8 +1,8 @@
-import { closeTab, deleteTabArray } from './tab_func.js';
-import { currentTimeGet, orderGet } from './stringUtils.js';
-import { tabFocusIDGet } from './main.js';
+import { closeTab, deleteTabArray } from '../tab_func.js';
+import { currentTimeGet, orderGet } from '../stringUtils.js';
+import { tabFocusIDGet } from '../main.js';
 
-import { newFileCreateFunc } from './newFileCreate.js';
+import { newFileCreateFunc } from '../newFileCreate.js';
 
 let tmp1;
 let tmp2;

@@ -1,4 +1,4 @@
-import { listCreate } from './main.js';
+import { listCreate } from '../main.js';
 
 export const shareContextmenu = () => {
   $('.sharenote').on('contextmenu', function () {
