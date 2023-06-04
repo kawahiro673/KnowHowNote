@@ -328,6 +328,17 @@ footer {
   background-color: rgb(174, 171, 180);
 }
 
+#fileList li[draggable='true']:hover {
+  opacity: 0.5;
+}
+
+/* ドラッグ中のゴーストエフェクト用のスタイル */
+#fileList li[draggable='true'].dragging {
+  opacity: 0.5;
+  position: absolute;
+  pointer-events: none;
+}
+
 /****************************右クリックメニュー******************************/
 
 #contextmenu,

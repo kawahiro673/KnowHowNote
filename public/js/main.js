@@ -113,6 +113,9 @@ export const listCreate = () => {
                 let li = document.createElement('li');
                 li.setAttribute('class', `parent${file.parent_id}`);
                 li.setAttribute('id', `li${file.id}`);
+                li.draggable = true;
+                li.addEventListener('dragstart', startDrag);
+                li.addEventListener('dragend', endDrag);
                 let span = document.createElement('span');
                 span.setAttribute('class', 'list_title file');
                 span.setAttribute('id', `file${file.id}`);
@@ -538,3 +541,15 @@ document.getElementById('share-tab').addEventListener('click', () => {
 document.getElementById('nouhau').addEventListener('click', () => {
   enableElements();
 });
+
+let draggingElement;
+
+function startDrag(event) {
+  draggingElement = event.target;
+
+  draggingElement.classList.add('dragging');
+}
+
+function endDrag(event) {
+  draggingElement.classList.remove('dragging');
+}
