@@ -149,6 +149,34 @@ export const listCreate = () => {
       folderContextmenu(tabIdArray);
       fileClick();
       await expandableAdaptation(expandableArray);
+      $(function () {
+        $('.file').on('mousedown', function (e) {
+          console.log('やあ1');
+          var $clone = $(this).clone();
+          $clone.css('position', 'absolute');
+          $clone.css('background-color', 'lightgray');
+          // ゴーストエフェクト要素をbodyに追加
+          $('body').append($clone);
+
+          // ドラッグ中の動作を設定
+          $(document).on('mousemove', function (e) {
+            // ゴーストエフェクトをドラッグに追従させる
+            $clone.css('left', e.pageX + 'px');
+            $clone.css('top', e.pageY + 'px');
+          });
+
+          // ドラッグ終了時の処理を設定
+          $(document).on('mouseup', function (e) {
+            console.log('やあ2');
+            // ゴーストエフェクト要素を削除
+            $clone.remove();
+
+            // 不要なイベントハンドラを解除
+            $(document).off('mousemove');
+            $(document).off('mouseup');
+          });
+        });
+      });
     },
   });
 };
@@ -539,33 +567,4 @@ document.getElementById('share-tab').addEventListener('click', () => {
 // nouhau要素をクリックした際の処理
 document.getElementById('nouhau').addEventListener('click', () => {
   enableElements();
-});
-
-$(function () {
-  $('.file').on('mousedown', function (e) {
-    console.log('やあ1');
-    var $clone = $(this).clone();
-    $clone.css('position', 'absolute');
-    $clone.css('background-color', 'lightgray');
-    // ゴーストエフェクト要素をbodyに追加
-    $('body').append($clone);
-
-    // ドラッグ中の動作を設定
-    $(document).on('mousemove', function (e) {
-      // ゴーストエフェクトをドラッグに追従させる
-      $clone.css('left', e.pageX + 'px');
-      $clone.css('top', e.pageY + 'px');
-    });
-
-    // ドラッグ終了時の処理を設定
-    $(document).on('mouseup', function (e) {
-      console.log('やあ2');
-      // ゴーストエフェクト要素を削除
-      $clone.remove();
-
-      // 不要なイベントハンドラを解除
-      $(document).off('mousemove');
-      $(document).off('mouseup');
-    });
-  });
 });
