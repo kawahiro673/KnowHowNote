@@ -540,27 +540,23 @@ document.getElementById('share-tab').addEventListener('click', () => {
 document.getElementById('nouhau').addEventListener('click', () => {
   enableElements();
 });
+
 $(function () {
   var draggingElement = null;
 
   $('#fileList li').on('mousedown', function (e) {
-    var $clone = $(this).clone();
-    var $ghost = $('<div>', {
-      class: 'ghost-element',
-      css: {
-        position: 'absolute',
-        top: $(this).position().top,
-        left: $(this).position().left,
-        width: $(this).outerWidth(),
-        height: $(this).outerHeight(),
-      },
-    }).append($clone);
+    var $this = $(this);
+    var offsetX = e.pageX - $this.offset().left;
+    var offsetY = e.pageY - $this.offset().top;
 
-    draggingElement = $ghost;
+    draggingElement = $this.clone().addClass('dragging');
+    draggingElement.css({
+      position: 'absolute',
+      top: e.pageY - offsetY,
+      left: e.pageX - offsetX,
+    });
+
     draggingElement.appendTo('body');
-
-    var offsetX = e.pageX - $(this).offset().left;
-    var offsetY = e.pageY - $(this).offset().top;
 
     $(document).on('mousemove', function (e) {
       draggingElement.css({
