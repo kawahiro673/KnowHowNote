@@ -542,33 +542,28 @@ document.getElementById('nouhau').addEventListener('click', () => {
 });
 
 $(function () {
-  var draggingElement = null;
+  $('.file').on('mousedown', function (e) {
+    console.log('やあ1');
+    var $clone = $(this).clone();
+    $clone.css('position', 'absolute');
+    $clone.css('background-color', 'lightgray');
+    // ゴーストエフェクト要素をbodyに追加
+    $('body').append($clone);
 
-  $('#fileList li').on('mousedown', function (e) {
-    var $this = $(this);
-    var offsetX = e.pageX - $this.offset().left;
-    var offsetY = e.pageY - $this.offset().top;
-
-    draggingElement = $this.clone().addClass('dragging');
-    draggingElement.css({
-      position: 'absolute',
-      top: e.pageY - offsetY,
-      left: e.pageX - offsetX,
-    });
-
-    draggingElement.appendTo('body');
-    draggingElement.addClass('floating'); // ゴースト要素にアニメーション用のクラスを追加
-
+    // ドラッグ中の動作を設定
     $(document).on('mousemove', function (e) {
-      draggingElement.css({
-        top: e.pageY - offsetY,
-        left: e.pageX - offsetX,
-      });
+      // ゴーストエフェクトをドラッグに追従させる
+      $clone.css('left', e.pageX + 'px');
+      $clone.css('top', e.pageY + 'px');
     });
 
-    $(document).on('mouseup', function () {
-      draggingElement.remove();
-      draggingElement = null;
+    // ドラッグ終了時の処理を設定
+    $(document).on('mouseup', function (e) {
+      console.log('やあ2');
+      // ゴーストエフェクト要素を削除
+      $clone.remove();
+
+      // 不要なイベントハンドラを解除
       $(document).off('mousemove');
       $(document).off('mouseup');
     });
