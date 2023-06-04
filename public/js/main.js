@@ -121,8 +121,6 @@ export const listCreate = () => {
                 span.setAttribute('value', `${file.id}`);
                 span.innerHTML = file.title;
                 span.draggable = true;
-                // span.addEventListener('dragstart', startDrag);
-                // span.addEventListener('dragend', endDrag);
                 document.getElementById(`${parentId}`).appendChild(li);
                 li.appendChild(span);
                 deleteArray.push(file);
@@ -542,41 +540,40 @@ document.getElementById('share-tab').addEventListener('click', () => {
 document.getElementById('nouhau').addEventListener('click', () => {
   enableElements();
 });
-
-function startDrag(event) {
-  const draggingElement = event.target;
-
-  // ドラッグ中の要素のクラスに .dragging を追加
-  draggingElement.classList.add('dragging');
-}
-
-function endDrag(event) {
-  const draggingElement = event.target;
-
-  // ドラッグ中の要素のクラスから .dragging を削除
-  draggingElement.classList.remove('dragging');
-}
-
 $(function () {
   var draggingElement = null;
 
-  $('#fileList li')
-    .mousedown(function () {
-      draggingElement = $(this).clone().addClass('dragging');
-      draggingElement.appendTo('body');
-    })
-    .mousemove(function (e) {
-      if (draggingElement) {
-        draggingElement.css({
-          top: e.clientY - draggingElement.height() / 2,
-          left: e.clientX - draggingElement.width() / 2,
-        });
-      }
-    })
-    .mouseup(function () {
-      if (draggingElement) {
-        draggingElement.remove();
-        draggingElement = null;
-      }
+  $('#fileList li').on('mousedown', function (e) {
+    var $clone = $(this).clone();
+    var $ghost = $('<div>', {
+      class: 'ghost-element',
+      css: {
+        position: 'absolute',
+        top: $(this).position().top,
+        left: $(this).position().left,
+        width: $(this).outerWidth(),
+        height: $(this).outerHeight(),
+      },
+    }).append($clone);
+
+    draggingElement = $ghost;
+    draggingElement.appendTo('body');
+
+    var offsetX = e.pageX - $(this).offset().left;
+    var offsetY = e.pageY - $(this).offset().top;
+
+    $(document).on('mousemove', function (e) {
+      draggingElement.css({
+        top: e.pageY - offsetY,
+        left: e.pageX - offsetX,
+      });
     });
+
+    $(document).on('mouseup', function () {
+      draggingElement.remove();
+      draggingElement = null;
+      $(document).off('mousemove');
+      $(document).off('mouseup');
+    });
+  });
 });
