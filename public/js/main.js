@@ -16,14 +16,9 @@ import { labelContextmenu } from './label_contextmenu.js';
 
 import { jQueryUIOptionsFunc } from './jQueryUI_func.js';
 
-import { newFileCreateFunc } from './newFileCreate.js';
-import { newFolderCreateFunc } from './newFolderCreate.js';
-
 import { orderGet, passGet } from './stringUtils.js';
 
 import { expandableAdaptation } from './expandableOptions.js';
-
-import { hasInput } from './utilityFunction.js';
 
 let tabIdArray = []; //タブが生成されているファイルのIDを格納
 let tabFocusID; //　フォーカスが当たっているタブのIDを常に保持。フォルダ名の名前変更・D&D時のパス変更に使用。
@@ -238,73 +233,73 @@ listCreate();
 tabUpload();
 shareListCreate();
 
-const conme = document.getElementById('contextmenu');
-const conme2 = document.getElementById('contextmenu2');
-const conme3 = document.getElementById('contextmenu3');
-const conme4 = document.getElementById('contextmenu4');
-const conme5 = document.getElementById('contextmenu5');
+// const conme = document.getElementById('contextmenu');
+// const conme2 = document.getElementById('contextmenu2');
+// const conme3 = document.getElementById('contextmenu3');
+// const conme4 = document.getElementById('contextmenu4');
+// const conme5 = document.getElementById('contextmenu5');
 
-$('#right').on('click contextmenu', (e) => {
-  if (e.target.closest('.list_title')) {
-    conme.style.left = e.clientX + 'px';
-    conme.style.top = e.clientY + 'px';
-    conme.style.display = 'block';
-    conme2.style.display = 'none';
-    conme3.style.display = 'none';
-    conme4.style.display = 'none';
-    conme5.style.display = 'none';
-  } else if (e.target.closest('.folder')) {
-    conme3.style.left = e.clientX + 'px';
-    conme3.style.top = e.clientY + 'px';
-    conme3.style.display = 'block';
-    conme.style.display = 'none';
-    conme2.style.display = 'none';
-    conme4.style.display = 'none';
-    conme5.style.display = 'none';
-  } else if (e.target.closest('.sharenote')) {
-    conme4.style.left = e.clientX + 'px';
-    conme4.style.top = e.clientY + 'px';
-    conme4.style.display = 'block';
-    conme.style.display = 'none';
-    conme2.style.display = 'none';
-    conme3.style.display = 'none';
-    conme5.style.display = 'none';
-  } else {
-    conme2.style.left = e.clientX + 'px';
-    conme2.style.top = e.clientY + 'px';
-    conme2.style.display = 'block';
-    conme.style.display = 'none';
-    conme3.style.display = 'none';
-    conme4.style.display = 'none';
-    conme5.style.display = 'none';
-  }
-  document.body.addEventListener('click', function (e) {
-    conme.style.display = 'none';
-    conme2.style.display = 'none';
-    conme3.style.display = 'none';
-    conme4.style.display = 'none';
-    conme5.style.display = 'none';
-  });
-});
-$('html').on('click contextmenu', (e) => {
-  let a = $(e.target).closest('#right').length;
-  if (a) {
-    //rightの上
-  } else {
-    conme.style.display = 'none';
-    conme2.style.display = 'none';
-    conme3.style.display = 'none';
-    conme4.style.display = 'none';
-  }
-});
+// $('#right').on('click contextmenu', (e) => {
+//   if (e.target.closest('.list_title')) {
+//     conme.style.left = e.clientX + 'px';
+//     conme.style.top = e.clientY + 'px';
+//     conme.style.display = 'block';
+//     conme2.style.display = 'none';
+//     conme3.style.display = 'none';
+//     conme4.style.display = 'none';
+//     conme5.style.display = 'none';
+//   } else if (e.target.closest('.folder')) {
+//     conme3.style.left = e.clientX + 'px';
+//     conme3.style.top = e.clientY + 'px';
+//     conme3.style.display = 'block';
+//     conme.style.display = 'none';
+//     conme2.style.display = 'none';
+//     conme4.style.display = 'none';
+//     conme5.style.display = 'none';
+//   } else if (e.target.closest('.sharenote')) {
+//     conme4.style.left = e.clientX + 'px';
+//     conme4.style.top = e.clientY + 'px';
+//     conme4.style.display = 'block';
+//     conme.style.display = 'none';
+//     conme2.style.display = 'none';
+//     conme3.style.display = 'none';
+//     conme5.style.display = 'none';
+//   } else {
+//     conme2.style.left = e.clientX + 'px';
+//     conme2.style.top = e.clientY + 'px';
+//     conme2.style.display = 'block';
+//     conme.style.display = 'none';
+//     conme3.style.display = 'none';
+//     conme4.style.display = 'none';
+//     conme5.style.display = 'none';
+//   }
+//   document.body.addEventListener('click', function (e) {
+//     conme.style.display = 'none';
+//     conme2.style.display = 'none';
+//     conme3.style.display = 'none';
+//     conme4.style.display = 'none';
+//     conme5.style.display = 'none';
+//   });
+// });
+// $('html').on('click contextmenu', (e) => {
+//   let a = $(e.target).closest('#right').length;
+//   if (a) {
+//     //rightの上
+//   } else {
+//     conme.style.display = 'none';
+//     conme2.style.display = 'none';
+//     conme3.style.display = 'none';
+//     conme4.style.display = 'none';
+//   }
+// });
 
-window.addEventListener('scroll', function () {
-  conme.style.display = 'none';
-  conme2.style.display = 'none';
-  conme3.style.display = 'none';
-  conme4.style.display = 'none';
-  conme5.style.display = 'none';
-});
+// window.addEventListener('scroll', function () {
+//   conme.style.display = 'none';
+//   conme2.style.display = 'none';
+//   conme3.style.display = 'none';
+//   conme4.style.display = 'none';
+//   conme5.style.display = 'none';
+// });
 
 const noTab = document.createElement('p');
 noTab.innerHTML = 'こちらにnoteが出力されます';
@@ -328,7 +323,7 @@ export const fileClick = () => {
       elem: this,
     };
     let id = Number(file.id);
-    titleClick(id, file.title);
+    tabScreenOptions(id, file.title);
     const pass = passGet(file.id, file.title);
     let isSomething = tabIdArray.includes(id);
     $.ajax({
@@ -385,7 +380,7 @@ function tabUpload() {
     success: async function (res) {
       const createTheFirstTab = async () => {
         for (const tab of res.tabResult) {
-          await titleClick(tab.id, tab.tabTitle);
+          await tabScreenOptions(tab.id, tab.tabTitle);
         }
       };
       const tabFocusOn = async () => {
@@ -412,7 +407,7 @@ function tabUpload() {
   });
 }
 
-async function titleClick(id, title) {
+async function tabScreenOptions(id, title) {
   return new Promise((resolve, reject) => {
     //タブ未生成
     if (!tabIdArray.includes(id)) {
@@ -515,68 +510,6 @@ async function titleClick(id, title) {
   });
 }
 
-// //「フォルダ追加」ボタン押下時(root(id=0)に作成)
-// createbutton.addEventListener(
-//   'click',
-//   async (e) => {
-//     const root = hasInput(document.getElementById('0'));
-//     if (!root) {
-//       const id = 0;
-//       disableElements();
-//       e.stopPropagation();
-//       await newFolderCreateFunc(id);
-//       setTimeout(() => {
-//         enableElements();
-//       }, 1500);
-//       document.getElementById('list_loader').style.display = 'block';
-//       document.getElementById('list_loader').classList.add('loaded');
-//     }
-//   },
-//   false
-// );
-
-//「ノート追加」ボタン押下時(root(id=0)に作成)
-// hasInputは、input要素の有無を確認している
-// createfilebutton.addEventListener('click', async (e) => {
-//   const root = hasInput(document.getElementById('0'));
-//   if (!root) {
-//     const id = 0;
-//     disableElements();
-//     e.stopPropagation();
-//     //awaitはPromiseが返ってくるまで待つ。関数内でPromise化し、resolveのタイミングでPromiseが返る
-//     await newFileCreateFunc(id);
-//     setTimeout(() => {
-//       enableElements();
-//     }, 1500);
-//     document.getElementById('list_loader').style.display = 'block';
-//     document.getElementById('list_loader').classList.add('loaded');
-//   }
-// });
-
 export function tabFocusIDGet() {
   return tabFocusID;
 }
-
-// //シェアタブを開いている時にボタンを無効化する
-// export function disableElements() {
-//   document.getElementById('createbutton').setAttribute('disabled', 'disabled');
-//   document
-//     .getElementById('createfilebutton')
-//     .setAttribute('disabled', 'disabled');
-// }
-
-// // 要素を有効化する関数
-// export function enableElements() {
-//   document.getElementById('createbutton').removeAttribute('disabled');
-//   document.getElementById('createfilebutton').removeAttribute('disabled');
-// }
-
-// // share-tab要素をクリックした際の処理
-// document.getElementById('share-tab').addEventListener('click', () => {
-//   disableElements();
-// });
-
-// // nouhau要素をクリックした際の処理
-// document.getElementById('nouhau').addEventListener('click', () => {
-//   enableElements();
-// });
