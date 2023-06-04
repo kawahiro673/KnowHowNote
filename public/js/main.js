@@ -255,53 +255,6 @@ noTab.innerHTML = 'こちらにnoteが出力されます';
 noTab.setAttribute('id', 'notab');
 document.getElementById('tab').appendChild(noTab);
 
-//ファイルクリック時にタブを表示
-// export const fileClick = () => {
-//   $('.list_title').on('click', function (event) {
-//     let file = {
-//       title: $(this).html(),
-//       id: $(this).attr('value'),
-//       elem: this,
-//     };
-//     let id = Number(file.id);
-//     titleClick(id, file.title);
-//     const pass = passGet(file.id, file.title);
-//     let isSomething = tabIdArray.includes(id);
-//     $.ajax({
-//       url: '/tabPostController/',
-//       type: 'POST',
-//       dataType: 'Json',
-//       contentType: 'application/json',
-//       data: JSON.stringify({
-//         flg: 'tabAdd',
-//         isSomething,
-//         id,
-//         title: file.title,
-//       }),
-//       success: function (res) {
-//         const order = orderGet('tab-content', `Tab-ID${id}`);
-//         //orderを格納し、focus=1へ
-//         $.ajax({
-//           url: '/tabPostController/',
-//           type: 'POST',
-//           dataType: 'Json',
-//           contentType: 'application/json',
-//           data: JSON.stringify({
-//             flg: 'clickTab',
-//             id,
-//             order,
-//             title: file.title,
-//           }),
-//           success: function (res) {
-//             document.getElementById('notepass').innerHTML = pass;
-//             tabFocusID = id;
-//           },
-//         });
-//       },
-//     });
-//   });
-// };
-
 export const fileClick = () => {
   let isClickEnabled = true; // クリックイベントの有効/無効フラグ
 
@@ -311,7 +264,7 @@ export const fileClick = () => {
       return; // クリックイベントが無効化されている場合は処理を終了
     }
 
-    isClickEnabled = false; // クリックイベントを無効化
+    isClickEnabled = false;
 
     let file = {
       title: $(this).html(),
