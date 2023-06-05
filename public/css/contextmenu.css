@@ -2,8 +2,7 @@
 #contextmenu2,
 #contextmenu3,
 #contextmenu4,
-#contextmenu5,
-#contextmenu6 {
+#contextmenu5 {
   display: none;
   position: fixed;
   background-color: white;
@@ -100,20 +99,18 @@
 }
 
 #contextmenu6 {
-  width: 50px; /* 適切な幅に調整してください */
-  padding: 6px; /* 余白のサイズを調整してください */
+  width: 200px; /* 適切な幅に調整してください */
+  padding: 0;
   margin: 0;
   font-size: 14px; /* 適切なフォントサイズに調整してください */
   background-color: white;
   border: 1px solid #ccc;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  font-size: 14px;
-  z-index: 9999;
+  list-style: none;
 }
 
 #contextmenu6 li {
+  padding: 5px 15px;
   cursor: pointer;
-  list-style: none;
 }
 
 #contextmenu6 li:hover {
