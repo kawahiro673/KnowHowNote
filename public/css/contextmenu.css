@@ -99,8 +99,8 @@
 }
 
 #contextmenu6 {
-  width: 200px; /* 適切な幅に調整してください */
-  padding: 0;
+  width: 50px; /* 適切な幅に調整してください */
+  padding: 6px;
   margin: 0;
   font-size: 14px; /* 適切なフォントサイズに調整してください */
   background-color: white;
@@ -109,7 +109,6 @@
 }
 
 #contextmenu6 li {
-  padding: 5px 15px;
   cursor: pointer;
 }
 
