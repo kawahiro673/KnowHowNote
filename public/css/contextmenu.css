@@ -18,14 +18,9 @@
 #contextmenu2 li,
 #contextmenu3 li,
 #contextmenu4 li,
-#contextmenu5 li,
-#contextmenu6 li {
+#contextmenu5 li {
   cursor: pointer;
   list-style: none;
-}
-
-#contextmenu6 li:hover {
-  background-color: #f0f0f0;
 }
 
 #newfolder:hover,
@@ -102,4 +97,25 @@
 #notedetails:hover > ul > li,
 #sharedetails:hover > ul > li {
   height: 300px;
+}
+
+#contextmenu6 {
+  width: 50px; /* 適切な幅に調整してください */
+  padding: 6px; /* 余白のサイズを調整してください */
+  margin: 0;
+  font-size: 14px; /* 適切なフォントサイズに調整してください */
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  z-index: 9999;
+}
+
+#contextmenu6 li {
+  cursor: pointer;
+  list-style: none;
+}
+
+#contextmenu6 li:hover {
+  background-color: #f0f0f0;
 }
