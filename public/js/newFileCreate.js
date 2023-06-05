@@ -65,8 +65,8 @@ export const newFileCreateFunc = (id) => {
       }
     };
 
-    document.addEventListener('click', clickL);
-    document.addEventListener('contextmenu', clickR);
+    inputTab.addEventListener('click', clickL);
+    inputTab.addEventListener('contextmenu', clickR);
     inputTab.addEventListener('keypress', enter);
   });
 };

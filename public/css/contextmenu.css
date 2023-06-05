@@ -1,0 +1,118 @@
+#contextmenu,
+#contextmenu2,
+#contextmenu3,
+#contextmenu4,
+#contextmenu5 {
+  display: none;
+  position: fixed;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 6px; /* 余白のサイズを調整してください */
+  font-size: 14px;
+  z-index: 9999;
+}
+
+#contextmenu li,
+#contextmenu2 li,
+#contextmenu3 li,
+#contextmenu4 li,
+#contextmenu5 li {
+  cursor: pointer;
+  list-style: none;
+}
+
+#newfolder:hover,
+#newfile:hover,
+#folderName:hover,
+#folderDelete:hover,
+#createNete:hover,
+#createfolder:hover,
+#delete:hover,
+#name:hover,
+#color:hover,
+#newmemo:hover,
+#folder:hover,
+#MyNoteAdd:hover,
+#sharedetails:hover,
+#notedetails:hover,
+#pink:hover,
+#red:hover,
+#orange:hover,
+#yellow:hover,
+#yellow-green:hover,
+#green:hover,
+#sky-blue:hover,
+#blue:hover,
+#purple:hover,
+#brown:hover,
+#gray:hover,
+#black:hover,
+#white:hover {
+  background-color: #f0f0f0;
+}
+
+#color > ul,
+#notedetails > ul,
+#sharedetails > ul {
+  list-style: none;
+  padding: 0px 0px 0px 0px;
+}
+
+#color,
+#notedetails,
+#sharedetails {
+  position: relative; /*これ重要*/
+}
+
+#color > ul > li > div,
+#notedetails > ul > li > div,
+#sharedetails > ul > li > div {
+  display: none;
+  padding: 5px 15px 5px 15px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: 1.2s;
+}
+
+#color:hover > ul > li > div,
+#notedetails:hover > ul > li > div,
+#sharedetails:hover > ul > li > div {
+  display: block;
+  background-color: white;
+  border: 1px solid #ccc;
+}
+
+#color:hover > ul,
+#notedetails:hover > ul,
+#sharedetails:hover > ul {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 100%;
+}
+
+#color:hover > ul > li,
+#notedetails:hover > ul > li,
+#sharedetails:hover > ul > li {
+  height: 300px;
+}
+
+#contextmenu6 {
+  width: 200px; /* 適切な幅に調整してください */
+  padding: 0;
+  margin: 0;
+  font-size: 14px; /* 適切なフォントサイズに調整してください */
+  background-color: white;
+  border: 1px solid #ccc;
+  list-style: none;
+}
+
+#contextmenu6 li {
+  padding: 5px 15px;
+  cursor: pointer;
+}
+
+#contextmenu6 li:hover {
+  background-color: #f0f0f0;
+}
