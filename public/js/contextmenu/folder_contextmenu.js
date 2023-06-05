@@ -61,6 +61,8 @@ export const folderContextmenu = (tabIdArray) => {
         setTimeout(() => {
           enableElements();
         }, 1500);
+        document.getElementById('list_loader').style.display = 'block';
+        document.getElementById('list_loader').classList.add('loaded');
       });
     });
 
@@ -83,6 +85,8 @@ export const folderContextmenu = (tabIdArray) => {
         setTimeout(() => {
           enableElements();
         }, 1500);
+        document.getElementById('list_loader').style.display = 'block';
+        document.getElementById('list_loader').classList.add('loaded');
       });
     });
 

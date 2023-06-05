@@ -375,6 +375,7 @@ footer {
 #folder:hover,
 #MyNoteAdd:hover,
 #sharedetails:hover,
+#notedetails:hover,
 #pink:hover,
 #red:hover,
 #orange:hover,
@@ -391,17 +392,20 @@ footer {
   background-color: #f0f0f0;
 }
 
+#color > ul,
 #notedetails > ul,
 #sharedetails > ul {
   list-style: none;
   padding: 0px 0px 0px 0px;
 }
 
+#color,
 #notedetails,
 #sharedetails {
   position: relative; /*これ重要*/
 }
 
+#color > ul > li > div,
 #notedetails > ul > li > div,
 #sharedetails > ul > li > div {
   display: none;
@@ -411,6 +415,7 @@ footer {
   transition: 1.2s;
 }
 
+#color:hover > ul > li > div,
 #notedetails:hover > ul > li > div,
 #sharedetails:hover > ul > li > div {
   display: block;
@@ -418,6 +423,7 @@ footer {
   border: 1px solid #ccc;
 }
 
+#color:hover > ul,
 #notedetails:hover > ul,
 #sharedetails:hover > ul {
   display: block;
@@ -426,6 +432,7 @@ footer {
   left: 100%;
 }
 
+#color:hover > ul > li,
 #notedetails:hover > ul > li,
 #sharedetails:hover > ul > li {
   height: 300px;
