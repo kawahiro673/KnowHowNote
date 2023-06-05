@@ -6,6 +6,69 @@ import {
   enableElements,
 } from './utilityFunction.js';
 
+// export const newFolderCreateFunc = (id) => {
+//   return new Promise((resolve, reject) => {
+//     let li = document.createElement('li');
+//     li.setAttribute('class', 'closed');
+//     let span = document.createElement('span');
+//     span.setAttribute('class', 'folder');
+//     let ul = document.createElement('ul');
+//     let inputTab = document.createElement('input');
+//     inputTab.setAttribute('type', 'text');
+//     inputTab.setAttribute('id', 'inputTab');
+//     inputTab.setAttribute('maxlength', '20');
+//     inputTab.setAttribute('size', '20');
+//     inputTab.style.display = 'block';
+//     inputTab.setAttribute('value', 'NewFolder');
+
+//     document.getElementById(id).appendChild(li);
+//     li.appendChild(span);
+//     span.appendChild(inputTab);
+
+//     //inputにフォーカスを当てて全選択
+//     document
+//       .getElementById('inputTab')
+//       .addEventListener('focus', (event) => event.target.select());
+//     document.getElementById('inputTab').focus();
+
+//     const clickL = (e) => {
+//       e.preventDefault();
+//       if (!e.target.closest('#inputTab')) {
+//         newCreateFolder2(inputTab, span, li, ul, id);
+//         document.removeEventListener('click', clickL);
+//         document.removeEventListener('contextmenu', clickR);
+//         document.removeEventListener('keypress', enter);
+//         resolve();
+//       }
+//     };
+//     const clickR = (e) => {
+//       e.preventDefault();
+//       if (!e.target.closest('#inputTab')) {
+//         newCreateFolder2(inputTab, span, li, ul, id);
+//         document.removeEventListener('click', clickL);
+//         document.removeEventListener('contextmenu', clickR);
+//         document.removeEventListener('keypress', enter);
+//         resolve();
+//       }
+//     };
+//     const enter = (e) => {
+//       //e.preventDefault(); //これがあると入力できない？？
+//       li.setAttribute('class', 'closed');
+//       if (e.keyCode === 13) {
+//         newCreateFolder2(inputTab, span, li, ul, id);
+//         document.removeEventListener('click', clickL);
+//         document.removeEventListener('contextmenu', clickR);
+//         document.removeEventListener('keypress', enter);
+//         resolve();
+//       }
+//     };
+
+//     document.addEventListener('click', clickL);
+//     document.addEventListener('contextmenu', clickR);
+//     inputTab.addEventListener('keypress', enter);
+//   });
+// };
+
 export const newFolderCreateFunc = (id) => {
   return new Promise((resolve, reject) => {
     let li = document.createElement('li');
@@ -25,47 +88,48 @@ export const newFolderCreateFunc = (id) => {
     li.appendChild(span);
     span.appendChild(inputTab);
 
-    //inputにフォーカスを当てて全選択
-    document
-      .getElementById('inputTab')
-      .addEventListener('focus', (event) => event.target.select());
-    document.getElementById('inputTab').focus();
+    let isCreatingFolder = false; // フォルダ作成中かどうかを示すフラグ
 
-    const clickL = (e) => {
-      e.preventDefault();
-      if (!e.target.closest('#inputTab')) {
+    // inputにフォーカスを当てて全選択
+    inputTab.addEventListener('focus', (event) => event.target.select());
+    inputTab.focus();
+
+    const createFolder = () => {
+      if (!isCreatingFolder) {
+        isCreatingFolder = true; // フォルダ作成中フラグを立てる
         newCreateFolder2(inputTab, span, li, ul, id);
-        document.removeEventListener('click', clickL);
-        document.removeEventListener('contextmenu', clickR);
-        document.removeEventListener('keypress', enter);
+        document.removeEventListener('click', handleClick);
+        document.removeEventListener('contextmenu', handleContextMenu);
+        document.removeEventListener('keypress', handleEnter);
         resolve();
       }
     };
-    const clickR = (e) => {
-      e.preventDefault();
+
+    const handleClick = (e) => {
       if (!e.target.closest('#inputTab')) {
-        newCreateFolder2(inputTab, span, li, ul, id);
-        document.removeEventListener('click', clickL);
-        document.removeEventListener('contextmenu', clickR);
-        document.removeEventListener('keypress', enter);
-        resolve();
+        createFolder();
       }
     };
-    const enter = (e) => {
-      //e.preventDefault(); //これがあると入力できない？？
-      li.setAttribute('class', 'closed');
+
+    const handleContextMenu = (e) => {
+      e.preventDefault();
+      if (!e.target.closest('#inputTab')) {
+        createFolder();
+      }
+    };
+
+    const handleEnter = (e) => {
       if (e.keyCode === 13) {
-        newCreateFolder2(inputTab, span, li, ul, id);
-        document.removeEventListener('click', clickL);
-        document.removeEventListener('contextmenu', clickR);
-        document.removeEventListener('keypress', enter);
-        resolve();
+        e.preventDefault();
+        if (!isCreatingFolder) {
+          createFolder();
+        }
       }
     };
 
-    document.addEventListener('click', clickL);
-    document.addEventListener('contextmenu', clickR);
-    inputTab.addEventListener('keypress', enter);
+    document.addEventListener('click', handleClick);
+    document.addEventListener('contextmenu', handleContextMenu);
+    inputTab.addEventListener('keypress', handleEnter);
   });
 };
 
