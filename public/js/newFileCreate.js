@@ -124,7 +124,9 @@ export const newFileCreateFunc = (id) => {
     const handleEnter = (e) => {
       if (e.keyCode === 13) {
         e.preventDefault();
-        createFile();
+        if (!isCreatingFile) {
+          createFile();
+        }
       }
     };
 
@@ -133,7 +135,6 @@ export const newFileCreateFunc = (id) => {
     inputTab.addEventListener('keypress', handleEnter);
   });
 };
-
 export const newCreateFile2 = (inputTab, span, parentId, li) => {
   //何も入力されていない時や空白や改行のみ
   if (!inputTab.value || !inputTab.value.match(/\S/g)) {
