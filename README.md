@@ -1,14 +1,15 @@
-# Know How Note
+## 📘_book:Know How Note
 <h2 align="center">Know How Note</h2>
 
-<p align="center">
-  <a href="vue公式サイトURL"><img src="https://〜.png" width="80px;" /></a>
-  <br>
-  <a href="PWA公式サイトURL"><img src="https://〜.png" height="45px;" /></a>
-  <a href="Firebase公式サイトURL"><img src="https://〜.png" height="45px;" /></a>
-  <a href="firealpaca公式サイトURL"><img src="https://〜.png" height="40px;" /></a>
-  <a href="sweetalert公式サイトURL"><img src="https://〜.png" height="45px;" /></a>
-</p>
+## 💻: 開発環境
+
+- HTML  
+- CSS  
+- Javascriprt
+- Node.js  
+- HEROKU
+- MySQL 
+- VSCode（Visual Studio Code）  
 
 
 ## 🌐 App URL
