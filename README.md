@@ -1,7 +1,10 @@
 ## 📘 Know How Note 📘
 
-## 📚 アプリ機能
+##  概要
+ 仕事中やプライベートで得たノウハウを一括管理し、共有できるWebサイトです
 
+## 📚 アプリ機能
+ 
 
 
 ## 💻: 開発環境
@@ -10,8 +13,8 @@
 - CSS  
 - Javascriprt
 - Node.js  
-- HEROKU
 - MySQL 
+- HEROKU
 - VSCode（Visual Studio Code）  
 
 
