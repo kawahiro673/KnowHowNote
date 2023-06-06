@@ -1,5 +1,9 @@
 ## 📘 Know How Note 📘
 
+## 📚 アプリ機能
+
+
+
 ## 💻: 開発環境
 
 - HTML  
@@ -14,9 +18,5 @@
 ## 🌐 App URL
 
 ### **https://nodejs-itnote-app.herokuapp.com**  
-　
 
-<p align="center">
-  <img src="https://〜.png" width=70%>  
-</p>　
 
