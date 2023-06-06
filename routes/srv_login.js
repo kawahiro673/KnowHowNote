@@ -87,7 +87,7 @@ router.post('/', async (req, res) => {
       };
 
       res.cookie('token', token, options);
-      res.cookie('url', url, options);
+      res.cookie('hashedUserId', hashedUserId, options);
 
       // return res.redirect(url); // ユーザーをマイページにリダイレクトする
       return res.send({ message: 'ok', url: url });
