@@ -14,9 +14,9 @@ const PoolCluster = require('mysql/lib/PoolCluster');
 router
   .route('/:hashedId')
   .get((req, res) => {
-    const hashedId = req.params.hashedId;
-    console.log(hashedId);
-    res.render('index.ejs');
+    // const hashedId = req.params.hashedId;
+    // console.log(hashedId);
+    res.render('index.ejs', { hashedId: hashedId });
   })
   .post((req, res) => {
     if (req.body.flg === 'color') {
