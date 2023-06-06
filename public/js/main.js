@@ -23,7 +23,7 @@ import { expandableAdaptation } from './expandableOptions.js';
 let tabIdArray = []; //タブが生成されているファイルのIDを格納
 let tabFocusID; //　フォーカスが当たっているタブのIDを常に保持。フォルダ名の名前変更・D&D時のパス変更に使用。
 
-var hashedId = '<%= hashedId %>';
+var hashedId = document.getElementById('user_name').dataset.hashedId; // data属性から取得
 console.log(hashedId);
 
 export const listCreate = () => {
