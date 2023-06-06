@@ -26,7 +26,7 @@
 #newfile:hover,
 #folderName:hover,
 #folderDelete:hover,
-#createNete:hover,
+#createNote:hover,
 #createfolder:hover,
 #delete:hover,
 #name:hover,
@@ -99,17 +99,17 @@
 }
 
 #contextmenu6 {
-  width: 50px; /* 適切な幅に調整してください */
+  width: 70px; /* 適切な幅に調整してください */
   padding: 6px;
   margin: 0;
   font-size: 14px; /* 適切なフォントサイズに調整してください */
   background-color: white;
   border: 1px solid #ccc;
-  list-style: none;
 }
 
 #contextmenu6 li {
   cursor: pointer;
+  list-style: none;
 }
 
 #contextmenu6 li:hover {

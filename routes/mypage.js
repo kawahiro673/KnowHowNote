@@ -12,7 +12,7 @@ const Connection = require('mysql/lib/Connection');
 const PoolCluster = require('mysql/lib/PoolCluster');
 
 router
-  .route('/')
+  .route('/:hashedId')
   .get((req, res) => {
     res.render('index.ejs');
   })
