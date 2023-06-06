@@ -1,5 +1,4 @@
-## 📘_book:Know How Note
-<h2 align="center">Know How Note</h2>
+## 📘 Know How Note 📘
 
 ## 💻: 開発環境
 
