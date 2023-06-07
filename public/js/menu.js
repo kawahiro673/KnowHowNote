@@ -1,8 +1,10 @@
+import { hashedIdGet } from './main.js';
+
 //プロフィールのポップアップ
 document.getElementById('profile').addEventListener('click', () => {
   document.getElementById('popup-overlay_profile').style.display = 'block';
   $.ajax({
-    url: '/mypage/',
+    url: '/mypage/' + hashedIdGet,
     type: 'POST',
     dataType: 'Json',
     contentType: 'application/json',
@@ -39,7 +41,7 @@ document.getElementById('share-history').addEventListener('click', () => {
   document.getElementById('popup-overlay_share-history').style.display =
     'block';
   $.ajax({
-    url: '/mypage/',
+    url: '/mypage/' + hashedIdGet,
     type: 'POST',
     dataType: 'Json',
     contentType: 'application/json',
@@ -152,7 +154,7 @@ document.getElementById('logout').addEventListener('click', () => {
 
 document.getElementById('yes-button-logout').addEventListener('click', () => {
   $.ajax({
-    url: '/mypage/',
+    url: '/mypage/' + hashedIdGet,
     type: 'POST',
     dataType: 'Json',
     contentType: 'application/json',
@@ -192,7 +194,7 @@ document.getElementById('all-delete').addEventListener('click', () => {
 
 document.getElementById('yes-button-delete').addEventListener('click', () => {
   $.ajax({
-    url: '/mypage/',
+    url: '/mypage/' + hashedIdGet,
     type: 'POST',
     dataType: 'Json',
     contentType: 'application/json',

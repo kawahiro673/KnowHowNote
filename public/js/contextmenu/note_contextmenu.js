@@ -1,6 +1,6 @@
 import { closeTab, deleteTabArray } from '../tab_func.js';
 import { currentTimeGet, orderGet } from '../stringUtils.js';
-import { tabFocusIDGet } from '../main.js';
+import { tabFocusIDGet, hashedIdGet } from '../main.js';
 
 import { newFileCreateFunc } from '../newFileCreate.js';
 
@@ -193,7 +193,7 @@ const noteColorChange = (file) => {
   //タイトルが赤色だった場合
   if (file.elem.style.color == 'red') {
     $.ajax({
-      url: '/mypage/',
+      url: '/mypage/' + hashedIdGet,
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
@@ -210,7 +210,7 @@ const noteColorChange = (file) => {
   } else {
     console.log('blackの場合');
     $.ajax({
-      url: '/mypage/',
+      url: '/mypage/' + hashedIdGet,
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',

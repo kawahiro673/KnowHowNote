@@ -23,12 +23,12 @@ import { expandableAdaptation } from './expandableOptions.js';
 let tabIdArray = []; //タブが生成されているファイルのIDを格納
 let tabFocusID; //　フォーカスが当たっているタブのIDを常に保持。フォルダ名の名前変更・D&D時のパス変更に使用。
 
-var hashedId = document.getElementById('user_name').dataset.hashedId; // data属性から取得
+let hashedId = document.getElementById('user_name').dataset.hashedId; // data属性から取得
 console.log(hashedId);
 
 export const listCreate = () => {
   $.ajax({
-    url: '/mypage/',
+    url: '/mypage/' + hashedId,
     type: 'POST',
     dataType: 'Json',
     contentType: 'application/json',
@@ -149,6 +149,7 @@ export const listCreate = () => {
       folderContextmenu(tabIdArray);
       fileClick();
       await expandableAdaptation(expandableArray);
+
       $(function () {
         $('.file').on('mousedown', function (e) {
           const $clone = $(this).clone();
@@ -447,4 +448,8 @@ async function tabScreenOptions(id, title) {
 
 export function tabFocusIDGet() {
   return tabFocusID;
+}
+
+export function hashedIdGet() {
+  return hashedId;
 }

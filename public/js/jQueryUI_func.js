@@ -5,7 +5,7 @@ import {
   fileIDUnderTheFolder,
 } from './stringUtils.js';
 
-import { tabFocusIDGet } from './main.js';
+import { tabFocusIDGet, hashedIdGet } from './main.js';
 
 export const jQueryUIOptionsFunc = () => {
   return new Promise((resolve, reject) => {
@@ -32,7 +32,7 @@ export const jQueryUIOptionsFunc = () => {
 
           parent_id_Tmp = item[0].parentNode.id;
           $.ajax({
-            url: '/mypage/',
+            url: '/mypage/' + hashedIdGet,
             type: 'POST',
             dataType: 'Json',
             contentType: 'application/json',
@@ -46,7 +46,7 @@ export const jQueryUIOptionsFunc = () => {
           });
           //フォルダの子ノートを全て取得する(passの更新に使用するため)
           $.ajax({
-            url: '/mypage/',
+            url: '/mypage/' + hashedIdGet,
             type: 'POST',
             dataType: 'Json',
             contentType: 'application/json',
@@ -161,7 +161,7 @@ export const jQueryUIOptionsFunc = () => {
                   const pass = passGet(id, item[0].childNodes[0].innerHTML);
 
                   $.ajax({
-                    url: '/mypage/',
+                    url: '/mypage/' + hashedIdGet,
                     type: 'POST',
                     dataType: 'Json',
                     contentType: 'application/json',
@@ -256,7 +256,7 @@ export const jQueryUIOptionsFunc = () => {
                   }
 
                   $.ajax({
-                    url: '/mypage/',
+                    url: '/mypage/' + hashedIdGet,
                     type: 'POST',
                     dataType: 'Json',
                     contentType: 'application/json',

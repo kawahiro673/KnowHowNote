@@ -4,7 +4,7 @@ import { newFileCreateFunc } from '../newFileCreate.js';
 import { newFolderCreateFunc } from '../newFolderCreate.js';
 import { orderGet, fileIDUnderTheFolder } from '../stringUtils.js';
 
-import { tabFocusIDGet } from '../main.js';
+import { tabFocusIDGet, hashedIdGet } from '../main.js';
 import { disableElements, enableElements } from '../utilityFunction.js';
 
 let tmp1;
@@ -125,7 +125,7 @@ const folderDelete = (folder, order, tabIdArray) => {
         $(`#folder${folder.id}`).parent().remove();
 
         $.ajax({
-          url: '/mypage/',
+          url: '/mypage/' + hashedIdGet,
           type: 'POST',
           dataType: 'Json',
           contentType: 'application/json',

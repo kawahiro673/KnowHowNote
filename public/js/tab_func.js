@@ -1,5 +1,6 @@
 //タブで必要な関数まとめ
 import { currentTimeGet, passGet, orderGet } from './stringUtils.js';
+import { hashedIdGet } from './main.js';
 
 export const tabCreate = (id, title, res) => {
   const inputTab = document.createElement('input');
@@ -219,7 +220,7 @@ document.getElementById('share-send').addEventListener('click', (e) => {
 
   if (!inputValues.includes(document.getElementById('user_name').innerHTML)) {
     $.ajax({
-      url: '/mypage/',
+      url: '/mypage/' + hashedIdGet,
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
@@ -394,7 +395,7 @@ export const deleteTabArray = (id, tabArray) => {
 document.getElementById('share-user-button').addEventListener('click', () => {
   document.getElementById('popup-overlay_share-user').style.display = 'block';
   $.ajax({
-    url: '/mypage/',
+    url: '/mypage/' + hashedIdGet,
     type: 'POST',
     dataType: 'Json',
     contentType: 'application/json',
