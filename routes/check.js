@@ -13,9 +13,9 @@ function check(req, res, next) {
       token,
       'SECRET_KEY' //秘密鍵。envファイルとかに隠す。
     );
-    console.log(decoded);
+    const hashedId = req.cookies.hashedId;
     //下記で続きを実行、今回の場合は res.render('index.ejs');
-    next();
+    next(hashedId);
   } catch (err) {
     //return res.redirect('/login');
     res.render('top.ejs');

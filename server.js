@@ -27,7 +27,8 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.get('/', check, (req, res) => {
-  res.redirect('/mypage');
+  const hashedId = req.value;
+  res.redirect('/mypage' + hashedId);
 });
 
 //authというエンドポイントで./routes/authファイルでWebAPIを構築できる
