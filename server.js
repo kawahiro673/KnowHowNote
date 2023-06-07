@@ -28,7 +28,7 @@ app.use(cookieParser());
 
 app.get('/', check, (req, res) => {
   const hashedId = req.value;
-  res.redirect('/mypage' + hashedId);
+  res.redirect('/mypage/' + hashedId);
 });
 
 //authというエンドポイントで./routes/authファイルでWebAPIを構築できる
