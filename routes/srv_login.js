@@ -31,8 +31,8 @@ router.post('/', async (req, res) => {
       );
 
       // ユーザーIDをハッシュ化してURLに含める
-      const hashedUserId = bcrypt.hashSync(user.id.toString(), 10);
-      const url = `https://nodejs-itnote-app.herokuapp.com/mypage/${hashedUserId}`;
+      const hashedId = bcrypt.hashSync(user.id.toString(), 10);
+      const url = `https://nodejs-itnote-app.herokuapp.com/mypage/${hashedId}`;
 
       const options = {
         httpOnly: true, // JavaScriptからアクセスできないようにする(document.cookieで取得もできない)
@@ -40,7 +40,7 @@ router.post('/', async (req, res) => {
       };
 
       res.cookie('token', token, options);
-      res.cookie('hashedUserId', hashedUserId, options);
+      res.cookie('hashedId', hashedId, options);
 
       // return res.redirect(url); // ユーザーをマイページにリダイレクトする
       return res.send({ message: 'ok', url: url });
