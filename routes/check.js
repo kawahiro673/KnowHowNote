@@ -16,7 +16,7 @@ function check(req, res, next) {
     const hashedId = req.cookies.hashedId;
     console.log(hashedId + ' 2');
     //下記で続きを実行、今回の場合は res.render('index.ejs');
-    next();
+    next(hashedId);
   } catch (err) {
     //return res.redirect('/login');
     res.render('top.ejs');
