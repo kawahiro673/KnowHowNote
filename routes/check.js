@@ -14,7 +14,7 @@ function check(req, res, next) {
       'SECRET_KEY' //秘密鍵。envファイルとかに隠す。
     );
     const hashedId = req.cookies.hashedId;
-    console.log(hashedId);
+    console.log(hashedId + ' 2');
     //下記で続きを実行、今回の場合は res.render('index.ejs');
     next(hashedId);
   } catch (err) {

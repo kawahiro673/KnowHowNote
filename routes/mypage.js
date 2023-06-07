@@ -15,7 +15,7 @@ router
   .route('/:hashedId')
   .get((req, res) => {
     const hashedId = req.params.hashedId;
-    console.log(hashedId);
+    console.log(hashedId + ' 3');
     res.render('index.ejs', { hashedId: hashedId });
   })
   .post((req, res) => {
