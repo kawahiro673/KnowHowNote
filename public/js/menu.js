@@ -56,13 +56,19 @@ document.getElementById('share-history').addEventListener('click', () => {
             .getElementById('share-history-list')
             .getElementsByTagName('p').length > 0
         )
-      )
+      ) {
         res.shareResult.forEach((share) => {
           const p = document.createElement('p');
           p.setAttribute('class', 'share-user-list');
           p.innerHTML = `${share.date}          ${share.UserName}          ${share.ShareNoteTitle}`;
           document.getElementById('share-history-list').appendChild(p);
         });
+      } else {
+        console.log('作成されていません');
+        const p = document.createElement('p');
+        p.innerHTML = '今日履歴がありません';
+        document.getElementById('share-history-list').appendChild(p);
+      }
     },
   });
 });

@@ -57,7 +57,7 @@ header h1 {
 }
 
 .file {
-  -webkit-text-stroke: 1px black; /* テキストの枠の設定 */
+  -webkit-text-stroke: 0.5px black; /* テキストの枠の設定 */
 }
 
 .hide1 {

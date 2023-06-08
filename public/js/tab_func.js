@@ -424,6 +424,11 @@ document.getElementById('share-user-button').addEventListener('click', () => {
             .appendChild(document.createElement('br'));
 
           shareUserNameArray.push(share.UserName);
+        } else {
+          console.log('共有したユーザーがいません');
+          const p = document.createElement('p');
+          p.innerHTML = '今日履歴がありません';
+          document.getElementById('share-user-div').appendChild(p);
         }
       });
 
