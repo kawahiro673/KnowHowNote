@@ -282,42 +282,6 @@ const fileColorUpdate = (id, color) => {
     success: function (res) {},
   });
 };
-// const noteColorChange = (file) => {
-//   //タイトルが赤色だった場合
-//   if (file.elem.style.color == 'red') {
-//     $.ajax({
-//       url: '/mypage/' + hashedIdGet,
-//       type: 'POST',
-//       dataType: 'Json',
-//       contentType: 'application/json',
-//       data: JSON.stringify({
-//         flg: 'color',
-//         id: file.id,
-//         color: 'black',
-//       }),
-//       success: function (res) {
-//         file.elem.style.color = res.response;
-//       },
-//     });
-//     //タイトルが黒の場合に実行
-//   } else {
-//     console.log('blackの場合');
-//     $.ajax({
-//       url: '/mypage/' + hashedIdGet,
-//       type: 'POST',
-//       dataType: 'Json',
-//       contentType: 'application/json',
-//       data: JSON.stringify({
-//         flg: 'color',
-//         id: file.id,
-//         color: 'red',
-//       }),
-//       success: function (res) {
-//         file.elem.style.color = res.response;
-//       },
-//     });
-//   }
-// };
 
 //rootの右クリックから「ファイル新規作成」押下
 document.getElementById('newfile').onclick = async (e) => {
