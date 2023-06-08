@@ -35,14 +35,14 @@ export const fileContextmenu = (tabIdArray) => {
       });
     });
 
-    $(document).ready(function () {
-      //重複してしまうため色変更イベントを一時削除
-      $('#color').off('click');
-      $('#color').on('click', function (e) {
-        e.preventDefault();
-        noteColorChange(file);
-      });
-    });
+    // $(document).ready(function () {
+    //   //重複してしまうため色変更イベントを一時削除
+    //   $('#color').off('click');
+    //   $('#color').on('click', function (e) {
+    //     e.preventDefault();
+    //     noteColorChange(file);
+    //   });
+    // });
 
     document.addEventListener(
       'mousedown',
@@ -53,6 +53,85 @@ export const fileContextmenu = (tabIdArray) => {
       },
       { once: true }
     );
+
+    $(document).ready(function () {
+      $('#pink_n').off('click');
+      $('#pink_n').on('click', function (event) {
+        fileColorUpdate(file.id, '#FF00FF');
+      });
+    });
+    $(document).ready(function () {
+      $('#red_n').off('click');
+      $('#red_n').on('click', function (event) {
+        fileColorUpdate(file.id, '#FF0000');
+      });
+    });
+    $(document).ready(function () {
+      $('#orange_n').off('click');
+      $('#orange_n').on('click', function (event) {
+        fileColorUpdate(file.id, '#FFA500');
+      });
+    });
+    $(document).ready(function () {
+      $('#yellow_n').off('click');
+      $('#yellow_n').on('click', function (event) {
+        fileColorUpdate(file.id, '#FFFF00');
+      });
+    });
+    $(document).ready(function () {
+      $('#yellow-green_n').off('click');
+      $('#yellow-green_n').on('click', function (event) {
+        fileColorUpdate(file.id, '#98FB98');
+      });
+    });
+    $(document).ready(function () {
+      $('#green_n').off('click');
+      $('#green_n').on('click', function (event) {
+        fileColorUpdate(file.id, '#228B22');
+      });
+    });
+    $(document).ready(function () {
+      $('#sky-blue_n').off('click');
+      $('#sky-blue_n').on('click', function (event) {
+        fileColorUpdate(file.id, '#AFEEEE');
+      });
+    });
+    $(document).ready(function () {
+      $('#blue_n').off('click');
+      $('#blue_n').on('click', function (event) {
+        fileColorUpdate(file.id, '#0000FF');
+      });
+    });
+    $(document).ready(function () {
+      $('#purple_n').off('click');
+      $('#purple_n').on('click', function (event) {
+        fileColorUpdate(file.id, '#800080');
+      });
+    });
+    $(document).ready(function () {
+      $('#brown_n').off('click');
+      $('#brown_n').on('click', function (event) {
+        fileColorUpdate(file.id, '#B8860B');
+      });
+    });
+    $(document).ready(function () {
+      $('#gray_n').off('click');
+      $('#gray_n').on('click', function (event) {
+        fileColorUpdate(file.id, '#A9A9A9');
+      });
+    });
+    $(document).ready(function () {
+      $('#black_n').off('click');
+      $('#black_n').on('click', function (event) {
+        fileColorUpdate(file.id, '#000000');
+      });
+    });
+    $(document).ready(function () {
+      $('#white_n').off('click');
+      $('#white_n').on('click', function (event) {
+        fileColorUpdate(file.id, '#FFFFFF');
+      });
+    });
   });
 };
 
@@ -188,44 +267,57 @@ const bodyClickJuge = (target1, target2, flg1, flg2) => {
   }
 };
 
-const noteColorChange = (file) => {
-  console.log('colorクリック!');
-  //タイトルが赤色だった場合
-  if (file.elem.style.color == 'red') {
-    $.ajax({
-      url: '/mypage/' + hashedIdGet,
-      type: 'POST',
-      dataType: 'Json',
-      contentType: 'application/json',
-      data: JSON.stringify({
-        flg: 'color',
-        id: file.id,
-        color: 'black',
-      }),
-      success: function (res) {
-        file.elem.style.color = res.response;
-      },
-    });
-    //タイトルが黒の場合に実行
-  } else {
-    console.log('blackの場合');
-    $.ajax({
-      url: '/mypage/' + hashedIdGet,
-      type: 'POST',
-      dataType: 'Json',
-      contentType: 'application/json',
-      data: JSON.stringify({
-        flg: 'color',
-        id: file.id,
-        color: 'red',
-      }),
-      success: function (res) {
-        console.log(`success受信(color) : "${res.response}"`);
-        file.elem.style.color = res.response;
-      },
-    });
-  }
+const fileColorUpdate = (id, color) => {
+  document.getElementById(`file${id}`).style.color = color;
+  $.ajax({
+    url: '/notePostController/',
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'fileColorChange',
+      id,
+      color,
+    }),
+    success: function (res) {},
+  });
 };
+// const noteColorChange = (file) => {
+//   //タイトルが赤色だった場合
+//   if (file.elem.style.color == 'red') {
+//     $.ajax({
+//       url: '/mypage/' + hashedIdGet,
+//       type: 'POST',
+//       dataType: 'Json',
+//       contentType: 'application/json',
+//       data: JSON.stringify({
+//         flg: 'color',
+//         id: file.id,
+//         color: 'black',
+//       }),
+//       success: function (res) {
+//         file.elem.style.color = res.response;
+//       },
+//     });
+//     //タイトルが黒の場合に実行
+//   } else {
+//     console.log('blackの場合');
+//     $.ajax({
+//       url: '/mypage/' + hashedIdGet,
+//       type: 'POST',
+//       dataType: 'Json',
+//       contentType: 'application/json',
+//       data: JSON.stringify({
+//         flg: 'color',
+//         id: file.id,
+//         color: 'red',
+//       }),
+//       success: function (res) {
+//         file.elem.style.color = res.response;
+//       },
+//     });
+//   }
+// };
 
 //rootの右クリックから「ファイル新規作成」押下
 document.getElementById('newfile').onclick = async (e) => {

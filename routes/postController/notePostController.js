@@ -594,6 +594,16 @@ router.post('/', (req, res) => {
         res.send({ fileResult: result[0] });
       }
     );
+  } else if (req.body.flg === 'fileColorChange') {
+    pool.query(
+      'UPDATE it_memo SET title_color = ?  WHERE id = ?',
+      [req.body.color, req.body.id],
+      (error, result) => {
+        res.send({
+          msg: '成功しました',
+        });
+      }
+    );
   }
 });
 
