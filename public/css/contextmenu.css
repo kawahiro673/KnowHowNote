@@ -107,7 +107,7 @@
   margin: 0;
   font-size: 14px; /* 適切なフォントサイズに調整してください */
   background-color: white;
-  border: 1px solid #ccc;
+  border: none; /* #color要素のborderを削除 */
 }
 
 #contextmenu6 li {
