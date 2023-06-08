@@ -2,7 +2,8 @@
 #contextmenu2,
 #contextmenu3,
 #contextmenu4,
-#contextmenu5 {
+#contextmenu5,
+#contextmenu6 {
   display: none;
   position: fixed;
   background-color: white;
@@ -17,7 +18,8 @@
 #contextmenu2 li,
 #contextmenu3 li,
 #contextmenu4 li,
-#contextmenu5 li {
+#contextmenu5 li,
+#contextmenu6 li {
   cursor: pointer;
   list-style: none;
 }
@@ -98,20 +100,20 @@
   height: 300px;
 }
 
-#contextmenu6 {
-  width: 70px; /* 適切な幅に調整してください */
+/* #contextmenu6 {
+  width: 70px; 
   padding: 6px;
   margin: 0;
-  font-size: 14px; /* 適切なフォントサイズに調整してください */
+  font-size: 14px;
   background-color: white;
   border: 1px solid #ccc;
-}
+} */
 
-#contextmenu6 li {
+/* #contextmenu6 li {
   cursor: pointer;
   list-style: none;
-}
+} */
 
-#contextmenu6 li:hover {
+/* #contextmenu6 li:hover {
   background-color: #f0f0f0;
-}
+} */
