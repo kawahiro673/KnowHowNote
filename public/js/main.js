@@ -454,11 +454,12 @@ export function hashedIdGet() {
   return hashedId;
 }
 
-function handleCheckbox(checkbox) {
-  var checkboxes = document.getElementsByName('checkbox');
+$('.checkbox-color').on('click', (event) => {
+  const clickedCheckbox = event.target;
+  const checkboxes = document.getElementsByName('checkbox');
   checkboxes.forEach(function (cb) {
-    if (cb !== checkbox) {
+    if (cb !== clickedCheckbox) {
       cb.checked = false;
     }
   });
-}
+});
