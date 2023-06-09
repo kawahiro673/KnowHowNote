@@ -339,3 +339,26 @@ footer {
 .floating {
   transition: top 0.3s, left 0.3s; /* アニメーションのプロパティと時間を設定 */
 }
+
+.checkbox-container {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.checkmark {
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #999;
+}
+
+input[type='checkbox'] {
+  display: none;
+}
+
+input[type='checkbox']:checked + .checkmark {
+  background-color: #007bff;
+  border-color: #007bff;
+}
