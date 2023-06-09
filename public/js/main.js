@@ -465,7 +465,7 @@ $('.checkbox-color').on('click', (event) => {
 });
 
 const checkboxes = document.querySelectorAll('.checkbox-color'); // 全てのチェックボックス要素を取得
-checkboxes.forEach(function (checkbox) {
+checkboxes.forEach((checkbox) => {
   if (checkbox.checked) {
     const label = checkbox.nextElementSibling; // チェックボックスの次の兄弟要素であるlabel要素を取得
     const text = label.textContent.trim(); // label要素のテキストを取得し、前後の空白をトリム
@@ -487,10 +487,10 @@ checkboxes.forEach(function (checkbox) {
       case '紫':
         console.log('purple');
         break;
-      case 'オレンジ':
+      case '橙':
         console.log('orange');
         break;
-      case 'グレー':
+      case '灰色':
         console.log('gらy');
         break;
       // 他の色についても同様に処理を記述する

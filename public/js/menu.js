@@ -12,7 +12,6 @@ document.getElementById('profile').addEventListener('click', () => {
       flg: 'RegisterUser',
     }),
     success: function (res) {
-      console.log(res.user);
       document.getElementById('myName').innerHTML = res.user.UserName;
       document.getElementById('mail').innerHTML = res.email;
       const date = new Date(res.user.CreationDay);
