@@ -247,7 +247,8 @@ const backgroundColorChrckBoxOption = () => {
     if (checkbox.checked) {
       const label = checkbox.nextElementSibling; // チェックボックスの次の兄弟要素であるlabel要素を取得
       const text = label.textContent.trim(); // label要素のテキストを取得し、前後の空白をトリム
-
+      console.log(label);
+      console.log(text);
       // チェックされているチェックボックスのテキストを使って適切な処理を行う
       switch (text) {
         case '赤':
