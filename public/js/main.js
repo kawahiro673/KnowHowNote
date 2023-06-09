@@ -453,3 +453,12 @@ export function tabFocusIDGet() {
 export function hashedIdGet() {
   return hashedId;
 }
+
+function handleCheckbox(checkbox) {
+  var checkboxes = document.getElementsByName('checkbox');
+  checkboxes.forEach(function (cb) {
+    if (cb !== checkbox) {
+      cb.checked = false;
+    }
+  });
+}
