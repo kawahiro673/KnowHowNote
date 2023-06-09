@@ -348,8 +348,8 @@ footer {
 .checkmark {
   position: relative;
   display: inline-block;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   border: 2px solid #999;
 }
@@ -375,8 +375,8 @@ input[type='checkbox']:checked + .green_b {
   border-color: #44ff00;
 }
 input[type='checkbox']:checked + .purple_b {
-  background-color: #4c00ff;
-  border-color: #4c00ff;
+  background-color: #9d00ff;
+  border-color: #9d00ff;
 }
 input[type='checkbox']:checked + .orange_b {
   background-color: #ff8000;
