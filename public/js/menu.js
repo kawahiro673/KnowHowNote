@@ -242,41 +242,43 @@ document
   });
 
 const backgroundColorChrckBoxOption = () => {
-  const checkboxes = document.querySelectorAll('.checkbox-color'); // 全てのチェックボックス要素を取得
+  const checkboxes = document.querySelectorAll('.checkbox-color');
   checkboxes.forEach((checkbox) => {
-    if (checkbox.checked) {
-      const label = checkbox.nextElementSibling; // チェックボックスの次の兄弟要素であるlabel要素を取得
-      const text = label.textContent.trim(); // label要素のテキストを取得し、前後の空白をトリム
-      console.log(label);
-      console.log(text);
-      // チェックされているチェックボックスのテキストを使って適切な処理を行う
-      switch (text) {
-        case '赤':
-          console.log('aka');
-          break;
-        case '青':
-          console.log('ao');
-          break;
-        case '黄':
-          console.log('ki');
-          break;
-        case '緑':
-          console.log('green');
-          break;
-        case '紫':
-          console.log('purple');
-          break;
-        case '橙':
-          console.log('orange');
-          break;
-        case '灰色':
-          console.log('gらy');
-          break;
-        // 他の色についても同様に処理を記述する
-        default:
-          // チェックされている色が上記以外の場合の処理
-          break;
+    checkbox.addEventListener('change', () => {
+      if (checkbox.checked) {
+        const label = checkbox.nextElementSibling;
+        const text = label.textContent.trim();
+        console.log(text);
+
+        // チェックされているチェックボックスのテキストを使って適切な処理を行う
+        switch (text) {
+          case '赤':
+            console.log('aka');
+            break;
+          case '青':
+            console.log('ao');
+            break;
+          case '黄':
+            console.log('ki');
+            break;
+          case '緑':
+            console.log('green');
+            break;
+          case '紫':
+            console.log('purple');
+            break;
+          case '橙':
+            console.log('orange');
+            break;
+          case '灰色':
+            console.log('gray');
+            break;
+          // 他の色についても同様に処理を記述する
+          default:
+            // チェックされている色が上記以外の場合の処理
+            break;
+        }
       }
-    }
+    });
   });
 };
