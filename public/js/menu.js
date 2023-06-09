@@ -246,36 +246,35 @@ const backgroundColorChrckBoxOption = () => {
   checkboxes.forEach((checkbox) => {
     checkbox.addEventListener('change', () => {
       if (checkbox.checked) {
-        const label = checkbox.nextElementSibling;
-        const text = label.textContent.trim();
+        const label = checkbox.parentElement; // 親要素の<label>を取得
+        const text = label.textContent.trim(); // ラベル要素のテキストを取得し、前後の空白をトリム
         console.log(text);
 
         // チェックされているチェックボックスのテキストを使って適切な処理を行う
         switch (text) {
           case '赤':
-            console.log('aka');
+            console.log('赤が選択されました');
             break;
           case '青':
-            console.log('ao');
+            console.log('青が選択されました');
             break;
           case '黄':
-            console.log('ki');
+            console.log('黄が選択されました');
             break;
           case '緑':
-            console.log('green');
+            console.log('緑が選択されました');
             break;
           case '紫':
-            console.log('purple');
+            console.log('紫が選択されました');
             break;
           case '橙':
-            console.log('orange');
+            console.log('橙が選択されました');
             break;
           case '灰色':
-            console.log('gray');
+            console.log('灰色が選択されました');
             break;
-          // 他の色についても同様に処理を記述する
           default:
-            // チェックされている色が上記以外の場合の処理
+            // チェックされているテキストが上記以外の場合の処理
             break;
         }
       }
