@@ -97,6 +97,11 @@
   z-index: 10000;
   overflow: hidden;
 }
+
+.popup-window_profile {
+  height: 500px;
+}
+
 .popup-window_version,
 .popup-window_delete {
   height: 150px;
@@ -166,7 +171,9 @@
 #yes-button-logout,
 #no-button-logout,
 #yes-button-delete,
+#share-pass-butotn,
 #no-button-delete,
+#share-pass-butotn,
 .popup-body_inquiry button,
 #share-user-button,
 #share-user-add-button,
@@ -189,6 +196,7 @@
 #no-button-logout,
 #yes-button-delete,
 #no-button-delete,
+#share-pass-butotn,
 #share-user-button,
 #share-user-add-button,
 #share-user-clear-button {
@@ -204,4 +212,87 @@
 
 .popup-body_profile a {
   color: red;
+}
+
+.checkbox-container {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.checkmark {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #999;
+}
+
+input[type='checkbox'] {
+  display: none;
+}
+
+input[type='checkbox']:checked + .blue_b {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+input[type='checkbox']:checked + .red_b {
+  background-color: #ff0000;
+  border-color: #ff0000;
+}
+input[type='checkbox']:checked + .yellow_b {
+  background-color: #eeff00;
+  border-color: #eeff00;
+}
+input[type='checkbox']:checked + .green_b {
+  background-color: #44ff00;
+  border-color: #44ff00;
+}
+input[type='checkbox']:checked + .purple_b {
+  background-color: #9d00ff;
+  border-color: #9d00ff;
+}
+input[type='checkbox']:checked + .orange_b {
+  background-color: #ff8000;
+  border-color: #ff8000;
+}
+input[type='checkbox']:checked + .gray_b {
+  background-color: #838383;
+  border-color: #838383;
+}
+
+.share-container {
+  display: flex;
+  align-items: center;
+}
+
+.share-checkbox {
+  display: none;
+}
+
+.share-label {
+  width: 20px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.share-label:before {
+  content: '';
+  display: none;
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  border-radius: 50%;
+  margin: 4px;
+}
+
+.share-checkbox:checked + .share-label:before {
+  display: block;
+}
+
+.share-text {
+  font-weight: bold;
 }

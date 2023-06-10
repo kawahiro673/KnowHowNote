@@ -1124,11 +1124,18 @@
               <p>メールアドレス：<span id="mail"></span></p>
               <p>登録日：<span id="RegistrationDate"></span></p>
 
-              <input type="checkbox" id="checkbox1" name="checkbox1" value="option1">
-              <label for="checkbox1">共有ON/OFF</label>
-              <p>共有パスワード設定：<input type="text"></p>
-              <p>背景：</p>
+             <div class="share-container">
+              <input type="checkbox" id="share-checkbox1" name="share-checkbox" class="share-checkbox">
+              <label for="share-checkbox1" class="share-label"></label>
+              <input type="checkbox" id="share-checkbox2" name="share-checkbox" class="share-checkbox">
+              <label for="share-checkbox2" class="share-label"></label>
+              <span class="share-text">共有機能：</span>
+            </div>
+              
+              <p>共有パスワード設定：<input type="text"><button id ='share-pass-butotn'>適用</button></p>
+              <p></p>
               <div class="checkbox-container">
+                背景：
                 <label>
                   <input type="checkbox" name="checkbox" class="checkbox-color">
                   <span class="checkmark red_b"></span>
