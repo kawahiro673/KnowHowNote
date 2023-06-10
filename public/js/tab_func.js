@@ -326,10 +326,7 @@ export const closeTab = async (id, order, tabIdArray) => {
 //タブ上の✖️ボタン押下時
 export const closeButton = async (id, title, tabArray) => {
   const order = orderGet('tab-content', `Tab-ID${id}`);
-  // document.getElementById('tab_loader').style.display = 'block';
   await closeTab(id, order, tabArray);
-  // document.getElementById('tab_loader').classList.add('loaded');
-  // document.getElementById('tab_loader').style.display = 'none';
 };
 
 //タブクリック時
