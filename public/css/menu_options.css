@@ -210,12 +210,14 @@
   color: red;
 }
 
-.checkbox-container {
+.checkbox-container,
+.checkbox-share-container {
   display: inline-block;
   margin-right: 10px;
 }
 
-.checkmark {
+.checkmark,
+.checkmark-share {
   position: relative;
   display: inline-block;
   width: 20px;
@@ -226,6 +228,11 @@
 
 input[type='checkbox'] {
   display: none;
+}
+
+input[type='checkbox']:checked + .checkmark-share {
+  background-color: #007bff;
+  border-color: #007bff;
 }
 
 input[type='checkbox']:checked + .blue_b {
