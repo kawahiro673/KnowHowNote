@@ -98,10 +98,6 @@
   overflow: hidden;
 }
 
-.popup-window_profile {
-  height: 500px;
-}
-
 .popup-window_version,
 .popup-window_delete {
   height: 150px;
