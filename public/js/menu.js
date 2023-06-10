@@ -289,10 +289,14 @@ const backgroundColorChrckBoxOption = () => {
   checkboxes.forEach((checkbox) => {
     checkbox.addEventListener('click', (event) => {
       if (checkbox.checked) {
+        event.preventDefault();
+        checkbox.checked = true;
+        checkbox.setAttribute('disabled', 'disabled');
+
         const label = checkbox.parentElement;
         const text = label.textContent.trim();
         console.log(text);
-        // チェックされているチェックボックスのテキストを使って適切な処理を行う
+
         switch (text) {
           case '赤':
             console.log('赤が選択されました');
@@ -316,9 +320,13 @@ const backgroundColorChrckBoxOption = () => {
             console.log('灰色が選択されました');
             break;
           default:
-            // チェックされているテキストが上記以外の場合の処理
             break;
         }
+
+        // 一定時間後にイベントリスナーを再有効化する
+        setTimeout(() => {
+          checkbox.removeAttribute('disabled');
+        }, 1000); // 1000ミリ秒（1秒）後に再有効化
       }
     });
   });
