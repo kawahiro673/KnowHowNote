@@ -288,10 +288,10 @@ const backgroundColorChrckBoxOption = () => {
   const checkboxes = document.querySelectorAll('.checkbox-color');
   checkboxes.forEach((checkbox) => {
     checkbox.addEventListener('click', (event) => {
-      if (checkbox.checked) {
-        event.preventDefault();
+      event.preventDefault();
+
+      if (!checkbox.checked) {
         checkbox.checked = true;
-        checkbox.setAttribute('disabled', 'disabled');
 
         const label = checkbox.parentElement;
         const text = label.textContent.trim();
@@ -322,11 +322,6 @@ const backgroundColorChrckBoxOption = () => {
           default:
             break;
         }
-
-        // 一定時間後にイベントリスナーを再有効化する
-        setTimeout(() => {
-          checkbox.removeAttribute('disabled');
-        }, 1000); // 1000ミリ秒（1秒）後に再有効化
       }
     });
   });
