@@ -241,62 +241,15 @@ document
     }
   });
 
-// const backgroundColorChrckBoxOption = () => {
-//   const checkboxes = document.querySelectorAll('.checkbox-color');
-//   checkboxes.forEach((checkbox) => {
-//     checkbox.addEventListener('change', (event) => {
-//       if (checkbox.checked) {
-//         event.preventDefault();
-//         checkbox.checked = true;
-
-//         const label = checkbox.parentElement; // 親要素の<label>を取得
-//         const text = label.textContent.trim(); // ラベル要素のテキストを取得し、前後の空白をトリム
-//         console.log(text);
-//         // チェックされているチェックボックスのテキストを使って適切な処理を行う
-//         switch (text) {
-//           case '赤':
-//             console.log('赤が選択されました');
-//             break;
-//           case '青':
-//             console.log('青が選択されました');
-//             break;
-//           case '黄':
-//             console.log('黄が選択されました');
-//             break;
-//           case '緑':
-//             console.log('緑が選択されました');
-//             break;
-//           case '紫':
-//             console.log('紫が選択されました');
-//             break;
-//           case '橙':
-//             console.log('橙が選択されました');
-//             break;
-//           case '灰色':
-//             console.log('灰色が選択されました');
-//             break;
-//           default:
-//             // チェックされているテキストが上記以外の場合の処理
-//             break;
-//         }
-//       }
-//     });
-//   });
-// };
-
 const backgroundColorChrckBoxOption = () => {
   const checkboxes = document.querySelectorAll('.checkbox-color');
   checkboxes.forEach((checkbox) => {
-    checkbox.addEventListener('click', (event) => {
-      event.preventDefault();
+    checkbox.addEventListener('change', (event) => {
+      if (checkbox.checked) {
+        const label = checkbox.parentElement; // 親要素の<label>を取得
+        const text = label.textContent.trim(); // ラベル要素のテキストを取得し、前後の空白をトリム
 
-      if (!checkbox.checked) {
-        checkbox.checked = true;
-
-        const label = checkbox.parentElement;
-        const text = label.textContent.trim();
-        console.log(text);
-
+        // チェックされているチェックボックスのテキストを使って適切な処理を行う
         switch (text) {
           case '赤':
             console.log('赤が選択されました');
@@ -320,6 +273,7 @@ const backgroundColorChrckBoxOption = () => {
             console.log('灰色が選択されました');
             break;
           default:
+            // チェックされているテキストが上記以外の場合の処理
             break;
         }
       }
