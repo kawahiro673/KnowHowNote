@@ -247,6 +247,8 @@ const backgroundColorChrckBoxOption = () => {
     checkbox.addEventListener('change', (event) => {
       if (checkbox.checked) {
         event.preventDefault();
+        checkbox.checked = true;
+
         const label = checkbox.parentElement; // 親要素の<label>を取得
         const text = label.textContent.trim(); // ラベル要素のテキストを取得し、前後の空白をトリム
         console.log(text);
