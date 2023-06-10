@@ -662,7 +662,7 @@ router
           });
         }
       );
-    } else if (req.body.flg === '') {
+    } else if (req.body.flg === 'register_user_update') {
       const token = req.cookies.token;
       const decoded = JWT.verify(token, 'SECRET_KEY');
       let promise = new Promise((resolve, reject) => {
