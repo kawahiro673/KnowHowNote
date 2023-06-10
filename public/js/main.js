@@ -463,3 +463,13 @@ $('.checkbox-color').on('click', (event) => {
     }
   });
 });
+
+$('.checkbox-share').on('click', (event) => {
+  const clickedCheckbox = event.target;
+  const checkboxes = document.getElementsByName('checkbox');
+  checkboxes.forEach((cb) => {
+    if (cb !== clickedCheckbox) {
+      cb.checked = false;
+    }
+  });
+});
