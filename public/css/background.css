@@ -22,11 +22,11 @@ i {
   transition: 1s;
 }
 /*ホバーした時の処理*/
-/* i:hover {
+i:hover {
   color: rgb(162, 241, 241);
   text-shadow: 0 0 120px rgb(162, 241, 241); /*ぼかし120px*/
-/* transition: 0s;
-}  */
+  transition: 0s;
+}
 
 /*アニメーション、、、処理が重くなる原因かも*/
 section .row div {
