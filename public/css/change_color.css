@@ -11,9 +11,18 @@
 .dropLabel-blue {
   background-color: rgb(110, 166, 255);
 }
-.dropLabel-blue:hover {
+.dropLabel-blue:hover,
+.dropInput-blue:checked + label {
   background: #b4dbff;
 }
+i:hover {
+  color: rgb(162, 241, 241);
+  text-shadow: 0 0 120px rgb(162, 241, 241); /*ぼかし120px*/
+}
+.tab-wrap-blue {
+  background-color: aliceblue;
+}
+
 /*　赤　*/
 .backgroundColor-red {
   background-color: rgb(255, 231, 231);
@@ -27,8 +36,16 @@
 .dropLabel-red {
   background-color: rgb(255, 92, 92);
 }
-.dropLabel-red:hover {
+.dropLabel-red:hover,
+.dropInput-red:checked + label {
   background: #ff7c7c;
+}
+i:hover {
+  color: rgb(255, 0, 0);
+  text-shadow: 0 0 120px rgb(255, 0, 0); /*ぼかし120px*/
+}
+.tab-wrap-red {
+  background-color: rgb(255, 231, 231);
 }
 /*　黄　*/
 .backgroundColor-yellow {
@@ -43,6 +60,14 @@
 .dropLabel-yellow {
   background-color: rgb(255, 250, 109);
 }
-.dropLabel-yellow:hover {
+.dropLabel-yellow:hover,
+.dropInput-yellow:checked + label {
   background: #fffc9e;
+}
+i:hover {
+  color: rgb(255, 225, 1);
+  text-shadow: 0 0 120px rgb(255, 225, 1); /*ぼかし120px*/
+}
+.tab-wrap-yellow {
+  background-color: rgb(255, 254, 231);
 }

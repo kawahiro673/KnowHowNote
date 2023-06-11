@@ -303,6 +303,8 @@ const backgroundColorPreservation = (color) => {
         document.querySelector('header').classList.add('headerColor-red');
         document.querySelector('section').classList.add('section-red');
         document.querySelector('.dropLabel').classList.add('dropLabel-red');
+        document.querySelector('.tab-wrap').classList.add('tab-wrap-red');
+        document.querySelector('.dropInput').classList.add('dropInput-red');
       } else if (color === 'yellow') {
         document
           .querySelector('.container')
@@ -310,6 +312,7 @@ const backgroundColorPreservation = (color) => {
         document.querySelector('header').classList.add('headerColor-yellow');
         document.querySelector('section').classList.add('section-yellow');
         document.querySelector('.dropLabel').classList.add('dropLabel-yellow');
+        document.querySelector('.dropInput').classList.add('dropInput-yellow');
       } else if (color === 'blue') {
         document
           .querySelector('.container')
@@ -317,6 +320,7 @@ const backgroundColorPreservation = (color) => {
         document.querySelector('header').classList.add('headerColor-blue');
         document.querySelector('section').classList.add('section-blue');
         document.querySelector('.dropLabel').classList.add('dropLabel-blue');
+        document.querySelector('.dropInput').classList.add('dropInput-blue');
       }
     },
   });
