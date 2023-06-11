@@ -145,9 +145,8 @@
 
 .popup-body_inquiry input {
   text-align: left;
-  width: 400px;
+  width: 380px;
   height: 200px;
-  padding: 5px;
 }
 
 /* ポップアップの内容 */
@@ -185,10 +184,16 @@
   margin-bottom: 10px;
 }
 
+.popup-body_version p {
+  text-align: center;
+}
+
 .account-delete {
   border-top: 1px solid #ccc;
   padding-bottom: 10px;
   margin-bottom: 10px;
+  margin-top: 10px;
+  padding-top: 10px;
 }
 
 #yes-button-logout,
@@ -213,6 +218,12 @@
   background-color: #007bff;
   color: #fff;
   cursor: pointer;
+}
+
+.popup-body_inquiry button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 #yes-button-logout,
