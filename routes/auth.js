@@ -208,7 +208,7 @@ router
             };
 
             res.cookie('token', token, options);
-            res.cookie('hashedId', hashedId, options);
+            res.cookie('hashedId', encodedId, options);
 
             return res.send({ message: 'ok', url: url });
           } catch (error) {
