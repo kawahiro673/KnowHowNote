@@ -190,7 +190,7 @@ router
             );
           });
         })
-        .then(({ userResult }) => {
+        .then(async({ userResult }) => {
           return new Promise((resolve, reject) => {
             //クライアントへJWTの発行(クライアント側のトークンはローカルストレージに保存するのはだめ。Cookieを使って保存する。)
             const token = await JWT.sign(
