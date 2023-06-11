@@ -5,7 +5,6 @@ const password = document.getElementById('password');
 loginbtn.addEventListener('click', loginButtonClick);
 
 function loginButtonClick() {
-  //console.log(document.cookie);
   $.ajax({
     url: '/login/',
     type: 'POST',
@@ -15,7 +14,6 @@ function loginButtonClick() {
       flg: 'info',
       email: email.value,
       password: password.value,
-      //cookieToken: document.cookie,
     }),
     success: function (res) {
       if (res.message !== 'ok') {

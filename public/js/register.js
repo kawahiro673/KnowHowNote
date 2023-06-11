@@ -66,8 +66,8 @@ function registerButtonClick() {
           password: password_auth.value,
         }),
         success: function (res) {
-          //console.log(res.token);
-          location.href = 'https://nodejs-itnote-app.herokuapp.com/mypage';
+          location.href = res.url;
+          //location.href = 'https://nodejs-itnote-app.herokuapp.com/mypage';
         },
       });
     },

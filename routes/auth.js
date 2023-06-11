@@ -178,36 +178,65 @@ router
                 'Original',
                 userResult[0].id,
               ],
-              (error, result) => {}
+              (error, result) => {
+                if (error) {
+                  reject();
+                } else {
+                  resolve({
+                    userResult: userResult,
+                  });
+                }
+              }
             );
           });
+        })
+        .then(({ userResult }) => {
+          return new Promise((resolve, reject) => {
+            //クライアントへJWTの発行(クライアント側のトークンはローカルストレージに保存するのはだめ。Cookieを使って保存する。)
+            const token = await JWT.sign(
+              {
+                email,
+              },
+              'SECRET_KEY' //秘密鍵。envファイルとかに隠す。
+            );
+            const hashedId = bcrypt.hashSync(userResult[0].id.toString(), 10);
+            const url = `https://nodejs-itnote-app.herokuapp.com/mypage/${hashedId}`;
+      
+            //ここでクラアントに返した値(token)をCookieに保存させる。ログインと同様に新規登録したらすぐにログインさせるためにトークン発行
+            const options = {
+              httpOnly: true, // JavaScriptからアクセスできないようにする(document.cookieで取得もできない)
+              maxAge: 1000 * 60 * 360, // 有効期限を設定(ミリ秒) ６時間
+            };
+      
+            res.cookie('token', token, options);
+            res.cookie('hashedId', hashedId, options);
+
+            return res.send({ message: 'ok', url: url });
         })
         .catch((error) => {
           console.error(error);
           // res.status(500).send('Internal Server Error.(Register user)');
         });
 
-      //クライアントへJWTの発行(クライアント側のトークンはローカルストレージに保存するのはだめ。Cookieを使って保存する。)
-      const token = await JWT.sign(
-        {
-          email,
-        },
-        'SECRET_KEY' //秘密鍵。envファイルとかに隠す。
-        // {
-        //   expiresIn: '24h',
-        // }
-      );
-      //ここでクラアントに返した値(token)をCookieに保存させる。ログインと同様に新規登録したらすぐにログインさせるためにトークン発行
-      const options = {
-        httpOnly: true, // JavaScriptからアクセスできないようにする(document.cookieで取得もできない)
-        maxAge: 1000 * 60 * 360, // 有効期限を設定(ミリ秒) ６時間
-        // secure: process.env.NODE_ENV === 'production', // HTTPS上でのみ送信する
-        // sameSite: 'Strict', // 同一ドメインからしかCookieを送信できなくする
-      };
+      // //クライアントへJWTの発行(クライアント側のトークンはローカルストレージに保存するのはだめ。Cookieを使って保存する。)
+      // const token = await JWT.sign(
+      //   {
+      //     email,
+      //   },
+      //   'SECRET_KEY' //秘密鍵。envファイルとかに隠す。
+      // );
+      // const hashedId = bcrypt.hashSync(user.id.toString(), 10);
+      // const url = `https://nodejs-itnote-app.herokuapp.com/mypage/${hashedId}`;
 
-      res.cookie('token', token, options);
+      // //ここでクラアントに返した値(token)をCookieに保存させる。ログインと同様に新規登録したらすぐにログインさせるためにトークン発行
+      // const options = {
+      //   httpOnly: true, // JavaScriptからアクセスできないようにする(document.cookieで取得もできない)
+      //   maxAge: 1000 * 60 * 360, // 有効期限を設定(ミリ秒) ６時間
+      // };
 
-      res.send({ message: 'やあ' });
+      // res.cookie('token', token, options);
+
+      // res.send({ message: 'やあ' });
     }
   });
 
