@@ -301,11 +301,22 @@ const backgroundColorPreservation = (color) => {
           .querySelector('.container')
           .classList.add('backgroundColor-red');
         document.querySelector('header').classList.add('headerColor-red');
+        document.querySelector('section').classList.add('section-red');
+        document.querySelector('.dropLabel').classList.add('dropLabel-red');
       } else if (color === 'yellow') {
         document
           .querySelector('.container')
           .classList.add('backgroundColor-yellow');
         document.querySelector('header').classList.add('headerColor-yellow');
+        document.querySelector('section').classList.add('section-yellow');
+        document.querySelector('.dropLabel').classList.add('dropLabel-yellow');
+      } else if (color === 'blue') {
+        document
+          .querySelector('.container')
+          .classList.add('backgroundColor-blue');
+        document.querySelector('header').classList.add('headerColor-blue');
+        document.querySelector('section').classList.add('section-blue');
+        document.querySelector('.dropLabel').classList.add('dropLabel-blue');
       }
     },
   });

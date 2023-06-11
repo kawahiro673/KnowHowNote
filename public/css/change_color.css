@@ -5,8 +5,14 @@
 .headerColor-blue {
   background-color: rgb(162, 241, 241);
 }
-section {
+.section-blue {
   background-color: aliceblue;
+}
+.dropLabel-blue {
+  background-color: rgb(110, 166, 255);
+}
+.dropLabel-blue:hover {
+  background: #b4dbff;
 }
 /*　赤　*/
 .backgroundColor-red {
@@ -15,8 +21,14 @@ section {
 .headerColor-red {
   background-color: rgb(255, 147, 147);
 }
-section {
+.section-red {
   background-color: rgb(255, 231, 231);
+}
+.dropLabel-red {
+  background-color: rgb(255, 92, 92);
+}
+.dropLabel-red:hover {
+  background: #ff7c7c;
 }
 /*　黄　*/
 .backgroundColor-yellow {
@@ -25,6 +37,12 @@ section {
 .headerColor-yellow {
   background-color: rgb(255, 242, 166);
 }
-section {
+.section-yellow {
   background-color: rgb(255, 254, 231);
+}
+.dropLabel-yellow {
+  background-color: rgb(255, 250, 109);
+}
+.dropLabel-yellow:hover {
+  background: #fffc9e;
 }
