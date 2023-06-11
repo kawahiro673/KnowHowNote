@@ -50,7 +50,7 @@
 
 .dropLabel:hover,
 .dropInput:checked + label {
-  background: #5fb2ff;
+  background: #ffffff;
   color: #fff;
 }
 
