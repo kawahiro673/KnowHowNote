@@ -250,29 +250,29 @@ const backgroundColorCheckBoxOption = () => {
       if (checkbox.checked) {
         const label = checkbox.parentElement; // 親要素の<label>を取得
         const text = label.textContent.trim(); // ラベル要素のテキストを取得し、前後の空白をトリム
-        console.log(text);
+
         // チェックされているチェックボックスのテキストを使って適切な処理を行う
         switch (text) {
           case '赤':
-            console.log('赤が選択されました');
+            backgroundColorPreservation('red');
             break;
           case '青':
-            console.log('青が選択されました');
+            backgroundColorPreservation('blue');
             break;
           case '黄':
-            console.log('黄が選択されました');
+            backgroundColorPreservation('yellow');
             break;
           case '緑':
-            console.log('緑が選択されました');
+            backgroundColorPreservation('green');
             break;
           case '紫':
-            console.log('紫が選択されました');
+            backgroundColorPreservation('purple');
             break;
           case '橙':
-            console.log('橙が選択されました');
+            backgroundColorPreservation('orange');
             break;
           case '灰色':
-            console.log('灰色が選択されました');
+            backgroundColorPreservation('gray');
             break;
           default:
             // チェックされているテキストが上記以外の場合の処理
@@ -282,6 +282,32 @@ const backgroundColorCheckBoxOption = () => {
         checkbox.checked = true; // チェックが外れた場合に再度チェックを付ける
       }
     });
+  });
+};
+
+const backgroundColorPreservation = (color) => {
+  $.ajax({
+    url: '/mypage/' + hashedIdGet,
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'backgroundColor',
+      color,
+    }),
+    success: function (res) {
+      if (color === 'red') {
+        document
+          .querySelector('.container')
+          .classList.add('backgroundColor-red');
+        document.querySelector('header').classList.add('headerColor-red');
+      } else if (color === 'yellow') {
+        document
+          .querySelector('.container')
+          .classList.add('backgroundColor-yellow');
+        document.querySelector('header').classList.add('headerColor-yellow');
+      }
+    },
   });
 };
 

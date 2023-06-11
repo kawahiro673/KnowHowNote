@@ -702,6 +702,43 @@ router
           console.error(error);
           res.status(500).json({ message: error.message, nothing });
         });
+    } else if (req.body.flg === 'backgroundColor') {
+      const token = req.cookies.token;
+      const decoded = JWT.verify(token, 'SECRET_KEY');
+      let promise = new Promise((resolve, reject) => {
+        resolve();
+      });
+      promise
+        .then(() => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'SELECT * FROM register_user WHERE Email = ?;',
+              [decoded.email],
+              (error, resultDecoded) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  resolve(resultDecoded);
+                }
+              }
+            );
+          });
+        })
+        .then((resultDecoded) => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'UPDATE register_user SET BackgroundColor = ? WHERE id = ?;',
+              [req.body.color, resultDecoded[0].id],
+              (error, result) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  res.send({ msg: '成功' });
+                }
+              }
+            );
+          });
+        });
     } else {
       console.log('flgで何も受け取ってません');
     }

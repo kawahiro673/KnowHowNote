@@ -33,7 +33,7 @@
   padding: 1em 1.5em;
   width: 150px;
   display: block;
-  background-color: #fff;
+  background-color: rgb(151, 234, 255);
   text-align: center;
   position: relative;
   color: #333;
@@ -143,7 +143,7 @@
   padding: 0;
 }
 
-.popup-body_inquiry input {
+.popup-body_inquiry textarea {
   text-align: left;
   width: 380px;
   height: 200px;
@@ -162,6 +162,10 @@
   height: 240px;
   padding: 0 10px;
   overflow-y: scroll;
+}
+
+.popup-body_inquiry select {
+  margin: 5px;
 }
 
 .popup-body_share-history p {
