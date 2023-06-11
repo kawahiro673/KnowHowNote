@@ -1,0 +1,30 @@
+/*　青　*/
+.backgroundColor-blue {
+  background-color: aliceblue;
+}
+.headerColor-blue {
+  background-color: rgb(162, 241, 241);
+}
+section {
+  background-color: aliceblue;
+}
+/*　赤　*/
+.backgroundColor-red {
+  background-color: rgb(255, 231, 231);
+}
+.headerColor-red {
+  background-color: rgb(255, 147, 147);
+}
+section {
+  background-color: rgb(255, 231, 231);
+}
+/*　黄　*/
+.backgroundColor-yellow {
+  background-color: rgb(255, 254, 231);
+}
+.headerColor-yellow {
+  background-color: rgb(255, 242, 166);
+}
+section {
+  background-color: rgb(255, 254, 231);
+}

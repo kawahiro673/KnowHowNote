@@ -31,25 +31,6 @@ header {
   justify-content: space-between;
 }
 
-.backgroundColor-blue {
-  background-color: aliceblue;
-}
-.headerColor-blue {
-  background-color: rgb(162, 241, 241);
-}
-.backgroundColor-red {
-  background-color: rgb(255, 220, 220);
-}
-.headerColor-red {
-  background-color: rgb(255, 147, 147);
-}
-.backgroundColor-yellow {
-  background-color: rgb(255, 254, 216);
-}
-.headerColor-yellow {
-  background-color: rgb(255, 242, 166);
-}
-
 header h1 {
   font-size: 25px;
   text-align: center;
