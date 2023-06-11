@@ -199,7 +199,8 @@ router
               'SECRET_KEY'
             );
             const hashedId = bcrypt.hashSync(userResult[0].id.toString(), 10);
-            const url = `https://nodejs-itnote-app.herokuapp.com/mypage/${hashedId}`;
+            const encodedId = encodeURIComponent(hashedId);
+            const url = `https://nodejs-itnote-app.herokuapp.com/mypage/${encodedId}`;
 
             const options = {
               httpOnly: true,
