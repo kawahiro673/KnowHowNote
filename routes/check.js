@@ -9,13 +9,13 @@ function check(req, res, next) {
     const token = req.cookies.token;
     console.log('token : ', token);
     //復号する。認証できるかどうか確認
-    const decoded = JWT.verify(
-      token,
-      'SECRET_KEY' //秘密鍵。envファイルとかに隠す。
-    );
+    // const decoded = JWT.verify(
+    //   token,
+    //   'SECRET_KEY' //秘密鍵。envファイルとかに隠す。
+    // );
     const hashedId = req.cookies.hashedId;
     req.value = hashedId;
-    console.log(hashedId + ' 2');
+
     //下記で続きを実行、今回の場合は res.render('index.ejs');
     next();
   } catch (err) {

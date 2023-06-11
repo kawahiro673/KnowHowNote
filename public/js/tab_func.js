@@ -425,7 +425,6 @@ document.getElementById('share-user-button').addEventListener('click', () => {
       });
 
       if (res.shareResult.length === 0) {
-        console.log('共有したユーザーがいません');
         const p = document.createElement('p');
         p.innerHTML = '共有履歴がありません';
         document.getElementById('share-user-div').appendChild(p);

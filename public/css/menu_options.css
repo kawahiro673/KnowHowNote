@@ -159,9 +159,23 @@
 .popup-body_logout,
 .popup-body_delete,
 .popup-body_share-user {
+  position: relative;
   height: 240px;
   padding: 0 10px;
   overflow-y: scroll;
+}
+
+.popup-body_share-history p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.popup-body_profile p {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 #yes-button-logout,

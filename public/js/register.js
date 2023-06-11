@@ -53,7 +53,7 @@ function registerButtonClick() {
         return false;
       }
       console.log('登録完了');
-      //console.log(document.cookie);
+
       $.ajax({
         url: '/auth/',
         type: 'POST',
@@ -67,7 +67,6 @@ function registerButtonClick() {
         }),
         success: function (res) {
           location.href = res.url;
-          //location.href = 'https://nodejs-itnote-app.herokuapp.com/mypage';
         },
       });
     },

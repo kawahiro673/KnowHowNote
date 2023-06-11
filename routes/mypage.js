@@ -14,10 +14,7 @@ const PoolCluster = require('mysql/lib/PoolCluster');
 router
   .route('/:hashedId')
   .get((req, res) => {
-    //const hashedId = req.params.hashedId;
     const encodedId = req.params.hashedId.replace(/\//g, '%2F');
-    //const decodedId = decodeURIComponent(encodedId);
-    console.log(encodedId + '3');
     res.render('index.ejs', { hashedId: encodedId });
   })
   .post((req, res) => {
