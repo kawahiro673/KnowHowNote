@@ -16,9 +16,9 @@ router
   .get((req, res) => {
     //const hashedId = req.params.hashedId;
     const encodedId = req.params.hashedId.replace(/\//g, '%2F');
-    const decodedId = decodeURIComponent(encodedId);
-    console.log(decodedId + '3');
-    res.render('index.ejs', { hashedId: decodedId });
+    //const decodedId = decodeURIComponent(encodedId);
+    console.log(encodedId + '3');
+    res.render('index.ejs', { hashedId: encodedId });
   })
   .post((req, res) => {
     if (req.body.flg === 'color') {
