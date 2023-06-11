@@ -28,7 +28,6 @@ app.use(cookieParser());
 
 app.get('/', check, (req, res) => {
   const hashedId = req.value;
-  console.log(hashedId + ' 1');
   res.redirect('/mypage/' + hashedId);
 });
 
