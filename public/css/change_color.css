@@ -15,7 +15,7 @@
 .dropInput-blue:checked + label {
   background: #b4dbff;
 }
-i:hover {
+.i-blue:hover {
   color: rgb(162, 241, 241);
   text-shadow: 0 0 120px rgb(162, 241, 241); /*ぼかし120px*/
 }
@@ -40,7 +40,7 @@ i:hover {
 .dropInput-red:checked + label {
   background: #ff7c7c;
 }
-i:hover {
+.i-red:hover {
   color: rgb(255, 0, 0);
   text-shadow: 0 0 120px rgb(255, 0, 0); /*ぼかし120px*/
 }
@@ -65,7 +65,7 @@ i:hover {
 .dropInput-yellow:checked + label {
   background: #fffc9e;
 }
-i:hover {
+.i-yellow:hover {
   color: rgb(255, 225, 1);
   text-shadow: 0 0 120px rgb(255, 225, 1); /*ぼかし120px*/
 }

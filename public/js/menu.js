@@ -296,6 +296,41 @@ const backgroundColorPreservation = (color) => {
       color,
     }),
     success: function (res) {
+      const container = document.querySelector('.container');
+      container.classList.remove('backgroundColor-red');
+      container.classList.remove('backgroundColor-yellow');
+      container.classList.remove('backgroundColor-blue');
+
+      const header = document.querySelector('header');
+      header.classList.remove('headerColor-red');
+      header.classList.remove('headerColor-yellow');
+      header.classList.remove('headerColor-blue');
+
+      const section = document.querySelector('section');
+      section.classList.remove('section-red');
+      section.classList.remove('section-yellow');
+      section.classList.remove('section-blue');
+
+      const dropLabel = document.querySelector('.dropLabel');
+      dropLabel.classList.remove('dropLabel-red');
+      dropLabel.classList.remove('dropLabel-yellow');
+      dropLabel.classList.remove('dropLabel-blue');
+
+      const tabWrap = document.querySelector('.tab-wrap');
+      tabWrap.classList.remove('tab-wrap-red');
+      tabWrap.classList.remove('tab-wrap-yellow');
+      tabWrap.classList.remove('tab-wrap-blue');
+
+      const dropInput = document.querySelector('.dropInput');
+      dropInput.classList.remove('dropInput-red');
+      dropInput.classList.remove('dropInput-yellow');
+      dropInput.classList.remove('dropInput-blue');
+
+      const icon = document.querySelector('i');
+      icon.classList.remove('i-red');
+      icon.classList.remove('i-yellow');
+      icon.classList.remove('i-blue');
+
       if (color === 'red') {
         document
           .querySelector('.container')
@@ -305,6 +340,7 @@ const backgroundColorPreservation = (color) => {
         document.querySelector('.dropLabel').classList.add('dropLabel-red');
         document.querySelector('.tab-wrap').classList.add('tab-wrap-red');
         document.querySelector('.dropInput').classList.add('dropInput-red');
+        document.querySelector('i').classList.add('i-red');
       } else if (color === 'yellow') {
         document
           .querySelector('.container')
@@ -314,6 +350,7 @@ const backgroundColorPreservation = (color) => {
         document.querySelector('.dropLabel').classList.add('dropLabel-yellow');
         document.querySelector('.tab-wrap').classList.add('tab-wrap-yellow');
         document.querySelector('.dropInput').classList.add('dropInput-yellow');
+        document.querySelector('i').classList.add('i-yellow');
       } else if (color === 'blue') {
         document
           .querySelector('.container')
@@ -323,6 +360,7 @@ const backgroundColorPreservation = (color) => {
         document.querySelector('.dropLabel').classList.add('dropLabel-blue');
         document.querySelector('.tab-wrap').classList.add('tab-wrap-blue');
         document.querySelector('.dropInput').classList.add('dropInput-blue');
+        document.querySelector('i').classList.add('i-blue');
       }
     },
   });

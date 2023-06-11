@@ -33,7 +33,7 @@
   padding: 1em 1.5em;
   width: 150px;
   display: block;
-  background-color: rgb(151, 234, 255);
+  background-color: rgb(255, 255, 255);
   text-align: center;
   position: relative;
   color: #333;
@@ -50,8 +50,8 @@
 
 .dropLabel:hover,
 .dropInput:checked + label {
-  background: #ffffff;
-  color: #fff;
+  background: #0cfa7b;
+  color: rgb(117, 117, 117);
 }
 
 .animation {
