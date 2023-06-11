@@ -66,9 +66,9 @@ document.getElementById('share-history').addEventListener('click', () => {
           document.getElementById('share-history-list').appendChild(p);
         });
         if (res.shareResult.length === 0) {
-          console.log('作成されていません');
           const p = document.createElement('p');
           p.innerHTML = '共有履歴がありません';
+          p.setAttribute('class', 'no-share-user');
           document.getElementById('share-history-list').appendChild(p);
         }
       }

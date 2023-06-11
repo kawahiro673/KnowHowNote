@@ -166,6 +166,13 @@
 }
 
 .popup-body_share-history p {
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+
+.no-share-user {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -174,6 +181,12 @@
 
 .popup-body_profile p {
   border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.account-delete {
+  border-top: 1px solid #ccc;
   padding-bottom: 10px;
   margin-bottom: 10px;
 }
