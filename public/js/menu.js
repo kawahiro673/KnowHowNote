@@ -396,34 +396,62 @@ export const backgroundColorDelete = () => {
   container.classList.remove('backgroundColor-red');
   container.classList.remove('backgroundColor-yellow');
   container.classList.remove('backgroundColor-blue');
+  container.classList.remove('backgroundColor-green');
+  container.classList.remove('backgroundColor-purple');
+  container.classList.remove('backgroundColor-orange');
+  container.classList.remove('backgroundColor-gray');
 
   const header = document.querySelector('header');
   header.classList.remove('headerColor-red');
   header.classList.remove('headerColor-yellow');
   header.classList.remove('headerColor-blue');
+  header.classList.remove('headerColor-green');
+  header.classList.remove('headerColor-purple');
+  header.classList.remove('headerColor-orange');
+  header.classList.remove('headerColor-gray');
 
   const section = document.querySelector('section');
   section.classList.remove('section-red');
   section.classList.remove('section-yellow');
   section.classList.remove('section-blue');
+  section.classList.remove('section-green');
+  section.classList.remove('section-purple');
+  section.classList.remove('section-orange');
+  section.classList.remove('section-gray');
 
   const dropLabel = document.querySelector('.dropLabel');
   dropLabel.classList.remove('dropLabel-red');
   dropLabel.classList.remove('dropLabel-yellow');
   dropLabel.classList.remove('dropLabel-blue');
+  dropLabel.classList.remove('dropLabel-green');
+  dropLabel.classList.remove('dropLabel-purple');
+  dropLabel.classList.remove('dropLabel-orange');
+  dropLabel.classList.remove('dropLabel-gray');
 
   const tabWrap = document.querySelector('.tab-wrap');
   tabWrap.classList.remove('tab-wrap-red');
   tabWrap.classList.remove('tab-wrap-yellow');
   tabWrap.classList.remove('tab-wrap-blue');
+  tabWrap.classList.remove('tab-wrap-green');
+  tabWrap.classList.remove('tab-wrap-purple');
+  tabWrap.classList.remove('tab-wrap-orange');
+  tabWrap.classList.remove('tab-wrap-gray');
 
   const dropInput = document.querySelector('.dropInput');
   dropInput.classList.remove('dropInput-red');
   dropInput.classList.remove('dropInput-yellow');
   dropInput.classList.remove('dropInput-blue');
+  dropInput.classList.remove('dropInput-green');
+  dropInput.classList.remove('dropInput-purple');
+  dropInput.classList.remove('dropInput-orange');
+  dropInput.classList.remove('dropInput-gray');
 
   const icon = document.querySelector('i');
   icon.classList.remove('i-red');
   icon.classList.remove('i-yellow');
   icon.classList.remove('i-blue');
+  icon.classList.remove('i-green');
+  icon.classList.remove('i-purple');
+  icon.classList.remove('i-orange');
+  icon.classList.remove('i-gray');
 };

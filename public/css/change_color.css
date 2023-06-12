@@ -75,13 +75,13 @@
 
 /*　緑　*/
 .backgroundColor-green {
-  background-color: rgb(205, 255, 201);
+  background-color: rgb(227, 255, 225);
 }
 .headerColor-green {
   background-color: rgb(172, 255, 154);
 }
 .section-green {
-  background-color: rgb(205, 255, 201);
+  background-color: rgb(227, 255, 225);
 }
 .dropLabel-green {
   background-color: rgb(0, 255, 4);
@@ -95,7 +95,7 @@
   text-shadow: 0 0 120px rgb(0, 255, 30); /*ぼかし120px*/
 }
 .tab-wrap-green {
-  background-color: rgb(205, 255, 201);
+  background-color: rgb(227, 255, 225);
 }
 
 /*　紫　*/
