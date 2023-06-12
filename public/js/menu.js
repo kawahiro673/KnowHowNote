@@ -300,10 +300,18 @@ const backgroundColorPreservation = (color) => {
 
       if (color === 'red') {
         backgroundColorSet('red');
-      } else if (color === 'yellow') {
-        backgroundColorSet('yellow');
       } else if (color === 'blue') {
         backgroundColorSet('blue');
+      } else if (color === 'yellow') {
+        backgroundColorSet('yellow');
+      } else if (color === 'green') {
+        backgroundColorSet('green');
+      } else if (color === 'purple') {
+        backgroundColorSet('purple');
+      } else if (color === 'orange') {
+        backgroundColorSet('orange');
+      } else if (color === 'gray') {
+        backgroundColorSet('gray');
       }
     },
   });
