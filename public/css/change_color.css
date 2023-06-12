@@ -18,6 +18,7 @@
 .i-blue:hover {
   color: rgb(162, 241, 241);
   text-shadow: 0 0 120px rgb(162, 241, 241); /*ぼかし120px*/
+  transition: 0s;
 }
 .tab-wrap-blue {
   background-color: aliceblue;
@@ -43,6 +44,7 @@
 .i-red:hover {
   color: rgb(255, 0, 0);
   text-shadow: 0 0 120px rgb(255, 0, 0); /*ぼかし120px*/
+  transition: 0s;
 }
 .tab-wrap-red {
   background-color: rgb(255, 231, 231);
@@ -68,6 +70,7 @@
 .i-yellow:hover {
   color: rgb(255, 225, 1);
   text-shadow: 0 0 120px rgb(255, 225, 1); /*ぼかし120px*/
+  transition: 0s;
 }
 .tab-wrap-yellow {
   background-color: rgb(255, 254, 231);
@@ -93,6 +96,7 @@
 .i-green:hover {
   color: rgb(0, 255, 30);
   text-shadow: 0 0 120px rgb(0, 255, 30); /*ぼかし120px*/
+  transition: 0s;
 }
 .tab-wrap-green {
   background-color: rgb(227, 255, 225);
@@ -118,6 +122,7 @@
 .i-purple:hover {
   color: rgb(230, 0, 255);
   text-shadow: 0 0 120px rgb(230, 0, 255); /*ぼかし120px*/
+  transition: 0s;
 }
 .tab-wrap-purple {
   background-color: rgb(245, 222, 255);
@@ -143,6 +148,7 @@
 .i-orange:hover {
   color: rgb(255, 123, 0);
   text-shadow: 0 0 120px rgb(255, 123, 0); /*ぼかし120px*/
+  transition: 0s;
 }
 .tab-wrap-orange {
   background-color: rgb(255, 236, 218);
@@ -168,6 +174,7 @@
 .i-gray:hover {
   color: rgb(72, 72, 72);
   text-shadow: 0 0 120px rgb(72, 72, 72); /*ぼかし120px*/
+  transition: 0s;
 }
 .tab-wrap-gray {
   background-color: rgb(219, 219, 219);
