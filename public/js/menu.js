@@ -300,37 +300,10 @@ const backgroundColorPreservation = (color) => {
 
       if (color === 'red') {
         backgroundColorSet('red');
-        // document
-        //   .querySelector('.container')
-        //   .classList.add('backgroundColor-red');
-        // document.querySelector('header').classList.add('headerColor-red');
-        // document.querySelector('section').classList.add('section-red');
-        // document.querySelector('.dropLabel').classList.add('dropLabel-red');
-        // document.querySelector('.tab-wrap').classList.add('tab-wrap-red');
-        // document.querySelector('.dropInput').classList.add('dropInput-red');
-        // document.querySelector('i').classList.add('i-red');
       } else if (color === 'yellow') {
         backgroundColorSet('yellow');
-        // document
-        //   .querySelector('.container')
-        //   .classList.add('backgroundColor-yellow');
-        // document.querySelector('header').classList.add('headerColor-yellow');
-        // document.querySelector('section').classList.add('section-yellow');
-        // document.querySelector('.dropLabel').classList.add('dropLabel-yellow');
-        // document.querySelector('.tab-wrap').classList.add('tab-wrap-yellow');
-        // document.querySelector('.dropInput').classList.add('dropInput-yellow');
-        // document.querySelector('i').classList.add('i-yellow');
       } else if (color === 'blue') {
         backgroundColorSet('blue');
-        // document
-        //   .querySelector('.container')
-        //   .classList.add('backgroundColor-blue');
-        // document.querySelector('header').classList.add('headerColor-blue');
-        // document.querySelector('section').classList.add('section-blue');
-        // document.querySelector('.dropLabel').classList.add('dropLabel-blue');
-        // document.querySelector('.tab-wrap').classList.add('tab-wrap-blue');
-        // document.querySelector('.dropInput').classList.add('dropInput-blue');
-        // document.querySelector('i').classList.add('i-blue');
       }
     },
   });
@@ -398,7 +371,7 @@ document.getElementById('share-pass-butotn').addEventListener('click', () => {
   });
 });
 
-const backgroundColorSet = (color) => {
+export const backgroundColorSet = (color) => {
   document
     .querySelector('.container')
     .classList.add(`backgroundColor-${color}`);
@@ -410,7 +383,7 @@ const backgroundColorSet = (color) => {
   document.querySelector('i').classList.add(`i-${color}`);
 };
 
-const backgroundColorDelete = () => {
+export const backgroundColorDelete = () => {
   const container = document.querySelector('.container');
   container.classList.remove('backgroundColor-red');
   container.classList.remove('backgroundColor-yellow');

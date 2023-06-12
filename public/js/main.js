@@ -8,23 +8,18 @@ import {
   tabCreate,
   binderCreate,
 } from './tab_func.js';
-
 import { fileContextmenu } from './contextmenu/note_contextmenu.js';
 import { folderContextmenu } from './contextmenu/folder_contextmenu.js';
 import { shareContextmenu } from './contextmenu/share_contextmenu.js';
 import { labelContextmenu } from './contextmenu/label_contextmenu.js';
-
 import { jQueryUIOptionsFunc } from './jQueryUI_func.js';
-
 import { orderGet, passGet } from './stringUtils.js';
-
 import { expandableAdaptation } from './expandableOptions.js';
+import { backgroundColorSet, backgroundColorDelete } from './menu.js';
 
 let tabIdArray = []; //タブが生成されているファイルのIDを格納
 let tabFocusID; //　フォーカスが当たっているタブのIDを常に保持。フォルダ名の名前変更・D&D時のパス変更に使用。
-
 let hashedId = document.getElementById('user_name').dataset.hashedId; // data属性から取得
-console.log(hashedId);
 
 export const listCreate = () => {
   $.ajax({
@@ -40,6 +35,9 @@ export const listCreate = () => {
         console.log('ログイン画面に戻ります');
         location.href = 'https://nodejs-itnote-app.herokuapp.com';
       }
+      console.log(res.user.BackgroundColor);
+      backgroundColorDelete();
+      backgroundColorSet(res.user.BackgroundColor);
 
       document.getElementById('list_loader').style.display = 'none';
       document.getElementById('tab_loader').style.display = 'none';

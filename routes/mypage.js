@@ -419,6 +419,7 @@ router
                     response2: result,
                     userName: resultDecoded[0].UserName,
                     id: resultDecoded[0].id,
+                    user: resultDecoded[0],
                   });
                 }
               }
