@@ -296,71 +296,41 @@ const backgroundColorPreservation = (color) => {
       color,
     }),
     success: function (res) {
-      const container = document.querySelector('.container');
-      container.classList.remove('backgroundColor-red');
-      container.classList.remove('backgroundColor-yellow');
-      container.classList.remove('backgroundColor-blue');
-
-      const header = document.querySelector('header');
-      header.classList.remove('headerColor-red');
-      header.classList.remove('headerColor-yellow');
-      header.classList.remove('headerColor-blue');
-
-      const section = document.querySelector('section');
-      section.classList.remove('section-red');
-      section.classList.remove('section-yellow');
-      section.classList.remove('section-blue');
-
-      const dropLabel = document.querySelector('.dropLabel');
-      dropLabel.classList.remove('dropLabel-red');
-      dropLabel.classList.remove('dropLabel-yellow');
-      dropLabel.classList.remove('dropLabel-blue');
-
-      const tabWrap = document.querySelector('.tab-wrap');
-      tabWrap.classList.remove('tab-wrap-red');
-      tabWrap.classList.remove('tab-wrap-yellow');
-      tabWrap.classList.remove('tab-wrap-blue');
-
-      const dropInput = document.querySelector('.dropInput');
-      dropInput.classList.remove('dropInput-red');
-      dropInput.classList.remove('dropInput-yellow');
-      dropInput.classList.remove('dropInput-blue');
-
-      const icon = document.querySelector('i');
-      icon.classList.remove('i-red');
-      icon.classList.remove('i-yellow');
-      icon.classList.remove('i-blue');
+      backgroundColorDelete();
 
       if (color === 'red') {
-        document
-          .querySelector('.container')
-          .classList.add('backgroundColor-red');
-        document.querySelector('header').classList.add('headerColor-red');
-        document.querySelector('section').classList.add('section-red');
-        document.querySelector('.dropLabel').classList.add('dropLabel-red');
-        document.querySelector('.tab-wrap').classList.add('tab-wrap-red');
-        document.querySelector('.dropInput').classList.add('dropInput-red');
-        document.querySelector('i').classList.add('i-red');
+        backgroundColorSet('red');
+        // document
+        //   .querySelector('.container')
+        //   .classList.add('backgroundColor-red');
+        // document.querySelector('header').classList.add('headerColor-red');
+        // document.querySelector('section').classList.add('section-red');
+        // document.querySelector('.dropLabel').classList.add('dropLabel-red');
+        // document.querySelector('.tab-wrap').classList.add('tab-wrap-red');
+        // document.querySelector('.dropInput').classList.add('dropInput-red');
+        // document.querySelector('i').classList.add('i-red');
       } else if (color === 'yellow') {
-        document
-          .querySelector('.container')
-          .classList.add('backgroundColor-yellow');
-        document.querySelector('header').classList.add('headerColor-yellow');
-        document.querySelector('section').classList.add('section-yellow');
-        document.querySelector('.dropLabel').classList.add('dropLabel-yellow');
-        document.querySelector('.tab-wrap').classList.add('tab-wrap-yellow');
-        document.querySelector('.dropInput').classList.add('dropInput-yellow');
-        document.querySelector('i').classList.add('i-yellow');
+        backgroundColorSet('yellow');
+        // document
+        //   .querySelector('.container')
+        //   .classList.add('backgroundColor-yellow');
+        // document.querySelector('header').classList.add('headerColor-yellow');
+        // document.querySelector('section').classList.add('section-yellow');
+        // document.querySelector('.dropLabel').classList.add('dropLabel-yellow');
+        // document.querySelector('.tab-wrap').classList.add('tab-wrap-yellow');
+        // document.querySelector('.dropInput').classList.add('dropInput-yellow');
+        // document.querySelector('i').classList.add('i-yellow');
       } else if (color === 'blue') {
-        document
-          .querySelector('.container')
-          .classList.add('backgroundColor-blue');
-        document.querySelector('header').classList.add('headerColor-blue');
-        document.querySelector('section').classList.add('section-blue');
-        document.querySelector('.dropLabel').classList.add('dropLabel-blue');
-        document.querySelector('.tab-wrap').classList.add('tab-wrap-blue');
-        document.querySelector('.dropInput').classList.add('dropInput-blue');
-        document.querySelector('i').classList.add('i-blue');
+        backgroundColorSet('blue');
+        // document
+        //   .querySelector('.container')
+        //   .classList.add('backgroundColor-blue');
+        // document.querySelector('header').classList.add('headerColor-blue');
+        // document.querySelector('section').classList.add('section-blue');
+        // document.querySelector('.dropLabel').classList.add('dropLabel-blue');
+        // document.querySelector('.tab-wrap').classList.add('tab-wrap-blue');
+        // document.querySelector('.dropInput').classList.add('dropInput-blue');
+        // document.querySelector('i').classList.add('i-blue');
       }
     },
   });
@@ -427,3 +397,52 @@ document.getElementById('share-pass-butotn').addEventListener('click', () => {
     success: function (res) {},
   });
 });
+
+const backgroundColorSet = (color) => {
+  document
+    .querySelector('.container')
+    .classList.add(`backgroundColor-${color}`);
+  document.querySelector('header').classList.add(`headerColor-${color}`);
+  document.querySelector('section').classList.add(`section-${color}`);
+  document.querySelector('.dropLabel').classList.add(`dropLabel-${color}`);
+  document.querySelector('.tab-wrap').classList.add(`tab-wrap-${color}`);
+  document.querySelector('.dropInput').classList.add(`dropInput-${color}`);
+  document.querySelector('i').classList.add(`i-${color}`);
+};
+
+const backgroundColorDelete = () => {
+  const container = document.querySelector('.container');
+  container.classList.remove('backgroundColor-red');
+  container.classList.remove('backgroundColor-yellow');
+  container.classList.remove('backgroundColor-blue');
+
+  const header = document.querySelector('header');
+  header.classList.remove('headerColor-red');
+  header.classList.remove('headerColor-yellow');
+  header.classList.remove('headerColor-blue');
+
+  const section = document.querySelector('section');
+  section.classList.remove('section-red');
+  section.classList.remove('section-yellow');
+  section.classList.remove('section-blue');
+
+  const dropLabel = document.querySelector('.dropLabel');
+  dropLabel.classList.remove('dropLabel-red');
+  dropLabel.classList.remove('dropLabel-yellow');
+  dropLabel.classList.remove('dropLabel-blue');
+
+  const tabWrap = document.querySelector('.tab-wrap');
+  tabWrap.classList.remove('tab-wrap-red');
+  tabWrap.classList.remove('tab-wrap-yellow');
+  tabWrap.classList.remove('tab-wrap-blue');
+
+  const dropInput = document.querySelector('.dropInput');
+  dropInput.classList.remove('dropInput-red');
+  dropInput.classList.remove('dropInput-yellow');
+  dropInput.classList.remove('dropInput-blue');
+
+  const icon = document.querySelector('i');
+  icon.classList.remove('i-red');
+  icon.classList.remove('i-yellow');
+  icon.classList.remove('i-blue');
+};

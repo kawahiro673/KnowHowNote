@@ -9,11 +9,11 @@
   background-color: aliceblue;
 }
 .dropLabel-blue {
-  background-color: rgb(110, 166, 255);
+  background-color: rgb(0, 255, 255);
 }
 .dropLabel-blue:hover,
 .dropInput-blue:checked + label {
-  background: #b4dbff;
+  background: rgb(127, 255, 255);
 }
 .i-blue:hover {
   color: rgb(162, 241, 241);
@@ -34,7 +34,7 @@
   background-color: rgb(255, 231, 231);
 }
 .dropLabel-red {
-  background-color: rgb(255, 92, 92);
+  background-color: rgb(255, 0, 0);
 }
 .dropLabel-red:hover,
 .dropInput-red:checked + label {
@@ -59,11 +59,11 @@
   background-color: rgb(255, 254, 231);
 }
 .dropLabel-yellow {
-  background-color: rgb(255, 250, 109);
+  background-color: rgb(255, 247, 0);
 }
 .dropLabel-yellow:hover,
 .dropInput-yellow:checked + label {
-  background: #fffc9e;
+  background: #fffb84;
 }
 .i-yellow:hover {
   color: rgb(255, 225, 1);
