@@ -35,15 +35,6 @@ export const fileContextmenu = (tabIdArray) => {
       });
     });
 
-    // $(document).ready(function () {
-    //   //重複してしまうため色変更イベントを一時削除
-    //   $('#color').off('click');
-    //   $('#color').on('click', function (e) {
-    //     e.preventDefault();
-    //     noteColorChange(file);
-    //   });
-    // });
-
     document.addEventListener(
       'mousedown',
       (e) => {

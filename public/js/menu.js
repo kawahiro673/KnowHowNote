@@ -19,6 +19,11 @@ document.getElementById('profile').addEventListener('click', () => {
       const date = new Date(res.user.CreationDay);
       document.getElementById('RegistrationDate').innerHTML =
         date.toLocaleDateString('ja-JP');
+      if (res.user.ShareFlg === 'ON') {
+        document.getElementById('onCheckbox').checked = true;
+      } else {
+        document.getElementById('offCheckbox').checked = false;
+      }
     },
   });
   backgroundColorCheckBoxOption();
