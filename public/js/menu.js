@@ -458,7 +458,7 @@ export const backgroundColorDelete = () => {
 };
 
 document.getElementById('inquiry-button').addEventListener('click', () => {
-  date = currentTimeGet();
+  const date = currentTimeGet();
   $.ajax({
     url: '/mypage/' + hashedIdGet,
     type: 'POST',
