@@ -916,7 +916,7 @@
         </div>
 
         <header>
-          <h1>ノウハウノート</h1>
+          <h1>KNOW HOW NOTE</h1>
           <h2><span id="user_name" data-hashed-id="<%= hashedId %>"></span> さん</h2>
           <div class="dropdown">
             <input id="tg" class="dropInput" type="checkbox" />
@@ -1232,14 +1232,14 @@
               </div>
             </div>
             <div class="popup-body_inquiry">
-              <select name=”item”>
-                <option value=”item1”>不具合・改善点等</option>
-                <option value=”item2”>技術的なお問わせ</option>
-                <option value=”item3”>その他お問合せ
+              <select name=”item” id="itemSelect">
+                <option value=”type1”>不具合・改善点等</option>
+                <option value=”type2”>技術的なお問わせ</option>
+                <option value=”type3”>その他お問合せ
                 </option>
               </select>
-              <textarea></textarea>
-              <button>送信</button>
+              <textarea id="inquiry-content"></textarea>
+              <button id ="inquiry-button">送信</button>
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import { hashedIdGet } from './main.js';
+import { currentTimeGet } from './stringUtils.js';
 
 //プロフィールのポップアップ
 document.getElementById('profile').addEventListener('click', () => {
@@ -455,3 +456,21 @@ export const backgroundColorDelete = () => {
   icon.classList.remove('i-orange');
   icon.classList.remove('i-gray');
 };
+
+document.getElementById('inquiry-button').addEventListener('click', () => {
+  console.log(document.getElementById('itemSelect').value);
+  $.ajax({
+    url: '/mypage/' + hashedIdGet,
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'inquiry',
+      content: document.getElementById('inquiry-content').value,
+      user: document.getElementById('user_name').value,
+      date: currentTimeGet,
+      type: document.getElementById('itemSelect').value,
+    }),
+    success: function (res) {},
+  });
+});

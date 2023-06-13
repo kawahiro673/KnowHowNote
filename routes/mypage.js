@@ -740,6 +740,14 @@ router
             );
           });
         });
+    } else if (req.body.flg === 'inquiry') {
+      pool.query(
+        'INSERT INTO inquiry (user, date, type, content) values(?, ?, ?, ?);',
+        [req.body.user, req.body.date, req.body.type, req.body.content],
+        (error, result) => {
+          res.send({ msg: '成功' });
+        }
+      );
     } else {
       console.log('flgで何も受け取ってません');
     }
