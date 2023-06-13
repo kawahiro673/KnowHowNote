@@ -165,7 +165,8 @@
   background-color: rgb(219, 219, 219);
 }
 .dropLabel-gray {
-  background-color: rgb(68, 68, 68);
+  background-color: rgb(95, 95, 95);
+  color: white;
 }
 .dropLabel-gray:hover,
 .dropInput-gray:checked + label {

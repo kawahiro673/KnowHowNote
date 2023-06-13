@@ -108,7 +108,8 @@
   height: 180px;
   width: 300px;
 }
-.popup-window_share-user {
+.popup-window_share-user,
+.popup-window_inquiry_result {
   height: 400px;
   width: 300px;
 }
