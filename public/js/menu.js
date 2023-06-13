@@ -487,3 +487,11 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
     },
   });
 });
+
+document.getElementById('onCheckbox').addEventListener('change', () => {
+  console.log('ONの操作がありました');
+});
+
+document.getElementById('offCheckbox').addEventListener('change', () => {
+  console.log('OFFの操作がありました');
+});
