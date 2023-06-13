@@ -469,7 +469,7 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
       content: document.getElementById('inquiry-content').value,
       user: document.getElementById('user_name').innerHTML,
       date,
-      type: parseInt(document.getElementById('itemSelect').value),
+      type: document.getElementById('itemSelect').value,
     }),
     success: function (res) {
       document.getElementById('popup-overlay_inquiry').style.display = 'none';
