@@ -458,7 +458,7 @@ export const backgroundColorDelete = () => {
 };
 
 document.getElementById('inquiry-button').addEventListener('click', () => {
-  console.log(document.getElementById('itemSelect').value);
+  date = currentTimeGet();
   $.ajax({
     url: '/mypage/' + hashedIdGet,
     type: 'POST',
@@ -467,10 +467,18 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
     data: JSON.stringify({
       flg: 'inquiry',
       content: document.getElementById('inquiry-content').value,
-      user: document.getElementById('user_name').value,
-      date: currentTimeGet,
-      type: document.getElementById('itemSelect').value,
+      user: document.getElementById('user_name').innerHTML,
+      date,
+      type: parseInt(document.getElementById('itemSelect').value),
     }),
-    success: function (res) {},
+    success: function (res) {
+      document.getElementById('popup-overlay_inquiry').style.display = 'none';
+      document.getElementById('popup-overlay_inquiry_result').style.display =
+        'block';
+      setTimeout(() => {
+        document.getElementById('popup-overlay_inquiry_result').style.display =
+          'none';
+      }, 1500);
+    },
   });
 });

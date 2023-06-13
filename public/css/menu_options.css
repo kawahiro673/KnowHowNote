@@ -67,7 +67,8 @@
 #popup-overlay_version,
 #popup-overlay_logout,
 #popup-overlay_delete,
-#popup-overlay_share-user {
+#popup-overlay_share-user,
+#popup-overlay_inquiry {
   display: block;
   position: fixed;
   top: 0;
@@ -85,7 +86,8 @@
 .popup-window_version,
 .popup-window_logout,
 .popup-window_delete,
-.popup-window_share-user {
+.popup-window_share-user,
+.popup-window_inquiry_result {
   width: 500px;
   height: 300px;
   background-color: #fff;
@@ -119,7 +121,8 @@
 .popup-header_version,
 .popup-header_logout,
 .popup-header_delete,
-.popup-header_share-user {
+.popup-header_share-user,
+.popup-header_inquiry_result {
   display: flex;
   align-items: center;
   justify-content: center; /* 中央寄せに変更 */
@@ -136,7 +139,8 @@
 .popup-header_version h2,
 .popup-header_logout h2,
 .popup-header_delete h2,
-.popup-header_share-user h2 {
+.popup-header_share-user h2,
+.popup-header_inquiry_result h2 {
   font-size: 16px;
   font-weight: normal;
   margin: 0 auto;
@@ -157,7 +161,8 @@
 .popup-body_version,
 .popup-body_logout,
 .popup-body_delete,
-.popup-body_share-user {
+.popup-body_share-user,
+.popup-body_inquiry_result {
   position: relative;
   height: 240px;
   padding: 0 10px;
