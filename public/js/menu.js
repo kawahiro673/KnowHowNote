@@ -21,8 +21,8 @@ document.getElementById('profile').addEventListener('click', () => {
         date.toLocaleDateString('ja-JP');
       if (res.user.ShareFlg === 'ON') {
         document.getElementById('onCheckbox').checked = true;
-      } else {
-        document.getElementById('offCheckbox').checked = false;
+      } else if (res.user.ShareFlg === 'OFF') {
+        document.getElementById('offCheckbox').checked = true;
       }
     },
   });
