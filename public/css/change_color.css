@@ -15,12 +15,10 @@
 .dropInput-blue:checked + label {
   background: rgb(127, 255, 255);
 }
-/* .i-blue {
-  color: rgb(255, 255, 255);
-} */
+
 .i-blue:hover {
-  color: rgb(162, 241, 241);
-  text-shadow: 0 0 120px rgb(162, 241, 241); /*ぼかし120px*/
+  color: rgb(0, 255, 255);
+  text-shadow: 0 0 120px rgb(0, 255, 255); /*ぼかし120px*/
   transition: 0s;
 }
 .tab-wrap-blue {
@@ -44,9 +42,7 @@
 .dropInput-red:checked + label {
   background: #ff7c7c;
 }
-.i-red {
-  color: rgb(255, 255, 255);
-}
+
 .i-red:hover {
   color: rgb(255, 0, 0);
   text-shadow: 0 0 120px rgb(255, 0, 0); /*ぼかし120px*/
@@ -73,9 +69,7 @@
 .dropInput-yellow:checked + label {
   background: #fffb84;
 }
-.i-yellow {
-  color: rgb(255, 255, 255);
-}
+
 .i-yellow:hover {
   color: rgb(255, 225, 1);
   text-shadow: 0 0 120px rgb(255, 225, 1); /*ぼかし120px*/
@@ -102,9 +96,7 @@
 .dropInput-green:checked + label {
   background: rgb(125, 255, 127);
 }
-.i-green {
-  color: rgb(255, 255, 255);
-}
+
 .i-green:hover {
   color: rgb(0, 255, 30);
   text-shadow: 0 0 120px rgb(0, 255, 30); /*ぼかし120px*/
@@ -131,9 +123,7 @@
 .dropInput-purple:checked + label {
   background: rgb(228, 121, 255);
 }
-.i-purple {
-  color: rgb(255, 255, 255);
-}
+
 .i-purple:hover {
   color: rgb(230, 0, 255);
   text-shadow: 0 0 120px rgb(230, 0, 255); /*ぼかし120px*/
@@ -160,9 +150,7 @@
 .dropInput-orange:checked + label {
   background: rgb(255, 186, 121);
 }
-.i-orange {
-  color: rgb(255, 255, 255);
-}
+
 .i-orange:hover {
   color: rgb(255, 123, 0);
   text-shadow: 0 0 120px rgb(255, 123, 0); /*ぼかし120px*/
@@ -190,9 +178,7 @@
 .dropInput-gray:checked + label {
   background: rgb(145, 145, 145);
 }
-.i-gray {
-  color: rgb(255, 255, 255);
-}
+
 .i-gray:hover {
   color: rgb(72, 72, 72);
   text-shadow: 0 0 120px rgb(72, 72, 72); /*ぼかし120px*/

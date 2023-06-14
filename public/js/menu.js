@@ -479,14 +479,6 @@ export const backgroundColorDelete = () => {
     icon.classList.remove('i-orange');
     icon.classList.remove('i-gray');
   });
-  // const icon = document.querySelector('i');
-  // icon.classList.remove('i-red');
-  // icon.classList.remove('i-yellow');
-  // icon.classList.remove('i-blue');
-  // icon.classList.remove('i-green');
-  // icon.classList.remove('i-purple');
-  // icon.classList.remove('i-orange');
-  // icon.classList.remove('i-gray');
 };
 
 document.getElementById('inquiry-button').addEventListener('click', () => {
