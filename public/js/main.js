@@ -16,11 +16,7 @@ import { jQueryUIOptionsFunc } from './jQueryUI_func.js';
 import { orderGet, passGet } from './stringUtils.js';
 import { expandableAdaptation } from './expandableOptions.js';
 import { backgroundColorSet, backgroundColorDelete } from './menu.js';
-import {
-  hasInput,
-  disableElements,
-  enableElements,
-} from './utilityFunction.js';
+import { enableElements } from './utilityFunction.js';
 
 let tabIdArray = []; //タブが生成されているファイルのIDを格納
 let tabFocusID; //　フォーカスが当たっているタブのIDを常に保持。フォルダ名の名前変更・D&D時のパス変更に使用。

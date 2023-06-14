@@ -104,12 +104,12 @@
 .popup-window_delete {
   height: 150px;
 }
-.popup-window_logout {
+.popup-window_logout,
+.popup-window_inquiry_result {
   height: 180px;
   width: 300px;
 }
-.popup-window_share-user,
-.popup-window_inquiry_result {
+.popup-window_share-user {
   height: 400px;
   width: 300px;
 }

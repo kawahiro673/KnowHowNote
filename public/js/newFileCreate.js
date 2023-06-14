@@ -139,9 +139,6 @@ createfilebutton.addEventListener('click', async (e) => {
     e.stopPropagation();
     //awaitはPromiseが返ってくるまで待つ。関数内でPromise化し、resolveのタイミングでPromiseが返る
     await newFileCreateFunc(id);
-    // setTimeout(() => {
-    //   enableElements();
-    // }, 1500);
     document.getElementById('list_loader').style.display = 'block';
     document.getElementById('list_loader').classList.add('loaded');
   }
