@@ -469,14 +469,24 @@ export const backgroundColorDelete = () => {
   dropInput.classList.remove('dropInput-orange');
   dropInput.classList.remove('dropInput-gray');
 
-  const icon = document.querySelector('i');
-  icon.classList.remove('i-red');
-  icon.classList.remove('i-yellow');
-  icon.classList.remove('i-blue');
-  icon.classList.remove('i-green');
-  icon.classList.remove('i-purple');
-  icon.classList.remove('i-orange');
-  icon.classList.remove('i-gray');
+  const icons = document.querySelectorAll('i');
+  icons.forEach((icon) => {
+    icon.classList.remove('i-red');
+    icon.classList.remove('i-yellow');
+    icon.classList.remove('i-blue');
+    icon.classList.remove('i-green');
+    icon.classList.remove('i-purple');
+    icon.classList.remove('i-orange');
+    icon.classList.remove('i-gray');
+  });
+  // const icon = document.querySelector('i');
+  // icon.classList.remove('i-red');
+  // icon.classList.remove('i-yellow');
+  // icon.classList.remove('i-blue');
+  // icon.classList.remove('i-green');
+  // icon.classList.remove('i-purple');
+  // icon.classList.remove('i-orange');
+  // icon.classList.remove('i-gray');
 };
 
 document.getElementById('inquiry-button').addEventListener('click', () => {
