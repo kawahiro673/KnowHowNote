@@ -15,6 +15,9 @@
 .dropInput-blue:checked + label {
   background: rgb(127, 255, 255);
 }
+.i-blue {
+  color: rgb(255, 255, 255);
+}
 .i-blue:hover {
   color: rgb(162, 241, 241);
   text-shadow: 0 0 120px rgb(162, 241, 241); /*ぼかし120px*/
@@ -26,13 +29,13 @@
 
 /*　赤　*/
 .backgroundColor-red {
-  background-color: rgb(255, 231, 231);
+  background-color: rgb(255, 240, 240);
 }
 .headerColor-red {
   background-color: rgb(255, 147, 147);
 }
 .section-red {
-  background-color: rgb(255, 231, 231);
+  background-color: rgb(255, 240, 240);
 }
 .dropLabel-red {
   background-color: rgb(255, 0, 0);
@@ -41,24 +44,27 @@
 .dropInput-red:checked + label {
   background: #ff7c7c;
 }
+.i-red {
+  color: rgb(255, 255, 255);
+}
 .i-red:hover {
   color: rgb(255, 0, 0);
   text-shadow: 0 0 120px rgb(255, 0, 0); /*ぼかし120px*/
   transition: 0s;
 }
 .tab-wrap-red {
-  background-color: rgb(255, 231, 231);
+  background-color: rgb(255, 240, 240);
 }
 
 /*　黄　*/
 .backgroundColor-yellow {
-  background-color: rgb(255, 254, 231);
+  background-color: rgb(255, 254, 240);
 }
 .headerColor-yellow {
   background-color: rgb(255, 242, 166);
 }
 .section-yellow {
-  background-color: rgb(255, 254, 231);
+  background-color: rgb(255, 254, 240);
 }
 .dropLabel-yellow {
   background-color: rgb(255, 247, 0);
@@ -67,24 +73,27 @@
 .dropInput-yellow:checked + label {
   background: #fffb84;
 }
+.i-yellow {
+  color: rgb(255, 255, 255);
+}
 .i-yellow:hover {
   color: rgb(255, 225, 1);
   text-shadow: 0 0 120px rgb(255, 225, 1); /*ぼかし120px*/
   transition: 0s;
 }
 .tab-wrap-yellow {
-  background-color: rgb(255, 254, 231);
+  background-color: rgb(255, 254, 240);
 }
 
 /*　緑　*/
 .backgroundColor-green {
-  background-color: rgb(227, 255, 225);
+  background-color: rgb(242, 255, 241);
 }
 .headerColor-green {
   background-color: rgb(172, 255, 154);
 }
 .section-green {
-  background-color: rgb(227, 255, 225);
+  background-color: rgb(242, 255, 241);
 }
 .dropLabel-green {
   background-color: rgb(0, 255, 4);
@@ -93,24 +102,27 @@
 .dropInput-green:checked + label {
   background: rgb(125, 255, 127);
 }
+.i-green {
+  color: rgb(255, 255, 255);
+}
 .i-green:hover {
   color: rgb(0, 255, 30);
   text-shadow: 0 0 120px rgb(0, 255, 30); /*ぼかし120px*/
   transition: 0s;
 }
 .tab-wrap-green {
-  background-color: rgb(227, 255, 225);
+  background-color: rgb(242, 255, 241);
 }
 
 /*　紫　*/
 .backgroundColor-purple {
-  background-color: rgb(245, 222, 255);
+  background-color: rgb(250, 239, 255);
 }
 .headerColor-purple {
   background-color: rgb(235, 175, 255);
 }
 .section-purple {
-  background-color: rgb(245, 222, 255);
+  background-color: rgb(250, 239, 255);
 }
 .dropLabel-purple {
   background-color: rgb(208, 0, 255);
@@ -119,24 +131,27 @@
 .dropInput-purple:checked + label {
   background: rgb(228, 121, 255);
 }
+.i-purple {
+  color: rgb(255, 255, 255);
+}
 .i-purple:hover {
   color: rgb(230, 0, 255);
   text-shadow: 0 0 120px rgb(230, 0, 255); /*ぼかし120px*/
   transition: 0s;
 }
 .tab-wrap-purple {
-  background-color: rgb(245, 222, 255);
+  background-color: rgb(250, 239, 255);
 }
 
 /*　橙　*/
 .backgroundColor-orange {
-  background-color: rgb(255, 236, 218);
+  background-color: rgb(255, 247, 240);
 }
 .headerColor-orange {
   background-color: rgb(255, 215, 175);
 }
 .section-orange {
-  background-color: rgb(255, 236, 218);
+  background-color: rgb(255, 247, 240);
 }
 .dropLabel-orange {
   background-color: rgb(255, 115, 0);
@@ -145,24 +160,27 @@
 .dropInput-orange:checked + label {
   background: rgb(255, 186, 121);
 }
+.i-orange {
+  color: rgb(255, 255, 255);
+}
 .i-orange:hover {
   color: rgb(255, 123, 0);
   text-shadow: 0 0 120px rgb(255, 123, 0); /*ぼかし120px*/
   transition: 0s;
 }
 .tab-wrap-orange {
-  background-color: rgb(255, 236, 218);
+  background-color: rgb(255, 247, 240);
 }
 
 /*　灰色　*/
 .backgroundColor-gray {
-  background-color: rgb(219, 219, 219);
+  background-color: rgb(236, 236, 236);
 }
 .headerColor-gray {
   background-color: rgb(188, 188, 188);
 }
 .section-gray {
-  background-color: rgb(219, 219, 219);
+  background-color: rgb(236, 236, 236);
 }
 .dropLabel-gray {
   background-color: rgb(95, 95, 95);
@@ -172,11 +190,14 @@
 .dropInput-gray:checked + label {
   background: rgb(145, 145, 145);
 }
+.i-gray {
+  color: rgb(255, 255, 255);
+}
 .i-gray:hover {
   color: rgb(72, 72, 72);
   text-shadow: 0 0 120px rgb(72, 72, 72); /*ぼかし120px*/
   transition: 0s;
 }
 .tab-wrap-gray {
-  background-color: rgb(219, 219, 219);
+  background-color: rgb(236, 236, 236);
 }
