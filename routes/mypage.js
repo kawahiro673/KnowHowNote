@@ -739,12 +739,16 @@ router
               }
             );
           });
-        })
-        .catch((error) => {
-          console.error(error);
-          res.status(500).json({ message: error.message, nothing });
         });
     } else if (req.body.flg === 'inquiry') {
+      pool.query(
+        'INSERT INTO inquiry (user, date, type, content) values(?, ?, ?, ?);',
+        [req.body.user, req.body.date, req.body.type, req.body.content],
+        (error, result) => {
+          res.send({ msg: '成功' });
+        }
+      );
+    } else if (req.body.flg === 'shareFunctionCheckBoxFlg') {
       const token = req.cookies.token;
       const decoded = JWT.verify(token, 'SECRET_KEY');
       let promise = new Promise((resolve, reject) => {
