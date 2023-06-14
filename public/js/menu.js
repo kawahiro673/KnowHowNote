@@ -331,13 +331,12 @@ const shareFunctionCheckBoxOption = () => {
         const label = checkbox.parentElement; // 親要素の<label>を取得
         const text = label.textContent.trim(); // ラベル要素のテキストを取得し、前後の空白をトリム
         console.log(text);
-        // チェックされているチェックボックスのテキストを使って適切な処理を行う
         switch (text) {
           case 'ON':
-            console.log('ONが選択されました');
+            shareFunctionCheckBoxFlg('ON');
             break;
           case 'OFF':
-            console.log('OFFが選択されました');
+            shareFunctionCheckBoxFlg('OFF');
             break;
           default:
             // チェックされているテキストが上記以外の場合の処理
@@ -347,6 +346,21 @@ const shareFunctionCheckBoxOption = () => {
         checkbox.checked = true; // チェックが外れた場合に再度チェックを付ける
       }
     });
+  });
+};
+
+const shareFunctionCheckBoxFlg = (checkbox) => {
+  console.log(checkbox);
+  $.ajax({
+    url: '/mypage/' + hashedIdGet,
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'shareFunctionCheckBoxFlg',
+      checkbox,
+    }),
+    success: function (res) {},
   });
 };
 
