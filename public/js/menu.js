@@ -408,7 +408,10 @@ export const backgroundColorSet = (color) => {
   document.querySelector('.dropLabel').classList.add(`dropLabel-${color}`);
   document.querySelector('.tab-wrap').classList.add(`tab-wrap-${color}`);
   document.querySelector('.dropInput').classList.add(`dropInput-${color}`);
-  document.querySelector('i').classList.add(`i-${color}`);
+  const icons = document.querySelectorAll('i');
+  icons.forEach((icon) => {
+    icon.classList.add(`i-${color}`);
+  });
 };
 
 export const backgroundColorDelete = () => {

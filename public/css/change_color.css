@@ -15,9 +15,9 @@
 .dropInput-blue:checked + label {
   background: rgb(127, 255, 255);
 }
-.i-blue {
+/* .i-blue {
   color: rgb(255, 255, 255);
-}
+} */
 .i-blue:hover {
   color: rgb(162, 241, 241);
   text-shadow: 0 0 120px rgb(162, 241, 241); /*ぼかし120px*/
