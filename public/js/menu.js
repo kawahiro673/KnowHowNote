@@ -526,13 +526,13 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
 
 const menu = document.querySelector('.menu');
 
-document.querySelector('.dropInput');.addEventListener('click', function(e) {
+document.querySelector('.dropInput').addEventListener('click', function (e) {
   e.stopPropagation();
   menu.style.visibility = 'visible';
   menu.style.opacity = 1;
 });
 
-document.addEventListener('click', function(e) {
+document.addEventListener('click', function (e) {
   if (e.target !== dropInput && !menu.contains(e.target)) {
     menu.style.visibility = 'hidden';
     menu.style.opacity = 0;
