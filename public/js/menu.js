@@ -526,7 +526,7 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
 
 var dropInput = document.querySelector('.dropInput');
 var menu = document.querySelector('.menu');
-var menuVisible = false; // メニューの表示状態を追跡するフラグ
+var menuVisible = false;
 
 dropInput.addEventListener('click', function (e) {
   e.stopPropagation();
@@ -535,16 +535,14 @@ dropInput.addEventListener('click', function (e) {
     menu.style.visibility = 'visible';
     menu.style.opacity = 1;
     menu.style.transitionDelay = '0s';
-  } else {
-    menu.style.visibility = 'hidden';
-    menu.style.opacity = 0;
-    menu.style.transitionDelay = '';
   }
 });
 
 document.addEventListener('click', function (e) {
   if (e.target !== dropInput && e.target !== menu && !menu.contains(e.target)) {
     menu.style.visibility = 'hidden';
+    menu.style.opacity = 0;
+    menu.style.transitionDelay = '';
     menuVisible = false;
   }
 });
