@@ -24,6 +24,21 @@ document.getElementById('profile').addEventListener('click', () => {
       } else if (res.user.ShareFlg === 'OFF') {
         document.getElementById('offCheckbox').checked = true;
       }
+      if (res.user.BackgroundColor === 'red') {
+        document.getElementById('checkbox-color-red').checked = true;
+      } else if (res.user.BackgroundColor === 'blue') {
+        document.getElementById('checkbox-color-blue').checked = true;
+      } else if (res.user.BackgroundColor === 'yellow') {
+        document.getElementById('checkbox-color-yellow').checked = true;
+      } else if (res.user.BackgroundColor === 'green') {
+        document.getElementById('checkbox-color-green').checked = true;
+      } else if (res.user.BackgroundColor === 'purple') {
+        document.getElementById('checkbox-color-purple').checked = true;
+      } else if (res.user.BackgroundColor === 'orange') {
+        document.getElementById('checkbox-color-orange').checked = true;
+      } else if (res.user.BackgroundColor === 'gray') {
+        document.getElementById('checkbox-color-gray').checked = true;
+      }
     },
   });
   backgroundColorCheckBoxOption();
