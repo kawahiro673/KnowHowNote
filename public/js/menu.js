@@ -544,6 +544,7 @@ dropInput.addEventListener('click', function (e) {
 });
 
 menuButton.addEventListener('click', function (e) {
+  e.stopPropagation();
   hideMenu();
 });
 
