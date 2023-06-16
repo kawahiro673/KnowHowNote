@@ -524,6 +524,7 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
   });
 });
 
+//MENUの表示・非表示
 const menu = document.querySelector('.menu');
 
 document.querySelector('.dropInput').addEventListener('click', function (e) {
@@ -533,7 +534,10 @@ document.querySelector('.dropInput').addEventListener('click', function (e) {
 });
 
 document.addEventListener('click', function (e) {
-  if (e.target !== dropInput && !menu.contains(e.target)) {
+  if (
+    e.target !== document.querySelector('.dropInput') &&
+    !menu.contains(e.target)
+  ) {
     menu.style.visibility = 'hidden';
     menu.style.opacity = 0;
   }
