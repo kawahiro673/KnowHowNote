@@ -524,39 +524,17 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
   });
 });
 
-var dropInput = document.querySelector('.dropInput');
-var menu = document.querySelector('.menu');
-var menuButton = document.querySelector('.dropLabel');
+const menu = document.querySelector('.menu');
 
-function hideMenu() {
-  menu.style.visibility = 'hidden';
-  menu.style.opacity = 0;
-}
-
-dropInput.addEventListener('click', function (e) {
+document.querySelector('.dropInput');.addEventListener('click', function(e) {
   e.stopPropagation();
-  if (menu.style.visibility === 'visible') {
-    hideMenu();
-  } else {
-    menu.style.visibility = 'visible';
-    menu.style.opacity = 1;
-  }
+  menu.style.visibility = 'visible';
+  menu.style.opacity = 1;
 });
 
-menuButton.addEventListener('click', function (e) {
-  e.stopPropagation();
-  if (menu.style.visibility === 'hidden') {
-    menu.style.visibility = 'visible';
-    menu.style.opacity = 1;
-  }
-});
-
-document.addEventListener('click', function (e) {
-  if (
-    !menu.contains(e.target) &&
-    e.target !== dropInput &&
-    e.target !== menuButton
-  ) {
-    hideMenu();
+document.addEventListener('click', function(e) {
+  if (e.target !== dropInput && !menu.contains(e.target)) {
+    menu.style.visibility = 'hidden';
+    menu.style.opacity = 0;
   }
 });
