@@ -526,6 +526,7 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
 
 var dropInput = document.querySelector('.dropInput');
 var menu = document.querySelector('.menu');
+var menuButton = document.querySelector('.dropLabel');
 
 function hideMenu() {
   menu.style.visibility = 'hidden';
@@ -542,8 +543,12 @@ dropInput.addEventListener('click', function (e) {
   }
 });
 
+menuButton.addEventListener('click', function (e) {
+  hideMenu();
+});
+
 document.addEventListener('click', function (e) {
-  if (!menu.contains(e.target)) {
+  if (!menu.contains(e.target) && e.target !== dropInput) {
     hideMenu();
   }
 });
