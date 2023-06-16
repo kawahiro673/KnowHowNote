@@ -497,6 +497,8 @@ export const backgroundColorDelete = () => {
 };
 
 document.getElementById('inquiry-button').addEventListener('click', () => {
+  document.getElementById('popup-overlay_inquiry_result').style.display =
+    'block';
   const date = currentTimeGet();
   $.ajax({
     url: '/mypage/' + hashedIdGet,
@@ -520,4 +522,20 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
       }, 1500);
     },
   });
+});
+
+// .dropInputをクリックした時の処理
+document.querySelector('.dropInput').addEventListener('click', function (e) {
+  e.stopPropagation(); // クリックイベントの伝播を停止する
+  var menu = document.querySelector('.menu');
+  menu.style.visibility =
+    menu.style.visibility === 'visible' ? 'hidden' : 'visible';
+});
+
+// .menu以外の領域をクリックした時の処理
+document.addEventListener('click', function (e) {
+  var menu = document.querySelector('.menu');
+  if (e.target !== menu && !menu.contains(e.target)) {
+    menu.style.visibility = 'hidden';
+  }
 });

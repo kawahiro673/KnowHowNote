@@ -174,7 +174,8 @@
   margin: 5px;
 }
 
-.popup-body_share-history p {
+.popup-body_share-history p,
+.popup-body_inquiry_result p {
   text-align: center;
   border-bottom: 1px solid #ccc;
   padding-bottom: 5px;
