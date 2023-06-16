@@ -527,15 +527,23 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
 var dropInput = document.querySelector('.dropInput');
 var menu = document.querySelector('.menu');
 
+function hideMenu() {
+  menu.style.visibility = 'hidden';
+  menu.style.opacity = 0;
+}
+
 dropInput.addEventListener('click', function (e) {
   e.stopPropagation();
-  menu.style.visibility = 'visible';
-  menu.style.opacity = 1;
+  if (menu.style.visibility === 'visible') {
+    hideMenu();
+  } else {
+    menu.style.visibility = 'visible';
+    menu.style.opacity = 1;
+  }
 });
 
 document.addEventListener('click', function (e) {
-  if (e.target !== dropInput && !menu.contains(e.target)) {
-    menu.style.visibility = 'hidden';
-    menu.style.opacity = 0;
+  if (e.target !== dropInput && e.target !== menu && !menu.contains(e.target)) {
+    hideMenu();
   }
 });
