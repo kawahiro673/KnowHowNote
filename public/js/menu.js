@@ -545,11 +545,20 @@ dropInput.addEventListener('click', function (e) {
 
 menuButton.addEventListener('click', function (e) {
   e.stopPropagation();
-  hideMenu();
+  if (menu.style.visibility === 'visible') {
+    hideMenu();
+  } else {
+    menu.style.visibility = 'visible';
+    menu.style.opacity = 1;
+  }
 });
 
 document.addEventListener('click', function (e) {
-  if (!menu.contains(e.target) && e.target !== dropInput) {
+  if (
+    !menu.contains(e.target) &&
+    e.target !== dropInput &&
+    e.target !== menuButton
+  ) {
     hideMenu();
   }
 });
