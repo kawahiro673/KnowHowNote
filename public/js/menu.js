@@ -543,7 +543,7 @@ dropInput.addEventListener('click', function (e) {
 });
 
 document.addEventListener('click', function (e) {
-  if (e.target !== dropInput && e.target !== menu && !menu.contains(e.target)) {
+  if (!menu.contains(e.target)) {
     hideMenu();
   }
 });
