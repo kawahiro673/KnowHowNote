@@ -68,7 +68,8 @@
 #popup-overlay_logout,
 #popup-overlay_delete,
 #popup-overlay_share-user,
-#popup-overlay_inquiry {
+#popup-overlay_inquiry,
+#popup-overlay_inquiry_result {
   display: block;
   position: fixed;
   top: 0;
@@ -178,6 +179,12 @@
 .popup-body_inquiry_result p {
   text-align: center;
   border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+
+.popup-body_inquiry_result p {
+  text-align: center;
   padding-bottom: 5px;
   margin-bottom: 5px;
 }
