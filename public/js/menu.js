@@ -524,18 +524,17 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
   });
 });
 
-// .dropInputをクリックした時の処理
-document.querySelector('.dropInput').addEventListener('click', function (e) {
-  e.stopPropagation(); // クリックイベントの伝播を停止する
-  var menu = document.querySelector('.menu');
+var dropInput = document.querySelector('.dropInput');
+var menu = document.querySelector('.menu');
+
+dropInput.addEventListener('click', function (e) {
+  e.stopPropagation();
   menu.style.visibility =
     menu.style.visibility === 'visible' ? 'hidden' : 'visible';
 });
 
-// .menu以外の領域をクリックした時の処理
 document.addEventListener('click', function (e) {
-  var menu = document.querySelector('.menu');
-  if (e.target !== menu && !menu.contains(e.target)) {
+  if (e.target !== dropInput && !menu.contains(e.target)) {
     menu.style.visibility = 'hidden';
   }
 });
