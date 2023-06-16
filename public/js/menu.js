@@ -545,9 +545,7 @@ dropInput.addEventListener('click', function (e) {
 
 menuButton.addEventListener('click', function (e) {
   e.stopPropagation();
-  if (menu.style.visibility === 'visible') {
-    hideMenu();
-  } else {
+  if (menu.style.visibility === 'hidden') {
     menu.style.visibility = 'visible';
     menu.style.opacity = 1;
   }
