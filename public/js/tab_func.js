@@ -77,6 +77,8 @@ export const tabCreate = (id, title, res) => {
   fadeFont.setAttribute('class', 'fade-out-font');
   fadeFont.classList.add('fadeout');
   fadeFont.setAttribute('id', `fade${id}`);
+  fadeFont.innerHTML =
+    '※現在編集中です。編集完了後【保存する】ボタンを押してください';
   fadeFont.style.opacity = '0';
 
   const time = document.createElement('p');
