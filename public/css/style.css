@@ -38,6 +38,12 @@ header h1 {
   margin: 0;
   font-family: 'Open Sans', sans-serifp;
 }
+header h2 {
+  font-size: 10px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
 
 .rightclick {
   text-decoration: none;
