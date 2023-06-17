@@ -107,34 +107,6 @@ header h1 {
   width: 20px;
 }
 
-.title-txt {
-  /* font-size: 1.5em;
-  text-align: center; */
-  margin-right: auto;
-  font-family: 'Zen_Kurenaido', 'Hannotate SC', sans-serif;
-}
-.titie input {
-  margin: 20px 0px;
-  font-size: 1.5em;
-}
-
-.title-edit {
-  margin: 10px;
-  width: 50px;
-}
-.title-save {
-  margin: 0;
-  width: 45px;
-}
-
-.title {
-  margin: 0px 30px;
-  display: flex;
-  align-items: center; /* 要素の縦方向の中央揃え */
-  /* justify-content: space-between; */
-  justify-content: flex-start;
-}
-
 .tabname {
   margin: 0;
 }

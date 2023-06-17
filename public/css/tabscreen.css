@@ -14,6 +14,31 @@
   resize: vertical;
 }
 
+.title-txt {
+  margin-right: auto;
+  font-family: 'Zen_Kurenaido', 'Hannotate SC', sans-serif;
+}
+.titie input {
+  margin: 20px 0px;
+  font-size: 1.5em;
+}
+
+.title-edit {
+  margin: 10px;
+  width: 50px;
+}
+.title-save {
+  margin: 0;
+  width: 45px;
+}
+
+.title {
+  margin: 0px 30px;
+  display: flex;
+  align-items: center; /* 要素の縦方向の中央揃え */
+  justify-content: flex-start;
+}
+
 /****************共有ボタン******************/
 .keepbtn,
 .cancelbtn,
@@ -24,26 +49,30 @@
   font-size: 16px;
   font-family: 'Zen_Kurenaido', 'Hannotate SC', sans-serif;
   font-weight: bold;
-  /* text-align: center; */
   text-decoration: none;
   border: none;
   border-radius: 4px;
-  background-color: #007bff;
   color: #fff;
   cursor: pointer;
 }
 
-.title-btns {
-  display: flex;
-  align-items: center;
-  margin-left: auto;
+.editbtn {
+  background-color: #007bff;
 }
-
+.sharebtn {
+  background-color: #fdff85;
+  color: black;
+}
 .keepbtn {
   background-color: #71f26c;
 }
 .cancelbtn {
   background-color: #f48269;
+}
+.title-btns {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
 }
 
 #popup-overlay_share {
