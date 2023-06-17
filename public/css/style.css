@@ -108,8 +108,9 @@ header h1 {
 }
 
 .title-txt {
-  font-size: 1.5em;
-  text-align: center;
+  /* font-size: 1.5em;
+  text-align: center; */
+  margin-right: auto;
   font-family: 'Zen_Kurenaido', 'Hannotate SC', sans-serif;
 }
 .titie input {
