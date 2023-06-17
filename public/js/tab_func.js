@@ -111,11 +111,14 @@ export const tabCreate = (id, title, res) => {
   div.appendChild(div2);
   div1.appendChild(p);
   div1.appendChild(titletext);
+  div1.appendChild(editButton);
+  div1.appendChild(keepButton);
+  div1.appendChild(cancelButton);
   div1.appendChild(shareButton);
   div2.appendChild(textarea);
-  div.appendChild(editButton);
-  div.appendChild(keepButton);
-  div.appendChild(cancelButton);
+  // div.appendChild(editButton);
+  // div.appendChild(keepButton);
+  // div.appendChild(cancelButton);
   divFade.appendChild(fadeFont);
   div.appendChild(time);
   tabLabelColorGet(id);
