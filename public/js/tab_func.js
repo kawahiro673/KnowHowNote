@@ -59,6 +59,9 @@ export const tabCreate = (id, title, res) => {
   const div2 = document.createElement('div');
   div2.setAttribute('class', 'form-group');
 
+  const div3 = document.createElement('div');
+  div3.setAttribute('class', 'title-btns');
+
   const textarea = document.createElement('textarea');
   textarea.readOnly = true;
   textarea.style.height = '700px';
@@ -107,14 +110,15 @@ export const tabCreate = (id, title, res) => {
   labelTab.appendChild(labelColor);
   tab.appendChild(div);
   div.appendChild(div1);
+  div1.appendChild(div3);
   div.appendChild(divFade);
   div.appendChild(div2);
   div1.appendChild(p);
   div1.appendChild(titletext);
-  div1.appendChild(editButton);
-  div1.appendChild(keepButton);
-  div1.appendChild(cancelButton);
-  div1.appendChild(shareButton);
+  div3.appendChild(editButton);
+  div3.appendChild(keepButton);
+  div3.appendChild(cancelButton);
+  div3.appendChild(shareButton);
   div2.appendChild(textarea);
   // div.appendChild(editButton);
   // div.appendChild(keepButton);
