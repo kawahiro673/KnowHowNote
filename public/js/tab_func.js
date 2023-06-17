@@ -77,7 +77,7 @@ export const tabCreate = (id, title, res) => {
   fadeFont.setAttribute('class', 'fade-out-font');
   fadeFont.classList.add('fadeout');
   fadeFont.setAttribute('id', `fade${id}`);
-  fadeFont.innerHTML = '   ';
+  fadeFont.innerHTML = '☆';
   fadeFont.style.color = 'white';
 
   const time = document.createElement('p');
