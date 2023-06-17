@@ -40,10 +40,10 @@ header h1 {
 }
 
 header h2 {
-  font-size: 10px;
+  font-size: 15px;
   margin: 0;
   position: absolute;
-  right: 3px;
+  right: 170px;
 }
 .rightclick {
   text-decoration: none;
