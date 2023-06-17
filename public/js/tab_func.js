@@ -110,11 +110,11 @@ export const tabCreate = (id, title, res) => {
   labelTab.appendChild(labelColor);
   tab.appendChild(div);
   div.appendChild(div1);
-  div1.appendChild(div3);
   div.appendChild(divFade);
   div.appendChild(div2);
   div1.appendChild(p);
   div1.appendChild(titletext);
+  div1.appendChild(div3);
   div3.appendChild(editButton);
   div3.appendChild(keepButton);
   div3.appendChild(cancelButton);
