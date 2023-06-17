@@ -132,7 +132,7 @@ header h1 {
   display: flex;
   align-items: center; /* 要素の縦方向の中央揃え */
   /* justify-content: space-between; */
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .tabname {
