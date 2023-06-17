@@ -77,7 +77,7 @@ export const tabCreate = (id, title, res) => {
   fadeFont.setAttribute('class', 'fade-out-font');
   fadeFont.classList.add('fadeout');
   fadeFont.setAttribute('id', `fade${id}`);
-  fadeFont.style.visibility = 'hidden';
+  fadeFont.style.opacity = '0';
 
   const time = document.createElement('p');
   time.setAttribute('class', 'updatetime');
@@ -120,9 +120,6 @@ export const tabCreate = (id, title, res) => {
   div3.appendChild(cancelButton);
   div3.appendChild(shareButton);
   div2.appendChild(textarea);
-  // div.appendChild(editButton);
-  // div.appendChild(keepButton);
-  // div.appendChild(cancelButton);
   divFade.appendChild(fadeFont);
   div.appendChild(time);
   tabLabelColorGet(id);
@@ -149,13 +146,13 @@ export const keepButtonClick = (id) => {
       time,
     }),
     success: function (res) {
-      document.getElementById(`fade${id}`).style.visibility = 'visible';
+      document.getElementById(`fade${id}`).style.opacity = '1';
 
       document.getElementById(`fade${id}`).textContent =
         '保存が完了いたしました';
 
       setTimeout(() => {
-        document.getElementById(`fade${id}`).style.visibility = 'hidden';
+        document.getElementById(`fade${id}`).style.opacity = '0';
       }, 1000);
 
       document.getElementById(`share-button-${id}`).disabled = false;
@@ -206,7 +203,7 @@ export const cancelButtonClick = (id) => {
     document.getElementById(`titletext${id}`).style.display = 'none';
     document.getElementById(`edit-note-btn${id}`).style.display = 'block';
     document.getElementById(`textarea${id}`).readOnly = true;
-    document.getElementById(`fade${id}`).style.visibility = 'hidden';
+    document.getElementById(`fade${id}`).style.opacity = '0';
   }
 };
 
