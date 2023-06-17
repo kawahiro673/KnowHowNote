@@ -77,9 +77,7 @@ export const tabCreate = (id, title, res) => {
   fadeFont.setAttribute('class', 'fade-out-font');
   fadeFont.classList.add('fadeout');
   fadeFont.setAttribute('id', `fade${id}`);
-  fadeFont.innerHTML =
-    '※現在編集中です。編集完了後【保存する】ボタンを押してください';
-  //fadeFont.style.opacity = '0';
+  fadeFont.innerHTML = '   ';
   fadeFont.style.color = 'white';
 
   const time = document.createElement('p');
@@ -150,7 +148,7 @@ export const keepButtonClick = (id) => {
     }),
     success: function (res) {
       document.getElementById(`fade${id}`).style.opacity = '1';
-
+      document.getElementById(`fade${id}`).style.color = 'red';
       document.getElementById(`fade${id}`).textContent =
         '保存が完了いたしました';
 

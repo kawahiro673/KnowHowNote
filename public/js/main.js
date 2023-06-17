@@ -379,6 +379,7 @@ async function tabScreenOptions(id, title) {
             document.getElementById(`tabname${id}`).style.color = 'red';
 
             document.getElementById(`fade${id}`).style.opacity = '1';
+            document.getElementById(`fade${id}`).style.color = 'red';
             document.getElementById(`fade${id}`).textContent =
               '※現在編集中です。編集完了後【保存する】ボタンを押してください';
 
