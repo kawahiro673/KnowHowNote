@@ -160,7 +160,7 @@ export const keepButtonClick = (id) => {
 
       document.getElementById(`share-button-${id}`).disabled = false;
       document.getElementById(`share-button-${id}`).style.backgroundColor =
-        '#007bff';
+        '#fdff85';
     },
   });
   document.getElementById(`keep-note-btn${id}`).style.display = 'none';
@@ -197,7 +197,7 @@ export const cancelButtonClick = (id) => {
           res.fileResult.memo_text;
         document.getElementById(`share-button-${id}`).disabled = false;
         document.getElementById(`share-button-${id}`).style.backgroundColor =
-          '#007bff';
+          '#fdff85';
       },
     });
     document.getElementById(`tabP${id}`).style.display = 'block';
