@@ -33,14 +33,6 @@
   cursor: pointer;
 }
 
-.editbtn {
-  order: -1;
-}
-
-.sharebtn {
-  margin-left: 10px;
-}
-
 .keepbtn {
   background-color: #71f26c;
 }
