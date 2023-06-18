@@ -281,7 +281,7 @@
   border: 2px solid #999;
 }
 
-input[class^='checkmark-share'],
+input[class^='checkbox-share'],
 input[class^='checkbox-color'] {
   display: none;
 }
