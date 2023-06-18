@@ -346,7 +346,8 @@ input[name='tab_item'] {
 }
 .share-message {
   height: 80px;
+  width: 400px;
 }
-.popup-close_share p {
-  margin: 0d;
+.popup-body_share p {
+  margin: 0;
 }
