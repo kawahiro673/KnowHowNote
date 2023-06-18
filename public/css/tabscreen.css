@@ -335,7 +335,10 @@ input[name='tab_item'] {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 10px;
+  margin: 8px;
+}
+.share-row button {
+  margin-left: 100px;
 }
 
 .share-row p,
@@ -346,7 +349,7 @@ input[name='tab_item'] {
   font-size: 0.7em;
 }
 .share-message {
-  height: 120px;
+  height: 110px;
   width: 400px;
 }
 .popup-body_share p {
