@@ -214,7 +214,9 @@
 }
 
 .tabname {
-  font-size: 22px;
+  font-size: 30px;
+  position: relative;
+  z-index: 9999;
 }
 
 /* 要素の前に疑似要素を挿入し、その要素の左側20%に赤い背景色を適用 */
