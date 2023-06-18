@@ -212,10 +212,6 @@ export const cancelButtonClick = (id) => {
 let shareId;
 let shareTitle;
 export function shareButtonClick(id, event) {
-  console.log(event.target.parentNode.parentNode.querySelectorAll('p')[0]);
-  console.log(
-    event.target.parentNode.parentNode.querySelectorAll('p')[0].innerHTML
-  );
   document.getElementById('popup-overlay_share').style.display = 'block';
   shareId = id;
   shareTitle =

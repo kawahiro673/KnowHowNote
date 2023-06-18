@@ -36,7 +36,6 @@ export const listCreate = () => {
         console.log('ログイン画面に戻ります');
         location.href = 'https://nodejs-itnote-app.herokuapp.com';
       }
-      console.log(res.user.BackgroundColor);
       backgroundColorDelete();
       backgroundColorSet(res.user.BackgroundColor);
 
