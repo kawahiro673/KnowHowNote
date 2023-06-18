@@ -3,6 +3,12 @@
   src: url('../fonts/Zen_Kurenaido/ZenKurenaido-Regular.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Permanent_Marker';
+  src: url('../fonts/Permanent_Marker/PermanentMarker-Regular.ttf')
+    format('truetype');
+}
+
 .window {
   position: relative;
 }
@@ -37,7 +43,7 @@ header h1 {
   text-align: center;
   padding: 13px;
   margin: 0;
-  font-family: 'Open Sans', sans-serifp;
+  font-family: 'Permanent_Marker', 'Open Sans', sans-serif;
 }
 
 header h2 {
