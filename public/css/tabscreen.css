@@ -330,3 +330,23 @@ input[name='tab_item'] {
   color: black;
   border-bottom-color: White;
 }
+
+.share-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.share-row p,
+.share-row button {
+  margin-right: 10px;
+}
+.sab-share-p {
+  font-size: 0.7em;
+}
+.share-message {
+  height: 80px;
+}
+.popup-close_share p {
+  margin: 0d;
+}
