@@ -518,28 +518,28 @@ export const binderCreate = () => {
   }
 };
 
-//共有履歴ポップアップのカーソル移動
-function makeDraggable(element) {
-  let isDragging = false;
-  let offset = { x: 0, y: 0 };
+// //共有履歴ポップアップのカーソル移動
+// function makeDraggable(element) {
+//   let isDragging = false;
+//   let offset = { x: 0, y: 0 };
 
-  element.addEventListener('mousedown', (event) => {
-    isDragging = true;
+//   element.addEventListener('mousedown', (event) => {
+//     isDragging = true;
 
-    const rect = element.getBoundingClientRect();
-    offset.x = event.clientX - rect.left;
-    offset.y = event.clientY - rect.top;
-  });
+//     const rect = element.getBoundingClientRect();
+//     offset.x = event.clientX - rect.left;
+//     offset.y = event.clientY - rect.top;
+//   });
 
-  document.addEventListener('mousemove', (event) => {
-    if (isDragging) {
-      element.style.left = event.clientX - offset.x - 25 + 'px';
-      element.style.top = event.clientY - offset.y - 25 + 'px';
-    }
-  });
-  document.addEventListener('mouseup', () => {
-    isDragging = false;
-  });
-}
-const draggablePopup = document.getElementById('draggable-popup');
-makeDraggable(draggablePopup);
+//   document.addEventListener('mousemove', (event) => {
+//     if (isDragging) {
+//       element.style.left = event.clientX - offset.x - 25 + 'px';
+//       element.style.top = event.clientY - offset.y - 25 + 'px';
+//     }
+//   });
+//   document.addEventListener('mouseup', () => {
+//     isDragging = false;
+//   });
+// }
+// const draggablePopup = document.getElementById('draggable-popup');
+// makeDraggable(draggablePopup);
