@@ -354,3 +354,14 @@ input[type='checkbox']:checked + .gray_b {
 .share-text {
   font-weight: bold;
 }
+
+.share-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.share-row p,
+.share-row button {
+  margin-right: 10px;
+}
