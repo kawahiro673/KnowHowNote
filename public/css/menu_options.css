@@ -171,24 +171,6 @@
   overflow-y: scroll;
 }
 
-.popup-body_share {
-  display: flex;
-  align-items: center;
-}
-
-.popup-body_share p,
-.popup-body_share button {
-  margin: 0;
-}
-
-.popup-body_share p {
-  flex: 1;
-}
-
-.popup-body_share button {
-  margin-left: auto;
-}
-
 .popup-body_inquiry select {
   margin: 5px;
 }
