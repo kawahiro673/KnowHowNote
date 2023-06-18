@@ -365,3 +365,9 @@ input[type='checkbox']:checked + .gray_b {
 .share-row button {
   margin-right: 10px;
 }
+.sab-share-p {
+  font-size: 0.7em;
+}
+.share-message {
+  height: 200px;
+}
