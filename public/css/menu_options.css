@@ -173,11 +173,20 @@
 
 .popup-body_share {
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
+
+.popup-body_share p,
+.popup-body_share button {
+  margin: 0;
+}
+
 .popup-body_share p {
-  margin-right: auto;
+  flex: 1;
+}
+
+.popup-body_share button {
+  margin-left: auto;
 }
 
 .popup-body_inquiry select {
@@ -362,8 +371,4 @@ input[type='checkbox']:checked + .gray_b {
 
 .share-text {
   font-weight: bold;
-}
-
-.popup-body_share p1 {
-  font-size: 10px;
 }
