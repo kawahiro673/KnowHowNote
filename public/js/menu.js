@@ -92,6 +92,7 @@ document.getElementById('share-history').addEventListener('click', () => {
 
         headerRow.appendChild(header1);
         headerRow.appendChild(header2);
+        headerRow.appendChild(header3);
         document.getElementById('share-history-list').appendChild(table);
         table.appendChild(headerRow);
 
@@ -107,11 +108,6 @@ document.getElementById('share-history').addEventListener('click', () => {
           dataRow1.appendChild(dataCell2);
           dataRow1.appendChild(dataCell3);
           table.appendChild(dataRow1);
-
-          // const p = document.createElement('p');
-          // p.setAttribute('class', 'share-user-list');
-          // p.innerHTML = `${share.date}          ${share.UserName}          ${share.ShareNoteTitle}`;
-          // document.getElementById('share-history-list').appendChild(p);
         });
         if (res.shareResult.length === 0) {
           const p = document.createElement('p');
