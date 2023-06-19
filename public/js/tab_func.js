@@ -52,7 +52,7 @@ export const tabCreate = (id, title, res) => {
   const shareButton = document.createElement('button');
   shareButton.setAttribute('class', 'sharebtn');
   shareButton.setAttribute('id', `share-button-${id}`);
-  shareButton.innerHTML = '共有する';
+  shareButton.innerHTML = '共有';
   shareButton.disabled = false;
 
   const divFade = document.createElement('div');
@@ -72,7 +72,7 @@ export const tabCreate = (id, title, res) => {
   const editButton = document.createElement('button');
   editButton.setAttribute('class', 'editbtn');
   editButton.setAttribute('id', `edit-note-btn${id}`);
-  editButton.innerHTML = '編集する';
+  editButton.innerHTML = '編集';
 
   const fadeFont = document.createElement('p');
   fadeFont.setAttribute('class', 'fade-out-font');
@@ -88,7 +88,7 @@ export const tabCreate = (id, title, res) => {
   time.innerHTML = res.saved_time;
 
   const keepButton = document.createElement('button');
-  keepButton.innerHTML = '保存する';
+  keepButton.innerHTML = '保存';
   keepButton.setAttribute('class', 'keepbtn');
   keepButton.setAttribute('id', `keep-note-btn${id}`);
   keepButton.style.display = 'none';
