@@ -425,8 +425,10 @@ export const backgroundColorSet = (color) => {
   document.querySelector('.dropInput').classList.add(`dropInput-${color}`);
   document.querySelector('.cube1').classList.add(`cube1-${color}`);
   document.querySelector('.cube2').classList.add(`cube2-${color}`);
-  document.querySelector('.cube3').classList.add(`cube3-${color}`);
-  document.querySelector('.cube4').classList.add(`cube4-${color}`);
+  document.querySelector('.cube3')[0].classList.add(`cube3-${color}`);
+  document.querySelector('.cube4')[0].classList.add(`cube4-${color}`);
+  document.querySelector('.cube3')[1].classList.add(`cube3-${color}`);
+  document.querySelector('.cube4')[1].classList.add(`cube4-${color}`);
   const icons = document.querySelectorAll('i');
   icons.forEach((icon) => {
     icon.classList.add(`i-${color}`);
@@ -488,21 +490,37 @@ export const backgroundColorDelete = () => {
   dropInput.classList.remove('dropInput-orange');
   dropInput.classList.remove('dropInput-gray');
 
-  const cube1 = document.querySelector('.cube1');
+  const cube1 = document.querySelector('.cube1')[0];
   cube1.classList.remove(`cube1-red`);
   cube1.classList.remove(`cube1-blue`);
 
-  const cube2 = document.querySelector('.cube2');
+  const cube2 = document.querySelector('.cube2')[0];
   cube2.classList.remove(`cube2-red`);
   cube2.classList.remove(`cube2-blue`);
 
-  const cube3 = document.querySelector('.cube3');
+  const cube3 = document.querySelector('.cube3')[0];
   cube3.classList.remove(`cube3-red`);
   cube3.classList.remove(`cube3-blue`);
 
-  const cube4 = document.querySelector('.cube4');
+  const cube4 = document.querySelector('.cube4')[0];
   cube4.classList.remove(`cube4-red`);
   cube4.classList.remove(`cube4-blue`);
+
+  const cube1_1 = document.querySelector('.cube1')[1];
+  cube1_1.classList.remove(`cube1-red`);
+  cube1_1.classList.remove(`cube1-blue`);
+
+  const cube2_1 = document.querySelector('.cube2')[1];
+  cube2_1.classList.remove(`cube2-red`);
+  cube2.classList.remove(`cube2-blue`);
+
+  const cube3_1 = document.querySelector('.cube3')[1];
+  cube3_1.classList.remove(`cube3-red`);
+  cube3_1.classList.remove(`cube3-blue`);
+
+  const cube4_1 = document.querySelector('.cube4')[1];
+  cube4_1.classList.remove(`cube4-red`);
+  cube4_1.classList.remove(`cube4-blue`);
 
   const icons = document.querySelectorAll('i');
   icons.forEach((icon) => {
@@ -543,22 +561,3 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
     },
   });
 });
-
-//MENUの表示・非表示
-// const menu = document.querySelector('.menu');
-
-// document.querySelector('.dropInput').addEventListener('click', function (e) {
-//   e.stopPropagation();
-//   menu.style.visibility = 'visible';
-//   menu.style.opacity = 1;
-// });
-
-// document.addEventListener('click', function (e) {
-//   if (
-//     e.target !== document.querySelector('.dropInput') &&
-//     !menu.contains(e.target)
-//   ) {
-//     menu.style.visibility = 'hidden';
-//     menu.style.opacity = 0;
-//   }
-// });
