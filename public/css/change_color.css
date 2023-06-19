@@ -15,7 +15,6 @@
 .dropInput-blue:checked + label {
   background: rgb(127, 255, 255);
 }
-
 .i-blue:hover {
   color: rgb(0, 255, 255);
   text-shadow: 0 0 120px rgb(0, 255, 255); /*ぼかし120px*/
@@ -23,6 +22,12 @@
 }
 .tab-wrap-blue {
   background-color: aliceblue;
+}
+.cube1-blue,
+.cube2-blue,
+.cube3-blue,
+.cube4-blue {
+  background-color: rgb(162, 241, 241);
 }
 
 /*　赤　*/
@@ -50,6 +55,12 @@
 }
 .tab-wrap-red {
   background-color: rgb(255, 240, 240);
+}
+.cube1-red,
+.cube2-red,
+.cube3-red,
+.cube4-red {
+  background-color: rgb(255, 147, 147);
 }
 
 /*　黄　*/

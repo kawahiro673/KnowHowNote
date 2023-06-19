@@ -423,6 +423,10 @@ export const backgroundColorSet = (color) => {
   document.querySelector('.dropLabel').classList.add(`dropLabel-${color}`);
   document.querySelector('.tab-wrap').classList.add(`tab-wrap-${color}`);
   document.querySelector('.dropInput').classList.add(`dropInput-${color}`);
+  document.querySelector('.cube1').classList.add(`cube1-${color}`);
+  document.querySelector('.cube2').classList.add(`cube2-${color}`);
+  document.querySelector('.cube3').classList.add(`cube3-${color}`);
+  document.querySelector('.cube4').classList.add(`cube4-${color}`);
   const icons = document.querySelectorAll('i');
   icons.forEach((icon) => {
     icon.classList.add(`i-${color}`);
@@ -483,6 +487,22 @@ export const backgroundColorDelete = () => {
   dropInput.classList.remove('dropInput-purple');
   dropInput.classList.remove('dropInput-orange');
   dropInput.classList.remove('dropInput-gray');
+
+  const cube1 = document.querySelector('.cube1');
+  cube1.classList.remove(`cube1-red`);
+  cube1.classList.remove(`cube1-blue`);
+
+  const cube2 = document.querySelector('.cube2');
+  cube2.classList.remove(`cube2-red`);
+  cube2.classList.remove(`cube2-blue`);
+
+  const cube3 = document.querySelector('.cube3');
+  cube3.classList.remove(`cube3-red`);
+  cube3.classList.remove(`cube3-blue`);
+
+  const cube4 = document.querySelector('.cube4');
+  cube4.classList.remove(`cube4-red`);
+  cube4.classList.remove(`cube4-blue`);
 
   const icons = document.querySelectorAll('i');
   icons.forEach((icon) => {

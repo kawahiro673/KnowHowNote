@@ -49,6 +49,7 @@ header h1 {
 header h2 {
   font-size: 15px;
   margin: 0;
+  margin-left: 30px;
   position: absolute;
   right: 170px;
   bottom: 0;

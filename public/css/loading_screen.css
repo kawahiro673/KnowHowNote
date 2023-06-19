@@ -71,11 +71,6 @@
   animation: sk-cubemove 1.8s infinite ease-in-out;
 }
 
-.cube3,
-.cube4 {
-  background-color: rgb(162, 241, 241);
-}
-
 .cube2,
 .cube4 {
   -webkit-animation-delay: -0.9s;
