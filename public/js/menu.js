@@ -492,27 +492,57 @@ export const backgroundColorDelete = () => {
 
   const cube1 = document.querySelector('.cube1');
   cube1.classList.remove(`cube1-red`);
+  cube1.classList.remove(`cube1-yellow`);
   cube1.classList.remove(`cube1-blue`);
+  cube1.classList.remove(`cube1-green`);
+  cube1.classList.remove(`cube1-purple`);
+  cube1.classList.remove(`cube1-orange`);
+  cube1.classList.remove(`cube1-gray`);
 
   const cube2 = document.querySelector('.cube2');
   cube2.classList.remove(`cube2-red`);
+  cube2.classList.remove(`cube2-yellow`);
   cube2.classList.remove(`cube2-blue`);
+  cube2.classList.remove(`cube2-green`);
+  cube2.classList.remove(`cube2-purple`);
+  cube2.classList.remove(`cube2-orange`);
+  cube2.classList.remove(`cube2-gray`);
 
   const cube3 = document.querySelector('.cube3');
   cube3.classList.remove(`cube3-red`);
+  cube3.classList.remove(`cube3-yellow`);
   cube3.classList.remove(`cube3-blue`);
+  cube3.classList.remove(`cube3-green`);
+  cube3.classList.remove(`cube3-purple`);
+  cube3.classList.remove(`cube3-orange`);
+  cube3.classList.remove(`cube3-gray`);
 
   const cube4 = document.querySelector('.cube4');
   cube4.classList.remove(`cube4-red`);
+  cube4.classList.remove(`cube4-yellow`);
   cube4.classList.remove(`cube4-blue`);
+  cube4.classList.remove(`cube4-green`);
+  cube4.classList.remove(`cube4-purple`);
+  cube4.classList.remove(`cube4-orange`);
+  cube4.classList.remove(`cube4-gray`);
 
   const cube5 = document.querySelector('.cube5');
   cube5.classList.remove(`cube5-red`);
+  cube5.classList.remove(`cube5-yellow`);
   cube5.classList.remove(`cube5-blue`);
+  cube5.classList.remove(`cube5-green`);
+  cube5.classList.remove(`cube5-purple`);
+  cube5.classList.remove(`cube5-orange`);
+  cube5.classList.remove(`cube5-gray`);
 
   const cube6 = document.querySelector('.cube6');
   cube6.classList.remove(`cube6-red`);
+  cube6.classList.remove(`cube6-yellow`);
   cube6.classList.remove(`cube6-blue`);
+  cube6.classList.remove(`cube6-green`);
+  cube6.classList.remove(`cube6-purple`);
+  cube6.classList.remove(`cube6-orange`);
+  cube6.classList.remove(`cube6-gray`);
 
   const icons = document.querySelectorAll('i');
   icons.forEach((icon) => {

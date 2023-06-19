@@ -93,6 +93,14 @@
 .tab-wrap-yellow {
   background-color: rgb(255, 254, 240);
 }
+.cube1-yellow,
+.cube2-yellow,
+.cube3-yellow,
+.cube4-yellow,
+.cube5-yellow,
+.cube6-yellow {
+  background-color: rgb(255, 247, 0);
+}
 
 /*　緑　*/
 .backgroundColor-green {
@@ -119,6 +127,14 @@
 }
 .tab-wrap-green {
   background-color: rgb(242, 255, 241);
+}
+.cube1-green,
+.cube2-green,
+.cube3-green,
+.cube4-green,
+.cube5-green,
+.cube6-green {
+  background-color: rgb(172, 255, 154);
 }
 
 /*　紫　*/
@@ -147,6 +163,14 @@
 .tab-wrap-purple {
   background-color: rgb(250, 239, 255);
 }
+.cube1-purple,
+.cube2-purple,
+.cube3-purple,
+.cube4-purple,
+.cube5-purple,
+.cube6-purple {
+  background-color: rgb(235, 175, 255);
+}
 
 /*　橙　*/
 .backgroundColor-orange {
@@ -173,6 +197,14 @@
 }
 .tab-wrap-orange {
   background-color: rgb(255, 247, 240);
+}
+.cube1-orange,
+.cube2-orange,
+.cube3-orange,
+.cube4-orange,
+.cube5-orange,
+.cube6-orange {
+  background-color: rgb(255, 215, 175);
 }
 
 /*　灰色　*/
@@ -201,4 +233,12 @@
 }
 .tab-wrap-gray {
   background-color: rgb(236, 236, 236);
+}
+.cube1-gray,
+.cube2-gray,
+.cube3-gray,
+.cube4-gray,
+.cube5-gray,
+.cube6-gray {
+  background-color: rgb(188, 188, 188);
 }
