@@ -60,7 +60,9 @@
 .cube1,
 .cube2,
 .cube3,
-.cube4 {
+.cube4,
+.cube5,
+.cube6 {
   background-color: rgb(162, 241, 241);
   width: 15px;
   height: 15px;
@@ -72,7 +74,8 @@
 }
 
 .cube2,
-.cube4 {
+.cube4,
+.cube6 {
   -webkit-animation-delay: -0.9s;
   animation-delay: -0.9s;
 }

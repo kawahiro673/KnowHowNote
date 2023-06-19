@@ -26,7 +26,9 @@
 .cube1-blue,
 .cube2-blue,
 .cube3-blue,
-.cube4-blue {
+.cube4-blue,
+.cube5-blue,
+.cube6-blue {
   background-color: rgb(162, 241, 241);
 }
 
@@ -59,7 +61,9 @@
 .cube1-red,
 .cube2-red,
 .cube3-red,
-.cube4-red {
+.cube4-red,
+.cube5-red,
+.cube6-red {
   background-color: rgb(255, 147, 147);
 }
 
