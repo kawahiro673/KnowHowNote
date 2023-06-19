@@ -212,10 +212,6 @@
   float: left;
 }
 
-.tabname {
-  font-size: 12px;
-}
-
 /* 要素の前に疑似要素を挿入し、その要素の左側20%に赤い背景色を適用 */
 .tab-label::before {
   content: '';

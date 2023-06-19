@@ -80,11 +80,38 @@ document.getElementById('share-history').addEventListener('click', () => {
             .getElementsByTagName('p').length > 0
         )
       ) {
+        const table = document.createElement('table');
+        table.setAttribute('border', '1');
+        const headerRow = document.createElement('tr');
+        const header1 = document.createElement('th');
+        header1.textContent = '共有日時';
+        const header2 = document.createElement('th');
+        header2.textContent = 'ユーザー';
+        const header3 = document.createElement('th');
+        header3.textContent = 'ノウハウ';
+
+        headerRow.appendChild(header1);
+        headerRow.appendChild(header2);
+        document.getElementById('share-history-list').appendChild(table);
+        table.appendChild(headerRow);
+
         res.shareResult.forEach((share) => {
-          const p = document.createElement('p');
-          p.setAttribute('class', 'share-user-list');
-          p.innerHTML = `${share.date}          ${share.UserName}          ${share.ShareNoteTitle}`;
-          document.getElementById('share-history-list').appendChild(p);
+          const dataRow1 = document.createElement('tr');
+          const dataCell1 = document.createElement('td');
+          dataCell1.textContent = share.date;
+          const dataCell2 = document.createElement('td');
+          dataCell2.textContent = share.UserName;
+          const dataCell3 = document.createElement('td');
+          dataCell3.textContent = share.ShareNoteTitle;
+          dataRow1.appendChild(dataCell1);
+          dataRow1.appendChild(dataCell2);
+          dataRow1.appendChild(dataCell3);
+          table.appendChild(dataRow1);
+
+          // const p = document.createElement('p');
+          // p.setAttribute('class', 'share-user-list');
+          // p.innerHTML = `${share.date}          ${share.UserName}          ${share.ShareNoteTitle}`;
+          // document.getElementById('share-history-list').appendChild(p);
         });
         if (res.shareResult.length === 0) {
           const p = document.createElement('p');
