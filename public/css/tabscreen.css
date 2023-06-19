@@ -195,7 +195,6 @@
 
 .tab-label {
   width: 150px;
-  font-size: 12px;
   color: black;
   background: LightGray;
   font-weight: bold;
@@ -213,9 +212,9 @@
   float: left;
 }
 
-/* .tabname {
-   position: relative; 
-} */
+.tabname {
+  font-size: 12px;
+}
 
 /* 要素の前に疑似要素を挿入し、その要素の左側20%に赤い背景色を適用 */
 .tab-label::before {
