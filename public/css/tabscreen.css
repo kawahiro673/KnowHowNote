@@ -85,6 +85,7 @@
   height: 100vh;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
+  z-index: 500;
 }
 .popup-window_share {
   width: 500px;
@@ -95,7 +96,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 10px;
-  z-index: 10000;
+  z-index: 500;
 }
 .popup-header_share {
   display: flex;

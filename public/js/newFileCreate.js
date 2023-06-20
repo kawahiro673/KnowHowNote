@@ -39,6 +39,7 @@ export const newFileCreateFunc = (id) => {
         document.removeEventListener('click', handleClick);
         document.removeEventListener('contextmenu', handleContextMenu);
         document.removeEventListener('keypress', handleEnter);
+        console.log('3');
         resolve();
       }
     };
@@ -122,6 +123,7 @@ export const newCreateFile2 = (inputTab, span, parentId, li) => {
               node.removeChild(node.firstChild);
             }
             listCreate();
+            console.log('2');
           },
         });
       },
@@ -139,6 +141,7 @@ createfilebutton.addEventListener('click', async (e) => {
     e.stopPropagation();
     //awaitはPromiseが返ってくるまで待つ。関数内でPromise化し、resolveのタイミングでPromiseが返る
     await newFileCreateFunc(id);
+    console.log('1');
     document.getElementById('list_loader').style.display = 'block';
     document.getElementById('list_loader').classList.add('loaded');
   }
