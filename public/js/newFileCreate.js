@@ -35,8 +35,6 @@ export const newFileCreateFunc = (id) => {
     const createFile = async () => {
       if (!isCreatingFile) {
         isCreatingFile = true; // ファイル作成中フラグを立てる
-        document.getElementById('list_loader').style.display = 'block';
-        document.getElementById('list_loader').classList.add('loaded');
         await newCreateFile2(inputTab, span, id, li);
         document.removeEventListener('click', handleClick);
         document.removeEventListener('contextmenu', handleContextMenu);
@@ -147,7 +145,7 @@ createfilebutton.addEventListener('click', async (e) => {
     //awaitはPromiseが返ってくるまで待つ。関数内でPromise化し、resolveのタイミングでPromiseが返る
     await newFileCreateFunc(id);
     console.log('3');
-    // document.getElementById('list_loader').style.display = 'block';
-    // document.getElementById('list_loader').classList.add('loaded');
+    document.getElementById('list_loader').style.display = 'block';
+    document.getElementById('list_loader').classList.add('loaded');
   }
 });
