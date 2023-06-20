@@ -32,10 +32,10 @@ export const newFileCreateFunc = (id) => {
     inputTab.addEventListener('focus', (event) => event.target.select());
     inputTab.focus();
 
-    const createFile = () => {
+    const createFile = async () => {
       if (!isCreatingFile) {
         isCreatingFile = true; // ファイル作成中フラグを立てる
-        newCreateFile2(inputTab, span, id, li);
+        await newCreateFile2(inputTab, span, id, li);
         document.removeEventListener('click', handleClick);
         document.removeEventListener('contextmenu', handleContextMenu);
         document.removeEventListener('keypress', handleEnter);
@@ -72,63 +72,66 @@ export const newFileCreateFunc = (id) => {
   });
 };
 export const newCreateFile2 = (inputTab, span, parentId, li) => {
-  //何も入力されていない時や空白や改行のみ
-  if (!inputTab.value || !inputTab.value.match(/\S/g)) {
-    alert('タイトルを入力してください');
-  } else {
-    const time = currentTimeGet();
-    $.ajax({
-      url: '/notePostController/',
-      type: 'POST',
-      dataType: 'Json',
-      contentType: 'application/json',
-      data: JSON.stringify({
-        flg: 'newNote',
-        pattern: 'new',
-        title: inputTab.value,
-        parentId,
-        time,
-      }),
-      success: function (res) {
-        li.setAttribute('id', `li${res.fileResult.id}`);
-        span.setAttribute('id', `file${res.fileResult.id}`);
-        span.setAttribute('value', res.fileResult.id);
-        inputTab.remove();
-        span.innerHTML = inputTab.value;
-        span.parentNode.setAttribute(
-          'class',
-          `parent${res.fileResult.parent_id}`
-        );
+  return new Promise((resolve, reject) => {
+    //何も入力されていない時や空白や改行のみ
+    if (!inputTab.value || !inputTab.value.match(/\S/g)) {
+      alert('タイトルを入力してください');
+    } else {
+      const time = currentTimeGet();
+      $.ajax({
+        url: '/notePostController/',
+        type: 'POST',
+        dataType: 'Json',
+        contentType: 'application/json',
+        data: JSON.stringify({
+          flg: 'newNote',
+          pattern: 'new',
+          title: inputTab.value,
+          parentId,
+          time,
+        }),
+        success: function (res) {
+          li.setAttribute('id', `li${res.fileResult.id}`);
+          span.setAttribute('id', `file${res.fileResult.id}`);
+          span.setAttribute('value', res.fileResult.id);
+          inputTab.remove();
+          span.innerHTML = inputTab.value;
+          span.parentNode.setAttribute(
+            'class',
+            `parent${res.fileResult.parent_id}`
+          );
 
-        const order = orderGet(
-          `parent${res.fileResult.parent_id}`,
-          `li${res.fileResult.id}`
-        );
+          const order = orderGet(
+            `parent${res.fileResult.parent_id}`,
+            `li${res.fileResult.id}`
+          );
 
-        $.ajax({
-          url: '/notePostController/',
-          type: 'POST',
-          dataType: 'Json',
-          contentType: 'application/json',
-          data: JSON.stringify({
-            flg: 'newNote',
-            pattern: 'order',
-            id: res.fileResult.id,
-            order,
-          }),
-          success: function (res) {
-            //一度listを全て削除して、再び新しく追加している→jQueryUIがうまく適用されないため
-            const node = document.getElementById('0');
-            while (node.firstChild) {
-              node.removeChild(node.firstChild);
-            }
-            listCreate();
-            console.log('2');
-          },
-        });
-      },
-    });
-  }
+          $.ajax({
+            url: '/notePostController/',
+            type: 'POST',
+            dataType: 'Json',
+            contentType: 'application/json',
+            data: JSON.stringify({
+              flg: 'newNote',
+              pattern: 'order',
+              id: res.fileResult.id,
+              order,
+            }),
+            success: function (res) {
+              //一度listを全て削除して、再び新しく追加している→jQueryUIがうまく適用されないため
+              const node = document.getElementById('0');
+              while (node.firstChild) {
+                node.removeChild(node.firstChild);
+              }
+              listCreate();
+              console.log('2');
+              resolve();
+            },
+          });
+        },
+      });
+    }
+  });
 };
 
 //「ノート追加」ボタン押下時(root(id=0)に作成)
