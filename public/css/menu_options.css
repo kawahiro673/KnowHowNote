@@ -361,3 +361,17 @@ input[type='checkbox']:checked + .gray_b {
 .share-text {
   font-weight: bold;
 }
+
+.popup-body_share-history {
+  width: 100%;
+  overflow-x: auto;
+}
+.popup-body_share-history table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.popup-body_share-history th,
+.popup-body_share-history td {
+  padding: 8px;
+  border: 1px solid black;
+}
