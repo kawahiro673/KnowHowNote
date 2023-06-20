@@ -24,8 +24,7 @@ export const tabCreate = (id, title, res) => {
   const tabname = document.createElement('p');
   tabname.setAttribute('class', 'tabname');
   tabname.setAttribute('id', 'tabname' + id);
-  tabname.style.fontSize = '15px';
-  tabname.style.zIndex = '100';
+  tabname.style.fontSize = '18px';
   tabname.innerHTML = title;
 
   //[✖️]ボタン作成

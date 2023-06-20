@@ -99,7 +99,7 @@
   border-radius: 10px;
   z-index: 10000;
   overflow: hidden;
-  z-index: 100;
+  z-index: 300;
 }
 
 .popup-window_version,
@@ -370,6 +370,7 @@ input[type='checkbox']:checked + .gray_b {
   background-color: #e5e5e5;
 }
 .popup-body_share-history table {
+  margin-top: 10px;
   width: 100%;
   border-collapse: collapse;
 }
