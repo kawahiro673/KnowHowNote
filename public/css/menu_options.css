@@ -366,6 +366,9 @@ input[type='checkbox']:checked + .gray_b {
   width: 100%;
   overflow-x: auto;
 }
+.share-table-header {
+  background-color: #e5e5e5;
+}
 .popup-body_share-history table {
   width: 100%;
   border-collapse: collapse;

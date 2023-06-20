@@ -83,6 +83,7 @@ document.getElementById('share-history').addEventListener('click', () => {
         const table = document.createElement('table');
         table.setAttribute('border', '1');
         const headerRow = document.createElement('tr');
+        headerRow.setAttribute('class', 'share-table-header');
         const header0 = document.createElement('th');
         header0.textContent = '';
         const header1 = document.createElement('th');
