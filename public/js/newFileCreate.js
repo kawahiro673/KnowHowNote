@@ -36,10 +36,12 @@ export const newFileCreateFunc = (id) => {
       if (!isCreatingFile) {
         isCreatingFile = true; // ファイル作成中フラグを立てる
         await newCreateFile2(inputTab, span, id, li);
+        document.getElementById('list_loader').style.display = 'block';
+        document.getElementById('list_loader').classList.add('loaded');
         document.removeEventListener('click', handleClick);
         document.removeEventListener('contextmenu', handleContextMenu);
         document.removeEventListener('keypress', handleEnter);
-        console.log('3');
+        console.log('2');
         resolve();
       }
     };
@@ -124,7 +126,7 @@ export const newCreateFile2 = (inputTab, span, parentId, li) => {
                 node.removeChild(node.firstChild);
               }
               listCreate();
-              console.log('2');
+              console.log('1');
               resolve();
             },
           });
@@ -144,8 +146,8 @@ createfilebutton.addEventListener('click', async (e) => {
     e.stopPropagation();
     //awaitはPromiseが返ってくるまで待つ。関数内でPromise化し、resolveのタイミングでPromiseが返る
     await newFileCreateFunc(id);
-    console.log('1');
-    document.getElementById('list_loader').style.display = 'block';
-    document.getElementById('list_loader').classList.add('loaded');
+    console.log('3');
+    // document.getElementById('list_loader').style.display = 'block';
+    // document.getElementById('list_loader').classList.add('loaded');
   }
 });
