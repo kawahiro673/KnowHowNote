@@ -83,6 +83,8 @@ document.getElementById('share-history').addEventListener('click', () => {
         const table = document.createElement('table');
         table.setAttribute('border', '1');
         const headerRow = document.createElement('tr');
+        const header0 = document.createElement('th');
+        header0.textContent = '';
         const header1 = document.createElement('th');
         header1.textContent = '共有日時';
         const header2 = document.createElement('th');
@@ -90,6 +92,7 @@ document.getElementById('share-history').addEventListener('click', () => {
         const header3 = document.createElement('th');
         header3.textContent = 'ノウハウ';
 
+        headerRow.appendChild(header0);
         headerRow.appendChild(header1);
         headerRow.appendChild(header2);
         headerRow.appendChild(header3);
@@ -98,12 +101,15 @@ document.getElementById('share-history').addEventListener('click', () => {
 
         res.shareResult.forEach((share) => {
           const dataRow1 = document.createElement('tr');
+          const dataCell0 = document.createElement('td');
+          dataCell0.textContent = '画像';
           const dataCell1 = document.createElement('td');
           dataCell1.textContent = share.date;
           const dataCell2 = document.createElement('td');
           dataCell2.textContent = share.UserName;
           const dataCell3 = document.createElement('td');
           dataCell3.textContent = share.ShareNoteTitle;
+          dataRow1.appendChild(dataCell0);
           dataRow1.appendChild(dataCell1);
           dataRow1.appendChild(dataCell2);
           dataRow1.appendChild(dataCell3);

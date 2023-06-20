@@ -270,6 +270,10 @@
   display: none;
 }
 
+.tabname {
+  z-index: 1;
+}
+
 /************************　ノート側　******************************/
 /*タブのスタイル*/
 .container1 label:first-of-type {
