@@ -35,9 +35,9 @@ export const newFileCreateFunc = (id) => {
     const createFile = async () => {
       if (!isCreatingFile) {
         isCreatingFile = true; // ファイル作成中フラグを立てる
-        await newCreateFile2(inputTab, span, id, li);
         document.getElementById('list_loader').style.display = 'block';
         document.getElementById('list_loader').classList.add('loaded');
+        await newCreateFile2(inputTab, span, id, li);
         document.removeEventListener('click', handleClick);
         document.removeEventListener('contextmenu', handleContextMenu);
         document.removeEventListener('keypress', handleEnter);
