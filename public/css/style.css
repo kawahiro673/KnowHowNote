@@ -11,6 +11,7 @@
 
 .window {
   position: relative;
+  overflow: hidden;
 }
 
 .container {
@@ -20,7 +21,8 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   margin: auto;
   /*以下の設定でcontainerを真ん中上部へ固定*/
-  position: absolute;
+  /* position: absolute; */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;

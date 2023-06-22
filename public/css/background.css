@@ -1,6 +1,9 @@
 .back {
-  height: 100%;
-  overflow-y: auto;
+  min-height: 100vh;
+  width: 100%;
+  background-color: aliceblue;
+  overflow: hidden;
+  user-select: none;
 }
 
 section {
