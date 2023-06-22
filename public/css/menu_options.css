@@ -98,14 +98,13 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 10px;
-  z-index: 10000;
+  /* z-index: 10000; */
   overflow: hidden;
   z-index: 500;
 }
 
 .popup-window_share-history {
   width: 600px;
-  height: 400px;
 }
 
 .popup-window_version,

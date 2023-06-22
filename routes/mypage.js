@@ -531,7 +531,7 @@ router
                     const user = result.find((user) => user.UserName === name);
                     if (!user) {
                       nothingUser.push(name);
-                      resolve({ skip: true }); // ユーザーが見つからい場合、次のユーザーの処理に進む
+                      resolve({ skip: true }); // ユーザーが見つからない場合、次のユーザーの処理に進む
                     } else {
                       resolve({ user });
                     }
@@ -591,14 +591,26 @@ router
               } else {
                 return new Promise((resolve, reject) => {
                   pool.query(
-                    'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID) values(?, ?, ?, ?);',
-                    [name, req.body.time, req.body.title, resultDecoded[0].id],
+                    'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID, ShareFlg) values(?, ?, ?, ?, ?);',
+                    [
+                      name,
+                      req.body.time,
+                      req.body.title,
+                      resultDecoded[0].id,
+                      'True',
+                    ],
                     (error, result) => {
-                      if (error) {
-                        reject(error);
-                      } else {
-                        resolve();
-                      }
+                      pool.query(
+                        'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID, ShareFlg) values(?, ?, ?, ?, ?);',
+                        [name, req.body.time, req.body.title, user.id, 'False'],
+                        (error, result) => {
+                          if (error) {
+                            reject(error);
+                          } else {
+                            resolve();
+                          }
+                        }
+                      );
                     }
                   );
                 });
