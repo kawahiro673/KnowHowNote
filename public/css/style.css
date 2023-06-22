@@ -335,12 +335,7 @@ footer {
   color: black;
 }
 
-#nouhau_content {
-  overflow: auto;
-  white-space: nowrap;
-}
-
 .tab_content_description {
-  max-width: 100%;
+  max-height: 400px; /* 表示したい高さを指定 */
   overflow: auto;
 }
