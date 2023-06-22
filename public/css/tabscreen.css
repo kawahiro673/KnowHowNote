@@ -149,6 +149,7 @@
   height: 100vh;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
+  z-index: 500;
 }
 .popup-window_share_ans,
 .popup-window_share_no {
@@ -160,7 +161,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 10px;
-  z-index: 10000;
+  z-index: 1000;
 }
 .popup-header_share_ans,
 .popup-header_share_no {

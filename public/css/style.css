@@ -328,3 +328,7 @@ footer {
 .floating {
   transition: top 0.3s, left 0.3s; /* アニメーションのプロパティと時間を設定 */
 }
+
+#color a {
+  text-decoration: none;
+}
