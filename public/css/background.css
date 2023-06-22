@@ -6,6 +6,15 @@ section {
   user-select: none; /*カーソルでドラッグアンドドロップが出来なくなる*/
 }
 
+.back {
+  min-height: 100vh;
+  width: 100%;
+  background-color: aliceblue;
+  overflow-y: scroll; /* 垂直方向のスクロールバーを表示 */
+  overscroll-behavior: none; /* スクロールエリア外のスクロール挙動を無効化 */
+  user-select: none; /* ユーザーの選択を無効化 */
+}
+
 section .row {
   display: flex; /*改行をなくして横並びに*/
   white-space: nowrap; /*折り返しなし*/
