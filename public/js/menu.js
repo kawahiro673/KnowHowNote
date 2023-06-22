@@ -89,7 +89,7 @@ document.getElementById('share-history').addEventListener('click', () => {
         const header1 = document.createElement('th');
         header1.textContent = '共有日時';
         const header2 = document.createElement('th');
-        header2.textContent = 'ユーザー';
+        header2.textContent = 'ユーザー名';
         const header3 = document.createElement('th');
         header3.textContent = 'ノウハウ';
 
@@ -102,8 +102,11 @@ document.getElementById('share-history').addEventListener('click', () => {
 
         res.shareResult.forEach((share) => {
           const dataRow1 = document.createElement('tr');
+          const img = document.createElement('img');
+          img.src = '../img/share-to-do.png';
           const dataCell0 = document.createElement('td');
-          dataCell0.textContent = '画像';
+          //dataCell0.textContent = '画像';
+          dataCell0.appendChild(img);
           const dataCell1 = document.createElement('td');
           dataCell1.textContent = share.date;
           const dataCell2 = document.createElement('td');

@@ -103,6 +103,11 @@
   z-index: 500;
 }
 
+.popup-window_share-history {
+  width: 600px;
+  height: 400px;
+}
+
 .popup-window_version,
 .popup-window_delete {
   height: 150px;
