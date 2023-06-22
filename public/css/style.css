@@ -334,3 +334,15 @@ footer {
   text-decoration: none;
   color: black;
 }
+
+#nouhau_content {
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.tab_content_description {
+  display: inline-block;
+  vertical-align: top;
+  white-space: normal;
+  max-width: 100%;
+}
