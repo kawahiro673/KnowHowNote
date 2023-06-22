@@ -334,15 +334,13 @@ footer {
   text-decoration: none;
   color: black;
 }
+
 #nouhau_content {
   overflow: auto;
+  white-space: nowrap;
 }
 
 .tab_content_description {
   max-width: 100%;
   overflow: auto;
-}
-
-#TreeView_Area {
-  white-space: nowrap;
 }
