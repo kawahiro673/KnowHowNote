@@ -591,7 +591,7 @@ router
               } else {
                 return new Promise((resolve, reject) => {
                   pool.query(
-                    'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID, ShareFlg) values(?, ?, ?, ?, ?);',
+                    'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID, Share_ToDo_Flg) values(?, ?, ?, ?, ?);',
                     [
                       name,
                       req.body.time,
@@ -601,7 +601,7 @@ router
                     ],
                     (error, result) => {
                       pool.query(
-                        'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID, ShareFlg) values(?, ?, ?, ?, ?);',
+                        'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID, Share_ToDo_Flg) values(?, ?, ?, ?, ?);',
                         [name, req.body.time, req.body.title, user.id, 'False'],
                         (error, result) => {
                           if (error) {

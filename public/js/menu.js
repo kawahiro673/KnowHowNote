@@ -103,7 +103,11 @@ document.getElementById('share-history').addEventListener('click', () => {
         res.shareResult.forEach((share) => {
           const dataRow1 = document.createElement('tr');
           const img = document.createElement('img');
-          img.src = '../img/share-to-do.png';
+          if (share.Share_ToDo_Flg === 'True') {
+            img.src = '../img/share-to-do.png';
+          } else {
+            img.src = '../img/share-to-be.png';
+          }
           const dataCell0 = document.createElement('td');
           //dataCell0.textContent = '画像';
           dataCell0.appendChild(img);
