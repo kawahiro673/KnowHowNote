@@ -15,7 +15,7 @@ export const tabCreate = (id, title, res) => {
 
   labelTab.setAttribute('id', 'tab-ID' + id);
   labelTab.setAttribute('for', 'TAB-ID' + id);
-  labelTab.style.display = 'block';
+  // labelTab.style.display = 'block';
 
   const labelColor = document.createElement('div');
   labelColor.setAttribute('class', 'label-color');
