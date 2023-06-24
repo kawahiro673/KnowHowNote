@@ -386,14 +386,23 @@ input[type='checkbox']:checked + .gray_b {
   border: 1px solid black;
 }
 
-#share-user-div {
+.container {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-#share-user-div div {
+.checkbox-wrapper {
   display: flex;
-  flex-direction: row-reverse;
   align-items: center;
-  margin-bottom: 5px;
+  margin: 0 10px;
+}
+
+.checkbox-wrapper:before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 100%;
+  background-color: black;
+  margin-right: 10px;
 }
