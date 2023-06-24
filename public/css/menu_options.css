@@ -394,14 +394,13 @@ input[type='checkbox']:checked + .gray_b {
 #share-user-div div {
   display: flex;
   align-items: center;
-  flex-wrap: nowrap;
+  justify-content: flex-end;
 }
 
 #share-user-div input[type='checkbox'] {
-  order: 2;
   margin-left: 10px;
 }
 
 #share-user-div label {
-  order: 1;
+  margin-right: 10px;
 }
