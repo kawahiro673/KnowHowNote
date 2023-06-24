@@ -84,12 +84,14 @@
 .dropLabel-yellow {
   background-color: rgb(255, 247, 0);
   color: white;
-  border: 1px solid black;
 }
 .dropLabel-yellow:hover,
 .dropInput-yellow:checked + label {
   background: #fffb84;
   color: white;
+}
+
+.labelText {
   border: 1px solid black;
 }
 
