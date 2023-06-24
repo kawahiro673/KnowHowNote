@@ -358,3 +358,26 @@ input[name='tab_item'] {
 .popup-body_share p {
   margin: 0;
 }
+
+#share-user-div {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+#share-user-div div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+#share-user-div input[type='checkbox'] {
+  margin-right: 10px;
+}
+
+#share-user-div label {
+  color: #333;
+  font-weight: bold;
+}
