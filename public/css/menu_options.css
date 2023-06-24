@@ -386,17 +386,24 @@ input[type='checkbox']:checked + .gray_b {
   border: 1px solid black;
 }
 
+#share-user-div {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 5px;
+}
+
 #share-user-div div {
   display: flex;
   align-items: center;
+  margin-bottom: 5px;
 }
 
 #share-user-div input[type='checkbox'] {
-  order: 2;
-  margin-left: 10px;
+  margin-right: 10px;
 }
 
 #share-user-div label {
-  order: 1;
-  margin-right: 10px;
+  color: #333;
+  font-weight: bold;
 }
