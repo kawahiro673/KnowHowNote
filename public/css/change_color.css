@@ -83,19 +83,12 @@
 }
 .dropLabel-yellow {
   background-color: rgb(255, 247, 0);
-  color: white;
-  display: inline-block;
-  padding: 5px;
-  border: 1px solid black;
+  color: black;
 }
 .dropLabel-yellow:hover,
 .dropInput-yellow:checked + label {
   background: #fffb84;
-  color: white;
-}
-
-.labelText {
-  border: 1px solid black;
+  color: black;
 }
 
 .i-yellow:hover {
