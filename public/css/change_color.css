@@ -9,12 +9,13 @@
   background-color: aliceblue;
 }
 .dropLabel-blue {
-  background-color: rgb(0, 255, 255);
+  background-color: rgb(0, 183, 255);
   color: white;
 }
 .dropLabel-blue:hover,
 .dropInput-blue:checked + label {
   background: rgb(127, 255, 255);
+  color: white;
 }
 .i-blue:hover {
   color: rgb(0, 255, 255);
@@ -50,6 +51,7 @@
 .dropLabel-red:hover,
 .dropInput-red:checked + label {
   background: #ff7c7c;
+  color: white;
 }
 
 .i-red:hover {
@@ -82,10 +84,13 @@
 .dropLabel-yellow {
   background-color: rgb(255, 247, 0);
   color: white;
+  border: 1px solid black;
 }
 .dropLabel-yellow:hover,
 .dropInput-yellow:checked + label {
   background: #fffb84;
+  color: white;
+  border: 1px solid black;
 }
 
 .i-yellow:hover {
@@ -122,6 +127,7 @@
 .dropLabel-green:hover,
 .dropInput-green:checked + label {
   background: rgb(125, 255, 127);
+  color: white;
 }
 
 .i-green:hover {
@@ -158,6 +164,7 @@
 .dropLabel-purple:hover,
 .dropInput-purple:checked + label {
   background: rgb(228, 121, 255);
+  color: white;
 }
 
 .i-purple:hover {
@@ -194,6 +201,7 @@
 .dropLabel-orange:hover,
 .dropInput-orange:checked + label {
   background: rgb(255, 186, 121);
+  color: white;
 }
 
 .i-orange:hover {
@@ -230,6 +238,7 @@
 .dropLabel-gray:hover,
 .dropInput-gray:checked + label {
   background: rgb(145, 145, 145);
+  color: white;
 }
 
 .i-gray:hover {
