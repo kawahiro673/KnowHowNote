@@ -388,5 +388,11 @@ input[type='checkbox']:checked + .gray_b {
 
 #share-user-div {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+}
+
+#share-user-div div {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
 }
