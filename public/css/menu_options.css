@@ -122,8 +122,8 @@
 }
 
 .popup-window_share-user {
-  height: 400px;
-  width: 300px;
+  height: 350px;
+  width: 250px;
 }
 
 /* ポップアップのヘッダー */
@@ -395,4 +395,5 @@ input[type='checkbox']:checked + .gray_b {
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
+  justify-content: center; /* 追加 */
 }
