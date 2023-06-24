@@ -410,6 +410,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
       let shareUserNameArray = []; //全ての共有履歴のユーザーを一通り見るための配列(実行したら格納)
       res.shareResult.forEach((share) => {
         if (!shareUserNameArray.includes(share.UserName)) {
+          const div = document.createElement('div');
           // チェックボックス要素の作成
           const checkbox = document.createElement('input');
           checkbox.type = 'checkbox';
@@ -421,12 +422,9 @@ document.getElementById('share-user-button').addEventListener('click', () => {
           checkboxLabel.setAttribute('for', `checkbox${share.UserName}`);
 
           // 要素の追加
-          document.getElementById('share-user-div').appendChild(checkbox);
-          document.getElementById('share-user-div').appendChild(checkboxLabel);
-          document
-            .getElementById('share-user-div')
-            .appendChild(document.createElement('br'));
-
+          document.getElementById('share-user-div').appendChild(div);
+          div.appendChild(checkbox);
+          div.appendChild(checkboxLabel);
           shareUserNameArray.push(share.UserName);
         }
       });
