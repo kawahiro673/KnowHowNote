@@ -173,16 +173,15 @@
 .popup-body_version,
 .popup-body_logout,
 .popup-body_delete,
+.popup-body_share-user,
 .popup-body_inquiry_result {
   position: relative;
-  /* height: 240px; */
+  height: 240px;
   padding: 0 10px;
   overflow-y: scroll;
 }
 .popup-body_share-user {
-  position: relative;
-  padding: 0 10px;
-  overflow-y: scroll;
+  height: 300px;
 }
 
 .popup-body_inquiry select {
