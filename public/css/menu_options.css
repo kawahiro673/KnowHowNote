@@ -385,3 +385,8 @@ input[type='checkbox']:checked + .gray_b {
   padding: 8px;
   border: 1px solid black;
 }
+
+#share-user-div {
+  display: flex;
+  flex-direction: row-reverse;
+}

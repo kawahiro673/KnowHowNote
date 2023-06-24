@@ -602,7 +602,13 @@ router
                     (error, result) => {
                       pool.query(
                         'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID, Share_ToDo_Flg) values(?, ?, ?, ?, ?);',
-                        [name, req.body.time, req.body.title, user.id, 'False'],
+                        [
+                          resultDecoded[0].UserName,
+                          req.body.time,
+                          req.body.title,
+                          user.id,
+                          'False',
+                        ],
                         (error, result) => {
                           if (error) {
                             reject(error);
