@@ -299,7 +299,7 @@ export const fileClick = () => {
   }
 
   // 初回のクリックイベントの設定
-  $('.list_title').on('click', handleClick);
+  $('.list_title').on('click touchstart', handleClick);
 };
 
 //ページを更新した際に前回のタブ情報を載せる
