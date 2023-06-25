@@ -1,9 +1,4 @@
 @media screen and (max-width: 1000px) {
-  .window {
-    position: relative;
-    overflow-y: auto; /* 縦方向のスクロールバーを表示 */
-  }
-
   .container {
     max-height: 1500px;
     width: 100%; /* 幅制約を解除 */
