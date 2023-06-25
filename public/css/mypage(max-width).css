@@ -13,6 +13,14 @@
   .tab-label {
     display: none;
   }
+  .image-container {
+    display: none;
+  }
+  .tab-wrap {
+    height: auto;
+    min-height: auto;
+    display: block;
+  }
   .title {
     margin: 0;
   }
