@@ -17,9 +17,15 @@
     margin-left: 10px;
     border-radius: 10px;
   }
+
+  .tab_content_description {
+    max-height: 200px;
+  }
+
   header h1 {
     font-size: 18px;
   }
+
   .tab-label {
     display: none;
   }

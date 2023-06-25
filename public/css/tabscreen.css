@@ -91,6 +91,7 @@
   background-color: rgba(0, 0, 0, 0.3);
   z-index: 500;
 }
+
 .popup-window_share {
   width: 500px;
   height: 300px;
@@ -258,7 +259,6 @@
 
 /* アクティブなタブ */
 .tab-switch:checked + .tab-label {
-  /* color: Gray; */
   color: black;
   background: White;
   border-right-color: White;
