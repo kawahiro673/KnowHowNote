@@ -4,6 +4,7 @@
     flex-direction: column;
   }
   .container1 {
+    height: 200px;
     margin-bottom: 20px;
     width: calc(100% - 20px);
   }
@@ -38,7 +39,7 @@
     font-size: 12px;
   }
 
-  .fade-out-font {
+  .fadeout {
     font-size: 6px;
   }
 
