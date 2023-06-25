@@ -20,15 +20,16 @@
     font-size: 15px;
   }
   .tab-label {
-    display: none;
+    /* display: none; */
+    visibility: hidden;
   }
 
   .image-container {
     display: none;
   }
   .tab-wrap {
+    /* height: auto; */
     height: 100%;
-    /* height: 100%; */
     min-height: auto;
     display: block;
   }
