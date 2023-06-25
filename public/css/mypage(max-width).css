@@ -21,7 +21,8 @@
   }
   .tab-label {
     /* display: none; */
-    visibility: hidden;
+    /* visibility: hidden; */
+    opacity: 0;
   }
 
   .image-container {
