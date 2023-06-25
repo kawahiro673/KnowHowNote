@@ -24,18 +24,22 @@
   }
 
   .form-group textarea {
-    height: 500px;
+    height: 450px;
+  }
+
+  .pass {
+    margin-left: 5px;
   }
 
   .title input {
     margin-top: 20px;
     margin-bottom: 20px;
     margin-right: auto;
-    font-size: 18px;
+    font-size: 12px;
   }
 
   .fade-out-font {
-    font-size: 12px;
+    font-size: 6px;
   }
 
   .image-container {
@@ -69,57 +73,3 @@
     margin: 0 5px;
   }
 }
-
-/* @media screen and (max-width: 1000px) {
-  .container0 {
-    display: flex;
-    flex-direction: column;
-  }
-  header h1 {
-    font-size: 15px;
-  }
-  .container1 {
-    margin-bottom: 20px;
-    width: calc(100% - 20px);
-  }
-
-  .image-container {
-    display: none;
-  }
-
-  .container2 {
-    width: calc(100% - 20px);
-    background-color: white;
-    margin-top: 0;
-    margin-right: 10px;
-    margin-left: 10px;
-    border-radius: 10px;
-  }
-
-  .tab-wrap {
-    height: auto;
-    min-height: auto;
-    display: block;
-  }
-
-  .tab-label {
-    display: none;
-  }
-
-  .tab-content {
-    display: block;
-    width: 100%;
-    padding: 5px;
-  }
-
-  .title {
-    margin: 0;
-  }
-  .title p {
-    margin-left: 5px;
-    margin-right: 0px;
-  }
-  .form-group {
-    margin: 0 5px;
-  }
-} */
