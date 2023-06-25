@@ -41,6 +41,10 @@
   justify-content: flex-start;
 }
 
+.form-group textarea {
+  height: 700px;
+}
+
 /****************共有ボタン******************/
 .keepbtn,
 .cancelbtn,

@@ -23,6 +23,10 @@
     display: none;
   }
 
+  .form-group textarea {
+    height: 500px;
+  }
+
   .image-container {
     display: none;
   }
@@ -41,6 +45,7 @@
     width: 100%;
     padding: 5px;
     margin: 0;
+    height: 700px;
   }
   .title {
     margin: 0;
