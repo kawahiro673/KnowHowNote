@@ -65,7 +65,6 @@ export const tabCreate = (id, title, res) => {
 
   const textarea = document.createElement('textarea');
   textarea.readOnly = true;
-  // textarea.style.height = '700px';
   textarea.innerHTML = res.memo_text;
   textarea.setAttribute('id', `textarea${id}`);
 
@@ -100,7 +99,6 @@ export const tabCreate = (id, title, res) => {
   cancelButton.style.display = 'none';
 
   const titletext = document.createElement('input');
-
   titletext.setAttribute('id', `titletext${id}`);
   titletext.style.display = 'none';
 
