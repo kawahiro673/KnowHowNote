@@ -20,9 +20,7 @@
     font-size: 15px;
   }
   .tab-label {
-    /* display: none; */
-    /* visibility: hidden; */
-    opacity: 0;
+    display: none;
   }
 
   .image-container {
