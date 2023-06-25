@@ -246,7 +246,7 @@ header h2 {
   background: linear-gradient(#b1ff7a 0%, #84ff00 100%);
   text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
-  height: 40px; /* 縦幅を適宜調整してください */
+  height: 37px;
 }
 
 #createbutton:active {
@@ -264,6 +264,7 @@ header h2 {
   background: linear-gradient(#ffff79 0%, #fffb00 100%);
   text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+  height: 37px;
 }
 
 #createfilebutton:active {
