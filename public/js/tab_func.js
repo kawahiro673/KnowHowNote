@@ -65,7 +65,7 @@ export const tabCreate = (id, title, res) => {
 
   const textarea = document.createElement('textarea');
   textarea.readOnly = true;
-  textarea.style.height = '700px';
+  // textarea.style.height = '700px';
   textarea.innerHTML = res.memo_text;
   textarea.setAttribute('id', `textarea${id}`);
 
