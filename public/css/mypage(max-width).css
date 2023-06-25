@@ -1,6 +1,7 @@
 @media screen and (max-width: 1000px) {
   .container {
     max-height: 1500px;
+    width: 100%; /* 幅制約を解除 */
   }
 
   .container0 {
