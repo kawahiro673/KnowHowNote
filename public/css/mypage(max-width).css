@@ -33,6 +33,10 @@
     display: block;
   }
 
+  .tab-switch:checked + .tab-label + .tab-content {
+    width: calc(100% - 0px);
+  }
+
   .tab-content {
     width: 100%;
     padding: 5px;
