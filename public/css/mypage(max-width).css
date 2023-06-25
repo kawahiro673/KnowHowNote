@@ -22,6 +22,7 @@
   .tab-label {
     display: none;
   }
+
   .image-container {
     display: none;
   }
@@ -29,6 +30,11 @@
     height: auto;
     min-height: auto;
     display: block;
+  }
+
+  .tab-content {
+    width: 100%;
+    padding: 5px;
   }
   .title {
     margin: 0;
