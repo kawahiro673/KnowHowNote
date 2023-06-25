@@ -7,6 +7,15 @@
     margin-bottom: 20px;
     width: calc(100% - 20px);
   }
+
+  .container2 {
+    width: calc(100% - 20px);
+    background-color: white;
+    margin-top: 0;
+    margin-right: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+  }
   header h1 {
     font-size: 15px;
   }
