@@ -19,7 +19,7 @@
   }
 
   .tab_content_description {
-    max-height: 200px;
+    max-height: 180px;
   }
 
   header h1 {
@@ -78,5 +78,11 @@
   }
   .form-group {
     margin: 0 5px;
+  }
+
+  /*ポップアップサイズ合わせる*/
+  .popup-window_share-history {
+    width: 300px;
+    height: 200px;
   }
 }
