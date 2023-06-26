@@ -86,12 +86,15 @@
   .popup-window_explanation,
   .popup-window_inquiry,
   .popup-window_share-user,
-  .popup-window_inquiry_result {
+  .popup-window_inquiry_result,
+  .popup-window_share {
     width: 350px;
     height: 270px;
   }
   .popup-window_logout,
-  .popup-window_delete {
+  .popup-window_delete,
+  .popup-window_share_ans,
+  .popup-window_share_no {
     width: 330px;
     height: 200px;
   }
@@ -103,9 +106,6 @@
     text-align: left;
     width: 300px;
     height: 150px;
-  }
-  .back {
-    display: none;
   }
   .dropLabel,
   .item {
