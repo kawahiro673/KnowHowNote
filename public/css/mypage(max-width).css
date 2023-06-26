@@ -106,16 +106,16 @@
     width: 300px;
     height: 270px;
   }
-  .popup-body_share input {
+  .share-input {
     max-width: 300px; /* 適切な値に調整してください */
-    height: 25;
+    height: 25px;
   }
-  .popup-body_share textarea {
+  .share-message {
     max-width: 300px; /* 適切な値に調整してください */
-    height: 100;
+    height: 80px;
   }
   .popup-body_share p {
-    font-size: 15px;
+    font-size: 10px;
   }
   .popup-body_inquiry textarea {
     text-align: left;
