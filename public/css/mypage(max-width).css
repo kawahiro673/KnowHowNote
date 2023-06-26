@@ -35,7 +35,7 @@
   }
 
   .pass {
-    margin-left: 5px;
+    display: none;
   }
 
   .title input {
@@ -85,12 +85,18 @@
   .popup-window_share-history,
   .popup-window_explanation,
   .popup-window_inquiry,
-  .popup-window_version,
-  .popup-window_logout,
-  .popup-window_delete,
   .popup-window_share-user,
   .popup-window_inquiry_result {
     width: 350px;
-    height: 250px;
+    height: 270px;
+  }
+  .popup-window_logout,
+  .popup-window_delete {
+    width: 330px;
+    height: 200px;
+  }
+  .popup-window_version {
+    width: 350px;
+    height: 130px;
   }
 }
