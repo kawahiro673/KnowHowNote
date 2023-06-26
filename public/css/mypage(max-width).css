@@ -99,4 +99,16 @@
     width: 350px;
     height: 130px;
   }
+  .popup-body_inquiry textarea {
+    text-align: left;
+    width: 300px;
+    height: 150px;
+  }
+  .back {
+    display: none;
+  }
+  .dropLabel,
+  .item {
+    width: 100px;
+  }
 }

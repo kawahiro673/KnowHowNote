@@ -38,6 +38,7 @@
   position: relative;
   color: #333;
   text-decoration: none;
+  border-radius: 5px;
 }
 .item {
   padding: 0;
