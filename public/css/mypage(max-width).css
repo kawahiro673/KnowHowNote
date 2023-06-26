@@ -103,7 +103,7 @@
   }
   .popup-window_share-user {
     width: 300px;
-    height: 320px;
+    height: 360px;
   }
   .popup-window_share {
     width: 350px;
@@ -120,12 +120,7 @@
   .popup-body_share p {
     font-size: 10px;
   }
-  .share-row {
-    height: 35px;
-  }
-  .share-row p {
-    font-size: 25px;
-  }
+
   .popup-body_inquiry textarea {
     text-align: left;
     width: 300px;
