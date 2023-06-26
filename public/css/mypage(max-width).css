@@ -96,11 +96,26 @@
   .popup-window_share_ans,
   .popup-window_share_no {
     width: 330px;
-    height: 200px;
+    height: 180px;
   }
   .popup-window_version {
     width: 350px;
     height: 130px;
+  }
+  .popup-window_share-user {
+    width: 300px;
+    height: 270px;
+  }
+  .popup-window_share input {
+    max-width: 300px; /* 適切な値に調整してください */
+    height: 25;
+  }
+  .popup-window_share textarea {
+    max-width: 300px; /* 適切な値に調整してください */
+    height: 100;
+  }
+  .share-row {
+    height: 30px;
   }
   .popup-body_inquiry textarea {
     text-align: left;

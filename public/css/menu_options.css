@@ -38,6 +38,8 @@
   position: relative;
   color: #333;
   text-decoration: none;
+}
+.dropLabel {
   border-radius: 5px;
 }
 .item {
