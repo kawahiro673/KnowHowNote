@@ -140,6 +140,8 @@ header h2 {
   align-items: center;
   display: flex;
   justify-content: center;
+  top: 7px;
+  left: 7px;
   position: absolute;
   border: none;
   outline: none;

@@ -1,7 +1,6 @@
 //タブで必要な関数まとめ
 import { currentTimeGet, passGet, orderGet } from './stringUtils.js';
 import { hashedIdGet } from './main.js';
-//import { truncateStringByByte } from './utilityFunction.js';
 
 export const tabCreate = (id, title, res) => {
   const inputTab = document.createElement('input');
