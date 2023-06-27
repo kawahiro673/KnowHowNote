@@ -133,4 +133,7 @@
   .item {
     width: 100px;
   }
+  .tab_content_description {
+    overflow: scroll;
+  }
 }
