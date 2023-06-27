@@ -49,11 +49,11 @@ export const nameChangeStringChange = (target, id) => {
   spanElement.style.width = textWidth + 5 + 'px'; // 幅を設定
 };
 
-//指定したバイト数以上の文字列を省略
-export const truncateStringByByte = (str, byteLength) => {
-  let truncated = str.slice(0, byteLength);
-  if (truncated.charCodeAt(truncated.length - 1) > 255) {
-    truncated = truncated.slice(0, truncated.length - 1);
-  }
-  return truncated + '...';
-};
+// //指定したバイト数以上の文字列を省略
+// export const truncateStringByByte = (str, byteLength) => {
+//   let truncated = str.slice(0, byteLength);
+//   if (truncated.charCodeAt(truncated.length - 1) > 255) {
+//     truncated = truncated.slice(0, truncated.length - 1);
+//   }
+//   return truncated + '...';
+// };
