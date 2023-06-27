@@ -342,4 +342,5 @@ footer {
   max-width: 100%; /* 横スクロールを有効にするために必要な設定 */
   overflow: auto;
   white-space: nowrap; /* 横スクロールを有効にするために必要な設定 */
+  -webkit-overflow-scrolling: touch; /* iOSデバイスでのスムーズなスクロールを有効にする */
 }

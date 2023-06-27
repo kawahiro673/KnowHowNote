@@ -23,7 +23,7 @@
   }
 
   header h1 {
-    font-size: 25px;
+    font-size: 20px;
   }
 
   .tab-label {
@@ -46,7 +46,7 @@
   }
 
   .fade-out-font.fadeout {
-    font-size: 4px;
+    font-size: 8px;
   }
   .image-container {
     display: none;
@@ -146,6 +146,16 @@
 
   .tab_content_description::-webkit-scrollbar-thumb {
     background-color: #888888; /* スクロールバーの色を指定 */
+  }
+  .keepbtn {
+    height: 50px;
+    width: 40px;
+    font-size: 15px;
+  }
+  .cancelbtn {
+    height: 50px;
+    width: 40px;
+    font-size: 15px;
   }
 
   .folder,
