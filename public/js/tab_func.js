@@ -155,9 +155,9 @@ export const keepButtonClick = (id) => {
         document.getElementById(`fade${id}`).style.opacity = '0';
       }, 1000);
 
-      document.getElementById(`share-button-${id}`).disabled = false;
-      document.getElementById(`share-button-${id}`).style.backgroundColor =
-        '#fdff85';
+      // document.getElementById(`share-button-${id}`).disabled = false;
+      // document.getElementById(`share-button-${id}`).style.backgroundColor =
+      //   '#fdff85';
     },
   });
   document.getElementById(`keep-note-btn${id}`).style.display = 'none';
@@ -168,6 +168,7 @@ export const keepButtonClick = (id) => {
   document.getElementById(`file${id}`).innerHTML = newTitle;
   document.getElementById(`titletext${id}`).style.display = 'none';
   document.getElementById(`edit-note-btn${id}`).style.display = 'block';
+  document.getElementById(`share-button-${id}`).style.display = 'block';
   document.getElementById(`textarea${id}`).readOnly = true;
   document.getElementById(`time${id}`).innerHTML = time;
   document.getElementById('notepass').innerHTML = pass;
@@ -192,9 +193,9 @@ export const cancelButtonClick = (id) => {
       success: function (res) {
         document.getElementById(`textarea${id}`).value =
           res.fileResult.memo_text;
-        document.getElementById(`share-button-${id}`).disabled = false;
-        document.getElementById(`share-button-${id}`).style.backgroundColor =
-          '#fdff85';
+        // document.getElementById(`share-button-${id}`).disabled = false;
+        // document.getElementById(`share-button-${id}`).style.backgroundColor =
+        //   '#fdff85';
       },
     });
     document.getElementById(`tabP${id}`).style.display = 'block';
@@ -202,6 +203,7 @@ export const cancelButtonClick = (id) => {
     document.getElementById(`cancel-note-btn${id}`).style.display = 'none';
     document.getElementById(`titletext${id}`).style.display = 'none';
     document.getElementById(`edit-note-btn${id}`).style.display = 'block';
+    document.getElementById(`share-button-${id}`).style.display = 'block';
     document.getElementById(`textarea${id}`).readOnly = true;
     document.getElementById(`fade${id}`).style.opacity = '0';
   }

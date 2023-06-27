@@ -382,11 +382,12 @@ async function tabScreenOptions(id, title) {
             document.getElementById(`fade${id}`).textContent =
               '※編集完了後【保存する】ボタンを押してください';
 
-            document.getElementById(`share-button-${id}`).disabled = true;
-            document.getElementById(
-              `share-button-${id}`
-            ).style.backgroundColor = 'gray';
-
+            // document.getElementById(`share-button-${id}`).disabled = true;
+            // document.getElementById(
+            //   `share-button-${id}`
+            // ).style.backgroundColor = 'gray';
+            document.getElementById(`share-button-${id}`).style.display =
+              'none';
             document.getElementById(`textarea${id}`).readOnly = false;
 
             document.getElementById(`tabP${id}`).style.display = 'none';
