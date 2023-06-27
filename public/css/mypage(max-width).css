@@ -110,7 +110,7 @@
   }
   .share-input {
     max-width: 300px; /* 適切な値に調整してください */
-    height: 25px;
+    height: 22px;
   }
   .share-message {
     max-width: 300px; /* 適切な値に調整してください */
@@ -134,9 +134,17 @@
   }
   .tab_content_description {
     overflow: scroll;
-    scrollbar-width: thin; /* スクロールバーの幅を指定 */
-    scrollbar-color: #888888 #f0f0f0; /* スクロールバーの色を指定 */
-    -webkit-scrollbar-width: thin; /* Safari/Chrome用スクロールバーの幅を指定 */
-    -webkit-scrollbar-color: #888888 #f0f0f0; /* Safari/Chrome用スクロールバーの色を指定 */
+  }
+
+  .tab_content_description::-webkit-scrollbar {
+    width: 10px; /* スクロールバーの幅を指定 */
+  }
+
+  .tab_content_description::-webkit-scrollbar-track {
+    background-color: #f0f0f0; /* スクロールバーの背景色を指定 */
+  }
+
+  .tab_content_description::-webkit-scrollbar-thumb {
+    background-color: #888888; /* スクロールバーの色を指定 */
   }
 }
