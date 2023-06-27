@@ -449,28 +449,3 @@ export function tabFocusIDGet() {
 export function hashedIdGet() {
   return hashedId;
 }
-
-var scrollContainer = document.querySelector('.tab_content');
-var innerContainer = document.querySelector('.tab_content_description');
-
-var isDragging = false;
-var startPos = 0;
-var currentPos = 0;
-
-scrollContainer.addEventListener('touchstart', function (event) {
-  isDragging = true;
-  startPos = event.touches[0].clientY;
-});
-
-scrollContainer.addEventListener('touchmove', function (event) {
-  if (!isDragging) return;
-  event.preventDefault();
-  currentPos = event.touches[0].clientY;
-  var scrollAmount = startPos - currentPos;
-  innerContainer.scrollTop += scrollAmount;
-  startPos = currentPos;
-});
-
-scrollContainer.addEventListener('touchend', function () {
-  isDragging = false;
-});
