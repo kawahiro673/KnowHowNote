@@ -15,7 +15,6 @@ export const tabCreate = (id, title, res) => {
 
   labelTab.setAttribute('id', 'tab-ID' + id);
   labelTab.setAttribute('for', 'TAB-ID' + id);
-  // labelTab.style.display = 'block';
 
   const labelColor = document.createElement('div');
   labelColor.setAttribute('class', 'label-color');
@@ -154,10 +153,6 @@ export const keepButtonClick = (id) => {
       setTimeout(() => {
         document.getElementById(`fade${id}`).style.opacity = '0';
       }, 1000);
-
-      // document.getElementById(`share-button-${id}`).disabled = false;
-      // document.getElementById(`share-button-${id}`).style.backgroundColor =
-      //   '#fdff85';
     },
   });
   document.getElementById(`keep-note-btn${id}`).style.display = 'none';
@@ -193,9 +188,6 @@ export const cancelButtonClick = (id) => {
       success: function (res) {
         document.getElementById(`textarea${id}`).value =
           res.fileResult.memo_text;
-        // document.getElementById(`share-button-${id}`).disabled = false;
-        // document.getElementById(`share-button-${id}`).style.backgroundColor =
-        //   '#fdff85';
       },
     });
     document.getElementById(`tabP${id}`).style.display = 'block';

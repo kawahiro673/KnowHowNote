@@ -297,7 +297,6 @@ export const fileClick = () => {
       },
     });
   }
-
   // 初回のクリックイベントの設定
   $('.list_title').on('click touchstart', handleClick);
 };
@@ -382,10 +381,6 @@ async function tabScreenOptions(id, title) {
             document.getElementById(`fade${id}`).textContent =
               '※編集完了後【保存する】ボタンを押してください';
 
-            // document.getElementById(`share-button-${id}`).disabled = true;
-            // document.getElementById(
-            //   `share-button-${id}`
-            // ).style.backgroundColor = 'gray';
             document.getElementById(`share-button-${id}`).style.display =
               'none';
             document.getElementById(`textarea${id}`).readOnly = false;
@@ -454,3 +449,26 @@ export function tabFocusIDGet() {
 export function hashedIdGet() {
   return hashedId;
 }
+
+const scrollContainer = document.querySelector('.tab_content_description');
+const isDragging = false;
+const startPos = 0;
+const currentPos = 0;
+
+scrollContainer.addEventListener('touchstart', function (event) {
+  isDragging = true;
+  startPos = event.touches[0].clientY;
+});
+
+scrollContainer.addEventListener('touchmove', function (event) {
+  if (!isDragging) return;
+  event.preventDefault();
+  currentPos = event.touches[0].clientY;
+  var scrollAmount = startPos - currentPos;
+  scrollContainer.scrollTop += scrollAmount;
+  startPos = currentPos;
+});
+
+scrollContainer.addEventListener('touchend', function () {
+  isDragging = false;
+});
