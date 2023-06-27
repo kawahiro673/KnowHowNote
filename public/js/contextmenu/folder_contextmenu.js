@@ -5,7 +5,11 @@ import { newFolderCreateFunc } from '../newFolderCreate.js';
 import { orderGet, fileIDUnderTheFolder } from '../stringUtils.js';
 
 import { tabFocusIDGet, hashedIdGet } from '../main.js';
-import { disableElements, enableElements } from '../utilityFunction.js';
+import {
+  disableElements,
+  enableElements,
+  nameChangeStringChange,
+} from '../utilityFunction.js';
 
 let tmp1;
 let tmp2;
@@ -196,6 +200,7 @@ const folderNameChange = (folder) => {
             folder.elem.innerHTML = inputTab.value;
             inputTab.remove();
 
+            nameChangeStringChange('folder', folder.id);
             //フォルダの名前変更時に、タブのフォーカスが当たっているファイルが配下にあればパスを変更する(対象のタブをクリックする)
             const fileUnder = fileIDUnderTheFolder(folder.elem.parentNode);
             const tabFocusID = tabFocusIDGet();

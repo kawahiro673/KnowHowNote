@@ -1,7 +1,7 @@
 import { closeTab, deleteTabArray } from '../tab_func.js';
 import { currentTimeGet, orderGet } from '../stringUtils.js';
-import { tabFocusIDGet, hashedIdGet } from '../main.js';
-
+import { tabFocusIDGet } from '../main.js';
+import { nameChangeStringChange } from './utilityFunction.js';
 import { newFileCreateFunc } from '../newFileCreate.js';
 
 let tmp1;
@@ -214,6 +214,7 @@ const noteNameChange = (file) => {
             file.elem.innerHTML = inputTab.value;
             inputTab.remove();
 
+            nameChangeStringChange('file', file.id);
             //タブが生成済みの場合リアルタイムにタイトル更新(タブも)
             if (res.tabResult !== null) {
               document.getElementById(`tabname${file.id}`).innerHTML =
