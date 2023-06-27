@@ -1,7 +1,7 @@
 import { closeTab, deleteTabArray } from '../tab_func.js';
 import { currentTimeGet, orderGet } from '../stringUtils.js';
 import { tabFocusIDGet } from '../main.js';
-import { nameChangeStringChange } from './utilityFunction.js';
+import { nameChangeStringChange } from '../utilityFunction.js';
 import { newFileCreateFunc } from '../newFileCreate.js';
 
 let tmp1;
