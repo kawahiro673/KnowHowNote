@@ -214,7 +214,7 @@ const noteNameChange = (file) => {
             file.elem.innerHTML = inputTab.value;
             inputTab.remove();
 
-            nameChangeStringChange('file', file.id);
+            nameChangeStringChange('file', Number(file.id));
             //タブが生成済みの場合リアルタイムにタイトル更新(タブも)
             if (res.tabResult !== null) {
               document.getElementById(`tabname${file.id}`).innerHTML =

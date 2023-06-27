@@ -1,6 +1,7 @@
 //タブで必要な関数まとめ
 import { currentTimeGet, passGet, orderGet } from './stringUtils.js';
 import { hashedIdGet } from './main.js';
+import { nameChangeStringChange } from './utilityFunction.js';
 
 export const tabCreate = (id, title, res) => {
   const inputTab = document.createElement('input');
@@ -24,7 +25,7 @@ export const tabCreate = (id, title, res) => {
   tabname.setAttribute('class', 'tabname');
   tabname.setAttribute('id', 'tabname' + id);
   tabname.style.fontSize = '18px';
-  tabname.innerHTML = title;
+  tabname.innerHTML = nameChangeStringChange(title, 14);
 
   //[✖️]ボタン作成
   const tabClosebutton = document.createElement('button');

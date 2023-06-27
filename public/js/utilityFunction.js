@@ -38,7 +38,6 @@ document.getElementById('nouhau').addEventListener('click', () => {
 
 //ファイルまたはフォルダの囲いのサイズを再計測
 export const nameChangeStringChange = (target, id) => {
-  console.log(typeof id);
   //ファイルの名前に沿ったwidthを確保
   const spanElement = document.getElementById(target + id);
   // テキストを一時的に非表示にし、要素を描画して幅を取得
@@ -48,4 +47,13 @@ export const nameChangeStringChange = (target, id) => {
   spanElement.style.visibility = '';
   spanElement.style.display = '';
   spanElement.style.width = textWidth + 5 + 'px'; // 幅を設定
+};
+
+//指定したバイト数以上の文字列を省略
+export const truncateStringByByte = (str, byteLength) => {
+  let truncated = str.slice(0, byteLength);
+  if (truncated.charCodeAt(truncated.length - 1) > 255) {
+    truncated = truncated.slice(0, truncated.length - 1);
+  }
+  return truncated + '...';
 };
