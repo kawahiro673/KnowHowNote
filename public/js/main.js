@@ -125,7 +125,7 @@ export const listCreate = () => {
                 document.getElementById(`${parentId}`).appendChild(li);
                 li.appendChild(span);
 
-                nameChangeStringChange('folder', folder.id);
+                nameChangeStringChange('file', file.id);
 
                 deleteArray.push(file);
                 crFlg = true;
