@@ -51,6 +51,10 @@
   #fade14444.fadeout {
     font-size: 6px;
   }
+
+  .fade-out-font.fadeout {
+    font-size: 4px;
+  }
   .image-container {
     display: none;
   }
