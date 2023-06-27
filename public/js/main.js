@@ -93,10 +93,10 @@ export const listCreate = () => {
                 // テキストを一時的に非表示にし、要素を描画して幅を取得
                 spanElement.style.visibility = 'hidden';
                 spanElement.style.display = 'inline-block';
-                var textWidth = spanElement.getBoundingClientRect().width;
+                const textWidth = spanElement.getBoundingClientRect().width;
                 spanElement.style.visibility = '';
                 spanElement.style.display = '';
-                spanElement.style.width = textWidth + 'px'; // 幅を設定
+                spanElement.style.width = textWidth + 3 + 'px'; // 幅を設定
 
                 //重複していなければ追加
                 if (parentIdArray.indexOf(folder.id) == -1) {
@@ -140,10 +140,10 @@ export const listCreate = () => {
                 // テキストを一時的に非表示にし、要素を描画して幅を取得
                 spanElement.style.visibility = 'hidden';
                 spanElement.style.display = 'inline-block';
-                var textWidth = spanElement.getBoundingClientRect().width;
+                const textWidth = spanElement.getBoundingClientRect().width;
                 spanElement.style.visibility = '';
                 spanElement.style.display = '';
-                spanElement.style.width = textWidth + 'px'; // 幅を設定
+                spanElement.style.width = textWidth + 3 + 'px'; // 幅を設定
 
                 deleteArray.push(file);
                 crFlg = true;
