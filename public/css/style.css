@@ -128,7 +128,7 @@ header h2 {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 140px; /* 省略する幅を指定 */
+  max-width: 150px; /* 省略する幅を指定 */
 }
 
 .tabClosebutton {
@@ -140,8 +140,6 @@ header h2 {
   align-items: center;
   display: flex;
   justify-content: center;
-  top: 5px;
-  left: 5px;
   position: absolute;
   border: none;
   outline: none;
