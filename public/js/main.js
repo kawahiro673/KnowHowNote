@@ -85,6 +85,14 @@ export const listCreate = () => {
                 document.getElementById(`${parentId}`).appendChild(li);
                 li.appendChild(span);
                 li.appendChild(ul);
+
+                //ファイルの名前に沿ったwidthを確保
+                const spanElement = document.getElementById(
+                  `folder${folder.id}`
+                );
+                const textWidth = spanElement.textContent.length * 10; // 文字の長さに基づいて幅を計算
+                spanElement.style.width = textWidth + 'px';
+
                 //重複していなければ追加
                 if (parentIdArray.indexOf(folder.id) == -1) {
                   parentIdArray.push(folder.id);
@@ -121,6 +129,11 @@ export const listCreate = () => {
                 span.draggable = true;
                 document.getElementById(`${parentId}`).appendChild(li);
                 li.appendChild(span);
+                //ファイルの名前に沿ったwidthを確保
+                const spanElement = document.getElementById(`file${file.id}`);
+                const textWidth = spanElement.textContent.length * 10; // 文字の長さに基づいて幅を計算
+                spanElement.style.width = textWidth + 'px';
+
                 deleteArray.push(file);
                 crFlg = true;
               }

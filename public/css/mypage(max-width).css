@@ -127,11 +127,6 @@
   .item {
     width: 100px;
   }
-  /* .tab_content_description {
-    position: relative;
-    overflow-y: scroll;
-    max-height: 170px;
-  } */
 
   .tab_content {
     max-height: 170px;
@@ -143,10 +138,5 @@
   .tab_content_description {
     white-space: nowrap; /* 横スクロールを有効にするために必要な設定 */
     display: inline-block; /* インラインブロック要素にすることで横幅を自動調整 */
-  }
-
-  .folder,
-  .file {
-    width: 280px;
   }
 }
