@@ -2,12 +2,6 @@ import { listCreate } from '../main.js';
 
 export const shareContextmenu = () => {
   $('.sharenote').on('contextmenu  click', function (event) {
-    if (event.type === 'contextmenu') {
-      console.log(`"${$(this).html()}" を右クリックしました`);
-    } else if (event.type === 'click') {
-      console.log(`"${$(this).html()}" を左クリックしました`);
-    }
-
     let share = {
       shareTitle: $(this).html(),
       id: $(this).attr('value'),

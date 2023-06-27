@@ -131,8 +131,8 @@ header h2 {
   margin: 0;
   padding: 0;
   text-align: center;
-  height: 15px;
-  width: 15px;
+  /* height: 15px;
+  width: 15px; */
   align-items: center;
   display: flex;
   justify-content: center;
@@ -353,4 +353,5 @@ footer {
   font-family: 'Zen_Kurenaido', 'Hannotate SC', sans-serif;
   text-align: center;
   font-size: 24px;
+  text-decoration: underline;
 }
