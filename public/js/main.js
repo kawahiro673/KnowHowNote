@@ -90,8 +90,13 @@ export const listCreate = () => {
                 const spanElement = document.getElementById(
                   `folder${folder.id}`
                 );
-                const textWidth = spanElement.textContent.length * 10; // 文字の長さに基づいて幅を計算
-                spanElement.style.width = textWidth + 'px';
+                // テキストを一時的に非表示にし、要素を描画して幅を取得
+                spanElement.style.visibility = 'hidden';
+                spanElement.style.display = 'inline-block';
+                var textWidth = spanElement.getBoundingClientRect().width;
+                spanElement.style.visibility = '';
+                spanElement.style.display = '';
+                spanElement.style.width = textWidth + 'px'; // 幅を設定
 
                 //重複していなければ追加
                 if (parentIdArray.indexOf(folder.id) == -1) {
@@ -129,10 +134,16 @@ export const listCreate = () => {
                 span.draggable = true;
                 document.getElementById(`${parentId}`).appendChild(li);
                 li.appendChild(span);
+
                 //ファイルの名前に沿ったwidthを確保
                 const spanElement = document.getElementById(`file${file.id}`);
-                const textWidth = spanElement.textContent.length * 10; // 文字の長さに基づいて幅を計算
-                spanElement.style.width = textWidth + 'px';
+                // テキストを一時的に非表示にし、要素を描画して幅を取得
+                spanElement.style.visibility = 'hidden';
+                spanElement.style.display = 'inline-block';
+                var textWidth = spanElement.getBoundingClientRect().width;
+                spanElement.style.visibility = '';
+                spanElement.style.display = '';
+                spanElement.style.width = textWidth + 'px'; // 幅を設定
 
                 deleteArray.push(file);
                 crFlg = true;
