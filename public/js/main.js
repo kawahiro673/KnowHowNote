@@ -96,7 +96,7 @@ export const listCreate = () => {
                 const textWidth = spanElement.getBoundingClientRect().width;
                 spanElement.style.visibility = '';
                 spanElement.style.display = '';
-                spanElement.style.width = textWidth + 3 + 'px'; // 幅を設定
+                spanElement.style.width = textWidth + 5 + 'px'; // 幅を設定
 
                 //重複していなければ追加
                 if (parentIdArray.indexOf(folder.id) == -1) {
@@ -143,7 +143,7 @@ export const listCreate = () => {
                 const textWidth = spanElement.getBoundingClientRect().width;
                 spanElement.style.visibility = '';
                 spanElement.style.display = '';
-                spanElement.style.width = textWidth + 3 + 'px'; // 幅を設定
+                spanElement.style.width = textWidth + 5 + 'px'; // 幅を設定
 
                 deleteArray.push(file);
                 crFlg = true;
