@@ -139,15 +139,12 @@
     white-space: nowrap; /* 横スクロールを有効にするために必要な設定 */
     display: inline-block; /* インラインブロック要素にすることで横幅を自動調整 */
   }
-  .keepbtn,
-  .cancelbtn,
-  .editbtn,
-  .sharebtn {
-    width: 72px;
-    height: 44px;
-  }
+
   .cancelbtn {
-    font-size: 10px;
+    font-size: 12px;
+  }
+  .popup-body_inquiry {
+    position: relative;
   }
   #inquiry-button {
     position: absolute;
