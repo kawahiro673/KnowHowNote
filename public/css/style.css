@@ -343,3 +343,8 @@ footer {
   overflow: auto;
   white-space: nowrap; /* 横スクロールを有効にするために必要な設定 */
 }
+
+.share-details {
+  text-decoration: none;
+  color: black;
+}
