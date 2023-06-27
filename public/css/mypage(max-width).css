@@ -147,4 +147,9 @@
   .tab_content_description::-webkit-scrollbar-thumb {
     background-color: #888888; /* スクロールバーの色を指定 */
   }
+
+  .folder,
+  .file {
+    width: 280px;
+  }
 }
