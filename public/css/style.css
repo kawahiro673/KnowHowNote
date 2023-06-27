@@ -348,3 +348,9 @@ footer {
   text-decoration: none;
   color: black;
 }
+
+#notab {
+  font-family: 'Zen_Kurenaido', 'Hannotate SC', sans-serif;
+  text-align: center;
+  font-size: 24px;
+}
