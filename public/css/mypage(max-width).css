@@ -147,6 +147,11 @@
     height: 44px;
   }
   .cancelbtn {
-    font-size: 15px;
+    font-size: 10px;
+  }
+  #inquiry-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
   }
 }
