@@ -16,7 +16,7 @@ import { jQueryUIOptionsFunc } from './jQueryUI_func.js';
 import { orderGet, passGet } from './stringUtils.js';
 import { expandableAdaptation } from './expandableOptions.js';
 import { backgroundColorSet, backgroundColorDelete } from './menu.js';
-import { enableElements } from './utilityFunction.js';
+import { enableElements, nameChangeStringChange } from './utilityFunction.js';
 
 let tabIdArray = []; //タブが生成されているファイルのIDを格納
 let tabFocusID; //　フォーカスが当たっているタブのIDを常に保持。フォルダ名の名前変更・D&D時のパス変更に使用。
@@ -86,17 +86,7 @@ export const listCreate = () => {
                 li.appendChild(span);
                 li.appendChild(ul);
 
-                //ファイルの名前に沿ったwidthを確保
-                const spanElement = document.getElementById(
-                  `folder${folder.id}`
-                );
-                // テキストを一時的に非表示にし、要素を描画して幅を取得
-                spanElement.style.visibility = 'hidden';
-                spanElement.style.display = 'inline-block';
-                const textWidth = spanElement.getBoundingClientRect().width;
-                spanElement.style.visibility = '';
-                spanElement.style.display = '';
-                spanElement.style.width = textWidth + 5 + 'px'; // 幅を設定
+                nameChangeStringChange('folder', folder.id);
 
                 //重複していなければ追加
                 if (parentIdArray.indexOf(folder.id) == -1) {
@@ -135,15 +125,7 @@ export const listCreate = () => {
                 document.getElementById(`${parentId}`).appendChild(li);
                 li.appendChild(span);
 
-                //ファイルの名前に沿ったwidthを確保
-                const spanElement = document.getElementById(`file${file.id}`);
-                // テキストを一時的に非表示にし、要素を描画して幅を取得
-                spanElement.style.visibility = 'hidden';
-                spanElement.style.display = 'inline-block';
-                const textWidth = spanElement.getBoundingClientRect().width;
-                spanElement.style.visibility = '';
-                spanElement.style.display = '';
-                spanElement.style.width = textWidth + 5 + 'px'; // 幅を設定
+                nameChangeStringChange('folder', folder.id);
 
                 deleteArray.push(file);
                 crFlg = true;
