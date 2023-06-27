@@ -107,7 +107,7 @@
   }
   .popup-window_share {
     width: 350px;
-    height: 350px;
+    height: 330px;
   }
   .share-input {
     max-width: 300px; /* 適切な値に調整してください */
@@ -117,8 +117,11 @@
     max-width: 300px; /* 適切な値に調整してください */
     height: 80px;
   }
-  .popup-body_share p {
+  .sab-share-p {
     font-size: 10px;
+  }
+  .share-user-button {
+    font-size: 15px;
   }
 
   .popup-body_inquiry textarea {

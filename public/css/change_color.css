@@ -17,6 +17,13 @@
   background: rgb(127, 255, 255);
   color: white;
 }
+@media screen and (max-width: 1000px) {
+  .dropInput-blue:checked + label {
+    background: rgb(127, 255, 255);
+    color: white;
+  }
+}
+
 .i-blue:hover {
   color: rgb(0, 255, 255);
   text-shadow: 0 0 120px rgb(0, 255, 255); /*ぼかし120px*/
