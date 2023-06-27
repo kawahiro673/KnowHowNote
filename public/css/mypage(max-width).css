@@ -23,7 +23,7 @@
   }
 
   header h1 {
-    font-size: 22px;
+    font-size: 25px;
   }
 
   .tab-label {
@@ -43,13 +43,6 @@
     margin-bottom: 20px;
     margin-right: auto;
     font-size: 12px;
-  }
-
-  /* .fadeout {
-    font-size: 6px;
-  } */
-  #fade14444.fadeout {
-    font-size: 6px;
   }
 
   .fade-out-font.fadeout {
@@ -143,5 +136,7 @@
     overflow: scroll;
     scrollbar-width: thin; /* スクロールバーの幅を指定 */
     scrollbar-color: #888888 #f0f0f0; /* スクロールバーの色を指定 */
+    -webkit-scrollbar-width: thin; /* Safari/Chrome用スクロールバーの幅を指定 */
+    -webkit-scrollbar-color: #888888 #f0f0f0; /* Safari/Chrome用スクロールバーの色を指定 */
   }
 }
