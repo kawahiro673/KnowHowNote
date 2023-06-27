@@ -127,34 +127,24 @@
   .item {
     width: 100px;
   }
-  .tab_content_description {
+  /* .tab_content_description {
     position: relative;
     overflow-y: scroll;
     max-height: 170px;
-  }
-  /* 
-  .tab_content_description::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  .tab_content_description::-webkit-scrollbar-track {
-    background-color: #f0f0f0; /* スクロールバーの背景色を指定 */
-  /* }
-
-  .tab_content_description::-webkit-scrollbar-thumb {
-    background-color: #888888; /* スクロールバーの色を指定 */
-  /* } */
-
-  /* .keepbtn {
-    height: 50px;
-    width: 40px;
-    font-size: 15px;
-  }
-  .cancelbtn {
-    height: 50px;
-    width: 40px;
-    font-size: 15px;
   } */
+
+  .tab_content {
+    max-height: 170px;
+    max-width: 100%; /* 横スクロールを有効にするために必要な設定 */
+    overflow: hidden;
+    position: relative;
+  }
+
+  .tab_content_description {
+    overflow: auto;
+    height: 100%;
+    white-space: nowrap;
+  }
 
   .folder,
   .file {

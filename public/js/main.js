@@ -450,10 +450,12 @@ export function hashedIdGet() {
   return hashedId;
 }
 
-const scrollContainer = document.querySelector('.tab_content_description');
-const isDragging = false;
-const startPos = 0;
-const currentPos = 0;
+var scrollContainer = document.querySelector('.tab_content_description');
+var innerContainer = document.querySelector('.tab_content_inner');
+
+var isDragging = false;
+var startPos = 0;
+var currentPos = 0;
 
 scrollContainer.addEventListener('touchstart', function (event) {
   isDragging = true;
@@ -465,7 +467,7 @@ scrollContainer.addEventListener('touchmove', function (event) {
   event.preventDefault();
   currentPos = event.touches[0].clientY;
   var scrollAmount = startPos - currentPos;
-  scrollContainer.scrollTop += scrollAmount;
+  innerContainer.scrollTop += scrollAmount;
   startPos = currentPos;
 });
 
