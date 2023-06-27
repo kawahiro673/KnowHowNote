@@ -450,8 +450,8 @@ export function hashedIdGet() {
   return hashedId;
 }
 
-var scrollContainer = document.querySelector('.tab_content_description');
-var innerContainer = document.querySelector('.tab_content_inner');
+var scrollContainer = document.querySelector('.tab_content');
+var innerContainer = document.querySelector('.tab_content_description');
 
 var isDragging = false;
 var startPos = 0;
