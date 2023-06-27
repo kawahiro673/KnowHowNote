@@ -38,6 +38,7 @@ document.getElementById('nouhau').addEventListener('click', () => {
 
 //ファイルまたはフォルダの囲いのサイズを再計測
 export const nameChangeStringChange = (target, id) => {
+  console.log(typeof id);
   //ファイルの名前に沿ったwidthを確保
   const spanElement = document.getElementById(target + id);
   // テキストを一時的に非表示にし、要素を描画して幅を取得
