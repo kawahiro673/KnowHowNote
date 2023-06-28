@@ -36,17 +36,17 @@ document.getElementById('nouhau').addEventListener('click', () => {
   enableElements();
 });
 
-//ファイルまたはフォルダの囲いのサイズを再計測
-export const nameChangeStringChange = (target, id) => {
-  console.log(typeof id);
-  //ファイルの名前に沿ったwidthを確保
-  const spanElement = document.getElementById(target + id);
-  // テキストを一時的に非表示にし、要素を描画して幅を取得
-  spanElement.style.visibility = 'hidden';
-  spanElement.style.display = 'inline-block';
-  const textWidth = spanElement.getBoundingClientRect().width;
-  spanElement.style.visibility = '';
-  spanElement.style.display = '';
-  spanElement.style.width = textWidth + 5 + 'px'; // 幅を設定
-  console.log(textWidth + 5 + 'px');
-};
+// //ファイルまたはフォルダの囲いのサイズを再計測
+// export const nameChangeStringChange = (target, id) => {
+//   console.log(typeof id);
+//   //ファイルの名前に沿ったwidthを確保
+//   const spanElement = document.getElementById(target + id);
+//   // テキストを一時的に非表示にし、要素を描画して幅を取得
+//   spanElement.style.visibility = 'hidden';
+//   spanElement.style.display = 'inline-block';
+//   const textWidth = spanElement.getBoundingClientRect().width;
+//   spanElement.style.visibility = '';
+//   spanElement.style.display = '';
+//   spanElement.style.width = textWidth + 5 + 'px'; // 幅を設定
+//   console.log(textWidth + 5 + 'px');
+// };

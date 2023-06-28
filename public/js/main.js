@@ -16,7 +16,7 @@ import { jQueryUIOptionsFunc } from './jQueryUI_func.js';
 import { orderGet, passGet } from './stringUtils.js';
 import { expandableAdaptation } from './expandableOptions.js';
 import { backgroundColorSet, backgroundColorDelete } from './menu.js';
-import { enableElements, nameChangeStringChange } from './utilityFunction.js';
+import { enableElements } from './utilityFunction.js';
 
 let tabIdArray = []; //タブが生成されているファイルのIDを格納
 let tabFocusID; //　フォーカスが当たっているタブのIDを常に保持。フォルダ名の名前変更・D&D時のパス変更に使用。
@@ -86,7 +86,7 @@ export const listCreate = () => {
                 li.appendChild(span);
                 li.appendChild(ul);
 
-                nameChangeStringChange('folder', folder.id);
+                // nameChangeStringChange('folder', folder.id);
 
                 //重複していなければ追加
                 if (parentIdArray.indexOf(folder.id) == -1) {
@@ -125,7 +125,7 @@ export const listCreate = () => {
                 document.getElementById(`${parentId}`).appendChild(li);
                 li.appendChild(span);
 
-                nameChangeStringChange('file', file.id);
+                // nameChangeStringChange('file', file.id);
 
                 deleteArray.push(file);
                 crFlg = true;
