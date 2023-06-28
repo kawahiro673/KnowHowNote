@@ -528,14 +528,14 @@ export const backgroundColorDelete = () => {
   dropInput.classList.remove('dropInput-orange');
   dropInput.classList.remove('dropInput-gray');
 
-  const file = document.querySelector('.file');
-  file.classList.remove('file-red');
-  file.classList.remove('file-yellow');
-  file.classList.remove('file-blue');
-  file.classList.remove('file-green');
-  file.classList.remove('file-purple');
-  file.classList.remove('file-orange');
-  file.classList.remove('file-gray');
+  // const file = document.querySelector('.file');
+  // file.classList.remove('file-red');
+  // file.classList.remove('file-yellow');
+  // file.classList.remove('file-blue');
+  // file.classList.remove('file-green');
+  // file.classList.remove('file-purple');
+  // file.classList.remove('file-orange');
+  // file.classList.remove('file-gray');
 
   const cube1 = document.querySelector('.cube1');
   cube1.classList.remove(`cube1-red`);
