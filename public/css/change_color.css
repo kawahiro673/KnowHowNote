@@ -35,6 +35,11 @@
   background-color: rgb(162, 241, 241);
 }
 
+.file-blue:hover {
+  border: 2px solid #00ffff;
+  border-radius: 10px;
+}
+
 /*　赤　*/
 .backgroundColor-red {
   background-color: rgb(255, 240, 240);
@@ -72,6 +77,11 @@
   background-color: rgb(255, 147, 147);
 }
 
+.file-red:hover {
+  border: 2px solid #ff6161;
+  border-radius: 10px;
+}
+
 /*　黄　*/
 .backgroundColor-yellow {
   background-color: rgb(255, 254, 240);
@@ -107,6 +117,11 @@
 .cube5-yellow,
 .cube6-yellow {
   background-color: rgb(255, 247, 0);
+}
+
+.file-yellow:hover {
+  border: 2px solid #fffa61;
+  border-radius: 10px;
 }
 
 /*　緑　*/

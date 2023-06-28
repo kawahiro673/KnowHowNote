@@ -86,8 +86,6 @@ export const listCreate = () => {
                 li.appendChild(span);
                 li.appendChild(ul);
 
-                // nameChangeStringChange('folder', folder.id);
-
                 //重複していなければ追加
                 if (parentIdArray.indexOf(folder.id) == -1) {
                   parentIdArray.push(folder.id);
@@ -124,8 +122,6 @@ export const listCreate = () => {
                 span.draggable = true;
                 document.getElementById(`${parentId}`).appendChild(li);
                 li.appendChild(span);
-
-                // nameChangeStringChange('file', file.id);
 
                 deleteArray.push(file);
                 crFlg = true;

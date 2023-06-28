@@ -67,11 +67,9 @@ header h2 {
 }
 
 .file:hover,
-.list_title:hover,
 .folder:hover {
   border: 2px solid #00ffff;
   border-radius: 10px;
-  /* background-color: #c8c8c8; */
 }
 
 .file {
