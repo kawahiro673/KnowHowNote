@@ -284,6 +284,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 150px; /* 省略する幅を指定 */
+  z-index: 100;
+  position: relative;
 }
 
 /* .tabname {
@@ -300,8 +302,8 @@
   align-items: center;
   display: flex;
   justify-content: center;
-  top: 3px;
-  left: 3px;
+  /* top: 3px;
+  left: 3px; */
   position: absolute;
   border: none;
   outline: none;
