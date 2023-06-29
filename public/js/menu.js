@@ -556,7 +556,7 @@ export const backgroundColorDelete = () => {
 
   const folders = document.querySelectorAll('.folder');
   if (folders !== null) {
-    files.forEach((folder) => {
+    folders.forEach((folder) => {
       folder.classList.remove('folder-red');
       folder.classList.remove('folder-yellow');
       folder.classList.remove('folder-blue');

@@ -212,6 +212,10 @@ export function shareButtonClick(id, event) {
 }
 
 document.getElementById('share-send').addEventListener('click', (e) => {
+  shareNoteSendFunc(shareId, shareTitle);
+});
+
+export const shareNoteSendFunc = (id, title) => {
   const inputValue = document.getElementsByClassName('share-input')[0].value;
   const inputValues = inputValue.split(',').map((value) => value.trim());
   const shareMessage =
@@ -225,10 +229,10 @@ document.getElementById('share-send').addEventListener('click', (e) => {
       contentType: 'application/json',
       data: JSON.stringify({
         flg: 'getuser',
-        id: shareId,
+        id,
         myName: document.getElementById('user_name').innerHTML,
         name: inputValues,
-        title: shareTitle,
+        title,
         message: shareMessage,
         time: currentTimeGet(),
       }),
@@ -260,7 +264,7 @@ document.getElementById('share-send').addEventListener('click', (e) => {
   } else {
     alert('自分自身は共有できません');
   }
-});
+};
 
 document.getElementById('pop-delete_share').addEventListener('click', (e) => {
   e.preventDefault(); // リンクのデフォルトの動作を無効化
