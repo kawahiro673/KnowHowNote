@@ -471,13 +471,13 @@ export const backgroundColorSet = (color) => {
   const files = document.querySelectorAll('.file');
   if (files !== null) {
     files.forEach((file) => {
-      document.querySelector('.file').classList.add(`file-${color}`);
+      file.classList.add(`file-${color}`);
     });
   }
   const folders = document.querySelectorAll('.folder');
   if (folders !== null) {
-    files.forEach((folder) => {
-      document.querySelector('.folder').classList.add(`folder-${color}`);
+    folders.forEach((folder) => {
+      folder.classList.add(`folder-${color}`);
     });
   }
   const icons = document.querySelectorAll('i');
