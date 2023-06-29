@@ -460,18 +460,26 @@ export const backgroundColorSet = (color) => {
   document.querySelector('.dropLabel').classList.add(`dropLabel-${color}`);
   document.querySelector('.tab-wrap').classList.add(`tab-wrap-${color}`);
   document.querySelector('.dropInput').classList.add(`dropInput-${color}`);
-  if (document.querySelector('.file') !== null) {
-    document.querySelector('.file').classList.add(`file-${color}`);
-  }
-  if (document.querySelector('.folder') !== null) {
-    document.querySelector('.folder').classList.add(`folder-${color}`);
-  }
+
   document.querySelector('.cube1').classList.add(`cube1-${color}`);
   document.querySelector('.cube2').classList.add(`cube2-${color}`);
   document.querySelector('.cube3').classList.add(`cube3-${color}`);
   document.querySelector('.cube4').classList.add(`cube4-${color}`);
   document.querySelector('.cube5').classList.add(`cube5-${color}`);
   document.querySelector('.cube6').classList.add(`cube6-${color}`);
+
+  const files = document.querySelectorAll('.file');
+  if (files !== null) {
+    files.forEach((file) => {
+      document.querySelector('.file').classList.add(`file-${color}`);
+    });
+  }
+  const folders = document.querySelectorAll('.folder');
+  if (folders !== null) {
+    files.forEach((folder) => {
+      document.querySelector('.folder').classList.add(`folder-${color}`);
+    });
+  }
   const icons = document.querySelectorAll('i');
   icons.forEach((icon) => {
     icon.classList.add(`i-${color}`);
@@ -533,26 +541,30 @@ export const backgroundColorDelete = () => {
   dropInput.classList.remove('dropInput-orange');
   dropInput.classList.remove('dropInput-gray');
 
-  const file = document.querySelector('.file');
-  if (file !== null) {
-    file.classList.remove('file-red');
-    file.classList.remove('file-yellow');
-    file.classList.remove('file-blue');
-    file.classList.remove('file-green');
-    file.classList.remove('file-purple');
-    file.classList.remove('file-orange');
-    file.classList.remove('file-gray');
+  const files = document.querySelectorAll('.file');
+  if (files !== null) {
+    files.forEach((file) => {
+      file.classList.remove('file-red');
+      file.classList.remove('file-yellow');
+      file.classList.remove('file-blue');
+      file.classList.remove('file-green');
+      file.classList.remove('file-purple');
+      file.classList.remove('file-orange');
+      file.classList.remove('file-gray');
+    });
   }
 
-  const folder = document.querySelector('.folder');
-  if (folder !== null) {
-    folder.classList.remove('folder-red');
-    folder.classList.remove('folder-yellow');
-    folder.classList.remove('folder-blue');
-    folder.classList.remove('folder-green');
-    folder.classList.remove('folder-purple');
-    folder.classList.remove('folder-orange');
-    folder.classList.remove('folder-gray');
+  const folders = document.querySelectorAll('.folder');
+  if (folders !== null) {
+    files.forEach((folder) => {
+      folder.classList.remove('folder-red');
+      folder.classList.remove('folder-yellow');
+      folder.classList.remove('folder-blue');
+      folder.classList.remove('folder-green');
+      folder.classList.remove('folder-purple');
+      folder.classList.remove('folder-orange');
+      folder.classList.remove('folder-gray');
+    });
   }
 
   const cube1 = document.querySelector('.cube1');
