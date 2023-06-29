@@ -35,7 +35,8 @@
   background-color: rgb(162, 241, 241);
 }
 
-.file-blue:hover {
+.file-blue:hover,
+.folder-blue:hover {
   border: 2px solid #00ffff;
   border-radius: 10px;
 }
@@ -77,7 +78,8 @@
   background-color: rgb(255, 147, 147);
 }
 
-.file-red:hover {
+.file-red:hover,
+.folder-red:hover {
   border: 2px solid #ff6161;
   border-radius: 10px;
 }
@@ -119,7 +121,8 @@
   background-color: rgb(255, 247, 0);
 }
 
-.file-yellow:hover {
+.file-yellow:hover,
+.folder-yellow:hover {
   border: 2px solid #fffa61;
   border-radius: 10px;
 }
@@ -161,6 +164,12 @@
   background-color: rgb(172, 255, 154);
 }
 
+.file-green:hover,
+.folder-green:hover {
+  border: 2px solid #00d600;
+  border-radius: 10px;
+}
+
 /*　紫　*/
 .backgroundColor-purple {
   background-color: rgb(250, 239, 255);
@@ -196,6 +205,12 @@
 .cube5-purple,
 .cube6-purple {
   background-color: rgb(235, 175, 255);
+}
+
+.file-purple:hover,
+.folder-purple:hover {
+  border: 2px solid #c300cd;
+  border-radius: 10px;
 }
 
 /*　橙　*/
@@ -235,6 +250,12 @@
   background-color: rgb(255, 215, 175);
 }
 
+.file-orange:hover,
+.folder-orange:hover {
+  border: 2px solid #da6b2b;
+  border-radius: 10px;
+}
+
 /*　灰色　*/
 .backgroundColor-gray {
   background-color: rgb(236, 236, 236);
@@ -270,4 +291,10 @@
 .cube5-gray,
 .cube6-gray {
   background-color: rgb(188, 188, 188);
+}
+
+.file-gray:hover,
+.folder-gray:hover {
+  border: 2px solid #959595;
+  border-radius: 10px;
 }
