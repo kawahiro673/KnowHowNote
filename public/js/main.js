@@ -74,7 +74,7 @@ export const listCreate = () => {
                 li.setAttribute('class', `parent${folder.parent_id}`);
                 li.setAttribute('id', `foli${folder.id}`);
                 let span = document.createElement('span');
-                span.setAttribute('class', 'folder folder-red');
+                span.setAttribute('class', 'folder folder-green');
                 span.setAttribute('id', `folder${folder.id}`);
                 span.setAttribute('value', `${folder.id}`);
                 span.innerHTML = folder.folder_name;
@@ -114,7 +114,7 @@ export const listCreate = () => {
                 li.setAttribute('id', `li${file.id}`);
 
                 let span = document.createElement('span');
-                span.setAttribute('class', 'list_title file file-red');
+                span.setAttribute('class', 'list_title file file-green');
                 span.setAttribute('id', `file${file.id}`);
                 span.style.color = file.title_color;
                 span.setAttribute('value', `${file.id}`);
