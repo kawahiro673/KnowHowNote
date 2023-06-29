@@ -68,7 +68,7 @@ header h2 {
 
 .file:hover,
 .folder:hover {
-  border: 2px solid #00ffff;
+  border: 2px solid #ff1e00;
   border-radius: 10px;
 }
 
