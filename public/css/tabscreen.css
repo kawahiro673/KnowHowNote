@@ -308,6 +308,7 @@
   border: none;
   outline: none;
   background: transparent;
+  z-index: 150;
 }
 .tabClosebutton:hover {
   color: black;
