@@ -74,7 +74,10 @@ export const listCreate = () => {
                 li.setAttribute('class', `parent${folder.parent_id}`);
                 li.setAttribute('id', `foli${folder.id}`);
                 let span = document.createElement('span');
-                span.setAttribute('class', 'folder folder-green');
+                span.setAttribute(
+                  'class',
+                  `folder folder-${res.user.BackgroundColor}`
+                );
                 span.setAttribute('id', `folder${folder.id}`);
                 span.setAttribute('value', `${folder.id}`);
                 span.innerHTML = folder.folder_name;
