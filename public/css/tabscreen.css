@@ -278,10 +278,99 @@
   display: none;
 }
 
+.tabname {
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px; /* 省略する幅を指定 */
+}
+
 /* .tabname {
   z-index: 100;
   position: relative;
 } */
+
+.tabClosebutton {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  height: 20px;
+  width: 20px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  top: 10px;
+  left: 10px;
+  position: absolute;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+.tabClosebutton:hover {
+  color: black;
+  font-weight: bold;
+  background-color: gray;
+  border-radius: 10px;
+}
+.tabDB {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  height: 18px;
+  width: 18px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  top: 5px;
+  left: 5px;
+  position: absolute;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+.tabDB:hover {
+  color: black;
+  font-weight: bold;
+  background-color: gray;
+  border-radius: 10px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 30px;
+}
+
+.edit-save-button {
+  text-align: center;
+}
+.edit {
+  margin: 20px;
+  width: 200px;
+  display: inline-block; /*改行が入らず横に並ぶ*/
+}
+.save {
+  margin: 20px;
+  width: 200px;
+  display: inline-block;
+}
+.delete {
+  margin-right: 20px;
+  margin-bottom: 20px;
+  float: right;
+}
+
+.image-container {
+  position: sticky;
+  margin-bottom: 20px;
+  margin-left: -30px;
+}
+
+.updatetime {
+  margin-top: 0px;
+  margin-right: 30px;
+  font-family: 'Zen_Kurenaido', 'Hannotate SC', sans-serif;
+}
 /************************　ノート側　******************************/
 /*タブのスタイル*/
 .container1 label:first-of-type {
