@@ -21,8 +21,8 @@ export const folderContextmenu = (tabIdArray) => {
       elem: this,
     };
 
-    folder.elem.style.backgroundColor = '#A7F1FF';
-    folder.elem.style.borderRadius = '10px';
+    folder.elem.style.backgroundColor = '#F5F5F5';
+    folder.elem.style.borderRadius = '5px';
 
     const order = orderGet(
       `parent${folder.elem.parentNode.parentNode.id}`,

@@ -278,10 +278,10 @@
   display: none;
 }
 
-.tabname {
+/* .tabname {
   z-index: 100;
   position: relative;
-}
+} */
 /************************　ノート側　******************************/
 /*タブのスタイル*/
 .container1 label:first-of-type {

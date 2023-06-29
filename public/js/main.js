@@ -117,7 +117,10 @@ export const listCreate = () => {
                 li.setAttribute('id', `li${file.id}`);
 
                 let span = document.createElement('span');
-                span.setAttribute('class', 'list_title file file-green');
+                span.setAttribute(
+                  'class',
+                  `list_title file file-${res.user.BackgroundColor}`
+                );
                 span.setAttribute('id', `file${file.id}`);
                 span.style.color = file.title_color;
                 span.setAttribute('value', `${file.id}`);

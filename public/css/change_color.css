@@ -38,7 +38,6 @@
 .file-blue:hover,
 .folder-blue:hover {
   border: 2px solid #00ffff;
-  border-radius: 10px;
 }
 
 /*　赤　*/
@@ -81,7 +80,6 @@
 .file-red:hover,
 .folder-red:hover {
   border: 2px solid #ff6161;
-  border-radius: 10px;
 }
 
 /*　黄　*/
@@ -124,7 +122,6 @@
 .file-yellow:hover,
 .folder-yellow:hover {
   border: 2px solid #fffa61;
-  border-radius: 10px;
 }
 
 /*　緑　*/
@@ -167,7 +164,6 @@
 .file-green:hover,
 .folder-green:hover {
   border: 2px solid #00d600;
-  border-radius: 10px;
 }
 
 /*　紫　*/
@@ -210,7 +206,6 @@
 .file-purple:hover,
 .folder-purple:hover {
   border: 2px solid #c300cd;
-  border-radius: 10px;
 }
 
 /*　橙　*/
@@ -253,7 +248,6 @@
 .file-orange:hover,
 .folder-orange:hover {
   border: 2px solid #da6b2b;
-  border-radius: 10px;
 }
 
 /*　灰色　*/
@@ -296,5 +290,4 @@
 .file-gray:hover,
 .folder-gray:hover {
   border: 2px solid #959595;
-  border-radius: 10px;
 }

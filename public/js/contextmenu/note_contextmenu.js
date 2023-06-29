@@ -14,8 +14,8 @@ export const fileContextmenu = (tabIdArray) => {
       elem: this,
     };
 
-    file.elem.style.backgroundColor = '#A7F1FF';
-    file.elem.style.borderRadius = '10px';
+    file.elem.style.backgroundColor = '#F5F5F5';
+    file.elem.style.borderRadius = '5px';
 
     const order = orderGet(
       `parent${file.elem.parentNode.parentNode.id}`,
