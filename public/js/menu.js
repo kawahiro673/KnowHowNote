@@ -271,12 +271,10 @@ document.getElementById('yes-button-delete').addEventListener('click', () => {
     success: function (res) {
       //全削除
       $('#0').empty();
-      // $('#tab').empty();
 
-      // 要素を取得
+      // loader以外（タブの要素のみ）を削除させる
       const tabLoader = document.getElementById('tab_loader');
       const tabWrap = document.getElementById('tab');
-      // 不要な要素を削除
       while (tabWrap.firstChild !== tabLoader) {
         tabWrap.removeChild(tabWrap.firstChild);
       }
