@@ -347,6 +347,14 @@ router.post('/', (req, res) => {
         res.send({ msg: '成功しました' });
       }
     );
+  } else if (req.body.flg === 'labelColorGet') {
+    pool.query(
+      'SELECT * FROM it_memo WHERE id = ?',
+      [req.body.id],
+      (error, result) => {
+        res.send({ labelColor: result[0].label_color });
+      }
+    );
   }
 });
 
