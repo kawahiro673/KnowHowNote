@@ -123,6 +123,9 @@ export const tabCreate = (id, title, res) => {
   div.appendChild(time);
   tabLabelColorGet(id);
 
+  const label = document.getElementById(`tab-ID${id}`);
+  label.style.setProperty('--tab-label-background-color', color);
+
   return [editButton, shareButton, tabClosebutton];
 };
 
@@ -203,7 +206,7 @@ export const cancelButtonClick = (id) => {
 
 export function shareButtonClick(id, event, title, flg) {
   document.getElementById('popup-overlay_share').style.display = 'block';
-
+  //共有ボタン押下時のタイトル取得
   if (flg !== 'contextmenu') {
     title =
       event.target.parentNode.parentNode.querySelectorAll('p')[0].innerHTML;
