@@ -123,8 +123,7 @@ export const tabCreate = (id, title, res) => {
   div.appendChild(time);
   tabLabelColorGet(id);
 
-  const label = document.getElementById(`tab-ID${id}`);
-  label.style.setProperty('--tab-label-background-color', color);
+  tabLabelColorApply(id);
 
   return [editButton, shareButton, tabClosebutton];
 };
@@ -513,4 +512,22 @@ export const binderCreate = () => {
     imageContainer.appendChild(image);
     document.getElementById('tab').appendChild(imageContainer);
   }
+};
+
+const tabLabelColorApply = (id) => {
+  $.ajax({
+    url: '/tabPostController/',
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'labelColorGet',
+      id,
+    }),
+    success: function (res) {
+      const label = document.getElementById(`tab-ID${id}`);
+      // 各.tab-labelにランダムな色を割り当てる
+      label.style.setProperty('--tab-label-background-color', res.labelColor);
+    },
+  });
 };
