@@ -271,10 +271,22 @@ document.getElementById('yes-button-delete').addEventListener('click', () => {
     success: function (res) {
       //全削除
       $('#0').empty();
-      $('#tab').empty();
+      // $('#tab').empty();
+
+      // 要素を取得
+      const tabLoader = document.getElementById('tab_loader');
+      const tabWrap = document.getElementById('tab');
+      // 不要な要素を削除
+      while (tabWrap.firstChild !== tabLoader) {
+        tabWrap.removeChild(tabWrap.firstChild);
+      }
+      while (tabWrap.lastChild !== tabLoader) {
+        tabWrap.removeChild(tabWrap.lastChild);
+      }
+
       let p = document.createElement('p');
       p.setAttribute('id', 'notab');
-      p.innerHTML = 'こちらにnoteが出力されます';
+      p.innerHTML = 'こちらにノウハウが出力されます';
       document.getElementById('tab').appendChild(p);
       document.getElementById('notepass').innerHTML = '';
       document.getElementById('popup-overlay_delete').style.display = 'none';
