@@ -340,54 +340,11 @@ router.post('/', (req, res) => {
       res.end(); // 何も送信しない
     }
   } else if (req.body.flg === 'labelColorUpdate') {
-    let promise = new Promise((resolve, reject) => {
-      resolve();
-    });
-    promise
-      .then(() => {
-        return new Promise((resolve, reject) => {
-          pool.query(
-            'UPDATE tab_hold SET label_color = ? WHERE id = ? ',
-            [req.body.color, req.body.id],
-            (error, result) => {
-              if (error) {
-                reject(error);
-              } else {
-                resolve();
-              }
-            }
-          );
-        });
-      })
-      .then(() => {
-        return new Promise((resolve, reject) => {
-          pool.query(
-            'UPDATE it_memo SET tab_color = ? WHERE id = ? ',
-            [req.body.color, req.body.id],
-            (error, result) => {
-              res.send({ msg: '成功しました' });
-            }
-          );
-        });
-      })
-      .catch((error) => {
-        console.error(error);
-        res.status(500).send('Internal Server Error.(labelColorUpdate)');
-      });
-  } else if (req.body.flg === 'labelColorGet') {
     pool.query(
-      'SELECT * FROM tab_hold WHERE id = ?',
-      [req.body.id],
+      'UPDATE it_memo SET tab_color = ? WHERE id = ? ',
+      [req.body.color, req.body.id],
       (error, result) => {
-        res.send({ labelColor: result[0].label_color });
-      }
-    );
-  } else if (req.body.flg === 'labelColorGet') {
-    pool.query(
-      'SELECT * FROM it_memo WHERE id = ?',
-      [req.body.id],
-      (error, result) => {
-        res.send({ labelColor: result[0].tab_color });
+        res.send({ msg: '成功しました' });
       }
     );
   }
