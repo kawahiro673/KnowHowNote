@@ -1,4 +1,4 @@
-import { closeTab, deleteTabArray, shareNoteSendFunc } from '../tab_func.js';
+import { closeTab, deleteTabArray, shareButtonClick } from '../tab_func.js';
 import { currentTimeGet, orderGet } from '../stringUtils.js';
 import { tabFocusIDGet } from '../main.js';
 import { newFileCreateFunc } from '../newFileCreate.js';
@@ -37,7 +37,7 @@ export const fileContextmenu = (tabIdArray) => {
     $(document).ready(function () {
       $('#file-share').off('click');
       $('#file-share').on('click', function (event) {
-        shareNoteSendFunc(file.id, file.title);
+        shareButtonClick(file.id, null, file.title, 'contextmenu');
       });
     });
 

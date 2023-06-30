@@ -201,19 +201,18 @@ export const cancelButtonClick = (id) => {
   }
 };
 
-//[共有する]ボタン押下時
-let shareId;
-let shareTitle;
-export function shareButtonClick(id, event) {
+export function shareButtonClick(id, event, title, flg) {
   document.getElementById('popup-overlay_share').style.display = 'block';
-  shareId = id;
-  shareTitle =
-    event.target.parentNode.parentNode.querySelectorAll('p')[0].innerHTML;
-}
 
-document.getElementById('share-send').addEventListener('click', (e) => {
-  shareNoteSendFunc(shareId, shareTitle);
-});
+  if (flg !== 'contextmenu') {
+    title =
+      event.target.parentNode.parentNode.querySelectorAll('p')[0].innerHTML;
+  }
+
+  document.getElementById('share-send').addEventListener('click', (e) => {
+    shareNoteSendFunc(id, title);
+  });
+}
 
 export const shareNoteSendFunc = (id, title) => {
   const inputValue = document.getElementsByClassName('share-input')[0].value;
