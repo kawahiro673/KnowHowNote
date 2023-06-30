@@ -352,7 +352,7 @@ router.post('/', (req, res) => {
       'SELECT * FROM it_memo WHERE id = ?',
       [req.body.id],
       (error, result) => {
-        res.send({ labelColor: result[0].label_color });
+        res.send({ labelColor: result[0].tab_color });
       }
     );
   }
