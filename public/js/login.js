@@ -14,7 +14,7 @@ function loginButtonClick() {
     data: JSON.stringify({
       flg: 'info',
       email: email.value,
-      username,
+      username: username.value,
       password: password.value,
     }),
     success: function (res) {
