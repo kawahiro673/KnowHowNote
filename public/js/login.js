@@ -1,6 +1,7 @@
 const loginbtn = document.getElementById('loginbtn');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
+const username = document.getElementById('username_login');
 
 loginbtn.addEventListener('click', loginButtonClick);
 
@@ -13,6 +14,7 @@ function loginButtonClick() {
     data: JSON.stringify({
       flg: 'info',
       email: email.value,
+      username,
       password: password.value,
     }),
     success: function (res) {
