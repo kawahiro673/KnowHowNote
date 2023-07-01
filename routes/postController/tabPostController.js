@@ -7,6 +7,7 @@ router.post('/', (req, res) => {
   if (req.body.flg === 'clickTab') {
     const token = req.cookies.token;
     const decoded = JWT.verify(token, 'SECRET_KEY');
+    console.log(decoded.userName + 'ya');
     let promise = new Promise((resolve, reject) => {
       resolve();
     });
@@ -141,6 +142,7 @@ router.post('/', (req, res) => {
       })
       .then((resultDecoded) => {
         return new Promise((resolve, reject) => {
+          console.log(decoded.userName + 'ya100');
           pool.query(
             'SELECT * FROM tab_hold WHERE UserID = ? ORDER BY tabOrder;',
             [resultDecoded[0].id],
