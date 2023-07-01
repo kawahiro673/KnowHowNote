@@ -6,7 +6,7 @@ const { redirect } = require('express/lib/response');
 
 router.post('/', async (req, res) => {
   let email = req.body.email;
-  let username = req.body.username;
+  let userName = req.body.username;
   console.log(username);
   if (req.body.flg === 'info') {
     pool.query('SELECT * FROM register_user;', async (error, result) => {
@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
       }
       const token = await JWT.sign(
         {
-          username,
+          userName,
         },
         'SECRET_KEY' // 秘密鍵。envファイルなどに隠して管理することが推奨されます。
       );
