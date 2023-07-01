@@ -18,7 +18,7 @@ router
     } else if (req.body.flg === 'cipher') {
       //bcryptモジュールを使用して暗号化(ソルト)
       let userName = req.body.username;
-      let email = req.body.email;
+      // let email = req.body.email;
       const now = new Date();
       const formattedDate =
         now.getFullYear() +
@@ -42,8 +42,8 @@ router
         .then(() => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'INSERT INTO register_user (UserName, Email, HashedPassword, CreationDay) VALUES(?, ?, ?, ?);',
-              [userName, email, hashedPassword, formattedDate],
+              'INSERT INTO register_user (UserName, HashedPassword, CreationDay) VALUES(?, ?, ?);',
+              [userName, hashedPassword, formattedDate],
               (error, result) => {
                 if (error) {
                   reject();
@@ -194,7 +194,7 @@ router
           try {
             const token = await JWT.sign(
               {
-                email,
+                userName,
               },
               'SECRET_KEY'
             );
