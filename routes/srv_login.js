@@ -7,12 +7,10 @@ const { redirect } = require('express/lib/response');
 router.post('/', async (req, res) => {
   let email = req.body.email;
   let userName = req.body.username;
-  console.log(userName + 'srv_login');
   if (req.body.flg === 'info') {
     pool.query('SELECT * FROM register_user;', async (error, result) => {
       const user = result.find((user) => user.UserName === req.body.username);
       if (!user) {
-        console.log(1);
         return res.send({
           message: 'ユーザー名またはパスワードが間違っています',
         });
@@ -22,7 +20,6 @@ router.post('/', async (req, res) => {
         user.HashedPassword
       );
       if (!isMatch) {
-        console.log(2);
         return res.send({
           message: 'ユーザー名またはパスワードが間違っています',
         });
