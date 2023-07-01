@@ -4,6 +4,8 @@ const JWT = require('jsonwebtoken');
 const { reject } = require('bcrypt/promises');
 
 router.post('/', (req, res) => {
+  // const token = req.cookies.token;
+  // const decoded = JWT.verify(token, 'SECRET_KEY');
   if (req.body.flg === 'newNote') {
     if (req.body.pattern === 'new') {
       const token = req.cookies.token;
@@ -15,8 +17,8 @@ router.post('/', (req, res) => {
         .then(() => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'SELECT * FROM register_user WHERE Email = ?;',
-              [decoded.email],
+              'SELECT * FROM register_user WHERE UserName = ?;',
+              [decoded.userName],
               (error, resultDecoded) => {
                 if (error) {
                   reject(error);
@@ -153,8 +155,8 @@ router.post('/', (req, res) => {
       .then(() => {
         return new Promise((resolve, reject) => {
           pool.query(
-            'SELECT * FROM register_user WHERE Email = ?;',
-            [decoded.email],
+            'SELECT * FROM register_user WHERE UserName = ?;',
+            [decoded.userName],
             (error, resultDecoded) => {
               if (error) {
                 reject(error);
@@ -249,8 +251,8 @@ router.post('/', (req, res) => {
       .then(() => {
         return new Promise((resolve, reject) => {
           pool.query(
-            'SELECT * FROM register_user WHERE Email = ?;',
-            [decoded.email],
+            'SELECT * FROM register_user WHERE UserName = ?;',
+            [decoded.userName],
             (error, resultDecoded) => {
               if (error) {
                 reject(error);
@@ -424,8 +426,8 @@ router.post('/', (req, res) => {
       .then(() => {
         return new Promise((resolve, reject) => {
           pool.query(
-            'SELECT * FROM register_user WHERE Email = ?;',
-            [decoded.email],
+            'SELECT * FROM register_user WHERE UserName = ?;',
+            [decoded.userName],
             (error, resultDecoded) => {
               if (error) {
                 reject(error);

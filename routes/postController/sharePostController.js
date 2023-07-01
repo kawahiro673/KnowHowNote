@@ -54,8 +54,8 @@ router.post('/', (req, res) => {
       .then(() => {
         return new Promise((resolve, rejct) => {
           pool.query(
-            'SELECT * FROM register_user WHERE Email = ?;',
-            [decoded.email],
+            'SELECT * FROM register_user WHERE UserName = ?;',
+            [decoded.userName],
             (error, resultDecoded) => {
               if (error) {
                 rejct(error);

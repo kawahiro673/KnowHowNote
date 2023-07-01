@@ -36,8 +36,8 @@ router
         .then(() => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'SELECT * FROM register_user WHERE Email = ?;',
-              [decoded.email],
+              'SELECT * FROM register_user WHERE UserName = ?;',
+              [decoded.userName],
               (error, resultDecoded) => {
                 if (error) {
                   reject(error);
@@ -231,8 +231,8 @@ router
         .then(() => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'SELECT * FROM register_user WHERE Email = ?;',
-              [decoded.email],
+              'SELECT * FROM register_user WHERE UserName = ?;',
+              [decoded.userName],
               (error, resultDecoded) => {
                 if (error) {
                   reject(error);
@@ -292,8 +292,8 @@ router
         .then(() => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'SELECT * FROM register_user WHERE Email = ?;',
-              [decoded.email],
+              'SELECT * FROM register_user WHERE UserName = ?;',
+              [decoded.userName],
               (error, resultDecoded) => {
                 if (error) {
                   reject(error);
@@ -378,8 +378,8 @@ router
         .then(() => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'SELECT * FROM register_user WHERE Email = ?;',
-              [decoded.email],
+              'SELECT * FROM register_user WHERE UserName = ?;',
+              [decoded.userName],
               (error, resultDecoded) => {
                 if (error) {
                   reject(error);
@@ -440,8 +440,8 @@ router
         .then(() => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'SELECT * FROM register_user WHERE Email = ?;',
-              [decoded.email],
+              'SELECT * FROM register_user WHERE UserName = ?;',
+              [decoded.UserName],
               (error, resultDecoded) => {
                 if (error) {
                   reject(error);
@@ -571,8 +571,8 @@ router
               } else {
                 return new Promise((resolve, reject) => {
                   pool.query(
-                    'SELECT * FROM register_user WHERE Email = ?;',
-                    [decoded.email],
+                    'SELECT * FROM register_user WHERE UserName = ?;',
+                    [decoded.userName],
                     (error, resultDecoded) => {
                       if (error) {
                         reject(error);
@@ -640,8 +640,8 @@ router
         .then(() => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'SELECT * FROM register_user WHERE Email = ?;',
-              [decoded.email],
+              'SELECT * FROM register_user WHERE UserName = ?;',
+              [decoded.userName],
               (error, resultDecoded) => {
                 if (error) {
                   reject(error);
@@ -671,8 +671,8 @@ router
       const token = req.cookies.token;
       const decoded = JWT.verify(token, 'SECRET_KEY');
       pool.query(
-        'SELECT * FROM register_user WHERE Email = ?;',
-        [decoded.email],
+        'SELECT * FROM register_user WHERE UserName = ?;',
+        [decoded.userName],
         (error, resultDecoded) => {
           res.send({
             user: resultDecoded[0],
@@ -690,8 +690,8 @@ router
         .then(() => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'SELECT * FROM register_user WHERE Email = ?;',
-              [decoded.email],
+              'SELECT * FROM register_user WHERE UserName = ?;',
+              [decoded.userName],
               (error, resultDecoded) => {
                 if (error) {
                   reject(error);
@@ -731,8 +731,8 @@ router
         .then(() => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'SELECT * FROM register_user WHERE Email = ?;',
-              [decoded.email],
+              'SELECT * FROM register_user WHERE UserName = ?;',
+              [decoded.userName],
               (error, resultDecoded) => {
                 if (error) {
                   reject(error);
@@ -776,8 +776,8 @@ router
         .then(() => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'SELECT * FROM register_user WHERE Email = ?;',
-              [decoded.email],
+              'SELECT * FROM register_user WHERE UserName = ?;',
+              [decoded.userName],
               (error, resultDecoded) => {
                 if (error) {
                   reject(error);
