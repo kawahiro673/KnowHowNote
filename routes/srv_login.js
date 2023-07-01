@@ -7,7 +7,7 @@ const { redirect } = require('express/lib/response');
 router.post('/', async (req, res) => {
   let email = req.body.email;
   let userName = req.body.username;
-  console.log(username);
+  console.log(userName + 'srv_login');
   if (req.body.flg === 'info') {
     pool.query('SELECT * FROM register_user;', async (error, result) => {
       const user = result.find((user) => user.UserName === req.body.username);
