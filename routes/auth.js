@@ -35,6 +35,8 @@ router
 
       let hashedPassword = await bcrypt.hash(req.body.password, 10);
 
+      const randomID = generateRandomID();
+
       let promise = new Promise((resolve, reject) => {
         resolve();
       });
@@ -42,8 +44,8 @@ router
         .then(() => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'INSERT INTO register_user (UserName, HashedPassword, CreationDay) VALUES(?, ?, ?);',
-              [userName, hashedPassword, formattedDate],
+              'INSERT INTO register_user (UserName, HashedPassword, CreationDay, Authentication_ID) VALUES(?, ?, ?, ?);',
+              [userName, hashedPassword, formattedDate, randomID],
               (error, result) => {
                 if (error) {
                   reject();
@@ -227,3 +229,18 @@ router
 //ログイン用のAPI
 
 module.exports = router;
+
+//数字とアルファベットの文字セットからランダムな文字を選択し、4文字ずつ区切った形式で16桁のユーザーIDを生成
+function generateRandomID() {
+  const characters =
+    '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  let userID = '';
+  for (let i = 0; i < 16; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    userID += characters.charAt(randomIndex);
+    if ((i + 1) % 4 === 0 && i !== 15) {
+      userID += '-';
+    }
+  }
+  return userID;
+}
