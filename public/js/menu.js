@@ -14,7 +14,8 @@ document.getElementById('profile').addEventListener('click', () => {
     }),
     success: function (res) {
       document.getElementById('myName').innerHTML = res.user.UserName;
-      document.getElementById('mail').innerHTML = res.email;
+      document.getElementById('authentication-ID').innerHTML =
+        res.Authentication_ID;
       document.getElementById('share-pass-input').value = res.user.SharePass;
       const date = new Date(res.user.CreationDay);
       document.getElementById('RegistrationDate').innerHTML =
