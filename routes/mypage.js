@@ -677,7 +677,6 @@ router
           res.send({
             user: resultDecoded[0],
             email: decoded.email,
-            Authentication_ID: decoded.Authentication_ID,
           });
         }
       );
