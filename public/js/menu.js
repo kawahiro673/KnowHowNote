@@ -186,7 +186,7 @@ document
     }
   });
 
-//バージョンのポップアップ
+//このサイトについてのポップアップ
 document.getElementById('About-Website').addEventListener('click', () => {
   document.getElementById('popup-overlay_About-Website').style.display =
     'block';
@@ -204,6 +204,27 @@ document
   .getElementById('popup-overlay_About-Website')
   .addEventListener('click', (e) => {
     const popup = document.getElementById('popup-overlay_About-Website');
+    if (e.target === popup) {
+      popup.style.display = 'none';
+    }
+  });
+
+//フレンドリストのポップアップ出力
+document.getElementById('friend-list').addEventListener('click', () => {
+  document.getElementById('popup-overlay_friend-list').style.display = 'block';
+});
+
+document
+  .getElementById('pop-delete_friend-list')
+  .addEventListener('click', (e) => {
+    e.preventDefault(); // リンクのデフォルトの動作を無効化
+    document.getElementById('popup-overlay_friend-list').style.display = 'none';
+  });
+
+document
+  .getElementById('popup-overlay_friend-list')
+  .addEventListener('click', (e) => {
+    const popup = document.getElementById('popup-overlay_friend-list');
     if (e.target === popup) {
       popup.style.display = 'none';
     }
