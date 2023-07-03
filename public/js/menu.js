@@ -472,20 +472,20 @@ $('.checkbox-share').on('click', (event) => {
   });
 });
 
-document.getElementById('share-pass-butotn').addEventListener('click', () => {
-  console.log(document.getElementById('share-pass-input').value);
-  $.ajax({
-    url: '/mypage/' + hashedIdGet,
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      flg: 'register_user_update',
-      sharePass: document.getElementById('share-pass-input').value,
-    }),
-    success: function (res) {},
-  });
-});
+// document.getElementById('share-pass-butotn').addEventListener('click', () => {
+//   console.log(document.getElementById('share-pass-input').value);
+//   $.ajax({
+//     url: '/mypage/' + hashedIdGet,
+//     type: 'POST',
+//     dataType: 'Json',
+//     contentType: 'application/json',
+//     data: JSON.stringify({
+//       flg: 'register_user_update',
+//       sharePass: document.getElementById('share-pass-input').value,
+//     }),
+//     success: function (res) {},
+//   });
+// });
 
 export const backgroundColorSet = (color) => {
   document
