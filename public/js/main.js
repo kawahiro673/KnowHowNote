@@ -460,3 +460,4 @@ export function hashedIdGet() {
 
 //丸本イズム
 //まちゅんご
+//魔rt山rtユア
