@@ -16,7 +16,7 @@ document.getElementById('profile').addEventListener('click', () => {
       document.getElementById('myName').innerHTML = res.user.UserName;
       document.getElementById('authentication-ID').innerHTML =
         res.user.Authentication_ID;
-      document.getElementById('share-pass-input').value = res.user.SharePass;
+      // document.getElementById('share-pass-input').value = res.user.SharePass;
       const date = new Date(res.user.CreationDay);
       document.getElementById('RegistrationDate').innerHTML =
         date.toLocaleDateString('ja-JP');
