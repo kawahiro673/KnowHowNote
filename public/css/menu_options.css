@@ -215,7 +215,8 @@
   transform: translate(-50%, -50%);
 }
 
-.popup-body_profile p {
+.popup-body_profile p,
+.checkbox-share-container {
   border-bottom: 1px solid #ccc;
   padding-bottom: 10px;
   margin-bottom: 10px;
