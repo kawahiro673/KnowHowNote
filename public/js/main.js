@@ -459,3 +459,4 @@ export function hashedIdGet() {
 }
 
 //丸本イズム
+//まちゅんご
