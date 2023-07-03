@@ -187,19 +187,23 @@ document
   });
 
 //バージョンのポップアップ
-document.getElementById('version').addEventListener('click', () => {
-  document.getElementById('popup-overlay_version').style.display = 'block';
-});
-
-document.getElementById('pop-delete_version').addEventListener('click', (e) => {
-  e.preventDefault(); // リンクのデフォルトの動作を無効化
-  document.getElementById('popup-overlay_version').style.display = 'none';
+document.getElementById('About-Website').addEventListener('click', () => {
+  document.getElementById('popup-overlay_About-Website').style.display =
+    'block';
 });
 
 document
-  .getElementById('popup-overlay_version')
+  .getElementById('pop-delete_About-Website')
   .addEventListener('click', (e) => {
-    const popup = document.getElementById('popup-overlay_version');
+    e.preventDefault(); // リンクのデフォルトの動作を無効化
+    document.getElementById('popup-overlay_About-Website').style.display =
+      'none';
+  });
+
+document
+  .getElementById('popup-overlay_About-Website')
+  .addEventListener('click', (e) => {
+    const popup = document.getElementById('popup-overlay_About-Website');
     if (e.target === popup) {
       popup.style.display = 'none';
     }
