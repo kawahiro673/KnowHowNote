@@ -243,7 +243,8 @@
 #share-user-button,
 #share-user-add-button,
 #share-user-clear-button,
-#Add-from-Details {
+#Add-from-Details,
+#friend-list-add-button{
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -270,7 +271,8 @@
 #share-pass-butotn,
 #share-user-button,
 #share-user-add-button,
-#share-user-clear-button {
+#share-user-clear-button,
+#friend-list-add-button{
   padding: 7px 14px;
   font-size: 12px;
 }
