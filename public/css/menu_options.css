@@ -292,6 +292,9 @@
   margin-right: 7px;
 }
 
+.checkbox-container{
+border-top: 1px solid #ccc;
+}
 .checkmark,
 .checkmark-share {
   position: relative;
