@@ -215,8 +215,7 @@
   transform: translate(-50%, -50%);
 }
 
-.popup-body_profile p,
-.checkbox-share-container {
+.popup-body_profile p {
   border-bottom: 1px solid #ccc;
   padding-bottom: 10px;
   margin-bottom: 10px;
@@ -396,5 +395,6 @@ input[type='checkbox']:checked + .gray_b {
 }
 
 .gray-line{
-   border-top: 1px solid gray;
+   border-top: 1px solid #ccc;
+   margin-bottom: 10px;
 }
