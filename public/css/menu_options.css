@@ -396,5 +396,6 @@ input[type='checkbox']:checked + .gray_b {
 
 .gray-line{
    border-top: 1px solid #ccc;
+   margin-top: 10px;
    margin-bottom: 10px;
 }
