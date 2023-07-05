@@ -774,7 +774,7 @@ const friendListUpdate = () => {
     }),
     success: function (res) {
       document.getElementById('friend-list-div').innerHTML = res.friend
-        .map((friend) => `${friend.user_name} 追加日：(${friend.date}`)
+        .map((friend) => `${friend.user_name}    ${friend.date}`)
         .join('<br>');
     },
   });
