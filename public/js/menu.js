@@ -240,6 +240,16 @@ document.getElementById('pop-delete_inquiry').addEventListener('click', (e) => {
   document.getElementById('popup-overlay_inquiry').style.display = 'none';
 });
 
+//フレンド追加のポップアップ出力
+document.getElementById('friend-list-add-button').addEventListener('click', () => {
+  document.getElementById('popup-overlay_friend-add').style.display = 'block';
+});
+
+document.getElementById('pop-delete_friend-add').addEventListener('click', (e) => {
+  e.preventDefault(); // リンクのデフォルトの動作を無効化
+  document.getElementById('popup-overlay_friend-add').style.display = 'none';
+});
+
 //ログアウトポップアップ
 document.getElementById('logout').addEventListener('click', () => {
   document.getElementById('popup-overlay_logout').style.display = 'block';
