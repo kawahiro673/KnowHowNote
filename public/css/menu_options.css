@@ -73,7 +73,7 @@
 #popup-overlay_share-user,
 #popup-overlay_inquiry_result,
 #popup-overlay_friend-list,
-#popup-overlay_friend-add{
+#popup-overlay_friend-add {
   display: block;
   position: fixed;
   top: 0;
@@ -95,7 +95,7 @@
 .popup-window_share-user,
 .popup-window_inquiry_result,
 .popup-window_friend-list,
-.popup-window_friend-add{
+.popup-window_friend-add {
   width: 500px;
   height: 300px;
   background-color: #fff;
@@ -114,7 +114,7 @@
 
 .popup-window_About-Website,
 .popup-window_delete,
-.popup-window_friend-add{
+.popup-window_friend-add {
   height: 150px;
 }
 
@@ -143,7 +143,7 @@
 .popup-header_share-user,
 .popup-header_inquiry_result,
 .popup-header_friend-list,
-.popup-header_friend-add{
+.popup-header_friend-add {
   display: flex;
   align-items: center;
   justify-content: center; /* 中央寄せに変更 */
@@ -163,23 +163,44 @@
 .popup-header_share-user h2,
 .popup-header_inquiry_result h2,
 .popup-header_friend-list h2,
-.popup-header_friend-add h2{
+.popup-header_friend-add h2 {
   font-size: 16px;
   font-weight: normal;
   margin: 0 auto;
   padding: 0;
 }
 
-#pop-delete_profile{
+#pop-delete_profile,
+#pop-delete_share-history,
+#pop-delete_explanation,
+#pop-delete_inquiry,
+#pop-delete_About-Website,
+#pop-delete_logout,
+#pop-delete_delete,
+#pop-delete_share,
+#pop-delete_share-user,
+#pop-delete_share_no,
+#pop-delete_friend-list,
+#pop-delete_friend-add {
   text-decoration: none;
   font-size: 1.2em;
   font-weight: bold;
 }
 
-#pop-delete_profile:hover {
+#pop-delete_profile:hover,
+#pop-delete_share-history:hover,
+#pop-delete_explanation:hover,
+#pop-delete_inquiry:hover,
+#pop-delete_About-Website:hover,
+#pop-delete_logout:hover,
+#pop-delete_delete:hover,
+#pop-delete_share:hover,
+#pop-delete_share-user:hover,
+#pop-delete_share_no:hover,
+#pop-delete_friend-list:hover,
+#pop-delete_friend-add:hover {
   color: red;
 }
-
 
 .popup-body_inquiry textarea {
   text-align: left;
@@ -198,16 +219,20 @@
 .popup-body_share-user,
 .popup-body_inquiry_result,
 .popup-body_friend-list,
-.popup-body_friend-add{
+.popup-body_friend-add {
   position: relative;
   height: 240px;
   padding: 0 10px;
   overflow-y: scroll;
 }
 
-.popup-body_friend-add p{
-  font-size: 12px;
-  margin:5px;
+.popup-body_friend-add p {
+  font-size: 14px;
+  margin: 5px;
+}
+
+.popup-body_friend-add input {
+  margin-top: 10px;
 }
 
 .popup-body_share-user {
@@ -268,7 +293,7 @@
 #share-user-clear-button,
 #Add-from-Details,
 #friend-list-add-button,
-#friend-search-button{
+#friend-search-button {
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -297,7 +322,7 @@
 #share-user-add-button,
 #share-user-clear-button,
 #friend-list-add-button,
-#friend-search-button{
+#friend-search-button {
   padding: 7px 14px;
   font-size: 12px;
 }
@@ -421,13 +446,13 @@ input[type='checkbox']:checked + .gray_b {
   border: 1px solid black;
 }
 
-.gray-line{
-   border-top: 1px solid #ccc;
-   margin-top: 10px;
-   margin-bottom: 10px;
+.gray-line {
+  border-top: 1px solid #ccc;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-#idInput{
+#idInput {
   font-size: 20px;
-    margin: 5px auto;
+  margin: 5px auto;
 }
