@@ -711,6 +711,7 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
   });
 });
 
+//フレンド追加の検索ボタン押下時、
 document
   .getElementById('friend-search-button')
   .addEventListener('click', () => {
@@ -726,6 +727,29 @@ document
         Authentication_ID: document.getElementById('idInput').value,
         time,
       }),
-      success: function (res) {},
+      success: function (res) {
+        document.getElementById('popup-overlay_friend-add').style.display =
+          'none';
+        document.getElementById('popup-overlay_friend-add-ans').style.display =
+          'block';
+        document.getElementById('new-friend-user').innerHTML = res.userName;
+
+        document
+          .getElementById('popup-overlay_friend-add-ans')
+          .addEventListener('click', (e) => {
+            const popup = document.getElementById(
+              'popup-overlay_friend-add-ans'
+            );
+            if (e.target === popup) {
+              popup.style.display = 'none';
+            }
+          });
+
+        setTimeout(() => {
+          document.getElementById(
+            'popup-overlay_friend-add-ans'
+          ).style.display = 'none';
+        }, 1500);
+      },
     });
   });

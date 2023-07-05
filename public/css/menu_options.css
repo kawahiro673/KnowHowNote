@@ -73,7 +73,8 @@
 #popup-overlay_share-user,
 #popup-overlay_inquiry_result,
 #popup-overlay_friend-list,
-#popup-overlay_friend-add {
+#popup-overlay_friend-add,
+#popup-overlay_friend-add-ans {
   display: block;
   position: fixed;
   top: 0;
@@ -95,7 +96,8 @@
 .popup-window_share-user,
 .popup-window_inquiry_result,
 .popup-window_friend-list,
-.popup-window_friend-add {
+.popup-window_friend-add,
+.popup-window_friend-add-ans {
   width: 500px;
   height: 300px;
   background-color: #fff;
@@ -122,7 +124,8 @@
   height: 180px;
   width: 300px;
 }
-.popup-window_logout {
+.popup-window_logout,
+.popup-window_friend-add-ans {
   height: 180px;
   width: 330px;
 }
@@ -143,7 +146,8 @@
 .popup-header_share-user,
 .popup-header_inquiry_result,
 .popup-header_friend-list,
-.popup-header_friend-add {
+.popup-header_friend-add,
+.popup-header_friend-add-ans {
   display: flex;
   align-items: center;
   justify-content: center; /* 中央寄せに変更 */
@@ -163,7 +167,8 @@
 .popup-header_share-user h2,
 .popup-header_inquiry_result h2,
 .popup-header_friend-list h2,
-.popup-header_friend-add h2 {
+.popup-header_friend-add h2,
+.popup-header_friend-add-ans h2 {
   font-size: 16px;
   font-weight: normal;
   margin: 0 auto;
@@ -219,7 +224,8 @@
 .popup-body_share-user,
 .popup-body_inquiry_result,
 .popup-body_friend-list,
-.popup-body_friend-add {
+.popup-body_friend-add,
+.popup-body_friend-add-ans {
   position: relative;
   height: 240px;
   padding: 0 10px;

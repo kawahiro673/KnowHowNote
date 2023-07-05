@@ -857,7 +857,7 @@ router
                 if (error) {
                   reject(error);
                 } else {
-                  res.send({ msg: '成功' });
+                  res.send({ userName: user.UserName });
                 }
               }
             );
