@@ -409,3 +409,9 @@ input[type='checkbox']:checked + .gray_b {
    margin-top: 10px;
    margin-bottom: 10px;
 }
+
+#idInput{
+   margin-top:   5px;
+  margin-bottom: 5px;
+  font-size: 22px;
+}
