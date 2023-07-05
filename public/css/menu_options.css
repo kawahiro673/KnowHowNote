@@ -193,6 +193,12 @@
   padding: 0 10px;
   overflow-y: scroll;
 }
+
+.popup-body_friend-add p{
+  font-size: 10px;
+  margin:5px;
+}
+
 .popup-body_share-user {
   height: 300px;
 }
