@@ -843,7 +843,7 @@ router
                       user.Authentication_ID === req.body.Authentication_ID
                   );
                   if (!user) {
-                    res.send({ msg: 'NG' });
+                    return res.send({ msg: 'NG' });
                   }
                   resolve({ user: user, resultDecoded: resultDecoded });
                 }
