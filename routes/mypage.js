@@ -807,6 +807,66 @@ router
           console.error(error);
           res.status(500).json({ message: error.message, nothing });
         });
+    } else if (req.body.flg === 'Authentication_ID') {
+      const token = req.cookies.token;
+      const decoded = JWT.verify(token, 'SECRET_KEY');
+      let promise = new Promise((resolve, reject) => {
+        resolve();
+      });
+      promise
+        .then(() => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'SELECT * FROM register_user WHERE UserName = ?;',
+              [decoded.userName],
+              (error, resultDecoded) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  resolve(resultDecoded);
+                }
+              }
+            );
+          });
+        })
+        .then((resultDecoded) => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'SELECT * FROM register_user WHERE Authentication_ID = ?;',
+              [req.body.Authentication_ID],
+              (error, result) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  const user = result.find(
+                    (user) =>
+                      user.Authentication_ID === req.body.Authentication_ID
+                  );
+                  resolve({ user: user, resultDecoded: resultDecoded });
+                }
+              }
+            );
+          });
+        })
+        .then(({ user, resultDecoded }) => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'INSERT INTO friend_list (user_name, date, UserID) values(?, ?, ?);',
+              [user.UserName, req.body.time, resultDecoded[0].id],
+              (error, result) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  res.send({ msg: '成功' });
+                }
+              }
+            );
+          });
+        })
+        .catch((error) => {
+          console.error(error);
+          res.status(500).json({ message: error.message, nothing });
+        });
     } else {
       console.log('flgで何も受け取ってません');
     }

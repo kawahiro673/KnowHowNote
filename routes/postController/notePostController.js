@@ -489,7 +489,6 @@ router.post('/', (req, res) => {
         res.status(500).send('Internal Server Error.(parentIDDiffer)');
       });
   } else if (req.body.flg === 'updatetime') {
-    console.log(`[POST受信(updatetime)] time : ${req.body.time}`);
     pool.query(
       'UPDATE it_memo SET saved_time = ? WHERE id = ?;',
       [req.body.time, req.body.id],

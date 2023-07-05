@@ -241,14 +241,18 @@ document.getElementById('pop-delete_inquiry').addEventListener('click', (e) => {
 });
 
 //フレンド追加のポップアップ出力
-document.getElementById('friend-list-add-button').addEventListener('click', () => {
-  document.getElementById('popup-overlay_friend-add').style.display = 'block';
-});
+document
+  .getElementById('friend-list-add-button')
+  .addEventListener('click', () => {
+    document.getElementById('popup-overlay_friend-add').style.display = 'block';
+  });
 
-document.getElementById('pop-delete_friend-add').addEventListener('click', (e) => {
-  e.preventDefault(); // リンクのデフォルトの動作を無効化
-  document.getElementById('popup-overlay_friend-add').style.display = 'none';
-});
+document
+  .getElementById('pop-delete_friend-add')
+  .addEventListener('click', (e) => {
+    e.preventDefault(); // リンクのデフォルトの動作を無効化
+    document.getElementById('popup-overlay_friend-add').style.display = 'none';
+  });
 
 //ログアウトポップアップ
 document.getElementById('logout').addEventListener('click', () => {
@@ -706,3 +710,22 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
     },
   });
 });
+
+document
+  .getElementById('friend-search-button')
+  .addEventListener('click', () => {
+    console.log('kurikku');
+    const time = currentTimeGet();
+    $.ajax({
+      url: '/mypage/' + hashedIdGet,
+      type: 'POST',
+      dataType: 'Json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        flg: 'Authentication_ID',
+        Authentication_ID: document.getElementById('idInput').value,
+        time,
+      }),
+      success: function (res) {},
+    });
+  });
