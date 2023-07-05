@@ -195,7 +195,7 @@
 }
 
 .popup-body_friend-add p{
-  font-size: 10px;
+  font-size: 18px;
   margin:5px;
 }
 
@@ -417,7 +417,6 @@ input[type='checkbox']:checked + .gray_b {
 }
 
 #idInput{
-   margin-top:   5px;
-  margin-bottom: 5px;
-  font-size: 22px;
+  font-size: 20px;
+    margin: 5px auto;
 }
