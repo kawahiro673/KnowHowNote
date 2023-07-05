@@ -842,6 +842,9 @@ router
                     (user) =>
                       user.Authentication_ID === req.body.Authentication_ID
                   );
+                  if (!user) {
+                    res.send({ msg: 'NG' });
+                  }
                   resolve({ user: user, resultDecoded: resultDecoded });
                 }
               }
@@ -858,7 +861,7 @@ router
                   reject(error);
                 } else {
                   if (result.length > 0) {
-                    res.send({ userName: user.UserName, msg: 'NG' });
+                    res.send({ userName: user.UserName, msg: 'already' });
                   } else {
                     resolve({ user: user, resultDecoded: resultDecoded });
                   }

@@ -729,6 +729,8 @@ document
       }),
       success: function (res) {
         if (res.msg === 'NG') {
+          alert('その利用者IDのユーザーは存在しません');
+        } else if (res.msg === 'already') {
           alert(`${res.userName}は既に追加済みです`);
         } else {
           document.getElementById('popup-overlay_friend-add').style.display =
