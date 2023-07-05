@@ -472,5 +472,4 @@ document.getElementById("idInput").addEventListener("input", ()=>{
   }
   // フォーマットされたIDを表示
   input.value = formattedID;
-}
 });
