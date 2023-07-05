@@ -458,6 +458,18 @@ export function hashedIdGet() {
   return hashedId;
 }
 
-//丸本イズム
-//まちゅんご
-//魔rt山rtユア
+function formatID(input) {
+  // 入力値からハイフンを削除
+  const id = input.value.replace(/-/g, '');
+
+  // 4桁ごとにハイフンを挿入
+  let formattedID = '';
+  for (let i = 0; i < id.length; i += 4) {
+    formattedID += id.substr(i, 4);
+    if (i + 4 < id.length) {
+      formattedID += '-';
+    }
+  }
+  // フォーマットされたIDを表示
+  input.value = formattedID;
+}
