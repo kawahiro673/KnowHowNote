@@ -458,8 +458,8 @@ export function hashedIdGet() {
   return hashedId;
 }
 
-function formatID(input) {
-  // 入力値からハイフンを削除
+document.getElementById("idInput").addEventListener("input", ()=>{
+ // 入力値からハイフンを削除
   const id = input.value.replace(/-/g, '');
 
   // 4桁ごとにハイフンを挿入
@@ -473,3 +473,4 @@ function formatID(input) {
   // フォーマットされたIDを表示
   input.value = formattedID;
 }
+});
