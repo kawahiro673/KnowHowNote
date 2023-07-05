@@ -728,28 +728,33 @@ document
         time,
       }),
       success: function (res) {
-        document.getElementById('popup-overlay_friend-add').style.display =
-          'none';
-        document.getElementById('popup-overlay_friend-add-ans').style.display =
-          'block';
-        document.getElementById('new-friend-user').innerHTML = res.userName;
-
-        document
-          .getElementById('popup-overlay_friend-add-ans')
-          .addEventListener('click', (e) => {
-            const popup = document.getElementById(
-              'popup-overlay_friend-add-ans'
-            );
-            if (e.target === popup) {
-              popup.style.display = 'none';
-            }
-          });
-
-        setTimeout(() => {
+        if (res.msg === 'NG') {
+          alert(`${res.userName}は既に追加済みです`);
+        } else {
+          document.getElementById('popup-overlay_friend-add').style.display =
+            'none';
           document.getElementById(
             'popup-overlay_friend-add-ans'
-          ).style.display = 'none';
-        }, 1500);
+          ).style.display = 'block';
+          document.getElementById('new-friend-user').innerHTML = res.userName;
+
+          document
+            .getElementById('popup-overlay_friend-add-ans')
+            .addEventListener('click', (e) => {
+              const popup = document.getElementById(
+                'popup-overlay_friend-add-ans'
+              );
+              if (e.target === popup) {
+                popup.style.display = 'none';
+              }
+            });
+
+          setTimeout(() => {
+            document.getElementById(
+              'popup-overlay_friend-add-ans'
+            ).style.display = 'none';
+          }, 1500);
+        }
       },
     });
   });
