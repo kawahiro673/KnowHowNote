@@ -212,6 +212,7 @@ document
 //フレンドリストのポップアップ出力
 document.getElementById('friend-list').addEventListener('click', () => {
   document.getElementById('popup-overlay_friend-list').style.display = 'block';
+  friendListUpdate();
 });
 
 document
@@ -715,7 +716,6 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
 document
   .getElementById('friend-search-button')
   .addEventListener('click', () => {
-    console.log('kurikku');
     const time = currentTimeGet();
     $.ajax({
       url: '/mypage/' + hashedIdGet,
@@ -731,8 +731,9 @@ document
         if (res.msg === 'NG') {
           alert('その利用者IDのユーザーは存在しません');
         } else if (res.msg === 'already') {
-          alert(`${res.userName}は既に追加済みです`);
+          alert(`${res.userName}さんは既に追加済みです`);
         } else {
+          friendListUpdate();
           document.getElementById('popup-overlay_friend-add').style.display =
             'none';
           document.getElementById(
@@ -760,3 +761,21 @@ document
       },
     });
   });
+
+//フレンドリストのフレンド表示を更新
+const friendListUpdate = () => {
+  $.ajax({
+    url: '/mypage/' + hashedIdGet,
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'friend-list-get',
+    }),
+    success: function (res) {
+      document.getElementById('friend-list-div').innerHTML = res.friend
+        .map((friend) => `${friend.user_name} 追加日：(${friend.date}`)
+        .join('<br>');
+    },
+  });
+};
