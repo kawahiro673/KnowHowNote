@@ -170,6 +170,17 @@
   padding: 0;
 }
 
+#pop-delete_profile{
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+#pop-delete_profile:hover {
+  color: red;
+}
+
+
 .popup-body_inquiry textarea {
   text-align: left;
   width: 380px;
