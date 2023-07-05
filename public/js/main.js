@@ -460,7 +460,7 @@ export function hashedIdGet() {
 
 document.getElementById("idInput").addEventListener("input", ()=>{
  // 入力値からハイフンを削除
-  const id = input.value.replace(/-/g, '');
+  const id = document.getElementById("idInput").value.replace(/-/g, '');
 
   // 4桁ごとにハイフンを挿入
   let formattedID = '';
@@ -471,5 +471,5 @@ document.getElementById("idInput").addEventListener("input", ()=>{
     }
   }
   // フォーマットされたIDを表示
-  input.value = formattedID;
+  document.getElementById("idInput").value = formattedID;
 });
