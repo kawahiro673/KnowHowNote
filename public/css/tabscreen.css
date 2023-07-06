@@ -447,8 +447,7 @@ input[name='tab_item'] {
   margin: 0;
 }
 
-#share-user-div,
-#friend-list-div{
+#share-user-div{
   font-family: Arial, sans-serif;
   background-color: #f5f5f5;
   padding: 10px;
