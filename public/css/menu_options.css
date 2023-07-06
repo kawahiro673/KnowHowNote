@@ -241,6 +241,10 @@
   margin-left: auto;
 }
 
+#friend-list-div {
+  width: 100%;
+}
+
 .popup-body_friend-add p {
   font-size: 14px;
   margin: 5px;
