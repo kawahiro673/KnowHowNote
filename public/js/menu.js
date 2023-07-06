@@ -773,9 +773,16 @@ const friendListUpdate = () => {
       flg: 'friend-list-get',
     }),
     success: function (res) {
-      document.getElementById('friend-list-div').innerHTML = res.friend
-        .map((friend) => `${friend.user_name}    ${friend.date}`)
-        .join('<br>');
+      // document.getElementById('friend-list-div').innerHTML = res.friend
+      //   .map((friend) => `${friend.user_name}    ${friend.date}`)
+      //   .join('<br>');
+       const friendListDiv = document.getElementById('friend-list-div');
+
+     res.friend.forEach((friend) => {
+        const friendElement = document.createElement('div');
+        friendElement.textContent = `${friend.user_name}    ${friend.date}`;
+        friendListDiv.appendChild(friendElement);
+      });
     },
   });
 };
