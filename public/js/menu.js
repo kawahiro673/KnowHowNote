@@ -777,7 +777,8 @@ const friendListUpdate = () => {
       //   .map((friend) => `${friend.user_name}    ${friend.date}`)
       //   .join('<br>');
        const friendListDiv = document.getElementById('friend-list-div');
-
+         friendListDiv.innerHTML = ''; 
+      
      res.friend.forEach((friend) => {
         const friendElement = document.createElement('div');
         friendElement.textContent = `${friend.user_name}    ${friend.date}`;
