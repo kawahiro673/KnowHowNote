@@ -232,17 +232,10 @@
   overflow-y: scroll;
 }
 
-.popup-body_friend-list{
+.friend-list-top {
   display: flex;
   justify-content: space-between;
-}
-
-#friend-list-add-button {
-  margin-left: auto;
-}
-
-#friend-list-div {
-  width: 100%;
+  align-items: center;
 }
 
 .popup-body_friend-add p {
