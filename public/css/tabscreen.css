@@ -450,9 +450,9 @@ input[name='tab_item'] {
 #share-user-div {
   font-family: Arial, sans-serif;
   /* background-color: #f5f5f5; */
-  padding: 10px;
+  padding: 3px;
   border-radius: 5px;
-  margin: 5px;
+  margin: 3px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;

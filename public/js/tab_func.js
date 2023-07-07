@@ -406,6 +406,8 @@ document.getElementById('share-user-button').addEventListener('click', () => {
       res.friend.forEach((friend) => {
         // if (!shareUserNameArray.includes(share.UserName)) {
         const div = document.createElement('div');
+        div.setAttribute('class', `friend-list-check-div`);
+
         // チェックボックス要素の作成
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';

@@ -264,6 +264,13 @@
   grid-gap: 10px;
 }
 
+.friend-list-check-div label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 55px; /* 省略する幅を指定 */
+}
+
 .friend-Box {
   background-color: #f5f5f5;
 }
