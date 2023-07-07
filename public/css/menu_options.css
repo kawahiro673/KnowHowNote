@@ -323,7 +323,9 @@
 #share-user-clear-button,
 #Add-from-Details,
 #friend-list-add-button,
-#friend-search-button {
+#friend-search-button,
+.friend-change-name,
+.friend-delete{
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -352,14 +354,17 @@
 #share-user-add-button,
 #share-user-clear-button,
 #friend-list-add-button,
-#friend-search-button {
+#friend-search-button,
+.friend-change-name,
+.friend-delete{
   padding: 7px 14px;
   font-size: 12px;
 }
 
 #no-button-logout,
 #no-button-delete,
-#share-user-clear-button {
+#share-user-clear-button,
+.friend-delete{
   background-color: red;
 }
 
