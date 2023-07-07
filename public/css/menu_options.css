@@ -265,6 +265,17 @@
   width: 300px;
 }
 
+.friend-name{
+  font-size:20px,
+  margin:8px 0;
+   font-weight: bold;
+}
+
+.friend-login{
+  font-size:12px,
+  margin:8px 0;
+}
+
 .popup-body_share-user {
   height: 300px;
 }
@@ -366,6 +377,11 @@
 #share-user-clear-button,
 .friend-delete{
   background-color: red;
+}
+
+.friend-change-name,
+.friend-delete{
+  margin-left: 10px;
 }
 
 .popup-body_profile a {
