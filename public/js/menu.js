@@ -797,7 +797,15 @@ const friendListUpdate = () => {
         const p2 = document.createElement('p');
         p2.setAttribute('class','friend-login');
         p2.innerHTML = friend.date;
+        const button1 = document.createElement('button');
+        button1.setAttribute('class','friend-change-name');
+        button1.innerHTML = '名前変更';
+        const button2 = document.createElement('button');
+        button2.setAttribute('class','friend-delete');
+        button2.innerHTML = '削除';
         friendElement.appendChild(p1);
+        friendElement.appendChild(button1);
+        friendElement.appendChild(button2);
         friendElement.appendChild(p2);
         friendListDiv.appendChild(friendElement);
       });
