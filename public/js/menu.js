@@ -796,7 +796,7 @@ const friendListUpdate = () => {
         p1.innerHTML = friend.user_name;
         const p2 = document.createElement('p');
         p2.setAttribute('class','friend-login');
-        p2.innerHTML = friend.date;
+        p2.innerHTML = '最終ログイン日時: ' + friend.date;
         const button1 = document.createElement('button');
         button1.setAttribute('class','friend-change-name');
         button1.innerHTML = '名前変更';
