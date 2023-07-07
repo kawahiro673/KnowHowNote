@@ -113,6 +113,7 @@
 
 .popup-window_share-history {
   width: 600px;
+  height: 450px;
 }
 
 .popup-window_About-Website,
@@ -134,6 +135,11 @@
 .popup-window_share-user {
   height: 350px;
   width: 250px;
+}
+
+.popup-window_friend-list {
+  width: 750px;
+  height: 400px;
 }
 
 /* ポップアップのヘッダー */
@@ -241,13 +247,12 @@
 
 #friend-list-div {
   font-family: Arial, sans-serif;
-
   padding: 10px;
   border-radius: 5px;
   margin-top: 5px;
   margin-bottom: 5px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
 }
 
@@ -267,12 +272,12 @@
 
 .friend-name {
   font-size: 20px;
-  margin: 8px 0;
+  margin: 8px;
   font-weight: bold;
 }
 
 .friend-login {
-  font-size: 12px;
+  font-size: 10px;
   margin: 8px 0;
 }
 

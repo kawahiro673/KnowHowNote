@@ -399,34 +399,34 @@ document.getElementById('share-user-button').addEventListener('click', () => {
     dataType: 'Json',
     contentType: 'application/json',
     data: JSON.stringify({
-      flg: 'ShareList',
+      flg: 'friend-list-get',
     }),
     success: function (res) {
-      let shareUserNameArray = []; //全ての共有履歴のユーザーを一通り見るための配列(実行したら格納)
-      res.shareResult.forEach((share) => {
-        if (!shareUserNameArray.includes(share.UserName)) {
-          const div = document.createElement('div');
-          // チェックボックス要素の作成
-          const checkbox = document.createElement('input');
-          checkbox.type = 'checkbox';
-          checkbox.id = `checkbox${share.UserName}`;
+      // let shareUserNameArray = []; //全ての共有履歴のユーザーを一通り見るための配列(実行したら格納)
+      res.friend.forEach((friend) => {
+        // if (!shareUserNameArray.includes(share.UserName)) {
+        const div = document.createElement('div');
+        // チェックボックス要素の作成
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = `checkbox${friend.user_name}`;
 
-          // ラベル要素の作成
-          const checkboxLabel = document.createElement('label');
-          checkboxLabel.textContent = share.UserName;
-          checkboxLabel.setAttribute('for', `checkbox${share.UserName}`);
+        // ラベル要素の作成
+        const checkboxLabel = document.createElement('label');
+        checkboxLabel.textContent = friend.user_name;
+        checkboxLabel.setAttribute('for', `checkbox${friend.user_name}`);
 
-          // 要素の追加
-          document.getElementById('share-user-div').appendChild(div);
-          div.appendChild(checkbox);
-          div.appendChild(checkboxLabel);
-          shareUserNameArray.push(share.UserName);
-        }
+        // 要素の追加
+        document.getElementById('share-user-div').appendChild(div);
+        div.appendChild(checkbox);
+        div.appendChild(checkboxLabel);
+        //shareUserNameArray.push(share.UserName);
+        //}
       });
 
-      if (res.shareResult.length === 0) {
+      if (res.friend.length === 0) {
         const p = document.createElement('p');
-        p.innerHTML = '共有履歴がありません';
+        p.innerHTML = 'フレンドリストに誰も登録されていません';
         document.getElementById('share-user-div').appendChild(p);
       }
 
