@@ -35,3 +35,59 @@ document.getElementById('share-tab').addEventListener('click', () => {
 document.getElementById('nouhau').addEventListener('click', () => {
   enableElements();
 });
+
+
+export const AllowDragAndDropOfFiles = () => {
+        $('.file').on('mousedown', function (e) {
+          const $clone = $(this).clone();
+          $clone.css('position', 'absolute');
+          $clone.css('background-color', 'white');
+          // ゴーストエフェクト要素をbodyに追加
+          $('body').append($clone);
+
+          // ドラッグ中の動作を設定
+          $(document).on('mousemove', function (e) {
+            // ゴーストエフェクトをドラッグに追従させる
+            $clone.css('left', e.pageX + 'px');
+            $clone.css('top', e.pageY + 'px');
+          });
+
+          // ドラッグ終了時の処理を設定
+          $(document).on('mouseup', function (e) {
+            // ゴーストエフェクト要素を削除
+            $clone.remove();
+
+            // 不要なイベントハンドラを解除
+            $(document).off('mousemove');
+            $(document).off('mouseup');
+          });
+        });
+      }
+
+export const AllowDragAndDropOfFolders = () => {
+        $('.folder').on('mousedown', function (e) {
+          const $clone = $(this).clone();
+          $clone.css('position', 'absolute');
+          $clone.css('background-color', 'white');
+          // ゴーストエフェクト要素をbodyに追加
+          $('body').append($clone);
+
+          // ドラッグ中の動作を設定
+          $(document).on('mousemove', function (e) {
+            // ゴーストエフェクトをドラッグに追従させる
+            $clone.css('left', e.pageX + 'px');
+            $clone.css('top', e.pageY + 'px');
+          });
+
+          // ドラッグ終了時の処理を設定
+          $(document).on('mouseup', function (e) {
+            // ゴーストエフェクト要素を削除
+            $clone.remove();
+
+            // 不要なイベントハンドラを解除
+            $(document).off('mousemove');
+            $(document).off('mouseup');
+          });
+        });
+      
+}
