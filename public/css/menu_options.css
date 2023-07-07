@@ -241,7 +241,7 @@
 
 #friend-list-div{
   font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
+ 
   padding: 10px;
   border-radius: 5px;
   margin-top:5px;
@@ -249,6 +249,10 @@
    display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
+}
+
+.friend-Box{
+   background-color: #f5f5f5;
 }
 
 .popup-body_friend-add p {
