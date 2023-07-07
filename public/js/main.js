@@ -16,7 +16,7 @@ import { jQueryUIOptionsFunc } from './jQueryUI_func.js';
 import { orderGet, passGet } from './stringUtils.js';
 import { expandableAdaptation } from './expandableOptions.js';
 import { backgroundColorSet, backgroundColorDelete } from './menu.js';
-import { enableElements } from './utilityFunction.js';
+import { enableElements, allowDragAndDropOfFiles, allowDragAndDropOfFolders } from './utilityFunction.js';
 
 let tabIdArray = []; //タブが生成されているファイルのIDを格納
 let tabFocusID; //　フォーカスが当たっているタブのIDを常に保持。フォルダ名の名前変更・D&D時のパス変更に使用。
@@ -156,59 +156,61 @@ export const listCreate = () => {
       fileClick();
       await expandableAdaptation(expandableArray);
       enableElements();
+       allowDragAndDropOfFiles();
+       allowDragAndDropOfFolders();
 
-      $(function () {
-        $('.file').on('mousedown', function (e) {
-          const $clone = $(this).clone();
-          $clone.css('position', 'absolute');
-          $clone.css('background-color', 'white');
-          // ゴーストエフェクト要素をbodyに追加
-          $('body').append($clone);
+      // $(function () {
+      //   $('.file').on('mousedown', function (e) {
+      //     const $clone = $(this).clone();
+      //     $clone.css('position', 'absolute');
+      //     $clone.css('background-color', 'white');
+      //     // ゴーストエフェクト要素をbodyに追加
+      //     $('body').append($clone);
 
-          // ドラッグ中の動作を設定
-          $(document).on('mousemove', function (e) {
-            // ゴーストエフェクトをドラッグに追従させる
-            $clone.css('left', e.pageX + 'px');
-            $clone.css('top', e.pageY + 'px');
-          });
+      //     // ドラッグ中の動作を設定
+      //     $(document).on('mousemove', function (e) {
+      //       // ゴーストエフェクトをドラッグに追従させる
+      //       $clone.css('left', e.pageX + 'px');
+      //       $clone.css('top', e.pageY + 'px');
+      //     });
 
-          // ドラッグ終了時の処理を設定
-          $(document).on('mouseup', function (e) {
-            // ゴーストエフェクト要素を削除
-            $clone.remove();
+      //     // ドラッグ終了時の処理を設定
+      //     $(document).on('mouseup', function (e) {
+      //       // ゴーストエフェクト要素を削除
+      //       $clone.remove();
 
-            // 不要なイベントハンドラを解除
-            $(document).off('mousemove');
-            $(document).off('mouseup');
-          });
-        });
-      });
-      $(function () {
-        $('.folder').on('mousedown', function (e) {
-          const $clone = $(this).clone();
-          $clone.css('position', 'absolute');
-          $clone.css('background-color', 'white');
-          // ゴーストエフェクト要素をbodyに追加
-          $('body').append($clone);
+      //       // 不要なイベントハンドラを解除
+      //       $(document).off('mousemove');
+      //       $(document).off('mouseup');
+      //     });
+      //   });
+      // });
+      // $(function () {
+      //   $('.folder').on('mousedown', function (e) {
+      //     const $clone = $(this).clone();
+      //     $clone.css('position', 'absolute');
+      //     $clone.css('background-color', 'white');
+      //     // ゴーストエフェクト要素をbodyに追加
+      //     $('body').append($clone);
 
-          // ドラッグ中の動作を設定
-          $(document).on('mousemove', function (e) {
-            // ゴーストエフェクトをドラッグに追従させる
-            $clone.css('left', e.pageX + 'px');
-            $clone.css('top', e.pageY + 'px');
-          });
+      //     // ドラッグ中の動作を設定
+      //     $(document).on('mousemove', function (e) {
+      //       // ゴーストエフェクトをドラッグに追従させる
+      //       $clone.css('left', e.pageX + 'px');
+      //       $clone.css('top', e.pageY + 'px');
+      //     });
 
-          // ドラッグ終了時の処理を設定
-          $(document).on('mouseup', function (e) {
-            // ゴーストエフェクト要素を削除
-            $clone.remove();
+      //     // ドラッグ終了時の処理を設定
+      //     $(document).on('mouseup', function (e) {
+      //       // ゴーストエフェクト要素を削除
+      //       $clone.remove();
 
-            // 不要なイベントハンドラを解除
-            $(document).off('mousemove');
-            $(document).off('mouseup');
-          });
-        });
-      });
+      //       // 不要なイベントハンドラを解除
+      //       $(document).off('mousemove');
+      //       $(document).off('mouseup');
+      //     });
+      //   });
+      // });
     },
   });
 };
