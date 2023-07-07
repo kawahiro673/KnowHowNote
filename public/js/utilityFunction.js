@@ -37,7 +37,7 @@ document.getElementById('nouhau').addEventListener('click', () => {
 });
 
 
-export const AllowDragAndDropOfFiles = () => {
+export const allowDragAndDropOfFiles = () => {
         $('.file').on('mousedown', function (e) {
           const $clone = $(this).clone();
           $clone.css('position', 'absolute');
@@ -64,7 +64,7 @@ export const AllowDragAndDropOfFiles = () => {
         });
       }
 
-export const AllowDragAndDropOfFolders = () => {
+export const allowDragAndDropOfFolders = () => {
         $('.folder').on('mousedown', function (e) {
           const $clone = $(this).clone();
           $clone.css('position', 'absolute');
