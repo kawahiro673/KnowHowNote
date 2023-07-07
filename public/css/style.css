@@ -51,6 +51,7 @@ header {
   margin-left: 10px;
   width: 60px;
   height: 60px;
+   vertical-align: middle;
 }
 
 header h1 {
