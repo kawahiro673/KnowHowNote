@@ -239,6 +239,14 @@
   overflow-y: scroll;
 }
 
+.popup-body_friend-list {
+  height: 350px;
+}
+
+.popup-body_share-history {
+  height: 400px;
+}
+
 .friend-list-top {
   display: flex;
   justify-content: space-between;
