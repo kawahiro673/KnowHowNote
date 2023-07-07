@@ -790,6 +790,7 @@ const friendListUpdate = () => {
 
       res.friend.forEach((friend) => {
         const friendElement = document.createElement('div');
+        friendElement.setAttribute('class', 'friend-Box');
         friendElement.textContent = `${friend.user_name}    ${friend.date}`;
         friendListDiv.appendChild(friendElement);
       });
