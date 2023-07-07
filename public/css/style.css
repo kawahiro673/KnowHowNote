@@ -39,6 +39,7 @@ header {
   justify-content: space-between;
   border-radius: 5px;
   height:60px;
+   overflow: hidden;
 }
 
 .header-div {
@@ -51,9 +52,9 @@ header {
   margin: 0;
   margin-left: 10px;
   margin-bottom: 10px;
-  width: 50px;
-  height: 50px;
-   vertical-align: middle;
+  width: 60px;
+  height: 60px;
+  max-height: 100%;
 }
 
 header h1 {
