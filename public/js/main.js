@@ -36,8 +36,8 @@ export const listCreate = () => {
         console.log('ログイン画面に戻ります');
         location.href = 'https://nodejs-itnote-app.herokuapp.com';
       }
-      backgroundColorDelete();
-      backgroundColorSet(res.user.BackgroundColor);
+      // backgroundColorDelete();
+      // backgroundColorSet(res.user.BackgroundColor);
 
       document.getElementById('list_loader').style.display = 'none';
       document.getElementById('tab_loader').style.display = 'none';
@@ -156,6 +156,8 @@ export const listCreate = () => {
       fileClick();
       await expandableAdaptation(expandableArray);
       enableElements();
+       backgroundColorDelete();
+      backgroundColorSet(res.user.BackgroundColor);
 
       $(function () {
         $('.file').on('mousedown', function (e) {
