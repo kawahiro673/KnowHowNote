@@ -5,7 +5,6 @@ const JWT = require('jsonwebtoken');
 const { redirect } = require('express/lib/response');
 
 router.post('/', async (req, res) => {
-  let email = req.body.email;
   let userName = req.body.username;
   if (req.body.flg === 'info') {
     pool.query('SELECT * FROM register_user;', async (error, result) => {
@@ -44,9 +43,28 @@ router.post('/', async (req, res) => {
       res.cookie('token', token, options);
       res.cookie('hashedId', encodedId, options);
 
+      //最終ログイン日時を格納
+      const time = currentTimeGet();
+      pool.query(
+        'UPDATE register_user SET LoginDate = ? WHERE id = ?;',
+        [time, user.id],
+        (error, result) => {}
+      );
+
       return res.send({ message: 'ok', url: url });
     });
   }
 });
 
 module.exports = router;
+
+const currentTimeGet = () => {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+
+  return `${year}年${month}月${day}日 ${hours}:${minutes}`;
+};

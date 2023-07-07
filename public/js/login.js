@@ -13,7 +13,6 @@ function loginButtonClick() {
     contentType: 'application/json',
     data: JSON.stringify({
       flg: 'info',
-      // email: email.value,
       username: username.value,
       password: password.value,
     }),

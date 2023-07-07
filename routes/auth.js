@@ -44,8 +44,14 @@ router
         .then(() => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'INSERT INTO register_user (UserName, HashedPassword, CreationDay, Authentication_ID) VALUES(?, ?, ?, ?);',
-              [userName, hashedPassword, formattedDate, randomID],
+              'INSERT INTO register_user (UserName, HashedPassword, CreationDay, Authentication_ID, LoginDate) VALUES(?, ?, ?, ?, ?);',
+              [
+                userName,
+                hashedPassword,
+                formattedDate,
+                randomID,
+                formattedDate,
+              ],
               (error, result) => {
                 if (error) {
                   reject();
