@@ -18,20 +18,8 @@ router
     } else if (req.body.flg === 'cipher') {
       //bcryptモジュールを使用して暗号化(ソルト)
       let userName = req.body.username;
-      // let email = req.body.email;
-      const now = new Date();
-      const formattedDate =
-        now.getFullYear() +
-        '-' +
-        (now.getMonth() + 1) +
-        '-' +
-        now.getDate() +
-        ' ' +
-        now.getHours() +
-        ':' +
-        now.getMinutes() +
-        ':' +
-        now.getSeconds();
+
+      const time = currentTimeGet();
 
       let hashedPassword = await bcrypt.hash(req.body.password, 10);
 
@@ -45,13 +33,7 @@ router
           return new Promise((resolve, reject) => {
             pool.query(
               'INSERT INTO register_user (UserName, HashedPassword, CreationDay, Authentication_ID, LoginDate) VALUES(?, ?, ?, ?, ?);',
-              [
-                userName,
-                hashedPassword,
-                formattedDate,
-                randomID,
-                formattedDate,
-              ],
+              [userName, hashedPassword, time, randomID, time],
               (error, result) => {
                 if (error) {
                   reject();
@@ -117,7 +99,7 @@ router
               [
                 'sample1',
                 'こちらはサンプルになります',
-                formattedDate,
+                time,
                 0,
                 2,
                 'Original',
@@ -180,7 +162,7 @@ router
               [
                 'sample2',
                 'こちらはサンプルになります',
-                formattedDate,
+                time,
                 folderResult[0].id,
                 1,
                 'Original',
@@ -250,3 +232,14 @@ function generateRandomID() {
   }
   return userID;
 }
+
+const currentTimeGet = () => {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, '0');
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+
+  return `${year}年${month}月${day}日 ${hours}:${minutes}`;
+};
