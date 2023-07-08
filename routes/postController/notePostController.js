@@ -606,7 +606,7 @@ router.post('/', (req, res) => {
   } else if (req.body.flg === 'info_name') {
     console.log(req.body.name);
     pool.query(
-      'SELECT * FROM it_memo WHERE UserName = ?;',
+      'SELECT * FROM register_user WHERE UserName = ?;',
       [req.body.name],
       (error, result) => {
         res.send({ fileResult: result[0] });
