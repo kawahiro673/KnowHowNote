@@ -229,8 +229,8 @@ document.getElementById('friend-list').addEventListener('click', () => {
 
       //フレンドをフレンドリストから削除
       const deleteButtons = document.querySelectorAll('.friend-delete');
-      deleteButtons.forEach(function (deleteButton) {
-        deleteButton.addEventListener('click', function () {
+      deleteButtons.forEach((deleteButton) => {
+        deleteButton.addEventListener('click', () => {
           const friendName =
             this.parentNode.querySelector('.friend-name').textContent;
           console.log(friendName);
@@ -246,10 +246,20 @@ document.getElementById('friend-list').addEventListener('click', () => {
 });
 
 document
+  .getElementById('pop-delete_friend-delete-q')
+  .addEventListener('click', (e) => {
+    e.preventDefault(); // リンクのデフォルトの動作を無効化
+    document.getElementById('popup-overlay_friend-delete-q').style.display =
+      'none';
+  });
+
+document
   .getElementById('friend-delete-q-button')
   .addEventListener('click', (e) => {
     console.log('削除します');
-    friendListDelete(document.getElementById('friend-delete-q-user').value);
+    friendListDelete(
+      document.getElementById('friend-delete-q-user').textContent
+    );
   });
 
 document
@@ -257,7 +267,7 @@ document
   .addEventListener('click', (e) => {
     console.log('削除取りやめます');
     friendListDelete(
-      friendListDelete(document.getElementById('friend-delete-q-user').value)
+      document.getElementById('friend-delete-q-user').textContent
     );
   });
 
