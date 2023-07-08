@@ -606,6 +606,7 @@ router.post('/', (req, res) => {
       }
     );
   } else if (req.body.flg === 'info_name') {
+    console.log(req.body.name);
     pool.query(
       'SELECT * FROM it_memo WHERE UserName = ?;',
       [req.body.name],

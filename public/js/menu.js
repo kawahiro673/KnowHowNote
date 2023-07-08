@@ -824,6 +824,7 @@ const friendListUpdate = () => {
             name: friend.user_name,
           }),
           success: function (res) {
+            console.log(res.noteResult.LoginDate);
             p2.innerHTML = '最終ログイン日時: ' + res.noteResult.LoginDate;
           },
         });
