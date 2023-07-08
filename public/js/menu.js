@@ -239,11 +239,11 @@ document.getElementById('friend-list').addEventListener('click', () => {
             friendName;
         });
       });
+
       //フレンドの名前を変更
       const changeNameButtons = document.querySelectorAll(
         '.friend-change-name'
       );
-
       changeNameButtons.forEach((changeNameButton) => {
         changeNameButton.addEventListener('click', () => {
           const friendBox = changeNameButton.parentNode;
@@ -253,8 +253,9 @@ document.getElementById('friend-list').addEventListener('click', () => {
             '.friend-change-name[id^="friend-change-button"]'
           );
 
-          friendName.style.display = 'none';
           friendNameInput.style.display = 'block';
+          friendNameInput.value = friendName.innerHTML;
+          friendName.style.display = 'none';
           applyButton.style.display = 'block';
         });
       });
