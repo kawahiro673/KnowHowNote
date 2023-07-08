@@ -885,6 +885,7 @@ const friendListUpdate = () => {
           button2.innerHTML = '削除';
           friendElement.appendChild(p1);
           friendElement.appendChild(input);
+          friendElement.appendChild(button);
           friendElement.appendChild(button1);
           friendElement.appendChild(button2);
           friendElement.appendChild(p2);
