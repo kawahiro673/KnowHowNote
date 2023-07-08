@@ -872,6 +872,11 @@ const friendListUpdate = () => {
           input.setAttribute('class', `friend-name-input`);
           input.setAttribute('id', `friend-name-input${friend.id}`);
           input.style.display = 'none';
+          const button = document.createElement('button');
+          button.setAttribute('class', 'friend-change-name');
+          button.setAttribute('id', `friend-change-button${friend.id}`);
+          button.innerHTML = '適用';
+          button.style.display = 'none';
           const button1 = document.createElement('button');
           button1.setAttribute('class', 'friend-change-name');
           button1.innerHTML = '名前変更';

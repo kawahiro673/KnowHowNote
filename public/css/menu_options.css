@@ -301,6 +301,10 @@
   text-overflow: ellipsis;
   max-width: 200px;
 }
+.friend-name-input {
+  font-size: 20px;
+  margin: 8px;
+}
 
 .friend-login {
   font-size: 10px;
