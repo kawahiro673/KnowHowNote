@@ -789,12 +789,13 @@ const friendListUpdate = () => {
       friendListDiv.innerHTML = '';
 
       if (res.friend.length === 0) {
-        friendListDiv.innerHTML = 'フレンドが登録されていません';
+        friendListDiv.innerHTML = '※フレンドが登録されていません';
       }
 
       res.friend.forEach((friend) => {
         const friendElement = document.createElement('div');
         friendElement.setAttribute('class', 'friend-Box');
+        friendElement.setAttribute('id', `friend-Box${friend.id}`);
         const p1 = document.createElement('p');
         p1.setAttribute('class', 'friend-name');
         p1.innerHTML = friend.user_name;
@@ -812,6 +813,20 @@ const friendListUpdate = () => {
         friendElement.appendChild(button2);
         friendElement.appendChild(p2);
         friendListDiv.appendChild(friendElement);
+
+        $.ajax({
+          url: '/notePostController/' + hashedIdGet,
+          type: 'POST',
+          dataType: 'Json',
+          contentType: 'application/json',
+          data: JSON.stringify({
+            flg: 'info_name',
+            name: friend.user_name,
+          }),
+          success: function (res) {
+            p2.innerHTML = '最終ログイン日時: ' + res.noteResult.LoginDate;
+          },
+        });
       });
     },
   });

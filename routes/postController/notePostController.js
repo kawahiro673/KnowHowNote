@@ -605,6 +605,16 @@ router.post('/', (req, res) => {
         });
       }
     );
+  } else if (req.body.flg === 'info_name') {
+    pool.query(
+      'SELECT * FROM it_memo WHERE UserName = ?;',
+      [req.body.name],
+      (error, result) => {
+        res.send({
+          noteResult: result,
+        });
+      }
+    );
   }
 });
 
