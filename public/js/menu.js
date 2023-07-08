@@ -228,19 +228,21 @@ document.getElementById('friend-list').addEventListener('click', () => {
       document.getElementById('myID').innerHTML = res.user.Authentication_ID;
 
       //フレンドをフレンドリストから削除
-      const deleteButtons = document.querySelectorAll('.friend-delete');
-      deleteButtons.forEach((deleteButton) => {
-        deleteButton.addEventListener('click', () => {
-          const friendName =
-            this.parentNode.querySelector('.friend-name').textContent;
-          console.log(friendName);
-          document.getElementById(
-            'popup-overlay_friend-delete-q'
-          ).style.display = 'block';
-          document.getElementById('friend-delete-q-user').innerHTML =
-            friendName;
+      setTimeout(() => {
+        const deleteButtons = document.querySelectorAll('.friend-delete');
+        deleteButtons.forEach((deleteButton) => {
+          deleteButton.addEventListener('click', () => {
+            const friendName =
+              this.parentNode.querySelector('.friend-name').textContent;
+            console.log(friendName);
+            document.getElementById(
+              'popup-overlay_friend-delete-q'
+            ).style.display = 'block';
+            document.getElementById('friend-delete-q-user').innerHTML =
+              friendName;
+          });
         });
-      });
+      }, 3000);
     },
   });
 });
