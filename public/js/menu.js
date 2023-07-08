@@ -229,9 +229,9 @@ document.getElementById('friend-list').addEventListener('click', () => {
       //フレンドをフレンドリストから削除
       const deleteButtons = document.querySelectorAll('.friend-delete');
       deleteButtons.forEach((deleteButton) => {
-        deleteButton.addEventListener('click', () => {
+        deleteButton.addEventListener('click', (event) => {
           const friendName =
-            this.parentNode.querySelector('.friend-name').textContent;
+            event.target.parentNode.querySelector('.friend-name').textContent;
           console.log(friendName);
           document.getElementById(
             'popup-overlay_friend-delete-q'
