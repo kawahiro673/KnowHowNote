@@ -227,10 +227,14 @@ document.getElementById('friend-list').addEventListener('click', () => {
     success: function (res) {
       document.getElementById('myID').innerHTML = res.user.Authentication_ID;
 
-      $('.friend-delete').on('click', (event) => {
-        console.log('yaa');
-        const friendName = document.querySelector('.friend-name').textContent;
-        console.log(friendName); // 'ok'がコンソールに表示されます
+      const deleteButtons = document.querySelectorAll('.friend-delete');
+
+      deleteButtons.forEach(function (deleteButton) {
+        deleteButton.addEventListener('click', function () {
+          const friendName =
+            this.parentNode.querySelector('.friend-name').textContent;
+          console.log(friendName); // 各要素のfriend-nameのテキストがコンソールに表示されます
+        });
       });
     },
   });
