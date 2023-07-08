@@ -1,3 +1,5 @@
+//MENUボタンの主な機能を実装
+
 import { hashedIdGet } from './main.js';
 import { currentTimeGet } from './stringUtils.js';
 
@@ -786,7 +788,7 @@ const friendListUpdate = () => {
         p1.innerHTML = friend.user_name;
         const p2 = document.createElement('p');
         p2.setAttribute('class', 'friend-login');
-        p2.innerHTML = '最終ログイン日時: ' + friend.date;
+        p2.innerHTML = '最終ログイン日時: ';
         const button1 = document.createElement('button');
         button1.setAttribute('class', 'friend-change-name');
         button1.innerHTML = '名前変更';
@@ -817,3 +819,9 @@ const friendListUpdate = () => {
     },
   });
 };
+
+$('.friend-delete').on('click', (event) => {
+  console.log('yaa');
+  const friendName = document.querySelector('.friend-name').textContent;
+  console.log(friendName); // 'ok'がコンソールに表示されます
+});
