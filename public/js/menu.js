@@ -798,21 +798,21 @@ const friendListUpdate = () => {
         friendElement.appendChild(button2);
         friendElement.appendChild(p2);
         friendListDiv.appendChild(friendElement);
-
-        $.ajax({
-          url: '/notePostController/',
-          type: 'POST',
-          dataType: 'Json',
-          contentType: 'application/json',
-          data: JSON.stringify({
-            flg: 'info_name',
-            name: friend.user_name,
-          }),
-          success: function (res) {
-            console.log(res.noteResult.LoginDate);
-            p2.innerHTML = '最終ログイン日時: ' + res.noteResult.LoginDate;
-          },
-        });
+      });
+      $.ajax({
+        url: '/notePostController/',
+        type: 'POST',
+        dataType: 'Json',
+        contentType: 'application/json',
+        data: JSON.stringify({
+          flg: 'info_name',
+          // name: friend.user_name,
+          name: 'futon2',
+        }),
+        success: function (res) {
+          console.log(res.noteResult.LoginDate);
+          p2.innerHTML = '最終ログイン日時: ' + res.noteResult.LoginDate;
+        },
       });
     },
   });
