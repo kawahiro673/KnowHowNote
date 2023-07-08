@@ -1,5 +1,6 @@
+import { currentTimeGet } from './stringUtils.js';
+
 const userName = document.getElementById('username');
-// const email_auth = document.getElementById('email_auth');
 const password_auth = document.getElementById('password_auth');
 const cfPassword = document.getElementById('confirmedPassword');
 
@@ -36,24 +37,14 @@ function registerButtonClick() {
         alert('そのユーザーは登録できません');
         return false;
       }
-      //emailバリデーションチェック
-      // if (!email_auth.value.match(/.+@.+\..+/)) {
-      //   alert('正しいメールアドレスを入力してください');
-      //   return false;
-      // }
       //確認用パスワード入力チェック
       if (password_auth.value !== cfPassword.value) {
         alert('パスワードの入力に誤りがあります');
         return false;
       }
-      //既に登録されているemailがあれば「登録済み」とする
-      // const mail = res.response.find((user) => user.Email === email_auth.value);
-      // if (mail) {
-      //   alert('既に登録されてあるメールアドレスです');
-      //   return false;
-      // }
       console.log('登録完了');
 
+      const time = currentTimeGet();
       $.ajax({
         url: '/auth/',
         type: 'POST',
@@ -62,8 +53,8 @@ function registerButtonClick() {
         data: JSON.stringify({
           flg: 'cipher',
           username: userName.value,
-          // email: email_auth.value,
           password: password_auth.value,
+          time,
         }),
         success: function (res) {
           location.href = res.url;

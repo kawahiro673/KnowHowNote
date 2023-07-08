@@ -44,10 +44,9 @@ router.post('/', async (req, res) => {
       res.cookie('hashedId', encodedId, options);
 
       //最終ログイン日時を格納
-      const time = currentTimeGet();
       pool.query(
         'UPDATE register_user SET LoginDate = ? WHERE id = ?;',
-        [time, user.id],
+        [req.body.time, user.id],
         (error, result) => {}
       );
 
@@ -57,14 +56,3 @@ router.post('/', async (req, res) => {
 });
 
 module.exports = router;
-
-const currentTimeGet = () => {
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, '0');
-  const day = String(now.getDate()).padStart(2, '0');
-  const hours = String(now.getHours()).padStart(2, '0');
-  const minutes = String(now.getMinutes()).padStart(2, '0');
-
-  return `${year}年${month}月${day}日 ${hours}:${minutes}`;
-};

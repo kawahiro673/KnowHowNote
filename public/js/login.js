@@ -1,11 +1,13 @@
+import { currentTimeGet } from './stringUtils.js';
+
 const loginbtn = document.getElementById('loginbtn');
-// const email = document.getElementById('email');
 const password = document.getElementById('password');
 const username = document.getElementById('username_login');
 
 loginbtn.addEventListener('click', loginButtonClick);
 
 function loginButtonClick() {
+  const time = currentTimeGet();
   $.ajax({
     url: '/login/',
     type: 'POST',
@@ -15,6 +17,7 @@ function loginButtonClick() {
       flg: 'info',
       username: username.value,
       password: password.value,
+      time,
     }),
     success: function (res) {
       if (res.message !== 'ok') {

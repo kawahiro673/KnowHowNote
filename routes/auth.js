@@ -19,8 +19,6 @@ router
       //bcryptモジュールを使用して暗号化(ソルト)
       let userName = req.body.username;
 
-      const time = currentTimeGet();
-
       let hashedPassword = await bcrypt.hash(req.body.password, 10);
 
       const randomID = generateRandomID();
@@ -33,7 +31,13 @@ router
           return new Promise((resolve, reject) => {
             pool.query(
               'INSERT INTO register_user (UserName, HashedPassword, CreationDay, Authentication_ID, LoginDate) VALUES(?, ?, ?, ?, ?);',
-              [userName, hashedPassword, time, randomID, time],
+              [
+                userName,
+                hashedPassword,
+                req.body.time,
+                randomID,
+                req.body.time,
+              ],
               (error, result) => {
                 if (error) {
                   reject();
@@ -99,7 +103,7 @@ router
               [
                 'sample1',
                 'こちらはサンプルになります',
-                time,
+                req.body.time,
                 0,
                 2,
                 'Original',
@@ -162,7 +166,7 @@ router
               [
                 'sample2',
                 'こちらはサンプルになります',
-                time,
+                req.body.time,
                 folderResult[0].id,
                 1,
                 'Original',
@@ -232,14 +236,3 @@ function generateRandomID() {
   }
   return userID;
 }
-
-const currentTimeGet = () => {
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, '0');
-  const day = String(now.getDate()).padStart(2, '0');
-  const hours = String(now.getHours()).padStart(2, '0');
-  const minutes = String(now.getMinutes()).padStart(2, '0');
-
-  return `${year}年${month}月${day}日 ${hours}:${minutes}`;
-};
