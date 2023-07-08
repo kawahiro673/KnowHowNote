@@ -240,9 +240,19 @@ document.getElementById('friend-list').addEventListener('click', () => {
         });
       });
       //フレンドの名前を変更
-      const nameChangeButtons = document.querySelectorAll(
+      const changeNameButtons = document.querySelectorAll(
         '.friend-change-name'
       );
+      changeNameButtons.forEach((changeNameButton) => {
+        changeNameButton.addEventListener('click', () => {
+          const friendBox = changeNameButton.parentNode;
+          const friendName = friendBox.querySelector('.friend-name');
+          const friendNameInput = friendBox.querySelector('.friend-name-input');
+
+          friendName.style.display = 'none';
+          friendNameInput.style.display = 'block';
+        });
+      });
     },
   });
 });
