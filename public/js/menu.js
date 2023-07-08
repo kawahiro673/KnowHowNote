@@ -227,8 +227,8 @@ document.getElementById('friend-list').addEventListener('click', () => {
     success: function (res) {
       document.getElementById('myID').innerHTML = res.user.Authentication_ID;
 
-      const deleteButton = document.querySelector('.friend-delete');
-      deleteButton.addEventListener('click', function () {
+      $('.friend-delete').on('click', (event) => {
+        console.log('yaa');
         const friendName = document.querySelector('.friend-name').textContent;
         console.log(friendName); // 'ok'がコンソールに表示されます
       });
