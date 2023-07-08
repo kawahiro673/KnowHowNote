@@ -609,9 +609,7 @@ router.post('/', (req, res) => {
       'SELECT * FROM it_memo WHERE UserName = ?;',
       [req.body.name],
       (error, result) => {
-        res.send({
-          noteResult: result[0],
-        });
+        res.send({ fileResult: result[0] });
       }
     );
   }

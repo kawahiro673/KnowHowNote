@@ -810,8 +810,8 @@ const friendListUpdate = () => {
           name: 'futon2',
         }),
         success: function (res) {
-          console.log(res.noteResult.LoginDate);
-          p2.innerHTML = '最終ログイン日時: ' + res.noteResult.LoginDate;
+          console.log(res.fileResult.LoginDate);
+          //p2.innerHTML = '最終ログイン日時: ' + res.fileResult.LoginDate;
         },
       });
     },
