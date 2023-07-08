@@ -214,7 +214,7 @@ document
 //フレンドリストのポップアップ出力
 document.getElementById('friend-list').addEventListener('click', () => {
   document.getElementById('popup-overlay_friend-list').style.display = 'block';
-  // friendListUpdate();
+
   $.ajax({
     url: '/mypage/' + hashedIdGet,
     type: 'POST',
@@ -232,7 +232,6 @@ document.getElementById('friend-list').addEventListener('click', () => {
         deleteButton.addEventListener('click', (event) => {
           const friendName =
             event.target.parentNode.querySelector('.friend-name').textContent;
-          console.log(friendName);
           document.getElementById(
             'popup-overlay_friend-delete-q'
           ).style.display = 'block';
@@ -255,7 +254,6 @@ document
 document
   .getElementById('friend-delete-q-button')
   .addEventListener('click', (e) => {
-    console.log('削除します');
     friendListDelete(
       document.getElementById('friend-delete-q-user').textContent
     );
@@ -264,11 +262,32 @@ document
 document
   .getElementById('friend-delete-q-cancel')
   .addEventListener('click', (e) => {
-    console.log('削除取りやめます');
-    friendListDelete(
-      document.getElementById('friend-delete-q-user').textContent
-    );
+    document.getElementById('popup-overlay_friend-delete-q').style.display =
+      'none';
   });
+
+const friendListDelete = (name) => {
+  document.getElementById('popup-overlay_friend-delete-ans').style.display =
+    'block';
+  setTimeout(() => {
+    document.getElementById('popup-overlay_friend-delete-ans').style.display =
+      'none';
+  }, 1500);
+
+  $.ajax({
+    url: '/mypage/' + hashedIdGet,
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'friend-list-delete',
+      name,
+    }),
+    success: function (res) {
+      friendListUpdate();
+    },
+  });
+};
 
 document
   .getElementById('pop-delete_friend-list')
@@ -803,68 +822,6 @@ document
   });
 
 //フレンドリストのフレンド表示を更新
-// const friendListUpdate = async () => {
-//   return new Promise((resolve, reject) => {
-//     $.ajax({
-//       url: '/mypage/' + hashedIdGet,
-//       type: 'POST',
-//       dataType: 'Json',
-//       contentType: 'application/json',
-//       data: JSON.stringify({
-//         flg: 'friend-list-get',
-//       }),
-//       success: function (res) {
-//         const friendListDiv = document.getElementById('friend-list-div');
-//         friendListDiv.innerHTML = '';
-
-//         if (res.friend.length === 0) {
-//           friendListDiv.innerHTML = '※フレンドが登録されていません';
-//           resolve();
-//         }
-
-//         res.friend.forEach((friend) => {
-//           const friendElement = document.createElement('div');
-//           friendElement.setAttribute('class', 'friend-Box');
-//           friendElement.setAttribute('id', `friend-Box${friend.id}`);
-//           const p1 = document.createElement('p');
-//           p1.setAttribute('class', 'friend-name');
-//           p1.innerHTML = friend.user_name;
-//           const p2 = document.createElement('p');
-//           p2.setAttribute('class', 'friend-login');
-//           p2.innerHTML = '最終ログイン日時: ';
-//           const button1 = document.createElement('button');
-//           button1.setAttribute('class', 'friend-change-name');
-//           button1.innerHTML = '名前変更';
-//           const button2 = document.createElement('button');
-//           button2.setAttribute('class', 'friend-delete');
-//           button2.innerHTML = '削除';
-//           friendElement.appendChild(p1);
-//           friendElement.appendChild(button1);
-//           friendElement.appendChild(button2);
-//           friendElement.appendChild(p2);
-//           friendListDiv.appendChild(friendElement);
-
-//           $.ajax({
-//             url: '/notePostController/',
-//             type: 'POST',
-//             dataType: 'Json',
-//             contentType: 'application/json',
-//             data: JSON.stringify({
-//               flg: 'info_name',
-//               name: friend.user_name,
-//             }),
-//             success: function (res) {
-//               console.log(res.fileResult.LoginDate);
-//               p2.innerHTML = '最終ログイン日時: ' + res.fileResult.LoginDate;
-//               resolve();
-//             },
-//           });
-//         });
-//       },
-//     });
-//   });
-// };
-
 const friendListUpdate = () => {
   return new Promise((resolve, reject) => {
     $.ajax({
@@ -935,8 +892,4 @@ const friendListUpdate = () => {
       },
     });
   });
-};
-
-const friendListDelete = (name) => {
-  console.log(name + ' さん');
 };
