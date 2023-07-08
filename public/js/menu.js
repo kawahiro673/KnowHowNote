@@ -233,7 +233,7 @@ document.getElementById('friend-list').addEventListener('click', () => {
         deleteButton.addEventListener('click', function () {
           const friendName =
             this.parentNode.querySelector('.friend-name').textContent;
-
+          console.log(friendName);
           document.getElementById(
             'popup-overlay_friend-delete-q'
           ).style.display = 'block';
