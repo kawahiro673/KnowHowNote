@@ -214,6 +214,12 @@ document
 //フレンドリストのポップアップ出力
 document.getElementById('friend-list').addEventListener('click', () => {
   document.getElementById('popup-overlay_friend-list').style.display = 'block';
+  const deleteButton = document.querySelector('.friend-delete');
+
+  deleteButton.addEventListener('click', function () {
+    const friendName = document.querySelector('.friend-name').textContent;
+    console.log(friendName); // 'ok'がコンソールに表示されます
+  });
   friendListUpdate();
   $.ajax({
     url: '/mypage/' + hashedIdGet,
@@ -825,10 +831,3 @@ const friendListUpdate = () => {
 //   const friendName = document.querySelector('.friend-name').textContent;
 //   console.log(friendName); // 'ok'がコンソールに表示されます
 // });
-
-const deleteButton = document.querySelector('.friend-delete');
-
-deleteButton.addEventListener('click', function () {
-  const friendName = document.querySelector('.friend-name').textContent;
-  console.log(friendName); // 'ok'がコンソールに表示されます
-});
