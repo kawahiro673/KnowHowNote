@@ -820,8 +820,15 @@ const friendListUpdate = () => {
   });
 };
 
-$('.friend-delete').on('click', (event) => {
-  console.log('yaa');
+// $('.friend-delete').on('click', (event) => {
+//   console.log('yaa');
+//   const friendName = document.querySelector('.friend-name').textContent;
+//   console.log(friendName); // 'ok'がコンソールに表示されます
+// });
+
+const deleteButton = document.querySelector('.friend-delete');
+
+deleteButton.addEventListener('click', function () {
   const friendName = document.querySelector('.friend-name').textContent;
   console.log(friendName); // 'ok'がコンソールに表示されます
 });
