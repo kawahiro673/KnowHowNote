@@ -214,8 +214,7 @@ document
 //フレンドリストのポップアップ出力
 document.getElementById('friend-list').addEventListener('click', () => {
   document.getElementById('popup-overlay_friend-list').style.display = 'block';
-
-  friendListUpdate();
+  // friendListUpdate();
   $.ajax({
     url: '/mypage/' + hashedIdGet,
     type: 'POST',
@@ -224,25 +223,23 @@ document.getElementById('friend-list').addEventListener('click', () => {
     data: JSON.stringify({
       flg: 'RegisterUser',
     }),
-    success: function (res) {
+    success: async function (res) {
       document.getElementById('myID').innerHTML = res.user.Authentication_ID;
-
+      await friendListUpdate();
       //フレンドをフレンドリストから削除
-      setTimeout(() => {
-        const deleteButtons = document.querySelectorAll('.friend-delete');
-        deleteButtons.forEach((deleteButton) => {
-          deleteButton.addEventListener('click', () => {
-            const friendName =
-              this.parentNode.querySelector('.friend-name').textContent;
-            console.log(friendName);
-            document.getElementById(
-              'popup-overlay_friend-delete-q'
-            ).style.display = 'block';
-            document.getElementById('friend-delete-q-user').innerHTML =
-              friendName;
-          });
+      const deleteButtons = document.querySelectorAll('.friend-delete');
+      deleteButtons.forEach((deleteButton) => {
+        deleteButton.addEventListener('click', () => {
+          const friendName =
+            this.parentNode.querySelector('.friend-name').textContent;
+          console.log(friendName);
+          document.getElementById(
+            'popup-overlay_friend-delete-q'
+          ).style.display = 'block';
+          document.getElementById('friend-delete-q-user').innerHTML =
+            friendName;
         });
-      }, 3000);
+      });
     },
   });
 });
@@ -806,61 +803,137 @@ document
   });
 
 //フレンドリストのフレンド表示を更新
+// const friendListUpdate = async () => {
+//   return new Promise((resolve, reject) => {
+//     $.ajax({
+//       url: '/mypage/' + hashedIdGet,
+//       type: 'POST',
+//       dataType: 'Json',
+//       contentType: 'application/json',
+//       data: JSON.stringify({
+//         flg: 'friend-list-get',
+//       }),
+//       success: function (res) {
+//         const friendListDiv = document.getElementById('friend-list-div');
+//         friendListDiv.innerHTML = '';
+
+//         if (res.friend.length === 0) {
+//           friendListDiv.innerHTML = '※フレンドが登録されていません';
+//           resolve();
+//         }
+
+//         res.friend.forEach((friend) => {
+//           const friendElement = document.createElement('div');
+//           friendElement.setAttribute('class', 'friend-Box');
+//           friendElement.setAttribute('id', `friend-Box${friend.id}`);
+//           const p1 = document.createElement('p');
+//           p1.setAttribute('class', 'friend-name');
+//           p1.innerHTML = friend.user_name;
+//           const p2 = document.createElement('p');
+//           p2.setAttribute('class', 'friend-login');
+//           p2.innerHTML = '最終ログイン日時: ';
+//           const button1 = document.createElement('button');
+//           button1.setAttribute('class', 'friend-change-name');
+//           button1.innerHTML = '名前変更';
+//           const button2 = document.createElement('button');
+//           button2.setAttribute('class', 'friend-delete');
+//           button2.innerHTML = '削除';
+//           friendElement.appendChild(p1);
+//           friendElement.appendChild(button1);
+//           friendElement.appendChild(button2);
+//           friendElement.appendChild(p2);
+//           friendListDiv.appendChild(friendElement);
+
+//           $.ajax({
+//             url: '/notePostController/',
+//             type: 'POST',
+//             dataType: 'Json',
+//             contentType: 'application/json',
+//             data: JSON.stringify({
+//               flg: 'info_name',
+//               name: friend.user_name,
+//             }),
+//             success: function (res) {
+//               console.log(res.fileResult.LoginDate);
+//               p2.innerHTML = '最終ログイン日時: ' + res.fileResult.LoginDate;
+//               resolve();
+//             },
+//           });
+//         });
+//       },
+//     });
+//   });
+// };
+
 const friendListUpdate = () => {
-  $.ajax({
-    url: '/mypage/' + hashedIdGet,
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      flg: 'friend-list-get',
-    }),
-    success: function (res) {
-      const friendListDiv = document.getElementById('friend-list-div');
-      friendListDiv.innerHTML = '';
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      url: '/mypage/' + hashedIdGet,
+      type: 'POST',
+      dataType: 'Json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        flg: 'friend-list-get',
+      }),
+      success: function (res) {
+        const friendListDiv = document.getElementById('friend-list-div');
+        friendListDiv.innerHTML = '';
 
-      if (res.friend.length === 0) {
-        friendListDiv.innerHTML = '※フレンドが登録されていません';
-      }
+        if (res.friend.length === 0) {
+          friendListDiv.innerHTML = '※フレンドが登録されていません';
+          resolve(); // 処理が完了したことを知らせるだけなのでresolve()を呼び出す
+        }
 
-      res.friend.forEach((friend) => {
-        const friendElement = document.createElement('div');
-        friendElement.setAttribute('class', 'friend-Box');
-        friendElement.setAttribute('id', `friend-Box${friend.id}`);
-        const p1 = document.createElement('p');
-        p1.setAttribute('class', 'friend-name');
-        p1.innerHTML = friend.user_name;
-        const p2 = document.createElement('p');
-        p2.setAttribute('class', 'friend-login');
-        p2.innerHTML = '最終ログイン日時: ';
-        const button1 = document.createElement('button');
-        button1.setAttribute('class', 'friend-change-name');
-        button1.innerHTML = '名前変更';
-        const button2 = document.createElement('button');
-        button2.setAttribute('class', 'friend-delete');
-        button2.innerHTML = '削除';
-        friendElement.appendChild(p1);
-        friendElement.appendChild(button1);
-        friendElement.appendChild(button2);
-        friendElement.appendChild(p2);
-        friendListDiv.appendChild(friendElement);
+        let promises = [];
 
-        $.ajax({
-          url: '/notePostController/',
-          type: 'POST',
-          dataType: 'Json',
-          contentType: 'application/json',
-          data: JSON.stringify({
-            flg: 'info_name',
-            name: friend.user_name,
-          }),
-          success: function (res) {
-            console.log(res.fileResult.LoginDate);
-            p2.innerHTML = '最終ログイン日時: ' + res.fileResult.LoginDate;
-          },
+        res.friend.forEach((friend) => {
+          const friendElement = document.createElement('div');
+          friendElement.setAttribute('class', 'friend-Box');
+          friendElement.setAttribute('id', `friend-Box${friend.id}`);
+          const p1 = document.createElement('p');
+          p1.setAttribute('class', 'friend-name');
+          p1.innerHTML = friend.user_name;
+          const p2 = document.createElement('p');
+          p2.setAttribute('class', 'friend-login');
+          p2.innerHTML = '最終ログイン日時: ';
+          const button1 = document.createElement('button');
+          button1.setAttribute('class', 'friend-change-name');
+          button1.innerHTML = '名前変更';
+          const button2 = document.createElement('button');
+          button2.setAttribute('class', 'friend-delete');
+          button2.innerHTML = '削除';
+          friendElement.appendChild(p1);
+          friendElement.appendChild(button1);
+          friendElement.appendChild(button2);
+          friendElement.appendChild(p2);
+          friendListDiv.appendChild(friendElement);
+
+          const promise = new Promise((resolve, reject) => {
+            $.ajax({
+              url: '/notePostController/',
+              type: 'POST',
+              dataType: 'Json',
+              contentType: 'application/json',
+              data: JSON.stringify({
+                flg: 'info_name',
+                name: friend.user_name,
+              }),
+              success: function (res) {
+                console.log(res.fileResult.LoginDate);
+                p2.innerHTML = '最終ログイン日時: ' + res.fileResult.LoginDate;
+                resolve();
+              },
+            });
+          });
+
+          promises.push(promise);
         });
-      });
-    },
+
+        Promise.all(promises).then(() => {
+          resolve(); // 処理が完了したことを知らせるためにresolve()を呼び出す
+        });
+      },
+    });
   });
 };
 
