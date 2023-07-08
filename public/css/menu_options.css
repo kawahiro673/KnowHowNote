@@ -75,7 +75,9 @@
 #popup-overlay_inquiry_result,
 #popup-overlay_friend-list,
 #popup-overlay_friend-add,
-#popup-overlay_friend-add-ans {
+#popup-overlay_friend-add-ans,
+#popup-overlay_friend-delete-ans,
+#popup-overlay_friend-delete-q {
   display: block;
   position: fixed;
   top: 0;
@@ -98,7 +100,9 @@
 .popup-window_inquiry_result,
 .popup-window_friend-list,
 .popup-window_friend-add,
-.popup-window_friend-add-ans {
+.popup-window_friend-add-ans,
+.popup-window_friend-delete-ans,
+.popup-window_friend-delete-q {
   width: 500px;
   height: 300px;
   background-color: #fff;
@@ -127,7 +131,9 @@
   width: 300px;
 }
 .popup-window_logout,
-.popup-window_friend-add-ans {
+.popup-window_friend-add-ans,
+.popup-window_friend-delete-q,
+.popup-window_friend-delete-ans {
   height: 180px;
   width: 330px;
 }
@@ -154,7 +160,9 @@
 .popup-header_inquiry_result,
 .popup-header_friend-list,
 .popup-header_friend-add,
-.popup-header_friend-add-ans {
+.popup-header_friend-add-ans,
+.popup-header_friend-delete-ans,
+.popup-header_friend-delete-q {
   display: flex;
   align-items: center;
   justify-content: center; /* 中央寄せに変更 */
@@ -175,7 +183,9 @@
 .popup-header_inquiry_result h2,
 .popup-header_friend-list h2,
 .popup-header_friend-add h2,
-.popup-header_friend-add-ans h2 {
+.popup-header_friend-add-ans h2,
+.popup-header_friend-delete-ans h2,
+.popup-header_friend-delete-q h2 {
   font-size: 16px;
   font-weight: normal;
   margin: 0 auto;
@@ -193,7 +203,8 @@
 #pop-delete_share-user,
 #pop-delete_share_no,
 #pop-delete_friend-list,
-#pop-delete_friend-add {
+#pop-delete_friend-add,
+#pop-delete_friend-delete-q {
   text-decoration: none;
   font-size: 1.2em;
   font-weight: bold;
@@ -210,7 +221,8 @@
 #pop-delete_share-user:hover,
 #pop-delete_share_no:hover,
 #pop-delete_friend-list:hover,
-#pop-delete_friend-add:hover {
+#pop-delete_friend-add:hover,
+#pop-delete_friend-delete-q:hover {
   color: red;
 }
 
@@ -232,7 +244,9 @@
 .popup-body_inquiry_result,
 .popup-body_friend-list,
 .popup-body_friend-add,
-.popup-body_friend-add-ans {
+.popup-body_friend-add-ans,
+.popup-body_friend-delete-ans,
+.popup-body_friend-delete-q {
   position: relative;
   height: 240px;
   padding: 0 10px;
@@ -353,7 +367,9 @@
 #friend-list-add-button,
 #friend-search-button,
 .friend-change-name,
-.friend-delete {
+.friend-delete,
+#friend-delete-q-button,
+#friend-delete-q-cancel {
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -384,7 +400,8 @@
 #friend-list-add-button,
 #friend-search-button,
 .friend-change-name,
-.friend-delete {
+.friend-delete,
+#friend-delete-q-button {
   padding: 7px 14px;
   font-size: 12px;
 }
@@ -392,6 +409,7 @@
 #no-button-logout,
 #no-button-delete,
 #share-user-clear-button,
+#friend-delete-q-cancel,
 .friend-delete {
   background-color: red;
 }
