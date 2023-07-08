@@ -262,8 +262,9 @@ document.getElementById('friend-list').addEventListener('click', () => {
           applyButton.addEventListener('click', () => {
             const buttonId = applyButton.getAttribute('id');
             const id = buttonId.match(/\d+/)[0];
+            console.log(id);
             $.ajax({
-              url: '/mypage/',
+              url: '/mypage/' + hashedIdGet,
               type: 'POST',
               dataType: 'Json',
               contentType: 'application/json',
