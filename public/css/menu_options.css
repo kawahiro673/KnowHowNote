@@ -548,3 +548,9 @@ input[type='checkbox']:checked + .gray_b {
   font-size: 20px;
   margin: 5px auto;
 }
+
+.friend-name-input,
+.friend-change-name {
+  display: inline-block;
+  margin-right: 5px;
+}

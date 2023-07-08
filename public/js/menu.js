@@ -257,6 +257,17 @@ document.getElementById('friend-list').addEventListener('click', () => {
           friendNameInput.value = friendName.innerHTML;
           friendName.style.display = 'none';
           applyButton.style.display = 'block';
+
+          applyButton.addEventListener('click', () => {
+            const newFriendName = friendNameInput.value;
+            console.log('Apply button clicked for friend name:', newFriendName);
+            // ここに処理を追加してください
+
+            // friendName.innerHTML = newFriendName;
+            // friendName.style.display = 'block';
+            // friendNameInput.style.display = 'none';
+            // applyButton.style.display = 'none';
+          });
         });
       });
     },
