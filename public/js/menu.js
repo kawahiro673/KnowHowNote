@@ -258,15 +258,26 @@ document.getElementById('friend-list').addEventListener('click', () => {
           friendName.style.display = 'none';
           applyButton.style.display = 'block';
 
+          //名前変更の[適用]ボタン押下
           applyButton.addEventListener('click', () => {
-            const newFriendName = friendNameInput.value;
-            console.log('Apply button clicked for friend name:', newFriendName);
-            // ここに処理を追加してください
-
-            // friendName.innerHTML = newFriendName;
-            // friendName.style.display = 'block';
-            // friendNameInput.style.display = 'none';
-            // applyButton.style.display = 'none';
+            const buttonId = applyButton.getAttribute('id');
+            const id = buttonId.match(/\d+/)[0];
+            $.ajax({
+              url: '/mypage/' + hashedIdGet,
+              type: 'POST',
+              dataType: 'Json',
+              contentType: 'application/json',
+              data: JSON.stringify({
+                flg: 'friend-list-name-change',
+                id,
+                name: friendNameInput.value,
+              }),
+              success: function (res) {
+                friendNameInput.style.display = 'none';
+                applyButton.style.display = 'none';
+                friendName.style.display = 'block';
+              },
+            });
           });
         });
       });
