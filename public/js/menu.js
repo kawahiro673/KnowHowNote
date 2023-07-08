@@ -239,6 +239,10 @@ document.getElementById('friend-list').addEventListener('click', () => {
             friendName;
         });
       });
+      //フレンドの名前を変更
+      const nameChangeButtons = document.querySelectorAll(
+        '.friend-change-name'
+      );
     },
   });
 });
@@ -267,6 +271,8 @@ document
   });
 
 const friendListDelete = (name) => {
+  document.getElementById('popup-overlay_friend-delete-q').style.display =
+    'none';
   document.getElementById('popup-overlay_friend-delete-ans').style.display =
     'block';
   setTimeout(() => {
@@ -507,7 +513,7 @@ const shareFunctionCheckBoxOption = () => {
       if (checkbox.checked) {
         const label = checkbox.parentElement; // 親要素の<label>を取得
         const text = label.textContent.trim(); // ラベル要素のテキストを取得し、前後の空白をトリム
-        console.log(text);
+
         switch (text) {
           case 'ON':
             shareFunctionCheckBoxFlg('ON');
@@ -527,7 +533,6 @@ const shareFunctionCheckBoxOption = () => {
 };
 
 const shareFunctionCheckBoxFlg = (checkbox) => {
-  console.log(checkbox);
   $.ajax({
     url: '/mypage/' + hashedIdGet,
     type: 'POST',
@@ -853,6 +858,10 @@ const friendListUpdate = () => {
           const p2 = document.createElement('p');
           p2.setAttribute('class', 'friend-login');
           p2.innerHTML = '最終ログイン日時: ';
+          const input = document.createElement('input');
+          input.setAttribute('class', `friend-name-input`);
+          input.setAttribute('id', `friend-name-input${friend.id}`);
+          input.style.display = 'none';
           const button1 = document.createElement('button');
           button1.setAttribute('class', 'friend-change-name');
           button1.innerHTML = '名前変更';
@@ -860,6 +869,7 @@ const friendListUpdate = () => {
           button2.setAttribute('class', 'friend-delete');
           button2.innerHTML = '削除';
           friendElement.appendChild(p1);
+          friendElement.appendChild(input);
           friendElement.appendChild(button1);
           friendElement.appendChild(button2);
           friendElement.appendChild(p2);
@@ -876,7 +886,6 @@ const friendListUpdate = () => {
                 name: friend.user_name,
               }),
               success: function (res) {
-                console.log(res.fileResult.LoginDate);
                 p2.innerHTML = '最終ログイン日時: ' + res.fileResult.LoginDate;
                 resolve();
               },
