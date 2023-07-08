@@ -788,6 +788,10 @@ const friendListUpdate = () => {
       const friendListDiv = document.getElementById('friend-list-div');
       friendListDiv.innerHTML = '';
 
+      if (res.friend.length === 0) {
+        friendListDiv.innerHTML = 'フレンドが登録されていません';
+      }
+
       res.friend.forEach((friend) => {
         const friendElement = document.createElement('div');
         friendElement.setAttribute('class', 'friend-Box');
