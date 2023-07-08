@@ -243,14 +243,19 @@ document.getElementById('friend-list').addEventListener('click', () => {
       const changeNameButtons = document.querySelectorAll(
         '.friend-change-name'
       );
+
       changeNameButtons.forEach((changeNameButton) => {
         changeNameButton.addEventListener('click', () => {
           const friendBox = changeNameButton.parentNode;
           const friendName = friendBox.querySelector('.friend-name');
           const friendNameInput = friendBox.querySelector('.friend-name-input');
+          const applyButton = friendBox.querySelector(
+            '.friend-change-name[id^="friend-change-button"]'
+          );
 
           friendName.style.display = 'none';
           friendNameInput.style.display = 'block';
+          applyButton.style.display = 'block';
         });
       });
     },
