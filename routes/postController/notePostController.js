@@ -4,8 +4,6 @@ const JWT = require('jsonwebtoken');
 const { reject } = require('bcrypt/promises');
 
 router.post('/', (req, res) => {
-  // const token = req.cookies.token;
-  // const decoded = JWT.verify(token, 'SECRET_KEY');
   if (req.body.flg === 'newNote') {
     if (req.body.pattern === 'new') {
       const token = req.cookies.token;
