@@ -611,7 +611,7 @@ router.post('/', (req, res) => {
       [req.body.name],
       (error, result) => {
         res.send({
-          noteResult: result,
+          noteResult: result[0],
         });
       }
     );
