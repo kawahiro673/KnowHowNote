@@ -1001,7 +1001,7 @@ router
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'UPDATE friend_list SET Change_Name = ? WHERE id = ?;',
+              'UPDATE friend_list SET Changed_Name = ? WHERE id = ?;',
               [req.body.name, req.body.id],
               (error, result) => {
                 if (error) {
