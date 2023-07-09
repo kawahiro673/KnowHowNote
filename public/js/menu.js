@@ -337,7 +337,8 @@ document.getElementById('friend-list').addEventListener('click', async () => {
           applyButton.addEventListener('click', () => {
             const buttonId = applyButton.getAttribute('id');
             const id = buttonId.match(/\d+/)[0];
-
+            const newname = friendNameInput.value;
+            console.log(newname);
             console.log(friendNameInput.value);
 
             $.ajax({
