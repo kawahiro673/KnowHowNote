@@ -333,6 +333,7 @@ document.getElementById('friend-list').addEventListener('click', async () => {
           friendNameInput.value = friendName.innerHTML;
           friendName.style.display = 'none';
           applyButton.style.display = 'block';
+          name = friendName.innerHTML;
 
           // 入力値が変更された時の処理
           friendNameInput.addEventListener('input', () => {
