@@ -212,81 +212,6 @@ document
   });
 
 //フレンドリストのポップアップ出力
-// document.getElementById('friend-list').addEventListener('click', () => {
-//   document.getElementById('popup-overlay_friend-list').style.display = 'block';
-//   let hashedId = hashedIdGet();
-//   $.ajax({
-//     url: '/mypage/' + hashedId,
-//     type: 'POST',
-//     dataType: 'Json',
-//     contentType: 'application/json',
-//     data: JSON.stringify({
-//       flg: 'RegisterUser',
-//     }),
-//     success: async function (res) {
-//       document.getElementById('myID').innerHTML = res.user.Authentication_ID;
-//       await friendListUpdate();
-//       //フレンドをフレンドリストから削除
-//       const deleteButtons = document.querySelectorAll('.friend-delete');
-//       deleteButtons.forEach((deleteButton) => {
-//         deleteButton.addEventListener('click', (event) => {
-//           const friendName =
-//             event.target.parentNode.querySelector('.friend-name').textContent;
-//           document.getElementById(
-//             'popup-overlay_friend-delete-q'
-//           ).style.display = 'block';
-//           document.getElementById('friend-delete-q-user').innerHTML =
-//             friendName;
-//         });
-//       });
-
-//       //フレンドの名前を変更
-//       const changeNameButtons = document.querySelectorAll(
-//         '.friend-change-name'
-//       );
-//       changeNameButtons.forEach((changeNameButton) => {
-//         changeNameButton.addEventListener('click', () => {
-//           const friendBox = changeNameButton.parentNode;
-//           const friendName = friendBox.querySelector('.friend-name');
-//           const friendNameInput = friendBox.querySelector('.friend-name-input');
-//           const applyButton = friendBox.querySelector(
-//             '.friend-change-name[id^="friend-change-button"]'
-//           );
-
-//           friendNameInput.style.display = 'block';
-//           friendNameInput.value = friendName.innerHTML;
-//           friendName.style.display = 'none';
-//           applyButton.style.display = 'block';
-
-//           //名前変更の[適用]ボタン押下
-//           applyButton.addEventListener('click', () => {
-//             const buttonId = applyButton.getAttribute('id');
-//             const id = buttonId.match(/\d+/)[0];
-//             console.log(id);
-
-//             $.ajax({
-//               url: '/mypage/' + hashedId,
-//               type: 'POST',
-//               dataType: 'Json',
-//               contentType: 'application/json',
-//               data: JSON.stringify({
-//                 flg: 'friend-list-name-change',
-//                 id,
-//                 name: friendNameInput.value,
-//               }),
-//               success: function (res) {
-//                 friendNameInput.style.display = 'none';
-//                 applyButton.style.display = 'none';
-//                 friendName.style.display = 'block';
-//               },
-//             });
-//           });
-//         });
-//       });
-//     },
-//   });
-// });
-
 document.getElementById('friend-list').addEventListener('click', async () => {
   document.getElementById('popup-overlay_friend-list').style.display = 'block';
 
@@ -977,7 +902,7 @@ const friendListUpdate = () => {
           friendElement.setAttribute('id', `friend-Box${friend.id}`);
           const p1 = document.createElement('p');
           p1.setAttribute('class', 'friend-name');
-          p1.innerHTML = friend.user_name;
+          p1.innerHTML = friend.Changed_Name;
           const p2 = document.createElement('p');
           p2.setAttribute('class', 'friend-login');
           p2.innerHTML = '最終ログイン日時: ';

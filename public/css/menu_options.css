@@ -301,10 +301,15 @@
   text-overflow: ellipsis;
   max-width: 200px;
 }
+
+.friend-name-input,
+.friend-change-name {
+  display: inline-block;
+  margin-right: 5px;
+}
 .friend-name-input {
   font-size: 20px;
   margin: 8px;
-  max-width: 140px;
 }
 
 .friend-login {
@@ -547,10 +552,4 @@ input[type='checkbox']:checked + .gray_b {
 #idInput {
   font-size: 20px;
   margin: 5px auto;
-}
-
-.friend-name-input,
-.friend-change-name {
-  display: inline-block;
-  margin-right: 5px;
 }
