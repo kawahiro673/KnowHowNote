@@ -19,11 +19,11 @@
   }
 
   .header-div img {
-  margin-left: 3px;
-  width: 30px;
-  height: 30px;
-}
-  
+    margin-left: 3px;
+    width: 30px;
+    height: 30px;
+  }
+
   header h1 {
     font-size: 20px;
   }
@@ -86,14 +86,19 @@
   .popup-window_explanation,
   .popup-window_inquiry,
   .popup-window_share-user,
-  .popup-window_inquiry_result {
+  .popup-window_inquiry_result,
+  .popup-body_friend-list {
     width: 350px;
     height: 270px;
   }
   .popup-window_logout,
   .popup-window_delete,
   .popup-window_share_ans,
-  .popup-window_share_no {
+  .popup-window_share_no,
+  .popup-body_friend-add,
+  .popup-body_friend-add-ans,
+  .popup-body_friend-delete-ans,
+  .popup-body_friend-delete-q {
     width: 330px;
     height: 180px;
   }
@@ -160,5 +165,8 @@
     position: absolute;
     bottom: 0;
     right: 0;
+  }
+  #friend-list-div {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
