@@ -242,7 +242,7 @@ document.getElementById('friend-list').addEventListener('click', async () => {
 
       //フレンドの名前を変更
       const changeNameButtons = document.querySelectorAll(
-        '.friend-change-name'
+        '..friend-change-name-button'
       );
       changeNameButtons.forEach((changeNameButton) => {
         changeNameButton.addEventListener('click', () => {
@@ -250,7 +250,7 @@ document.getElementById('friend-list').addEventListener('click', async () => {
           const friendName = friendBox.querySelector('.friend-name');
           const friendNameInput = friendBox.querySelector('.friend-name-input');
           const applyButton = friendBox.querySelector(
-            '.friend-change-name[id^="friend-change-button"]'
+            '.friend-change-name-button[id^="friend-change-button"]'
           );
           let name;
 
