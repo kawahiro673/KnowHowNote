@@ -290,10 +290,8 @@ document
 document.getElementById('friend-list').addEventListener('click', async () => {
   document.getElementById('popup-overlay_friend-list').style.display = 'block';
 
-  let hashedId = hashedIdGet();
-  console.log(hashedId);
   $.ajax({
-    url: '/mypage/' + hashedId,
+    url: '/mypage/' + hashedIdGet,
     type: 'POST',
     dataType: 'Json',
     contentType: 'application/json',
@@ -339,10 +337,11 @@ document.getElementById('friend-list').addEventListener('click', async () => {
           applyButton.addEventListener('click', () => {
             const buttonId = applyButton.getAttribute('id');
             const id = buttonId.match(/\d+/)[0];
-            console.log(id);
-            console.log(hashedId);
+
+            console.log(friendNameInput.value);
+
             $.ajax({
-              url: '/mypage/' + hashedId,
+              url: '/mypage/' + hashedIdGet,
               type: 'POST',
               dataType: 'Json',
               contentType: 'application/json',
