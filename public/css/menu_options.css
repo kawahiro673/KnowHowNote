@@ -315,6 +315,7 @@
 .friend-name-input {
   font-size: 20px;
   margin: 8px;
+  width: 140px;
 }
 
 .friend-login {

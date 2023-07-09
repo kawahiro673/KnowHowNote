@@ -133,6 +133,9 @@
   .share-user-button {
     font-size: 15px;
   }
+  .friend-Box {
+    width: 140px;
+  }
 
   .popup-body_inquiry textarea {
     text-align: left;
