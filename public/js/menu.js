@@ -332,13 +332,18 @@ document.getElementById('friend-list').addEventListener('click', async () => {
           friendNameInput.value = friendName.innerHTML;
           friendName.style.display = 'none';
           applyButton.style.display = 'block';
+          let newName;
 
+          // 入力値が変更された時の処理
+          friendNameInput.addEventListener('input', () => {
+            newName = friendNameInput.value;
+          });
           //名前変更の[適用]ボタン押下
           applyButton.addEventListener('click', () => {
             const buttonId = applyButton.getAttribute('id');
             const id = buttonId.match(/\d+/)[0];
-            const newname = friendNameInput.value;
-            console.log(newname);
+
+            console.log(newName);
             console.log(friendNameInput.value);
 
             $.ajax({
