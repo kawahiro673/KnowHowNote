@@ -343,7 +343,8 @@ document.getElementById('friend-list').addEventListener('click', async () => {
           applyButton.addEventListener('click', () => {
             const buttonId = applyButton.getAttribute('id');
             const id = buttonId.match(/\d+/)[0];
-            friendNameInput.style.display = 'none';
+            friendNameInput.value = name;
+
             $.ajax({
               url: '/mypage/' + hashedIdGet,
               type: 'POST',
@@ -355,7 +356,7 @@ document.getElementById('friend-list').addEventListener('click', async () => {
                 name,
               }),
               success: function (res) {
-                //friendNameInput.style.display = 'none';
+                friendNameInput.style.display = 'none';
                 applyButton.style.display = 'none';
                 friendName.style.display = 'block';
                 friendName.innerHTML = name;
