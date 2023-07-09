@@ -311,10 +311,10 @@
 .input-wrapper {
   display: inline-block;
 }
-.friend-name-input {
+/* .friend-name-input {
   font-size: 20px;
   margin: 8px;
-}
+} */
 
 .friend-login {
   font-size: 10px;
