@@ -242,7 +242,7 @@ document.getElementById('friend-list').addEventListener('click', async () => {
 
       //フレンドの名前を変更
       const changeNameButtons = document.querySelectorAll(
-        '..friend-change-name-button'
+        '.friend-change-name'
       );
       changeNameButtons.forEach((changeNameButton) => {
         changeNameButton.addEventListener('click', () => {
