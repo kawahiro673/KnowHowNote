@@ -906,6 +906,8 @@ const friendListUpdate = () => {
           const p2 = document.createElement('p');
           p2.setAttribute('class', 'friend-login');
           p2.innerHTML = '最終ログイン日時: ';
+          const div = document.createElement('div');
+          div.setAttribute('class', 'input-wrapper');
           const input = document.createElement('input');
           input.setAttribute('class', `friend-name-input`);
           input.setAttribute('id', `friend-name-input${friend.id}`);
@@ -922,8 +924,9 @@ const friendListUpdate = () => {
           button2.setAttribute('class', 'friend-delete');
           button2.innerHTML = '削除';
           friendElement.appendChild(p1);
-          friendElement.appendChild(input);
-          friendElement.appendChild(button);
+          div.appendChild(input);
+          div.appendChild(button);
+          friendElement.appendChild(div);
           friendElement.appendChild(button1);
           friendElement.appendChild(button2);
           friendElement.appendChild(p2);

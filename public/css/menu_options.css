@@ -308,6 +308,9 @@
   margin-right: 5px;
   vertical-align: middle;
 }
+.input-wrapper {
+  display: inline-block;
+}
 .friend-name-input {
   font-size: 20px;
   margin: 8px;
