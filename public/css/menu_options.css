@@ -380,7 +380,8 @@
 .friend-change-name,
 .friend-delete,
 #friend-delete-q-button,
-#friend-delete-q-cancel {
+#friend-delete-q-cancel,
+.friend-change-name-button {
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -413,7 +414,8 @@
 .friend-change-name,
 .friend-delete,
 #friend-delete-q-button,
-#friend-delete-q-cancel {
+#friend-delete-q-cancel,
+.friend-change-name-button {
   padding: 7px 14px;
   font-size: 12px;
 }
