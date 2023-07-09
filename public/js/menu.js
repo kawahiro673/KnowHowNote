@@ -327,24 +327,22 @@ document.getElementById('friend-list').addEventListener('click', async () => {
           const applyButton = friendBox.querySelector(
             '.friend-change-name[id^="friend-change-button"]'
           );
+          let name;
 
           friendNameInput.style.display = 'block';
           friendNameInput.value = friendName.innerHTML;
           friendName.style.display = 'none';
           applyButton.style.display = 'block';
-          let newName;
 
           // 入力値が変更された時の処理
           friendNameInput.addEventListener('input', () => {
-            newName = friendNameInput.value;
+            name = friendNameInput.value;
           });
+
           //名前変更の[適用]ボタン押下
           applyButton.addEventListener('click', () => {
             const buttonId = applyButton.getAttribute('id');
             const id = buttonId.match(/\d+/)[0];
-
-            console.log(newName);
-            console.log(friendNameInput.value);
 
             $.ajax({
               url: '/mypage/' + hashedIdGet,
@@ -354,12 +352,13 @@ document.getElementById('friend-list').addEventListener('click', async () => {
               data: JSON.stringify({
                 flg: 'friend-list-name-change',
                 id,
-                name: friendNameInput.value,
+                name,
               }),
               success: function (res) {
                 friendNameInput.style.display = 'none';
                 applyButton.style.display = 'none';
                 friendName.style.display = 'block';
+                friendName.innerHTML = name;
               },
             });
           });
