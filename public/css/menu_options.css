@@ -308,9 +308,10 @@
   margin-right: 5px;
   vertical-align: middle;
 }
-/* .input-wrapper {
-  display: inline-block;
-} */
+.input-wrapper {
+  display: flex;
+  align-items: center;
+}
 /* .friend-name-input {
   font-size: 20px;
   margin: 8px;
