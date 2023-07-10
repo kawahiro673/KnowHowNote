@@ -240,6 +240,20 @@ document.getElementById('friend-list').addEventListener('click', async () => {
         });
       });
 
+      //グループリスト表示
+document.querySelectorAll(".group-name-change-button").forEach(function(button) {
+  button.addEventListener("click", function(event) {
+    event.preventDefault(); // リンクのデフォルトの動作を無効化
+    document.getElementById('popup-overlay_group-list').style.display = 'block';
+    // ここに実行したいコードを追加
+  });
+});
+
+document.getElementById('pop-delete_group-list').addEventListener('click', function(event) {
+  event.preventDefault(); // リンクのデフォルトの動作を無効化
+  document.getElementById('popup-overlay_group-list').style.display = 'none';
+});
+
       //フレンドの名前を変更
       const changeNameButtons = document.querySelectorAll(
         '.friend-change-name'
@@ -989,17 +1003,3 @@ document
     e.preventDefault(); // リンクのデフォルトの動作を無効化
     document.getElementById('popup-overlay_group-add').style.display = 'none';
   });
-
-//グループリスト表示
-document.querySelectorAll(".group-name-change-button").forEach(function(button) {
-  button.addEventListener("click", function(event) {
-    event.preventDefault(); // リンクのデフォルトの動作を無効化
-    document.getElementById('popup-overlay_group-list').style.display = 'block';
-    // ここに実行したいコードを追加
-  });
-});
-
-document.getElementById('pop-delete_group-list').addEventListener('click', function(event) {
-  event.preventDefault(); // リンクのデフォルトの動作を無効化
-  document.getElementById('popup-overlay_group-list').style.display = 'none';
-});
