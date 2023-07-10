@@ -230,8 +230,9 @@ document.getElementById('friend-list').addEventListener('click', async () => {
       const deleteButtons = document.querySelectorAll('.friend-delete');
       deleteButtons.forEach((deleteButton) => {
         deleteButton.addEventListener('click', (event) => {
-          const friendName =
-          event.target.closest('.friend-Box').querySelector('.friend-name').textContent;
+          const friendName = event.target
+            .closest('.friend-Box')
+            .querySelector('.friend-name').textContent;
           document.getElementById(
             'popup-overlay_friend-delete-q'
           ).style.display = 'block';
@@ -241,18 +242,24 @@ document.getElementById('friend-list').addEventListener('click', async () => {
       });
 
       //グループリスト表示
-document.querySelectorAll(".group-name-change-button").forEach(function(button) {
-  button.addEventListener("click", function(event) {
-    event.preventDefault(); // リンクのデフォルトの動作を無効化
-    document.getElementById('popup-overlay_group-list').style.display = 'block';
-    // ここに実行したいコードを追加
-  });
-});
+      document
+        .querySelectorAll('.group-name-change-button')
+        .forEach(function (button) {
+          button.addEventListener('click', function (event) {
+            event.preventDefault(); // リンクのデフォルトの動作を無効化
+            document.getElementById('popup-overlay_group-list').style.display =
+              'block';
+            // ここに実行したいコードを追加
+          });
+        });
 
-document.getElementById('pop-delete_group-list').addEventListener('click', function(event) {
-  event.preventDefault(); // リンクのデフォルトの動作を無効化
-  document.getElementById('popup-overlay_group-list').style.display = 'none';
-});
+      document
+        .getElementById('pop-delete_group-list')
+        .addEventListener('click', function (event) {
+          event.preventDefault(); // リンクのデフォルトの動作を無効化
+          document.getElementById('popup-overlay_group-list').style.display =
+            'none';
+        });
 
       //フレンドの名前を変更
       const changeNameButtons = document.querySelectorAll(
@@ -260,13 +267,16 @@ document.getElementById('pop-delete_group-list').addEventListener('click', funct
       );
       changeNameButtons.forEach((changeNameButton) => {
         changeNameButton.addEventListener('click', () => {
-     
- const friendBox = changeNameButton.closest('.friend-Box');
-  const friendName = friendBox.querySelector('.friend-name');
-  const friendNameInput = friendBox.querySelector('.friend-name-input');
-  const applyButton = friendBox.querySelector('.friend-change-name-button[id^="friend-change-button"]');
-  const changeButton = event.target.closest('.friend-Box').querySelector('.friend-change-name');
-          
+          const friendBox = changeNameButton.closest('.friend-Box');
+          const friendName = friendBox.querySelector('.friend-name');
+          const friendNameInput = friendBox.querySelector('.friend-name-input');
+          const applyButton = friendBox.querySelector(
+            '.friend-change-name-button[id^="friend-change-button"]'
+          );
+          const changeButton = event.target
+            .closest('.friend-Box')
+            .querySelector('.friend-change-name');
+
           let name;
 
           friendNameInput.style.display = 'block';
@@ -931,7 +941,10 @@ const friendListUpdate = () => {
           groupP.innerHTML = 'ここにグループ名';
           const groupButton = document.createElement('button');
           groupButton.setAttribute('class', 'group-name-change-button');
-          groupButton.setAttribute('id', `group-name-change-button${friend.id}`);
+          groupButton.setAttribute(
+            'id',
+            `group-name-change-button${friend.id}`
+          );
           groupButton.innerHTML = '変更';
           const p2 = document.createElement('p');
           p2.setAttribute('class', 'friend-login');
@@ -957,17 +970,17 @@ const friendListUpdate = () => {
           div1.appendChild(p1);
           div1.appendChild(input);
           friendRow.appendChild(div1);
-          
+
           div.appendChild(button);
           div.appendChild(button1);
           div.appendChild(button2);
           friendRow.appendChild(div);
 
           friendElement.appendChild(friendRow);
-          
+
           groupDiv.appendChild(groupP);
           groupDiv.appendChild(groupButton);
-          
+
           friendElement.appendChild(groupDiv);
           friendElement.appendChild(p2);
           friendListDiv.appendChild(friendElement);
@@ -1001,14 +1014,32 @@ const friendListUpdate = () => {
 };
 
 //グループ追加のポップアップ
-document.getElementById('friend-list-group-add-button').addEventListener('click', () => {
-  document.getElementById('popup-overlay_group-add').style.display = 'block';
-  
-  document.getElementById('group-add-button').addEventListener('click', () => {
-    console.log('定期用クリック')
-});
-  
-});
+document
+  .getElementById('friend-list-group-add-button')
+  .addEventListener('click', () => {
+    document.getElementById('popup-overlay_group-add').style.display = 'block';
+
+    document
+      .getElementById('group-add-button')
+      .addEventListener('click', () => {
+        const groupName = document.getElementById('group-Name-input').value;
+        console.log(groupName);
+
+        $.ajax({
+          url: '/mypage/' + hashedIdGet,
+          type: 'POST',
+          dataType: 'Json',
+          contentType: 'application/json',
+          data: JSON.stringify({
+            flg: 'group_add',
+            groupName,
+          }),
+          success: function (res) {
+            document.getElementById('group-display').innerHTML = groupName;
+          },
+        });
+      });
+  });
 
 document
   .getElementById('pop-delete_group-add')

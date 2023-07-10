@@ -1017,6 +1017,39 @@ router
           console.error(error);
           res.status(500).json({ message: error.message, nothing });
         });
+    } else if (req.body.flg === 'group_add') {
+      const token = req.cookies.token;
+      const decoded = JWT.verify(token, 'SECRET_KEY');
+      let promise = new Promise((resolve, reject) => {
+        resolve();
+      });
+      promise
+        .then(() => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'SELECT * FROM register_user WHERE UserName = ?;',
+              [decoded.userName],
+              (error, resultDecoded) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  resolve(resultDecoded);
+                }
+              }
+            );
+          });
+        })
+        .then((resultDecoded) => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'INSERT INTO group_list (User_Group, UserID) values(?, ?);',
+              [req.body.groupName, resultDecoded[0].id],
+              (error, result) => {
+                res.send({ msg: '成功' });
+              }
+            );
+          });
+        });
     } else {
       console.log('flgで何も受け取ってません');
     }
