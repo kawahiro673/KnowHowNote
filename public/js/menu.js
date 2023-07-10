@@ -971,7 +971,7 @@ document.getElementById('friend-list-group-add-button').addEventListener('click'
 });
 
 document
-  .getElementById('group-add-button')
+  .getElementById('pop-delete_group-add')
   .addEventListener('click', (e) => {
     e.preventDefault(); // リンクのデフォルトの動作を無効化
     document.getElementById('popup-overlay_group-add').style.display = 'none';
