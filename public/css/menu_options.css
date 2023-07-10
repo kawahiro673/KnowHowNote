@@ -438,19 +438,30 @@
 #friend-list-add-button,
 #friend-list-group-add-button,
 #friend-search-button,
-.friend-change-name,
-.friend-delete,
 #friend-delete-q-button,
 #friend-delete-q-cancel,
-.friend-change-name-button,
 #group-add-button{
   padding: 7px 14px;
   font-size: 12px;
 }
-.group-name-change-button{
+
+.group-name-change-button,
+.friend-change-name,
+.friend-delete,
+.friend-change-name-button{
   padding: 5px 10px;
   font-size: 9px;  
 }
+
+.friend-delete{
+   background-color: #f5f5f5;
+  color:black;
+}
+
+.friend-delete:hover{
+  color:red;
+}
+
 .group-name-div {
   display: flex;
   align-items: center; /* 要素を垂直方向に中央揃え */
@@ -595,5 +606,6 @@ input[type='checkbox']:checked + .gray_b {
 
 .friend-row {
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
