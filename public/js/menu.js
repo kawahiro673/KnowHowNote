@@ -942,20 +942,20 @@ const friendListUpdate = () => {
           button.style.display = 'none';
           const button1 = document.createElement('button');
           button1.setAttribute('class', 'friend-change-name');
-          button1.innerHTML = '名前変更';
+          button1.innerHTML = '変更';
           const button2 = document.createElement('button');
           button2.setAttribute('class', 'friend-delete');
-          button2.innerHTML = '削除';
+          button2.innerHTML = '×';
           
           friendElement.appendChild(p1);
+          friendElement.appendChild(button1);
+           friendElement.appendChild(button2);
           div.appendChild(input);
           div.appendChild(button);
           friendElement.appendChild(div);
           groupDiv.appendChild(groupP);
           groupDiv.appendChild(groupButton);
           friendElement.appendChild(groupDiv);
-          friendElement.appendChild(button1);
-          friendElement.appendChild(button2);
           friendElement.appendChild(p2);
           friendListDiv.appendChild(friendElement);
 
