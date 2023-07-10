@@ -272,7 +272,7 @@ footer {
 }
 
 .tab_content_description {
-  height: 900px; /* 表示したい高さを指定 */
+  height: 930px; /* 表示したい高さを指定 */
   max-width: 100%; /* 横スクロールを有効にするために必要な設定 */
   overflow: auto;
   white-space: nowrap; /* 横スクロールを有効にするために必要な設定 */
