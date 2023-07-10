@@ -302,6 +302,7 @@ document.getElementById('pop-delete_group-list').addEventListener('click', funct
                 applyButton.style.display = 'none';
                 friendName.style.display = 'block';
                 friendName.innerHTML = name;
+                changeButton.style.display = 'block';
               },
             });
           });
