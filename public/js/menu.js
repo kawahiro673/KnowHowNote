@@ -903,6 +903,9 @@ const friendListUpdate = () => {
           const p1 = document.createElement('p');
           p1.setAttribute('class', 'friend-name');
           p1.innerHTML = friend.Changed_Name;
+          const groupP = document.createElement('p');
+          groupP.setAttribute('class', 'group-name-p');
+          groupP.innerHTML = 'ここにグループ名';
           const p2 = document.createElement('p');
           p2.setAttribute('class', 'friend-login');
           p2.innerHTML = '最終ログイン日時: ';
@@ -927,6 +930,7 @@ const friendListUpdate = () => {
           div.appendChild(input);
           div.appendChild(button);
           friendElement.appendChild(div);
+          friendElement.appendChild(groupP);
           friendElement.appendChild(button1);
           friendElement.appendChild(button2);
           friendElement.appendChild(p2);
