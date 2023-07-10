@@ -592,3 +592,8 @@ input[type='checkbox']:checked + .gray_b {
   font-size: 20px;
   margin: 5px auto;
 }
+
+.friend-row {
+  display: flex;
+  align-items: center;
+}
