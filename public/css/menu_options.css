@@ -313,7 +313,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 200px;
+  max-width: 130px;
 }
 
 .friend-name-input,
@@ -329,7 +329,7 @@
 .friend-name-input {
   font-size: 20px;
   margin: 8px;
-  width: 140px;
+  width: 130px;
 }
 
 .friend-login {
@@ -445,12 +445,16 @@
   font-size: 12px;
 }
 
-.group-name-change-button,
+.group-name-change-button{
+  padding: 5px 10px;
+  font-size: 9px;  
+}
+
 .friend-change-name,
 .friend-delete,
 .friend-change-name-button{
-  padding: 5px 10px;
-  font-size: 9px;  
+  padding: 6px 12px;
+  font-size: 10px;  
 }
 
 .friend-delete{
@@ -470,7 +474,6 @@
 #no-button-logout,
 #no-button-delete,
 #share-user-clear-button,
-.friend-delete,
 #friend-delete-q-cancel{
   background-color: red;
 }
