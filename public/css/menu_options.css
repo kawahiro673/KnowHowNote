@@ -308,7 +308,7 @@
 
 .friend-name {
   font-size: 20px;
-  margin: 8px;
+  margin: 8px 4px;
   font-weight: bold;
   white-space: nowrap;
   overflow: hidden;
@@ -328,7 +328,7 @@
 }
 .friend-name-input {
   font-size: 20px;
-  margin: 8px;
+  margin: 8px 4px;
   width: 125px;
 }
 
@@ -462,6 +462,7 @@
   color:black;
    font-weight: bold;
   font-size:15px
+  padding:0;
 }
 
 .friend-delete:hover{
