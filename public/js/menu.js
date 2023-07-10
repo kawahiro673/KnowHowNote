@@ -260,12 +260,17 @@ document.getElementById('pop-delete_group-list').addEventListener('click', funct
       );
       changeNameButtons.forEach((changeNameButton) => {
         changeNameButton.addEventListener('click', () => {
-          const friendBox = changeNameButton.parentNode;
-          const friendName = friendBox.querySelector('.friend-name');
-          const friendNameInput = friendBox.querySelector('.friend-name-input');
-          const applyButton = friendBox.querySelector(
-            '.friend-change-name-button[id^="friend-change-button"]'
-          );
+          // const friendBox = changeNameButton.parentNode;
+          // const friendName = friendBox.querySelector('.friend-name');
+          // const friendNameInput = friendBox.querySelector('.friend-name-input');
+          // const applyButton = friendBox.querySelector(
+          //   '.friend-change-name-button[id^="friend-change-button"]'
+          // );
+ const friendBox = changeNameButton.closest('.friend-Box');
+  const friendName = friendBox.querySelector('.friend-name');
+  const friendNameInput = friendBox.querySelector('.friend-name-input');
+  const applyButton = friendBox.querySelector('.friend-change-name-button[id^="friend-change-button"]');
+          
           let name;
 
           friendNameInput.style.display = 'block';
