@@ -989,3 +989,21 @@ document
     e.preventDefault(); // リンクのデフォルトの動作を無効化
     document.getElementById('popup-overlay_group-add').style.display = 'none';
   });
+
+
+  // すべてのボタンに対してループ処理を行い、クリックイベントのリスナーを追加
+document.querySelectorAll(".group-name-change-button").forEach(function(button) {
+    button.addEventListener("click", function() {
+       document.getElementById('popup-overlay_group-list').style.display = 'block';
+      // ここに実行したいコードを追加
+    });
+  });
+
+document
+  .getElementById('pop-delete_group-list')
+  .addEventListener('click', (e) => {
+    e.preventDefault(); // リンクのデフォルトの動作を無効化
+    document.getElementById('popup-overlay_group-list').style.display = 'none';
+  });
+
+
