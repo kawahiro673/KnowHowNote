@@ -1050,6 +1050,39 @@ router
             );
           });
         });
+    } else if (req.body.flg === 'group_get') {
+      const token = req.cookies.token;
+      const decoded = JWT.verify(token, 'SECRET_KEY');
+      let promise = new Promise((resolve, reject) => {
+        resolve();
+      });
+      promise
+        .then(() => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'SELECT * FROM register_user WHERE UserName = ?;',
+              [decoded.userName],
+              (error, resultDecoded) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  resolve(resultDecoded);
+                }
+              }
+            );
+          });
+        })
+        .then((resultDecoded) => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'SELECT * FROM group_list WHERE UserID = ?;',
+              [resultDecoded[0].id],
+              (error, result) => {
+                res.send({ groupResults: result });
+              }
+            );
+          });
+        });
     } else {
       console.log('flgで何も受け取ってません');
     }

@@ -318,6 +318,22 @@ document.getElementById('friend-list').addEventListener('click', async () => {
           });
         });
       });
+
+      //グループリスト出力
+      $.ajax({
+        url: '/mypage/' + hashedIdGet,
+        type: 'POST',
+        dataType: 'Json',
+        contentType: 'application/json',
+        data: JSON.stringify({
+          flg: 'group_get',
+          id,
+          name,
+        }),
+        success: function (res) {
+          console.log(res.groupResults);
+        },
+      });
     },
   });
 });
