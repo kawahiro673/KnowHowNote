@@ -430,7 +430,8 @@
 .friend-delete,
 #friend-delete-q-button,
 #friend-delete-q-cancel,
-.friend-change-name-button {
+.friend-change-name-button,
+#group-add-button{
   padding: 7px 14px;
   font-size: 12px;
 }
@@ -439,8 +440,7 @@
 #no-button-delete,
 #share-user-clear-button,
 .friend-delete,
-#friend-delete-q-cancel,
-#group-add-button{
+#friend-delete-q-cancel{
   background-color: red;
 }
 
