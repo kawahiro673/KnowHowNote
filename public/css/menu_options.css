@@ -313,7 +313,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 120px;
+  max-width: 125px;
 }
 
 .friend-name-input,
@@ -480,9 +480,8 @@
   background-color: red;
 }
 
-.friend-change-name,
-.friend-delete {
-  margin-left: 10px;
+.friend-change-name {
+  margin-left: 5px;
 }
 
 .popup-body_profile a {
