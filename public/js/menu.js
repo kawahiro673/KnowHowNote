@@ -959,3 +959,20 @@ const friendListUpdate = () => {
     });
   });
 };
+
+//グループ追加のポップアップ
+document.getElementById('friend-list-group-add-button').addEventListener('click', () => {
+  document.getElementById('popup-overlay_group-add').style.display = 'block';
+  
+  document.getElementById('group-add-button').addEventListener('click', () => {
+    console.log('定期用クリック')
+});
+  
+});
+
+document
+  .getElementById('group-add-button')
+  .addEventListener('click', (e) => {
+    e.preventDefault(); // リンクのデフォルトの動作を無効化
+    document.getElementById('popup-overlay_group-add').style.display = 'none';
+  });
