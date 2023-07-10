@@ -313,7 +313,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 125px;
+  max-width: 120px;
 }
 
 .friend-name-input,
@@ -460,9 +460,8 @@
 .friend-delete{
   background-color: #f5f5f5;
   color:black;
-   font-weight: bold;
-  font-size:15px
-  padding:0;
+ font-size: larger;
+  font-weight: bold;
 }
 
 .friend-delete:hover{
