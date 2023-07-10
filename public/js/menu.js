@@ -919,6 +919,8 @@ const friendListUpdate = () => {
           const friendElement = document.createElement('div');
           friendElement.setAttribute('class', 'friend-Box');
           friendElement.setAttribute('id', `friend-Box${friend.id}`);
+          const friendRow = document.createElement('div');
+          friendRow.setAttribute('class', 'friend-row');
           const div1 = document.createElement('div');
           div1.setAttribute('class', 'friend-name-div');
           const p1 = document.createElement('p');
@@ -956,12 +958,14 @@ const friendListUpdate = () => {
 
           div1.appendChild(p1);
           div1.appendChild(input);
-          friendElement.appendChild(div1);
+          friendRow.appendChild(div1);
           
           div.appendChild(button);
           div.appendChild(button1);
           div.appendChild(button2);
-          friendElement.appendChild(div);
+          friendRow.appendChild(div);
+
+          friendElement.appendChild(friendRow);
           
           groupDiv.appendChild(groupP);
           groupDiv.appendChild(groupButton);
