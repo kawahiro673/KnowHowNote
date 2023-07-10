@@ -231,7 +231,7 @@ document.getElementById('friend-list').addEventListener('click', async () => {
       deleteButtons.forEach((deleteButton) => {
         deleteButton.addEventListener('click', (event) => {
           const friendName =
-            event.target.parentNode.querySelector('.friend-name').textContent;
+          event.target.closest('.friend-Box').querySelector('.friend-name').textContent;
           document.getElementById(
             'popup-overlay_friend-delete-q'
           ).style.display = 'block';
@@ -260,16 +260,12 @@ document.getElementById('pop-delete_group-list').addEventListener('click', funct
       );
       changeNameButtons.forEach((changeNameButton) => {
         changeNameButton.addEventListener('click', () => {
-          // const friendBox = changeNameButton.parentNode;
-          // const friendName = friendBox.querySelector('.friend-name');
-          // const friendNameInput = friendBox.querySelector('.friend-name-input');
-          // const applyButton = friendBox.querySelector(
-          //   '.friend-change-name-button[id^="friend-change-button"]'
-          // );
+     
  const friendBox = changeNameButton.closest('.friend-Box');
   const friendName = friendBox.querySelector('.friend-name');
   const friendNameInput = friendBox.querySelector('.friend-name-input');
   const applyButton = friendBox.querySelector('.friend-change-name-button[id^="friend-change-button"]');
+  const changeButton = event.target.closest('.friend-Box').querySelector('.friend-change-name');
           
           let name;
 
@@ -277,6 +273,7 @@ document.getElementById('pop-delete_group-list').addEventListener('click', funct
           friendNameInput.value = friendName.innerHTML;
           friendName.style.display = 'none';
           applyButton.style.display = 'block';
+          changeButton.style.display = 'none';
           name = friendName.innerHTML;
 
           // 入力値が変更された時の処理
