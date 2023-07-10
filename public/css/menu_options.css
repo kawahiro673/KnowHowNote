@@ -77,7 +77,8 @@
 #popup-overlay_friend-add,
 #popup-overlay_friend-add-ans,
 #popup-overlay_friend-delete-ans,
-#popup-overlay_friend-delete-q {
+#popup-overlay_friend-delete-q,
+#popup-overlay_group-add{
   display: block;
   position: fixed;
   top: 0;
@@ -102,7 +103,8 @@
 .popup-window_friend-add,
 .popup-window_friend-add-ans,
 .popup-window_friend-delete-ans,
-.popup-window_friend-delete-q {
+.popup-window_friend-delete-q,
+.popup-window_group-add{
   width: 500px;
   height: 300px;
   background-color: #fff;
@@ -162,7 +164,8 @@
 .popup-header_friend-add,
 .popup-header_friend-add-ans,
 .popup-header_friend-delete-ans,
-.popup-header_friend-delete-q {
+.popup-header_friend-delete-q,
+.popup-header_group-add{
   display: flex;
   align-items: center;
   justify-content: center; /* 中央寄せに変更 */
@@ -185,7 +188,8 @@
 .popup-header_friend-add h2,
 .popup-header_friend-add-ans h2,
 .popup-header_friend-delete-ans h2,
-.popup-header_friend-delete-q h2 {
+.popup-header_friend-delete-q h2,
+popup-header_group-add h2{
   font-size: 16px;
   font-weight: normal;
   margin: 0 auto;
@@ -204,7 +208,8 @@
 #pop-delete_share_no,
 #pop-delete_friend-list,
 #pop-delete_friend-add,
-#pop-delete_friend-delete-q {
+#pop-delete_friend-delete-q,
+#pop-delete_group-add{
   text-decoration: none;
   font-size: 1.2em;
   font-weight: bold;
@@ -222,7 +227,8 @@
 #pop-delete_share_no:hover,
 #pop-delete_friend-list:hover,
 #pop-delete_friend-add:hover,
-#pop-delete_friend-delete-q:hover {
+#pop-delete_friend-delete-q:hover,
+#pop-delete_group-add:hover{
   color: red;
 }
 
@@ -246,7 +252,8 @@
 .popup-body_friend-add,
 .popup-body_friend-add-ans,
 .popup-body_friend-delete-ans,
-.popup-body_friend-delete-q {
+.popup-body_friend-delete-q,
+.popup-body_group-add{
   position: relative;
   height: 240px;
   padding: 0 10px;
@@ -387,7 +394,8 @@
 .friend-delete,
 #friend-delete-q-button,
 #friend-delete-q-cancel,
-.friend-change-name-button {
+.friend-change-name-button,
+#group-add-button{
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -431,7 +439,8 @@
 #no-button-delete,
 #share-user-clear-button,
 .friend-delete,
-#friend-delete-q-cancel {
+#friend-delete-q-cancel,
+#group-add-button{
   background-color: red;
 }
 
