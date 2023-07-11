@@ -117,7 +117,7 @@ document.getElementById('share-history').addEventListener('click', () => {
           } else {
             img.src = '../img/share-to-be.png';
             dataCell0.setAttribute('data-share-status', 'ToBe');
-          }          
+          }
           dataCell0.appendChild(img);
           const dataCell1 = document.createElement('td');
           dataCell1.textContent = share.date;
@@ -132,8 +132,12 @@ document.getElementById('share-history').addEventListener('click', () => {
           table.appendChild(dataRow1);
 
           shareHistoryTableDownList();
-        document.getElementById('share-history-date').addEventListener('click', sortTableByDate);
-        document.getElementById('share-history-user').addEventListener('click', sortTableByUser);
+          document
+            .getElementById('share-history-date')
+            .addEventListener('click', sortTableByDate);
+          document
+            .getElementById('share-history-user')
+            .addEventListener('click', sortTableByUser);
         });
         if (res.shareResult.length === 0) {
           const p = document.createElement('p');
@@ -152,9 +156,9 @@ document
     e.preventDefault(); // リンクのデフォルトの動作を無効化
     document.getElementById('popup-overlay_share-history').style.display =
       'none';
-    
-const table = document.getElementById("share-history-table");
-table.parentNode.removeChild(table);
+
+    const table = document.getElementById('share-history-table');
+    table.parentNode.removeChild(table);
   });
 
 document
@@ -163,9 +167,9 @@ document
     const popup = document.getElementById('popup-overlay_share-history');
     if (e.target === popup) {
       popup.style.display = 'none';
-      
- const table = document.getElementById("share-history-table");
-table.parentNode.removeChild(table);
+
+      const table = document.getElementById('share-history-table');
+      table.parentNode.removeChild(table);
     }
   });
 
@@ -251,7 +255,7 @@ document.getElementById('friend-list').addEventListener('click', async () => {
             event.preventDefault(); // リンクのデフォルトの動作を無効化
             document.getElementById('popup-overlay_group-list').style.display =
               'block';
-             groupListUpdate('all-group-list');     
+            groupListUpdate('all-group-list');
           });
         });
 
@@ -954,7 +958,9 @@ const friendListUpdate = () => {
           groupDiv.setAttribute('class', 'group-name-div');
           const groupP = document.createElement('p');
           groupP.setAttribute('class', 'group-name-p');
-          groupP.innerHTML = 'ここにグループ名';
+          groupP.innerHTML = 'グループ：';
+          const span = document.createElement('span');
+          span.setAttribute('id', 'group-name-span');
           const groupButton = document.createElement('button');
           groupButton.setAttribute('class', 'group-name-change-button');
           groupButton.setAttribute(
@@ -994,6 +1000,7 @@ const friendListUpdate = () => {
 
           friendElement.appendChild(friendRow);
 
+          groupP.appendChild(span);
           groupDiv.appendChild(groupP);
           groupDiv.appendChild(groupButton);
 
@@ -1029,26 +1036,33 @@ const friendListUpdate = () => {
   });
 };
 
-document.getElementById('friend-list-group-add-button').addEventListener('click', openGroupAddPopup);
+document
+  .getElementById('friend-list-group-add-button')
+  .addEventListener('click', openGroupAddPopup);
 
-document.getElementById('pop-delete_group-add').addEventListener('click', (e) => {
-  e.preventDefault(); // リンクのデフォルトの動作を無効化
-  document.getElementById('popup-overlay_group-add').style.display = 'none';
-  document.getElementById('group-add-button').removeEventListener('click', addGroup);
-});
-
+document
+  .getElementById('pop-delete_group-add')
+  .addEventListener('click', (e) => {
+    e.preventDefault(); // リンクのデフォルトの動作を無効化
+    document.getElementById('popup-overlay_group-add').style.display = 'none';
+    document
+      .getElementById('group-add-button')
+      .removeEventListener('click', addGroup);
+  });
 
 function openGroupAddPopup() {
   document.getElementById('popup-overlay_group-add').style.display = 'block';
   groupListUpdate('group-display');
 
-  document.getElementById('group-add-button').addEventListener('click', addGroup);
+  document
+    .getElementById('group-add-button')
+    .addEventListener('click', addGroup);
 }
 
 //DBにグループを追加後、グループリスト画面更新
 function addGroup() {
   const groupName = document.getElementById('group-Name-input').value;
-　 document.getElementById('group-Name-input').value = '';
+  document.getElementById('group-Name-input').value = '';
   $.ajax({
     url: '/mypage/' + hashedIdGet,
     type: 'POST',
@@ -1060,7 +1074,6 @@ function addGroup() {
     }),
     success: function (res) {
       groupListUpdate('group-display');
-     
     },
   });
 }
@@ -1092,36 +1105,37 @@ const groupListUpdate = (idElement) => {
 };
 
 //共有履歴のドロップダウンリストの判定(td要素のdata-share-status属性で判定)
-function shareHistoryTableDownList(){
-const filterSelect = document.getElementById('filter-select');
-const shareTable = document.getElementById('share-history-table');
+function shareHistoryTableDownList() {
+  const filterSelect = document.getElementById('filter-select');
+  const shareTable = document.getElementById('share-history-table');
 
-filterSelect.addEventListener('change', function() {
-  const selectedValue = filterSelect.value;
-  const tableRows = shareTable.getElementsByTagName('tr');
+  filterSelect.addEventListener('change', function () {
+    const selectedValue = filterSelect.value;
+    const tableRows = shareTable.getElementsByTagName('tr');
 
-  for (let i = 1; i < tableRows.length; i++) {
-    const shareStatusCell = tableRows[i].querySelector('[data-share-status]');
-    const shareStatus = shareStatusCell.getAttribute('data-share-status');
+    for (let i = 1; i < tableRows.length; i++) {
+      const shareStatusCell = tableRows[i].querySelector('[data-share-status]');
+      const shareStatus = shareStatusCell.getAttribute('data-share-status');
 
-    if (!shareStatusCell || selectedValue === '' || shareStatus === selectedValue) {
-      tableRows[i].style.display = '';
-    } else {
-      tableRows[i].style.display = 'none';
+      if (
+        !shareStatusCell ||
+        selectedValue === '' ||
+        shareStatus === selectedValue
+      ) {
+        tableRows[i].style.display = '';
+      } else {
+        tableRows[i].style.display = 'none';
+      }
     }
-  }
-});
+  });
 }
-
-
 
 let isDateSorted = false;
 let isUserSorted = false;
 //共有履歴の日付を降順/昇順にする
 function sortTableByDate() {
-
-  const table = document.getElementById("share-history-table");
-  const rows = Array.from(table.getElementsByTagName("tr")).slice(1);
+  const table = document.getElementById('share-history-table');
+  const rows = Array.from(table.getElementsByTagName('tr')).slice(1);
 
   rows.sort(function (a, b) {
     const dateA = new Date(getFormattedDate(a.cells[1].textContent));
@@ -1143,8 +1157,8 @@ function sortTableByDate() {
 
 //共有履歴のユーザーを降順/昇順にする
 function sortTableByUser() {
-  const table = document.getElementById("share-history-table");
-  const rows = Array.from(table.getElementsByTagName("tr")).slice(1);
+  const table = document.getElementById('share-history-table');
+  const rows = Array.from(table.getElementsByTagName('tr')).slice(1);
 
   rows.sort(function (a, b) {
     const userA = a.cells[2].textContent.toLowerCase();

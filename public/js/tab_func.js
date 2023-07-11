@@ -155,6 +155,7 @@ export const keepButtonClick = (id) => {
       }, 1000);
     },
   });
+
   document.getElementById(`keep-note-btn${id}`).style.display = 'none';
   document.getElementById(`cancel-note-btn${id}`).style.display = 'none';
   document.getElementById(`tabP${id}`).innerHTML = newTitle;
