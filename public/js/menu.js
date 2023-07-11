@@ -1115,3 +1115,59 @@ filterSelect.addEventListener('change', function() {
   }
 });
 }
+
+
+
+let isDateSorted = false;
+let isUserSorted = false;
+
+function sortTableByDate() {
+
+
+  const table = document.getElementById("share-table");
+  const rows = Array.from(table.getElementsByTagName("tr")).slice(1);
+
+  rows.sort(function (a, b) {
+    const dateA = new Date(getFormattedDate(a.cells[1].textContent));
+    const dateB = new Date(getFormattedDate(b.cells[1].textContent));
+
+    if (isDateSorted) {
+      return dateA - dateB;
+    } else {
+      return dateB - dateA;
+    }
+  });
+
+  isDateSorted = !isDateSorted;
+
+  rows.forEach(function (row) {
+    table.appendChild(row);
+  });
+}
+
+function sortTableByUser() {
+  const table = document.getElementById("share-table");
+  const rows = Array.from(table.getElementsByTagName("tr")).slice(1);
+
+  rows.sort(function (a, b) {
+    const userA = a.cells[2].textContent.toLowerCase();
+    const userB = b.cells[2].textContent.toLowerCase();
+
+    if (isUserSorted) {
+      return userA.localeCompare(userB);
+    } else {
+      return userB.localeCompare(userA);
+    }
+  });
+
+  isUserSorted = !isUserSorted;
+
+  rows.forEach(function (row) {
+    table.appendChild(row);
+  });
+}
+
+function getFormattedDate(dateString) {
+  const [year, month, day, hour, minute] = dateString.split(/[-年月日:]/);
+  return `${month}/${day}/${year} ${hour}:${minute}`;
+}
