@@ -426,3 +426,17 @@ document.getElementById('idInput').addEventListener('input', () => {
   // フォーマットされたIDを表示
   document.getElementById('idInput').value = formattedID;
 });
+
+window.addEventListener('DOMContentLoaded', function () {
+  const columns = document.querySelectorAll('.column');
+
+  columns.forEach(function (column) {
+    const innerElement = column.querySelector('.column-inner');
+    const availableWidth = column.clientWidth - parseInt(getComputedStyle(innerElement).paddingLeft) - parseInt(getComputedStyle(innerElement).paddingRight);
+    const textWidth = innerElement.scrollWidth;
+
+    if (textWidth > availableWidth) {
+      column.classList.add('has-ellipsis');
+    }
+  });
+});
