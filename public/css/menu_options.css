@@ -614,22 +614,20 @@ input[type='checkbox']:checked + .gray_b {
   align-items: center;
 }
 
+ .group-list-display {
+      display: flex;
+      flex-wrap: wrap;
+      background-color: #f5f5f5;
+    }
 
-.group-list-display {
-  display: flex;
-  flex-wrap: wrap;
-  background-color: #f5f5f5;
-}
+    .column {
+      width: calc(33.33% - 10px);
+      margin: 5px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
 
-.column {
-  width: calc(33.33% - 10px); /* 各列の幅を計算し、マージンを考慮 */
-  margin: 5px; /* 列の間に余白を設定 */
-  box-sizing: border-box;
-  overflow: hidden;
-}
-
-.column-inner {
-  padding: 5px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
+    .column-inner {
+      padding: 5px;
+      white-space: nowrap;
+    }
