@@ -1075,7 +1075,7 @@ const groupListUpdate = (idElement)=>{
     const groupDisplay = document.getElementById(idElement);
     groupDisplay.innerHTML = '';
 
-     groupResults.forEach(item => {
+     res.groupResults.forEach(item => {
      const userGroup = item["User_Group"].trim();
      groupDisplay.innerHTML += userGroup + '<br>';
   });
