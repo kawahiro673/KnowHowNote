@@ -106,9 +106,6 @@ document.getElementById('share-history').addEventListener('click', () => {
         document.getElementById('share-history-list').appendChild(table);
         table.appendChild(headerRow);
 
-        document.getElementById('share-history-date').addEventListener('click', sortTableByDate);
-        document.getElementById('share-history-user').addEventListener('click', sortTableByUser);
-        
         res.shareResult.forEach((share) => {
           const dataRow1 = document.createElement('tr');
           const dataCell0 = document.createElement('td');
@@ -135,7 +132,8 @@ document.getElementById('share-history').addEventListener('click', () => {
           table.appendChild(dataRow1);
 
           shareHistoryTableDownList();
-      
+        document.getElementById('share-history-date').addEventListener('click', sortTableByDate);
+        document.getElementById('share-history-user').addEventListener('click', sortTableByUser);
         });
         if (res.shareResult.length === 0) {
           const p = document.createElement('p');
