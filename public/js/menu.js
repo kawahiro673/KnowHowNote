@@ -1046,7 +1046,7 @@ function openGroupAddPopup() {
 //DBにグループを追加後、グループリスト画面更新
 function addGroup() {
   const groupName = document.getElementById('group-Name-input').value;
-
+　 document.getElementById('group-Name-input').value = '';
   $.ajax({
     url: '/mypage/' + hashedIdGet,
     type: 'POST',
@@ -1058,7 +1058,7 @@ function addGroup() {
     }),
     success: function (res) {
       groupListUpdate('group-display');
-      document.getElementById('group-Name-input').value = '';
+     
     },
   });
 }
