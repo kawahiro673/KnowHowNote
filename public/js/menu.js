@@ -1149,27 +1149,31 @@ const groupListUpdate = (idElement) => {
       const groupDisplay = document.getElementById(idElement);
       groupDisplay.innerHTML = '';
 
-      let columns = 3; // 列の数
-      let rowCount = Math.ceil(res.groupResults.length / columns); // 行数
+      let container = document.createElement('div');
+      container.classList.add('container'); // 追加: コンテナ要素
 
-      for (let i = 0; i < rowCount; i++) {
-        let row = document.createElement('div');
-        row.classList.add('row');
+      let row = null;
+      let columnsPerRow = 3;
+      let columnCount = 0;
 
-        for (let j = 0; j < columns; j++) {
-          let index = i * columns + j;
-          if (index < res.groupResults.length) {
-            let item = res.groupResults[index];
-            let userGroup = item['User_Group'].trim();
-            let column = document.createElement('div');
-            column.classList.add('column');
-            column.textContent = userGroup;
-            row.appendChild(column);
-          }
+      res.groupResults.forEach((item) => {
+        const userGroup = item['User_Group'].trim();
+
+        if (columnCount % columnsPerRow === 0) {
+          row = document.createElement('div');
+          row.classList.add('row');
+          container.appendChild(row);
         }
 
-        groupDisplay.appendChild(row);
-      }
+        let column = document.createElement('div');
+        column.classList.add('column');
+        column.textContent = userGroup;
+        row.appendChild(column);
+
+        columnCount++;
+      });
+
+      groupDisplay.appendChild(container); // 変更: コンテナを追加
     },
   });
 };
