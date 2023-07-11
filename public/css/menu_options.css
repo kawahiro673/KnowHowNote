@@ -632,6 +632,7 @@ input[type='checkbox']:checked + .gray_b {
 
 /* 追加: 列の内部の余白調整 */
 .column-inner {
+   width: 150px;
   padding: 5px;
    white-space: nowrap;
   text-overflow: ellipsis;
