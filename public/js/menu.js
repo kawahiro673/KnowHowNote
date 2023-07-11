@@ -130,6 +130,8 @@ document.getElementById('share-history').addEventListener('click', () => {
           table.appendChild(dataRow1);
 
           shareHistoryTableDownList();
+          dateHeader.addEventListener('click', sortTableByDate);
+          userHeader.addEventListener('click', sortTableByUser);
         });
         if (res.shareResult.length === 0) {
           const p = document.createElement('p');
@@ -1120,9 +1122,8 @@ filterSelect.addEventListener('change', function() {
 
 let isDateSorted = false;
 let isUserSorted = false;
-
+//共有履歴の日付を降順/昇順にする
 function sortTableByDate() {
-
 
   const table = document.getElementById("share-table");
   const rows = Array.from(table.getElementsByTagName("tr")).slice(1);
@@ -1145,6 +1146,7 @@ function sortTableByDate() {
   });
 }
 
+//共有履歴のユーザーを降順/昇順にする
 function sortTableByUser() {
   const table = document.getElementById("share-table");
   const rows = Array.from(table.getElementsByTagName("tr")).slice(1);
