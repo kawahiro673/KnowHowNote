@@ -152,12 +152,12 @@ document
     e.preventDefault(); // リンクのデフォルトの動作を無効化
     document.getElementById('popup-overlay_share-history').style.display =
       'none';
+    
+const shareHistoryList = document.getElementById('share-history-table');
 
-    while (document.getElementById('share-history-list').firstChild) {
-      document
-        .getElementById('share-history-list')
-        .removeChild(document.getElementById('share-history-list').firstChild);
-    }
+  while (shareHistoryList.firstChild) {
+  shareHistoryList.firstChild.remove();
+}
   });
 
 document
@@ -166,13 +166,12 @@ document
     const popup = document.getElementById('popup-overlay_share-history');
     if (e.target === popup) {
       popup.style.display = 'none';
-      while (document.getElementById('share-history-list').firstChild) {
-        document
-          .getElementById('share-history-list')
-          .removeChild(
-            document.getElementById('share-history-list').firstChild
-          );
-      }
+      
+    const shareHistoryList = document.getElementById('share-history-table');
+    
+  while (shareHistoryList.firstChild) {
+  shareHistoryList.firstChild.remove();
+}
     }
   });
 
