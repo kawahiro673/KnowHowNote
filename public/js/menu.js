@@ -153,11 +153,8 @@ document
     document.getElementById('popup-overlay_share-history').style.display =
       'none';
     
-const shareHistoryList = document.getElementById('share-history-table');
-
-  while (shareHistoryList.firstChild) {
-  shareHistoryList.firstChild.remove();
-}
+const table = document.getElementById("share-history-table");
+table.parentNode.removeChild(table);
   });
 
 document
@@ -167,11 +164,8 @@ document
     if (e.target === popup) {
       popup.style.display = 'none';
       
-    const shareHistoryList = document.getElementById('share-history-table');
-    
-  while (shareHistoryList.firstChild) {
-  shareHistoryList.firstChild.remove();
-}
+ const table = document.getElementById("share-history-table");
+table.parentNode.removeChild(table);
     }
   });
 
