@@ -621,7 +621,11 @@ input[type='checkbox']:checked + .gray_b {
 }
 
 .column {
-  width: 33.33%; /* 各列の幅を1/3に設定 */
-  padding: 10px;
+  width: 33.33%;
   box-sizing: border-box;
+}
+
+/* 追加: 列の内部の余白調整 */
+.column-inner {
+  padding: 10px;
 }
