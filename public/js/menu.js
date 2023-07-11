@@ -1152,27 +1152,25 @@ const groupListUpdate = (idElement) => {
       let container = document.createElement('div');
       container.classList.add('container'); // 追加: コンテナ要素
 
-      let row = null;
-      let columnsPerRow = 3;
-      let columnCount = 0;
+      let row = document.createElement('div');
+      row.classList.add('row');
 
-      res.groupResults.forEach((item) => {
+      res.groupResults.forEach((item, index) => {
         const userGroup = item['User_Group'].trim();
 
-        if (columnCount % columnsPerRow === 0) {
+        if (index % 3 === 0 && index !== 0) {
+          container.appendChild(row);
           row = document.createElement('div');
           row.classList.add('row');
-          container.appendChild(row);
         }
 
         let column = document.createElement('div');
         column.classList.add('column');
         column.textContent = userGroup;
         row.appendChild(column);
-
-        columnCount++;
       });
 
+      container.appendChild(row);
       groupDisplay.appendChild(container); // 変更: コンテナを追加
     },
   });
