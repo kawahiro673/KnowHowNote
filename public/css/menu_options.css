@@ -624,9 +624,7 @@ input[type='checkbox']:checked + .gray_b {
 .column {
   width: 33.33%;
   box-sizing: border-box;
-    white-space: nowrap; /* テキストを折り返さないようにする */
-  overflow: hidden; /* 要素からはみ出るテキストを隠す */
-  text-overflow: ellipsis; /* ... でテキストを省略する */
+  overflow: hidden; 
    display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
@@ -634,5 +632,7 @@ input[type='checkbox']:checked + .gray_b {
 
 /* 追加: 列の内部の余白調整 */
 .column-inner {
-  padding: 10px;
+  padding: 5px;
+   white-space: nowrap;
+  text-overflow: ellipsis;
 }
