@@ -1048,7 +1048,7 @@ router
                if (error) {
                   reject(error);
                 } else {
-                  resolve(resultDecoded);
+                   res.send({ msg: '成功' });
                 }
               }
             );
