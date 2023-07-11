@@ -129,6 +129,8 @@ document.getElementById('share-history').addEventListener('click', () => {
           dataRow1.appendChild(dataCell2);
           dataRow1.appendChild(dataCell3);
           table.appendChild(dataRow1);
+
+          shareHistoryTableDownList();
         });
         if (res.shareResult.length === 0) {
           const p = document.createElement('p');
@@ -1094,6 +1096,7 @@ const groupListUpdate = (idElement) => {
 };
 
 
+function shareHistoryTableDownList(){
 const filterSelect = document.getElementById('filter-select');
 const shareTable = document.getElementById('share-history-table');
 
@@ -1112,3 +1115,4 @@ filterSelect.addEventListener('change', function() {
     }
   }
 });
+}
