@@ -1058,7 +1058,7 @@ function addGroup() {
     }),
     success: function (res) {
       groupListUpdate('group-display');
-      group_add = '';
+      document.getElementById('group-Name-input').value = '';
     },
   });
 }
