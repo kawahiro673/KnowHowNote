@@ -622,7 +622,7 @@ input[type='checkbox']:checked + .gray_b {
 }
 
 .column {
-  width: 150px;
+  max-width: 150px;
   box-sizing: border-box;
   overflow: hidden;
 }
