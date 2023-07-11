@@ -1049,14 +1049,7 @@ document
             groupName,
           }),
           success: function (res) {
-    
-            const groupDisplay = document.getElementById('group-display');
-            groupDisplay.innerHTML = '';
-
-             res.groupResults.forEach(item => {
-             const userId = item["UserID"];
-             groupDisplay.innerHTML += userId + '<br>';
-           });
+            groupListUpdate(res.groupResults,'group-display');        
           },
         });
       });
@@ -1068,3 +1061,13 @@ document
     e.preventDefault(); // リンクのデフォルトの動作を無効化
     document.getElementById('popup-overlay_group-add').style.display = 'none';
   });
+
+const groupListUpdate = (groupArray,idElement)=>{
+    const groupDisplay = document.getElementById(idElement);
+    groupDisplay.innerHTML = '';
+
+    groupArray.forEach(item => {
+     const userGroup = item["User_Group"].trim();
+     groupDisplay.innerHTML += userGroup + '<br>';
+  });
+}
