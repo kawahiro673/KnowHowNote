@@ -1127,7 +1127,7 @@ let isUserSorted = false;
 //共有履歴の日付を降順/昇順にする
 function sortTableByDate() {
 
-  const table = document.getElementById("share-table");
+  const table = document.getElementById("share-history-table");
   const rows = Array.from(table.getElementsByTagName("tr")).slice(1);
 
   rows.sort(function (a, b) {
@@ -1150,7 +1150,7 @@ function sortTableByDate() {
 
 //共有履歴のユーザーを降順/昇順にする
 function sortTableByUser() {
-  const table = document.getElementById("share-table");
+  const table = document.getElementById("share-history-table");
   const rows = Array.from(table.getElementsByTagName("tr")).slice(1);
 
   rows.sort(function (a, b) {
