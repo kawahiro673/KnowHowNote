@@ -622,7 +622,8 @@ input[type='checkbox']:checked + .gray_b {
 }
 
 .column {
-  max-width: 150px;
+  width: calc(33.33% - 10px); /* 各列の幅を計算し、マージンを考慮 */
+  margin: 5px; /* 列の間に余白を設定 */
   box-sizing: border-box;
   overflow: hidden;
 }
