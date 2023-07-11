@@ -85,6 +85,7 @@ document.getElementById('share-history').addEventListener('click', () => {
       ) {
         const table = document.createElement('table');
         table.setAttribute('border', '1');
+        table.setAttribute('id', 'share-history-table');
         const headerRow = document.createElement('tr');
         headerRow.setAttribute('class', 'share-table-header');
         const header0 = document.createElement('th');
@@ -105,14 +106,17 @@ document.getElementById('share-history').addEventListener('click', () => {
 
         res.shareResult.forEach((share) => {
           const dataRow1 = document.createElement('tr');
+          const dataCell0 = document.createElement('td');
           const img = document.createElement('img');
+          
           if (share.Share_ToDo_Flg === 'True') {
             img.src = '../img/share-to-do.png';
+            dataCell0.setAttribute('data-share-status', 'ToDo');
           } else {
             img.src = '../img/share-to-be.png';
+            dataCell0.setAttribute('data-share-status', 'ToBe');
           }
-          const dataCell0 = document.createElement('td');
-          //dataCell0.textContent = '画像';
+          
           dataCell0.appendChild(img);
           const dataCell1 = document.createElement('td');
           dataCell1.textContent = share.date;
@@ -1088,3 +1092,23 @@ const groupListUpdate = (idElement) => {
     },
   });
 };
+
+
+const filterSelect = document.getElementById('filter-select');
+const shareTable = document.getElementById('share-history-table');
+
+filterSelect.addEventListener('change', function() {
+  const selectedValue = filterSelect.value;
+  const tableRows = shareTable.getElementsByTagName('tr');
+
+  for (let i = 1; i < tableRows.length; i++) {
+    const shareStatusCell = tableRows[i].querySelector('[data-share-status]');
+    const shareStatus = shareStatusCell.getAttribute('data-share-status');
+
+    if (!shareStatusCell || selectedValue === '' || shareStatus === selectedValue) {
+      tableRows[i].style.display = '';
+    } else {
+      tableRows[i].style.display = 'none';
+    }
+  }
+});
