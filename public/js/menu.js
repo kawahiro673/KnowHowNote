@@ -1027,57 +1027,111 @@ const friendListUpdate = () => {
   });
 };
 
-//グループ追加のポップアップ
-document
-  .getElementById('friend-list-group-add-button')
-  .addEventListener('click', () => {
-    document.getElementById('popup-overlay_group-add').style.display = 'block';
-groupListUpdate('group-display');      
-    document
-      .getElementById('group-add-button')
-      .addEventListener('click', () => {
-        const groupName = document.getElementById('group-Name-input').value;
+// //グループ追加のポップアップ
+// document
+//   .getElementById('friend-list-group-add-button')
+//   .addEventListener('click', () => {
+//     document.getElementById('popup-overlay_group-add').style.display = 'block';
+// groupListUpdate('group-display');      
+//     document
+//       .getElementById('group-add-button')
+//       .addEventListener('click', () => {
+//         const groupName = document.getElementById('group-Name-input').value;
 
 
-        $.ajax({
-          url: '/mypage/' + hashedIdGet,
-          type: 'POST',
-          dataType: 'Json',
-          contentType: 'application/json',
-          data: JSON.stringify({
-            flg: 'group_add',
-            groupName,
-          }),
-          success: function (res) {
-            groupListUpdate('group-display');        
-          },
-        });
-      });
-  });
+//         $.ajax({
+//           url: '/mypage/' + hashedIdGet,
+//           type: 'POST',
+//           dataType: 'Json',
+//           contentType: 'application/json',
+//           data: JSON.stringify({
+//             flg: 'group_add',
+//             groupName,
+//           }),
+//           success: function (res) {
+//             groupListUpdate('group-display');        
+//           },
+//         });
+//       });
+//   });
 
-document
-  .getElementById('pop-delete_group-add')
-  .addEventListener('click', (e) => {
-    e.preventDefault(); // リンクのデフォルトの動作を無効化
-    document.getElementById('popup-overlay_group-add').style.display = 'none';
-  });
+// document
+//   .getElementById('pop-delete_group-add')
+//   .addEventListener('click', (e) => {
+//     e.preventDefault(); // リンクのデフォルトの動作を無効化
+//     document.getElementById('popup-overlay_group-add').style.display = 'none';
+//   });
 
-const groupListUpdate = (idElement)=>{
-   $.ajax({
-          url: '/mypage/' + hashedIdGet,
-          type: 'POST',
-          dataType: 'Json',
-          contentType: 'application/json',
-          data: JSON.stringify({
-            flg: 'group_get',
-          }),
-          success: function (res) {
-    const groupDisplay = document.getElementById(idElement);
-    groupDisplay.innerHTML = '';
+// const groupListUpdate = (idElement)=>{
+//    $.ajax({
+//           url: '/mypage/' + hashedIdGet,
+//           type: 'POST',
+//           dataType: 'Json',
+//           contentType: 'application/json',
+//           data: JSON.stringify({
+//             flg: 'group_get',
+//           }),
+//           success: function (res) {
+//     const groupDisplay = document.getElementById(idElement);
+//     groupDisplay.innerHTML = '';
 
-     res.groupResults.forEach(item => {
-     const userGroup = item["User_Group"].trim();
-     groupDisplay.innerHTML += userGroup + '<br>';
-  });
-          }});
+//      res.groupResults.forEach(item => {
+//      const userGroup = item["User_Group"].trim();
+//      groupDisplay.innerHTML += userGroup + '<br>';
+//   });
+//           }});
+// }
+
+document.getElementById('friend-list-group-add-button').addEventListener('click', openGroupAddPopup);
+
+document.getElementById('pop-delete_group-add').addEventListener('click', (e) => {
+  e.preventDefault(); // リンクのデフォルトの動作を無効化
+  document.getElementById('popup-overlay_group-add').style.display = 'none';
+  document.getElementById('group-add-button').removeEventListener('click', addGroup);
+});
+
+function openGroupAddPopup() {
+  document.getElementById('popup-overlay_group-add').style.display = 'block';
+  groupListUpdate('group-display');
+
+  document.getElementById('group-add-button').addEventListener('click', addGroup);
 }
+
+function addGroup() {
+  const groupName = document.getElementById('group-Name-input').value;
+
+  $.ajax({
+    url: '/mypage/' + hashedIdGet,
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'group_add',
+      groupName,
+    }),
+    success: function (res) {
+      groupListUpdate('group-display');
+    },
+  });
+}
+
+const groupListUpdate = (idElement) => {
+  $.ajax({
+    url: '/mypage/' + hashedIdGet,
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'group_get',
+    }),
+    success: function (res) {
+      const groupDisplay = document.getElementById(idElement);
+      groupDisplay.innerHTML = '';
+
+      res.groupResults.forEach((item) => {
+        const userGroup = item['User_Group'].trim();
+        groupDisplay.innerHTML += userGroup + '<br>';
+      });
+    },
+  });
+};
