@@ -1149,29 +1149,14 @@ const groupListUpdate = (idElement) => {
       const groupDisplay = document.getElementById(idElement);
       groupDisplay.innerHTML = '';
 
-      let container = document.createElement('div');
-      container.classList.add('container'); // 追加: コンテナ要素
-
-      let row = document.createElement('div');
-      row.classList.add('row');
-
-      res.groupResults.forEach((item, index) => {
+      res.groupResults.forEach((item) => {
         const userGroup = item['User_Group'].trim();
-
-        if (index % 3 === 0 && index !== 0) {
-          container.appendChild(row);
-          row = document.createElement('div');
-          row.classList.add('row');
-        }
 
         let column = document.createElement('div');
         column.classList.add('column');
-        column.textContent = userGroup;
-        row.appendChild(column);
+        column.innerHTML = `<div class="column-inner">${userGroup}</div>`;
+        groupDisplay.appendChild(column);
       });
-
-      container.appendChild(row);
-      groupDisplay.appendChild(container); // 変更: コンテナを追加
     },
   });
 };
