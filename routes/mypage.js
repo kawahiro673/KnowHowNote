@@ -1045,10 +1045,27 @@ router
               'INSERT INTO group_list (User_Group, UserID) values(?, ?);',
               [req.body.groupName, resultDecoded[0].id],
               (error, result) => {
-                res.send({ msg: '成功' });
+               if (error) {
+                  reject(error);
+                } else {
+                  resolve(resultDecoded);
+                }
               }
             );
           });
+        }) .then((resultDecoded) => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'SELECT * FROM group_list WHERE UserID = ?;',
+              [resultDecoded[0].id],
+              (error, result) => {
+                res.send({ groupResults : result });
+              }
+            );
+          });
+        }) .catch((error) => {
+          console.error(error);
+          res.status(500).json({ message: error.message, nothing });
         });
     } else if (req.body.flg === 'group_get') {
       const token = req.cookies.token;
@@ -1082,6 +1099,9 @@ router
               }
             );
           });
+        }) .catch((error) => {
+          console.error(error);
+          res.status(500).json({ message: error.message, nothing });
         });
     } else {
       console.log('flgで何も受け取ってません');
