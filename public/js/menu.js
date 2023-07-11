@@ -108,15 +108,14 @@ document.getElementById('share-history').addEventListener('click', () => {
           const dataRow1 = document.createElement('tr');
           const dataCell0 = document.createElement('td');
           const img = document.createElement('img');
-          
+          //共有を「された」のか「した」のか判別
           if (share.Share_ToDo_Flg === 'True') {
             img.src = '../img/share-to-do.png';
             dataCell0.setAttribute('data-share-status', 'ToDo');
           } else {
             img.src = '../img/share-to-be.png';
             dataCell0.setAttribute('data-share-status', 'ToBe');
-          }
-          
+          }          
           dataCell0.appendChild(img);
           const dataCell1 = document.createElement('td');
           dataCell1.textContent = share.date;
@@ -1095,7 +1094,7 @@ const groupListUpdate = (idElement) => {
   });
 };
 
-
+//共有履歴のドロップダウンリストの判定(td要素のdata-share-status属性で判定)
 function shareHistoryTableDownList(){
 const filterSelect = document.getElementById('filter-select');
 const shareTable = document.getElementById('share-history-table');
