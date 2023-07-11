@@ -249,7 +249,7 @@ document.getElementById('friend-list').addEventListener('click', async () => {
             event.preventDefault(); // リンクのデフォルトの動作を無効化
             document.getElementById('popup-overlay_group-list').style.display =
               'block';
-            // ここに実行したいコードを追加
+             groupListUpdate('all-group-list');     
           });
         });
 
@@ -1032,12 +1032,12 @@ document
   .getElementById('friend-list-group-add-button')
   .addEventListener('click', () => {
     document.getElementById('popup-overlay_group-add').style.display = 'block';
-
+groupListUpdate('group-display');      
     document
       .getElementById('group-add-button')
       .addEventListener('click', () => {
         const groupName = document.getElementById('group-Name-input').value;
-        console.log(groupName);
+
 
         $.ajax({
           url: '/mypage/' + hashedIdGet,
@@ -1049,7 +1049,7 @@ document
             groupName,
           }),
           success: function (res) {
-            groupListUpdate(res.groupResults,'group-display');        
+            groupListUpdate('group-display');        
           },
         });
       });
@@ -1062,12 +1062,22 @@ document
     document.getElementById('popup-overlay_group-add').style.display = 'none';
   });
 
-const groupListUpdate = (groupArray,idElement)=>{
+const groupListUpdate = (idElement)=>{
+   $.ajax({
+          url: '/mypage/' + hashedIdGet,
+          type: 'POST',
+          dataType: 'Json',
+          contentType: 'application/json',
+          data: JSON.stringify({
+            flg: 'group_get',
+          }),
+          success: function (res) {
     const groupDisplay = document.getElementById(idElement);
     groupDisplay.innerHTML = '';
 
-    groupArray.forEach(item => {
+     groupResults.forEach(item => {
      const userGroup = item["User_Group"].trim();
      groupDisplay.innerHTML += userGroup + '<br>';
   });
+          }});
 }
