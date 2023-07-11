@@ -627,6 +627,9 @@ input[type='checkbox']:checked + .gray_b {
     white-space: nowrap; /* テキストを折り返さないようにする */
   overflow: hidden; /* 要素からはみ出るテキストを隠す */
   text-overflow: ellipsis; /* ... でテキストを省略する */
+   display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 /* 追加: 列の内部の余白調整 */
