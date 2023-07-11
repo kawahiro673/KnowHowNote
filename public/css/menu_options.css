@@ -624,10 +624,12 @@ input[type='checkbox']:checked + .gray_b {
       width: calc(33.33% - 10px);
       margin: 5px;
       box-sizing: border-box;
-      overflow: hidden;
     }
 
     .column-inner {
-      padding: 5px;
-      white-space: nowrap;
+       padding: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
     }
