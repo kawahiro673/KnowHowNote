@@ -622,18 +622,14 @@ input[type='checkbox']:checked + .gray_b {
 }
 
 .column {
-  width:150px;
+  width: calc(33.33% - 10px);
+  margin: 5px;
   box-sizing: border-box;
-  overflow: hidden; 
-   display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-/* 追加: 列の内部の余白調整 */
 .column-inner {
-  
   padding: 5px;
-   white-space: nowrap;
+  white-space: nowrap;
   text-overflow: ellipsis;
 }
