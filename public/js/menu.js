@@ -1035,6 +1035,7 @@ document.getElementById('pop-delete_group-add').addEventListener('click', (e) =>
   document.getElementById('group-add-button').removeEventListener('click', addGroup);
 });
 
+
 function openGroupAddPopup() {
   document.getElementById('popup-overlay_group-add').style.display = 'block';
   groupListUpdate('group-display');
@@ -1042,6 +1043,7 @@ function openGroupAddPopup() {
   document.getElementById('group-add-button').addEventListener('click', addGroup);
 }
 
+//DBにグループを追加後、グループリスト画面更新
 function addGroup() {
   const groupName = document.getElementById('group-Name-input').value;
 
@@ -1056,10 +1058,12 @@ function addGroup() {
     }),
     success: function (res) {
       groupListUpdate('group-display');
+      group_add = '';
     },
   });
 }
 
+//グループリスト画面を更新（三列に表示する）
 const groupListUpdate = (idElement) => {
   $.ajax({
     url: '/mypage/' + hashedIdGet,
