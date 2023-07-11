@@ -1115,6 +1115,27 @@ function addGroup() {
   });
 }
 
+// const groupListUpdate = (idElement) => {
+//   $.ajax({
+//     url: '/mypage/' + hashedIdGet,
+//     type: 'POST',
+//     dataType: 'Json',
+//     contentType: 'application/json',
+//     data: JSON.stringify({
+//       flg: 'group_get',
+//     }),
+//     success: function (res) {
+//       const groupDisplay = document.getElementById(idElement);
+//       groupDisplay.innerHTML = '';
+
+//       res.groupResults.forEach((item) => {
+//         const userGroup = item['User_Group'].trim();
+//         groupDisplay.innerHTML += userGroup + '<br>';
+//       });
+//     },
+//   });
+// };
+
 const groupListUpdate = (idElement) => {
   $.ajax({
     url: '/mypage/' + hashedIdGet,
@@ -1128,10 +1149,27 @@ const groupListUpdate = (idElement) => {
       const groupDisplay = document.getElementById(idElement);
       groupDisplay.innerHTML = '';
 
-      res.groupResults.forEach((item) => {
-        const userGroup = item['User_Group'].trim();
-        groupDisplay.innerHTML += userGroup + '<br>';
-      });
+      let columns = 3; // 列の数
+      let rowCount = Math.ceil(res.groupResults.length / columns); // 行数
+
+      for (let i = 0; i < rowCount; i++) {
+        let row = document.createElement('div');
+        row.classList.add('row');
+
+        for (let j = 0; j < columns; j++) {
+          let index = i * columns + j;
+          if (index < res.groupResults.length) {
+            let item = res.groupResults[index];
+            let userGroup = item['User_Group'].trim();
+            let column = document.createElement('div');
+            column.classList.add('column');
+            column.textContent = userGroup;
+            row.appendChild(column);
+          }
+        }
+
+        groupDisplay.appendChild(row);
+      }
     },
   });
 };
