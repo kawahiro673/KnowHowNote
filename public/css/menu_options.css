@@ -613,3 +613,15 @@ input[type='checkbox']:checked + .gray_b {
   justify-content: space-between;
   align-items: center;
 }
+
+
+.group-list-display {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column {
+  width: 33.33%; /* 各列の幅を1/3に設定 */
+  padding: 10px;
+  box-sizing: border-box;
+}
