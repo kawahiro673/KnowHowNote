@@ -1049,7 +1049,14 @@ document
             groupName,
           }),
           success: function (res) {
-            document.getElementById('group-display').innerHTML = groupName;
+    
+            const groupDisplay = document.getElementById('group-display');
+            groupDisplay.innerHTML = '';
+
+             res.groupResults.forEach(item => {
+             const userId = item["UserID"];
+             groupDisplay.innerHTML += userId + '<br>';
+           });
           },
         });
       });
