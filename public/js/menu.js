@@ -1187,4 +1187,41 @@ function getFormattedDate(dateString) {
 
 function groupCheckListScreen(button){
   console.log(button);
+  console.log(button.id);
+  
+  $.ajax({
+    url: '/mypage/' + hashedIdGet,
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'group_get',
+    }),
+    success: function (res) {
+   
+        res.groupResults.forEach((group) => {
+      
+        const div = document.createElement('div');
+        div.setAttribute('class', `group-list-check-div`);
+
+        // チェックボックス要素の作成
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = `checkbox-group${group.User_Group}`;
+
+        // ラベル要素の作成
+        const checkboxLabel = document.createElement('label');
+        checkboxLabel.textContent = group.User_Group;
+        checkboxLabel.setAttribute('for', `checkbox-group${group.User_Group}`);
+
+        // 要素の追加
+        document.getElementById('all-group-list').appendChild(div);
+        div.appendChild(checkbox);
+        div.appendChild(checkboxLabel);
+     
+      });
+    }
+   });
 }
+
+
