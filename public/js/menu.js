@@ -296,7 +296,6 @@ function handleDecisionButtonClick() {
   const checkboxes = document.querySelectorAll('.group-list-check-div input[type="radio"]');
   for (let i = 0; i < checkboxes.length; i++) {
     if (checkboxes[i].checked) {
-      console.log(`チェックが入っているのは ${checkboxes[i].id} です`);
       const extracted = checkboxes[i].id.replace("checkbox-group", "");
       console.log(extracted);
     }
