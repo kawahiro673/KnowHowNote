@@ -255,6 +255,8 @@ document.getElementById('friend-list').addEventListener('click', async () => {
             event.preventDefault(); // リンクのデフォルトの動作を無効化
             document.getElementById('popup-overlay_group-list').style.display =
               'block';
+            console.log(button);
+             groupCheckListScreen(button);
             //groupListUpdate('all-group-list');
           });
         });
@@ -1181,4 +1183,8 @@ function sortTableByUser() {
 function getFormattedDate(dateString) {
   const [year, month, day, hour, minute] = dateString.split(/[-年月日:]/);
   return `${month}/${day}/${year} ${hour}:${minute}`;
+}
+
+function groupCheckListScreen(button){
+  console.log(button);
 }
