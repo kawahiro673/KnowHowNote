@@ -256,14 +256,18 @@ document.getElementById('friend-list').addEventListener('click', async () => {
             document.getElementById('popup-overlay_group-list').style.display =
               'block';
              groupCheckListScreen(button);
+             const id = button.id.match(/\d+/)[0];
+            console.log(id);
             document.getElementById('group-list-decision-button').addEventListener('click', () => {
              const checkboxes = document.querySelectorAll('.group-list-check-div input[type="radio"]');
                for (let i = 0; i < checkboxes.length; i++) {
                   if (checkboxes[i].checked) {
                     console.log(`チェックが入っているのは ${checkboxes[i].id} です`);
+                    const extracted = checkboxes[i].id.replace("checkbox-group", "");
+                    console.log(extracted);
                   }
                 }
-          });
+               });
           });
         });
 
@@ -1192,8 +1196,8 @@ function getFormattedDate(dateString) {
 }
 
 function groupCheckListScreen(button){
-  console.log(button);
-  console.log(button.id);
+  // console.log(button);
+  // console.log(button.id);
   
   $.ajax({
     url: '/mypage/' + hashedIdGet,
