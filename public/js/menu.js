@@ -988,6 +988,7 @@ const friendListUpdate = () => {
           groupP.innerHTML = 'グループ：';
           const span = document.createElement('span');
           span.setAttribute('class', `group-name-span${friend.id}`);
+          span.innerHTML = friend.User_Group;
           const groupButton = document.createElement('button');
           groupButton.setAttribute('class', 'group-name-change-button');
           groupButton.setAttribute(
