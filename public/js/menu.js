@@ -256,7 +256,7 @@ document.getElementById('friend-list').addEventListener('click', async () => {
             document.getElementById('popup-overlay_group-list').style.display =
               'block';
              groupCheckListScreen(button);
-            document.getElementById('group-list-decision-button').addEventListener('input', () => {
+            document.getElementById('group-list-decision-button').addEventListener('click', () => {
              const checkboxes = document.querySelectorAll('.group-list-check-div input[type="radio"]');
                for (let i = 0; i < checkboxes.length; i++) {
                   if (checkboxes[i].checked) {
