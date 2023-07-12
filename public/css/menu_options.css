@@ -652,10 +652,10 @@ input[type='checkbox']:checked + .gray_b {
   max-width: 100%;
 }
 
-.group-name-span {
+/* .group-name-span {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
   display: inline-block;
-}
+} */
