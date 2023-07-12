@@ -1101,7 +1101,7 @@ router
             //   (error, result) => {
                 // res.send({  msg: '成功' });
                 pool.query(
-              'SELECT * from frined_List;',
+              'SELECT * from friend_List;',
               (error, result) => {
                 res.send({  result: result });
               }
