@@ -250,12 +250,12 @@ document.getElementById('friend-list').addEventListener('click', async () => {
       //グループリスト表示
       document
         .querySelectorAll('.group-name-change-button')
-        .forEach(function (button) {
+        .forEach(function async(button) {
           button.addEventListener('click', function (event) {
             event.preventDefault(); // リンクのデフォルトの動作を無効化
             document.getElementById('popup-overlay_group-list').style.display =
               'block';
-             groupCheckListScreen(button);
+             await groupCheckListScreen(button);
              const id = button.id.match(/\d+/)[0];
             console.log(id);
             document.getElementById('group-list-decision-button').addEventListener('click', () => {
@@ -1198,6 +1198,7 @@ function getFormattedDate(dateString) {
 function groupCheckListScreen(button){
   // console.log(button);
   // console.log(button.id);
+  return new Promise((resolve,reject)=>{
   
   $.ajax({
     url: '/mypage/' + hashedIdGet,
@@ -1236,8 +1237,11 @@ function groupCheckListScreen(button){
       button.setAttribute('id','group-list-decision-button');
       button.innerHTML = '適用';
       document.getElementById('all-group-list').appendChild(button);
+      console.log('a');
+      resolve();
     }
    });
+  });
 }
 
 
