@@ -260,7 +260,7 @@ document.getElementById('friend-list').addEventListener('click', async () => {
              const checkboxes = document.querySelectorAll('.group-list-check-div input[type="radio"]');
                for (let i = 0; i < checkboxes.length; i++) {
                   if (checkboxes[i].checked) {
-                    console.log(`チェックが入っているのは ${checkbox.id} です`);
+                    console.log(`チェックが入っているのは ${checkboxes[i].id} です`);
                   }
                 }
           });
