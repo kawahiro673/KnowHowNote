@@ -255,8 +255,15 @@ document.getElementById('friend-list').addEventListener('click', async () => {
             event.preventDefault(); // リンクのデフォルトの動作を無効化
             document.getElementById('popup-overlay_group-list').style.display =
               'block';
-            console.log(button);
              groupCheckListScreen(button);
+            document.getElementById('group-list-decision-button').addEventListener('input', () => {
+             const checkboxes = document.querySelectorAll('.group-list-check-div input[type="radio"]');
+               for (let i = 0; i < checkboxes.length; i++) {
+                  if (checkboxes[i].checked) {
+                    console.log(`チェックが入っているのは ${checkbox.id} です`);
+                  }
+                }
+          });
           });
         });
 
