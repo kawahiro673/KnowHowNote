@@ -323,8 +323,11 @@ function handleDecisionButtonClick() {
 }
 
 // 最初のイベントリスナーを追加
-document.querySelectorAll('.group-name-change-button').forEach(function (button) {
-  button.addEventListener('click', handleGroupButtonClick);
+// document.querySelectorAll('.group-name-change-button').forEach(function (button) {
+//   button.addEventListener('click', handleGroupButtonClick);
+// });
+      document.querySelectorAll('.group-name-change-button').forEach(function (button) {
+  button.addEventListener('click', handleGroupButtonClick, { once: true });
 });
 
       document
