@@ -638,3 +638,11 @@ input[type='checkbox']:checked + .gray_b {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
+
+.group-list-check-div {
+  padding: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
