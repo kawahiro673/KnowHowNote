@@ -1099,7 +1099,13 @@ router
               'UPDATE friend_list SET User_Group = ? WHERE id = ?;',
               [req.body.group,req.body.id],
               (error, result) => {
-                res.send({  msg: '成功' });
+                // res.send({  msg: '成功' });
+                pool.query(
+              'SELECT * from frined_List;',
+              (error, result) => {
+                res.send({  result: result });
+              }
+            );
               }
             );
       
