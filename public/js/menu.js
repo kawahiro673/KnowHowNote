@@ -1205,7 +1205,7 @@ function groupCheckListScreen(button){
 
         // チェックボックス要素の作成
         const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
+        checkbox.type = 'radio';
         checkbox.id = `checkbox-group${group.User_Group}`;
         checkbox.name = "group"
           
