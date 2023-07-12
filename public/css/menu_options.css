@@ -336,11 +336,13 @@
   font-size: 10px;
   margin: 9px 0;
 }
-.group-name-p{
+.group-name-p {
   font-size: 12px;
   margin: 9px 5px 9px 0;
-  width:140px;
-   display: inline-block;
+  width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .popup-body_share-user {
@@ -655,4 +657,5 @@ input[type='checkbox']:checked + .gray_b {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+  display: inline-block;
 }
