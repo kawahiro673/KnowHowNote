@@ -300,13 +300,13 @@ document.getElementById('friend-list').addEventListener('click', async () => {
   console.log(id);
 
   // イベントリスナーを削除
-  document.getElementById('group-list-decision-button').removeEventListener('click', handleDecisionButtonClick);
+  //document.getElementById('group-list-decision-button').removeEventListener('click', handleDecisionButtonClick);
   document.querySelectorAll('.group-name-change-button').forEach(function (button) {
     button.removeEventListener('click', handleGroupButtonClick);
   });
 
   // 新しいイベントリスナーを追加
-  document.getElementById('group-list-decision-button').addEventListener('click', handleDecisionButtonClick);
+  //document.getElementById('group-list-decision-button').addEventListener('click', handleDecisionButtonClick);
   document.querySelectorAll('.group-name-change-button').forEach(function (button) {
     button.addEventListener('click', handleGroupButtonClick);
   });
@@ -1293,7 +1293,7 @@ function groupCheckListScreen(button){
       });
       const button = document.createElement('button');
       button.setAttribute('id','group-list-decision-button');
-      button.value = '適用';
+      button.innerHTML = '適用';
       document.getElementById('all-group-list').appendChild(button);
     }
    });
