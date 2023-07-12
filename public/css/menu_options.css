@@ -339,6 +339,7 @@
 .group-name-p{
   font-size: 12px;
   margin: 9px 5px 9px 0;
+  width:140px;
 }
 
 .popup-body_share-user {
@@ -642,6 +643,13 @@ input[type='checkbox']:checked + .gray_b {
 
 .group-list-check-div {
   padding: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.group-name-span {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
