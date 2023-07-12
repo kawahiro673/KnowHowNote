@@ -257,7 +257,6 @@ document.getElementById('friend-list').addEventListener('click', async () => {
               'block';
             console.log(button);
              groupCheckListScreen(button);
-            //groupListUpdate('all-group-list');
           });
         });
 
@@ -1198,7 +1197,7 @@ function groupCheckListScreen(button){
       flg: 'group_get',
     }),
     success: function (res) {
-   
+     document.getElementById('all-group-list').innerHTML = '';
         res.groupResults.forEach((group) => {
       
         const div = document.createElement('div');
