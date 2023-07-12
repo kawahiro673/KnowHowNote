@@ -1176,6 +1176,7 @@ let isUserSorted = false;
 const dateSortIndicator = document.getElementById('dateSortIndicator');
 const userSortIndicator = document.getElementById('userSortIndicator');
 let ascSortOrder = true; // 初期値は昇順
+
 //共有履歴の日付を降順/昇順にする
 function sortTableByDate() {
   const table = document.getElementById('share-history-table');
@@ -1201,9 +1202,9 @@ function sortTableByDate() {
   // ソートアイコンの表示切り替え
   ascSortOrder = !ascSortOrder; // 昇順と降順を切り替え
   if (ascSortOrder) {
-    dateSortIndicator.textContent = '▲'; // 昇順アイコン
+    dateSortIndicator.innerHTML = '▲'; // 昇順アイコン
   } else {
-    dateSortIndicator.textContent = '▼'; // 降順アイコン
+    dateSortIndicator.innerHTML = '▼'; // 降順アイコン
   }
 }
 

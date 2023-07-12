@@ -79,7 +79,7 @@
 #popup-overlay_friend-delete-ans,
 #popup-overlay_friend-delete-q,
 #popup-overlay_group-add,
-#popup-overlay_group-list{
+#popup-overlay_group-list {
   display: block;
   position: fixed;
   top: 0;
@@ -106,7 +106,7 @@
 .popup-window_friend-delete-ans,
 .popup-window_friend-delete-q,
 .popup-window_group-add,
-.popup-window_group-list{
+.popup-window_group-list {
   width: 500px;
   height: 300px;
   background-color: #fff;
@@ -168,7 +168,7 @@
 .popup-header_friend-delete-ans,
 .popup-header_friend-delete-q,
 .popup-header_group-add,
-.popup-header_group-list{
+.popup-header_group-list {
   display: flex;
   align-items: center;
   justify-content: center; /* 中央寄せに変更 */
@@ -193,7 +193,7 @@
 .popup-header_friend-delete-ans h2,
 .popup-header_friend-delete-q h2,
 .popup-header_group-add h2,
-.popup-header_group-list h2{
+.popup-header_group-list h2 {
   font-size: 16px;
   font-weight: normal;
   margin: 0 auto;
@@ -214,7 +214,7 @@
 #pop-delete_friend-add,
 #pop-delete_friend-delete-q,
 #pop-delete_group-add,
-#pop-delete_group-list{
+#pop-delete_group-list {
   text-decoration: none;
   font-size: 1.2em;
   font-weight: bold;
@@ -234,7 +234,7 @@
 #pop-delete_friend-add:hover,
 #pop-delete_friend-delete-q:hover,
 #pop-delete_group-add:hover,
-#pop-delete_group-list:hover{
+#pop-delete_group-list:hover {
   color: red;
 }
 
@@ -260,7 +260,7 @@
 .popup-body_friend-delete-ans,
 .popup-body_friend-delete-q,
 .popup-body_group-add,
-.popup-body_group-list{
+.popup-body_group-list {
   position: relative;
   height: 240px;
   padding: 0 10px;
@@ -412,7 +412,7 @@
 .friend-change-name-button,
 #group-add-button,
 .group-name-change-button,
-#group-list-decision-button{
+#group-list-decision-button {
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -445,32 +445,32 @@
 #friend-search-button,
 #friend-delete-q-button,
 #friend-delete-q-cancel,
-#group-add-button{
+#group-add-button {
   padding: 7px 14px;
   font-size: 12px;
 }
 
-.group-name-change-button{
+.group-name-change-button {
   padding: 5px 10px;
-  font-size: 9px;  
+  font-size: 9px;
 }
 
 .friend-change-name,
 .friend-delete,
-.friend-change-name-button{
+.friend-change-name-button {
   padding: 6px 12px;
-  font-size: 10px;  
+  font-size: 10px;
 }
 
-.friend-delete{
+.friend-delete {
   background-color: #f5f5f5;
-  color:black;
- font-size: larger;
+  color: black;
+  font-size: larger;
   font-weight: bold;
 }
 
-.friend-delete:hover{
-  color:red;
+.friend-delete:hover {
+  color: red;
 }
 
 .group-name-div {
@@ -481,7 +481,7 @@
 #no-button-logout,
 #no-button-delete,
 #share-user-clear-button,
-#friend-delete-q-cancel{
+#friend-delete-q-cancel {
   background-color: red;
 }
 
@@ -619,25 +619,25 @@ input[type='checkbox']:checked + .gray_b {
   align-items: center;
 }
 
- .group-list-display {
-      display: flex;
-      flex-wrap: wrap;
-      background-color: #f5f5f5;
-    }
+.group-list-display {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #f5f5f5;
+}
 
-    .column {
-      width: calc(33.33% - 10px);
-      margin: 5px;
-      box-sizing: border-box;
-    }
+.column {
+  width: calc(33.33% - 10px);
+  margin: 5px;
+  box-sizing: border-box;
+}
 
-    .column-inner {
-       padding: 5px;
+.column-inner {
+  padding: 5px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
-    }
+}
 
 #all-group-list {
   display: grid;
@@ -651,11 +651,3 @@ input[type='checkbox']:checked + .gray_b {
   text-overflow: ellipsis;
   max-width: 100%;
 }
-
-/* .group-name-span {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
-  display: inline-block;
-} */
