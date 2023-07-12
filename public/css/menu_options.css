@@ -633,3 +633,8 @@ input[type='checkbox']:checked + .gray_b {
   text-overflow: ellipsis;
   max-width: 100%;
     }
+
+#all-group-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
