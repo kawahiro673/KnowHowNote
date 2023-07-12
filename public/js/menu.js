@@ -1173,8 +1173,6 @@ function shareHistoryTableDownList() {
 
 let isDateSorted = false;
 let isUserSorted = false;
-const dateSortIndicator = document.getElementById('dateSortIndicator');
-const userSortIndicator = document.getElementById('userSortIndicator');
 let ascSortOrder = true; // 初期値は昇順
 
 //共有履歴の日付を降順/昇順にする
@@ -1202,9 +1200,9 @@ function sortTableByDate() {
   // ソートアイコンの表示切り替え
   ascSortOrder = !ascSortOrder; // 昇順と降順を切り替え
   if (ascSortOrder) {
-    dateSortIndicator.innerHTML = '▲'; // 昇順アイコン
+    document.getElementById('dateSortIndicator').textContent = '▲'; // 昇順アイコン
   } else {
-    dateSortIndicator.innerHTML = '▼'; // 降順アイコン
+    document.getElementById('dateSortIndicator').textContent = '▼'; // 降順アイコン
   }
 }
 
@@ -1233,9 +1231,9 @@ function sortTableByUser() {
   // ソートアイコンの表示切り替え
   ascSortOrder = !ascSortOrder; // 昇順と降順を切り替え
   if (ascSortOrder) {
-    userSortIndicator.textContent = '▲'; // 昇順アイコン
+    document.getElementById('userSortIndicator').textContent = '▲'; // 昇順アイコン
   } else {
-    userSortIndicator.textContent = '▼'; // 降順アイコン
+    document.getElementById('userSortIndicator').textContent = '▼'; // 降順アイコン
   }
 }
 
