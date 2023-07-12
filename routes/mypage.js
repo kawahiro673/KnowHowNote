@@ -1094,21 +1094,13 @@ router
           res.status(500).json({ message: error.message, nothing });
         });
     } else if (req.body.flg === 'group_update') {
-      
-            // pool.query(
-            //   'UPDATE friend_list SET User_Group = ? WHERE id = ?;',
-            //   [req.body.group,req.body.id],
-            //   (error, result) => {
-                // res.send({  msg: '成功' });
-                pool.query(
-              'SELECT * from friend_List;',
+            pool.query(
+              'UPDATE friend_list SET User_Group = ? WHERE id = ?;',
+              [req.body.group,req.body.id],
               (error, result) => {
-                res.send({  result: result });
+                // res.send({  msg: '成功' });
               }
             );
-            //   }
-            // );
-      
     }else {
       console.log('flgで何も受け取ってません');
     }
