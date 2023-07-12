@@ -1268,6 +1268,7 @@ function groupCheckListScreen(button){
     }),
     success: function (res) {
      document.getElementById('all-group-list').innerHTML = '';
+      
         res.groupResults.forEach((group) => {
       
         const div = document.createElement('div');
@@ -1290,6 +1291,10 @@ function groupCheckListScreen(button){
         div.appendChild(checkboxLabel);
      
       });
+      const button = document.createElement('button');
+      button.setAttribute('id','group-list-decision-button');
+      button.value = '適用';
+      document.getElementById('all-group-list').appendChild(button);
     }
    });
 }
