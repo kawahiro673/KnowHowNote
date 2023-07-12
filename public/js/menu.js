@@ -257,16 +257,29 @@ document.getElementById('friend-list').addEventListener('click', async () => {
               'block';
              await groupCheckListScreen(button);
              const id = button.id.match(/\d+/)[0];
-            console.log(id);
+           
             document.getElementById('group-list-decision-button').addEventListener('click', () => {
-             const checkboxes = document.querySelectorAll('.group-list-check-div input[type="radio"]');
+              let extracted;
+              const checkboxes = document.querySelectorAll('.group-list-check-div input[type="radio"]');
                for (let i = 0; i < checkboxes.length; i++) {
                   if (checkboxes[i].checked) {
-                    console.log(`チェックが入っているのは ${checkboxes[i].id} です`);
-                    const extracted = checkboxes[i].id.replace("checkbox-group", "");
+                    extracted = checkboxes[i].id.replace("checkbox-group", "");
                     console.log(extracted);
                   }
                 }
+                 $.ajax({
+               url: '/mypage/' + hashedIdGet,
+                 type: 'POST',
+                dataType: 'Json',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                flg: 'group_update',
+                 }),
+                  success: function (res) {
+              
+                },
+               });
+              
                });
           });
         });
@@ -1237,7 +1250,6 @@ function groupCheckListScreen(button){
       button.setAttribute('id','group-list-decision-button');
       button.innerHTML = '適用';
       document.getElementById('all-group-list').appendChild(button);
-      console.log('a');
       resolve();
     }
    });
