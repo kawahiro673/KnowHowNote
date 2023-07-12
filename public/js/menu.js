@@ -93,9 +93,13 @@ document.getElementById('share-history').addEventListener('click', () => {
         const header1 = document.createElement('th');
         header1.setAttribute('id', 'share-history-date');
         header1.textContent = '共有日時';
+        const span1 = document.createElement('span');
+        span1.setAttribute('id', 'dateSortIndicator');
         const header2 = document.createElement('th');
         header2.setAttribute('id', 'share-history-user');
         header2.textContent = 'ユーザー名';
+        const span2 = document.createElement('span');
+        span2.setAttribute('id', 'userSortIndicator');
         const header3 = document.createElement('th');
         header3.textContent = 'ノウハウ';
 
@@ -103,6 +107,9 @@ document.getElementById('share-history').addEventListener('click', () => {
         headerRow.appendChild(header1);
         headerRow.appendChild(header2);
         headerRow.appendChild(header3);
+        header1.appendChild(span1);
+        header2.appendChild(span2);
+
         document.getElementById('share-history-list').appendChild(table);
         table.appendChild(headerRow);
 
@@ -251,40 +258,44 @@ document.getElementById('friend-list').addEventListener('click', async () => {
       document
         .querySelectorAll('.group-name-change-button')
         .forEach(async function (button) {
-          button.addEventListener('click',async function (event) {
+          button.addEventListener('click', async function (event) {
             event.preventDefault(); // リンクのデフォルトの動作を無効化
             document.getElementById('popup-overlay_group-list').style.display =
               'block';
-             await groupCheckListScreen(button);
-             const id = button.id.match(/\d+/)[0];
-           
-            document.getElementById('group-list-decision-button').addEventListener('click', () => {
-              let extracted;
-              const checkboxes = document.querySelectorAll('.group-list-check-div input[type="radio"]');
-               for (let i = 0; i < checkboxes.length; i++) {
+            await groupCheckListScreen(button);
+            const id = button.id.match(/\d+/)[0];
+
+            document
+              .getElementById('group-list-decision-button')
+              .addEventListener('click', () => {
+                let extracted;
+                const checkboxes = document.querySelectorAll(
+                  '.group-list-check-div input[type="radio"]'
+                );
+                for (let i = 0; i < checkboxes.length; i++) {
                   if (checkboxes[i].checked) {
-                    extracted = checkboxes[i].id.replace("checkbox-group", "");
+                    extracted = checkboxes[i].id.replace('checkbox-group', '');
                     console.log(extracted);
                   }
                 }
-                 $.ajax({
-               url: '/mypage/' + hashedIdGet,
-                 type: 'POST',
-                dataType: 'Json',
-                contentType: 'application/json',
-                data: JSON.stringify({
-                flg: 'group_update',
-                  id,
-                  group: extracted,
-                 }),
+                $.ajax({
+                  url: '/mypage/' + hashedIdGet,
+                  type: 'POST',
+                  dataType: 'Json',
+                  contentType: 'application/json',
+                  data: JSON.stringify({
+                    flg: 'group_update',
+                    id,
+                    group: extracted,
+                  }),
                   success: function (res) {
-                document.getElementById('popup-overlay_group-list').style.display =
-            'none';
+                    document.getElementById(
+                      'popup-overlay_group-list'
+                    ).style.display = 'none';
                     friendListUpdate();
-                },
-               });
-              
-               });
+                  },
+                });
+              });
           });
         });
 
@@ -1162,6 +1173,9 @@ function shareHistoryTableDownList() {
 
 let isDateSorted = false;
 let isUserSorted = false;
+const dateSortIndicator = document.getElementById('dateSortIndicator');
+const userSortIndicator = document.getElementById('userSortIndicator');
+let ascSortOrder = true; // 初期値は昇順
 //共有履歴の日付を降順/昇順にする
 function sortTableByDate() {
   const table = document.getElementById('share-history-table');
@@ -1183,6 +1197,14 @@ function sortTableByDate() {
   rows.forEach(function (row) {
     table.appendChild(row);
   });
+
+  // ソートアイコンの表示切り替え
+  ascSortOrder = !ascSortOrder; // 昇順と降順を切り替え
+  if (ascSortOrder) {
+    dateSortIndicator.textContent = '▲'; // 昇順アイコン
+  } else {
+    dateSortIndicator.textContent = '▼'; // 降順アイコン
+  }
 }
 
 //共有履歴のユーザーを降順/昇順にする
@@ -1206,6 +1228,14 @@ function sortTableByUser() {
   rows.forEach(function (row) {
     table.appendChild(row);
   });
+
+  // ソートアイコンの表示切り替え
+  ascSortOrder = !ascSortOrder; // 昇順と降順を切り替え
+  if (ascSortOrder) {
+    userSortIndicator.textContent = '▲'; // 昇順アイコン
+  } else {
+    userSortIndicator.textContent = '▼'; // 降順アイコン
+  }
 }
 
 function getFormattedDate(dateString) {
@@ -1213,52 +1243,50 @@ function getFormattedDate(dateString) {
   return `${month}/${day}/${year} ${hour}:${minute}`;
 }
 
-function groupCheckListScreen(button){
+function groupCheckListScreen(button) {
   // console.log(button);
   // console.log(button.id);
-  return new Promise((resolve,reject)=>{
-  
-  $.ajax({
-    url: '/mypage/' + hashedIdGet,
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      flg: 'group_get',
-    }),
-    success: function (res) {
-     document.getElementById('all-group-list').innerHTML = '';
-      
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      url: '/mypage/' + hashedIdGet,
+      type: 'POST',
+      dataType: 'Json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        flg: 'group_get',
+      }),
+      success: function (res) {
+        document.getElementById('all-group-list').innerHTML = '';
+
         res.groupResults.forEach((group) => {
-      
-        const div = document.createElement('div');
-        div.setAttribute('class', `group-list-check-div`);
+          const div = document.createElement('div');
+          div.setAttribute('class', `group-list-check-div`);
 
-        // チェックボックス要素の作成
-        const checkbox = document.createElement('input');
-        checkbox.type = 'radio';
-        checkbox.id = `checkbox-group${group.User_Group}`;
-        checkbox.name = "group"
-          
-        // ラベル要素の作成
-        const checkboxLabel = document.createElement('label');
-        checkboxLabel.textContent = group.User_Group;
-        checkboxLabel.setAttribute('for', `checkbox-group${group.User_Group}`);
+          // チェックボックス要素の作成
+          const checkbox = document.createElement('input');
+          checkbox.type = 'radio';
+          checkbox.id = `checkbox-group${group.User_Group}`;
+          checkbox.name = 'group';
 
-        // 要素の追加
-        document.getElementById('all-group-list').appendChild(div);
-        div.appendChild(checkbox);
-        div.appendChild(checkboxLabel);
-     
-      });
-      const button = document.createElement('button');
-      button.setAttribute('id','group-list-decision-button');
-      button.innerHTML = '適用';
-      document.getElementById('all-group-list').appendChild(button);
-      resolve();
-    }
-   });
+          // ラベル要素の作成
+          const checkboxLabel = document.createElement('label');
+          checkboxLabel.textContent = group.User_Group;
+          checkboxLabel.setAttribute(
+            'for',
+            `checkbox-group${group.User_Group}`
+          );
+
+          // 要素の追加
+          document.getElementById('all-group-list').appendChild(div);
+          div.appendChild(checkbox);
+          div.appendChild(checkboxLabel);
+        });
+        const button = document.createElement('button');
+        button.setAttribute('id', 'group-list-decision-button');
+        button.innerHTML = '適用';
+        document.getElementById('all-group-list').appendChild(button);
+        resolve();
+      },
+    });
   });
 }
-
-
