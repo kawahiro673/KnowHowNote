@@ -255,7 +255,7 @@ document.getElementById('friend-list').addEventListener('click', async () => {
             event.preventDefault(); // リンクのデフォルトの動作を無効化
             document.getElementById('popup-overlay_group-list').style.display =
               'block';
-            groupListUpdate('all-group-list');
+            //groupListUpdate('all-group-list');
           });
         });
 
@@ -960,7 +960,7 @@ const friendListUpdate = () => {
           groupP.setAttribute('class', 'group-name-p');
           groupP.innerHTML = 'グループ：';
           const span = document.createElement('span');
-          span.setAttribute('id', 'group-name-span');
+          span.setAttribute('class', `group-name-span${friend.id}`);
           const groupButton = document.createElement('button');
           groupButton.setAttribute('class', 'group-name-change-button');
           groupButton.setAttribute(
