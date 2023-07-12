@@ -1207,7 +1207,8 @@ function groupCheckListScreen(button){
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.id = `checkbox-group${group.User_Group}`;
-
+        checkbox.name = "group"
+          
         // ラベル要素の作成
         const checkboxLabel = document.createElement('label');
         checkboxLabel.textContent = group.User_Group;
