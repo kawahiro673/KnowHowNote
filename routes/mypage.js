@@ -1095,10 +1095,10 @@ router
         });
     } else if (req.body.flg === 'group_update') {
       
-            pool.query(
-              'UPDATE friend_list SET User_Group = ? WHERE id = ?;',
-              [req.body.group,req.body.id],
-              (error, result) => {
+            // pool.query(
+            //   'UPDATE friend_list SET User_Group = ? WHERE id = ?;',
+            //   [req.body.group,req.body.id],
+            //   (error, result) => {
                 // res.send({  msg: '成功' });
                 pool.query(
               'SELECT * from frined_List;',
@@ -1106,8 +1106,8 @@ router
                 res.send({  result: result });
               }
             );
-              }
-            );
+            //   }
+            // );
       
     }else {
       console.log('flgで何も受け取ってません');
