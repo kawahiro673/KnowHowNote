@@ -274,6 +274,8 @@ document.getElementById('friend-list').addEventListener('click', async () => {
                 contentType: 'application/json',
                 data: JSON.stringify({
                 flg: 'group_update',
+                  id,
+                  group: extracted,
                  }),
                   success: function (res) {
               
