@@ -250,8 +250,8 @@ document.getElementById('friend-list').addEventListener('click', async () => {
       //グループリスト表示
       document
         .querySelectorAll('.group-name-change-button')
-        .forEach(function async(button) {
-          button.addEventListener('click', function (event) {
+        .forEach(async function (button) {
+          button.addEventListener('click',async function (event) {
             event.preventDefault(); // リンクのデフォルトの動作を無効化
             document.getElementById('popup-overlay_group-list').style.display =
               'block';
