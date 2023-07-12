@@ -247,88 +247,29 @@ document.getElementById('friend-list').addEventListener('click', async () => {
         });
       });
 
-      // //グループリスト表示
-      // document
-      //   .querySelectorAll('.group-name-change-button')
-      //   .forEach(function (button) {
-      //     button.addEventListener('click', function (event) {
-      //       event.preventDefault(); // リンクのデフォルトの動作を無効化
-      //       document.getElementById('popup-overlay_group-list').style.display =
-      //         'block';
-      //        groupCheckListScreen(button);
-      //        const id = button.id.match(/\d+/)[0];
-      //       console.log(id);
-      //       document.getElementById('group-list-decision-button').addEventListener('click', () => {
-      //        const checkboxes = document.querySelectorAll('.group-list-check-div input[type="radio"]');
-      //          for (let i = 0; i < checkboxes.length; i++) {
-      //             if (checkboxes[i].checked) {
-      //               console.log(`チェックが入っているのは ${checkboxes[i].id} です`);
-      //               const extracted = checkboxes[i].id.replace("checkbox-group", "");
-      //               console.log(extracted);
-      //             }
-      //           }
-      //          });
-      //     });
-      //   });
-
-// function handleGroupButtonClick(event) {
-//   event.preventDefault(); // リンクのデフォルトの動作を無効化
-//   document.getElementById('popup-overlay_group-list').style.display = 'block';
-//   groupCheckListScreen(this);
-//   const id = this.id.match(/\d+/)[0];
-//   console.log(id);
-
-//   // 決定ボタンのイベントリスナーを追加
-//   document.getElementById('group-list-decision-button').addEventListener('click', handleDecisionButtonClick);
-
-//   // グループボタンのイベントリスナーを削除
-//   document.querySelectorAll('.group-name-change-button').forEach(function (button) {
-//     button.removeEventListener('click', handleGroupButtonClick);
-//   });
-
-//   // 新しいイベントリスナーを追加
-//   document.querySelectorAll('.group-name-change-button').forEach(function (button) {
-//     button.addEventListener('click', handleGroupButtonClick);
-//   });
-// }
-
-      function handleGroupButtonClick(event) {
-  event.preventDefault(); // リンクのデフォルトの動作を無効化
-  document.getElementById('popup-overlay_group-list').style.display = 'block';
-  groupCheckListScreen(this);
-  const id = this.id.match(/\d+/)[0];
-  console.log(id);
-
-  // イベントリスナーを削除
-  //document.getElementById('group-list-decision-button').removeEventListener('click', handleDecisionButtonClick);
-  document.querySelectorAll('.group-name-change-button').forEach(function (button) {
-    button.removeEventListener('click', handleGroupButtonClick);
-  });
-
-  // 新しいイベントリスナーを追加
-  //document.getElementById('group-list-decision-button').addEventListener('click', handleDecisionButtonClick);
-  document.querySelectorAll('.group-name-change-button').forEach(function (button) {
-    button.addEventListener('click', handleGroupButtonClick);
-  });
-}
-      
-function handleDecisionButtonClick() {
-  const checkboxes = document.querySelectorAll('.group-list-check-div input[type="radio"]');
-  for (let i = 0; i < checkboxes.length; i++) {
-    if (checkboxes[i].checked) {
-      const extracted = checkboxes[i].id.replace("checkbox-group", "");
-      console.log(extracted);
-    }
-  }
-}
-
-// 最初のイベントリスナーを追加
-// document.querySelectorAll('.group-name-change-button').forEach(function (button) {
-//   button.addEventListener('click', handleGroupButtonClick);
-// });
-      document.querySelectorAll('.group-name-change-button').forEach(function (button) {
-  button.addEventListener('click', handleGroupButtonClick, { once: true });
-});
+      //グループリスト表示
+      document
+        .querySelectorAll('.group-name-change-button')
+        .forEach(function (button) {
+          button.addEventListener('click', function (event) {
+            event.preventDefault(); // リンクのデフォルトの動作を無効化
+            document.getElementById('popup-overlay_group-list').style.display =
+              'block';
+             groupCheckListScreen(button);
+             const id = button.id.match(/\d+/)[0];
+            console.log(id);
+            document.getElementById('group-list-decision-button').addEventListener('click', () => {
+             const checkboxes = document.querySelectorAll('.group-list-check-div input[type="radio"]');
+               for (let i = 0; i < checkboxes.length; i++) {
+                  if (checkboxes[i].checked) {
+                    console.log(`チェックが入っているのは ${checkboxes[i].id} です`);
+                    const extracted = checkboxes[i].id.replace("checkbox-group", "");
+                    console.log(extracted);
+                  }
+                }
+               });
+          });
+        });
 
       document
         .getElementById('pop-delete_group-list')
