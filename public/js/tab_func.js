@@ -491,6 +491,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
 document
   .getElementById('share-user-add-button')
   .addEventListener('click', () => {
+    //チェックの入っているlabelの文字列を配列に保存し、inputへ「,」をつけて出力
     document.getElementsByClassName('share-input')[0].value = '';
     const checkedElements = document.querySelectorAll(
       '#share-user-div input[type="checkbox"]:checked'
@@ -510,7 +511,7 @@ document
 
     document.getElementsByClassName('share-input')[0].value =
       shareUserNames.join(', ');
-
+    //追加ボタン押下時に要素を消している。でないと追加で増え続ける。。。
     document.getElementById('popup-overlay_share-user').style.display = 'none';
     while (document.getElementById('share-user-div').firstChild) {
       document
@@ -533,18 +534,13 @@ document
     checkboxes.forEach((checkbox) => {
       checkbox.checked = false;
     });
+     const checkboxes_g = document.querySelectorAll(
+      '#share-group-div input[type="checkbox"]'
+    );
+    checkboxes_g.forEach((checkbox) => {
+      checkbox.checked = false;
+    });
   });
-
-// document
-//   .getElementById('share-group-clear-button')
-//   .addEventListener('click', () => {
-//     const checkboxes = document.querySelectorAll(
-//       '#share-group-div input[type="checkbox"]'
-//     );
-//     checkboxes.forEach((checkbox) => {
-//       checkbox.checked = false;
-//     });
-//   });
 
 document
   .getElementById('pop-delete_share-user')
