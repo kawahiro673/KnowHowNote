@@ -143,8 +143,8 @@
 }
 
 .popup-window_share-user {
-  height: 350px;
-  width: 250px;
+  height: 500px;
+  width: 400px;
 }
 
 .popup-window_friend-list {
@@ -273,6 +273,10 @@
 
 .popup-body_share-history {
   height: 400px;
+}
+
+.popup-body_share-user{
+ height: 500px; 
 }
 
 .friend-list-top {
