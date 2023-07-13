@@ -447,7 +447,8 @@ input[name='tab_item'] {
   margin: 0;
 }
 
-#share-user-div {
+#share-user-div,
+#share-group-div{
   font-family: Arial, sans-serif;
   /* background-color: #f5f5f5; */
   padding: 3px;
@@ -458,17 +459,20 @@ input[name='tab_item'] {
   grid-gap: 10px;
 }
 
-#share-user-div div {
+#share-user-div div,
+#share-group-div div{
   display: flex;
   align-items: center;
   margin-bottom: 5px;
 }
 
-#share-user-div input[type='checkbox'] {
+#share-user-div input[type='checkbox'],
+#share-group-div input[type='checkbox']{
   margin-right: 10px;
 }
 
-#share-user-div label {
+#share-user-div label,
+#share-group-div label{
   color: #333;
   font-weight: bold;
     display: inline-block;
