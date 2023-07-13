@@ -411,7 +411,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
         // チェックボックス要素の作成
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
-        checkbox.id = `checkbox${friend.user_name}`;
+        checkbox.id = `checkbox${friend.Changed_Name}`;
 
         // ラベル要素の作成
         const checkboxLabel = document.createElement('label');
