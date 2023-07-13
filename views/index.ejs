@@ -1321,9 +1321,20 @@
               </div>
             </div>
             <div class="popup-body_share-user">
+            <input id="friend-list-check-id" type="radio" name="friend-list-check-name" checked />
+            <label class="friend-list-check-name" id="friend-tab" for="friend-list-check-id">フレンド</label>
+            <input id="group-list-check-id" type="radio" name="group-list-check-name" />
+            <label class="group-list-check-name" id="group-tab" for="group-list-check-id">グループ</label>
+
+            <div class="tab_content" id="friend_content">
               <div id="share-user-div"></div>
               <button id="share-user-add-button">追加</button>
               <button id="share-user-clear-button">全てのチェックを外す</button>
+            </div>
+
+            <div class="tab_content" id="group_content">
+            </div>
+             
             </div>
           </div>
         </div>
