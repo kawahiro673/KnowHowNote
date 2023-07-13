@@ -423,40 +423,40 @@ document.getElementById('share-user-button').addEventListener('click', () => {
         div.appendChild(checkbox);
         div.appendChild(checkboxLabel);
       });
-      
- //グループ側のチェックボックス作成
-      let groupFlg = false;  
-     const groupSet = new Set(); // ユニークな User_Group を格納するための Set
-res.friend.forEach((friend) => {
-  if (friend.User_Group !== undefined) {
-    const userGroup = friend.User_Group;
-    if (!groupSet.has(userGroup)) {
-      groupSet.add(userGroup);
-groupFlg = true;
-      const div = document.createElement('div');
-      div.setAttribute('class', 'friend-list-group-check-div');
 
-      const checkbox = document.createElement('input');
-      checkbox.type = 'checkbox';
-      checkbox.id = `checkbox${userGroup}`;
+      //グループ側のチェックボックス作成
+      let groupFlg = false;
+      const groupSet = new Set(); // ユニークな User_Group を格納するための Set
+      res.friend.forEach((friend) => {
+        if (friend.User_Group !== undefined) {
+          const userGroup = friend.User_Group;
+          if (!groupSet.has(userGroup)) {
+            groupSet.add(userGroup);
+            groupFlg = true;
+            const div = document.createElement('div');
+            div.setAttribute('class', 'friend-list-group-check-div');
 
-      const checkboxLabel = document.createElement('label');
-      checkboxLabel.textContent = userGroup;
-      checkboxLabel.setAttribute('for', `checkbox${userGroup}`);
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.id = `checkbox${userGroup}`;
 
-      document.getElementById('share-group-div').appendChild(div);
-      div.appendChild(checkbox);
-      div.appendChild(checkboxLabel);
-    }
-  }
-});
+            const checkboxLabel = document.createElement('label');
+            checkboxLabel.textContent = userGroup;
+            checkboxLabel.setAttribute('for', `checkbox${userGroup}`);
 
-      if(!groupFlg){
-         const p = document.createElement('p');
+            document.getElementById('share-group-div').appendChild(div);
+            div.appendChild(checkbox);
+            div.appendChild(checkboxLabel);
+          }
+        }
+      });
+
+      if (!groupFlg) {
+        const p = document.createElement('p');
         p.innerHTML = 'グループに所属しているユーザーがいません';
         document.getElementById('share-group-div').appendChild(p);
       }
-      
+
       if (res.friend.length === 0) {
         const p = document.createElement('p');
         p.innerHTML = 'フレンドが登録されていません';
@@ -482,7 +482,7 @@ groupFlg = true;
         if (labelInnerHTMLs_user.includes(val)) {
           document.getElementById(`checkbox${val}`).checked = true;
         }
-         if (labelInnerHTMLs_group.includes(val)) {
+        if (labelInnerHTMLs_group.includes(val)) {
           document.getElementById(`checkbox${val}`).checked = true;
         }
       });
@@ -506,7 +506,7 @@ document
       const shareUserName = val.nextElementSibling.innerHTML;
       shareUserNames.push(shareUserName);
     });
-     checkedElements_g.forEach((val) => {
+    checkedElements_g.forEach((val) => {
       const shareUserName = val.nextElementSibling.innerHTML;
       shareUserNames.push(shareUserName);
     });
@@ -520,7 +520,7 @@ document
         .getElementById('share-user-div')
         .removeChild(document.getElementById('share-user-div').firstChild);
     }
-      while (document.getElementById('share-group-div').firstChild) {
+    while (document.getElementById('share-group-div').firstChild) {
       document
         .getElementById('share-group-div')
         .removeChild(document.getElementById('share-group-div').firstChild);
@@ -536,7 +536,7 @@ document
     checkboxes.forEach((checkbox) => {
       checkbox.checked = false;
     });
-     const checkboxes_g = document.querySelectorAll(
+    const checkboxes_g = document.querySelectorAll(
       '#share-group-div input[type="checkbox"]'
     );
     checkboxes_g.forEach((checkbox) => {
@@ -555,7 +555,7 @@ document
         .getElementById('share-user-div')
         .removeChild(document.getElementById('share-user-div').firstChild);
     }
-     while (document.getElementById('share-group-div').firstChild) {
+    while (document.getElementById('share-group-div').firstChild) {
       document
         .getElementById('share-group-div')
         .removeChild(document.getElementById('share-group-div').firstChild);

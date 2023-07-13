@@ -448,7 +448,7 @@ input[name='tab_item'] {
 }
 
 #share-user-div,
-#share-group-div{
+#share-group-div {
   font-family: Arial, sans-serif;
   /* background-color: #f5f5f5; */
   padding: 3px;
@@ -460,39 +460,38 @@ input[name='tab_item'] {
 }
 
 #share-user-div div,
-#share-group-div div{
+#share-group-div div {
   display: flex;
   align-items: center;
   margin-bottom: 5px;
 }
 
 #share-user-div input[type='checkbox'],
-#share-group-div input[type='checkbox']{
+#share-group-div input[type='checkbox'] {
   margin-right: 10px;
 }
 
 #share-user-div label,
-#share-group-div label{
+#share-group-div label {
   color: #333;
   font-weight: bold;
-    display: inline-block;
+  display: inline-block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-   max-width: 150px; /* 必要な幅に調整してください */
+  max-width: 150px; /* 必要な幅に調整してください */
 }
 
 .friend-list-button-wrapper {
   display: flex;
   justify-content: space-between;
-  margin:20px
+  margin: 20px;
 }
 
 .friend-list-button-wrapper button {
   flex: 1;
   margin: 0 5px;
 }
-
 
 /************************　フレンド一覧　******************************/
 /*タブのスタイル*/
@@ -518,7 +517,7 @@ input[name='tab_item'] {
   box-sizing: border-box;
   margin-top: 10px;
   border-radius: 4px 4px 0 0;
-   max-height: 400px; /* タブ切り替えエリアの高さを適宜調整してください */
+  max-height: 400px; /* タブ切り替えエリアの高さを適宜調整してください */
   overflow-y: auto; /* タブ切り替えエリアがコンテンツより大きい場合にスクロールバーを表示 */
 }
 
@@ -538,7 +537,7 @@ input[name='friend-list-label'] {
   clear: both;
   overflow: hidden;
   position: relative;
-    max-height: 400px; /* タブ切り替えエリアの高さに応じて適宜調整してください */
+  max-height: 400px; /* タブ切り替えエリアの高さに応じて適宜調整してください */
   overflow-y: auto; /* コンテンツがタブ切り替えエリアより大きい場合にスクロールバーを表示 */
 }
 
