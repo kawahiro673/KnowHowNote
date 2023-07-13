@@ -423,31 +423,33 @@ document.getElementById('share-user-button').addEventListener('click', () => {
         div.appendChild(checkbox);
         div.appendChild(checkboxLabel);
       });
+      
+ //グループ側のチェックボックス作成
+      let groupFlg = false;  
+     const groupSet = new Set(); // ユニークな User_Group を格納するための Set
+res.friend.forEach((friend) => {
+  if (friend.User_Group !== undefined) {
+    const userGroup = friend.User_Group;
+    if (!groupSet.has(userGroup)) {
+      groupSet.add(userGroup);
+groupFlg = true;
+      const div = document.createElement('div');
+      div.setAttribute('class', 'friend-list-group-check-div');
 
-      let groupFlg = false;
-      //グループ側のチェックボックス作成
-      res.friend.forEach((friend) => {
-       if(friend.User_Group !== undefined){
-         groupFlg = true;
-        const div = document.createElement('div');
-        div.setAttribute('class', `friend-list-group-check-div`);
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.id = `checkbox${userGroup}`;
 
-        // チェックボックス要素の作成
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.id = `checkbox${friend.User_Group}`;
+      const checkboxLabel = document.createElement('label');
+      checkboxLabel.textContent = userGroup;
+      checkboxLabel.setAttribute('for', `checkbox${userGroup}`);
 
-        // ラベル要素の作成
-        const checkboxLabel = document.createElement('label');
-        checkboxLabel.textContent = friend.User_Group;
-        checkboxLabel.setAttribute('for', `checkbox${friend.User_Group}`);
-
-        // 要素の追加
-        document.getElementById('share-group-div').appendChild(div);
-        div.appendChild(checkbox);
-        div.appendChild(checkboxLabel);
-        }
-      });
+      document.getElementById('share-group-div').appendChild(div);
+      div.appendChild(checkbox);
+      div.appendChild(checkboxLabel);
+    }
+  }
+});
 
       if(!groupFlg){
          const p = document.createElement('p');
