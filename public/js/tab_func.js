@@ -493,6 +493,8 @@ document.getElementById('share-user-button').addEventListener('click', () => {
   });
 });
 
+let shareUserValues = [];
+
 document
   .getElementById('share-user-add-button')
   .addEventListener('click', () => {
@@ -516,13 +518,12 @@ document
       shareUserNames.push(shareUserName);
     });
 
-    let shareUserValues = [];
-
+    //チェックに入れたユーザーのfrined_listのid取得
+    shareUserNames = [];
     checkedElements.forEach((val) => {
       const shareUserValue = val.value;
       shareUserValues.push(shareUserValue);
     });
-    console.log(shareUserValues);
 
     document.getElementsByClassName('share-input')[0].value =
       shareUserNames.join(', ');
