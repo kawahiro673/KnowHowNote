@@ -480,11 +480,11 @@ input[name='tab_item'] {
 
 /************************　フレンド一覧　******************************/
 /*タブのスタイル*/
-.container1 label:first-of-type {
+.popup-body_share-user label:first-of-type {
   margin-right: auto;
 }
 
-.container1 label:last-of-type {
+.popup-body_share-user label:last-of-type {
   margin-left: auto;
 }
 
@@ -508,7 +508,7 @@ input[name='tab_item'] {
 }
 
 /*ラジオボタンを全て消す*/
-input[name='tab_item'] {
+input[name='friend-list-label'] {
   display: none;
 }
 
