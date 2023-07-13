@@ -477,3 +477,60 @@ input[name='tab_item'] {
   text-overflow: ellipsis;
    max-width: 150px; /* 必要な幅に調整してください */
 }
+
+/************************　フレンド一覧　******************************/
+/*タブのスタイル*/
+.container1 label:first-of-type {
+  margin-right: auto;
+}
+
+.container1 label:last-of-type {
+  margin-left: auto;
+}
+
+.tab_item {
+  border-bottom-color: 1px solid Gray;
+  background-color: gray;
+  line-height: 30px;
+  font-size: 16px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  border-radius: 4px 0 0 4px;
+  display: inline-block;
+  white-space: nowrap;
+  width: 48%;
+  box-sizing: border-box;
+}
+
+.tab_item:hover {
+  opacity: 0.75;
+}
+
+/*ラジオボタンを全て消す*/
+input[name='tab_item'] {
+  display: none;
+}
+
+/*タブ切り替えの中身のスタイル*/
+.tab_content {
+  display: none;
+  padding: 0;
+  clear: both;
+  overflow: hidden;
+  position: relative;
+}
+
+/*選択されているタブのコンテンツのみを表示*/
+#nouhau:checked ~ #nouhau_content,
+#share:checked ~ #share_content {
+  display: block;
+}
+
+/*選択されているタブのスタイルを変える*/
+.container1 input:checked + .tab_item {
+  background-color: white;
+  color: black;
+  border-bottom-color: White;
+}
+/******************************************************/
