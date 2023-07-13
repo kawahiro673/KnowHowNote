@@ -503,6 +503,11 @@ document
         .getElementById('share-user-div')
         .removeChild(document.getElementById('share-user-div').firstChild);
     }
+      while (document.getElementById('share-group-div').firstChild) {
+      document
+        .getElementById('share-group-div')
+        .removeChild(document.getElementById('share-group-div').firstChild);
+    }
   });
 
 document
