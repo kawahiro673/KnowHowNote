@@ -349,10 +349,6 @@
   text-overflow: ellipsis;
 }
 
-.popup-body_share-user {
-  height: 300px;
-}
-
 .popup-body_inquiry select {
   margin: 5px;
 }
