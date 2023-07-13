@@ -498,8 +498,10 @@ input[name='tab_item'] {
   font-weight: bold;
   display: inline-block;
   white-space: nowrap;
-  width: 50%;
+  width: 49%;
   box-sizing: border-box;
+  margin-top: 10px;
+  border-radius: 4px 4px 0 0;
 }
 
 .friend-list-label:hover {
