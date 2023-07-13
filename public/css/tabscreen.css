@@ -522,8 +522,8 @@ input[name='tab_item'] {
 }
 
 /*選択されているタブのコンテンツのみを表示*/
-#nouhau:checked ~ #nouhau_content,
-#share:checked ~ #share_content {
+#friend-list-check-id:checked ~ #friend_content,
+#group-list-check-id:checked ~ #group_content {
   display: block;
 }
 
