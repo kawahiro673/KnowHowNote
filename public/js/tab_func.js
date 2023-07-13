@@ -517,15 +517,31 @@ document
   });
 
 document
+  .getElementById('share-group-clear-button')
+  .addEventListener('click', () => {
+    const checkboxes = document.querySelectorAll(
+      '#share-group-div input[type="checkbox"]'
+    );
+    checkboxes.forEach((checkbox) => {
+      checkbox.checked = false;
+    });
+  });
+
+document
   .getElementById('pop-delete_share-user')
   .addEventListener('click', (e) => {
     e.preventDefault(); // リンクのデフォルトの動作を無効化
     document.getElementById('popup-overlay_share-user').style.display = 'none';
-    //配下の要素全削除。ボタン押すたびに追加されるため・・
+    //配下の要素全削除。ボタン押すたびに追加されるため
     while (document.getElementById('share-user-div').firstChild) {
       document
         .getElementById('share-user-div')
         .removeChild(document.getElementById('share-user-div').firstChild);
+    }
+     while (document.getElementById('share-group-div').firstChild) {
+      document
+        .getElementById('share-group-div')
+        .removeChild(document.getElementById('share-group-div').firstChild);
     }
   });
 
