@@ -521,16 +521,16 @@ document
     });
   });
 
-document
-  .getElementById('share-group-clear-button')
-  .addEventListener('click', () => {
-    const checkboxes = document.querySelectorAll(
-      '#share-group-div input[type="checkbox"]'
-    );
-    checkboxes.forEach((checkbox) => {
-      checkbox.checked = false;
-    });
-  });
+// document
+//   .getElementById('share-group-clear-button')
+//   .addEventListener('click', () => {
+//     const checkboxes = document.querySelectorAll(
+//       '#share-group-div input[type="checkbox"]'
+//     );
+//     checkboxes.forEach((checkbox) => {
+//       checkbox.checked = false;
+//     });
+//   });
 
 document
   .getElementById('pop-delete_share-user')
