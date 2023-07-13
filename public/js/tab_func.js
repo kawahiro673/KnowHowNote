@@ -424,11 +424,11 @@ document.getElementById('share-user-button').addEventListener('click', () => {
         div.appendChild(checkboxLabel);
       });
 
-      let tmp = 0;
+      let groupFlg = false;
       //グループ側のチェックボックス作成
       res.friend.forEach((friend) => {
        if(friend.User_Group !== undefined){
-         tmp++;
+         groupFlg = true;
         const div = document.createElement('div');
         div.setAttribute('class', `friend-list-group-check-div`);
 
@@ -443,13 +443,13 @@ document.getElementById('share-user-button').addEventListener('click', () => {
         checkboxLabel.setAttribute('for', `checkbox${friend.User_Group}`);
 
         // 要素の追加
-        document.getElementById('share-user-div').appendChild(div);
+        document.getElementById('share-group-div').appendChild(div);
         div.appendChild(checkbox);
         div.appendChild(checkboxLabel);
         }
       });
 
-      if(tmp === 0){
+      if(!groupFlg){
          const p = document.createElement('p');
         p.innerHTML = 'グループに所属しているユーザーがいません';
         document.getElementById('share-group-div').appendChild(p);
