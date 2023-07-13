@@ -1005,6 +1005,7 @@ const friendListUpdate = () => {
           groupP.innerHTML = 'グループ：';
           const span = document.createElement('span');
           span.setAttribute('class', `group-name-span`);
+          span.setAttribute('id', `group-name-span${friend.id}`);
           span.innerHTML = friend.User_Group;
           const groupButton = document.createElement('button');
           groupButton.setAttribute('class', 'group-name-change-button');
@@ -1248,7 +1249,11 @@ function getFormattedDate(dateString) {
 
 //グループのチェックリスト画面を作成
 function groupCheckListScreen(button) {
-  console.log(button)
+  console.log(button);
+  const id = parseInt(button.id.match(/\d+/)[0]);
+  console.log(id);
+  const groupName = document.getElementById(`group-name-span${id}`).innerHTML;
+  console.log(groupName);
   return new Promise((resolve, reject) => {
     $.ajax({
       url: '/mypage/' + hashedIdGet,
@@ -1283,6 +1288,8 @@ function groupCheckListScreen(button) {
           document.getElementById('all-group-list').appendChild(div);
           div.appendChild(checkbox);
           div.appendChild(checkboxLabel);
+
+          if(groupName === group.User_Group) checkbox.checked = true;
         });
         const button = document.createElement('button');
         button.setAttribute('id', 'group-list-decision-button');
