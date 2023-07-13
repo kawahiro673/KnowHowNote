@@ -655,3 +655,15 @@ input[type='checkbox']:checked + .gray_b {
   text-overflow: ellipsis;
   max-width: 100%;
 }
+
+.logout-button-wrapper,
+.delete-button-wrapper{
+   display: flex;
+  justify-content: space-between;
+}
+
+.logout-button-wrapper button,
+.delete-button-wrapper button{
+  flex: 0 0 120px; /* ボタンの幅を調整する値（例: 120px） */
+  margin: 0 5px;
+}
