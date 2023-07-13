@@ -485,6 +485,7 @@ input[name='tab_item'] {
 .friend-list-button-wrapper {
   display: flex;
   justify-content: space-between;
+  margin:20px
 }
 
 .friend-list-button-wrapper button {
