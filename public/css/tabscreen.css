@@ -528,7 +528,7 @@ input[name='friend-list-label'] {
 }
 
 /*選択されているタブのスタイルを変える*/
-.container1 input:checked + .friend-list-label {
+.popup-body_share-user input:checked + .friend-list-label {
   background-color: white;
   color: black;
   border-bottom-color: White;
