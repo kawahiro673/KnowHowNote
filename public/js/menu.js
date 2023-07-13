@@ -368,20 +368,6 @@ document.getElementById('friend-list').addEventListener('click', async () => {
           });
         });
       });
-
-      //グループリスト出力
-      // $.ajax({
-      //   url: '/mypage/' + hashedIdGet,
-      //   type: 'POST',
-      //   dataType: 'Json',
-      //   contentType: 'application/json',
-      //   data: JSON.stringify({
-      //     flg: 'group_get',
-      //   }),
-      //   success: function (res) {
-      //     console.log(res.groupResults);
-      //   },
-      // });
     },
   });
 });
@@ -1002,7 +988,7 @@ const friendListUpdate = () => {
           groupDiv.setAttribute('class', 'group-name-div');
           const groupP = document.createElement('p');
           groupP.setAttribute('class', 'group-name-p');
-          groupP.innerHTML = 'グループ：';
+          groupP.innerHTML = '';
           const span = document.createElement('span');
           span.setAttribute('class', `group-name-span`);
           span.setAttribute('id', `group-name-span${friend.id}`);

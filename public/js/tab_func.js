@@ -428,11 +428,13 @@ document.getElementById('share-user-button').addEventListener('click', () => {
       let groupFlg = false;
       const groupSet = new Set(); // ユニークな User_Group を格納するための Set
       res.friend.forEach((friend) => {
+        console.log(friend.User_Group);
         if (friend.User_Group !== undefined) {
           const userGroup = friend.User_Group;
           if (!groupSet.has(userGroup)) {
             groupSet.add(userGroup);
             groupFlg = true;
+
             const div = document.createElement('div');
             div.setAttribute('class', 'friend-list-group-check-div');
 
