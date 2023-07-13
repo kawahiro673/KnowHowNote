@@ -488,7 +488,7 @@ input[name='tab_item'] {
   margin-left: auto;
 }
 
-.tab_item {
+.friend-list-label {
   border-bottom-color: 1px solid Gray;
   background-color: gray;
   line-height: 30px;
@@ -503,7 +503,7 @@ input[name='tab_item'] {
   box-sizing: border-box;
 }
 
-.tab_item:hover {
+.friend-list-label:hover {
   opacity: 0.75;
 }
 
@@ -528,7 +528,7 @@ input[name='tab_item'] {
 }
 
 /*選択されているタブのスタイルを変える*/
-.container1 input:checked + .tab_item {
+.container1 input:checked + .friend-list-label {
   background-color: white;
   color: black;
   border-bottom-color: White;
