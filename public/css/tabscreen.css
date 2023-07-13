@@ -520,12 +520,14 @@ input[name='friend-list-label'] {
 }
 
 /*タブ切り替えの中身のスタイル*/
-.tab_content {
+.friend-list_content {
   display: none;
   padding: 0;
   clear: both;
   overflow: hidden;
   position: relative;
+    max-height: calc(100% - 400px); /* タブ切り替えエリアの高さに応じて適宜調整してください */
+  overflow-y: auto; /* コンテンツがタブ切り替えエリアより大きい場合にスクロールバーを表示 */
 }
 
 /*選択されているタブのコンテンツのみを表示*/
