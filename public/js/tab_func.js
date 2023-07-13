@@ -504,7 +504,9 @@ document
     const checkedElements_g = document.querySelectorAll(
       '#share-group-div input[type="checkbox"]:checked'
     );
+
     let shareUserNames = [];
+
     checkedElements.forEach((val) => {
       const shareUserName = val.nextElementSibling.innerHTML;
       shareUserNames.push(shareUserName);
@@ -513,6 +515,14 @@ document
       const shareUserName = val.nextElementSibling.innerHTML;
       shareUserNames.push(shareUserName);
     });
+
+    let shareUserValues = [];
+
+    checkedElements.forEach((val) => {
+      const shareUserValue = val.value;
+      shareUserValues.push(shareUserValue);
+    });
+    console.log(shareUserValues);
 
     document.getElementsByClassName('share-input')[0].value =
       shareUserNames.join(', ');
