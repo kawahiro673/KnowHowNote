@@ -506,6 +506,8 @@ input[name='tab_item'] {
   box-sizing: border-box;
   margin-top: 10px;
   border-radius: 4px 4px 0 0;
+   max-height: 400px; /* タブ切り替えエリアの高さを適宜調整してください */
+  overflow-y: auto; /* タブ切り替えエリアがコンテンツより大きい場合にスクロールバーを表示 */
 }
 
 .friend-list-label:hover {
