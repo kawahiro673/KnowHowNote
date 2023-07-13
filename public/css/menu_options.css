@@ -412,7 +412,9 @@
 .friend-change-name-button,
 #group-add-button,
 .group-name-change-button,
-#group-list-decision-button {
+#group-list-decision-button,
+#share-group-add-button,
+#share-group-clear-button{
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -445,7 +447,9 @@
 #friend-search-button,
 #friend-delete-q-button,
 #friend-delete-q-cancel,
-#group-add-button {
+#group-add-button,
+#share-group-add-button,
+#share-group-clear-button{
   padding: 7px 14px;
   font-size: 12px;
 }
