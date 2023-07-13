@@ -416,7 +416,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
         // ラベル要素の作成
         const checkboxLabel = document.createElement('label');
         checkboxLabel.textContent = friend.Changed_Name;
-        checkboxLabel.setAttribute('for', `checkbox${friend.user_name}`);
+        checkboxLabel.setAttribute('for', `checkbox${friend.Changed_Name}`);
 
         // 要素の追加
         document.getElementById('share-user-div').appendChild(div);
@@ -466,14 +466,12 @@ document.getElementById('share-user-button').addEventListener('click', () => {
         document.getElementsByClassName('share-input')[0].value;
       const trimmedValue = inputValue.trim();
       const inputValues = trimmedValue.split(',').map((value) => value.trim());
-       console.log(inputValue);
-      console.log(trimmedValue);
-      console.log(inputValues);
+
       //#share-user-div配下のlabelタグのinnerHTMLを配列に格納(共有履歴のユーザー名)
       const labelInnerHTMLs = Array.from(
         document.querySelectorAll('#share-user-div label')
       ).map((label) => label.innerHTML);
-       console.log(labelInnerHTMLs);
+
       inputValues.forEach((val) => {
         if (labelInnerHTMLs.includes(val)) {
           document.getElementById(`checkbox${val}`).checked = true;
