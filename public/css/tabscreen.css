@@ -471,4 +471,9 @@ input[name='tab_item'] {
 #share-user-div label {
   color: #333;
   font-weight: bold;
+    display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
