@@ -468,12 +468,19 @@ document.getElementById('share-user-button').addEventListener('click', () => {
       const inputValues = trimmedValue.split(',').map((value) => value.trim());
 
       //#share-user-div配下のlabelタグのinnerHTMLを配列に格納(共有履歴のユーザー名)
-      const labelInnerHTMLs = Array.from(
+      const labelInnerHTMLs_user = Array.from(
         document.querySelectorAll('#share-user-div label')
       ).map((label) => label.innerHTML);
 
+      const labelInnerHTMLs_group = Array.from(
+        document.querySelectorAll('#share-group-div label')
+      ).map((label) => label.innerHTML);
+
       inputValues.forEach((val) => {
-        if (labelInnerHTMLs.includes(val)) {
+        if (labelInnerHTMLs_user.includes(val)) {
+          document.getElementById(`checkbox${val}`).checked = true;
+        }
+         if (labelInnerHTMLs_group.includes(val)) {
           document.getElementById(`checkbox${val}`).checked = true;
         }
       });
@@ -488,8 +495,15 @@ document
     const checkedElements = document.querySelectorAll(
       '#share-user-div input[type="checkbox"]:checked'
     );
+    const checkedElements_g = document.querySelectorAll(
+      '#share-group-div input[type="checkbox"]:checked'
+    );
     let shareUserNames = [];
     checkedElements.forEach((val) => {
+      const shareUserName = val.nextElementSibling.innerHTML;
+      shareUserNames.push(shareUserName);
+    });
+     checkedElements_g.forEach((val) => {
       const shareUserName = val.nextElementSibling.innerHTML;
       shareUserNames.push(shareUserName);
     });
