@@ -496,10 +496,9 @@ input[name='tab_item'] {
   text-align: center;
   color: white;
   font-weight: bold;
-  border-radius: 4px 0 0 4px;
   display: inline-block;
   white-space: nowrap;
-  width: 48%;
+  width: 50%;
   box-sizing: border-box;
 }
 
