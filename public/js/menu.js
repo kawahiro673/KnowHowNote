@@ -302,45 +302,47 @@ document.getElementById('friend-list').addEventListener('click', async () => {
       //     });
       //   });
 
-      // グループリスト表示
 function handleGroupNameChangeButtonClick(event) {
   event.preventDefault(); // リンクのデフォルトの動作を無効化
   const button = event.target;
   const id = button.id.match(/\d+/)[0];
 
-  document.getElementById('popup-overlay_group-list').style.display = 'block';
+  document.getElementById('popup-overlay_group-list').style.display =
+    'block';
   console.log('グループリストボタン押下');
   groupCheckListScreen(button).then(() => {
     document
       .getElementById('group-list-decision-button')
-      .addEventListener('click', handleGroupListDecisionButtonClick);
-  });
-}
-
-function handleGroupListDecisionButtonClick() {
-  console.log('グループリストの適用ボタン押下');
-  let extracted;
-  const checkboxes = document.querySelectorAll('.group-list-check-div input[type="radio"]');
-  for (let i = 0; i < checkboxes.length; i++) {
-    if (checkboxes[i].checked) {
-      extracted = checkboxes[i].id.replace('checkbox-group', '');
-      console.log(extracted);
-    }
-  }
-  $.ajax({
-    url: '/mypage/' + hashedIdGet,
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      flg: 'group_update',
-      id,
-      group: extracted,
-    }),
-    success: function (res) {
-      document.getElementById('popup-overlay_group-list').style.display = 'none';
-      friendListUpdate();
-    },
+      .addEventListener('click', () => {
+        console.log('グループリストの適用ボタン押下');
+        let extracted;
+        const checkboxes = document.querySelectorAll(
+          '.group-list-check-div input[type="radio"]'
+        );
+        for (let i = 0; i < checkboxes.length; i++) {
+          if (checkboxes[i].checked) {
+            extracted = checkboxes[i].id.replace('checkbox-group', '');
+            console.log(extracted);
+          }
+        }
+        $.ajax({
+          url: '/mypage/' + hashedIdGet,
+          type: 'POST',
+          dataType: 'Json',
+          contentType: 'application/json',
+          data: JSON.stringify({
+            flg: 'group_update',
+            id: id, // ここでidを追加
+            group: extracted,
+          }),
+          success: function (res) {
+            document.getElementById(
+              'popup-overlay_group-list'
+            ).style.display = 'none';
+            friendListUpdate();
+          },
+        });
+      });
   });
 }
 
