@@ -412,6 +412,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.id = `checkbox${friend.Changed_Name}`;
+        checkbox.value = friend.id;
 
         // ラベル要素の作成
         const checkboxLabel = document.createElement('label');
@@ -429,7 +430,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
       const groupSet = new Set(); // ユニークな User_Group を格納するための Set
       res.friend.forEach((friend) => {
         console.log(friend.User_Group);
-        if (friend.User_Group !== undefined) {
+        if (friend.User_Group !== null) {
           const userGroup = friend.User_Group;
           if (!groupSet.has(userGroup)) {
             groupSet.add(userGroup);
