@@ -482,6 +482,17 @@ input[name='tab_item'] {
    max-width: 150px; /* 必要な幅に調整してください */
 }
 
+.friend-list-button-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.friend-list-button-wrapper button {
+  flex: 1;
+  margin: 0 5px;
+}
+
+
 /************************　フレンド一覧　******************************/
 /*タブのスタイル*/
 .popup-body_share-user label:first-of-type {
