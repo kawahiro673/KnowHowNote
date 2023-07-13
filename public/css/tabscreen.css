@@ -475,6 +475,5 @@ input[name='tab_item'] {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-
-   max-width: 180px; /* 必要な幅に調整してください */
+   max-width: 150px; /* 必要な幅に調整してください */
 }
