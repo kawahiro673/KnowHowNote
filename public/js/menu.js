@@ -243,6 +243,7 @@ document.getElementById('friend-list').addEventListener('click', async () => {
       const deleteButtons = document.querySelectorAll('.friend-delete');
       deleteButtons.forEach((deleteButton) => {
         deleteButton.addEventListener('click', (event) => {
+          console.log('削除ボタン押下');
           const friendName = event.target
             .closest('.friend-Box')
             .querySelector('.friend-name').textContent;
@@ -262,12 +263,14 @@ document.getElementById('friend-list').addEventListener('click', async () => {
             event.preventDefault(); // リンクのデフォルトの動作を無効化
             document.getElementById('popup-overlay_group-list').style.display =
               'block';
+             console.log('グループリストボタン押下');
             await groupCheckListScreen(button);
             const id = button.id.match(/\d+/)[0];
 
             document
               .getElementById('group-list-decision-button')
               .addEventListener('click', () => {
+                   console.log('グループリストの適用ボタン押下');
                 let extracted;
                 const checkboxes = document.querySelectorAll(
                   '.group-list-check-div input[type="radio"]'
@@ -313,6 +316,7 @@ document.getElementById('friend-list').addEventListener('click', async () => {
       );
       changeNameButtons.forEach((changeNameButton) => {
         changeNameButton.addEventListener('click', () => {
+             console.log('名前変更ボタン押下');
           const friendBox = changeNameButton.closest('.friend-Box');
           const friendName = friendBox.querySelector('.friend-name');
           const friendNameInput = friendBox.querySelector('.friend-name-input');
@@ -342,7 +346,7 @@ document.getElementById('friend-list').addEventListener('click', async () => {
             const buttonId = applyButton.getAttribute('id');
             const id = buttonId.match(/\d+/)[0];
             friendNameInput.value = name;
-
+                console.log('名前変更の適用ボタン押下');
             $.ajax({
               url: '/mypage/' + hashedIdGet,
               type: 'POST',
@@ -366,18 +370,18 @@ document.getElementById('friend-list').addEventListener('click', async () => {
       });
 
       //グループリスト出力
-      $.ajax({
-        url: '/mypage/' + hashedIdGet,
-        type: 'POST',
-        dataType: 'Json',
-        contentType: 'application/json',
-        data: JSON.stringify({
-          flg: 'group_get',
-        }),
-        success: function (res) {
-          console.log(res.groupResults);
-        },
-      });
+      // $.ajax({
+      //   url: '/mypage/' + hashedIdGet,
+      //   type: 'POST',
+      //   dataType: 'Json',
+      //   contentType: 'application/json',
+      //   data: JSON.stringify({
+      //     flg: 'group_get',
+      //   }),
+      //   success: function (res) {
+      //     console.log(res.groupResults);
+      //   },
+      // });
     },
   });
 });
