@@ -507,7 +507,7 @@ document
       '#share-group-div input[type="checkbox"]:checked'
     );
 
-    let shareUserNames = [];
+    let shareUserValues = [];
 
     checkedElements.forEach((val) => {
       const shareUserName = val.nextElementSibling.innerHTML;
