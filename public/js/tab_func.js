@@ -223,7 +223,7 @@ export const shareNoteSendFunc = (id, title) => {
 
   console.log(shareUserValues);
   //inputタブに自分の名前が含まれていない場合のみ実行
-  if (inputValues.length !== 0) {
+  if (inputValue !== '') {
     $.ajax({
       url: '/mypage/' + hashedIdGet,
       type: 'POST',
@@ -237,6 +237,7 @@ export const shareNoteSendFunc = (id, title) => {
         title,
         message: shareMessage,
         time: currentTimeGet(),
+        RecipientIDs:shareUserValues
       }),
       success: function (res) {
         if (res.nothingUser.length === 0) {
