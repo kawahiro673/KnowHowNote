@@ -221,7 +221,9 @@ export const shareNoteSendFunc = (id, title) => {
   const shareMessage =
     document.getElementsByClassName('share-message')[0].value;
 
-  if (!inputValues.includes(document.getElementById('user_name').innerHTML)) {
+  console.log(shareUserValues);
+  //inputタブに自分の名前が含まれていない場合のみ実行
+  if (inputValues.length !== 0) {
     $.ajax({
       url: '/mypage/' + hashedIdGet,
       type: 'POST',
@@ -262,7 +264,7 @@ export const shareNoteSendFunc = (id, title) => {
       error: function (jqXHR, textStatus, errorThrown) {},
     });
   } else {
-    alert('自分自身は共有できません');
+    alert('フレンドリストから共有したいユーザー/グループを選択してください');
   }
 };
 
