@@ -507,7 +507,7 @@ document
       '#share-group-div input[type="checkbox"]:checked'
     );
 
-    let shareUserValues = [];
+    let shareUserNames = [];
 
     checkedElements.forEach((val) => {
       const shareUserName = val.nextElementSibling.innerHTML;
@@ -519,11 +519,13 @@ document
     });
 
     //チェックに入れたユーザーのfrined_listのid取得
-    shareUserNames = [];
+    shareUserValues = [];
     checkedElements.forEach((val) => {
       const shareUserValue = val.value;
       shareUserValues.push(shareUserValue);
     });
+
+    console.log(shareUserValues);
 
     document.getElementsByClassName('share-input')[0].value =
       shareUserNames.join(', ');
