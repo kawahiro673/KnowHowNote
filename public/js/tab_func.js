@@ -218,6 +218,7 @@ export function shareButtonClick(id, event, title, flg) {
 export const shareNoteSendFunc = (id, title) => {
   const inputValue = document.getElementsByClassName('share-input')[0].value;
   const inputValues = inputValue.split(',').map((value) => value.trim());
+  console.log(inputValues);
   const shareMessage =
     document.getElementsByClassName('share-message')[0].value;
 
