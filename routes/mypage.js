@@ -1045,15 +1045,16 @@ router
               'INSERT INTO group_list (User_Group, UserID) values(?, ?);',
               [req.body.groupName, resultDecoded[0].id],
               (error, result) => {
-               if (error) {
+                if (error) {
                   reject(error);
                 } else {
-                   res.send({ msg: '成功' });
+                  res.send({ msg: '成功' });
                 }
               }
             );
           });
-        }).catch((error) => {
+        })
+        .catch((error) => {
           console.error(error);
           res.status(500).json({ message: error.message, nothing });
         });
@@ -1089,19 +1090,20 @@ router
               }
             );
           });
-        }) .catch((error) => {
+        })
+        .catch((error) => {
           console.error(error);
           res.status(500).json({ message: error.message, nothing });
         });
     } else if (req.body.flg === 'group_update') {
-            pool.query(
-              'UPDATE friend_list SET User_Group = ? WHERE id = ?;',
-              [req.body.group,req.body.id],
-              (error, result) => {
-                res.send({  msg: '成功' });
-              }
-            );
-    }else {
+      pool.query(
+        'UPDATE friend_list SET User_Group = ? WHERE id = ?;',
+        [req.body.group, req.body.id],
+        (error, result) => {
+          res.send({ msg: '成功' });
+        }
+      );
+    } else {
       console.log('flgで何も受け取ってません');
     }
   });
