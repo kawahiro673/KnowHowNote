@@ -441,7 +441,7 @@ router
           return new Promise((resolve, reject) => {
             pool.query(
               'SELECT * FROM register_user WHERE UserName = ?;',
-              [decoded.UserName],
+              [decoded.userName],
               (error, resultDecoded) => {
                 if (error) {
                   reject(error);
