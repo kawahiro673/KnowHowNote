@@ -263,14 +263,12 @@ document.getElementById('friend-list').addEventListener('click', async () => {
             event.preventDefault(); // リンクのデフォルトの動作を無効化
             document.getElementById('popup-overlay_group-list').style.display =
               'block';
-            console.log('グループリストボタン押下');
             await groupCheckListScreen(button);
             const id = button.id.match(/\d+/)[0];
 
             document
               .getElementById('group-list-decision-button')
               .addEventListener('click', () => {
-                console.log('グループリストの適用ボタン押下');
                 let extracted;
                 const checkboxes = document.querySelectorAll(
                   '.group-list-check-div input[type="radio"]'
@@ -278,7 +276,6 @@ document.getElementById('friend-list').addEventListener('click', async () => {
                 for (let i = 0; i < checkboxes.length; i++) {
                   if (checkboxes[i].checked) {
                     extracted = checkboxes[i].id.replace('checkbox-group', '');
-                    console.log(extracted);
                   }
                 }
                 $.ajax({
@@ -1235,11 +1232,9 @@ function getFormattedDate(dateString) {
 
 //グループのチェックリスト画面を作成
 function groupCheckListScreen(button) {
-  console.log(button);
   const id = parseInt(button.id.match(/\d+/)[0]);
-  console.log(id);
   const groupName = document.getElementById(`group-name-span${id}`).innerHTML;
-  console.log(groupName);
+
   return new Promise((resolve, reject) => {
     $.ajax({
       url: '/mypage/' + hashedIdGet,
