@@ -226,7 +226,7 @@ export const shareNoteSendFunc = (id, title) => {
   //inputタブに自分の名前が含まれていない場合のみ実行
   if (inputValue !== '') {
     $.ajax({
-      url: '/mypage/' + hashedIdGet,
+      url: '/sharePostController/',
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
