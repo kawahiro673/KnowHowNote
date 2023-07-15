@@ -205,10 +205,6 @@ export const cancelButtonClick = (id) => {
 export function shareButtonClick(id, event, title, flg) {
   document.getElementById('popup-overlay_share').style.display = 'block';
 
-  document
-    .getElementById('share-send')
-    .removeEventListener('click', shareNoteSendFunc);
-
   //共有ボタン押下時のタイトル取得
   if (flg !== 'contextmenu') {
     title =
