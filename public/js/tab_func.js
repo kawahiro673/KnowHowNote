@@ -215,9 +215,10 @@ export function shareButtonClick(id, event, title, flg) {
       event.target.parentNode.parentNode.querySelectorAll('p')[0].innerHTML;
   }
 
-  document.getElementById('share-send').addEventListener('click', (e) => {
+  document.getElementById('share-send').onclick = function () {
     shareNoteSendFunc(id, title);
-  });
+    this.onclick = null; // クリックイベントを削除
+  };
 }
 
 export const shareNoteSendFunc = (id, title) => {
