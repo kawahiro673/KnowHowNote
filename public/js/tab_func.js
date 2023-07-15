@@ -533,9 +533,8 @@ document
 
     shareGroupValues = [];
     checkedElements_g.forEach((val) => {
-      console.log(val);
-      console.log(val.innerHTML);
-      const shareGroupValue = val.innerHTML;
+      const shareGroupValue = val.id.replace('checkbox', '');
+      console.log(shareGroupValue);
       shareGroupValues.push(shareGroupValue);
     });
 
