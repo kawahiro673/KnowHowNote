@@ -530,8 +530,11 @@ document
       const shareUserValue = val.value;
       shareUserValues.push(shareUserValue);
     });
+
     shareGroupValues = [];
     checkedElements_g.forEach((val) => {
+      console.log(val);
+      console.log(val.innerHTML);
       const shareGroupValue = val.innerHTML;
       shareGroupValues.push(shareGroupValue);
     });

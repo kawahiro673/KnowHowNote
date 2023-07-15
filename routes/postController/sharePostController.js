@@ -136,6 +136,8 @@ router.post('/', (req, res) => {
                 );
                 if (!shareUser) {
                   nothingUser.push(RecipientID);
+                  console.log(nothingUser);
+                  console.log(RecipientID);
                   console.log('RecipientIDが見つかりませんでした。');
                   resolve({ skip: true }); // ユーザーが見つからない場合、次のユーザーの処理に進む
                 } else {
