@@ -237,7 +237,7 @@ export const shareNoteSendFunc = (id, title) => {
         title,
         message: shareMessage,
         time: currentTimeGet(),
-        RecipientIDs:shareUserValues
+        RecipientIDs: shareUserValues,
       }),
       success: function (res) {
         if (res.nothingUser.length === 0) {
