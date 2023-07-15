@@ -243,7 +243,7 @@ export const shareNoteSendFunc = (id, title) => {
         message: shareMessage,
         time: currentTimeGet(),
         RecipientIDs: numArray,
-        RecipientGroup: shareGroupValues,
+        RecipientGroups: shareGroupValues,
       }),
       success: function (res) {
         if (res.nothingUser.length === 0) {
@@ -260,8 +260,8 @@ export const shareNoteSendFunc = (id, title) => {
             'block';
           document.getElementById(
             'nothingUser'
-          ).innerHTML = `${res.nothingUser}が見つかりませんでした。
-        アカウントが削除された可能性があります。その他のユーザーには共有しました。`;
+          ).innerHTML = `${res.nothingUser} は見つかりませんでした。
+        アカウントが削除された可能性があります。`;
           setTimeout(() => {
             document.getElementById('popup-overlay_share_no').style.display =
               'none';
