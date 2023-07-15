@@ -226,6 +226,7 @@ export const shareNoteSendFunc = (id, title) => {
   //配列の文字列を全て数値へ
   const numArray = shareUserValues.map((str) => parseInt(str));
   console.log(shareUserValues);
+  console.log(shareGroupValues);
   //inputタブに自分の名前が含まれていない場合のみ実行
   if (inputValue !== '') {
     $.ajax({
@@ -242,6 +243,7 @@ export const shareNoteSendFunc = (id, title) => {
         message: shareMessage,
         time: currentTimeGet(),
         RecipientIDs: numArray,
+        RecipientGroup: shareGroupValues,
       }),
       success: function (res) {
         if (res.nothingUser.length === 0) {

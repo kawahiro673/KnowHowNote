@@ -122,7 +122,7 @@ router.post('/', (req, res) => {
     const RecipientIDs = Array.isArray(req.body.RecipientIDs)
       ? req.body.RecipientIDs
       : [req.body.RecipientIDs];
-
+    console.log(req.body.RecipientGroup);
     RecipientIDs.reduce((promiseChain, RecipientID) => {
       return promiseChain
         .then(() => {
