@@ -119,114 +119,124 @@ router.post('/', (req, res) => {
     let nothingUser = [];
     const token = req.cookies.token;
     const decoded = JWT.verify(token, 'SECRET_KEY');
-    const userNames = Array.isArray(req.body.name)
-      ? req.body.name
-      : [req.body.name];
-
-    userNames
-      .reduce((promiseChain, name) => {
-        return promiseChain
-          .then(() => {
-            return new Promise((resolve, reject) => {
-              pool.query('SELECT * FROM register_user;', (error, result) => {
-                if (error) {
-                  reject(error);
+    const RecipientIDs = Array.isArray(req.body.RecipientIDs)
+      ? req.body.RecipientIDs
+      : [req.body.RecipientIDs];
+    console.log(req.body.RecipientIDs);
+    RecipientIDs.reduce((promiseChain, RecipientID) => {
+      return promiseChain
+        .then(() => {
+          return new Promise((resolve, reject) => {
+            pool.query('SELECT * FROM friend_list;', (error, result) => {
+              if (error) {
+                reject(error);
+              } else {
+                const shareUser = result.find(
+                  (user) => user.id === RecipientID
+                );
+                if (!shareUser) {
+                  nothingUser.push(RecipientID);
+                  console.log('RecipientIDが見つかりませんでした。');
+                  resolve({ skip: true }); // ユーザーが見つからない場合、次のユーザーの処理に進む
                 } else {
-                  const user = result.find((user) => user.UserName === name);
-                  if (!user) {
-                    nothingUser.push(name);
-                    resolve({ skip: true }); // ユーザーが見つからない場合、次のユーザーの処理に進む
+                  pool.query(
+                    'SELECT * FROM register_user WHERE UserName = ?;',
+                    [shareUser.user_name],
+                    (error, user) => {
+                      resolve({ user });
+                    }
+                  );
+                }
+              }
+            });
+          });
+        })
+        .then(({ skip, user }) => {
+          if (skip) {
+            return Promise.resolve({ skip: true });
+          } else {
+            return new Promise((resolve, reject) => {
+              pool.query(
+                'INSERT INTO it_memo (title, memo_text, Type, Message, UserID, Share_User, saved_time) (SELECT title, memo_text, ?, ?, ?, ?, ? FROM it_memo WHERE id = ?);',
+                [
+                  'Share',
+                  req.body.message,
+                  user[0].id,
+                  req.body.myName,
+                  req.body.time,
+                  req.body.id,
+                ],
+                (error, result) => {
+                  if (error) {
+                    reject(error);
                   } else {
                     resolve({ user });
                   }
                 }
-              });
+              );
             });
-          })
-          .then(({ skip, user }) => {
-            if (skip) {
-              return Promise.resolve({ skip: true });
-            } else {
-              return new Promise((resolve, reject) => {
-                pool.query(
-                  'INSERT INTO it_memo (title, memo_text, Type, Message, UserID, Share_User, saved_time) (SELECT title, memo_text, ?, ?, ?, ?, ? FROM it_memo WHERE id = ?);',
-                  [
-                    'Share',
-                    req.body.message,
-                    user.id,
-                    req.body.myName,
-                    req.body.time,
-                    req.body.id,
-                  ],
-                  (error, result) => {
-                    if (error) {
-                      reject(error);
-                    } else {
-                      resolve({ user });
-                    }
+          }
+        })
+        .then(({ skip, user }) => {
+          if (skip) {
+            return Promise.resolve({ skip: true });
+          } else {
+            return new Promise((resolve, reject) => {
+              pool.query(
+                'SELECT * FROM register_user WHERE UserName = ?;',
+                [decoded.userName],
+                (error, resultDecoded) => {
+                  if (error) {
+                    reject(error);
+                  } else {
+                    resolve({ resultDecoded, user });
                   }
-                );
-              });
-            }
-          })
-          .then(({ skip, user }) => {
-            if (skip) {
-              return Promise.resolve({ skip: true });
-            } else {
-              return new Promise((resolve, reject) => {
-                pool.query(
-                  'SELECT * FROM register_user WHERE UserName = ?;',
-                  [decoded.userName],
-                  (error, resultDecoded) => {
-                    if (error) {
-                      reject(error);
-                    } else {
-                      resolve({ resultDecoded, user });
-                    }
-                  }
-                );
-              });
-            }
-          })
-          .then(({ skip, resultDecoded, user }) => {
-            //DBに格納されていないユーザーが参照してしまうと、余計な情報が格納されてしまうため(存在しないユーザーには共有されないようにしているため)
-            if (skip) {
-              return Promise.resolve({ skip: true });
-            } else {
-              return new Promise((resolve, reject) => {
-                pool.query(
-                  'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID, Share_ToDo_Flg) values(?, ?, ?, ?, ?);',
-                  [
-                    name,
-                    req.body.time,
-                    req.body.title,
-                    resultDecoded[0].id,
-                    'True',
-                  ],
-                  (error, result) => {
-                    pool.query(
-                      'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID, Share_ToDo_Flg) values(?, ?, ?, ?, ?);',
-                      [
-                        resultDecoded[0].UserName,
-                        req.body.time,
-                        req.body.title,
-                        user.id,
-                        'False',
-                      ],
-                      (error, result) => {
-                        if (error) {
-                          reject(error);
-                        } else {
-                          resolve();
-                        }
+                }
+              );
+            });
+          }
+        })
+        .then(({ skip, resultDecoded, user }) => {
+          //DBに格納されていないユーザーが参照してしまうと、余計な情報が格納されてしまうため(存在しないユーザーには共有されないようにしているため)
+          if (skip) {
+            return Promise.resolve({ skip: true });
+          } else {
+            return new Promise((resolve, reject) => {
+              //共有した側の共有履歴
+              pool.query(
+                'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID, Share_ToDo_Flg) values(?, ?, ?, ?, ?);',
+                [
+                  user[0].UserName,
+                  req.body.time,
+                  req.body.title,
+                  resultDecoded[0].id,
+                  'True',
+                ],
+                (error, result) => {
+                  //共有された側の共有履歴
+                  pool.query(
+                    'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID, Share_ToDo_Flg) values(?, ?, ?, ?, ?);',
+                    [
+                      resultDecoded[0].UserName,
+                      req.body.time,
+                      req.body.title,
+                      user[0].id,
+                      'False',
+                    ],
+                    (error, result) => {
+                      if (error) {
+                        reject(error);
+                      } else {
+                        resolve();
                       }
-                    );
-                  }
-                );
-              });
-            }
-          });
-      }, Promise.resolve())
+                    }
+                  );
+                }
+              );
+            });
+          }
+        });
+    }, Promise.resolve())
       .then(() => {
         res.send({ message: '共有しました', nothingUser });
       })

@@ -467,7 +467,6 @@ document.getElementById('share-user-button').addEventListener('click', () => {
         const p = document.createElement('p');
         p.innerHTML = 'フレンドが登録されていません';
         document.getElementById('share-user-div').appendChild(p);
-        document.getElementById('share-group-div').appendChild(p);
       }
 
       const inputValue =
