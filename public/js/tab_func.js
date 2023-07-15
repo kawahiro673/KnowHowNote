@@ -261,7 +261,7 @@ export const shareNoteSendFunc = (id, title) => {
           document.getElementById(
             'nothingUser'
           ).innerHTML = `${res.nothingUser}が見つかりませんでした。
-        その他のユーザーには共有しました。`;
+        アカウントが削除された可能性があります。その他のユーザーには共有しました。`;
           setTimeout(() => {
             document.getElementById('popup-overlay_share_no').style.display =
               'none';
