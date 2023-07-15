@@ -243,7 +243,7 @@ router.post('/', (req, res) => {
           ? req.body.RecipientGroups
           : [req.body.RecipientGroups];
         console.log('a' + RecipientGroups);
-
+        console.log(req.body.RecipientGroups);
         RecipientGroups.reduce((promiseChain, RecipientGroup) => {
           return promiseChain
             .then(() => {
