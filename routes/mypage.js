@@ -754,12 +754,13 @@ router
         .then(({ user, resultDecoded }) => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'INSERT INTO friend_list (user_name, date, UserID, Changed_Name) values(?, ?, ?, ?);',
+              'INSERT INTO friend_list (user_name, date, UserID, Changed_Name, User_Group) values(?, ?, ?, ?, ?);',
               [
                 user.UserName,
                 req.body.time,
                 resultDecoded[0].id,
                 user.UserName,
+                '-',
               ],
               (error, result) => {
                 if (error) {
