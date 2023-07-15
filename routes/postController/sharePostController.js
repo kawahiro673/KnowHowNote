@@ -235,8 +235,8 @@ router.post('/', (req, res) => {
             });
           }
         });
-    }, Promise.resolve(resultDecoded))
-      .then((resultDecoded) => {
+    }, Promise.resolve())
+      .then(() => {
         let nothingGroup = [];
         const RecipientGroups = Array.isArray(req.body.RecipientGroups)
           ? req.body.RecipientGroups
@@ -244,36 +244,53 @@ router.post('/', (req, res) => {
         console.log(RecipientGroups);
 
         RecipientGroups.reduce((promiseChain, RecipientGroup) => {
-          return promiseChain.then(() => {
-            return new Promise((resolve, reject) => {
-              pool.query(
-                'SELECT * FROM friend_list WHERE UserID = ?;',
-                [resultDecoded[0].id],
-                (error, result) => {
-                  if (error) {
-                    reject(error);
-                  } else {
-                    const shareGroup = result.find(
-                      (user) => user.User_Group === RecipientGroup
-                    );
-                    if (!shareGroup) {
-                      nothingGroup.push(RecipientGroup);
-                      resolve({ skip: true }); // ユーザーが見つからない場合、次のユーザーの処理に進む
+          return promiseChain
+            .then(() => {
+              return new Promise((resolve, reject) => {
+                pool.query(
+                  'SELECT * FROM register_user WHERE UserName = ?;',
+                  [decoded.userName],
+                  (error, resultDecoded) => {
+                    if (error) {
+                      reject(error);
                     } else {
-                      pool.query(
-                        'SELECT * FROM register_user WHERE UserName = ?;',
-                        [shareGroup.User_Group],
-                        (error, user) => {
-                          console.log(user);
-                          resolve({ user });
-                        }
-                      );
+                      resolve({ resultDecoded });
                     }
                   }
-                }
-              );
+                );
+              });
+            })
+            .then(({ resultDecoded }) => {
+              return new Promise((resolve, reject) => {
+                pool.query(
+                  'SELECT * FROM friend_list WHERE UserID = ?;',
+                  [resultDecoded[0].id],
+                  (error, result) => {
+                    if (error) {
+                      reject(error);
+                    } else {
+                      const shareGroup = result.find(
+                        (user) => user.User_Group === RecipientGroup
+                      );
+                      if (!shareGroup) {
+                        nothingGroup.push(RecipientGroup);
+                        resolve({ skip: true }); // ユーザーが見つからない場合、次のユーザーの処理に進む
+                      } else {
+                        pool.query(
+                          'SELECT * FROM register_user WHERE UserName = ?;',
+                          [shareGroup.User_Group],
+                          (error, user) => {
+                            console.log(user);
+                            resolve({ user });
+                          }
+                        );
+                      }
+                    }
+                  }
+                );
+              });
             });
-          });
+
           // .then(({ skip, user }) => {
           //   if (skip) {
           //     return Promise.resolve({ skip: true });
