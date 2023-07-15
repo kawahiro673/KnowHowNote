@@ -221,7 +221,8 @@ export const shareNoteSendFunc = (id, title) => {
   console.log(inputValues);
   const shareMessage =
     document.getElementsByClassName('share-message')[0].value;
-
+  //配列の文字列を全て数値へ
+  const numArray = shareUserValues.map((str) => parseInt(str));
   console.log(shareUserValues);
   //inputタブに自分の名前が含まれていない場合のみ実行
   if (inputValue !== '') {
@@ -238,7 +239,7 @@ export const shareNoteSendFunc = (id, title) => {
         title,
         message: shareMessage,
         time: currentTimeGet(),
-        RecipientIDs: shareUserValues,
+        RecipientIDs: numArray,
       }),
       success: function (res) {
         if (res.nothingUser.length === 0) {
