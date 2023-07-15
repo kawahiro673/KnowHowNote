@@ -235,7 +235,7 @@ router.post('/', (req, res) => {
             });
           }
         })
-        .then(({ resultDecoded }) => {
+        .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
             let nothingGroup = [];
 
