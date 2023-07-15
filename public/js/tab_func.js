@@ -220,7 +220,7 @@ export function shareButtonClick(id, event, title, flg) {
 export const shareNoteSendFunc = (id, title) => {
   const inputValue = document.getElementsByClassName('share-input')[0].value;
   const inputValues = inputValue.split(',').map((value) => value.trim());
-  console.log(inputValues);
+
   const shareMessage =
     document.getElementsByClassName('share-message')[0].value;
   //配列の文字列を全て数値へ
@@ -499,6 +499,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
 });
 
 let shareUserValues = [];
+let shareGroupValues = [];
 
 document
   .getElementById('share-user-add-button')
@@ -529,8 +530,14 @@ document
       const shareUserValue = val.value;
       shareUserValues.push(shareUserValue);
     });
+    shareGroupValues = [];
+    checkedElements_g.forEach((val) => {
+      const shareGroupValue = val.innerHTML;
+      shareGroupValues.push(shareGroupValue);
+    });
 
     console.log(shareUserValues);
+    console.log(shareGroupValues);
 
     document.getElementsByClassName('share-input')[0].value =
       shareUserNames.join(', ');
