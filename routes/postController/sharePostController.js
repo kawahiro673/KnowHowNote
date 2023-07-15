@@ -122,7 +122,7 @@ router.post('/', (req, res) => {
     const RecipientIDs = Array.isArray(req.body.RecipientIDs)
       ? req.body.RecipientIDs
       : [req.body.RecipientIDs];
-    console.log(req.body.RecipientIDs);
+
     RecipientIDs.reduce((promiseChain, RecipientID) => {
       return promiseChain
         .then(() => {
@@ -136,8 +136,8 @@ router.post('/', (req, res) => {
                 );
                 if (!shareUser) {
                   nothingUser.push(RecipientID);
-                  console.log(nothingUser);
-                  console.log(RecipientID);
+                  console.log('a' + nothingUser);
+                  console.log('b' + RecipientID);
                   console.log('RecipientIDが見つかりませんでした。');
                   resolve({ skip: true }); // ユーザーが見つからない場合、次のユーザーの処理に進む
                 } else {

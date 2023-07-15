@@ -530,11 +530,10 @@ document
       const shareUserValue = val.value;
       shareUserValues.push(shareUserValue);
     });
-
+    //チェック入れたグループ名を取得
     shareGroupValues = [];
     checkedElements_g.forEach((val) => {
       const shareGroupValue = val.id.replace('checkbox', '');
-      console.log(shareGroupValue);
       shareGroupValues.push(shareGroupValue);
     });
 
