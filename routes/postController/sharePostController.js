@@ -237,11 +237,12 @@ router.post('/', (req, res) => {
         });
     }, Promise.resolve())
       .then(() => {
+        console.log('やあ');
         let nothingGroup = [];
         const RecipientGroups = Array.isArray(req.body.RecipientGroups)
           ? req.body.RecipientGroups
           : [req.body.RecipientGroups];
-        console.log(RecipientGroups);
+        console.log('a' + RecipientGroups);
 
         RecipientGroups.reduce((promiseChain, RecipientGroup) => {
           return promiseChain
