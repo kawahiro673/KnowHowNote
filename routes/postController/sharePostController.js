@@ -244,7 +244,8 @@ router.post('/', (req, res) => {
           ? req.body.RecipientGroups
           : [req.body.RecipientGroups];
 
-        //RecipientGroupsの各要素に対して、非同期処理を順番に実行（reduceメソッドを使用）。
+        //RecipientGroupsの各要素に対して、非同期処理を順番に実行（reduceメソッドを使用）
+        //reduceメソッドは、各要素に対して順番に処理を実行し、前の処理が完了した後に次の処理を実行
         RecipientGroups.reduce((promiseChain, RecipientGroup) => {
           return promiseChain
             .then(() => {
@@ -295,6 +296,7 @@ router.post('/', (req, res) => {
                                 } else {
                                   console.log(user[0].id);
                                   userIDArray.push(user[0].id);
+                                  console.log(userIDArray);
                                   resolve({ user: user });
                                 }
                               }
