@@ -317,7 +317,8 @@ router.post('/', (req, res) => {
                 );
               });
             })
-            .then(({ skip }) => {
+            .then((result) => {
+              const { skip = false } = result || {};
               if (skip) {
                 return Promise.resolve({ skip: true });
               } else {
