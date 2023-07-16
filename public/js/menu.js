@@ -97,7 +97,7 @@ document.getElementById('share-history').addEventListener('click', () => {
         span1.setAttribute('id', 'dateSortIndicator');
         const header2 = document.createElement('th');
         header2.setAttribute('id', 'share-history-user');
-        header2.textContent = 'ユーザー名';
+        header2.textContent = 'ユーザー/グループ';
         const span2 = document.createElement('span');
         span2.setAttribute('id', 'userSortIndicator');
         const header3 = document.createElement('th');
@@ -122,7 +122,7 @@ document.getElementById('share-history').addEventListener('click', () => {
             img.src = '../img/share-to-do.png';
             dataCell0.setAttribute('data-share-status', 'ToDo');
           } else {
-            img.src = '../img/share-to-be.png';
+            img.src = '../img/share-to-be_2.png';
             dataCell0.setAttribute('data-share-status', 'ToBe');
           }
           dataCell0.appendChild(img);

@@ -377,6 +377,7 @@ router.post('/', (req, res) => {
                       'True',
                     ],
                     (error, result) => {
+                      //共有するグループ名の配列であり、順次実行の際に配列の先頭のみを参照するため、先頭のみ順番に削除している
                       recipientGroupsCopy.shift();
                     }
                   );
