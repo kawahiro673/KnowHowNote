@@ -280,7 +280,7 @@ router.post('/', (req, res) => {
                       } else {
                         pool.query(
                           'SELECT * FROM register_user WHERE UserName = ?;',
-                          [shareGroup.UserName],
+                          [shareGroup.user_name],
                           (error, user) => {
                             console.log('a' + user);
                             resolve({ user });
