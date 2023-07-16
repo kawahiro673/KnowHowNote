@@ -118,7 +118,7 @@ router.post('/', (req, res) => {
   } else if (req.body.flg === 'getuser') {
     let nothingUser = [];
     let resultDecodedTmp;
-    let recipientIDsCopy = [...req.body.RecipientIDs];
+    let recipientGroupsCopy = [...req.body.RecipientGroups];
 
     const token = req.cookies.token;
     const decoded = JWT.verify(token, 'SECRET_KEY');
@@ -283,15 +283,12 @@ router.post('/', (req, res) => {
                       const shareGroup = result.find(
                         (user) => user.User_Group === RecipientGroup
                       );
-                      console.log(shareGroup);
                       const shareGroupArray = result.filter(
                         (user) => user.User_Group === RecipientGroup
                       );
-                      console.log(shareGroupArray);
                       const userNamesArray = shareGroupArray.map(
                         (row) => row.user_name
                       );
-                      console.log(userNamesArray);
                       if (!shareGroup) {
                         nothingGroup.push(RecipientGroup);
                         resolve({ skip: true });
@@ -306,7 +303,6 @@ router.post('/', (req, res) => {
                                 if (error) {
                                   reject(error);
                                 } else {
-                                  //console.log(user[0].id);
                                   userIDArray.push(user[0].id);
                                   //console.log(userIDArray);
                                   resolve();
@@ -374,14 +370,14 @@ router.post('/', (req, res) => {
                   pool.query(
                     'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID, Share_ToDo_Flg) values(?, ?, ?, ?, ?);',
                     [
-                      recipientIDsCopy[0],
+                      recipientGroupsCopy[0],
                       req.body.time,
                       req.body.title,
                       resultDecodedTmp[0].id,
                       'True',
                     ],
                     (error, result) => {
-                      recipientIDsCopy.shift();
+                      recipientGroupsCopy.shift();
                     }
                   );
                   userIDArray = []; // 次のグループのUserIDを格納するため初期化
@@ -400,44 +396,3 @@ router.post('/', (req, res) => {
 });
 
 module.exports = router;
-
-// .then(({ skip, resultDecoded, user }) => {
-//   //DBに格納されていないユーザーが参照してしまうと、余計な情報が格納されてしまうため(存在しないユーザーには共有されないようにしているため)
-//   if (skip) {
-//     return Promise.resolve({ skip: true });
-//   } else {
-//     return new Promise((resolve, reject) => {
-//       //共有した側の共有履歴
-//       pool.query(
-//         'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID, Share_ToDo_Flg) values(?, ?, ?, ?, ?);',
-//         [
-//           user[0].UserName,
-//           req.body.time,
-//           req.body.title,
-//           resultDecoded[0].id,
-//           'True',
-//         ],
-//         (error, result) => {
-//           //共有された側の共有履歴
-//           pool.query(
-//             'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID, Share_ToDo_Flg) values(?, ?, ?, ?, ?);',
-//             [
-//               resultDecoded[0].UserName,
-//               req.body.time,
-//               req.body.title,
-//               user[0].id,
-//               'False',
-//             ],
-//             (error, result) => {
-//               if (error) {
-//                 reject(error);
-//               } else {
-//                 resolve(resultDecoded);
-//               }
-//             }
-//           );
-//         }
-//       );
-//     });
-//   }
-// });
