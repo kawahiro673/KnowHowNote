@@ -273,7 +273,7 @@ router.post('/', (req, res) => {
                       const shareGroup = result.find(
                         (user) => user.User_Group === RecipientGroup
                       );
-                      console.log(shareGroup);
+                      //console.log(shareGroup);
                       if (!shareGroup) {
                         nothingGroup.push(RecipientGroup);
                         resolve({ skip: true }); // ユーザーが見つからない場合、次のユーザーの処理に進む
@@ -282,7 +282,7 @@ router.post('/', (req, res) => {
                           'SELECT * FROM register_user WHERE UserName = ?;',
                           [shareGroup.user_name],
                           (error, user) => {
-                            console.log('a' + user);
+                            console.log(user);
                             resolve({ user });
                           }
                         );
