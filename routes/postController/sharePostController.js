@@ -122,7 +122,7 @@ router.post('/', (req, res) => {
     const RecipientIDs = Array.isArray(req.body.RecipientIDs)
       ? req.body.RecipientIDs
       : [req.body.RecipientIDs];
-    console.log(req.body.RecipientGroups);
+
     RecipientIDs.reduce((promiseChain, RecipientID) => {
       return promiseChain
         .then(() => {
@@ -242,7 +242,6 @@ router.post('/', (req, res) => {
         const RecipientGroups = Array.isArray(req.body.RecipientGroups)
           ? req.body.RecipientGroups
           : [req.body.RecipientGroups];
-        console.log('a' + RecipientGroups);
         console.log(req.body.RecipientGroups);
         RecipientGroups.reduce((promiseChain, RecipientGroup) => {
           return promiseChain
@@ -281,7 +280,7 @@ router.post('/', (req, res) => {
                           'SELECT * FROM register_user WHERE UserName = ?;',
                           [shareGroup.User_Group],
                           (error, user) => {
-                            console.log(user);
+                            console.log('a' + user);
                             resolve({ user });
                           }
                         );
