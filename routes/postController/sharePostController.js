@@ -315,7 +315,7 @@ router.post('/', (req, res) => {
                         });
                         Promise.all(promises)
                           .then(() => {
-                            resolve({ skip: skip, user: user }); // skipとuserを引き継ぐ
+                            resolve({ user });
                           })
                           .catch((error) => {
                             reject(error);
