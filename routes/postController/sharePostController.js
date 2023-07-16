@@ -117,134 +117,140 @@ router.post('/', (req, res) => {
     );
   } else if (req.body.flg === 'getuser') {
     let nothingUser = [];
+    let resultDecodedTmp;
     const token = req.cookies.token;
     const decoded = JWT.verify(token, 'SECRET_KEY');
+    //配列かどうかをチェックし、そうでなければ単一の要素の配列に変換
     const RecipientIDs = Array.isArray(req.body.RecipientIDs)
       ? req.body.RecipientIDs
       : [req.body.RecipientIDs];
-
+    //RecipientGroups の各要素に対して、非同期処理を順番に実行
+    //reduce メソッドは、各要素に対して順番に処理を実行し、前の処理が完了した後に次の処理を実行
     RecipientIDs.reduce((promiseChain, RecipientID) => {
-      return promiseChain
-        .then(() => {
-          return new Promise((resolve, reject) => {
-            pool.query('SELECT * FROM friend_list;', (error, result) => {
-              if (error) {
-                reject(error);
-              } else {
-                const shareUser = result.find(
-                  (user) => user.id === RecipientID
-                );
-                if (!shareUser) {
-                  nothingUser.push(RecipientID);
-                  resolve({ skip: true }); // ユーザーが見つからない場合、次のユーザーの処理に進む
+      return (
+        promiseChain
+          .then(() => {
+            return new Promise((resolve, reject) => {
+              pool.query('SELECT * FROM friend_list;', (error, result) => {
+                if (error) {
+                  reject(error);
                 } else {
-                  pool.query(
-                    'SELECT * FROM register_user WHERE UserName = ?;',
-                    [shareUser.user_name],
-                    (error, user) => {
+                  const shareUser = result.find(
+                    (user) => user.id === RecipientID
+                  );
+                  if (!shareUser) {
+                    nothingUser.push(RecipientID);
+                    resolve({ skip: true }); // ユーザーが見つからない場合、次のユーザーの処理に進む
+                  } else {
+                    pool.query(
+                      'SELECT * FROM register_user WHERE UserName = ?;',
+                      [shareUser.user_name],
+                      (error, user) => {
+                        resolve({ user });
+                      }
+                    );
+                  }
+                }
+              });
+            });
+          })
+          .then(({ skip, user }) => {
+            if (skip) {
+              return Promise.resolve({ skip: true });
+            } else {
+              return new Promise((resolve, reject) => {
+                pool.query(
+                  'INSERT INTO it_memo (title, memo_text, Type, Message, UserID, Share_User, saved_time) (SELECT title, memo_text, ?, ?, ?, ?, ? FROM it_memo WHERE id = ?);',
+                  [
+                    'Share',
+                    req.body.message,
+                    user[0].id,
+                    req.body.myName,
+                    req.body.time,
+                    req.body.id,
+                  ],
+                  (error, result) => {
+                    if (error) {
+                      reject(error);
+                    } else {
                       resolve({ user });
                     }
-                  );
-                }
-              }
-            });
-          });
-        })
-        .then(({ skip, user }) => {
-          if (skip) {
-            return Promise.resolve({ skip: true });
-          } else {
-            return new Promise((resolve, reject) => {
-              pool.query(
-                'INSERT INTO it_memo (title, memo_text, Type, Message, UserID, Share_User, saved_time) (SELECT title, memo_text, ?, ?, ?, ?, ? FROM it_memo WHERE id = ?);',
-                [
-                  'Share',
-                  req.body.message,
-                  user[0].id,
-                  req.body.myName,
-                  req.body.time,
-                  req.body.id,
-                ],
-                (error, result) => {
-                  if (error) {
-                    reject(error);
-                  } else {
-                    resolve({ user });
                   }
-                }
-              );
-            });
-          }
-        })
-        .then(({ skip, user }) => {
-          if (skip) {
-            return Promise.resolve({ skip: true });
-          } else {
-            return new Promise((resolve, reject) => {
-              pool.query(
-                'SELECT * FROM register_user WHERE UserName = ?;',
-                [decoded.userName],
-                (error, resultDecoded) => {
-                  if (error) {
-                    reject(error);
-                  } else {
-                    resolve({ resultDecoded, user });
-                  }
-                }
-              );
-            });
-          }
-        })
-        .then(({ skip, resultDecoded, user }) => {
-          //DBに格納されていないユーザーが参照してしまうと、余計な情報が格納されてしまうため(存在しないユーザーには共有されないようにしているため)
-          if (skip) {
-            return Promise.resolve({ skip: true });
-          } else {
-            return new Promise((resolve, reject) => {
-              //共有した側の共有履歴
-              pool.query(
-                'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID, Share_ToDo_Flg) values(?, ?, ?, ?, ?);',
-                [
-                  user[0].UserName,
-                  req.body.time,
-                  req.body.title,
-                  resultDecoded[0].id,
-                  'True',
-                ],
-                (error, result) => {
-                  //共有された側の共有履歴
-                  pool.query(
-                    'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID, Share_ToDo_Flg) values(?, ?, ?, ?, ?);',
-                    [
-                      resultDecoded[0].UserName,
-                      req.body.time,
-                      req.body.title,
-                      user[0].id,
-                      'False',
-                    ],
-                    (error, result) => {
-                      if (error) {
-                        reject(error);
-                      } else {
-                        resolve(resultDecoded);
-                      }
+                );
+              });
+            }
+          })
+          .then(({ skip, user }) => {
+            if (skip) {
+              return Promise.resolve({ skip: true });
+            } else {
+              return new Promise((resolve, reject) => {
+                pool.query(
+                  'SELECT * FROM register_user WHERE UserName = ?;',
+                  [decoded.userName],
+                  (error, resultDecoded) => {
+                    resultDecodedTmp = resultDecoded;
+                    if (error) {
+                      reject(error);
+                    } else {
+                      resolve({ resultDecoded, user });
                     }
-                  );
-                }
-              );
-            });
-          }
-        });
+                  }
+                );
+              });
+            }
+          })
+          //共有履歴を作成
+          .then(({ skip, resultDecoded, user }) => {
+            //DBに格納されていないユーザーが参照してしまうと、余計な情報が格納されてしまうため(存在しないユーザーには共有されないようにしているため)
+            if (skip) {
+              return Promise.resolve({ skip: true });
+            } else {
+              return new Promise((resolve, reject) => {
+                //共有した側の共有履歴
+                pool.query(
+                  'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID, Share_ToDo_Flg) values(?, ?, ?, ?, ?);',
+                  [
+                    user[0].UserName,
+                    req.body.time,
+                    req.body.title,
+                    resultDecoded[0].id,
+                    'True',
+                  ],
+                  (error, result) => {
+                    //共有された側の共有履歴
+                    pool.query(
+                      'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID, Share_ToDo_Flg) values(?, ?, ?, ?, ?);',
+                      [
+                        resultDecoded[0].UserName,
+                        req.body.time,
+                        req.body.title,
+                        user[0].id,
+                        'False',
+                      ],
+                      (error, result) => {
+                        if (error) {
+                          reject(error);
+                        } else {
+                          resolve(resultDecoded);
+                        }
+                      }
+                    );
+                  }
+                );
+              });
+            }
+          })
+      );
     }, Promise.resolve())
       .then(() => {
-        let nothingGroup = [];
         let userIDArray = [];
         //配列かどうかをチェックし、そうでなければ単一の要素の配列に変換
         const RecipientGroups = Array.isArray(req.body.RecipientGroups)
           ? req.body.RecipientGroups
           : [req.body.RecipientGroups];
 
-        //RecipientGroupsの各要素に対して、非同期処理を順番に実行（reduceメソッドを使用）
+        //RecipientGroupsの各要素に対して、非同期処理を順番に実行
         //reduceメソッドは、各要素に対して順番に処理を実行し、前の処理が完了した後に次の処理を実行
         RecipientGroups.reduce((promiseChain, RecipientGroup) => {
           return promiseChain
@@ -278,14 +284,15 @@ router.post('/', (req, res) => {
                       const shareGroupArray = result.filter(
                         (user) => user.User_Group === RecipientGroup
                       );
+
                       const userNamesArray = shareGroupArray.map(
                         (row) => row.user_name
                       );
                       if (!shareGroup) {
                         nothingGroup.push(RecipientGroup);
-                        resolve({ skip: true }); // ユーザーが見つからない場合、次のユーザーの処理に進む
+                        resolve({ skip: true });
                       } else {
-                        console.log(userNamesArray);
+                        //it_memoに共有ノウハウとしてレコードを差し込むために、送信相手のUserIDを取得して配列(userIDArray)に格納。mapが終わるまで次の処理へは進まない
                         const promises = userNamesArray.map((userName) => {
                           return new Promise((resolve, reject) => {
                             pool.query(
@@ -318,32 +325,11 @@ router.post('/', (req, res) => {
               });
             })
             .then((result) => {
+              //result が null の場合に skip をデフォルトで false として扱うため。skip が undefined となってしまうため実施
               const { skip = false } = result || {};
               if (skip) {
                 return Promise.resolve({ skip: true });
               } else {
-                // console.log('※');
-                // console.log(userIDArray);
-                // return new Promise((resolve, reject) => {
-                //   pool.query(
-                //     'INSERT INTO it_memo (title, memo_text, Type, Message, UserID, Share_User, saved_time) (SELECT title, memo_text, ?, ?, ?, ?, ? FROM it_memo WHERE id = ?);',
-                //     [
-                //       'Share',
-                //       req.body.message,
-                //       userIDArray[0],
-                //       req.body.myName,
-                //       req.body.time,
-                //       req.body.id,
-                //     ],
-                //     (error, result) => {
-                //       if (error) {
-                //         reject(error);
-                //       } else {
-                //         resolve();
-                //       }
-                //     }
-                //   );
-                // });
                 const promises = userIDArray.map((userID) => {
                   return new Promise((resolve, reject) => {
                     pool.query(
@@ -357,20 +343,73 @@ router.post('/', (req, res) => {
                         req.body.id,
                       ],
                       (error, result) => {
-                        if (error) {
-                          reject(error);
-                        } else {
-                          resolve();
-                        }
+                        //共有された側の共有履歴レコード
+                        pool.query(
+                          'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID, Share_ToDo_Flg) values(?, ?, ?, ?, ?);',
+                          [
+                            resultDecodedTmp[0].UserName,
+                            req.body.time,
+                            req.body.title,
+                            userID,
+                            'False',
+                          ],
+                          (error, result) => {
+                            if (error) {
+                              reject(error);
+                            } else {
+                              resolve();
+                            }
+                          }
+                        );
                       }
                     );
                   });
                 });
                 return Promise.all(promises).then(() => {
-                  userIDArray = []; // 次のグループのUserIDを格納するために初期化
+                  userIDArray = []; // 次のグループのUserIDを格納するため初期化
                 });
               }
             });
+          //共有履歴を作成
+          // .then(({ skip, resultDecoded }) => {
+          //   if (skip) {
+          //     return Promise.resolve({ skip: true });
+          //   } else {
+          //     return new Promise((resolve, reject) => {
+          //       //共有した側の共有履歴レコード
+          //       pool.query(
+          //         'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID, Share_ToDo_Flg) values(?, ?, ?, ?, ?);',
+          //         [
+          //           user[0].UserName,
+          //           req.body.time,
+          //           req.body.title,
+          //           resultDecoded[0].id,
+          //           'True',
+          //         ],
+          //         (error, result) => {
+          //           //共有された側の共有履歴レコード
+          //           pool.query(
+          //             'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID, Share_ToDo_Flg) values(?, ?, ?, ?, ?);',
+          //             [
+          //               resultDecoded[0].UserName,
+          //               req.body.time,
+          //               req.body.title,
+          //               user[0].id,
+          //               'False',
+          //             ],
+          //             (error, result) => {
+          //               if (error) {
+          //                 reject(error);
+          //               } else {
+          //                 resolve(resultDecoded);
+          //               }
+          //             }
+          //           );
+          //         }
+          //       );
+          //     });
+          //   }
+          // })
         }, Promise.resolve()).then(() => {
           res.send({ message: '共有しました', nothingUser });
         });
@@ -423,16 +462,4 @@ module.exports = router;
 //       );
 //     });
 //   }
-// });
-
-// userNamesArray.forEach((userName) => {
-//   pool.query(
-//     'SELECT * FROM register_user WHERE UserName = ?;',
-//     [userName],
-//     (error, user) => {
-//       console.log(user[0].UserID);
-//       userIDArray.push(user[0].UserID);
-//       resolve({ user });
-//     }
-//   );
 // });
