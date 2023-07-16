@@ -269,15 +269,22 @@ router.post('/', (req, res) => {
                       reject(error);
                     } else {
                       console.log('b' + RecipientGroup);
-                      // console.log(result);
-                      // const shareGroup = result.find(
-                      //   (user) => user.User_Group === RecipientGroup
-                      // );
-                      // console.log(shareGroup);
+                      console.log(result);
+                      const shareGroup = result.find(
+                        (user) => user.User_Group === RecipientGroup
+                      );
+                      console.log('※');
+                      console.log(shareGroup);
                       const shareGroupArray = result.filter(
                         (user) => user.User_Group === RecipientGroup
                       );
+                      console.log('※');
                       console.log(shareGroupArray);
+                      const userNamesArray = shareGroupArray.map(
+                        (row) => row.user_name
+                      );
+                      console.log('※');
+                      console.log(userNamesArray);
                       //console.log(shareGroup);
                       if (!shareGroup) {
                         nothingGroup.push(RecipientGroup);
