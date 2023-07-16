@@ -298,7 +298,7 @@ router.post('/', (req, res) => {
                                   console.log(user[0].id);
                                   userIDArray.push(user[0].id);
                                   console.log(userIDArray);
-                                  resolve({ user: user });
+                                  resolve();
                                 }
                               }
                             );
@@ -306,7 +306,7 @@ router.post('/', (req, res) => {
                         });
                         Promise.all(promises)
                           .then(() => {
-                            resolve({ user });
+                            resolve();
                           })
                           .catch((error) => {
                             reject(error);
@@ -317,7 +317,7 @@ router.post('/', (req, res) => {
                 );
               });
             })
-            .then(({ skip, user }) => {
+            .then(({ skip }) => {
               if (skip) {
                 return Promise.resolve({ skip: true });
               } else {
