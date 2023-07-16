@@ -339,7 +339,7 @@ router.post('/', (req, res) => {
                       if (error) {
                         reject(error);
                       } else {
-                        resolve({ user });
+                        resolve();
                       }
                     }
                   );
