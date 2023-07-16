@@ -273,6 +273,7 @@ router.post('/', (req, res) => {
                       const shareGroup = result.find(
                         (user) => user.User_Group === RecipientGroup
                       );
+                      console.log(shareGroup);
                       //console.log(shareGroup);
                       if (!shareGroup) {
                         nothingGroup.push(RecipientGroup);
