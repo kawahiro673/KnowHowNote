@@ -269,7 +269,7 @@ router.post('/', (req, res) => {
                       reject(error);
                     } else {
                       console.log('b' + RecipientGroup);
-                      console.log('c' + user.User_Group);
+
                       const shareGroup = result.find(
                         (user) => user.User_Group === RecipientGroup
                       );
