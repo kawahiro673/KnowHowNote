@@ -239,7 +239,6 @@ router.post('/', (req, res) => {
       .then(() => {
         let nothingGroup = [];
         let userIDArray = [];
-        let skip = false;
         //配列かどうかをチェックし、そうでなければ単一の要素の配列に変換
         const RecipientGroups = Array.isArray(req.body.RecipientGroups)
           ? req.body.RecipientGroups
@@ -285,17 +284,6 @@ router.post('/', (req, res) => {
                         nothingGroup.push(RecipientGroup);
                         resolve({ skip: true }); // ユーザーが見つからない場合、次のユーザーの処理に進む
                       } else {
-                        // userNamesArray.forEach((userName) => {
-                        //   pool.query(
-                        //     'SELECT * FROM register_user WHERE UserName = ?;',
-                        //     [userName],
-                        //     (error, user) => {
-                        //       console.log(user[0].UserID);
-                        //       userIDArray.push(user[0].UserID);
-                        //       resolve({ user });
-                        //     }
-                        //   );
-                        // });
                         const promises = userNamesArray.map((userName) => {
                           return new Promise((resolve, reject) => {
                             pool.query(
@@ -305,9 +293,9 @@ router.post('/', (req, res) => {
                                 if (error) {
                                   reject(error);
                                 } else {
-                                  console.log(user[0].UserID);
-                                  userIDArray.push(user[0].UserID);
-                                  resolve({ user });
+                                  console.log(user[0].id);
+                                  userIDArray.push(user[0].id);
+                                  resolve({ user: user });
                                 }
                               }
                             );
@@ -406,4 +394,16 @@ module.exports = router;
 //       );
 //     });
 //   }
+// });
+
+// userNamesArray.forEach((userName) => {
+//   pool.query(
+//     'SELECT * FROM register_user WHERE UserName = ?;',
+//     [userName],
+//     (error, user) => {
+//       console.log(user[0].UserID);
+//       userIDArray.push(user[0].UserID);
+//       resolve({ user });
+//     }
+//   );
 // });
