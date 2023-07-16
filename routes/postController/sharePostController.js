@@ -239,6 +239,7 @@ router.post('/', (req, res) => {
       .then(() => {
         let nothingGroup = [];
         let userIDArray = [];
+        let skip = false;
         //配列かどうかをチェックし、そうでなければ単一の要素の配列に変換
         const RecipientGroups = Array.isArray(req.body.RecipientGroups)
           ? req.body.RecipientGroups
