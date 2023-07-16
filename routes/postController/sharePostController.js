@@ -283,6 +283,7 @@ router.post('/', (req, res) => {
                       const shareGroup = result.find(
                         (user) => user.User_Group === RecipientGroup
                       );
+                      console.log(shareGroup);
                       const shareGroupArray = result.filter(
                         (user) => user.User_Group === RecipientGroup
                       );
@@ -290,6 +291,7 @@ router.post('/', (req, res) => {
                       const userNamesArray = shareGroupArray.map(
                         (row) => row.user_name
                       );
+                      console.log(userNamesArray);
                       if (!shareGroup) {
                         nothingGroup.push(RecipientGroup);
                         resolve({ skip: true });
