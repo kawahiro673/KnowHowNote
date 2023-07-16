@@ -237,7 +237,6 @@ router.post('/', (req, res) => {
         });
     }, Promise.resolve())
       .then(() => {
-        console.log('やあ');
         let nothingGroup = [];
         const RecipientGroups = Array.isArray(req.body.RecipientGroups)
           ? req.body.RecipientGroups
@@ -269,9 +268,12 @@ router.post('/', (req, res) => {
                     if (error) {
                       reject(error);
                     } else {
+                      console.log('b' + RecipientGroup);
+                      console.log('c' + user.User_Group);
                       const shareGroup = result.find(
                         (user) => user.User_Group === RecipientGroup
                       );
+                      console.log('d' + shareGroup);
                       if (!shareGroup) {
                         nothingGroup.push(RecipientGroup);
                         resolve({ skip: true }); // ユーザーが見つからない場合、次のユーザーの処理に進む
