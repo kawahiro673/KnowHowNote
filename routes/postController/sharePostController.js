@@ -322,8 +322,10 @@ router.post('/', (req, res) => {
               if (skip) {
                 return Promise.resolve({ skip: true });
               } else {
+                console.log('※');
                 console.log(userIDArray);
                 const numberArray = userIDArray.map((str) => parseInt(str, 10));
+                console.log(numberArray);
                 return new Promise((resolve, reject) => {
                   pool.query(
                     'INSERT INTO it_memo (title, memo_text, Type, Message, UserID, Share_User, saved_time) (SELECT title, memo_text, ?, ?, ?, ?, ? FROM it_memo WHERE id = ?);',
