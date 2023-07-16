@@ -322,29 +322,52 @@ router.post('/', (req, res) => {
               if (skip) {
                 return Promise.resolve({ skip: true });
               } else {
-                console.log('※');
-                console.log(userIDArray);
-                const numberArray = userIDArray.map((str) => parseInt(str, 10));
-                console.log(numberArray);
-                return new Promise((resolve, reject) => {
-                  pool.query(
-                    'INSERT INTO it_memo (title, memo_text, Type, Message, UserID, Share_User, saved_time) (SELECT title, memo_text, ?, ?, ?, ?, ? FROM it_memo WHERE id = ?);',
-                    [
-                      'Share',
-                      req.body.message,
-                      numberArray[0],
-                      req.body.myName,
-                      req.body.time,
-                      req.body.id,
-                    ],
-                    (error, result) => {
-                      if (error) {
-                        reject(error);
-                      } else {
-                        resolve();
+                // console.log('※');
+                // console.log(userIDArray);
+                // return new Promise((resolve, reject) => {
+                //   pool.query(
+                //     'INSERT INTO it_memo (title, memo_text, Type, Message, UserID, Share_User, saved_time) (SELECT title, memo_text, ?, ?, ?, ?, ? FROM it_memo WHERE id = ?);',
+                //     [
+                //       'Share',
+                //       req.body.message,
+                //       userIDArray[0],
+                //       req.body.myName,
+                //       req.body.time,
+                //       req.body.id,
+                //     ],
+                //     (error, result) => {
+                //       if (error) {
+                //         reject(error);
+                //       } else {
+                //         resolve();
+                //       }
+                //     }
+                //   );
+                // });
+                const promises = userIDArray.map((userID) => {
+                  return new Promise((resolve, reject) => {
+                    pool.query(
+                      'INSERT INTO it_memo (title, memo_text, Type, Message, UserID, Share_User, saved_time) (SELECT title, memo_text, ?, ?, ?, ?, ? FROM it_memo WHERE id = ?);',
+                      [
+                        'Share',
+                        req.body.message,
+                        userID,
+                        req.body.myName,
+                        req.body.time,
+                        req.body.id,
+                      ],
+                      (error, result) => {
+                        if (error) {
+                          reject(error);
+                        } else {
+                          resolve();
+                        }
                       }
-                    }
-                  );
+                    );
+                  });
+                });
+                return Promise.all(promises).then(() => {
+                  userIDArray = []; // 次のグループのUserIDを格納するために初期化
                 });
               }
             });
