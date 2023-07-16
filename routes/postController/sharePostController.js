@@ -322,7 +322,7 @@ router.post('/', (req, res) => {
 
                         Promise.all(promises)
                           .then(() => {
-                            resolve({ skip, user }); // skipとuserを引き継ぐ
+                            resolve({ skip: skip, user: user }); // skipとuserを引き継ぐ
                           })
                           .catch((error) => {
                             reject(error);
