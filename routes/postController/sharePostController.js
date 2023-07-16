@@ -269,11 +269,15 @@ router.post('/', (req, res) => {
                       reject(error);
                     } else {
                       console.log('b' + RecipientGroup);
-                      console.log(result);
-                      const shareGroup = result.find(
+                      // console.log(result);
+                      // const shareGroup = result.find(
+                      //   (user) => user.User_Group === RecipientGroup
+                      // );
+                      // console.log(shareGroup);
+                      const shareGroupArray = result.filter(
                         (user) => user.User_Group === RecipientGroup
                       );
-                      console.log(shareGroup);
+                      console.log(shareGroupArray);
                       //console.log(shareGroup);
                       if (!shareGroup) {
                         nothingGroup.push(RecipientGroup);
@@ -283,7 +287,7 @@ router.post('/', (req, res) => {
                           'SELECT * FROM register_user WHERE UserName = ?;',
                           [shareGroup.user_name],
                           (error, user) => {
-                            console.log(user);
+                            //console.log(user);
                             resolve({ user });
                           }
                         );
