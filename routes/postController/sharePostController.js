@@ -118,6 +118,8 @@ router.post('/', (req, res) => {
   } else if (req.body.flg === 'getuser') {
     let nothingUser = [];
     let resultDecodedTmp;
+    let recipientIDsCopy = [...req.body.RecipientIDs];
+
     const token = req.cookies.token;
     const decoded = JWT.verify(token, 'SECRET_KEY');
     //配列かどうかをチェックし、そうでなければ単一の要素の配列に変換
@@ -366,50 +368,24 @@ router.post('/', (req, res) => {
                   });
                 });
                 return Promise.all(promises).then(() => {
+                  //共有した側の共有履歴レコード
+                  pool.query(
+                    'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID, Share_ToDo_Flg) values(?, ?, ?, ?, ?);',
+                    [
+                      recipientIDsCopy[0],
+                      req.body.time,
+                      req.body.title,
+                      resultDecodedTmp[0].id,
+                      'True',
+                    ],
+                    (error, result) => {
+                      recipientIDsCopy.shift();
+                    }
+                  );
                   userIDArray = []; // 次のグループのUserIDを格納するため初期化
                 });
               }
             });
-          //共有履歴を作成
-          // .then(({ skip, resultDecoded }) => {
-          //   if (skip) {
-          //     return Promise.resolve({ skip: true });
-          //   } else {
-          //     return new Promise((resolve, reject) => {
-          //       //共有した側の共有履歴レコード
-          //       pool.query(
-          //         'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID, Share_ToDo_Flg) values(?, ?, ?, ?, ?);',
-          //         [
-          //           user[0].UserName,
-          //           req.body.time,
-          //           req.body.title,
-          //           resultDecoded[0].id,
-          //           'True',
-          //         ],
-          //         (error, result) => {
-          //           //共有された側の共有履歴レコード
-          //           pool.query(
-          //             'INSERT INTO share_user (UserName, date, ShareNoteTitle, UserID, Share_ToDo_Flg) values(?, ?, ?, ?, ?);',
-          //             [
-          //               resultDecoded[0].UserName,
-          //               req.body.time,
-          //               req.body.title,
-          //               user[0].id,
-          //               'False',
-          //             ],
-          //             (error, result) => {
-          //               if (error) {
-          //                 reject(error);
-          //               } else {
-          //                 resolve(resultDecoded);
-          //               }
-          //             }
-          //           );
-          //         }
-          //       );
-          //     });
-          //   }
-          // })
         }, Promise.resolve()).then(() => {
           res.send({ message: '共有しました', nothingUser });
         });
