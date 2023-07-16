@@ -285,6 +285,7 @@ router.post('/', (req, res) => {
                         nothingGroup.push(RecipientGroup);
                         resolve({ skip: true }); // ユーザーが見つからない場合、次のユーザーの処理に進む
                       } else {
+                        console.log(userNamesArray);
                         const promises = userNamesArray.map((userName) => {
                           return new Promise((resolve, reject) => {
                             pool.query(
