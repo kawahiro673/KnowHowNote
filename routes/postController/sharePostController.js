@@ -238,6 +238,7 @@ router.post('/', (req, res) => {
     }, Promise.resolve())
       .then(() => {
         let nothingGroup = [];
+        let userIDArray = [];
         const RecipientGroups = Array.isArray(req.body.RecipientGroups)
           ? req.body.RecipientGroups
           : [req.body.RecipientGroups];
@@ -290,66 +291,76 @@ router.post('/', (req, res) => {
                         nothingGroup.push(RecipientGroup);
                         resolve({ skip: true }); // ユーザーが見つからない場合、次のユーザーの処理に進む
                       } else {
-                        pool.query(
-                          'SELECT * FROM register_user WHERE UserName = ?;',
-                          [shareGroup.user_name],
-                          (error, user) => {
-                            //console.log(user);
-                            resolve({ user });
-                          }
-                        );
+                        // userNamesArray.forEach((userName) => {
+                        //   pool.query(
+                        //     'SELECT * FROM register_user WHERE UserName = ?;',
+                        //     [userName],
+                        //     (error, user) => {
+                        //       console.log(user[0].UserID);
+                        //       userIDArray.push(user[0].UserID);
+                        //       resolve({ user });
+                        //     }
+                        //   );
+                        // });
+                        const promises = userNamesArray.map((userName) => {
+                          return new Promise((resolve, reject) => {
+                            pool.query(
+                              'SELECT * FROM register_user WHERE UserName = ?;',
+                              [userName],
+                              (error, user) => {
+                                if (error) {
+                                  reject(error);
+                                } else {
+                                  console.log(user[0].UserID);
+                                  userIDArray.push(user[0].UserID);
+                                  resolve({ user });
+                                }
+                              }
+                            );
+                          });
+                        });
+
+                        Promise.all(promises)
+                          .then(() => {
+                            resolve({ skip, user }); // skipとuserを引き継ぐ
+                          })
+                          .catch((error) => {
+                            reject(error);
+                          });
                       }
                     }
                   }
                 );
               });
+            })
+            .then(({ skip, user }) => {
+              if (skip) {
+                return Promise.resolve({ skip: true });
+              } else {
+                console.log(userIDArray);
+                const numberArray = userIDArray.map((str) => parseInt(str, 10));
+                return new Promise((resolve, reject) => {
+                  pool.query(
+                    'INSERT INTO it_memo (title, memo_text, Type, Message, UserID, Share_User, saved_time) (SELECT title, memo_text, ?, ?, ?, ?, ? FROM it_memo WHERE id = ?);',
+                    [
+                      'Share',
+                      req.body.message,
+                      numberArray[0],
+                      req.body.myName,
+                      req.body.time,
+                      req.body.id,
+                    ],
+                    (error, result) => {
+                      if (error) {
+                        reject(error);
+                      } else {
+                        resolve({ user });
+                      }
+                    }
+                  );
+                });
+              }
             });
-
-          // .then(({ skip, user }) => {
-          //   if (skip) {
-          //     return Promise.resolve({ skip: true });
-          //   } else {
-          //     return new Promise((resolve, reject) => {
-          //       pool.query(
-          //         'INSERT INTO it_memo (title, memo_text, Type, Message, UserID, Share_User, saved_time) (SELECT title, memo_text, ?, ?, ?, ?, ? FROM it_memo WHERE id = ?);',
-          //         [
-          //           'Share',
-          //           req.body.message,
-          //           user[0].id,
-          //           req.body.myName,
-          //           req.body.time,
-          //           req.body.id,
-          //         ],
-          //         (error, result) => {
-          //           if (error) {
-          //             reject(error);
-          //           } else {
-          //             resolve({ user });
-          //           }
-          //         }
-          //       );
-          //     });
-          //   }
-          // })
-          // .then(({ skip, user }) => {
-          //   if (skip) {
-          //     return Promise.resolve({ skip: true });
-          //   } else {
-          //     return new Promise((resolve, reject) => {
-          //       pool.query(
-          //         'SELECT * FROM register_user WHERE UserName = ?;',
-          //         [decoded.userName],
-          //         (error, resultDecoded) => {
-          //           if (error) {
-          //             reject(error);
-          //           } else {
-          //             resolve({ resultDecoded, user });
-          //           }
-          //         }
-          //       );
-          //     });
-          //   }
-          // })
           // .then(({ skip, resultDecoded, user }) => {
           //   //DBに格納されていないユーザーが参照してしまうと、余計な情報が格納されてしまうため(存在しないユーザーには共有されないようにしているため)
           //   if (skip) {
