@@ -284,7 +284,7 @@ router.post('/', (req, res) => {
                       const shareGroupArray = result.filter(
                         (user) => user.User_Group === RecipientGroup
                       );
-
+                      console.log(shareGroupArray);
                       const userNamesArray = shareGroupArray.map(
                         (row) => row.user_name
                       );
@@ -302,9 +302,9 @@ router.post('/', (req, res) => {
                                 if (error) {
                                   reject(error);
                                 } else {
-                                  console.log(user[0].id);
+                                  //console.log(user[0].id);
                                   userIDArray.push(user[0].id);
-                                  console.log(userIDArray);
+                                  //console.log(userIDArray);
                                   resolve();
                                 }
                               }
