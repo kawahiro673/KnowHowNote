@@ -1245,10 +1245,12 @@ function groupCheckListScreen(button) {
         flg: 'group_get',
       }),
       success: function (res) {
+        //表示前に削除
         document.getElementById('all-group-list').innerHTML = '';
-        document
-          .getElementById('group-list-decision-button')
-          .parentNode.removeChild(button);
+        const buttonDelete = document.getElementById(
+          'group-list-decision-button'
+        );
+        buttonDelete.parentNode.removeChild(buttonDelete);
 
         res.groupResults.forEach((group) => {
           const div = document.createElement('div');
