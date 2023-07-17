@@ -147,10 +147,6 @@ document.getElementById('share-history').addEventListener('click', () => {
             .addEventListener('click', sortTableByUser);
         });
         if (res.shareResult.length === 0) {
-          const existingTable = document.getElementById('share-history-table');
-          if (existingTable) {
-            existingTable.remove(); // 既存のテーブル要素を削除します
-          }
           const p = document.createElement('p');
           p.innerHTML = '共有履歴がありません';
           p.setAttribute('class', 'no-share-user');
@@ -1277,9 +1273,13 @@ function groupCheckListScreen(button) {
           if (groupName === group.User_Group) checkbox.checked = true;
         });
         const button = document.createElement('button');
+        const buttonDiv = document.createElement('div');
+        buttonDiv.setAttribute('class', `group-list-check-button-div`);
         button.setAttribute('id', 'group-list-decision-button');
         button.innerHTML = '適用';
-        document.getElementById('all-group-list').appendChild(button);
+
+        document.getElementById('all-group-list').appendChild(buttonDiv);
+        buttonDiv.appendChild(button);
         resolve();
       },
     });
