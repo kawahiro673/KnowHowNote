@@ -554,25 +554,9 @@ input[name='friend-list-label'] {
   border-bottom-color: White;
 }
 
-input[type='checkbox'] {
-  display: none;
-} /* to hide the checkbox itself */
-input[type='checkbox'] + label:before {
-  font-family: FontAwesome;
-  display: inline-block;
+.friend-list-check-div input[type='checkbox'],
+.friend-list-check-div label {
+  transform: scale(1.5); /* チェックボックスとラベルのサイズを調整します */
+  margin-right: 5px; /* チェックボックスとラベルの間の余白を調整します */
 }
-
-input[type='checkbox'] + label:before {
-  content: '\f096';
-} /* unchecked icon */
-input[type='checkbox'] + label:before {
-  letter-spacing: 10px;
-} /* space between checkbox and label */
-
-input[type='checkbox']:checked + label:before {
-  content: '\f046';
-} /* checked icon */
-input[type='checkbox']:checked + label:before {
-  letter-spacing: 5px;
-} /* allow space for check mark */
 /******************************************************/
