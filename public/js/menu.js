@@ -1250,7 +1250,9 @@ function groupCheckListScreen(button) {
         const buttonDelete = document.getElementById(
           'group-list-decision-button'
         );
-        buttonDelete.parentNode.removeChild(buttonDelete);
+        if (buttonDelete && buttonDelete.parentNode) {
+          buttonDelete.parentNode.removeChild(buttonDelete);
+        }
 
         res.groupResults.forEach((group) => {
           const div = document.createElement('div');
