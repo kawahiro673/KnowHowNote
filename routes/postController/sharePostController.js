@@ -191,7 +191,6 @@ router.post('/', (req, res) => {
                   'SELECT * FROM register_user WHERE UserName = ?;',
                   [decoded.userName],
                   (error, resultDecoded) => {
-                    resultDecodedTmp = resultDecoded;
                     if (error) {
                       reject(error);
                     } else {
@@ -262,6 +261,7 @@ router.post('/', (req, res) => {
                   'SELECT * FROM register_user WHERE UserName = ?;',
                   [decoded.userName],
                   (error, resultDecoded) => {
+                    resultDecodedTmp = resultDecoded;
                     if (error) {
                       reject(error);
                     } else {
@@ -330,6 +330,7 @@ router.post('/', (req, res) => {
               if (skip) {
                 return Promise.resolve({ skip: true });
               } else {
+                console.log(resultDecodedTmp[0]);
                 const promises = userIDArray.map((userID) => {
                   return new Promise((resolve, reject) => {
                     pool.query(
