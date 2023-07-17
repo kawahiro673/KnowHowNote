@@ -1246,6 +1246,9 @@ function groupCheckListScreen(button) {
       }),
       success: function (res) {
         document.getElementById('all-group-list').innerHTML = '';
+        document
+          .getElementById('group-list-decision-button')
+          .parentNode.removeChild(button);
 
         res.groupResults.forEach((group) => {
           const div = document.createElement('div');
