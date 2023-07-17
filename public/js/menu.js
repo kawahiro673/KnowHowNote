@@ -1278,7 +1278,9 @@ function groupCheckListScreen(button) {
         button.setAttribute('id', 'group-list-decision-button');
         button.innerHTML = '適用';
 
-        document.getElementById('all-group-list').appendChild(buttonDiv);
+        document
+          .getElementsByClassName('popup-body_group-list')[0]
+          .appendChild(buttonDiv);
         buttonDiv.appendChild(button);
         resolve();
       },
