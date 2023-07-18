@@ -1292,12 +1292,10 @@ function groupCheckListScreen(button) {
       success: function (res) {
         //表示前に削除
         document.getElementById('all-group-list').innerHTML = '';
-        const buttonDelete = document.getElementById(
-          'group-list-decision-button'
-        );
-        if (buttonDelete && buttonDelete.parentNode) {
-          buttonDelete.parentNode.removeChild(buttonDelete);
-        }
+      const element = document.querySelector('.group-list-check-button-div');
+if (element) {
+  element.parentNode.removeChild(element);
+}
 
         res.groupResults.forEach((group) => {
           const div = document.createElement('div');
