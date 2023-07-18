@@ -671,5 +671,10 @@ input[type='checkbox']:checked + .gray_b {
 .group-list-check-button-div {
   display: flex;
   justify-content: flex-end;
-  margin:10px;
+  margin: 10px;
+}
+
+.real-name-p {
+  margin: 0;
+  color: silver;
 }
