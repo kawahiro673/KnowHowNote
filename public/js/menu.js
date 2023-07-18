@@ -1148,7 +1148,10 @@ function addGroup() {
      console.log(res.groupResults);
        const groupExistFlg = res.groupResults.find((result) => result.User_Group === groupName);
       if (groupExistFlg) {
-        alert('そのグループ名は既に登録されています。')
+        alert('そのグループ名は既に登録されています')
+        return;
+      }else if(groupName === 'なし'){
+         alert('グループ名「なし」は作成することができません')
         return;
       }
 
