@@ -1076,15 +1076,15 @@ const friendListUpdate = () => {
           div1.appendChild(p1);
           div1.appendChild(input);
           friendRow.appendChild(div1);
-
-          friendRow.appendChild(realNamep);
-
+          
           div.appendChild(button);
           div.appendChild(button1);
           div.appendChild(button2);
           friendRow.appendChild(div);
 
           friendElement.appendChild(friendRow);
+
+         friendElement.appendChild(realNamep);
 
           groupP.appendChild(span);
           groupDiv.appendChild(groupP);
