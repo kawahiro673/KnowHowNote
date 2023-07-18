@@ -122,9 +122,14 @@
     height: 300px;
   }
 
-  .popup-body_friend-list{
-     height: 230px;
+  .popup-body_friend-list,
+  .popup-body_share-history{
+   height: 220px  
   }
+  .popup-body_share-user{
+    height:320px;
+  }
+  
   .popup-body_group-add,
   .popup-body_group-list{
     height:260px;
