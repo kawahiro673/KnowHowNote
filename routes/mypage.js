@@ -760,7 +760,7 @@ router
                 req.body.time,
                 resultDecoded[0].id,
                 user.UserName,
-                '-',
+                'なし',
               ],
               (error, result) => {
                 if (error) {
