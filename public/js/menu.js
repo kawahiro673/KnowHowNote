@@ -1296,7 +1296,28 @@ function groupCheckListScreen(button) {
 if (element) {
   element.parentNode.removeChild(element);
 }
+         //グループ「なし」のチェックボックス作成
+         const div_nashi = document.createElement('div');
+          div_nashi.setAttribute('class', `group-list-check-div`);
+        
+         const checkbox_nashi = document.createElement('input');
+          checkbox_nashi.type = 'radio';
+          checkbox_nashi.id = `checkbox-groupなし`;
+          checkbox_nashi.name = 'group';
 
+          // ラベル要素の作成
+          const checkboxLabel_nashi = document.createElement('label');
+          checkboxLabel_nashi.textContent = 'なし';
+          checkboxLabel_nashi.setAttribute(
+            'for',
+            `checkbox-groupなし`
+          );
+
+          // 要素の追加
+          document.getElementById('all-group-list').appendChild(div_nashi);
+          div_nashi.appendChild(checkbox_nashi);
+          div_nashi.appendChild(checkboxLabel_nashi);
+        
         res.groupResults.forEach((group) => {
           const div = document.createElement('div');
           div.setAttribute('class', `group-list-check-div`);
