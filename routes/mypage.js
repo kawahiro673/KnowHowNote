@@ -536,7 +536,7 @@ router
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'SELECT * FROM share_user WHERE UserID = ?;',
+              'SELECT * FROM share_user WHERE UserID = ? ORDER BY id DESC;',
               [resultDecoded[0].id],
               (error, result) => {
                 if (error) {
