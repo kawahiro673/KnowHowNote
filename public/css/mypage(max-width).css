@@ -194,4 +194,8 @@
   #friend-list-add-button{
     margin:10px;
   }
+  .friend-list-label {
+  width: 48%; /*フレンドリストのタブの折り返しを防ぐ  */
+}
+
 }
