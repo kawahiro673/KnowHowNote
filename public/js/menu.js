@@ -959,7 +959,9 @@ document
         time,
       }),
       success: function (res) {
-        if (res.msg === 'NG') {
+       if(document.getElementById('idInput').value === '') {
+         alert('フレンドリストに追加したい利用者IDを入力してください');
+      }else if (res.msg === 'NG') {
           alert('その利用者IDのユーザーは存在しません');
         } else if (res.msg === 'already') {
           alert(`${res.userName}さんは既に追加済みです`);
