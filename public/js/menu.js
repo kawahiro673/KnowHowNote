@@ -1135,8 +1135,24 @@ function openGroupAddPopup() {
 
 //DBにグループを追加後、グループリスト画面更新
 function addGroup() {
-  const groupName = document.getElementById('group-Name-input').value;
-  document.getElementById('group-Name-input').value = '';
+   const groupName = document.getElementById('group-Name-input').value;
+   $.ajax({
+    url: '/mypage/' + hashedIdGet,
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'group_get',
+    }),
+    success: function (res) {
+     console.log(res.groupResults);
+       const groupExistFlg = res.groupResults.find((result) => result.groupResults === groupName);
+      if (groupExistFlg) {
+        alert('そのグループ名は既に登録されています。')
+        return;
+      }
+
+ document.getElementById('group-Name-input').value = '';
   $.ajax({
     url: '/mypage/' + hashedIdGet,
     type: 'POST',
@@ -1150,6 +1166,11 @@ function addGroup() {
       groupListUpdate('group-display');
     },
   });
+      
+    },
+  });
+ 
+ 
 }
 
 //グループリスト画面を更新（三列に表示する）
