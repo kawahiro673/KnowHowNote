@@ -667,3 +667,9 @@ input[type='checkbox']:checked + .gray_b {
   flex: 0 0 120px; /* ボタンの幅を調整する値（例: 120px） */
   margin: 0 5px;
 }
+
+.group-list-check-button-div {
+  display: flex;
+  justify-content: flex-end;
+  margin:10px;
+}
