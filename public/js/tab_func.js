@@ -438,7 +438,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
       let groupFlg = false;
       const groupSet = new Set(); // ユニークな User_Group を格納するための Set
       res.friend.forEach((friend) => {
-        if (friend.User_Group !== '-') {
+        if (friend.User_Group !== 'なし') {
           const userGroup = friend.User_Group;
           if (!groupSet.has(userGroup)) {
             groupSet.add(userGroup);
