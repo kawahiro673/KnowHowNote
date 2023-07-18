@@ -21,7 +21,7 @@ document.getElementById('profile').addEventListener('click', () => {
       // document.getElementById('share-pass-input').value = res.user.SharePass;
       const date = new Date(res.user.CreationDay);
       document.getElementById('RegistrationDate').innerHTML =
-        date.toLocaleDateString('ja-JP');
+        res.user.CreationDay;
       if (res.user.ShareFlg === 'ON') {
         document.getElementById('onCheckbox').checked = true;
       } else if (res.user.ShareFlg === 'OFF') {
@@ -947,56 +947,58 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
 document
   .getElementById('friend-search-button')
   .addEventListener('click', () => {
-    if(document.getElementById('idInput').value === document.getElementById('myID').innerHTML){
-     alert('自分自身はフレンドリストに登録できません');
-    }else if(document.getElementById('idInput').value === '') {
-     alert('フレンドリストに追加したい利用者IDを入力してください');
-    }else{    
-    const time = currentTimeGet();
-    $.ajax({
-      url: '/mypage/' + hashedIdGet,
-      type: 'POST',
-      dataType: 'Json',
-      contentType: 'application/json',
-      data: JSON.stringify({
-        flg: 'Authentication_ID',
-        Authentication_ID: document.getElementById('idInput').value,
-        time,
-      }),
-      success: function (res) {
-        
-         if (res.msg === 'NG') {
-          alert('その利用者IDのユーザーは存在しません');
-        } else if (res.msg === 'already') {
-          alert(`${res.userName}さんは既に追加済みです`);
-        } else {
-          friendListUpdate();
-          document.getElementById('popup-overlay_friend-add').style.display =
-            'none';
-          document.getElementById(
-            'popup-overlay_friend-add-ans'
-          ).style.display = 'block';
-          document.getElementById('new-friend-user').innerHTML = res.userName;
-
-          document
-            .getElementById('popup-overlay_friend-add-ans')
-            .addEventListener('click', (e) => {
-              const popup = document.getElementById(
-                'popup-overlay_friend-add-ans'
-              );
-              if (e.target === popup) {
-                popup.style.display = 'none';
-              }
-            });
-
-          setTimeout(() => {
+    if (
+      document.getElementById('idInput').value ===
+      document.getElementById('myID').innerHTML
+    ) {
+      alert('自分自身はフレンドリストに登録できません');
+    } else if (document.getElementById('idInput').value === '') {
+      alert('フレンドリストに追加したい利用者IDを入力してください');
+    } else {
+      const time = currentTimeGet();
+      $.ajax({
+        url: '/mypage/' + hashedIdGet,
+        type: 'POST',
+        dataType: 'Json',
+        contentType: 'application/json',
+        data: JSON.stringify({
+          flg: 'Authentication_ID',
+          Authentication_ID: document.getElementById('idInput').value,
+          time,
+        }),
+        success: function (res) {
+          if (res.msg === 'NG') {
+            alert('その利用者IDのユーザーは存在しません');
+          } else if (res.msg === 'already') {
+            alert(`${res.userName}さんは既に追加済みです`);
+          } else {
+            friendListUpdate();
+            document.getElementById('popup-overlay_friend-add').style.display =
+              'none';
             document.getElementById(
               'popup-overlay_friend-add-ans'
-            ).style.display = 'none';
-          }, 1500);
-        }
-      },
-    });
+            ).style.display = 'block';
+            document.getElementById('new-friend-user').innerHTML = res.userName;
+
+            document
+              .getElementById('popup-overlay_friend-add-ans')
+              .addEventListener('click', (e) => {
+                const popup = document.getElementById(
+                  'popup-overlay_friend-add-ans'
+                );
+                if (e.target === popup) {
+                  popup.style.display = 'none';
+                }
+              });
+
+            setTimeout(() => {
+              document.getElementById(
+                'popup-overlay_friend-add-ans'
+              ).style.display = 'none';
+            }, 1500);
+          }
+        },
+      });
     }
   });
 
@@ -1076,7 +1078,7 @@ const friendListUpdate = () => {
           div1.appendChild(p1);
           div1.appendChild(input);
           friendRow.appendChild(div1);
-          
+
           div.appendChild(button);
           div.appendChild(button1);
           div.appendChild(button2);
@@ -1084,7 +1086,7 @@ const friendListUpdate = () => {
 
           friendElement.appendChild(friendRow);
 
-         friendElement.appendChild(realNamep);
+          friendElement.appendChild(realNamep);
 
           groupP.appendChild(span);
           groupDiv.appendChild(groupP);
@@ -1147,8 +1149,8 @@ function openGroupAddPopup() {
 
 //DBにグループを追加後、グループリスト画面更新
 function addGroup() {
-   const groupName = document.getElementById('group-Name-input').value;
-   $.ajax({
+  const groupName = document.getElementById('group-Name-input').value;
+  $.ajax({
     url: '/mypage/' + hashedIdGet,
     type: 'POST',
     dataType: 'Json',
@@ -1157,35 +1159,34 @@ function addGroup() {
       flg: 'group_get',
     }),
     success: function (res) {
-     console.log(res.groupResults);
-       const groupExistFlg = res.groupResults.find((result) => result.User_Group === groupName);
+      console.log(res.groupResults);
+      const groupExistFlg = res.groupResults.find(
+        (result) => result.User_Group === groupName
+      );
       if (groupExistFlg) {
-        alert('そのグループ名は既に登録されています')
+        alert('そのグループ名は既に登録されています');
         return;
-      }else if(groupName === 'なし'){
-         alert('グループ名「なし」は作成することができません')
+      } else if (groupName === 'なし') {
+        alert('グループ名「なし」は作成することができません');
         return;
       }
 
- document.getElementById('group-Name-input').value = '';
-  $.ajax({
-    url: '/mypage/' + hashedIdGet,
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      flg: 'group_add',
-      groupName,
-    }),
-    success: function (res) {
-      groupListUpdate('group-display');
+      document.getElementById('group-Name-input').value = '';
+      $.ajax({
+        url: '/mypage/' + hashedIdGet,
+        type: 'POST',
+        dataType: 'Json',
+        contentType: 'application/json',
+        data: JSON.stringify({
+          flg: 'group_add',
+          groupName,
+        }),
+        success: function (res) {
+          groupListUpdate('group-display');
+        },
+      });
     },
   });
-      
-    },
-  });
- 
- 
 }
 
 //グループリスト画面を更新（三列に表示する）
@@ -1328,32 +1329,29 @@ function groupCheckListScreen(button) {
       success: function (res) {
         //表示前に削除
         document.getElementById('all-group-list').innerHTML = '';
-      const element = document.querySelector('.group-list-check-button-div');
-if (element) {
-  element.parentNode.removeChild(element);
-}
-         //グループ「なし」のチェックボックス作成
-         const div_nashi = document.createElement('div');
-          div_nashi.setAttribute('class', `group-list-check-div`);
-        
-         const checkbox_nashi = document.createElement('input');
-          checkbox_nashi.type = 'radio';
-          checkbox_nashi.id = `checkbox-groupなし`;
-          checkbox_nashi.name = 'group';
+        const element = document.querySelector('.group-list-check-button-div');
+        if (element) {
+          element.parentNode.removeChild(element);
+        }
+        //グループ「なし」のチェックボックス作成
+        const div_nashi = document.createElement('div');
+        div_nashi.setAttribute('class', `group-list-check-div`);
 
-          // ラベル要素の作成
-          const checkboxLabel_nashi = document.createElement('label');
-          checkboxLabel_nashi.textContent = 'なし';
-          checkboxLabel_nashi.setAttribute(
-            'for',
-            `checkbox-groupなし`
-          );
+        const checkbox_nashi = document.createElement('input');
+        checkbox_nashi.type = 'radio';
+        checkbox_nashi.id = `checkbox-groupなし`;
+        checkbox_nashi.name = 'group';
 
-          // 要素の追加
-          document.getElementById('all-group-list').appendChild(div_nashi);
-          div_nashi.appendChild(checkbox_nashi);
-          div_nashi.appendChild(checkboxLabel_nashi);
-        
+        // ラベル要素の作成
+        const checkboxLabel_nashi = document.createElement('label');
+        checkboxLabel_nashi.textContent = 'なし';
+        checkboxLabel_nashi.setAttribute('for', `checkbox-groupなし`);
+
+        // 要素の追加
+        document.getElementById('all-group-list').appendChild(div_nashi);
+        div_nashi.appendChild(checkbox_nashi);
+        div_nashi.appendChild(checkboxLabel_nashi);
+
         res.groupResults.forEach((group) => {
           const div = document.createElement('div');
           div.setAttribute('class', `group-list-check-div`);
