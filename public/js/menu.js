@@ -1069,10 +1069,15 @@ const friendListUpdate = () => {
           const button2 = document.createElement('button');
           button2.setAttribute('class', 'friend-delete');
           button2.innerHTML = '×';
+          const realNamep = document.createElement('p');
+          realNamep.setAttribute('class', 'real-name-p');
+          realNamep.innerHTML = `(${friend.user_name})`;
 
           div1.appendChild(p1);
           div1.appendChild(input);
           friendRow.appendChild(div1);
+
+          friendRow.appendChild(realNamep);
 
           div.appendChild(button);
           div.appendChild(button1);
