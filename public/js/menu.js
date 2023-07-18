@@ -947,6 +947,11 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
 document
   .getElementById('friend-search-button')
   .addEventListener('click', () => {
+    if(document.getElementById('idInput').value === document.getElementById('myID').innerHTML){
+     alert('自分自身はフレンドリストに登録できません');
+    }else if(document.getElementById('idInput').value === '') {
+     alert('フレンドリストに追加したい利用者IDを入力してください');
+    }else{    
     const time = currentTimeGet();
     $.ajax({
       url: '/mypage/' + hashedIdGet,
@@ -959,9 +964,8 @@ document
         time,
       }),
       success: function (res) {
-       if(document.getElementById('idInput').value === '') {
-         alert('フレンドリストに追加したい利用者IDを入力してください');
-      }else if (res.msg === 'NG') {
+        
+         if (res.msg === 'NG') {
           alert('その利用者IDのユーザーは存在しません');
         } else if (res.msg === 'already') {
           alert(`${res.userName}さんは既に追加済みです`);
@@ -993,6 +997,7 @@ document
         }
       },
     });
+    }
   });
 
 //フレンドリストのフレンド表示を更新
