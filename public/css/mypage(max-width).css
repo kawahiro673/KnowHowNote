@@ -99,7 +99,7 @@
   .popup-window_friend-add-ans,
   .popup-window_friend-delete-ans,
   .popup-window_friend-delete-q,
-  .popup-window_About-Website{
+  .popup-window_About-Website {
     width: 330px;
     height: 180px;
   }
@@ -113,7 +113,7 @@
   }
   .popup-window_share,
   .popup-window_group-add,
-  .popup-window_group-list{
+  .popup-window_group-list {
     width: 350px;
     height: 330px;
   }
@@ -123,18 +123,23 @@
   }
 
   .popup-body_friend-list,
-  .popup-body_share-history{
-   height: 220px  
+  .popup-body_share-history,
+  .popup-body_profile {
+    height: 220px;
   }
-  .popup-body_share-user{
-    height:290px;
+  .popup-body_share-user {
+    height: 290px;
   }
-  
+
   .popup-body_group-add,
-  .popup-body_group-list{
-    height:260px;
+  .popup-body_group-list {
+    height: 260px;
   }
-  
+
+  .popup-body_group-add {
+    height: 270px;
+  }
+
   .share-input {
     max-width: 300px; /* 適切な値に調整してください */
     height: 22px;
@@ -188,14 +193,17 @@
   }
   #friend-list-div,
   #group-display,
-  #all-group-list{
+  #all-group-list {
     grid-template-columns: repeat(2, 1fr);
   }
-  #friend-list-add-button{
-    margin:10px;
+  #friend-list-add-button {
+    margin: 10px;
   }
   .friend-list-label {
-  width: 48%; /*フレンドリストのタブの折り返しを防ぐ  */
-}
+    width: 48%; /*フレンドリストのタブの折り返しを防ぐ  */
+  }
 
+  .friend-name {
+    font-size: 16px;
+  }
 }
