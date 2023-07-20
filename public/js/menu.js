@@ -1406,7 +1406,7 @@ document
         .forEach(function (button) {
           button.addEventListener('click', function (event) {
             event.preventDefault(); // リンクのデフォルトの動作を無効化
-            console.log(this);
+            console.log('${this.previousElementSibling.innerHTML} の×ボタンです`);
           })
         })
 }
