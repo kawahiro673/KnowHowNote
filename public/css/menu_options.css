@@ -641,6 +641,7 @@ input[type='checkbox']:checked + .gray_b {
   width: calc(33.33% - 10px);
   margin: 5px;
   box-sizing: border-box;
+   display: flex;
 }
 
 .column-inner {
