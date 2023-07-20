@@ -1399,7 +1399,7 @@ function groupCheckListScreen(button) {
 
 //ちょんぼちゃん
   document
-        .querySelectorAll('.group-delete)
+        .querySelectorAll('.group-delete')
         .forEach(function (button) {
           button.addEventListener('click', function (event) {
             event.preventDefault(); // リンクのデフォルトの動作を無効化
