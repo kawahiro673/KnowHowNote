@@ -467,17 +467,17 @@
   font-size: 10px;
 }
 
-.group-delet{
-   padding: 4px 8px;
-  font-size: 8px;
-}
-
 .friend-delete,
 .group-delete{
   background-color: #f5f5f5;
   color: black;
   font-size: larger;
   font-weight: bold;
+}
+
+.group-delete{
+   padding: 4px 8px;
+  font-size: 8px;
 }
 
 .friend-delete:hover,
