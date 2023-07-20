@@ -255,7 +255,7 @@ document.getElementById('friend-list').addEventListener('click', async () => {
             friendName;
         });
       });
-      
+
       //グループリスト表示
       document
         .querySelectorAll('.group-name-change-button')
@@ -274,7 +274,7 @@ document.getElementById('friend-list').addEventListener('click', async () => {
               'group-list-decision-button'
             );
             decisionButton.addEventListener('click', () => {
-               console.log('グループ適用ボタン押下');
+              console.log('グループ適用ボタン押下');
               let extracted;
               const checkboxes = document.querySelectorAll(
                 '.group-list-check-div input[type="radio"]'
@@ -305,11 +305,11 @@ document.getElementById('friend-list').addEventListener('click', async () => {
             });
           });
         });
-      
+
       document
         .getElementById('pop-delete_group-list')
         .addEventListener('click', function (event) {
-           console.log('グループ変更ポップアップ閉じる');
+          console.log('グループ変更ポップアップ閉じる');
 
           event.preventDefault(); // リンクのデフォルトの動作を無効化
           document.getElementById('popup-overlay_group-list').style.display =
@@ -1106,7 +1106,7 @@ function openGroupAddPopup() {
   document.getElementById('popup-overlay_group-add').style.display = 'block';
   groupListUpdate('group-display');
   //await groupDeleteButton();
-  
+
   document
     .getElementById('group-add-button')
     .addEventListener('click', addGroup);
@@ -1175,8 +1175,8 @@ const groupListUpdate = (idElement) => {
         column.classList.add('column');
         column.innerHTML = `<div class="column-inner">${userGroup}</div>`;
         const groupDeleteButton = document.createElement('button');
-        groupDeleteButton.setAttribute('class','group-delete');
-        groupDeleteButton.innerHTML = "×";
+        groupDeleteButton.setAttribute('class', 'group-delete');
+        groupDeleteButton.innerHTML = '×';
         groupDisplay.appendChild(column);
         column.appendChild(groupDeleteButton);
       });
@@ -1364,42 +1364,40 @@ function groupCheckListScreen(button) {
 }
 
 //ちょんぼちゃん
-function groupDeleteButton(){
-document
-        .querySelectorAll('.group-delete')
-        .forEach(function (button) {
-          button.addEventListener('click', function (event) {
-            event.preventDefault(); // リンクのデフォルトの動作を無効化
-           console.log(`${this.previousElementSibling.innerHTML} の×ボタンです`);
-
-          })
-        })
+function groupDeleteButton() {
+  document.querySelectorAll('.group-delete').forEach(function (button) {
+    button.addEventListener('click', function (event) {
+      event.preventDefault(); // リンクのデフォルトの動作を無効化
+      console.log(`${this.previousElementSibling.innerHTML} の×ボタンです`);
+    });
+  });
 }
 
 //フレンドリスト内の、グループのみの更新
-function friendListGroupUpdate(){
-    $.ajax({
-      url: '/mypage/' + hashedIdGet,
-      type: 'POST',
-      dataType: 'Json',
-      contentType: 'application/json',
-      data: JSON.stringify({
-        flg: 'group_get',
-      }),
-      success: function (res) {
+function friendListGroupUpdate() {
+  $.ajax({
+    url: '/mypage/' + hashedIdGet,
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'group_get',
+    }),
+    success: function (res) {
       let elements = document.getElementsByClassName('group-name-span');
 
       for (let i = 0; i < elements.length; i++) {
         const idNumber = elements[i].id.replace('group-name-span', ''); // idから数値部分を抽出
 
         // res.groupResultsの中からidが一致するオブジェクトを探す
-        const matchingGroup = res.groupResults.find(group => group.id === Number(idNumber));
+        const matchingGroup = res.groupResults.find(
+          (group) => group.id === Number(idNumber)
+        );
 
         if (matchingGroup) {
           elements[i].innerHTML = matchingGroup.User_Group; // 一致した場合はinnerHTMLに値を代入
         }
       }
-      }
-    })
+    },
+  });
 }
-                                  

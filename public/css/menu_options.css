@@ -468,20 +468,20 @@
 }
 
 .friend-delete,
-.group-delete{
+.group-delete {
   background-color: #f5f5f5;
   color: black;
   font-size: larger;
   font-weight: bold;
 }
 
-.group-delete{
-   padding: 4px 8px;
+.group-delete {
+  padding: 4px 8px;
   font-size: 16px;
 }
 
 .friend-delete:hover,
-.group-delete:hover{
+.group-delete:hover {
   color: red;
 }
 
@@ -641,7 +641,7 @@ input[type='checkbox']:checked + .gray_b {
   width: calc(33.33% - 10px);
   margin: 5px;
   box-sizing: border-box;
-   display: flex;
+  display: flex;
 }
 
 .column-inner {
