@@ -1141,7 +1141,8 @@ document
 function openGroupAddPopup() {
   document.getElementById('popup-overlay_group-add').style.display = 'block';
   groupListUpdate('group-display');
-
+groupDeleteButton();
+  
   document
     .getElementById('group-add-button')
     .addEventListener('click', addGroup);
@@ -1398,7 +1399,8 @@ function groupCheckListScreen(button) {
 }
 
 //ちょんぼちゃん
-  document
+function groupDeleteButton(){
+document
         .querySelectorAll('.group-delete')
         .forEach(function (button) {
           button.addEventListener('click', function (event) {
@@ -1406,4 +1408,5 @@ function groupCheckListScreen(button) {
             console.log(this);
           })
         })
+}
                                   
