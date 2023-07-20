@@ -1391,8 +1391,8 @@ function friendListGroupUpdate(){
         res.groupResults.forEach((group) => {
            document.ElementsByClassName('.group-name-span')[i] = group.User_Group;
           i++;
-        });
-          }});
+        });        
       }
+    })
 }
                                   
