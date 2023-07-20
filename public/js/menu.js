@@ -1387,11 +1387,12 @@ function friendListGroupUpdate(){
         flg: 'group_get',
       }),
       success: function (res) {
-        let i = 0  
-        res.groupResults.forEach((group) => {
-          document.getElementsByClassName('group-name-span')[i].innerHTML = group.User_Group;
-          i++;
-        });        
+      let elements = document.getElementsByClassName('group-name-span');
+  res.groupResults.forEach((group, i) => {
+    if (i < elements.length) {
+      elements[i].innerHTML = group.User_Group;
+    }
+  }); 
       }
     })
 }
