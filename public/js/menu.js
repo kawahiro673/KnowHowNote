@@ -1141,7 +1141,7 @@ document
 function openGroupAddPopup() {
   document.getElementById('popup-overlay_group-add').style.display = 'block';
   groupListUpdate('group-display');
-groupDeleteButton();
+  //await groupDeleteButton();
   
   document
     .getElementById('group-add-button')
@@ -1216,6 +1216,7 @@ const groupListUpdate = (idElement) => {
         groupDisplay.appendChild(column);
         column.appendChild(groupDeleteButton);
       });
+      groupDeleteButton();
     },
   });
 };
