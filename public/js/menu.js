@@ -298,7 +298,7 @@ document.getElementById('friend-list').addEventListener('click', async () => {
                   document.getElementById(
                     'popup-overlay_group-list'
                   ).style.display = 'none';
-              //     friendListUpdate();
+                   friendListUpdate();
               //   },
               // });
             });
