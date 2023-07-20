@@ -1389,7 +1389,7 @@ function friendListGroupUpdate(){
       success: function (res) {
         let i = 0  
         res.groupResults.forEach((group) => {
-           document.ElementsByClassName('.group-name-span')[i] = group.User_Group;
+          document.getElementsByClassName('group-name-span')[i].innerHTML = group.User_Group;
           i++;
         });        
       }
