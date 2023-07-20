@@ -1211,6 +1211,7 @@ const groupListUpdate = (idElement) => {
         column.innerHTML = `<div class="column-inner">${userGroup}</div>`;
         const groupDeleteButton = document.createElement('button');
         groupDeleteButton.setAttribute('class','group-delete');
+        groupDeleteButton.innerHTML = "×";
         groupDisplay.appendChild(column);
         column.appendChild(groupDeleteButton);
       });
