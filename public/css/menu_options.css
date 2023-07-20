@@ -462,10 +462,14 @@
 
 .friend-change-name,
 .friend-delete,
-.group-delete,
 .friend-change-name-button {
   padding: 6px 12px;
   font-size: 10px;
+}
+
+.group-delet{
+   padding: 4px 8px;
+  font-size: 8px;
 }
 
 .friend-delete,
