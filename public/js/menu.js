@@ -275,32 +275,33 @@ document.getElementById('friend-list').addEventListener('click', async () => {
             );
             decisionButton.addEventListener('click', () => {
                console.log('グループ適用ボタン押下');
-              // let extracted;
-              // const checkboxes = document.querySelectorAll(
-              //   '.group-list-check-div input[type="radio"]'
-              // );
-              // for (let i = 0; i < checkboxes.length; i++) {
-              //   if (checkboxes[i].checked) {
-              //     extracted = checkboxes[i].id.replace('checkbox-group', '');
-              //   }
-              // }
-              // $.ajax({
-              //   url: '/mypage/' + hashedIdGet,
-              //   type: 'POST',
-              //   dataType: 'Json',
-              //   contentType: 'application/json',
-              //   data: JSON.stringify({
-              //     flg: 'group_update',
-              //     id,
-              //     group: extracted,
-              //   }),
-              //   success: function (res) {
+              let extracted;
+              const checkboxes = document.querySelectorAll(
+                '.group-list-check-div input[type="radio"]'
+              );
+              for (let i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                  extracted = checkboxes[i].id.replace('checkbox-group', '');
+                }
+              }
+              $.ajax({
+                url: '/mypage/' + hashedIdGet,
+                type: 'POST',
+                dataType: 'Json',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                  flg: 'group_update',
+                  id,
+                  group: extracted,
+                }),
+                success: function (res) {
                   document.getElementById(
                     'popup-overlay_group-list'
                   ).style.display = 'none';
-                   friendListUpdate();
-              //   },
-              // });
+                  // friendListUpdate();
+                  friendListGroupUpdate();
+                },
+              });
             });
           });
         });
@@ -1373,5 +1374,24 @@ document
 
           })
         })
+}
+
+//フレンドリスト内の、グループのみの更新
+function friendListGroupUpdate(){
+    $.ajax({
+      url: '/mypage/' + hashedIdGet,
+      type: 'POST',
+      dataType: 'Json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        flg: 'group_get',
+      }),
+      success: function (res) {
+        let i = 0  
+        res.groupResults.forEach((group) => {
+           document.ElementsByClassName('.group-name-span')[i] = group.User_Group;
+          i++;
+          }})
+      }
 }
                                   
