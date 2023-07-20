@@ -227,6 +227,7 @@ document
 //フレンドリストのポップアップ出力
 document.getElementById('friend-list').addEventListener('click', async () => {
   document.getElementById('popup-overlay_friend-list').style.display = 'block';
+  console.log('フレンドリスト出力');
 
   $.ajax({
     url: '/mypage/' + hashedIdGet,
@@ -304,6 +305,8 @@ document.getElementById('friend-list').addEventListener('click', async () => {
         .forEach(function (button) {
           button.addEventListener('click', async function (event) {
             event.preventDefault(); // リンクのデフォルトの動作を無効化
+            console.log('グループ変更ボタン押下');
+
             document.getElementById('popup-overlay_group-list').style.display =
               'block';
             await groupCheckListScreen(button);
@@ -314,6 +317,7 @@ document.getElementById('friend-list').addEventListener('click', async () => {
               'group-list-decision-button'
             );
             decisionButton.addEventListener('click', () => {
+               console.log('グループ適用ボタン押下');
               let extracted;
               const checkboxes = document.querySelectorAll(
                 '.group-list-check-div input[type="radio"]'
@@ -347,6 +351,8 @@ document.getElementById('friend-list').addEventListener('click', async () => {
       document
         .getElementById('pop-delete_group-list')
         .addEventListener('click', function (event) {
+           console.log('グループ変更ポップアップ閉じる');
+
           event.preventDefault(); // リンクのデフォルトの動作を無効化
           document.getElementById('popup-overlay_group-list').style.display =
             'none';
