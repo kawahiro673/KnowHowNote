@@ -407,6 +407,7 @@
 #friend-search-button,
 .friend-change-name,
 .friend-delete,
+.group-delete,
 #friend-delete-q-button,
 #friend-delete-q-cancel,
 .friend-change-name-button,
@@ -461,19 +462,22 @@
 
 .friend-change-name,
 .friend-delete,
+.group-delete,
 .friend-change-name-button {
   padding: 6px 12px;
   font-size: 10px;
 }
 
-.friend-delete {
+.friend-delete,
+.group-delete{
   background-color: #f5f5f5;
   color: black;
   font-size: larger;
   font-weight: bold;
 }
 
-.friend-delete:hover {
+.friend-delete:hover,
+.group-delete:hover{
   color: red;
 }
 
