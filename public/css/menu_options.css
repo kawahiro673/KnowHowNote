@@ -477,7 +477,7 @@
 
 .group-delete{
    padding: 4px 8px;
-  font-size: 8px;
+  font-size: 16px;
 }
 
 .friend-delete:hover,
@@ -648,7 +648,7 @@ input[type='checkbox']:checked + .gray_b {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 100%;
+  max-width: calc(100% - 25px);
 }
 
 #all-group-list {
