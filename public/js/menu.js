@@ -1209,7 +1209,10 @@ const groupListUpdate = (idElement) => {
         let column = document.createElement('div');
         column.classList.add('column');
         column.innerHTML = `<div class="column-inner">${userGroup}</div>`;
+        const groupDeleteButton = document.createElement('button');
+        groupDeleteButton.setAttribute('class','group-delete');
         groupDisplay.appendChild(column);
+        column.appendChild(groupDeleteButton);
       });
     },
   });
