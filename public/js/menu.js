@@ -389,6 +389,8 @@ document
 document
   .getElementById('friend-delete-q-button')
   .addEventListener('click', (e) => {
+    // const str = 
+    // const result = str.replace(/[()]/g, '');
     friendListDelete(
       document.getElementById('friend-delete-q-user').textContent
     );
@@ -1406,6 +1408,8 @@ function friendListGroupUpdate() {
 function friendListDeleteCross(event) {
   console.log('削除ボタン押下');
   const friendName = event.target.closest('.friend-Box').querySelector('.friend-name').textContent;
+  console.log(event.target);
   document.getElementById('popup-overlay_friend-delete-q').style.display = 'block';
   document.getElementById('friend-delete-q-user').innerHTML = friendName;
+  //document.getElementBtId('friend-delete-q-real-user').innerHTML =
 }
