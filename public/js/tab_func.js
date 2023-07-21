@@ -225,8 +225,7 @@ export const shareNoteSendFunc = (id, title) => {
     document.getElementsByClassName('share-message')[0].value;
   //配列の文字列を全て数値へ
   const numArray = shareUserValues.map((str) => parseInt(str));
-  console.log(shareUserValues);
-  console.log(shareGroupValues);
+ 
   //inputタブに自分の名前が含まれていない場合のみ実行
   if (inputValue !== '') {
     $.ajax({
@@ -538,9 +537,6 @@ document
       const shareGroupValue = val.id.replace('checkbox', '');
       shareGroupValues.push(shareGroupValue);
     });
-
-    console.log(shareUserValues);
-    console.log(shareGroupValues);
 
     document.getElementsByClassName('share-input')[0].value =
       shareUserNames.join(', ');
