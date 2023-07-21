@@ -1394,7 +1394,7 @@ function friendListGroupUpdate() {
         const matchingGroup = res.friend.find(
           (group) => {
             console.log(group.id ,Number(idNumber));
-            group.id === Number(idNumber)
+           return group.id === Number(idNumber)
           }
         );
         
