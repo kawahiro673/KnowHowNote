@@ -241,20 +241,20 @@ document.getElementById('friend-list').addEventListener('click', async () => {
       document.getElementById('myID').innerHTML = res.user.Authentication_ID;
       await friendListUpdate();
       //フレンドをフレンドリストから削除
-      const deleteButtons = document.querySelectorAll('.friend-delete');
-      deleteButtons.forEach((deleteButton) => {
-        deleteButton.addEventListener('click', (event) => {
-          console.log('削除ボタン押下');
-          const friendName = event.target
-            .closest('.friend-Box')
-            .querySelector('.friend-name').textContent;
-          document.getElementById(
-            'popup-overlay_friend-delete-q'
-          ).style.display = 'block';
-          document.getElementById('friend-delete-q-user').innerHTML =
-            friendName;
-        });
-      });
+      // const deleteButtons = document.querySelectorAll('.friend-delete');
+      // deleteButtons.forEach((deleteButton) => {
+      //   deleteButton.addEventListener('click', (event) => {
+      //     console.log('削除ボタン押下');
+      //     const friendName = event.target
+      //       .closest('.friend-Box')
+      //       .querySelector('.friend-name').textContent;
+      //     document.getElementById(
+      //       'popup-overlay_friend-delete-q'
+      //     ).style.display = 'block';
+      //     document.getElementById('friend-delete-q-user').innerHTML =
+      //       friendName;
+      //   });
+      // });
 
       //グループリスト表示
       document
@@ -1035,6 +1035,7 @@ const friendListUpdate = () => {
           const button2 = document.createElement('button');
           button2.setAttribute('class', 'friend-delete');
           button2.innerHTML = '×';
+          button2.addEventListener('click', friendListDeleteCross);
           const realNamep = document.createElement('p');
           realNamep.setAttribute('class', 'real-name-p');
           realNamep.innerHTML = `(${friend.user_name})`;
@@ -1399,4 +1400,11 @@ function friendListGroupUpdate() {
       }
     },
   });
+}
+
+function friendListDeleteCross(event) {
+  console.log('削除ボタン押下');
+  const friendName = event.target.closest('.friend-Box').querySelector('.friend-name').textContent;
+  document.getElementById('popup-overlay_friend-delete-q').style.display = 'block';
+  document.getElementById('friend-delete-q-user').innerHTML = friendName;
 }
