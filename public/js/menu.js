@@ -1411,5 +1411,5 @@ function friendListDeleteCross(event) {
   console.log(friendRealName);
   document.getElementById('popup-overlay_friend-delete-q').style.display = 'block';
   document.getElementById('friend-delete-q-user').innerHTML = friendName;
-  document.getElementBtId('friend-delete-q-real-user').innerHTML = friendRealName;
+  document.getElementById('friend-delete-q-real-user').innerHTML = friendRealName;
 }
