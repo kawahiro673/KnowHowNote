@@ -389,7 +389,7 @@ document
 document
   .getElementById('friend-delete-q-button')
   .addEventListener('click', (e) => {
-    const realName = document.getElementBtId('friend-delete-q-real-user').textContent;
+    const realName = document.getElementById('friend-delete-q-real-user').textContent;
     const result = realName.replace(/[()]/g, '');
     console.log(result)
     friendListDelete(result);
