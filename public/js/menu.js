@@ -402,6 +402,7 @@ document
   });
 
 const friendListDelete = (name) => {
+  console.log('やあ-削除したよ ',name);
   document.getElementById('popup-overlay_friend-delete-q').style.display =
     'none';
   document.getElementById('popup-overlay_friend-delete-ans').style.display =
