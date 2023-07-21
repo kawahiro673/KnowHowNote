@@ -1384,18 +1384,20 @@ function friendListNameChange(event) {
   });
 }
 
+//ホバーの際に赤文字
 function groupListHoverRedFunc() {
-  //ホバーの際に赤文字
-  const groupDelete = document.querySelector('.group-delete');
-  const columnInner = document.querySelector('.column-inner');
+  const groupDeletes = document.querySelectorAll('.group-delete');
+  const columnInners = document.querySelectorAll('.column-inner');
 
-  groupDelete.addEventListener('mouseover', () => {
-    groupDelete.style.color = 'red';
-    columnInner.style.color = 'red';
-  });
+  groupDeletes.forEach((groupDelete, index) => {
+    groupDelete.addEventListener('mouseover', () => {
+      groupDelete.style.color = 'red';
+      columnInners[index].style.color = 'red';
+    });
 
-  groupDelete.addEventListener('mouseout', () => {
-    groupDelete.style.color = ''; // デフォルトの色に戻す
-    columnInner.style.color = ''; // デフォルトの色に戻す
+    groupDelete.addEventListener('mouseout', () => {
+      groupDelete.style.color = ''; // デフォルトの色に戻す
+      columnInners[index].style.color = ''; // デフォルトの色に戻す
+    });
   });
 }
