@@ -227,7 +227,6 @@ document
 //フレンドリストのポップアップ出力
 document.getElementById('friend-list').addEventListener('click', async () => {
   document.getElementById('popup-overlay_friend-list').style.display = 'block';
-  console.log('フレンドリスト出力');
 
   $.ajax({
     url: '/mypage/' + hashedIdGet,
@@ -240,140 +239,6 @@ document.getElementById('friend-list').addEventListener('click', async () => {
     success: async function (res) {
       document.getElementById('myID').innerHTML = res.user.Authentication_ID;
       await friendListUpdate();
-      //フレンドをフレンドリストから削除
-      // const deleteButtons = document.querySelectorAll('.friend-delete');
-      // deleteButtons.forEach((deleteButton) => {
-      //   deleteButton.addEventListener('click', (event) => {
-      //     console.log('削除ボタン押下');
-      //     const friendName = event.target
-      //       .closest('.friend-Box')
-      //       .querySelector('.friend-name').textContent;
-      //     document.getElementById(
-      //       'popup-overlay_friend-delete-q'
-      //     ).style.display = 'block';
-      //     document.getElementById('friend-delete-q-user').innerHTML =
-      //       friendName;
-      //   });
-      // });
-
-      //グループリスト表示
-      // document
-      //   .querySelectorAll('.group-name-change-button')
-      //   .forEach(function (button) {
-      //     button.addEventListener('click', async function (event) {
-      //       event.preventDefault(); // リンクのデフォルトの動作を無効化
-      //       console.log('グループ変更ボタン押下');
-
-      //       document.getElementById('popup-overlay_group-list').style.display =
-      //         'block';
-      //       await groupCheckListScreen(button);
-      //       const id = button.id.match(/\d+/)[0];
-
-      //       // ボタンのクリックイベントリスナー内で処理を行う
-      //       const decisionButton = document.getElementById(
-      //         'group-list-decision-button'
-      //       );
-      //       decisionButton.addEventListener('click', () => {
-      //         console.log('グループ適用ボタン押下');
-      //         let extracted;
-      //         const checkboxes = document.querySelectorAll(
-      //           '.group-list-check-div input[type="radio"]'
-      //         );
-      //         for (let i = 0; i < checkboxes.length; i++) {
-      //           if (checkboxes[i].checked) {
-      //             extracted = checkboxes[i].id.replace('checkbox-group', '');
-      //           }
-      //         }
-      //         $.ajax({
-      //           url: '/mypage/' + hashedIdGet,
-      //           type: 'POST',
-      //           dataType: 'Json',
-      //           contentType: 'application/json',
-      //           data: JSON.stringify({
-      //             flg: 'group_update',
-      //             id,
-      //             group: extracted,
-      //           }),
-      //           success: function (res) {
-      //             document.getElementById(
-      //               'popup-overlay_group-list'
-      //             ).style.display = 'none';
-      //             // friendListUpdate();
-      //             friendListGroupUpdate();
-      //           },
-      //         });
-      //       });
-      //     });
-      //   });
-
-      document
-        .getElementById('pop-delete_group-list')
-        .addEventListener('click', function (event) {
-          console.log('グループ変更ポップアップ閉じる');
-
-          event.preventDefault(); // リンクのデフォルトの動作を無効化
-          document.getElementById('popup-overlay_group-list').style.display =
-            'none';
-        });
-
-      //フレンドの名前を変更
-      // const changeNameButtons = document.querySelectorAll(
-      //   '.friend-change-name'
-      // );
-      // changeNameButtons.forEach((changeNameButton) => {
-      //   changeNameButton.addEventListener('click', () => {
-      //     console.log('名前変更ボタン押下');
-      //     const friendBox = changeNameButton.closest('.friend-Box');
-      //     const friendName = friendBox.querySelector('.friend-name');
-      //     const friendNameInput = friendBox.querySelector('.friend-name-input');
-      //     const applyButton = friendBox.querySelector(
-      //       '.friend-change-name-button[id^="friend-change-button"]'
-      //     );
-      //     const changeButton = event.target
-      //       .closest('.friend-Box')
-      //       .querySelector('.friend-change-name');
-
-      //     let name;
-
-      //     friendNameInput.style.display = 'block';
-      //     friendNameInput.value = friendName.innerHTML;
-      //     friendName.style.display = 'none';
-      //     applyButton.style.display = 'block';
-      //     changeButton.style.display = 'none';
-      //     name = friendName.innerHTML;
-
-      //     // 入力値が変更された時の処理
-      //     friendNameInput.addEventListener('input', () => {
-      //       name = friendNameInput.value;
-      //     });
-
-      //     //名前変更の[適用]ボタン押下
-      //     applyButton.addEventListener('click', () => {
-      //       const buttonId = applyButton.getAttribute('id');
-      //       const id = buttonId.match(/\d+/)[0];
-      //       friendNameInput.value = name;
-      //       console.log('名前変更の適用ボタン押下');
-      //       $.ajax({
-      //         url: '/mypage/' + hashedIdGet,
-      //         type: 'POST',
-      //         dataType: 'Json',
-      //         contentType: 'application/json',
-      //         data: JSON.stringify({
-      //           flg: 'friend-list-name-change',
-      //           id,
-      //           name,
-      //         }),
-      //         success: function (res) {
-      //           friendNameInput.style.display = 'none';
-      //           applyButton.style.display = 'none';
-      //           friendName.style.display = 'block';
-      //           friendName.innerHTML = name;
-      //           changeButton.style.display = 'block';
-      //         },
-      //       });
-      //     });
-      //   });
-      // });
     },
   });
 });
@@ -385,6 +250,14 @@ document
     document.getElementById('popup-overlay_friend-delete-q').style.display =
       'none';
   });
+
+document
+        .getElementById('pop-delete_group-list')
+        .addEventListener('click', function (event) {
+          event.preventDefault(); // リンクのデフォルトの動作を無効化
+          document.getElementById('popup-overlay_group-list').style.display =
+            'none';
+        });
 
 document
   .getElementById('friend-delete-q-button')
@@ -1109,7 +982,6 @@ document
 function openGroupAddPopup() {
   document.getElementById('popup-overlay_group-add').style.display = 'block';
   groupListUpdate('group-display');
-  //await groupDeleteButton();
 
   document
     .getElementById('group-add-button')
@@ -1128,7 +1000,6 @@ function addGroup() {
       flg: 'group_get',
     }),
     success: function (res) {
-      console.log(res.groupResults);
       const groupExistFlg = res.groupResults.find(
         (result) => result.User_Group === groupName
       );
@@ -1178,11 +1049,11 @@ const groupListUpdate = (idElement) => {
         let column = document.createElement('div');
         column.classList.add('column');
         column.innerHTML = `<div class="column-inner">${userGroup}</div>`;
-        const groupDeleteButton = document.createElement('button');
-        groupDeleteButton.setAttribute('class', 'group-delete');
-        groupDeleteButton.innerHTML = '×';
+        const groupDelete = document.createElement('button');
+        groupDelete.setAttribute('class', 'group-delete');
+        groupDelete.innerHTML = '×';
         groupDisplay.appendChild(column);
-        column.appendChild(groupDeleteButton);
+        column.appendChild(groupDelete);
       });
       groupDeleteButton();
     },
@@ -1367,15 +1238,15 @@ function groupCheckListScreen(button) {
   });
 }
 
-//ちょんぼちゃん
+//グループリストからグループ削除
 function groupDeleteButton() {
   document.querySelectorAll('.group-delete').forEach(function (button) {
     button.addEventListener('click', function (event) {
       event.preventDefault(); // リンクのデフォルトの動作を無効化
-      console.log(`${this.previousElementSibling.innerHTML} の×ボタンです`);
     });
   });
 }
+
 
 //フレンドリスト内の、グループのみの更新
 function friendListGroupUpdate() {
@@ -1392,11 +1263,9 @@ function friendListGroupUpdate() {
 
       for (let i = 0; i < elements.length; i++) {
         const idNumber = elements[i].id.replace('group-name-span', ''); // idから数値部分を抽出
-        
         // res.friendの中からidが一致するオブジェクトを探す
         const matchingGroup = res.friend.find(group => group.id === Number(idNumber));
-        
-        console.log(matchingGroup);
+
         if (matchingGroup) {
           elements[i].innerHTML = matchingGroup.User_Group; // 一致した場合はinnerHTMLに値を代入
         }
@@ -1405,11 +1274,8 @@ function friendListGroupUpdate() {
   });
 }
 
-async function friendListGroupChange(event){
- 
+async function friendListGroupChange(event){ 
             event.preventDefault(); // リンクのデフォルトの動作を無効化
-            console.log('グループ変更ボタン押下');
-            console.log(event.target);
             document.getElementById('popup-overlay_group-list').style.display =
               'block';
             await groupCheckListScreen(event.target);
@@ -1420,7 +1286,6 @@ async function friendListGroupChange(event){
               'group-list-decision-button'
             );
             decisionButton.addEventListener('click', () => {
-              console.log('グループ適用ボタン押下');
               let extracted;
               const checkboxes = document.querySelectorAll(
                 '.group-list-check-div input[type="radio"]'
@@ -1459,10 +1324,9 @@ function friendListDeleteCross(event) {
   document.getElementById('friend-delete-q-real-user').innerHTML = friendRealName;
 }
 
+
 function friendListNameChange(event){
-  console.log(event.target.closest('.friend-Box').querySelector('.friend-change-name'));
           const changeNameButton = event.target.closest('.friend-Box').querySelector('.friend-change-name');
-          console.log('名前変更ボタン押下');
           const friendBox = changeNameButton.closest('.friend-Box');
           const friendName = friendBox.querySelector('.friend-name');
           const friendNameInput = friendBox.querySelector('.friend-name-input');
@@ -1492,7 +1356,7 @@ function friendListNameChange(event){
             const buttonId = applyButton.getAttribute('id');
             const id = buttonId.match(/\d+/)[0];
             friendNameInput.value = name;
-            console.log('名前変更の適用ボタン押下');
+       
             $.ajax({
               url: '/mypage/' + hashedIdGet,
               type: 'POST',
