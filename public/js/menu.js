@@ -1460,6 +1460,8 @@ function friendListDeleteCross(event) {
 }
 
 function friendListNameChange(event){
+  console.log(event);
+          const changeNameButton = event;
           console.log('名前変更ボタン押下');
           const friendBox = changeNameButton.closest('.friend-Box');
           const friendName = friendBox.querySelector('.friend-name');
