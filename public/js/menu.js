@@ -1388,14 +1388,16 @@ function friendListGroupUpdate() {
 
       for (let i = 0; i < elements.length; i++) {
         const idNumber = elements[i].id.replace('group-name-span', ''); // idから数値部分を抽出
-
+console.log(idNumber);
         // res.groupResultsの中からidが一致するオブジェクトを探す
         const matchingGroup = res.groupResults.find(
           (group) => group.id === Number(idNumber)
         );
-
+console.log(matchingGroup);
         if (matchingGroup) {
           elements[i].innerHTML = matchingGroup.User_Group; // 一致した場合はinnerHTMLに値を代入
+          console.log(matchingGroup.User_Group);
+          console.log(elements[i]);
         }
       }
     },
