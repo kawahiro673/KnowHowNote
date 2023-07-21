@@ -982,7 +982,20 @@ document
 function openGroupAddPopup() {
   document.getElementById('popup-overlay_group-add').style.display = 'block';
   groupListUpdate('group-display');
+  //ホバーの際に赤文字
+  const groupDelete = document.querySelector(".group-delete");
+  const columnInner = document.querySelector(".column-inner");
 
+  groupDelete.addEventListener("mouseover", () => {
+    groupDelete.style.color = "red";
+    columnInner.style.color = "red";
+  });
+
+  groupDelete.addEventListener("mouseout", () => {
+    groupDelete.style.color = ""; // デフォルトの色に戻す
+    columnInner.style.color = ""; // デフォルトの色に戻す
+  });
+  
   document
     .getElementById('group-add-button')
     .addEventListener('click', addGroup);
