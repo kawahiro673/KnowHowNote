@@ -1404,7 +1404,7 @@ function friendListGroupUpdate() {
   });
 }
 
-function friendListGroupChange(event){
+async function friendListGroupChange(event){
  
             event.preventDefault(); // リンクのデフォルトの動作を無効化
             console.log('グループ変更ボタン押下');
