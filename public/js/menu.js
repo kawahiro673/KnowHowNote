@@ -1391,7 +1391,12 @@ function friendListGroupUpdate() {
 console.log(idNumber);
         // res.groupResultsの中からidが一致するオブジェクトを探す
         const matchingGroup = res.groupResults.find(
-          (group) => group.id === Number(idNumber)
+          (group) => {
+          console.log(group);
+            console.log(typeof group.id);
+            console.log(typeof Number(idNumber));
+            group.id === Number(idNumber)
+          }
         );
 console.log(matchingGroup);
         if (matchingGroup) {
