@@ -683,7 +683,9 @@ input[type='checkbox']:checked + .gray_b {
   margin: 10px;
 }
 
-.real-name-p {
+.real-name-p,
+.friend-delete-p-real-user{
   margin: 0;
   color: silver;
 }
+
