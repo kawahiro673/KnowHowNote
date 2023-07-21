@@ -257,54 +257,54 @@ document.getElementById('friend-list').addEventListener('click', async () => {
       // });
 
       //グループリスト表示
-      document
-        .querySelectorAll('.group-name-change-button')
-        .forEach(function (button) {
-          button.addEventListener('click', async function (event) {
-            event.preventDefault(); // リンクのデフォルトの動作を無効化
-            console.log('グループ変更ボタン押下');
+      // document
+      //   .querySelectorAll('.group-name-change-button')
+      //   .forEach(function (button) {
+      //     button.addEventListener('click', async function (event) {
+      //       event.preventDefault(); // リンクのデフォルトの動作を無効化
+      //       console.log('グループ変更ボタン押下');
 
-            document.getElementById('popup-overlay_group-list').style.display =
-              'block';
-            await groupCheckListScreen(button);
-            const id = button.id.match(/\d+/)[0];
+      //       document.getElementById('popup-overlay_group-list').style.display =
+      //         'block';
+      //       await groupCheckListScreen(button);
+      //       const id = button.id.match(/\d+/)[0];
 
-            // ボタンのクリックイベントリスナー内で処理を行う
-            const decisionButton = document.getElementById(
-              'group-list-decision-button'
-            );
-            decisionButton.addEventListener('click', () => {
-              console.log('グループ適用ボタン押下');
-              let extracted;
-              const checkboxes = document.querySelectorAll(
-                '.group-list-check-div input[type="radio"]'
-              );
-              for (let i = 0; i < checkboxes.length; i++) {
-                if (checkboxes[i].checked) {
-                  extracted = checkboxes[i].id.replace('checkbox-group', '');
-                }
-              }
-              $.ajax({
-                url: '/mypage/' + hashedIdGet,
-                type: 'POST',
-                dataType: 'Json',
-                contentType: 'application/json',
-                data: JSON.stringify({
-                  flg: 'group_update',
-                  id,
-                  group: extracted,
-                }),
-                success: function (res) {
-                  document.getElementById(
-                    'popup-overlay_group-list'
-                  ).style.display = 'none';
-                  // friendListUpdate();
-                  friendListGroupUpdate();
-                },
-              });
-            });
-          });
-        });
+      //       // ボタンのクリックイベントリスナー内で処理を行う
+      //       const decisionButton = document.getElementById(
+      //         'group-list-decision-button'
+      //       );
+      //       decisionButton.addEventListener('click', () => {
+      //         console.log('グループ適用ボタン押下');
+      //         let extracted;
+      //         const checkboxes = document.querySelectorAll(
+      //           '.group-list-check-div input[type="radio"]'
+      //         );
+      //         for (let i = 0; i < checkboxes.length; i++) {
+      //           if (checkboxes[i].checked) {
+      //             extracted = checkboxes[i].id.replace('checkbox-group', '');
+      //           }
+      //         }
+      //         $.ajax({
+      //           url: '/mypage/' + hashedIdGet,
+      //           type: 'POST',
+      //           dataType: 'Json',
+      //           contentType: 'application/json',
+      //           data: JSON.stringify({
+      //             flg: 'group_update',
+      //             id,
+      //             group: extracted,
+      //           }),
+      //           success: function (res) {
+      //             document.getElementById(
+      //               'popup-overlay_group-list'
+      //             ).style.display = 'none';
+      //             // friendListUpdate();
+      //             friendListGroupUpdate();
+      //           },
+      //         });
+      //       });
+      //     });
+      //   });
 
       document
         .getElementById('pop-delete_group-list')
@@ -391,7 +391,6 @@ document
   .addEventListener('click', (e) => {
     const realName = document.getElementById('friend-delete-q-real-user').textContent;
     const result = realName.replace(/[()]/g, '');
-    console.log(result)
     friendListDelete(result);
   });
 
@@ -403,7 +402,6 @@ document
   });
 
 const friendListDelete = (name) => {
-  console.log('やあ-削除したよ ',name);
   document.getElementById('popup-overlay_friend-delete-q').style.display =
     'none';
   document.getElementById('popup-overlay_friend-delete-ans').style.display =
@@ -1017,6 +1015,8 @@ const friendListUpdate = () => {
             `group-name-change-button${friend.id}`
           );
           groupButton.innerHTML = '変更';
+          groupButton.addEventListener('click',friendListGroupChange);
+        
           const p2 = document.createElement('p');
           p2.setAttribute('class', 'friend-login');
           p2.innerHTML = '最終ログイン日時: ';
@@ -1404,11 +1404,55 @@ function friendListGroupUpdate() {
   });
 }
 
+function friendListGroupChange(event){
+ 
+            event.preventDefault(); // リンクのデフォルトの動作を無効化
+            console.log('グループ変更ボタン押下');
+            console.log(event.target);
+            document.getElementById('popup-overlay_group-list').style.display =
+              'block';
+            await groupCheckListScreen(event.target);
+            const id = event.target.id.match(/\d+/)[0];
+
+            // ボタンのクリックイベントリスナー内で処理を行う
+            const decisionButton = document.getElementById(
+              'group-list-decision-button'
+            );
+            decisionButton.addEventListener('click', () => {
+              console.log('グループ適用ボタン押下');
+              let extracted;
+              const checkboxes = document.querySelectorAll(
+                '.group-list-check-div input[type="radio"]'
+              );
+              for (let i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                  extracted = checkboxes[i].id.replace('checkbox-group', '');
+                }
+              }
+              $.ajax({
+                url: '/mypage/' + hashedIdGet,
+                type: 'POST',
+                dataType: 'Json',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                  flg: 'group_update',
+                  id,
+                  group: extracted,
+                }),
+                success: function (res) {
+                  document.getElementById(
+                    'popup-overlay_group-list'
+                  ).style.display = 'none';
+                  // friendListUpdate();
+                   friendListGroupUpdate();
+                },
+              });
+        });
+}
+
 function friendListDeleteCross(event) {
-  console.log('削除ボタン押下');
   const friendName = event.target.closest('.friend-Box').querySelector('.friend-name').textContent; 
   const friendRealName =  event.target.closest('.friend-Box').querySelector('.real-name-p').textContent;
-  console.log(friendRealName);
   document.getElementById('popup-overlay_friend-delete-q').style.display = 'block';
   document.getElementById('friend-delete-q-user').innerHTML = friendName;
   document.getElementById('friend-delete-q-real-user').innerHTML = friendRealName;
