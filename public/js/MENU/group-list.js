@@ -1,5 +1,5 @@
 //MENUのフレンドリスト → グループリスト等の実装
-import { hashedIdGet } from './main.js';
+import { hashedIdGet } from '../main.js';
 
 export const openGroupAddPopup = () => {
   document.getElementById('popup-overlay_group-add').style.display = 'block';

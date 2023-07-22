@@ -15,7 +15,10 @@ import { labelContextmenu } from './contextmenu/label_contextmenu.js';
 import { jQueryUIOptionsFunc } from './jQueryUI_func.js';
 import { orderGet, passGet } from './stringUtils.js';
 import { expandableAdaptation } from './expandableOptions.js';
-import { backgroundColorSet, backgroundColorDelete } from './menu.js';
+import {
+  backgroundColorSet,
+  backgroundColorDelete,
+} from './MENU/my-profile.js';
 import {
   enableElements,
   allowDragAndDropOfFiles,
