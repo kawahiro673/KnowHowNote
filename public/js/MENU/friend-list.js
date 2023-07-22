@@ -1,7 +1,7 @@
 //MENUボタンのフレンドリストの実装
 
 import { hashedIdGet } from '../main.js';
-import { friendListGroupChange } from '../group-list.js';
+import { friendListGroupChange } from './group-list.js';
 
 export const friendListDelete = (name) => {
   document.getElementById('popup-overlay_friend-delete-q').style.display =
