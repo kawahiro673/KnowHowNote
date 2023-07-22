@@ -1,4 +1,5 @@
 //MENUの個人設定の実装
+import { hashedIdGet } from '../main.js';
 
 export const backgroundColorSet = (color) => {
   document
