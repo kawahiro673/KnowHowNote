@@ -303,6 +303,13 @@ document
 document
   .getElementById('no-button-group-list-delete')
   .addEventListener('click', (e) => {
+    document.getElementById('popup-overlay_group-list-delete').style.display =
+      'none';
+  });
+
+document
+  .getElementById('pop-delete_group-list-delete')
+  .addEventListener('click', (e) => {
     e.preventDefault();
     document.getElementById('popup-overlay_group-list-delete').style.display =
       'none';
