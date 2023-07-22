@@ -1,37 +1,37 @@
 //MENUのフレンドリスト → グループリスト等の実装
 import { hashedIdGet } from './main.js';
 
-document
-  .getElementById('friend-list-group-add-button')
-  .addEventListener('click', openGroupAddPopup);
+// document
+//   .getElementById('friend-list-group-add-button')
+//   .addEventListener('click', openGroupAddPopup);
 
-document
-  .getElementById('pop-delete_group-list')
-  .addEventListener('click', function (event) {
-    event.preventDefault(); // リンクのデフォルトの動作を無効化
-    document.getElementById('popup-overlay_group-list').style.display = 'none';
-  });
+// document
+//   .getElementById('pop-delete_group-list')
+//   .addEventListener('click', function (event) {
+//     event.preventDefault(); // リンクのデフォルトの動作を無効化
+//     document.getElementById('popup-overlay_group-list').style.display = 'none';
+//   });
 
-document
-  .getElementById('pop-delete_group-add')
-  .addEventListener('click', (e) => {
-    e.preventDefault(); // リンクのデフォルトの動作を無効化
-    document.getElementById('popup-overlay_group-add').style.display = 'none';
-    document
-      .getElementById('group-add-button')
-      .removeEventListener('click', addGroup);
-  });
+// document
+//   .getElementById('pop-delete_group-add')
+//   .addEventListener('click', (e) => {
+//     e.preventDefault(); // リンクのデフォルトの動作を無効化
+//     document.getElementById('popup-overlay_group-add').style.display = 'none';
+//     document
+//       .getElementById('group-add-button')
+//       .removeEventListener('click', addGroup);
+//   });
 
-function openGroupAddPopup() {
+export const openGroupAddPopup = () => {
   document.getElementById('popup-overlay_group-add').style.display = 'block';
   groupListUpdate('group-display');
 
   document
     .getElementById('group-add-button')
     .addEventListener('click', addGroup);
-}
+};
 
-function addGroup() {
+export const addGroup = () => {
   const groupName = document.getElementById('group-Name-input').value;
   $.ajax({
     url: '/mypage/' + hashedIdGet,
@@ -69,7 +69,7 @@ function addGroup() {
       });
     },
   });
-}
+};
 
 //グループリスト画面を更新（三列に表示する）
 const groupListUpdate = (idElement) => {
@@ -104,7 +104,7 @@ const groupListUpdate = (idElement) => {
 };
 
 //共有履歴のドロップダウンリストの判定(td要素のdata-share-status属性で判定)
-function shareHistoryTableDownList() {
+export const shareHistoryTableDownList = () => {
   const filterSelect = document.getElementById('filter-select');
   const shareTable = document.getElementById('share-history-table');
 
@@ -127,10 +127,10 @@ function shareHistoryTableDownList() {
       }
     }
   });
-}
+};
 
 //グループのチェックリスト画面を作成
-function groupCheckListScreen(button) {
+const groupCheckListScreen = (button) => {
   const id = parseInt(button.id.match(/\d+/)[0]);
   const groupName = document.getElementById(`group-name-span${id}`).innerHTML;
 
@@ -208,19 +208,19 @@ function groupCheckListScreen(button) {
       },
     });
   });
-}
+};
 
 //グループリストからグループ削除
-function groupDeleteButton() {
+const groupDeleteButton = () => {
   document.querySelectorAll('.group-delete').forEach(function (button) {
     button.addEventListener('click', function (event) {
       event.preventDefault(); // リンクのデフォルトの動作を無効化
     });
   });
-}
+};
 
 //フレンドリスト内の、グループのみの更新
-function friendListGroupUpdate() {
+export const friendListGroupUpdate = () => {
   $.ajax({
     url: '/mypage/' + hashedIdGet,
     type: 'POST',
@@ -245,9 +245,9 @@ function friendListGroupUpdate() {
       }
     },
   });
-}
+};
 
-async function friendListGroupChange(event) {
+export async function friendListGroupChange(event) {
   event.preventDefault(); // リンクのデフォルトの動作を無効化
   document.getElementById('popup-overlay_group-list').style.display = 'block';
   await groupCheckListScreen(event.target);
