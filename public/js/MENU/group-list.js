@@ -12,42 +12,46 @@ export const openGroupAddPopup = () => {
 
 export const addGroup = () => {
   const groupName = document.getElementById('group-Name-input').value;
-  $.ajax({
-    url: '/mypage/' + hashedIdGet,
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      flg: 'group_get',
-    }),
-    success: function (res) {
-      const groupExistFlg = res.groupResults.find(
-        (result) => result.User_Group === groupName
-      );
-      if (groupExistFlg) {
-        alert('そのグループ名は既に登録されています');
-        return;
-      } else if (groupName === 'なし') {
-        alert('グループ名「なし」は作成することができません');
-        return;
-      }
+  if (groupName !== '') {
+    $.ajax({
+      url: '/mypage/' + hashedIdGet,
+      type: 'POST',
+      dataType: 'Json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        flg: 'group_get',
+      }),
+      success: function (res) {
+        const groupExistFlg = res.groupResults.find(
+          (result) => result.User_Group === groupName
+        );
+        if (groupExistFlg) {
+          alert('そのグループ名は既に登録されています');
+          return;
+        } else if (groupName === 'なし') {
+          alert('グループ名「なし」は作成することができません');
+          return;
+        }
 
-      document.getElementById('group-Name-input').value = '';
-      $.ajax({
-        url: '/mypage/' + hashedIdGet,
-        type: 'POST',
-        dataType: 'Json',
-        contentType: 'application/json',
-        data: JSON.stringify({
-          flg: 'group_add',
-          groupName,
-        }),
-        success: function (res) {
-          groupListUpdate('group-display');
-        },
-      });
-    },
-  });
+        document.getElementById('group-Name-input').value = '';
+        $.ajax({
+          url: '/mypage/' + hashedIdGet,
+          type: 'POST',
+          dataType: 'Json',
+          contentType: 'application/json',
+          data: JSON.stringify({
+            flg: 'group_add',
+            groupName,
+          }),
+          success: function (res) {
+            groupListUpdate('group-display');
+          },
+        });
+      },
+    });
+  } else {
+    alert('登録したいグループ名を入力してください');
+  }
 };
 
 //グループリスト画面を更新（三列に表示する）
@@ -194,6 +198,12 @@ const groupDeleteButton = () => {
   document.querySelectorAll('.group-delete').forEach(function (button) {
     button.addEventListener('click', function (event) {
       event.preventDefault(); // リンクのデフォルトの動作を無効化
+      console.log(
+        `${
+          event.target.closest('.column').querySelector('.column-inner')
+            .innerHTML
+        } の✖️が押されました`
+      );
     });
   });
 };
