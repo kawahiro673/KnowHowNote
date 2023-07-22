@@ -2,7 +2,7 @@
 
 import { hashedIdGet } from './main.js';
 import { currentTimeGet } from './stringUtils.js';
-import { friendListGroupChange, friendListGroupChange } from './group-list.js';
+import { friendListGroupChange } from './group-list.js';
 
 //フレンドリストのポップアップ出力
 // document.getElementById('friend-list').addEventListener('click', async () => {
