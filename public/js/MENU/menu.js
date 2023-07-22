@@ -303,7 +303,8 @@ document
 document
   .getElementById('no-button-group-list-delete')
   .addEventListener('click', (e) => {
-    document.getElementById('popup-overlay_friend-delete-q').style.display =
+    e.preventDefault();
+    document.getElementById('popup-overlay_group-list-delete').style.display =
       'none';
   });
 
