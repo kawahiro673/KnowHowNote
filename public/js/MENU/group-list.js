@@ -1,5 +1,6 @@
 //MENUのフレンドリスト → グループリスト等の実装
 import { hashedIdGet } from '../main.js';
+import { friendListUpdate } from './friend-list.js';
 
 export const openGroupAddPopup = () => {
   document.getElementById('popup-overlay_group-add').style.display = 'block';
@@ -198,12 +199,27 @@ const groupDeleteButton = () => {
   document.querySelectorAll('.group-delete').forEach(function (button) {
     button.addEventListener('click', function (event) {
       event.preventDefault(); // リンクのデフォルトの動作を無効化
-      console.log(
-        `${
-          event.target.closest('.column').querySelector('.column-inner')
-            .innerHTML
-        } の✖️が押されました`
-      );
+
+      const group = event.target
+        .closest('.column')
+        .querySelector('.column-inner').innerHTML;
+
+      console.log(group);
+
+      $.ajax({
+        url: '/mypage/' + hashedIdGet,
+        type: 'POST',
+        dataType: 'Json',
+        contentType: 'application/json',
+        data: JSON.stringify({
+          flg: 'group_delete',
+          group,
+        }),
+        success: function (res) {
+          groupListUpdate('group-display');
+          friendListUpdate();
+        },
+      });
     });
   });
 };

@@ -1,11 +1,5 @@
 /****************************** sortable  *********************************/
 
-/*↓があるとsortableがうまく機能しない*/
-/* ul {
-  list-style-type: none;
-  padding: 0;
-} */
-
 body.dragging,
 body.dragging * {
   cursor: move !important;
