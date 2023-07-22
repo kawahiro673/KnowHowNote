@@ -82,7 +82,6 @@ const groupListUpdate = (idElement) => {
         groupDisplay.appendChild(column);
         column.appendChild(groupDelete);
       });
-      groupDeleteButton();
       groupListHoverRedFunc();
     },
   });
