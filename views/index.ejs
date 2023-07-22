@@ -1442,8 +1442,10 @@
             </div>
             <div class="popup-body_friend-delete-q">
               <p><span id="friend-delete-q-user"></span> <span id="friend-delete-q-real-user"></span> さんをフレンドリストから削除しますか</p>
-              <button id="friend-delete-q-button">はい</button>
-              <button id="friend-delete-q-cancel">いいえ</button>
+              <div class = "friendーdelete-button-wrapper">
+               <button id="friend-delete-q-button">はい</button>
+               <button id="friend-delete-q-cancel">いいえ</button>
+              </div>
             </div>
           </div>
         </div>
@@ -1490,6 +1492,25 @@
             <div class="popup-body_group-list">
               <p>下記からグループを一つ選択してください</p>
               <div id="all-group-list" class="group-list-display"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="popup-overlay_group-listーdelete" style="display: none">
+          <div class="popup-window_group-listーdelete">
+            <div class="popup-header_group-listーdelete">
+              <h2>グループ削除</h2>
+              <div class="popup-close_group-listーdelete">
+                <a id="pop-delete_group-listーdelete" href="">×</a>
+              </div>
+            </div>
+            <div class="popup-body_group-listーdelete">
+              <p><span id="delete-group"></span> へ所属しているユーザーのグループが解除されます。
+              </br>削除してもよろしいですか？</p>
+             <div class = "group-listーdelete-button-wrapper">
+              <button id="yes-button-group-listーdelete">はい</button>
+              <button id="no-button-group-listーdelete">いいえ</button>
+             </div>
             </div>
           </div>
         </div>

@@ -77,6 +77,7 @@ const groupListUpdate = (idElement) => {
         column.innerHTML = `<div class="column-inner">${userGroup}</div>`;
         const groupDelete = document.createElement('button');
         groupDelete.setAttribute('class', 'group-delete');
+        groupDelete.addEventListener('click', groupDeleteButton);
         groupDelete.innerHTML = '×';
         groupDisplay.appendChild(column);
         column.appendChild(groupDelete);
@@ -195,32 +196,33 @@ const groupCheckListScreen = (button) => {
 };
 
 //グループリストからグループ削除
-const groupDeleteButton = () => {
-  document.querySelectorAll('.group-delete').forEach(function (button) {
-    button.addEventListener('click', function (event) {
-      event.preventDefault(); // リンクのデフォルトの動作を無効化
+const groupDeleteButton = (event) => {
+  document.getElementById('popup-overlay_group-listーdelete').style.display =
+    'block';
+  const group = event.target
+    .closest('.column')
+    .querySelector('.column-inner').innerHTML;
 
-      const group = event.target
-        .closest('.column')
-        .querySelector('.column-inner').innerHTML;
+  document.getElementById('delete-group').innerHTML = group;
+};
 
-      console.log(group);
+export const groupNameDelete = (group) => {
+  document.getElementById('popup-overlay_group-listーdelete').style.display =
+    'none';
 
-      $.ajax({
-        url: '/mypage/' + hashedIdGet,
-        type: 'POST',
-        dataType: 'Json',
-        contentType: 'application/json',
-        data: JSON.stringify({
-          flg: 'group_delete',
-          group,
-        }),
-        success: function (res) {
-          groupListUpdate('group-display');
-          friendListUpdate();
-        },
-      });
-    });
+  $.ajax({
+    url: '/mypage/' + hashedIdGet,
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'group_delete',
+      group,
+    }),
+    success: function (res) {
+      groupListUpdate('group-display');
+      friendListUpdate();
+    },
   });
 };
 

@@ -79,7 +79,8 @@
 #popup-overlay_friend-delete-ans,
 #popup-overlay_friend-delete-q,
 #popup-overlay_group-add,
-#popup-overlay_group-list {
+#popup-overlay_group-list,
+#popup-overlay_group-listーdelete {
   display: block;
   position: fixed;
   top: 0;
@@ -106,7 +107,8 @@
 .popup-window_friend-delete-ans,
 .popup-window_friend-delete-q,
 .popup-window_group-add,
-.popup-window_group-list {
+.popup-window_group-list,
+.popup-window_group-listーdelete {
   width: 500px;
   height: 300px;
   background-color: #fff;
@@ -126,7 +128,8 @@
 
 .popup-window_About-Website,
 .popup-window_delete,
-.popup-window_friend-add {
+.popup-window_friend-add,
+.popup-window_group-listーdelete {
   height: 150px;
 }
 
@@ -168,7 +171,8 @@
 .popup-header_friend-delete-ans,
 .popup-header_friend-delete-q,
 .popup-header_group-add,
-.popup-header_group-list {
+.popup-header_group-list,
+.popup-header_group-listーdelete {
   display: flex;
   align-items: center;
   justify-content: center; /* 中央寄せに変更 */
@@ -193,7 +197,8 @@
 .popup-header_friend-delete-ans h2,
 .popup-header_friend-delete-q h2,
 .popup-header_group-add h2,
-.popup-header_group-list h2 {
+.popup-header_group-list h2,
+.popup-header_group-listーdelete h2 {
   font-size: 16px;
   font-weight: normal;
   margin: 0 auto;
@@ -214,7 +219,8 @@
 #pop-delete_friend-add,
 #pop-delete_friend-delete-q,
 #pop-delete_group-add,
-#pop-delete_group-list {
+#pop-delete_group-list,
+#pop-delete_group-listーdelete {
   text-decoration: none;
   font-size: 1.2em;
   font-weight: bold;
@@ -234,7 +240,8 @@
 #pop-delete_friend-add:hover,
 #pop-delete_friend-delete-q:hover,
 #pop-delete_group-add:hover,
-#pop-delete_group-list:hover {
+#pop-delete_group-list:hover,
+#pop-delete_group-listーdelete:hover {
   color: red;
 }
 
@@ -260,7 +267,8 @@
 .popup-body_friend-delete-ans,
 .popup-body_friend-delete-q,
 .popup-body_group-add,
-.popup-body_group-list {
+.popup-body_group-list,
+.popup-body_group-listーdelete {
   position: relative;
   height: 240px;
   padding: 0 10px;
@@ -415,7 +423,9 @@
 .group-name-change-button,
 #group-list-decision-button,
 #share-group-add-button,
-#share-group-clear-button {
+#share-group-clear-button,
+#yes-button-group-listーdelete,
+#no-button-group-listーdelete {
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -450,7 +460,9 @@
 #friend-delete-q-cancel,
 #group-add-button,
 #share-group-add-button,
-#share-group-clear-button {
+#share-group-clear-button,
+#yes-button-group-listーdelete,
+#no-button-group-listーdelete {
   padding: 7px 14px;
   font-size: 12px;
 }
@@ -493,7 +505,8 @@
 #no-button-logout,
 #no-button-delete,
 #share-user-clear-button,
-#friend-delete-q-cancel {
+#friend-delete-q-cancel,
+#no-button-group-listーdelete {
   background-color: red;
 }
 
@@ -666,13 +679,17 @@ input[type='checkbox']:checked + .gray_b {
 }
 
 .logout-button-wrapper,
-.delete-button-wrapper {
+.delete-button-wrapper,
+.group-listーdelete-button-wrapper,
+.friendーdelete-button-wrapper {
   display: flex;
   justify-content: space-between;
 }
 
 .logout-button-wrapper button,
-.delete-button-wrapper button {
+.delete-button-wrapper button,
+.group-listーdelete-button-wrapper button,
+.friendーdelete-button-wrapper button {
   flex: 0 0 120px; /* ボタンの幅を調整する値（例: 120px） */
   margin: 0 5px;
 }

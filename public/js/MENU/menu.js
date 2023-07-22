@@ -10,6 +10,7 @@ import {
 } from './group-list.js';
 import { backgroundColorCheckBoxOption } from './my-profile.js';
 import { sortTableByUser, sortTableByDate } from './share-history.js';
+import { groupNameDelete } from './group-list.js';
 
 //プロフィールのポップアップ
 document.getElementById('profile').addEventListener('click', () => {
@@ -299,10 +300,25 @@ document
     }
   });
 
-//問い合わせのポップアップ出力
+document
+  .getElementById('no-button-group-listーdelete')
+  .addEventListener('click', (e) => {
+    document.getElementById('popup-overlay_friend-delete-q').style.display =
+      'none';
+  });
+
+//グループ削除
 document.getElementById('inquiry').addEventListener('click', () => {
-  document.getElementById('popup-overlay_inquiry').style.display = 'block';
+  document.getElementById('popup-overlay_group-listーdelete').style.display =
+    'block';
 });
+
+document
+  .getElementById('yes-button-group-listーdelete')
+  .addEventListener('click', (e) => {
+    const group = document.getElementById('delete-group').textContent;
+    groupNameDelete(group);
+  });
 
 document.getElementById('pop-delete_inquiry').addEventListener('click', (e) => {
   e.preventDefault(); // リンクのデフォルトの動作を無効化
