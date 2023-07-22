@@ -1,27 +1,6 @@
 //MENUのフレンドリスト → グループリスト等の実装
 import { hashedIdGet } from './main.js';
 
-// document
-//   .getElementById('friend-list-group-add-button')
-//   .addEventListener('click', openGroupAddPopup);
-
-// document
-//   .getElementById('pop-delete_group-list')
-//   .addEventListener('click', function (event) {
-//     event.preventDefault(); // リンクのデフォルトの動作を無効化
-//     document.getElementById('popup-overlay_group-list').style.display = 'none';
-//   });
-
-// document
-//   .getElementById('pop-delete_group-add')
-//   .addEventListener('click', (e) => {
-//     e.preventDefault(); // リンクのデフォルトの動作を無効化
-//     document.getElementById('popup-overlay_group-add').style.display = 'none';
-//     document
-//       .getElementById('group-add-button')
-//       .removeEventListener('click', addGroup);
-//   });
-
 export const openGroupAddPopup = () => {
   document.getElementById('popup-overlay_group-add').style.display = 'block';
   groupListUpdate('group-display');
