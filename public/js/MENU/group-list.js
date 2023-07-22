@@ -196,7 +196,7 @@ const groupCheckListScreen = (button) => {
 
 //グループリストからグループ削除
 const groupDeleteButton = (event) => {
-  document.getElementById('popup-overlay_group-listーdelete').style.display =
+  document.getElementById('popup-overlay_group-list-delete').style.display =
     'block';
   const group = event.target
     .closest('.column')
@@ -206,7 +206,7 @@ const groupDeleteButton = (event) => {
 };
 
 export const groupNameDelete = (group) => {
-  document.getElementById('popup-overlay_group-listーdelete').style.display =
+  document.getElementById('popup-overlay_group-list-delete').style.display =
     'none';
 
   $.ajax({

@@ -301,7 +301,7 @@ document
   });
 
 document
-  .getElementById('no-button-group-listーdelete')
+  .getElementById('no-button-group-list-delete')
   .addEventListener('click', (e) => {
     document.getElementById('popup-overlay_friend-delete-q').style.display =
       'none';
@@ -309,12 +309,12 @@ document
 
 //グループ削除
 document.getElementById('inquiry').addEventListener('click', () => {
-  document.getElementById('popup-overlay_group-listーdelete').style.display =
+  document.getElementById('popup-overlay_group-list-delete').style.display =
     'block';
 });
 
 document
-  .getElementById('yes-button-group-listーdelete')
+  .getElementById('yes-button-group-list-delete')
   .addEventListener('click', (e) => {
     const group = document.getElementById('delete-group').textContent;
     groupNameDelete(group);

@@ -224,7 +224,7 @@
 #pop-delete_friend-delete-q,
 #pop-delete_group-add,
 #pop-delete_group-list,
-#pop-delete_group-listーdelete {
+#pop-delete_group-list-delete {
   text-decoration: none;
   font-size: 1.2em;
   font-weight: bold;
@@ -245,7 +245,7 @@
 #pop-delete_friend-delete-q:hover,
 #pop-delete_group-add:hover,
 #pop-delete_group-list:hover,
-#pop-delete_group-listーdelete:hover {
+#pop-delete_group-list-delete:hover {
   color: red;
 }
 
