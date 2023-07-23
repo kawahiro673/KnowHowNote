@@ -13,7 +13,7 @@ section {
 section .row {
   display: flex; /*改行をなくして横並びに*/
   white-space: nowrap; /*折り返しなし*/
-  font-size: 64px;
+  font-size: 96px;
   padding: 10px 0;
   transform: rotate(-30deg); /*画像を傾け*/
   /*傾けた際に上側が若干あくため、埋めている*/
@@ -33,7 +33,7 @@ i:hover {
   transition: 0s;
 }
 
-/*アニメーション、、、処理が重くなる原因かも*/
+/*アニメーション、、、*/
 section .row div {
   animation: animate 60s linear infinite;
 }
