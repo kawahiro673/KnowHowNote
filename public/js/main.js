@@ -365,7 +365,7 @@ async function tabScreenOptions(id, title) {
               'inline-block';
             document.getElementById(`cancel-note-btn${id}`).style.display =
               'inline-block';
-
+            //保存ボタン押下時
             document
               .getElementById(`keep-note-btn${id}`)
               .addEventListener('click', () => {
@@ -373,6 +373,7 @@ async function tabScreenOptions(id, title) {
                 document.getElementById(`tabname${id}`).style.color = 'black';
               });
 
+            //取り消しボタン押下時
             document
               .getElementById(`cancel-note-btn${id}`)
               .addEventListener('click', () => {

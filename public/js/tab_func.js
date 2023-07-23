@@ -129,45 +129,49 @@ export const tabCreate = (id, title, res) => {
 //タブエリアの[保存]ボタン押下時
 export const keepButtonClick = (id) => {
   const newTitle = document.getElementById(`titletext${id}`).value;
-  const pass = passGet(id, newTitle);
-  const time = currentTimeGet();
+  if (newTitle !== '') {
+    const pass = passGet(id, newTitle);
+    const time = currentTimeGet();
 
-  $.ajax({
-    url: '/notePostController/',
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      flg: 'noteKeep',
-      id,
-      titleContent: newTitle, //p.innerHTML,
-      memoContent: document.getElementById(`textarea${id}`).value, //ここに入力した値が入る
-      time,
-    }),
-    success: function (res) {
-      document.getElementById(`fade${id}`).style.opacity = '1';
-      document.getElementById(`fade${id}`).style.color = 'red';
-      document.getElementById(`fade${id}`).textContent =
-        '保存が完了いたしました';
+    $.ajax({
+      url: '/notePostController/',
+      type: 'POST',
+      dataType: 'Json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        flg: 'noteKeep',
+        id,
+        titleContent: newTitle, //p.innerHTML,
+        memoContent: document.getElementById(`textarea${id}`).value, //ここに入力した値が入る
+        time,
+      }),
+      success: function (res) {
+        document.getElementById(`fade${id}`).style.opacity = '1';
+        document.getElementById(`fade${id}`).style.color = 'red';
+        document.getElementById(`fade${id}`).textContent =
+          '保存が完了いたしました';
 
-      setTimeout(() => {
-        document.getElementById(`fade${id}`).style.opacity = '0';
-      }, 1000);
-    },
-  });
+        setTimeout(() => {
+          document.getElementById(`fade${id}`).style.opacity = '0';
+        }, 1000);
+      },
+    });
 
-  document.getElementById(`keep-note-btn${id}`).style.display = 'none';
-  document.getElementById(`cancel-note-btn${id}`).style.display = 'none';
-  document.getElementById(`tabP${id}`).innerHTML = newTitle;
-  document.getElementById(`tabP${id}`).style.display = 'block';
-  document.getElementById(`tabname${id}`).innerHTML = newTitle;
-  document.getElementById(`file${id}`).innerHTML = newTitle;
-  document.getElementById(`titletext${id}`).style.display = 'none';
-  document.getElementById(`edit-note-btn${id}`).style.display = 'block';
-  document.getElementById(`share-button-${id}`).style.display = 'block';
-  document.getElementById(`textarea${id}`).readOnly = true;
-  document.getElementById(`time${id}`).innerHTML = time;
-  document.getElementById('notepass').innerHTML = pass;
+    document.getElementById(`keep-note-btn${id}`).style.display = 'none';
+    document.getElementById(`cancel-note-btn${id}`).style.display = 'none';
+    document.getElementById(`tabP${id}`).innerHTML = newTitle;
+    document.getElementById(`tabP${id}`).style.display = 'block';
+    document.getElementById(`tabname${id}`).innerHTML = newTitle;
+    document.getElementById(`file${id}`).innerHTML = newTitle;
+    document.getElementById(`titletext${id}`).style.display = 'none';
+    document.getElementById(`edit-note-btn${id}`).style.display = 'block';
+    document.getElementById(`share-button-${id}`).style.display = 'block';
+    document.getElementById(`textarea${id}`).readOnly = true;
+    document.getElementById(`time${id}`).innerHTML = time;
+    document.getElementById('notepass').innerHTML = pass;
+  } else {
+    alert('タイトルを入力してください');
+  }
 };
 
 //タブエリアの[取り消し]ボタン押下時
@@ -225,7 +229,7 @@ export const shareNoteSendFunc = (id, title) => {
     document.getElementsByClassName('share-message')[0].value;
   //配列の文字列を全て数値へ
   const numArray = shareUserValues.map((str) => parseInt(str));
- 
+
   //inputタブに自分の名前が含まれていない場合のみ実行
   if (inputValue !== '') {
     $.ajax({
