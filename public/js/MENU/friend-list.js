@@ -200,25 +200,29 @@ function friendListNameChange(event) {
   applyButton.addEventListener('click', () => {
     const buttonId = applyButton.getAttribute('id');
     const id = buttonId.match(/\d+/)[0];
-    friendNameInput.value = name;
+    //friendNameInput.value = name;
 
-    $.ajax({
-      url: '/mypage/' + hashedIdGet,
-      type: 'POST',
-      dataType: 'Json',
-      contentType: 'application/json',
-      data: JSON.stringify({
-        flg: 'friend-list-name-change',
-        id,
-        name,
-      }),
-      success: function (res) {
-        friendNameInput.style.display = 'none';
-        applyButton.style.display = 'none';
-        friendName.style.display = 'block';
-        friendName.innerHTML = name;
-        changeButton.style.display = 'block';
-      },
-    });
+    if (name !== '') {
+      $.ajax({
+        url: '/mypage/' + hashedIdGet,
+        type: 'POST',
+        dataType: 'Json',
+        contentType: 'application/json',
+        data: JSON.stringify({
+          flg: 'friend-list-name-change',
+          id,
+          name,
+        }),
+        success: function (res) {
+          friendNameInput.style.display = 'none';
+          applyButton.style.display = 'none';
+          friendName.style.display = 'block';
+          friendName.innerHTML = name;
+          changeButton.style.display = 'block';
+        },
+      });
+    } else {
+      alert('ユーザー名を入力してください');
+    }
   });
 }
