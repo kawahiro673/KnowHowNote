@@ -18,7 +18,7 @@ section .row {
   transform: rotate(-30deg); /*画像を傾け*/
   /*傾けた際に上側が若干あくため、埋めている*/
   position: relative;
-  top: -50%;
+  top: -60%;
   left: -40%; /* 左に移動してスペースを埋める */
 }
 
@@ -35,7 +35,7 @@ i:hover {
 
 /*アニメーション、、、*/
 section .row div {
-  animation: animate 60s linear infinite;
+  animation: animate 40s linear infinite;
 }
 
 @keyframes animate {
