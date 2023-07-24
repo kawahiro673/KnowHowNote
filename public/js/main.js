@@ -324,13 +324,6 @@ async function tabScreenOptions(id, title) {
 
           labelContextmenu();
 
-          // //一度全てのバインダーリングを削除し、再構築
-          // const elementsArray = Array.from(
-          //   document.getElementsByClassName('image-container')
-          // );
-          // elementsArray.forEach((element) => {
-          //   element.remove();
-          // });
           binderCreate();
 
           document.getElementById('notab').style.display = 'none';
@@ -365,31 +358,6 @@ async function tabScreenOptions(id, title) {
               'inline-block';
             document.getElementById(`cancel-note-btn${id}`).style.display =
               'inline-block';
-//ボタン削除
- // document
- //    .getElementById(`keep-note-btn${id}`)
- //    .removeEventListener('click', keepButtonClick);
- //  document
- //    .getElementById(`cancel-note-btn${id}`)
- //    .removeEventListener('click', cancelButtonClick);
-            
- //            //保存ボタン押下時
- //            document
- //              .getElementById(`keep-note-btn${id}`)
- //              .addEventListener('click', () => {
- //                console.log('保存');
- //                keepButtonClick(id);
- //                document.getElementById(`tabname${id}`).style.color = 'black';
- //              });
-
- //            //取り消しボタン押下時
- //            document
- //              .getElementById(`cancel-note-btn${id}`)
- //              .addEventListener('click', () => {
- //                console.log('取り消し');
- //                cancelButtonClick(id);
- //                document.getElementById(`tabname${id}`).style.color = 'black';
- //              });
           };
 
           document.getElementById(`share-button-${id}`).onclick = (event) => {
