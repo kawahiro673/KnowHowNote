@@ -9,6 +9,12 @@
     format('truetype');
 }
 
+@font-face {
+  font-family: 'PTSerifCaption';
+  src: url('..fonts/PT_Serif_Caption/PTSerifCaption-Regular.ttf')
+    format('truetype');
+}
+
 .window {
   position: relative;
   overflow: hidden;
@@ -39,7 +45,7 @@ header {
   justify-content: space-between;
   border-radius: 5px;
   height: 60px;
-/*    //overflow: hidden; */
+  /*    //overflow: hidden; */
 }
 
 .header-div {
@@ -52,8 +58,8 @@ header {
   margin: 0;
   margin-left: 10px;
   margin-bottom: 20px;
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
   max-height: 100%;
 }
 
@@ -63,7 +69,7 @@ header h1 {
   padding: 0;
   margin: 0;
   margin-left: 15px;
-  font-family: 'Permanent_Marker', 'Open Sans', sans-serif;
+  font-family: 'PTSerifCaption', 'Open Sans', sans-serif;
   display: inline;
 }
 
