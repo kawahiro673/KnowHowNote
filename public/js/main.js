@@ -324,13 +324,13 @@ async function tabScreenOptions(id, title) {
 
           labelContextmenu();
 
-          //一度全てのバインダーリングを削除し、再構築
-          const elementsArray = Array.from(
-            document.getElementsByClassName('image-container')
-          );
-          elementsArray.forEach((element) => {
-            element.remove();
-          });
+          // //一度全てのバインダーリングを削除し、再構築
+          // const elementsArray = Array.from(
+          //   document.getElementsByClassName('image-container')
+          // );
+          // elementsArray.forEach((element) => {
+          //   element.remove();
+          // });
           binderCreate();
 
           document.getElementById('notab').style.display = 'none';
