@@ -377,6 +377,7 @@ async function tabScreenOptions(id, title) {
             document
               .getElementById(`keep-note-btn${id}`)
               .addEventListener('click', () => {
+                console.log('保存');
                 keepButtonClick(id);
                 document.getElementById(`tabname${id}`).style.color = 'black';
               });
@@ -385,6 +386,7 @@ async function tabScreenOptions(id, title) {
             document
               .getElementById(`cancel-note-btn${id}`)
               .addEventListener('click', () => {
+                console.log('取り消し');
                 cancelButtonClick(id);
                 document.getElementById(`tabname${id}`).style.color = 'black';
               });
