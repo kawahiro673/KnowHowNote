@@ -361,9 +361,9 @@ async function tabScreenOptions(id, title) {
           };
 
           document.getElementById(`share-button-${id}`).onclick = (event) => {
-              const targetElement = event.target;
-  const textContent = targetElement.innerText;
-            console.log(textContent);
+          const parentElement = event.target.parentElement.parentElement;
+  const textContent  = parentElement.querySelector('.title-txt').innerHTML;
+    console.log(textContent);
             shareButtonClick(id, event);
           };
 
