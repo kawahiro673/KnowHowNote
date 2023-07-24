@@ -212,7 +212,7 @@ export const cancelButtonClick = (id) => {
 
 export function shareButtonClick(id, event, title, flg) {
   document.getElementById('popup-overlay_share').style.display = 'block';
-
+  document.getElementById('share-nouhau-name').innerHTML = 'タイトル';
   //共有ボタン押下時のタイトル取得
   if (flg !== 'contextmenu') {
     title =
