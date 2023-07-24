@@ -61,6 +61,7 @@ header {
   width: 40px;
   height: 40px;
   max-height: 100%;
+  align-items: center; /* 要素を垂直方向に中央揃え */
 }
 
 header h1 {
@@ -71,6 +72,7 @@ header h1 {
   margin-left: 15px;
   font-family: 'PTSerifCaption', 'Open Sans', sans-serif;
   display: inline;
+  align-items: center; /* 要素を垂直方向に中央揃え */
 }
 
 header h2 {
