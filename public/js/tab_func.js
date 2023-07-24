@@ -595,6 +595,14 @@ document
 
 //バインダーのリング部分作成
 export const binderCreate = () => {
+  //一度全てのバインダーリングを削除し、再構築
+          const elementsArray = Array.from(
+            document.getElementsByClassName('image-container')
+          );
+          elementsArray.forEach((element) => {
+            element.remove();
+          });
+  
   for (let i = 0; i < 21; i++) {
     const imageContainer = document.createElement('div');
     imageContainer.classList.add('image-container');
