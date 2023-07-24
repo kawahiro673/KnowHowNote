@@ -315,10 +315,9 @@ document
       'none';
   });
 
-//グループ削除
+//問い合わせ
 document.getElementById('inquiry').addEventListener('click', () => {
-  document.getElementById('popup-overlay_group-list-delete').style.display =
-    'block';
+  document.getElementById('popup-overlay_inquiry').style.display = 'display';
 });
 
 document
@@ -508,6 +507,7 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
   document.getElementById('popup-overlay_inquiry_result').style.display =
     'block';
   const date = currentTimeGet();
+  if(document.getElementById('inquiry-content').value !== ''){
   $.ajax({
     url: '/mypage/' + hashedIdGet,
     type: 'POST',
@@ -530,6 +530,9 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
       }, 1500);
     },
   });
+  }else{
+    alert('問い合わせ内容を記載してください');
+  }
 });
 
 //フレンド追加の検索ボタン押下時、
