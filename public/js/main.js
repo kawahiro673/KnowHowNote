@@ -365,6 +365,14 @@ async function tabScreenOptions(id, title) {
               'inline-block';
             document.getElementById(`cancel-note-btn${id}`).style.display =
               'inline-block';
+//ボタン削除
+ document
+    .getElementById(`keep-note-btn${id}`)
+    .removeEventListener('click', keepButtonClick);
+  document
+    .getElementById(`cancel-note-btn${id}`)
+    .removeEventListener('click', cancelButtonClick);
+            
             //保存ボタン押下時
             document
               .getElementById(`keep-note-btn${id}`)
