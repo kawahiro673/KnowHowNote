@@ -135,7 +135,7 @@
           <option value=”2”>技術的なお問わせ</option>
           <option value=”3”>その他お問合せ</option>
         </select>
-        <textarea id="inquiry-content"></textarea>
+        <textarea id="inquiry-content" placeholder="問い合わせ内容を入力してください"></textarea>
         <button id ="inquiry-button">送信</button>
       </div>
     </div>
@@ -201,12 +201,12 @@
       </div>
       <div class="popup-body_share">
         <div class="share-row">
-         <p>”<span id='share-nouhau-name'></span>”を共有するユーザーを選択してください</p>
+         <p>”<span id='share-nouhau-name'></span>”を共有するユーザーをフレンドリストから選択してください</p>
          <button id="share-user-button">フレンドリスト</button>
         </div>
-        <input type="text" class="share-input" maxlength="1000" readonly />
+        <input type="text" class="share-input" maxlength="1000" placeholder="フレンドを選択してください" readonly />
         <p>メッセージ：</p>
-        <textarea class="share-message" maxlength="500"></textarea>
+        <textarea class="share-message" maxlength="500" placeholder="メッセージがあれば入力してください"></textarea>
         <button id="share-send">送信</button>
       </div>
     </div>
@@ -310,7 +310,7 @@
       </div>
       <div class="popup-body_friend-add" >
        <p>フレンドリストに追加したいユーザーの利用者IDを入力してください</p>
-       <input type="text" id="idInput" maxlength="19" placeholder="1a2b-3c4d-5e6f-7g8h" />
+       <input type="text" id="idInput" maxlength="19" placeholder="abcd-1234-efgh-5678" />
        <button id="friend-search-button">検索</button>
       </div>
     </div>
