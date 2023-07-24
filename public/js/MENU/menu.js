@@ -12,7 +12,9 @@ import { backgroundColorCheckBoxOption } from './my-profile.js';
 import { sortTableByUser, sortTableByDate } from './share-history.js';
 import { groupNameDelete } from './group-list.js';
 
-//プロフィールのポップアップ
+//=============================================================================================================
+//====================================================個別設定=================================================
+//=============================================================================================================
 document.getElementById('profile').addEventListener('click', () => {
   document.getElementById('popup-overlay_profile').style.display = 'block';
   $.ajax({
@@ -71,7 +73,73 @@ document
     }
   });
 
-//共有履歴のポップアップ
+//チェックボックスへチェック後、他のチェックを外す(falseへ)
+$('.checkbox-color').on('click', (event) => {
+  const clickedCheckbox = event.target;
+  const checkboxes = document.getElementsByName('checkbox');
+  checkboxes.forEach((cb) => {
+    if (cb !== clickedCheckbox) {
+      cb.checked = false;
+    }
+  });
+});
+
+$('.checkbox-share').on('click', (event) => {
+  const clickedCheckbox = event.target;
+  const checkboxes = document.getElementsByName('checkboxshare');
+  checkboxes.forEach((cb) => {
+    if (cb !== clickedCheckbox) {
+      cb.checked = false;
+    }
+  });
+});
+
+//共有機能をON/OFF設定画面
+const shareFunctionCheckBoxOption = () => {
+  const checkboxes = document.querySelectorAll('.checkbox-share');
+  checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener('change', (event) => {
+      if (checkbox.checked) {
+        const label = checkbox.parentElement; // 親要素の<label>を取得
+        const text = label.textContent.trim(); // ラベル要素のテキストを取得し、前後の空白をトリム
+
+        switch (text) {
+          case 'ON':
+            shareFunctionCheckBoxFlg('ON');
+            break;
+          case 'OFF':
+            shareFunctionCheckBoxFlg('OFF');
+            break;
+          default:
+            // チェックされているテキストが上記以外の場合の処理
+            break;
+        }
+      } else {
+        checkbox.checked = true; // チェックが外れた場合に再度チェックを付ける
+      }
+    });
+  });
+};
+
+//各ユーザーが設定している共有機能のON・OFFを取得する
+const shareFunctionCheckBoxFlg = (checkbox) => {
+  $.ajax({
+    url: '/mypage/' + hashedIdGet,
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'shareFunctionCheckBoxFlg',
+      checkbox,
+    }),
+    success: function (res) {},
+  });
+};
+
+
+//=============================================================================================================
+//=================================================共有履歴====================================================
+//=============================================================================================================
 document.getElementById('share-history').addEventListener('click', () => {
   document.getElementById('popup-overlay_share-history').style.display =
     'block';
@@ -189,7 +257,9 @@ document
     }
   });
 
-//使い方のポップアップ
+//=============================================================================================================
+//================================================使い方=======================================================
+//=============================================================================================================
 document.getElementById('explanation').addEventListener('click', () => {
   document.getElementById('popup-overlay_explanation').style.display = 'block';
 });
@@ -210,7 +280,9 @@ document
     }
   });
 
-//このサイトについてのポップアップ
+//=============================================================================================================
+//=================================================このサイトについて==========================================
+//=============================================================================================================
 document.getElementById('About-Website').addEventListener('click', () => {
   document.getElementById('popup-overlay_About-Website').style.display =
     'block';
@@ -233,7 +305,9 @@ document
     }
   });
 
-//フレンドリストのポップアップ出力
+//=============================================================================================================
+//==================================================フレンドリスト==============================================
+//=============================================================================================================
 document.getElementById('friend-list').addEventListener('click', async () => {
   document.getElementById('popup-overlay_friend-list').style.display = 'block';
 
@@ -253,18 +327,20 @@ document.getElementById('friend-list').addEventListener('click', async () => {
 });
 
 document
+  .getElementById('popup-overlay_friend-list')
+  .addEventListener('click', (e) => {
+    const popup = document.getElementById('popup-overlay_friend-list');
+    if (e.target === popup) {
+      popup.style.display = 'none';
+    }
+  });
+
+document
   .getElementById('pop-delete_friend-delete-q')
   .addEventListener('click', (e) => {
     e.preventDefault(); // リンクのデフォルトの動作を無効化
     document.getElementById('popup-overlay_friend-delete-q').style.display =
       'none';
-  });
-
-document
-  .getElementById('pop-delete_group-list')
-  .addEventListener('click', function (event) {
-    event.preventDefault(); // リンクのデフォルトの動作を無効化
-    document.getElementById('popup-overlay_group-list').style.display = 'none';
   });
 
 document
@@ -291,47 +367,6 @@ document
     document.getElementById('popup-overlay_friend-list').style.display = 'none';
   });
 
-document
-  .getElementById('popup-overlay_friend-list')
-  .addEventListener('click', (e) => {
-    const popup = document.getElementById('popup-overlay_friend-list');
-    if (e.target === popup) {
-      popup.style.display = 'none';
-    }
-  });
-
-document
-  .getElementById('no-button-group-list-delete')
-  .addEventListener('click', (e) => {
-    document.getElementById('popup-overlay_group-list-delete').style.display =
-      'none';
-  });
-
-document
-  .getElementById('pop-delete_group-list-delete')
-  .addEventListener('click', (e) => {
-    e.preventDefault();
-    document.getElementById('popup-overlay_group-list-delete').style.display =
-      'none';
-  });
-
-//問い合わせ
-document.getElementById('inquiry').addEventListener('click', () => {
-  document.getElementById('popup-overlay_inquiry').style.display = 'block';
-});
-
-document
-  .getElementById('yes-button-group-list-delete')
-  .addEventListener('click', (e) => {
-    const group = document.getElementById('delete-group').textContent;
-    groupNameDelete(group);
-  });
-
-document.getElementById('pop-delete_inquiry').addEventListener('click', (e) => {
-  e.preventDefault(); // リンクのデフォルトの動作を無効化
-  document.getElementById('popup-overlay_inquiry').style.display = 'none';
-});
-
 //フレンド追加のポップアップ出力
 document
   .getElementById('friend-list-add-button')
@@ -346,194 +381,7 @@ document
     document.getElementById('popup-overlay_friend-add').style.display = 'none';
   });
 
-//ログアウトポップアップ
-document.getElementById('logout').addEventListener('click', () => {
-  document.getElementById('popup-overlay_logout').style.display = 'block';
-});
-
-document.getElementById('yes-button-logout').addEventListener('click', () => {
-  $.ajax({
-    url: '/mypage/' + hashedIdGet,
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      flg: 'cookiedelete',
-    }),
-    success: function (res) {
-      location.href = 'https://nodejs-itnote-app.herokuapp.com';
-    },
-  });
-});
-
-document.getElementById('pop-delete_logout').addEventListener('click', (e) => {
-  e.preventDefault(); // リンクのデフォルトの動作を無効化
-  document.getElementById('popup-overlay_logout').style.display = 'none';
-});
-
-document.getElementById('no-button-logout').addEventListener('click', (e) => {
-  e.preventDefault(); // リンクのデフォルトの動作を無効化
-  document.getElementById('popup-overlay_logout').style.display = 'none';
-});
-
-document
-  .getElementById('popup-overlay_logout')
-  .addEventListener('click', (e) => {
-    const popup = document.getElementById('popup-overlay_logout');
-    if (e.target === popup) {
-      popup.style.display = 'none';
-    }
-  });
-
-//[全削除]ボタン押下時。ノート,フォルダ,タブ全て削除
-document.getElementById('all-delete').addEventListener('click', () => {
-  //はいを押した場合(true)
-  document.getElementById('popup-overlay_delete').style.display = 'block';
-});
-
-document.getElementById('yes-button-delete').addEventListener('click', () => {
-  $.ajax({
-    url: '/mypage/' + hashedIdGet,
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      flg: 'deleteALL',
-    }),
-    success: function (res) {
-      //全削除
-      $('#0').empty();
-
-      // loader以外（タブの要素のみ）を削除させる
-      const tabLoader = document.getElementById('tab_loader');
-      const tabWrap = document.getElementById('tab');
-      while (tabWrap.firstChild !== tabLoader) {
-        tabWrap.removeChild(tabWrap.firstChild);
-      }
-      while (tabWrap.lastChild !== tabLoader) {
-        tabWrap.removeChild(tabWrap.lastChild);
-      }
-
-      let p = document.createElement('p');
-      p.setAttribute('id', 'notab');
-      p.innerHTML = 'こちらにノウハウが出力されます';
-      document.getElementById('tab').appendChild(p);
-      document.getElementById('notepass').innerHTML = '';
-      document.getElementById('popup-overlay_delete').style.display = 'none';
-    },
-  });
-});
-
-document.getElementById('pop-delete_delete').addEventListener('click', (e) => {
-  e.preventDefault(); // リンクのデフォルトの動作を無効化
-  document.getElementById('popup-overlay_delete').style.display = 'none';
-});
-
-document.getElementById('no-button-delete').addEventListener('click', (e) => {
-  e.preventDefault(); // リンクのデフォルトの動作を無効化
-  document.getElementById('popup-overlay_delete').style.display = 'none';
-});
-
-document
-  .getElementById('popup-overlay_delete')
-  .addEventListener('click', (e) => {
-    const popup = document.getElementById('popup-overlay_delete');
-    if (e.target === popup) {
-      popup.style.display = 'none';
-    }
-  });
-
-const shareFunctionCheckBoxOption = () => {
-  const checkboxes = document.querySelectorAll('.checkbox-share');
-  checkboxes.forEach((checkbox) => {
-    checkbox.addEventListener('change', (event) => {
-      if (checkbox.checked) {
-        const label = checkbox.parentElement; // 親要素の<label>を取得
-        const text = label.textContent.trim(); // ラベル要素のテキストを取得し、前後の空白をトリム
-
-        switch (text) {
-          case 'ON':
-            shareFunctionCheckBoxFlg('ON');
-            break;
-          case 'OFF':
-            shareFunctionCheckBoxFlg('OFF');
-            break;
-          default:
-            // チェックされているテキストが上記以外の場合の処理
-            break;
-        }
-      } else {
-        checkbox.checked = true; // チェックが外れた場合に再度チェックを付ける
-      }
-    });
-  });
-};
-
-const shareFunctionCheckBoxFlg = (checkbox) => {
-  $.ajax({
-    url: '/mypage/' + hashedIdGet,
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      flg: 'shareFunctionCheckBoxFlg',
-      checkbox,
-    }),
-    success: function (res) {},
-  });
-};
-
-$('.checkbox-color').on('click', (event) => {
-  const clickedCheckbox = event.target;
-  const checkboxes = document.getElementsByName('checkbox');
-  checkboxes.forEach((cb) => {
-    if (cb !== clickedCheckbox) {
-      cb.checked = false;
-    }
-  });
-});
-
-$('.checkbox-share').on('click', (event) => {
-  const clickedCheckbox = event.target;
-  const checkboxes = document.getElementsByName('checkboxshare');
-  checkboxes.forEach((cb) => {
-    if (cb !== clickedCheckbox) {
-      cb.checked = false;
-    }
-  });
-});
-
-document.getElementById('inquiry-button').addEventListener('click', () => {
-  if(document.getElementById('inquiry-content').value !== ''){
-    const date = currentTimeGet();
-  $.ajax({
-    url: '/mypage/' + hashedIdGet,
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      flg: 'inquiry',
-      content: document.getElementById('inquiry-content').value,
-      user: document.getElementById('user_name').innerHTML,
-      date,
-      type: document.getElementById('itemSelect').value,
-    }),
-    success: function (res) {
-      document.getElementById('popup-overlay_inquiry').style.display = 'none';
-      document.getElementById('popup-overlay_inquiry_result').style.display =
-        'block';
-      setTimeout(() => {
-        document.getElementById('popup-overlay_inquiry_result').style.display =
-          'none';
-      }, 1500);
-    },
-  });
-  }else{
-    alert('問い合わせ内容を記載してください');
-  }
-});
-
-//フレンド追加の検索ボタン押下時、
+//フレンドリスト＞フレンド追加　ポップアップの[適用]ボタン押下時
 document
   .getElementById('friend-search-button')
   .addEventListener('click', () => {
@@ -592,6 +440,38 @@ document
     }
   });
 
+//=============================================================================================================
+//==============================================グループリスト=================================================
+//=============================================================================================================
+document
+  .getElementById('pop-delete_group-list')
+  .addEventListener('click', function (event) {
+    event.preventDefault(); // リンクのデフォルトの動作を無効化
+    document.getElementById('popup-overlay_group-list').style.display = 'none';
+  });
+
+document
+  .getElementById('no-button-group-list-delete')
+  .addEventListener('click', (e) => {
+    document.getElementById('popup-overlay_group-list-delete').style.display =
+      'none';
+  });
+
+document
+  .getElementById('pop-delete_group-list-delete')
+  .addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('popup-overlay_group-list-delete').style.display =
+      'none';
+  });
+
+document
+  .getElementById('yes-button-group-list-delete')
+  .addEventListener('click', (e) => {
+    const group = document.getElementById('delete-group').textContent;
+    groupNameDelete(group);
+  });
+
 document
   .getElementById('friend-list-group-add-button')
   .addEventListener('click', openGroupAddPopup);
@@ -605,3 +485,148 @@ document
       .getElementById('group-add-button')
       .removeEventListener('click', addGroup);
   });
+
+
+//=============================================================================================================
+//==============================================問い合わせ=====================================================
+//=============================================================================================================
+document.getElementById('inquiry').addEventListener('click', () => {
+  document.getElementById('popup-overlay_inquiry').style.display = 'block';
+});
+
+document.getElementById('pop-delete_inquiry').addEventListener('click', (e) => {
+  e.preventDefault(); // リンクのデフォルトの動作を無効化
+  document.getElementById('popup-overlay_inquiry').style.display = 'none';
+});
+
+document.getElementById('inquiry-button').addEventListener('click', () => {
+  if(document.getElementById('inquiry-content').value !== ''){
+    const date = currentTimeGet();
+  $.ajax({
+    url: '/mypage/' + hashedIdGet,
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'inquiry',
+      content: document.getElementById('inquiry-content').value,
+      user: document.getElementById('user_name').innerHTML,
+      date,
+      type: document.getElementById('itemSelect').value,
+    }),
+    success: function (res) {
+      document.getElementById('popup-overlay_inquiry').style.display = 'none';
+      document.getElementById('popup-overlay_inquiry_result').style.display =
+        'block';
+      setTimeout(() => {
+        document.getElementById('popup-overlay_inquiry_result').style.display =
+          'none';
+      }, 1500);
+    },
+  });
+  }else{
+    alert('問い合わせ内容を記載してください');
+  }
+});
+
+//=============================================================================================================
+//=============================================ログアウトポップアップ==========================================
+//=============================================================================================================
+document.getElementById('logout').addEventListener('click', () => {
+  document.getElementById('popup-overlay_logout').style.display = 'block';
+});
+
+document.getElementById('yes-button-logout').addEventListener('click', () => {
+  $.ajax({
+    url: '/mypage/' + hashedIdGet,
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'cookiedelete',
+    }),
+    success: function (res) {
+      location.href = 'https://nodejs-itnote-app.herokuapp.com';
+    },
+  });
+});
+
+document.getElementById('pop-delete_logout').addEventListener('click', (e) => {
+  e.preventDefault(); // リンクのデフォルトの動作を無効化
+  document.getElementById('popup-overlay_logout').style.display = 'none';
+});
+
+document.getElementById('no-button-logout').addEventListener('click', (e) => {
+  e.preventDefault(); // リンクのデフォルトの動作を無効化
+  document.getElementById('popup-overlay_logout').style.display = 'none';
+});
+
+document
+  .getElementById('popup-overlay_logout')
+  .addEventListener('click', (e) => {
+    const popup = document.getElementById('popup-overlay_logout');
+    if (e.target === popup) {
+      popup.style.display = 'none';
+    }
+  });
+
+//=============================================================================================================
+//==================================================全削除====================================================
+//=============================================================================================================
+document.getElementById('all-delete').addEventListener('click', () => {
+  document.getElementById('popup-overlay_delete').style.display = 'block';
+});
+
+document.getElementById('yes-button-delete').addEventListener('click', () => {
+  $.ajax({
+    url: '/mypage/' + hashedIdGet,
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'deleteALL',
+    }),
+    success: function (res) {
+      //全削除
+      $('#0').empty();
+
+      // loader以外（タブの要素のみ）を削除させる
+      const tabLoader = document.getElementById('tab_loader');
+      const tabWrap = document.getElementById('tab');
+      while (tabWrap.firstChild !== tabLoader) {
+        tabWrap.removeChild(tabWrap.firstChild);
+      }
+      while (tabWrap.lastChild !== tabLoader) {
+        tabWrap.removeChild(tabWrap.lastChild);
+      }
+
+      let p = document.createElement('p');
+      p.setAttribute('id', 'notab');
+      p.innerHTML = 'こちらにノウハウが出力されます';
+      document.getElementById('tab').appendChild(p);
+      document.getElementById('notepass').innerHTML = '';
+      document.getElementById('popup-overlay_delete').style.display = 'none';
+    },
+  });
+});
+
+document.getElementById('pop-delete_delete').addEventListener('click', (e) => {
+  e.preventDefault(); // リンクのデフォルトの動作を無効化
+  document.getElementById('popup-overlay_delete').style.display = 'none';
+});
+
+document.getElementById('no-button-delete').addEventListener('click', (e) => {
+  e.preventDefault(); // リンクのデフォルトの動作を無効化
+  document.getElementById('popup-overlay_delete').style.display = 'none';
+});
+
+document
+  .getElementById('popup-overlay_delete')
+  .addEventListener('click', (e) => {
+    const popup = document.getElementById('popup-overlay_delete');
+    if (e.target === popup) {
+      popup.style.display = 'none';
+    }
+  });
+
+//=============================================================================================================
