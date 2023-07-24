@@ -11,7 +11,7 @@
 
 @font-face {
   font-family: 'PTSerifCaption';
-  src: url('..fonts/PT_Serif_Caption/PTSerifCaption-Regular.ttf')
+  src: url('../fonts/PT_Serif_Caption/PTSerifCaption-Regular.ttf')
     format('truetype');
 }
 
@@ -64,7 +64,7 @@ header {
 }
 
 header h1 {
-  font-size: 42px;
+  font-size: 36px;
   text-align: center;
   padding: 0;
   margin: 0;
