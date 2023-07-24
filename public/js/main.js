@@ -364,7 +364,7 @@ async function tabScreenOptions(id, title) {
           const parentElement = event.target.parentElement.parentElement;
   const textContent  = parentElement.querySelector('.title-txt').innerHTML;
     console.log(textContent);
-            shareButtonClick(id, event);
+            shareButtonClick(id, event, textContent);
           };
 
           //タブ上の「✖️」ボタン押下
