@@ -504,10 +504,8 @@ $('.checkbox-share').on('click', (event) => {
 });
 
 document.getElementById('inquiry-button').addEventListener('click', () => {
-  document.getElementById('popup-overlay_inquiry_result').style.display =
-    'block';
-  const date = currentTimeGet();
   if(document.getElementById('inquiry-content').value !== ''){
+    const date = currentTimeGet();
   $.ajax({
     url: '/mypage/' + hashedIdGet,
     type: 'POST',
