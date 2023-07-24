@@ -317,7 +317,7 @@ document
 
 //問い合わせ
 document.getElementById('inquiry').addEventListener('click', () => {
-  document.getElementById('popup-overlay_inquiry').style.display = 'display';
+  document.getElementById('popup-overlay_inquiry').style.display = 'block';
 });
 
 document
