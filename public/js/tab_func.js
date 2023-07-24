@@ -90,12 +90,14 @@ export const tabCreate = (id, title, res) => {
   keepButton.setAttribute('class', 'keepbtn');
   keepButton.setAttribute('id', `keep-note-btn${id}`);
   keepButton.style.display = 'none';
+  keepButton.addEventListener('click', keepButtonClick.bind(null, id));
 
   const cancelButton = document.createElement('button');
   cancelButton.innerHTML = '取り消す';
   cancelButton.setAttribute('class', 'cancelbtn');
   cancelButton.setAttribute('id', `cancel-note-btn${id}`);
   cancelButton.style.display = 'none';
+  cancelButton.addEventListener('click', cancelButtonClick.bind(null, id));
 
   const titletext = document.createElement('input');
   titletext.setAttribute('id', `titletext${id}`);
