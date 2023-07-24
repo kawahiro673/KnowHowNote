@@ -171,6 +171,7 @@ export const keepButtonClick = (id) => {
     document.getElementById(`textarea${id}`).readOnly = true;
     document.getElementById(`time${id}`).innerHTML = time;
     document.getElementById('notepass').innerHTML = pass;
+    document.getElementById(`tabname${id}`).style.color = 'black';
   } else {
     alert('タイトルを入力してください');
   }
@@ -205,6 +206,7 @@ export const cancelButtonClick = (id) => {
     document.getElementById(`share-button-${id}`).style.display = 'block';
     document.getElementById(`textarea${id}`).readOnly = true;
     document.getElementById(`fade${id}`).style.opacity = '0';
+    document.getElementById(`tabname${id}`).style.color = 'black';
   }
 };
 
