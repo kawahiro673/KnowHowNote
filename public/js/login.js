@@ -32,9 +32,9 @@ function loginButtonClick() {
         document.querySelector('.login-error-message').style.display = 'block';
 const elements = document.querySelectorAll('.logininput');
 elements.forEach(function(element) {
-    element.style.border = '1px solid red !important';
+    element.style.border = '1px solid red';
     element.addEventListener('focus', (event) => {
-        event.target.style.border = '1px solid red !important';
+        event.target.style.border = '1px solid red';
     });
 });
       } else {
