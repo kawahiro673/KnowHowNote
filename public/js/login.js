@@ -33,6 +33,9 @@ function loginButtonClick() {
          const elements = document.querySelectorAll('.logininput');
          elements.forEach(function(element) {
              element.style.border = '1px solid red';
+            element.addEventListener('focus',(event)=>{
+               event.target.style.border = '1px solid red';
+            });
          });
       } else {
         //ajax通信を使用していると、nodejs(サーバーサイド)側でredirect()が使用できないっぽいのでこちらを使用
