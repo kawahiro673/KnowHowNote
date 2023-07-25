@@ -57,9 +57,9 @@ header {
   padding: 0;
   margin: 0;
   margin-left: 10px;
-  margin-bottom: 20px;
-  width: 40px;
-  height: 40px;
+  margin-bottom: 10px;
+  width: 45px;
+  height: 45px;
   max-height: 100%;
   align-items: center; /* 要素を垂直方向に中央揃え */
 }
@@ -68,8 +68,7 @@ header h1 {
   font-size: 28px;
   text-align: center;
   padding: 0;
-  margin: 0;
-  margin-left: 15px;
+  margin-top: 10px 0 0 15px;
   font-family: 'PTSerifCaption', 'Open Sans', sans-serif;
   display: inline;
   align-items: center; /* 要素を垂直方向に中央揃え */
