@@ -1,11 +1,19 @@
+@font-face {
+  font-family: 'PTSerifCaption';
+  src: url('../fonts/PT_Serif_Caption/PTSerifCaption-Regular.ttf')
+    format('truetype');
+}
+
 h1 {
   font-size: 24px;
   margin-bottom: 15px;
 }
 
-p {
+.front_cover p {
   font-size: 14px;
+  font-family: 'PTSerifCaption', 'Open Sans', sans-serif;
 }
+
 .content input {
   display: initial;
 }
@@ -45,6 +53,7 @@ p {
 
 #loginbtn {
   padding: 2em 10em;
+   margin-top:20px;
   background: #fff;
   border-radius: 10px 70px/70px 10px;
   border: dashed 2px #333;
@@ -58,6 +67,7 @@ p {
 
 #registerbtn {
   padding: 2em 10em;
+  margin-top:20px;
   background: #fff;
   border-radius: 20px 50px/50px 20px;
   border: dashed 2px #333;
