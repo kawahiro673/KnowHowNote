@@ -558,7 +558,6 @@ input[name='friend-list-label'] {
 .friend-list-check-div label,
 .friend-list-group-check-div input[type='checkbox'],
 .friend-list-group-check-div label { */
-/*   transform: scale(1.5); /* チェックボックスとラベルのサイズを調整します */ */
-/*   margin-right: 5px; /* チェックボックスとラベルの間の余白を調整します */ */
+/*   transform: scale(1.5); /* チェックボックスとラベルのサイズを調整します */
+/*   margin-right: 5px; /* チェックボックスとラベルの間の余白を調整します */
 /* } */
-/******************************************************/

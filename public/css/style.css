@@ -50,7 +50,7 @@ header {
 }
 
 .header-div {
- display: flex;
+  display: flex;
   justify-content: center; /* 要素を水平方向に中央揃え */
   align-items: center; /* 要素を垂直方向に中央揃え */
 }
@@ -59,10 +59,10 @@ header {
   text-align: center;
   padding: 0;
   margin: 0;
-  margin-left:10px;
+  margin-left: 10px;
   width: 45px;
   height: 45px;
-/*   max-height: 100%; */
+  /*   max-height: 100%; */
 }
 
 header h1 {
@@ -169,7 +169,7 @@ header h2 {
   display: inline-block;
   text-align: center;
   height: 32px;
-  margin:0;
+  margin: 0;
   font-size: 18px;
   margin-left: 150px;
 }

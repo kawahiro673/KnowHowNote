@@ -11,10 +11,10 @@ document
   .addEventListener('click', registerButtonClick);
 
 function registerButtonClick() {
-    elements.forEach(function(element) {
+  elements.forEach(function (element) {
     element.style.border = '1px solid black';
-});
- message.style.display = 'none';
+  });
+  message.style.display = 'none';
   $.ajax({
     url: '/auth/',
     type: 'POST',
@@ -32,13 +32,13 @@ function registerButtonClick() {
         cfPassword.value === ''
       ) {
         // alert('入力されていない情報があります');
-          elements.forEach(function(element) {
-         if(element.value ===''){
-    element.style.border = '1px solid red';
-         } 
-    });
-          message.style.display = 'block';
-        message.innerHTML = '入力されていない情報があります'
+        elements.forEach(function (element) {
+          if (element.value === '') {
+            element.style.border = '1px solid red';
+          }
+        });
+        message.style.display = 'block';
+        message.innerHTML = '入力されていない情報があります';
         return false;
       }
       //ユーザー名かぶりチェック
@@ -47,18 +47,18 @@ function registerButtonClick() {
       );
       if (user) {
         // alert('そのユーザーは登録できません');
-         message.style.display = 'block';
-         message.innerHTML = 'そのユーザーは登録できません'
-       userName.style.border = '1px solid red';
+        message.style.display = 'block';
+        message.innerHTML = 'そのユーザーは登録できません';
+        userName.style.border = '1px solid red';
         return false;
       }
       //確認用パスワード入力チェック
       if (password_auth.value !== cfPassword.value) {
         // alert('パスワードの入力に誤りがあります');
-         message.style.display = 'block';
-         message.innerHTML = 'パスワードの入力に誤りがあります'
+        message.style.display = 'block';
+        message.innerHTML = 'パスワードの入力に誤りがあります';
         password_auth.style.border = '1px solid red';
-          cfPassword.style.border = '1px solid red';
+        cfPassword.style.border = '1px solid red';
         return false;
       }
 

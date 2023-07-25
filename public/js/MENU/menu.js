@@ -136,7 +136,6 @@ const shareFunctionCheckBoxFlg = (checkbox) => {
   });
 };
 
-
 //=============================================================================================================
 //=================================================共有履歴====================================================
 //=============================================================================================================
@@ -486,7 +485,6 @@ document
       .removeEventListener('click', addGroup);
   });
 
-
 //=============================================================================================================
 //==============================================問い合わせ=====================================================
 //=============================================================================================================
@@ -500,31 +498,32 @@ document.getElementById('pop-delete_inquiry').addEventListener('click', (e) => {
 });
 
 document.getElementById('inquiry-button').addEventListener('click', () => {
-  if(document.getElementById('inquiry-content').value !== ''){
+  if (document.getElementById('inquiry-content').value !== '') {
     const date = currentTimeGet();
-  $.ajax({
-    url: '/mypage/' + hashedIdGet,
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      flg: 'inquiry',
-      content: document.getElementById('inquiry-content').value,
-      user: document.getElementById('user_name').innerHTML,
-      date,
-      type: document.getElementById('itemSelect').value,
-    }),
-    success: function (res) {
-      document.getElementById('popup-overlay_inquiry').style.display = 'none';
-      document.getElementById('popup-overlay_inquiry_result').style.display =
-        'block';
-      setTimeout(() => {
+    $.ajax({
+      url: '/mypage/' + hashedIdGet,
+      type: 'POST',
+      dataType: 'Json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        flg: 'inquiry',
+        content: document.getElementById('inquiry-content').value,
+        user: document.getElementById('user_name').innerHTML,
+        date,
+        type: document.getElementById('itemSelect').value,
+      }),
+      success: function (res) {
+        document.getElementById('popup-overlay_inquiry').style.display = 'none';
         document.getElementById('popup-overlay_inquiry_result').style.display =
-          'none';
-      }, 1500);
-    },
-  });
-  }else{
+          'block';
+        setTimeout(() => {
+          document.getElementById(
+            'popup-overlay_inquiry_result'
+          ).style.display = 'none';
+        }, 1500);
+      },
+    });
+  } else {
     alert('問い合わせ内容を記載してください');
   }
 });
