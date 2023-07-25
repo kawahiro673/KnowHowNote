@@ -45,6 +45,7 @@ header {
   justify-content: space-between;
   border-radius: 5px;
   height: 60px;
+  align-items: center;
   /*    //overflow: hidden; */
 }
 
