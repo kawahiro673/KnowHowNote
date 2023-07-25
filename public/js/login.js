@@ -1,4 +1,4 @@
-limport { currentTimeGet } from './stringUtils.js';
+import { currentTimeGet } from './stringUtils.js';
 
 const loginbtn = document.getElementById('loginbtn');
 const password = document.getElementById('password');
