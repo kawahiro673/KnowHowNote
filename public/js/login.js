@@ -3,6 +3,7 @@ import { currentTimeGet } from './stringUtils.js';
 const loginbtn = document.getElementById('loginbtn');
 const password = document.getElementById('password');
 const username = document.getElementById('username_login');
+const elements = document.querySelectorAll('.logininput');
 
 loginbtn.addEventListener('click', loginButtonClick);
 
@@ -11,7 +12,12 @@ function loginButtonClick() {
         password.value === '' ||
        username.value === ''
       ) {
-        alert('入力されていない情報があります');
+        // alert('入力されていない情報があります');
+      elements.forEach(function(element) {
+         if(element.value ===''){
+    element.style.border = '1px solid red';
+         }
+    });
         return false;
       }else{
   const time = currentTimeGet();
@@ -30,12 +36,9 @@ function loginButtonClick() {
       if (res.message !== 'ok') {
         //alert(res.message);
         document.querySelector('.login-error-message').style.display = 'block';
-const elements = document.querySelectorAll('.logininput');
+
 elements.forEach(function(element) {
     element.style.border = '1px solid red';
-    element.addEventListener('focus', (event) => {
-        event.target.style.border = '1px solid red';
-    });
 });
       } else {
         //ajax通信を使用していると、nodejs(サーバーサイド)側でredirect()が使用できないっぽいのでこちらを使用
