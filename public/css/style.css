@@ -50,10 +50,9 @@ header {
 }
 
 .header-div {
-/*   display: inline-block;
-  vertical-align: middle; */
-   display: flex; /* 追加 */
-  align-items: center; /* 追加 */
+ display: flex;
+  justify-content: center; /* 要素を水平方向に中央揃え */
+  align-items: center; /* 要素を垂直方向に中央揃え */
 }
 
 .header-div img {
@@ -67,12 +66,11 @@ header {
 }
 
 header h1 {
- font-size: 28px;
+  font-size: 28px;
   text-align: center;
   padding: 0;
-  margin: 15px 0 0 10px;
+  margin: 0; /* 上部の余白を削除 */
   font-family: 'PTSerifCaption', 'Open Sans', sans-serif;
-  /* display: inline; */ /* この行は不要なので削除 */
 }
 
 header h2 {
