@@ -29,14 +29,14 @@ function loginButtonClick() {
     success: function (res) {
       if (res.message !== 'ok') {
         //alert(res.message);
-         document.querySelector('.login-error-message').style.display = 'block';
-         const elements = document.querySelectorAll('.logininput');
-         elements.forEach(function(element) {
-             element.style.border = '1px solid red';
-            element.addEventListener('focus',(event)=>{
-               event.target.style.border = '1px solid red';
-            });
-         });
+        document.querySelector('.login-error-message').style.display = 'block';
+const elements = document.querySelectorAll('.logininput');
+elements.forEach(function(element) {
+    element.style.border = '1px solid red !important';
+    element.addEventListener('focus', (event) => {
+        event.target.style.border = '1px solid red !important';
+    });
+});
       } else {
         //ajax通信を使用していると、nodejs(サーバーサイド)側でredirect()が使用できないっぽいのでこちらを使用
         location.href = res.url;
