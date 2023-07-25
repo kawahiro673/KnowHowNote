@@ -158,7 +158,7 @@ h1 {
 }
 
 .login-error-message,
-.register-error-message{
+.auth-error-message{
    display: none;
   color: red;
 }
