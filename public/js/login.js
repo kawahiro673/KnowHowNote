@@ -7,6 +7,13 @@ const username = document.getElementById('username_login');
 loginbtn.addEventListener('click', loginButtonClick);
 
 function loginButtonClick() {
+   if (
+        password.value === '' ||
+       username.value === ''
+      ) {
+        alert('入力されていない情報があります');
+        return false;
+      }else{
   const time = currentTimeGet();
   $.ajax({
     url: '/login/',
@@ -28,4 +35,5 @@ function loginButtonClick() {
       }
     },
   });
+   }
 }
