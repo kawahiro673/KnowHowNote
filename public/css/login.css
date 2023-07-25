@@ -157,7 +157,8 @@ h1 {
   margin-top: 20px;
 }
 
-.login-error-message{
+.login-error-message,
+.register-error-message{
    display: none;
   color: red;
 }
