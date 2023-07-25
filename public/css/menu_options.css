@@ -730,3 +730,6 @@ input[type='checkbox']:checked + .gray_b {
   height: 200px;
 }
 
+#friend-delete-q-real-user{
+  color:gray;
+}
