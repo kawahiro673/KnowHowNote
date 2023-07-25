@@ -169,8 +169,8 @@ header h2 {
   display: inline-block;
   text-align: center;
   height: 32px;
-  font-size: 12px;
-  font-weight: bold;
+  margin:0;
+  font-size: 18px;
   margin-left: 150px;
 }
 
