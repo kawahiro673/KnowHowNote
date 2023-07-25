@@ -1,4 +1,4 @@
-import { currentTimeGet } from './stringUtils.js';
+limport { currentTimeGet } from './stringUtils.js';
 
 const loginbtn = document.getElementById('loginbtn');
 const password = document.getElementById('password');
@@ -8,6 +8,10 @@ const elements = document.querySelectorAll('.logininput');
 loginbtn.addEventListener('click', loginButtonClick);
 
 function loginButtonClick() {
+   elements.forEach(function(element) {
+    element.style.border = '1px solid black';
+});
+      document.querySelector('.login-error-message').style.display = 'none';
    if (
         password.value === '' ||
        username.value === ''
@@ -16,8 +20,10 @@ function loginButtonClick() {
       elements.forEach(function(element) {
          if(element.value ===''){
     element.style.border = '1px solid red';
-         }
+         } 
     });
+        document.querySelector('.login-error-message').style.display = 'block';
+        document.querySelector('.login-error-message').innerHTML = '入力されていない情報があります'
         return false;
       }else{
   const time = currentTimeGet();
@@ -36,6 +42,7 @@ function loginButtonClick() {
       if (res.message !== 'ok') {
         //alert(res.message);
         document.querySelector('.login-error-message').style.display = 'block';
+        document.querySelector('.login-error-message').innerHTML = 'ユーザー名またはパスワードが間違っています'
 
 elements.forEach(function(element) {
     element.style.border = '1px solid red';
