@@ -49,6 +49,7 @@ function registerButtonClick() {
         // alert('そのユーザーは登録できません');
          message.style.display = 'block';
          message.innerHTML = 'そのユーザーは登録できません'
+       userName.style.border = '1px solid red';
         return false;
       }
       //確認用パスワード入力チェック
@@ -56,6 +57,8 @@ function registerButtonClick() {
         // alert('パスワードの入力に誤りがあります');
          message.style.display = 'block';
          message.innerHTML = 'パスワードの入力に誤りがあります'
+        password_auth.style.border = '1px solid red';
+          cfPassword.style.border = '1px solid red';
         return false;
       }
 
