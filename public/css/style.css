@@ -56,20 +56,20 @@ header {
 }
 
 .header-div img {
+  text-align: center;
   padding: 0;
   margin: 0;
-  margin: 10px 0 10px 10px;
   width: 45px;
   height: 45px;
-  max-height: 100%;
-  align-items: center; /* 要素を垂直方向に中央揃え */
+/*   max-height: 100%; */
 }
 
 header h1 {
   font-size: 28px;
   text-align: center;
   padding: 0;
-  margin: 0; /* 上部の余白を削除 */
+  margin: 0;
+  margin-left: 10px;
   font-family: 'PTSerifCaption', 'Open Sans', sans-serif;
 }
 
