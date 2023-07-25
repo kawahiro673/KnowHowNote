@@ -3,13 +3,18 @@ import { currentTimeGet } from './stringUtils.js';
 const userName = document.getElementById('username');
 const password_auth = document.getElementById('password_auth');
 const cfPassword = document.getElementById('confirmedPassword');
+const elements = document.querySelectorAll('.authinput');
+const message = document.querySelector('.auth-error-message');
 
 document
   .getElementById('registerbtn')
   .addEventListener('click', registerButtonClick);
 
 function registerButtonClick() {
-  console.log('クリックしました');
+    elements.forEach(function(element) {
+    element.style.border = '1px solid black';
+});
+ message.style.display = 'none';
   $.ajax({
     url: '/auth/',
     type: 'POST',
@@ -26,7 +31,14 @@ function registerButtonClick() {
         password_auth.value === '' ||
         cfPassword.value === ''
       ) {
-        alert('入力されていない情報があります');
+        // alert('入力されていない情報があります');
+          elements.forEach(function(element) {
+         if(element.value ===''){
+    element.style.border = '1px solid red';
+         } 
+    });
+          message.style.display = 'block';
+        message.innerHTML = '入力されていない情報があります'
         return false;
       }
       //ユーザー名かぶりチェック
@@ -34,15 +46,18 @@ function registerButtonClick() {
         (user) => user.UserName === userName.value
       );
       if (user) {
-        alert('そのユーザーは登録できません');
+        // alert('そのユーザーは登録できません');
+         message.style.display = 'block';
+         message.innerHTML = 'そのユーザーは登録できません'
         return false;
       }
       //確認用パスワード入力チェック
       if (password_auth.value !== cfPassword.value) {
-        alert('パスワードの入力に誤りがあります');
+        // alert('パスワードの入力に誤りがあります');
+         message.style.display = 'block';
+         message.innerHTML = 'パスワードの入力に誤りがあります'
         return false;
       }
-      console.log('登録完了');
 
       const time = currentTimeGet();
       $.ajax({
