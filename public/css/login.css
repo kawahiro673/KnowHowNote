@@ -51,6 +51,15 @@ h1 {
   padding: 8px;
 }
 
+.authinput{
+    border: none;
+  border-bottom: 1px solid #d1d1d1;
+  font-size: 1.2em; /*文字が１.２倍の大きさ*/
+  width: 50%;
+  padding: 8px;
+}
+
+
 #loginbtn {
   padding: 2em 10em;
    margin-top:20px;
