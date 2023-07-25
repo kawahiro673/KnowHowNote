@@ -28,7 +28,12 @@ function loginButtonClick() {
     }),
     success: function (res) {
       if (res.message !== 'ok') {
-        alert(res.message);
+        //alert(res.message);
+         document.querySelector('.login-error-message').style.display = 'block';
+         const elements = document.querySelectorAll('.logininput');
+         elements.forEach(function(element) {
+             element.style.border = '1px solid red';
+         });
       } else {
         //ajax通信を使用していると、nodejs(サーバーサイド)側でredirect()が使用できないっぽいのでこちらを使用
         location.href = res.url;
