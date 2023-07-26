@@ -44,7 +44,8 @@ export const shareContextmenu = () => {
         //対象のシェアノウハウを削除
          document.getElementById('popup-overlay_share-delete').style.display =
     'block';
-        document.getElementById('yes-button-share-delete').addEventListenner('click',()=>{
+         document.getElementById('share-delete-name').innerHTML = share.shareTitle;
+        document.getElementById('yes-button-share-delete').addEventListener('click',()=>{
            share.shareThis.parentNode.removeChild(share.shareThis);
         myShareNoteDelete(share.id);
         })
