@@ -554,7 +554,7 @@ input[name='friend-list-label'] {
   border-bottom-color: White;
 }
 
- .friend-list-check-div:hover{
+ .friend-list-group-check-div:hover{
    background-color: #F5F5F5;
  }
 
