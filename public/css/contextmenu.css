@@ -50,7 +50,8 @@
 #brown:hover,
 #gray:hover,
 #black:hover,
-#white:hover {
+#white:hover,
+#share-list-delete:hover{
   background-color: #f0f0f0;
 }
 
