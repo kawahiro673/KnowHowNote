@@ -57,6 +57,8 @@ export const shareContextmenu = () => {
           const ul = li.parentElement;
           ul.removeChild(li);
         myShareNoteDelete(share.id);
+
+           document.getElementById('yes-button-share-delete').removeEventListener('click');
         })
       });
     });
