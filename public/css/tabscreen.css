@@ -554,6 +554,10 @@ input[name='friend-list-label'] {
   border-bottom-color: White;
 }
 
+ .friend-list-check-div:hover{
+   background-color: #F5F5F5;
+ }
+
 /* .friend-list-check-div input[type='checkbox'],
 .friend-list-check-div label,
 .friend-list-group-check-div input[type='checkbox'],
