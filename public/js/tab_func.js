@@ -468,7 +468,42 @@ document.getElementById('share-user-button').addEventListener('click', () => {
           }
         }
       });
+      //////////////////////////
+      document.addEventListener('DOMContentLoaded', function () {
+        const labels = document.querySelectorAll('.popup-label');
 
+        labels.forEach(function (label) {
+          label.addEventListener('mouseover', function () {
+            // ポップアップの内容を設定
+            const popupContent = 'ここにポップアップの内容を記述します。';
+
+            // ポップアップの要素を作成
+            const popupDiv = document.createElement('div');
+            popupDiv.className = 'popup';
+            popupDiv.textContent = popupContent;
+
+            // ポップアップの位置を設定
+            const labelWidth = label.offsetWidth;
+            const popupWidth = popupDiv.offsetWidth;
+            const labelPosition = label.offsetLeft;
+            const popupPosition = labelPosition + labelWidth + 10; // 右側に10pxの余白を設定
+
+            popupDiv.style.left = popupPosition + 'px';
+
+            // ポップアップを追加
+            label.parentNode.appendChild(popupDiv);
+          });
+
+          label.addEventListener('mouseout', function () {
+            // ポップアップが表示されたら、カーソルが外れたときに非表示にする
+            const popup = label.parentNode.querySelector('.popup');
+            if (popup) {
+              popup.parentNode.removeChild(popup);
+            }
+          });
+        });
+      });
+      //////////////////////////
       if (!groupFlg) {
         const p = document.createElement('p');
         p.innerHTML = 'グループに所属しているユーザーがいません';
