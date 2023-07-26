@@ -42,26 +42,7 @@ export const shareContextmenu = () => {
       }
     })();
 
-
-    // $(document).ready(function () {
-    //   $('#share-list-delete').off('click');
-    //   $('#share-list-delete').on('click', function (e) {
-    //    console.log('「削除」が押されました');
-    //     //対象のシェアノウハウを削除
-    //      document.getElementById('popup-overlay_share-delete').style.display =
-    // 'block';
-    //      document.getElementById('share-delete-name').innerHTML = share.shareTitle;
-    //     document.getElementById('yes-button-share-delete').addEventListener('click',()=>{
-    //        //share.shareThis.parentNode.removeChild(share.shareThis);
-    //       const li = share.shareThis.parentElement;
-    //       const ul = li.parentElement;
-    //       ul.removeChild(li);
-    //     myShareNoteDelete(share.id);
-
-    //        document.getElementById('yes-button-share-delete').removeEventListener('click');
-    //     })
-    //   });
-    // });
+//シャアノウハウ削除
 　　　$(document).ready(function () {
   // ボタンに既存のクリックイベントを解除
   $('#share-list-delete').off('click');
