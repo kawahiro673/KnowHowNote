@@ -86,6 +86,23 @@ export const shareContextmenu = () => {
       document.getElementById('yes-button-share-delete').removeEventListener('click', onDeleteClick);
     }
 
+    document
+  .getElementById('pop-delete_share-delete')
+  .addEventListener('click', (e) => {
+    e.preventDefault(); // リンクのデフォルトの動作を無効化
+    document.getElementById('popup-overlay_share-delete').style.display =
+      'none';
+      document.getElementById('yes-button-share-delete').removeEventListener('click', onDeleteClick);
+  });
+
+document
+  .getElementById('no-button-share-delete')
+  .addEventListener('click', (e) => {
+    e.preventDefault(); // リンクのデフォルトの動作を無効化
+    document.getElementById('popup-overlay_share-delete').style.display = 'none';
+      document.getElementById('yes-button-share-delete').removeEventListener('click', onDeleteClick);
+  });
+
     document.getElementById('yes-button-share-delete').addEventListener('click', onDeleteClick);
   });
 });
@@ -185,18 +202,3 @@ const myShareNoteDelete = (id) => {
         },
   })
 }
-
-document
-  .getElementById('pop-delete_share-delete')
-  .addEventListener('click', (e) => {
-    e.preventDefault(); // リンクのデフォルトの動作を無効化
-    document.getElementById('popup-overlay_share-delete').style.display =
-      'none';
-  });
-
-document
-  .getElementById('no-button-share-delete')
-  .addEventListener('click', (e) => {
-    e.preventDefault(); // リンクのデフォルトの動作を無効化
-    document.getElementById('popup-overlay_share-delete').style.display = 'none';
-  });
