@@ -394,6 +394,14 @@ router.post('/', (req, res) => {
         console.error(error);
         res.status(500).json({ message: error.message, nothing });
       });
+  } else if (req.body.flg === 'share-delete') {
+    pool.query(
+      'DELETE FROM it_memo WHERE id = ?;',
+      [req.body.id],
+      (error, result) => {
+        res.send({msg:'成功'});
+      }
+    );
   }
 });
 
