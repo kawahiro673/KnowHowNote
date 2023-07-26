@@ -35,6 +35,18 @@ export const shareContextmenu = () => {
         console.error(error);
       }
     })();
+
+
+    $(document).ready(function () {
+      $('#share-list-delete').off('click');
+      $('#share-list-delete').on('click', function (e) {
+       console.log('「削除」が押されました');
+        //対象のシェアノウハウを削除
+        share.shareThis.parentNode.removeChild(share.shareThis);
+        myShareNoteDelete(share.id);
+      });
+    });
+    
   });
 };
 
@@ -111,3 +123,21 @@ const getShareUser = async (id) => {
     throw error;
   }
 };
+
+
+const myShareNoteDelete = (id) => {
+  console.log('idは '+ id);
+  $.ajax({
+        url: '/notePostController/',
+        type: 'POST',
+        dataType: 'Json',
+        contentType: 'application/json',
+        data: JSON.stringify({
+          flg: 'share-delete',
+          id,
+        }),
+        success: function (res) {
+          
+        },
+  })
+}
