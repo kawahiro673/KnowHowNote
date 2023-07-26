@@ -13,9 +13,9 @@ export const shareContextmenu = () => {
       $('#MyNoteAdd').off('click');
       $('#MyNoteAdd').on('click', function (e) {
         // share.shareThis.parentNode.removeChild(share.shareThis);
-          const li = share.shareThis.parentElement;
-          const ul = li.parentElement;
-          ul.removeChild(li);
+        const li = share.shareThis.parentElement;
+        const ul = li.parentElement;
+        ul.removeChild(li);
         mynoteAddFunc(share.id);
       });
     });
@@ -24,9 +24,9 @@ export const shareContextmenu = () => {
       .getElementById('Add-from-Details')
       .addEventListener('click', () => {
         // share.shareThis.parentNode.removeChild(share.shareThis);
-          const li = share.shareThis.parentElement;
-          const ul = li.parentElement;
-          ul.removeChild(li);
+        const li = share.shareThis.parentElement;
+        const ul = li.parentElement;
+        ul.removeChild(li);
         mynoteAddFunc(share.id);
       });
 
@@ -42,53 +42,64 @@ export const shareContextmenu = () => {
       }
     })();
 
-//シャアノウハウ削除
-　　　$(document).ready(function () {
-  // ボタンに既存のクリックイベントを解除
-  $('#share-list-delete').off('click');
+    //シャアノウハウ削除
+    $(document).ready(function () {
+      // ボタンに既存のクリックイベントを解除
+      $('#share-list-delete').off('click');
 
-  // ボタンに新しいクリックイベントを登録
-  $('#share-list-delete').on('click', function (e) {
-    console.log('「削除」が押されました');
-    //対象のシェアノウハウを削除
-    document.getElementById('popup-overlay_share-delete').style.display = 'block';
-    document.getElementById('share-delete-name').innerHTML = share.shareTitle;
+      // ボタンに新しいクリックイベントを登録
+      $('#share-list-delete').on('click', function (e) {
+        console.log('「削除」が押されました');
+        //対象のシェアノウハウを削除
+        document.getElementById('popup-overlay_share-delete').style.display =
+          'block';
+        document.getElementById('share-delete-name').innerHTML =
+          share.shareTitle;
 
-    // 「はい」ボタンのクリックイベントを定義
-    function onDeleteClick() {
-      // share.shareThis.parentNode.removeChild(share.shareThis);
-      const li = share.shareThis.parentElement;
-      const ul = li.parentElement;
-      ul.removeChild(li);
+        // 「はい」ボタンのクリックイベントを定義
+        function onDeleteClick() {
+          // share.shareThis.parentNode.removeChild(share.shareThis);
+          const li = share.shareThis.parentElement;
+          const ul = li.parentElement;
+          ul.removeChild(li);
 
-      myShareNoteDelete(share.id);
+          myShareNoteDelete(share.id);
 
-      // イベントリスナーを削除
-      document.getElementById('yes-button-share-delete').removeEventListener('click', onDeleteClick);
-    }
+          // イベントリスナーを削除
+          document
+            .getElementById('yes-button-share-delete')
+            .removeEventListener('click', onDeleteClick);
+        }
 
-    document
-  .getElementById('pop-delete_share-delete')
-  .addEventListener('click', (e) => {
-    e.preventDefault(); // リンクのデフォルトの動作を無効化
-    document.getElementById('popup-overlay_share-delete').style.display =
-      'none';
-      document.getElementById('yes-button-share-delete').removeEventListener('click', onDeleteClick);
-  });
+        document
+          .getElementById('pop-delete_share-delete')
+          .addEventListener('click', (e) => {
+            e.preventDefault(); // リンクのデフォルトの動作を無効化
+            document.getElementById(
+              'popup-overlay_share-delete'
+            ).style.display = 'none';
+            document
+              .getElementById('yes-button-share-delete')
+              .removeEventListener('click', onDeleteClick);
+          });
 
-document
-  .getElementById('no-button-share-delete')
-  .addEventListener('click', (e) => {
-    e.preventDefault(); // リンクのデフォルトの動作を無効化
-    document.getElementById('popup-overlay_share-delete').style.display = 'none';
-      document.getElementById('yes-button-share-delete').removeEventListener('click', onDeleteClick);
-  });
+        document
+          .getElementById('no-button-share-delete')
+          .addEventListener('click', (e) => {
+            e.preventDefault(); // リンクのデフォルトの動作を無効化
+            document.getElementById(
+              'popup-overlay_share-delete'
+            ).style.display = 'none';
+            document
+              .getElementById('yes-button-share-delete')
+              .removeEventListener('click', onDeleteClick);
+          });
 
-    document.getElementById('yes-button-share-delete').addEventListener('click', onDeleteClick);
-  });
-});
-    
-    
+        document
+          .getElementById('yes-button-share-delete')
+          .addEventListener('click', onDeleteClick);
+      });
+    });
   });
 };
 
@@ -168,18 +179,19 @@ const getShareUser = async (id) => {
 
 //DBのit_memo内のシェアノウハウ削除
 const myShareNoteDelete = (id) => {
-  console.log('idは '+ id);
+  console.log('idは ' + id);
   $.ajax({
-        url: '/sharePostController/',
-        type: 'POST',
-        dataType: 'Json',
-        contentType: 'application/json',
-        data: JSON.stringify({
-          flg: 'share-delete',
-          id,
-        }),
-        success: function (res) {
-          document.getElementById('popup-overlay_share-delete').style.display ='none';
-        },
-  })
-}
+    url: '/sharePostController/',
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'share-delete',
+      id,
+    }),
+    success: function (res) {
+      document.getElementById('popup-overlay_share-delete').style.display =
+        'none';
+    },
+  });
+};
