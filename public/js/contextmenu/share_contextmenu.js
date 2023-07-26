@@ -12,7 +12,10 @@ export const shareContextmenu = () => {
     $(document).ready(function () {
       $('#MyNoteAdd').off('click');
       $('#MyNoteAdd').on('click', function (e) {
-        share.shareThis.parentNode.removeChild(share.shareThis);
+        // share.shareThis.parentNode.removeChild(share.shareThis);
+          const li = share.shareThis.parentElement;
+          const ul = li.parentElement;
+          ul.removeChild(li);
         mynoteAddFunc(share.id);
       });
     });
@@ -20,7 +23,10 @@ export const shareContextmenu = () => {
     document
       .getElementById('Add-from-Details')
       .addEventListener('click', () => {
-        share.shareThis.parentNode.removeChild(share.shareThis);
+        // share.shareThis.parentNode.removeChild(share.shareThis);
+          const li = share.shareThis.parentElement;
+          const ul = li.parentElement;
+          ul.removeChild(li);
         mynoteAddFunc(share.id);
       });
 
@@ -46,7 +52,10 @@ export const shareContextmenu = () => {
     'block';
          document.getElementById('share-delete-name').innerHTML = share.shareTitle;
         document.getElementById('yes-button-share-delete').addEventListener('click',()=>{
-           share.shareThis.parentNode.removeChild(share.shareThis);
+           //share.shareThis.parentNode.removeChild(share.shareThis);
+          const li = share.shareThis.parentElement;
+          const ul = li.parentElement;
+          ul.removeChild(li);
         myShareNoteDelete(share.id);
         })
       });
