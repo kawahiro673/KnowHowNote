@@ -81,7 +81,8 @@
 #popup-overlay_friend-delete-q,
 #popup-overlay_group-add,
 #popup-overlay_group-list,
-#popup-overlay_group-list-delete {
+#popup-overlay_group-list-delete,
+#popup-overlay_share-delete{
   display: block;
   position: fixed;
   top: 0;
@@ -111,7 +112,8 @@
 .popup-window_friend-delete-q,
 .popup-window_group-add,
 .popup-window_group-list,
-.popup-window_group-list-delete {
+.popup-window_group-list-delete,
+.popup-window_share-delete{
   width: 500px;
   height: 300px;
   background-color: #fff;
@@ -146,7 +148,8 @@
 .popup-window_logout,
 .popup-window_friend-add-ans,
 .popup-window_friend-delete-q,
-.popup-window_friend-delete-ans {
+.popup-window_friend-delete-ans,
+.popup-window_share-delete{
   height: 180px;
   width: 330px;
 }
@@ -180,7 +183,8 @@
 .popup-header_friend-delete-q,
 .popup-header_group-add,
 .popup-header_group-list,
-.popup-header_group-list-delete {
+.popup-header_group-list-delete,
+.popup-header_share-delete{
   display: flex;
   align-items: center;
   justify-content: center; /* 中央寄せに変更 */
@@ -208,7 +212,8 @@
 .popup-header_friend-delete-q h2,
 .popup-header_group-add h2,
 .popup-header_group-list h2,
-.popup-header_group-list-delete h2 {
+.popup-header_group-list-delete h2,
+.popup-header_share-delete h2{
   font-size: 16px;
   font-weight: normal;
   margin: 0 auto;
@@ -233,7 +238,8 @@
 #pop-delete_friend-delete-q,
 #pop-delete_group-add,
 #pop-delete_group-list,
-#pop-delete_group-list-delete {
+#pop-delete_group-list-delete,
+#pop-delete_share-delete{
   text-decoration: none;
   font-size: 1.2em;
   font-weight: bold;
@@ -254,7 +260,8 @@
 #pop-delete_friend-delete-q:hover,
 #pop-delete_group-add:hover,
 #pop-delete_group-list:hover,
-#pop-delete_group-list-delete:hover {
+#pop-delete_group-list-delete:hover,
+#pop-delete_share-delete:hover{
   color: red;
 }
 
@@ -277,7 +284,8 @@
 .popup-body_friend-delete-q,
 .popup-body_group-add,
 .popup-body_group-list,
-.popup-body_group-list-delete {
+.popup-body_group-list-delete,
+.popup-body_share-delete{
   position: relative;
   height: 240px;
   padding: 0 10px;
@@ -300,6 +308,11 @@
   display: flex;
   justify-content: center; /* 要素を水平方向に中央揃え */
   align-items: center; /* 要素を垂直方向に中央揃え */
+}
+
+.popup-body_share-history {
+  width: 100%;
+  overflow-x: auto;
 }
 /*******************************************************************************/
 
@@ -444,7 +457,9 @@
 #share-group-add-button,
 #share-group-clear-button,
 #yes-button-group-list-delete,
-#no-button-group-list-delete {
+#no-button-group-list-delete,
+#yes-button-share-delete,
+#no-button-share-delete{
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -481,7 +496,9 @@
 #share-group-add-button,
 #share-group-clear-button,
 #yes-button-group-list-delete,
-#no-button-group-list-delete {
+#no-button-group-list-delete,
+#yes-button-share-delete,
+#no-button-share-delete{
   padding: 7px 14px;
   font-size: 12px;
 }
@@ -525,14 +542,16 @@
 #no-button-delete,
 #share-user-clear-button,
 #friend-delete-q-cancel,
-#no-button-group-list-delete {
+#no-button-group-list-delete,
+#no-button-share-delete{
   background-color: red;
 }
 
 .logout-button-wrapper,
 .delete-button-wrapper,
 .group-list-delete-button-wrapper,
-.friend-delete-button-wrapper {
+.friend-delete-button-wrapper,
+.share-delete-button-wrapper{
   display: flex;
   justify-content: space-between;
 }
@@ -540,7 +559,8 @@
 .logout-button-wrapper button,
 .delete-button-wrapper button,
 .group-list-delete-button-wrapper button,
-.friend-delete-button-wrapper button {
+.friend-delete-button-wrapper button,
+share-delete-button-wrapper button{
   flex: 0 0 120px; /* ボタンの幅を調整する値（例: 120px） */
   margin: 0 5px;
 }
@@ -652,10 +672,6 @@ input[type='checkbox']:checked + .gray_b {
   font-weight: bold;
 }
 
-.popup-body_share-history {
-  width: 100%;
-  overflow-x: auto;
-}
 .share-table-header {
   background-color: #e5e5e5;
 }
