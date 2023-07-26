@@ -128,7 +128,7 @@ const getShareUser = async (id) => {
 const myShareNoteDelete = (id) => {
   console.log('idは '+ id);
   $.ajax({
-        url: '/notePostController/',
+        url: '/sharePostController/',
         type: 'POST',
         dataType: 'Json',
         contentType: 'application/json',
