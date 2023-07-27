@@ -515,13 +515,13 @@ document.getElementById('share-user-button').addEventListener('click', () => {
   });
 });
 ////////////////////////////////////////////////////////////////////////////////////
- function addPopupListeners() {
+  function addPopupListeners() {
     const labels = document.querySelectorAll('.popup-label');
 
     labels.forEach(function(label) {
       label.addEventListener('mouseenter', function() {
         // ポップアップの内容を設定
-        const popupContent = 'ここにポップアップの内容を記述します。';
+        const popupContent = label.innerHTML;
 
         // ポップアップの要素を作成
         const popupDiv = document.createElement('div');
@@ -529,7 +529,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
         popupDiv.textContent = popupContent;
 
         // ポップアップを追加
-        label.parentNode.appendChild(popupDiv);
+        label.parentNode.insertBefore(popupDiv, label.nextSibling);
       });
 
       label.addEventListener('mouseleave', function() {
@@ -541,6 +541,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
       });
     });
   }
+
 ////////////////////////////////////////////////////////////////////////////////////
 
 let shareUserValues = [];
