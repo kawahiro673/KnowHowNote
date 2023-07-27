@@ -442,7 +442,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
       });
 
       const popupGroupMember = document.getElementById('popup-group-member');
-      
+
       //グループ側のチェックボックス作成
       let groupFlg = false;
       const groupSet = new Set(); // ユニークな User_Group を格納するための Set
@@ -469,25 +469,25 @@ document.getElementById('share-user-button').addEventListener('click', () => {
             div.appendChild(checkbox);
             div.appendChild(checkboxLabel);
 
-          // ラベル要素にマウスカーソルが入ったときの処理
-          div.addEventListener('mouseenter', (event) => {
-            // ポップアップ要素を表示
-            popupGroupMember.style.display = 'block';
+            // ラベル要素にマウスカーソルが入ったときの処理
+            div.addEventListener('mouseenter', (event) => {
+              // ポップアップ要素を表示
+              popupGroupMember.style.display = 'block';
 
-            // マウスの座標を取得し、ポップアップ要素を移動
-            popupGroupMember.style.left = event.clientX + 'px';
-            popupGroupMember.style.top = event.clientY + 'px';
+              // マウスの座標を取得し、ポップアップ要素を移動
+              popupGroupMember.style.left = event.clientX + 'px';
+              popupGroupMember.style.top = event.clientY + 'px';
 
-            // ポップアップ要素の内容を設定
-            popupGroupMember.innerHTML = userGroup;
-          });
+              // ポップアップ要素の内容を設定
+              popupGroupMember.innerHTML = userGroup;
+            });
 
-          // ラベル要素からマウスカーソルが出たときの処理
-          div.addEventListener('mouseleave', () => {
-            // ポップアップ要素を非表示
-            popupGroupMember.style.display = 'none';
-          });
-        }
+            // ラベル要素からマウスカーソルが出たときの処理
+            div.addEventListener('mouseleave', () => {
+              // ポップアップ要素を非表示
+              popupGroupMember.style.display = 'none';
+            });
+          }
         }
       });
 
