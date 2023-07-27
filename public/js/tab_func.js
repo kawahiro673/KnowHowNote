@@ -442,6 +442,8 @@ document.getElementById('share-user-button').addEventListener('click', () => {
       });
 
       const popupGroupMember = document.getElementById('popup-group-member');
+      let timer;
+      let isPopupShown = false;
 
       //グループ側のチェックボックス作成
       let groupFlg = false;
@@ -469,45 +471,56 @@ document.getElementById('share-user-button').addEventListener('click', () => {
             div.appendChild(checkbox);
             div.appendChild(checkboxLabel);
 
+            /////////////////////////////////////////////////////////////////////////////////
+
             // ラベル要素にマウスカーソルが入ったときの処理
             div.addEventListener('mouseenter', (event) => {
-              // ポップアップ要素を表示
-              popupGroupMember.style.display = 'block';
+              if (!isPopupShown) {
+                // 遅延処理の時間（ミリ秒）を指定
+                const delay = 1500;
 
-              // マウスの座標を取得し、ポップアップ要素を移動
-              popupGroupMember.style.left = event.clientX + 'px';
-              popupGroupMember.style.top = event.clientY + 'px';
+                // タイマーをクリアして遅延処理を実行
+                clearTimeout(timer);
+                timer = setTimeout(() => {
+                  popupGroupMember.style.display = 'block';
 
-              // ポップアップ要素の内容を設定
-              // popupGroupMember.innerHTML = userGroup;
+                  // マウスの座標を取得し、ポップアップ要素を移動
+                  popupGroupMember.style.left = event.clientX + 'px';
+                  popupGroupMember.style.top = event.clientY + 'px';
 
-              $.ajax({
-                url: '/mypage/' + hashedIdGet,
-                type: 'POST',
-                dataType: 'Json',
-                contentType: 'application/json',
-                data: JSON.stringify({
-                  flg: 'group_info',
-                  group: userGroup,
-                }),
-                success: function (res) {
-                  popupGroupMember.innerHTML = '';
-                  console.log(userGroup);
-                  console.log(res.friendResult);
-                  res.friendResult.forEach((friend) => {
-                    const p = document.createElement('p');
-                    p.innerHTML = friend.Changed_Name;
-                    popupGroupMember.appendChild(p);
+                  $.ajax({
+                    url: '/mypage/' + hashedIdGet,
+                    type: 'POST',
+                    dataType: 'Json',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                      flg: 'group_info',
+                      group: userGroup,
+                    }),
+                    success: function (res) {
+                      popupGroupMember.innerHTML = '';
+                      console.log('a');
+                      res.friendResult.forEach((friend) => {
+                        const p = document.createElement('p');
+                        p.innerHTML = friend.Changed_Name;
+                        popupGroupMember.appendChild(p);
+                      });
+                    },
                   });
-                },
-              });
+                  isPopupShown = true;
+                }, delay);
+              }
             });
 
             // ラベル要素からマウスカーソルが出たときの処理
             div.addEventListener('mouseleave', () => {
-              // ポップアップ要素を非表示
+              // タイマーをクリアしてポップアップを非表示にする
+              clearTimeout(timer);
               popupGroupMember.style.display = 'none';
+              isPopupShown = false;
             });
+
+            /////////////////////////////////////////////////////////////////////////////////
           }
         }
       });
