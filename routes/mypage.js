@@ -550,22 +550,35 @@ router
         // });.then((resultDecoded) => {
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
-            //100行以上の結果を削除
             pool.query(
-              'DELETE FROM share_user WHERE UserID = ? AND id NOT IN (SELECT id FROM share_user WHERE UserID = ? ORDER BY id DESC LIMIT 100);',
-              [resultDecoded[0].id, resultDecoded[0].id],
-              (error, deleteResult) => {
+              'SELECT id FROM share_user WHERE UserID = ? ORDER BY id DESC LIMIT 100;',
+              [resultDecoded[0].id],
+              (error, rows) => {
                 if (error) {
                   reject(error);
                 } else {
+                  // 最新の100行のIDを取得
+                  const idsToKeep = rows.map((row) => row.id);
+
+                  // 最新の100行以外のレコードを削除
                   pool.query(
-                    'SELECT * FROM share_user WHERE UserID = ? ORDER BY id DESC;',
-                    [resultDecoded[0].id],
-                    (error, selectResult) => {
+                    'DELETE FROM share_user WHERE UserID = ? AND id NOT IN (?);',
+                    [resultDecoded[0].id, idsToKeep],
+                    (error, deleteResult) => {
                       if (error) {
                         reject(error);
                       } else {
-                        res.send({ shareResult: selectResult });
+                        pool.query(
+                          'SELECT * FROM share_user WHERE UserID = ? ORDER BY id DESC;',
+                          [resultDecoded[0].id],
+                          (error, selectResult) => {
+                            if (error) {
+                              reject(error);
+                            } else {
+                              res.send({ shareResult: selectResult });
+                            }
+                          }
+                        );
                       }
                     }
                   );
