@@ -573,11 +573,12 @@ input[name='friend-list-label'] {
 #popup-group-member {
  display: none;
 /*   position: absolute; */
-    position: fixed;
+  position: fixed;
   z-index: 999;
-  width: 150px;
-  height: 150px;
   background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 6px; /* 余白のサイズを調整してください */
 }
 
 /* .friend-list-check-div input[type='checkbox'],
