@@ -479,10 +479,10 @@ document.getElementById('share-user-button').addEventListener('click', () => {
               popupGroupMember.style.top = event.clientY + 'px';
 
               // ポップアップ要素の内容を設定
-              popupGroupMember.innerHTML = userGroup;
+              // popupGroupMember.innerHTML = userGroup;
 
               $.ajax({
-                url: '/mypage/' + hashedId,
+                url: '/mypage/' + hashedIdGet,
                 type: 'POST',
                 dataType: 'Json',
                 contentType: 'application/json',
@@ -492,6 +492,12 @@ document.getElementById('share-user-button').addEventListener('click', () => {
                 }),
                 success: function (res) {
                   console.log(userGroup);
+                  console.log(res.friendResult);
+                  res.friendResult.forEach((friend) => {
+                    const p = document.createElement('p');
+                    p.innerHTML = friend.Changed_Name;
+                    popupGroupMember.appendChild(p);
+                  });
                 },
               });
             });
