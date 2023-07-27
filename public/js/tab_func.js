@@ -476,11 +476,11 @@ document.getElementById('share-user-button').addEventListener('click', () => {
             // ラベル要素にマウスカーソルが入ったときの処理
             div.addEventListener('mouseenter', (event) => {
               if (!isPopupShown) {
-                // タイマーをクリアして遅延処理を実行
+                // タイマーをクリアして遅延処理を実行。タイマーがないと、連続してDB参照してしまうため、サーバー不具合発生
                 clearTimeout(timer);
                 timer = setTimeout(() => {
                   popupGroupMember.style.display = 'block';
-
+                  popupGroupMember.innerHTML = '';
                   // マウスの座標を取得し、ポップアップ要素を移動
                   popupGroupMember.style.left = event.clientX + 'px';
                   popupGroupMember.style.top = event.clientY + 'px';
@@ -495,7 +495,6 @@ document.getElementById('share-user-button').addEventListener('click', () => {
                       group: userGroup,
                     }),
                     success: function (res) {
-                      popupGroupMember.innerHTML = '';
                       console.log('a');
                       res.friendResult.forEach((friend) => {
                         const p = document.createElement('p');
@@ -505,7 +504,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
                     },
                   });
                   isPopupShown = true;
-                }, 1000);
+                }, 500);
               }
             });
 
