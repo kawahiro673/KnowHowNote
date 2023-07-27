@@ -463,14 +463,14 @@ document.getElementById('share-user-button').addEventListener('click', () => {
             checkboxLabel.setAttribute('for', `checkbox${userGroup}`);
             checkboxLabel.setAttribute('class', `popup-label`);
 
-            const popup =  document.createElement('div');
-            popup.setAttribute('class', 'popup');
-            popup.innerHTML = "ここにポップアップの内容を記述します";
+            //const popup =  document.createElement('div');
+            //popup.setAttribute('class', 'popup');
+            //popup.innerHTML = "ここにポップアップの内容を記述します";
 
             document.getElementById('share-group-div').appendChild(div);
             div.appendChild(checkbox);
             div.appendChild(checkboxLabel);
-            div.appendChild(popup);
+            //div.appendChild(popup);
           }
         }
       });
@@ -515,23 +515,32 @@ document.getElementById('share-user-button').addEventListener('click', () => {
   });
 });
 ////////////////////////////////////////////////////////////////////////////////////
-function addPopupListeners() {
+ function addPopupListeners() {
     const labels = document.querySelectorAll('.popup-label');
 
     labels.forEach(function(label) {
       label.addEventListener('mouseenter', function() {
-        // ポップアップを表示
-        const popup = label.nextElementSibling;
-        popup.style.display = 'block';
+        // ポップアップの内容を設定
+        const popupContent = 'ここにポップアップの内容を記述します。';
+
+        // ポップアップの要素を作成
+        const popupDiv = document.createElement('div');
+        popupDiv.className = 'popup';
+        popupDiv.textContent = popupContent;
+
+        // ポップアップを追加
+        label.parentNode.appendChild(popupDiv);
       });
 
       label.addEventListener('mouseleave', function() {
         // ポップアップを非表示に
-        const popup = label.nextElementSibling;
-        popup.style.display = 'none';
+        const popup = label.parentNode.querySelector('.popup');
+        if (popup) {
+          popup.parentNode.removeChild(popup);
+        }
       });
     });
-}
+  }
 ////////////////////////////////////////////////////////////////////////////////////
 
 let shareUserValues = [];
