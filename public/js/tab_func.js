@@ -480,7 +480,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
                 clearTimeout(timer);
                 timer = setTimeout(() => {
                   popupGroupMember.style.display = 'block';
-                  popupGroupMember.innerHTML = '';
+
                   // マウスの座標を取得し、ポップアップ要素を移動
                   popupGroupMember.style.left = event.clientX + 'px';
                   popupGroupMember.style.top = event.clientY + 'px';
@@ -495,7 +495,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
                       group: userGroup,
                     }),
                     success: function (res) {
-                      console.log('a');
+                      popupGroupMember.innerHTML = '';
                       res.friendResult.forEach((friend) => {
                         const p = document.createElement('p');
                         p.innerHTML = friend.Changed_Name;
