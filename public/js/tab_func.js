@@ -531,6 +531,7 @@ function addPopupListeners() {
         popup.style.display = 'none';
       });
     });
+}
 ////////////////////////////////////////////////////////////////////////////////////
 
 let shareUserValues = [];
