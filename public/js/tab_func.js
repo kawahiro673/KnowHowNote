@@ -469,22 +469,22 @@ document.getElementById('share-user-button').addEventListener('click', () => {
             div.appendChild(checkbox);
             div.appendChild(checkboxLabel);
 
-           // ラベル要素にマウスカーソルが入ったときの処理
-          div.addEventListener('mouseenter', (event) => {
+          // ラベル要素にマウスカーソルが入ったときの処理
+          checkboxLabel.addEventListener('mouseenter', (event) => {
+            // ポップアップ要素を表示
             popupGroupMember.style.display = 'block';
 
             // マウスの座標を取得し、ポップアップ要素を移動
-            const mouseX = event.clientX;
-            const mouseY = event.clientY;
-            const popupWidth = popupGroupMember.offsetWidth;
-            const popupHeight = popupGroupMember.offsetHeight;
-            popupGroupMember.style.left = `${mouseX - popupWidth / 2}px`;
-            popupGroupMember.style.top = `${mouseY - popupHeight}px`;
+            popupGroupMember.style.left = event.clientX + 'px';
+            popupGroupMember.style.top = event.clientY + 'px';
+
+            // ポップアップ要素の内容を設定
             popupGroupMember.innerHTML = userGroup;
           });
 
           // ラベル要素からマウスカーソルが出たときの処理
-          div.addEventListener('mouseleave', () => {
+          checkboxLabel.addEventListener('mouseleave', () => {
+            // ポップアップ要素を非表示
             popupGroupMember.style.display = 'none';
           });
         }
