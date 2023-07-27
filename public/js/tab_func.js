@@ -475,7 +475,30 @@ document.getElementById('share-user-button').addEventListener('click', () => {
         }
       });
       //////////////////////////
-    addPopupListeners();
+    //addPopupListeners();
+      
+       const popupGroupMember = document.createElement('div');
+      popupGroupMember.setAttribute('class', 'popup-group-member');
+      popupGroupMember.innerHTML = '<p>ここにメンバーが入る</p>';
+
+      // ポップアップ要素を非表示にする関数
+      const hidePopup = () => {
+        popupGroupMember.style.display = 'none';
+      };
+
+      // ラベル要素にマウスカーソルが入ったときの処理
+      checkboxLabel.addEventListener('mouseenter', () => {
+        // ラベルの右隣にポップアップ要素を追加して表示
+        checkboxLabel.parentNode.insertBefore(popupGroupMember, checkboxLabel.nextSibling);
+        popupGroupMember.style.display = 'block';
+      });
+
+      // ラベル要素からマウスカーソルが出たときの処理
+      checkboxLabel.addEventListener('mouseleave', hidePopup);
+      // ポップアップ要素の外部をクリックしたときの処理
+      popupGroupMember.addEventListener('mouseleave', hidePopup);
+
+      
       ////////////////////////
       if (!groupFlg) {
         const p = document.createElement('p');
@@ -515,32 +538,32 @@ document.getElementById('share-user-button').addEventListener('click', () => {
   });
 });
 ////////////////////////////////////////////////////////////////////////////////////
-  function addPopupListeners() {
-    const labels = document.querySelectorAll('.popup-label');
+  // function addPopupListeners() {
+  //   const labels = document.querySelectorAll('.popup-label');
 
-    labels.forEach(function(label) {
-      label.addEventListener('mouseenter', function() {
-        // ポップアップの内容を設定
-        const popupContent = label.innerHTML;
+  //   labels.forEach(function(label) {
+  //     label.addEventListener('mouseenter', function() {
+  //       // ポップアップの内容を設定
+  //       const popupContent = label.innerHTML;
 
-        // ポップアップの要素を作成
-        const popupDiv = document.createElement('div');
-        popupDiv.className = 'popup';
-        popupDiv.textContent = popupContent;
+  //       // ポップアップの要素を作成
+  //       const popupDiv = document.createElement('div');
+  //       popupDiv.className = 'popup';
+  //       popupDiv.textContent = popupContent;
 
-        // ポップアップを追加
-        label.parentNode.insertBefore(popupDiv, label.nextSibling);
-      });
+  //       // ポップアップを追加
+  //       label.parentNode.insertBefore(popupDiv, label.nextSibling);
+  //     });
 
-      label.addEventListener('mouseleave', function() {
-        // ポップアップを非表示に
-        const popup = label.parentNode.querySelector('.popup');
-        if (popup) {
-          popup.parentNode.removeChild(popup);
-        }
-      });
-    });
-  }
+  //     label.addEventListener('mouseleave', function() {
+  //       // ポップアップを非表示に
+  //       const popup = label.parentNode.querySelector('.popup');
+  //       if (popup) {
+  //         popup.parentNode.removeChild(popup);
+  //       }
+  //     });
+  //   });
+  // }
 
 ////////////////////////////////////////////////////////////////////////////////////
 
