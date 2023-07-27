@@ -576,6 +576,7 @@ input[name='friend-list-label'] {
   z-index: 999;
   width: 150px;
   height: 150px;
+  background-color: white;
 }
 
 /* .friend-list-check-div input[type='checkbox'],
