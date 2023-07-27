@@ -516,31 +516,21 @@ document.getElementById('share-user-button').addEventListener('click', () => {
 });
 ////////////////////////////////////////////////////////////////////////////////////
 function addPopupListeners() {
-  const labels = document.querySelectorAll('.popup-label');
+    const labels = document.querySelectorAll('.popup-label');
 
-  labels.forEach(function(label) {
-    label.addEventListener('mouseenter', function() {
-      // ポップアップの内容を設定
-      const popupContent = 'ここにポップアップの内容を記述します。';
+    labels.forEach(function(label) {
+      label.addEventListener('mouseenter', function() {
+        // ポップアップを表示
+        const popup = label.nextElementSibling;
+        popup.style.display = 'block';
+      });
 
-      // ポップアップの要素を作成
-      const popupDiv = document.createElement('div');
-      popupDiv.className = 'popup';
-      popupDiv.textContent = popupContent;
-
-      // ポップアップを追加
-      label.parentNode.appendChild(popupDiv);
+      label.addEventListener('mouseleave', function() {
+        // ポップアップを非表示に
+        const popup = label.nextElementSibling;
+        popup.style.display = 'none';
+      });
     });
-
-    label.addEventListener('mouseleave', function() {
-      // ポップアップが表示されたら、カーソルが外れたときに非表示にする
-      const popup = label.parentNode.querySelector('.popup');
-      if (popup) {
-        popup.parentNode.removeChild(popup);
-      }
-    });
-  });
-}
 ////////////////////////////////////////////////////////////////////////////////////
 
 let shareUserValues = [];
