@@ -533,16 +533,42 @@ router
             );
           });
         })
+        // .then((resultDecoded) => {
+        //   return new Promise((resolve, reject) => {
+        //     pool.query(
+        //       'SELECT * FROM share_user WHERE UserID = ? ORDER BY id DESC LIMIT 100;',
+        //       [resultDecoded[0].id],
+        //       (error, result) => {
+        //         if (error) {
+        //           reject(error);
+        //         } else {
+        //           res.send({ shareResult: result });
+        //         }
+        //       }
+        //     );
+        //   });
+        // });.then((resultDecoded) => {
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
+            //100行以上の結果を削除
             pool.query(
-              'SELECT * FROM share_user WHERE UserID = ? ORDER BY id DESC;',
-              [resultDecoded[0].id],
-              (error, result) => {
+              'DELETE FROM share_user WHERE UserID = ? AND id NOT IN (SELECT id FROM share_user WHERE UserID = ? ORDER BY id DESC LIMIT 100);',
+              [resultDecoded[0].id, resultDecoded[0].id],
+              (error, deleteResult) => {
                 if (error) {
                   reject(error);
                 } else {
-                  res.send({ shareResult: result });
+                  pool.query(
+                    'SELECT * FROM share_user WHERE UserID = ? ORDER BY id DESC;',
+                    [resultDecoded[0].id],
+                    (error, selectResult) => {
+                      if (error) {
+                        reject(error);
+                      } else {
+                        res.send({ shareResult: selectResult });
+                      }
+                    }
+                  );
                 }
               }
             );
