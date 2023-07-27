@@ -475,7 +475,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
         }
       });
       //////////////////////////
-    addPopupListeners();
+    //addPopupListeners();
       //////////////////////////
       if (!groupFlg) {
         const p = document.createElement('p');
