@@ -572,7 +572,8 @@ input[name='friend-list-label'] {
  */
 #popup-group-member {
  display: none;
-  position: absolute;
+/*   position: absolute; */
+    position: fixed;
   z-index: 999;
   width: 150px;
   height: 150px;
