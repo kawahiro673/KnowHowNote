@@ -470,7 +470,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
             div.appendChild(checkboxLabel);
 
           // ラベル要素にマウスカーソルが入ったときの処理
-          checkboxLabel.addEventListener('mouseenter', (event) => {
+          div.addEventListener('mouseenter', (event) => {
             // ポップアップ要素を表示
             popupGroupMember.style.display = 'block';
 
@@ -483,7 +483,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
           });
 
           // ラベル要素からマウスカーソルが出たときの処理
-          checkboxLabel.addEventListener('mouseleave', () => {
+          div.addEventListener('mouseleave', () => {
             // ポップアップ要素を非表示
             popupGroupMember.style.display = 'none';
           });
