@@ -491,6 +491,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
                   group: userGroup,
                 }),
                 success: function (res) {
+                  popupGroupMember.innerHTML = '';
                   console.log(userGroup);
                   console.log(res.friendResult);
                   res.friendResult.forEach((friend) => {
