@@ -1041,6 +1041,47 @@ router
           console.error(error);
           res.status(500).json({ message: error.message, nothing });
         });
+    } else if (req.body.flg === 'group_info') {
+      const token = req.cookies.token;
+      const decoded = JWT.verify(token, 'SECRET_KEY');
+      let promise = new Promise((resolve, reject) => {
+        resolve();
+      });
+      promise
+        .then(() => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'SELECT * FROM register_user WHERE UserName = ?;',
+              [decoded.userName],
+              (error, resultDecoded) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  resolve(resultDecoded);
+                }
+              }
+            );
+          });
+        })
+        .then((resultDecoded) => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'SELECT * FROM friend_list WHERE UserID = ? AND User_Group = ?;',
+              [resultDecoded[0].id, req.body.group],
+              (error, friendResult) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  res.send({ friendResult: friendResult });
+                }
+              }
+            );
+          });
+        })
+        .catch((error) => {
+          console.error(error);
+          res.status(500).json({ message: error.message, nothing });
+        });
     } else {
       console.log('flgで何も受け取ってません');
     }

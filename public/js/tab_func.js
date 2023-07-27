@@ -480,6 +480,20 @@ document.getElementById('share-user-button').addEventListener('click', () => {
 
               // ポップアップ要素の内容を設定
               popupGroupMember.innerHTML = userGroup;
+
+              $.ajax({
+                url: '/mypage/' + hashedId,
+                type: 'POST',
+                dataType: 'Json',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                  flg: 'group_info',
+                  group: userGroup,
+                }),
+                success: function (res) {
+                  console.log(userGroup);
+                },
+              });
             });
 
             // ラベル要素からマウスカーソルが出たときの処理
