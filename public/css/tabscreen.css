@@ -567,9 +567,12 @@ input[name='friend-list-label'] {
   padding: 8px;
   z-index: 1;
   /* 右側に配置するためのスタイル */
-  top: 0;
   left: 100%; /* labelの右端からポップアップを開始する */
   margin-left: 10px; /* ポップアップとlabelの間隔を調整 */
+}
+
+.popup-label:hover + .popup {
+  display: block;
 }
 
 /* .friend-list-check-div input[type='checkbox'],
