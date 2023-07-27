@@ -565,11 +565,12 @@ input[name='friend-list-label'] {
   background-color: #f9f9f9;
   border: 1px solid #ccc;
   padding: 8px;
-  z-index: 1;
-  /* 右側に配置するためのスタイル */
-  left: 100%; /* labelの右端からポップアップを開始する */
-  margin-left: 5px; /* ポップアップとlabelの間隔を調整 */
-  white-space: nowrap; /* テキストが折り返されないようにする */
+  z-index: 9999; /* 他の要素より前面に表示 */
+  left: 100%;
+  margin-left: 5px;
+  white-space: nowrap;
+  visibility: visible; /* 可視性を設定 */
+  opacity: 1; /* 透明度を設定 */
 }
 
 /* .friend-list-check-div input[type='checkbox'],
