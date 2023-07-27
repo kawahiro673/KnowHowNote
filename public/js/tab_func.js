@@ -475,9 +475,15 @@ document.getElementById('share-user-button').addEventListener('click', () => {
             // div.appendChild(popup);
 
           // ラベル要素にマウスカーソルが入ったときの処理
-          checkboxLabel.addEventListener('mouseenter', () => {
+          checkboxLabel.addEventListener('mouseenter', (event) => {
             // ポップアップ要素を表示
             popupGroupMember.style.display = 'block';
+
+            // マウスの座標を取得し、ポップアップ要素を移動
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+            popupGroupMember.style.left = `${mouseX}px`;
+            popupGroupMember.style.top = `${mouseY}px`;
           });
 
           // ラベル要素からマウスカーソルが出たときの処理
