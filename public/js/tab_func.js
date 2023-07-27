@@ -475,8 +475,8 @@ document.getElementById('share-user-button').addEventListener('click', () => {
         }
       });
       //////////////////////////
-    //addPopupListeners();
-      //////////////////////////
+    addPopupListeners();
+      ////////////////////////
       if (!groupFlg) {
         const p = document.createElement('p');
         p.innerHTML = 'グループに所属しているユーザーがいません';
@@ -515,32 +515,32 @@ document.getElementById('share-user-button').addEventListener('click', () => {
   });
 });
 ////////////////////////////////////////////////////////////////////////////////////
-  // function addPopupListeners() {
-  //   const labels = document.querySelectorAll('.popup-label');
+  function addPopupListeners() {
+    const labels = document.querySelectorAll('.popup-label');
 
-  //   labels.forEach(function(label) {
-  //     label.addEventListener('mouseenter', function() {
-  //       // ポップアップの内容を設定
-  //       const popupContent = label.innerHTML;
+    labels.forEach(function(label) {
+      label.addEventListener('mouseenter', function() {
+        // ポップアップの内容を設定
+        const popupContent = label.innerHTML;
 
-  //       // ポップアップの要素を作成
-  //       const popupDiv = document.createElement('div');
-  //       popupDiv.className = 'popup';
-  //       popupDiv.textContent = popupContent;
+        // ポップアップの要素を作成
+        const popupDiv = document.createElement('div');
+        popupDiv.className = 'popup';
+        popupDiv.textContent = popupContent;
 
-  //       // ポップアップを追加
-  //       label.parentNode.insertBefore(popupDiv, label.nextSibling);
-  //     });
+        // ポップアップを追加
+        label.parentNode.insertBefore(popupDiv, label.nextSibling);
+      });
 
-  //     label.addEventListener('mouseleave', function() {
-  //       // ポップアップを非表示に
-  //       const popup = label.parentNode.querySelector('.popup');
-  //       if (popup) {
-  //         popup.parentNode.removeChild(popup);
-  //       }
-  //     });
-  //   });
-  // }
+      label.addEventListener('mouseleave', function() {
+        // ポップアップを非表示に
+        const popup = label.parentNode.querySelector('.popup');
+        if (popup) {
+          popup.parentNode.removeChild(popup);
+        }
+      });
+    });
+  }
 
 ////////////////////////////////////////////////////////////////////////////////////
 
