@@ -465,18 +465,12 @@ document.getElementById('share-user-button').addEventListener('click', () => {
             checkboxLabel.setAttribute('for', `checkbox${userGroup}`);
             checkboxLabel.setAttribute('class', `popup-label`);
 
-            // const popup =  document.createElement('div');
-            // popup.setAttribute('class', 'popup');
-            // popup.innerHTML = "ここにポップアップの内容を記述します";
-
             document.getElementById('share-group-div').appendChild(div);
             div.appendChild(checkbox);
             div.appendChild(checkboxLabel);
-            // div.appendChild(popup);
 
            // ラベル要素にマウスカーソルが入ったときの処理
-          checkboxLabel.addEventListener('mouseenter', (event) => {
-            // ポップアップ要素を表示
+          div.addEventListener('mouseenter', (event) => {
             popupGroupMember.style.display = 'block';
 
             // マウスの座標を取得し、ポップアップ要素を移動
@@ -486,19 +480,17 @@ document.getElementById('share-user-button').addEventListener('click', () => {
             const popupHeight = popupGroupMember.offsetHeight;
             popupGroupMember.style.left = `${mouseX - popupWidth / 2}px`;
             popupGroupMember.style.top = `${mouseY - popupHeight}px`;
+            popupGroupMember.innerHTML = userGroup;
           });
 
           // ラベル要素からマウスカーソルが出たときの処理
-          checkboxLabel.addEventListener('mouseleave', () => {
-            // ポップアップ要素を非表示
+          div.addEventListener('mouseleave', () => {
             popupGroupMember.style.display = 'none';
           });
         }
         }
       });
-      //////////////////////////
-    //addPopupListeners();
-      ////////////////////////
+
       if (!groupFlg) {
         const p = document.createElement('p');
         p.innerHTML = 'グループに所属しているユーザーがいません';
@@ -536,35 +528,6 @@ document.getElementById('share-user-button').addEventListener('click', () => {
     },
   });
 });
-////////////////////////////////////////////////////////////////////////////////////
-  // function addPopupListeners() {
-  //   const labels = document.querySelectorAll('.popup-label');
-
-  //   labels.forEach(function(label) {
-  //     label.addEventListener('mouseenter', function() {
-  //       // ポップアップの内容を設定
-  //       const popupContent = label.innerHTML;
-
-  //       // ポップアップの要素を作成
-  //       const popupDiv = document.createElement('div');
-  //       popupDiv.className = 'popup';
-  //       popupDiv.textContent = popupContent;
-
-  //       // ポップアップを追加
-  //       label.parentNode.insertBefore(popupDiv, label.nextSibling);
-  //     });
-
-  //     label.addEventListener('mouseleave', function() {
-  //       // ポップアップを非表示に
-  //       const popup = label.parentNode.querySelector('.popup');
-  //       if (popup) {
-  //         popup.parentNode.removeChild(popup);
-  //       }
-  //     });
-  //   });
-  // }
-
-////////////////////////////////////////////////////////////////////////////////////
 
 let shareUserValues = [];
 let shareGroupValues = [];
