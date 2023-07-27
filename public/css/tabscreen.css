@@ -566,8 +566,10 @@ input[name='friend-list-label'] {
   border: 1px solid #ccc;
   padding: 8px;
   z-index: 1;
-  right: 20px; /* 右側に20pxの余白を設定 */
+  /* 右側に配置するためのスタイル */
   top: 0;
+  left: 100%; /* labelの右端からポップアップを開始する */
+  margin-left: 10px; /* ポップアップとlabelの間隔を調整 */
 }
 
 /* .friend-list-check-div input[type='checkbox'],
