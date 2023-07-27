@@ -476,9 +476,6 @@ document.getElementById('share-user-button').addEventListener('click', () => {
             // ラベル要素にマウスカーソルが入ったときの処理
             div.addEventListener('mouseenter', (event) => {
               if (!isPopupShown) {
-                // 遅延処理の時間（ミリ秒）を指定
-                const delay = 1500;
-
                 // タイマーをクリアして遅延処理を実行
                 clearTimeout(timer);
                 timer = setTimeout(() => {
@@ -508,7 +505,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
                     },
                   });
                   isPopupShown = true;
-                }, delay);
+                }, 1000);
               }
             });
 
