@@ -570,6 +570,14 @@ input[name='friend-list-label'] {
   top: 0;
 }
  */
+.popup-group-member {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%; /* ラベル要素の右側に配置するために left を 100% に設定 */
+  z-index: 999; /* 必要に応じてz-indexを調整 */
+  /* その他のスタイルを追加 */
+}
 
 /* .friend-list-check-div input[type='checkbox'],
 .friend-list-check-div label,
