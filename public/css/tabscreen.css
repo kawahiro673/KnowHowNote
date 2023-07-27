@@ -570,7 +570,7 @@ input[name='friend-list-label'] {
   top: 0;
 }
  */
-.popup-group-member {
+#popup-group-member {
   display: none;
   position: absolute;
   top: 0;
