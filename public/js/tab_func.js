@@ -486,6 +486,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
             popupGroupMember.style.display = 'none';
           });
         }
+        }
       });
       //////////////////////////
     //addPopupListeners();
