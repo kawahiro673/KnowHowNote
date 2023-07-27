@@ -570,25 +570,6 @@ input[name='friend-list-label'] {
   top: 0;
 }
  */
-.friend-list-group-check-div {
-  position: relative; /* 親要素にpositionを設定 */
-}
-
-.popup {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
-  padding: 8px;
-  z-index: 1;
-  left: 100%; /* labelの右端に設定 */
-  top: 0;
-  margin-left: 10px; /* ポップアップとlabelの間隔を調整 */
-}
-
-.popup-label:hover + .popup {
-  display: block;
-}
 
 /* .friend-list-check-div input[type='checkbox'],
 .friend-list-check-div label,
