@@ -441,15 +441,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
         div.appendChild(checkboxLabel);
       });
 
-     // ポップアップ要素の作成 (ループの外に移動)
-      const popupGroupMember = document.createElement('div');
-      popupGroupMember.setAttribute('class', 'popup-group-member');
-      popupGroupMember.innerHTML = '<p>ここにメンバーが入る</p>';
-
-      // ポップアップ要素を非表示にする関数
-      const hidePopup = () => {
-        popupGroupMember.style.display = 'none';
-      };
+      const popupGroupMember = document.getElementById('popup-group-member');
       
       //グループ側のチェックボックス作成
       let groupFlg = false;
@@ -482,18 +474,17 @@ document.getElementById('share-user-button').addEventListener('click', () => {
             div.appendChild(checkboxLabel);
             // div.appendChild(popup);
 
-             // ラベル要素にマウスカーソルが入ったときの処理
+          // ラベル要素にマウスカーソルが入ったときの処理
           checkboxLabel.addEventListener('mouseenter', () => {
-            // ラベルの右隣にポップアップ要素を追加して表示
-            checkboxLabel.parentNode.insertBefore(popupGroupMember, checkboxLabel.nextSibling);
+            // ポップアップ要素を表示
             popupGroupMember.style.display = 'block';
           });
 
           // ラベル要素からマウスカーソルが出たときの処理
-          checkboxLabel.addEventListener('mouseleave', hidePopup);
-          // ポップアップ要素の外部をクリックしたときの処理
-          popupGroupMember.addEventListener('mouseleave', hidePopup);
-          }
+          checkboxLabel.addEventListener('mouseleave', () => {
+            // ポップアップ要素を非表示
+            popupGroupMember.style.display = 'none';
+          });
         }
       });
       //////////////////////////
