@@ -463,14 +463,14 @@ document.getElementById('share-user-button').addEventListener('click', () => {
             checkboxLabel.setAttribute('for', `checkbox${userGroup}`);
             checkboxLabel.setAttribute('class', `popup-label`);
 
-            const popup =  document.createElement('div');
-            popup.setAttribute('class', 'popup');
-            popup.innerHTML = "ここにポップアップの内容を記述します";
+            // const popup =  document.createElement('div');
+            // popup.setAttribute('class', 'popup');
+            // popup.innerHTML = "ここにポップアップの内容を記述します";
 
             document.getElementById('share-group-div').appendChild(div);
             div.appendChild(checkbox);
             div.appendChild(checkboxLabel);
-            div.appendChild(popup);
+            // div.appendChild(popup);
           }
         }
       });
