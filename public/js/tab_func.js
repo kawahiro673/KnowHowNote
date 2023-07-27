@@ -461,6 +461,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
             const checkboxLabel = document.createElement('label');
             checkboxLabel.textContent = userGroup;
             checkboxLabel.setAttribute('for', `checkbox${userGroup}`);
+            checkboxLabel.setAttribute('class', `popup-label`);
 
             document.getElementById('share-group-div').appendChild(div);
             div.appendChild(checkbox);
