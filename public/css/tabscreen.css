@@ -578,19 +578,19 @@ input[name='friend-list-label'] {
   background-color: white;
   border: 1px solid #ccc;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 5px; 
-  width: 350px; 
+  padding: 5px;
+  width: 350px;
   max-height: 450px;
   overflow-y: auto;
 }
 
-.group-member-list{
+.group-member-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
 
-.group-member{
-   display: inline-block;
+.group-member {
+  display: inline-block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
