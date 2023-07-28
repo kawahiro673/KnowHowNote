@@ -495,11 +495,12 @@ document.getElementById('share-user-button').addEventListener('click', () => {
                       group: userGroup,
                     }),
                     success: function (res) {
-                      popupGroupMember.innerHTML = '';
+                      const memberList = document.getElementsByClassName('group-member-list')[0];
+                      memberList.innerHTML = '';
                       res.friendResult.forEach((friend) => {
                         const p = document.createElement('p');
                         p.innerHTML = friend.Changed_Name;
-                        popupGroupMember.appendChild(p);
+                        memberList.appendChild(p);
                       });
                     },
                   });
