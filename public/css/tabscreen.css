@@ -579,7 +579,7 @@ input[name='friend-list-label'] {
   border: 1px solid #ccc;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
   padding: 6px; 
-  width: 250px; 
+  width: 300px; 
   max-height: 450px;
   overflow-y: auto;
 }
