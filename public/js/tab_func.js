@@ -508,34 +508,13 @@ document.getElementById('share-user-button').addEventListener('click', () => {
               }
             });
 
-            // // ラベル要素からマウスカーソルが出たときの処理
-            // div.addEventListener('mouseleave', () => {
-            //   // タイマーをクリアしてポップアップを非表示にする
-            //   clearTimeout(timer);
-            //   popupGroupMember.style.display = 'none';
-            //   isPopupShown = false;
-            // });
-
             // ラベル要素からマウスカーソルが出たときの処理
-div.addEventListener('mouseleave', () => {
-  if (!isPopupShown) {
-    clearTimeout(timer);
-    popupGroupMember.style.display = 'none';
-     isPopupShown = false;
-  }
-});
-
-// ポップアップ要素にマウスカーソルが入ったときの処理
-popupGroupMember.addEventListener('mouseenter', () => {
-  // ポップアップが表示されているフラグを立てる
-  isPopupShown = true;
-});
-
-// ポップアップ要素からマウスカーソルが出たときの処理
-popupGroupMember.addEventListener('mouseleave', () => {
-  // ポップアップが非表示になったフラグを立てる
-  isPopupShown = false;
-});
+            div.addEventListener('mouseleave', () => {
+              // タイマーをクリアしてポップアップを非表示にする
+              clearTimeout(timer);
+              popupGroupMember.style.display = 'none';
+              isPopupShown = false;
+            });
 
             /////////////////////////////////////////////////////////////////////////////////
           }
