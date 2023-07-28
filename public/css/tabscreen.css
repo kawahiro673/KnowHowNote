@@ -578,7 +578,10 @@ input[name='friend-list-label'] {
   background-color: white;
   border: 1px solid #ccc;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 6px; /* 余白のサイズを調整してください */
+  padding: 6px; 
+  width: 250px; 
+  max-height: 450px;
+  overflow-y: auto;
 }
 
 /* .friend-list-check-div input[type='checkbox'],
