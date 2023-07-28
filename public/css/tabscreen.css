@@ -578,10 +578,15 @@ input[name='friend-list-label'] {
   background-color: white;
   border: 1px solid #ccc;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 6px; 
+  padding: 5px; 
   width: 300px; 
   max-height: 450px;
   overflow-y: auto;
+}
+
+.group-member-list{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 /* .friend-list-check-div input[type='checkbox'],
