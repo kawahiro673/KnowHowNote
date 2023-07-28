@@ -500,6 +500,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
                       memberList.innerHTML = '';
                       res.friendResult.forEach((friend) => {
                         const p = document.createElement('p');
+                        p.setAttribute('class', `group-member`);
                         p.innerHTML = friend.Changed_Name;
                         memberList.appendChild(p);
                       });
