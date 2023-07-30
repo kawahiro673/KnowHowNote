@@ -602,12 +602,14 @@ input[name='friend-list-label'] {
 }
 #group-member-groupname {
   font-size: 20px;
+  margin-bottom: 0;
 }
 .element-with-horizontal-line::after {
   content: '';
   display: block;
   border-bottom: 1px solid black; /* 1pxの黒い横線を引く */
-  margin: 0;
+  margin: 5px;
+  color: gray;
 }
 
 .group-member-explain {
