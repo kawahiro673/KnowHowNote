@@ -597,8 +597,14 @@ input[name='friend-list-label'] {
   max-width: 110px; /* 必要な幅に調整してください */
 }
 
-.popup-group-member p {
+#popup-group-member p {
   text-align: center;
+}
+.group-member-groupname {
+  font-size: 18px;
+}
+.group-member-explain {
+  font-size: 14px;
 }
 
 /* .friend-list-check-div input[type='checkbox'],
