@@ -601,12 +601,19 @@ input[name='friend-list-label'] {
   text-align: center;
 }
 #group-member-groupname {
-  font-size: 18px;
+  font-size: 20px;
+}
+.element-with-horizontal-line::after {
+  content: '';
+  display: block;
+  border-bottom: 1px solid black; /* 1pxの黒い横線を引く */
+  margin: 0;
 }
 
 .group-member-explain {
   font-size: 14px;
   color: gray;
+  margin: 0;
 }
 /* .friend-list-check-div input[type='checkbox'],
 .friend-list-check-div label,
