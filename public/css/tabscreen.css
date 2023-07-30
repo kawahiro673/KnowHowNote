@@ -600,13 +600,14 @@ input[name='friend-list-label'] {
 #popup-group-member p {
   text-align: center;
 }
-.group-member-groupname {
+#group-member-groupname {
   font-size: 18px;
 }
+
 .group-member-explain {
   font-size: 14px;
+  color: gray;
 }
-
 /* .friend-list-check-div input[type='checkbox'],
 .friend-list-check-div label,
 .friend-list-group-check-div input[type='checkbox'],
