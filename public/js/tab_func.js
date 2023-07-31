@@ -46,7 +46,7 @@ export const tabCreate = (id, title, res) => {
   p.style.color = 'black';
   p.style.textAlign = 'left';
   p.setAttribute('id', 'tabP' + id);
-  p.innerHTML = res.title;
+  p.innerHTML = title;
 
   const shareButton = document.createElement('button');
   shareButton.setAttribute('class', 'sharebtn');
