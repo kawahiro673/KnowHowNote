@@ -31,20 +31,26 @@ export const folderContextmenu = (tabIdArray) => {
 
     document.getElementById('folderDelete').onclick = function () {
       // folderDelete(folder, order, tabIdArray);
-       document.getElementById('popup-overlay_folder-delete').style.display = 'block';
-          document.getElementById('folder-delete-name').innerHTML = folder.title;
-           const folderDeleteButtonListener = () => {
+      document.getElementById('popup-overlay_folder-delete').style.display =
+        'block';
+      document.getElementById('folder-delete-name').innerHTML = folder.title;
+      const folderDeleteButtonListener = () => {
         folderDelete(folder, order, tabIdArray);
-         document.getElementById('popup-overlay_folder-delete').style.display = 'none';
-       
-    document.getElementById('yes-button-folder-delete').removeEventListener('click',folderDeleteButtonListener);
-  };
-  document.getElementById('yes-button-folder-delete').addEventListener('click', folderDeleteButtonListener);
+        document.getElementById('popup-overlay_folder-delete').style.display =
+          'none';
+
+        document
+          .getElementById('yes-button-folder-delete')
+          .removeEventListener('click', folderDeleteButtonListener);
+      };
+      document
+        .getElementById('yes-button-folder-delete')
+        .addEventListener('click', folderDeleteButtonListener);
     };
 
     $(document).ready(function () {
       $('#folderName').off('click');
-      $('#folderName').on('click', function (e) {     
+      $('#folderName').on('click', function (e) {
         folderNameChange(folder);
       });
     });
@@ -109,66 +115,70 @@ export const folderContextmenu = (tabIdArray) => {
   });
 };
 
-document.getElementById('pop-delete_folder-delete').addEventListener('click', (e) => {
-  e.preventDefault(); // リンクのデフォルトの動作を無効化
-  document.getElementById('popup-overlay_folder-delete').style.display = 'none';
-});
+document
+  .getElementById('pop-delete_folder-delete')
+  .addEventListener('click', (e) => {
+    e.preventDefault(); // リンクのデフォルトの動作を無効化
+    document.getElementById('popup-overlay_folder-delete').style.display =
+      'none';
+  });
 
-document.getElementById('no-button-folder-delete').addEventListener('click', (e) => {
-  e.preventDefault(); // リンクのデフォルトの動作を無効化
-  document.getElementById('popup-overlay_folder-delete').style.display = 'none';
-});
-
+document
+  .getElementById('no-button-folder-delete')
+  .addEventListener('click', (e) => {
+    e.preventDefault(); // リンクのデフォルトの動作を無効化
+    document.getElementById('popup-overlay_folder-delete').style.display =
+      'none';
+  });
 
 const folderDelete = (folder, order, tabIdArray) => {
-    $.ajax({
-      url: '/folderPostController/',
-      type: 'POST',
-      dataType: 'Json',
-      contentType: 'application/json',
-      data: JSON.stringify({
-        flg: 'folderDel',
-        id: folder.id,
-        title: folder.title,
-        order,
-        parentId: folder.elem.parentNode.parentNode.id,
-      }),
-      success: function (res) {
-        //成功！！ここにリストから消した際のタブ削除と、リスト削除を記載→タブの✖️を押下したことにすれば良いのでは？？
-        $(`#folder${folder.id}`).parent().remove();
+  $.ajax({
+    url: '/folderPostController/',
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'folderDel',
+      id: folder.id,
+      title: folder.title,
+      order,
+      parentId: folder.elem.parentNode.parentNode.id,
+    }),
+    success: function (res) {
+      //成功！！ここにリストから消した際のタブ削除と、リスト削除を記載→タブの✖️を押下したことにすれば良いのでは？？
+      $(`#folder${folder.id}`).parent().remove();
 
-        $.ajax({
-          url: '/mypage/' + hashedIdGet,
-          type: 'POST',
-          dataType: 'Json',
-          contentType: 'application/json',
-          data: JSON.stringify({
-            flg: 'childFolder',
-            id: folder.id,
-            file: res.fileResults,
-            folder: res.folderResults,
-          }),
-          success: function (res) {
-            //削除されたファイルのタブを削除する
-            for (let i = 0; i < res.response.length; i++) {
-              //idArrayが文字列で格納されているため、num→String変換
-              if (tabIdArray.includes(String(res.response[i]))) {
-                closeTab(res.response[i], undefined, tabIdArray);
-                //idArrayの中にあるlistTitle.idを削除
-                tabIdArray = deleteTabArray(
-                  String(res.response[i]),
-                  tabIdArray
-                );
-              }
+      $.ajax({
+        url: '/mypage/' + hashedIdGet,
+        type: 'POST',
+        dataType: 'Json',
+        contentType: 'application/json',
+        data: JSON.stringify({
+          flg: 'childFolder',
+          id: folder.id,
+          file: res.fileResults,
+          folder: res.folderResults,
+        }),
+        success: function (res) {
+          //削除されたファイルのタブを削除する
+          for (let i = 0; i < res.response.length; i++) {
+            //idArrayが文字列で格納されているため、num→String変換
+            if (tabIdArray.includes(String(res.response[i]))) {
+              closeTab(res.response[i], undefined, tabIdArray);
+              //idArrayの中にあるlistTitle.idを削除
+              tabIdArray = deleteTabArray(String(res.response[i]), tabIdArray);
             }
-              document.getElementById('popup-overlay_delete-pop').style.display = 'block';
-            setTimeout(()=>{
-                document.getElementById('popup-overlay_delete-pop').style.display = 'none';
-            },1000)
-          },
-        });
-      },
-    });
+          }
+          document.getElementById('popup-overlay_delete-pop').style.display =
+            'block';
+          setTimeout(() => {
+            document.getElementById('popup-overlay_delete-pop').style.display =
+              'none';
+          }, 1000);
+        },
+      });
+    },
+  });
 };
 
 const folderNameChange = (folder) => {

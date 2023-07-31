@@ -276,7 +276,7 @@ function tabUpload() {
       flg: 'tabDesc',
     }),
     success: async function (res) {
-        console.log(res.tabResult);
+      console.log(res.tabResult);
       const createTheFirstTab = async () => {
         for (const tab of res.tabResult) {
           await tabScreenOptions(tab.id, tab.tabTitle);
@@ -306,7 +306,6 @@ function tabUpload() {
   });
 }
 
-//async 
 function tabScreenOptions(id, title) {
   return new Promise((resolve, reject) => {
     //タブ未生成

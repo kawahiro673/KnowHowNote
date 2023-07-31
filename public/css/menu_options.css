@@ -86,7 +86,7 @@
 #popup-overlay_nouhau-delete,
 #popup-overlay_folder-delete,
 #popup-overlay_delete-pop,
-#popup-overlay_keep-cancel{
+#popup-overlay_keep-cancel {
   display: block;
   position: fixed;
   top: 0;
@@ -121,7 +121,7 @@
 .popup-window_nouhau-delete,
 .popup-window_folder-delete,
 .popup-window_delete-pop,
-.popup-window_keep-cancel{
+.popup-window_keep-cancel {
   width: 500px;
   height: 300px;
   background-color: #fff;
@@ -161,7 +161,7 @@
 .popup-window_nouhau-delete,
 .popup-window_folder-delete,
 .popup-window_delete-pop,
-.popup-window_keep-cancel{
+.popup-window_keep-cancel {
   height: 180px;
   width: 330px;
 }
@@ -200,7 +200,7 @@
 .popup-header_nouhau-delete,
 .popup-header_folder-delete,
 .popup-header_delete-pop,
-.popup-header_keep-cancel{
+.popup-header_keep-cancel {
   display: flex;
   align-items: center;
   justify-content: center; /* 中央寄せに変更 */
@@ -233,7 +233,7 @@
 .popup-header_nouhau-delete h2,
 .popup-header_folder-delete h2,
 .popup-header_delete-pop h2,
-.popup-header_keep-cancel h2{
+.popup-header_keep-cancel h2 {
   font-size: 16px;
   font-weight: normal;
   margin: 0 auto;
@@ -262,7 +262,7 @@
 #pop-delete_share-delete,
 #pop-delete_nouhau-delete,
 #pop-delete_folder-delete,
-#pop-delete_keep-cancel{
+#pop-delete_keep-cancel {
   text-decoration: none;
   font-size: 1.2em;
   font-weight: bold;
@@ -287,7 +287,7 @@
 #pop-delete_share-delete:hover,
 #pop-delete_nouhau-delete:hover,
 #pop-delete_folder-delete:hover,
-#pop-delete_keep-cancel:hover{
+#pop-delete_keep-cancel:hover {
   color: red;
 }
 
@@ -315,7 +315,7 @@
 .popup-body_nouhau-delete,
 .popup-body_folder-delete,
 .popup-body_delete-pop,
-.popup-body_keep-cancel{
+.popup-body_keep-cancel {
   position: relative;
   height: 240px;
   padding: 0 10px;
@@ -495,7 +495,7 @@
 #yes-button-folder-delete,
 #no-button-folder-delete,
 #yes-button-keep-cancel,
-#no-button-keep-cancel{
+#no-button-keep-cancel {
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -541,7 +541,7 @@
 #yes-button-folder-delete,
 #no-button-folder-delete,
 #yes-button-keep-cancel,
-#no-button-keep-cancel{
+#no-button-keep-cancel {
   padding: 7px 14px;
   font-size: 12px;
 }
@@ -590,7 +590,7 @@
 #no-button-share-delete,
 #no-button-nouhau-delete,
 #no-button-folder-delete,
-#no-button-keep-cancel{
+#no-button-keep-cancel {
   background-color: red;
 }
 
@@ -602,7 +602,7 @@
 .share-delete-button-wrapper,
 .nouhau-delete-button-wrapper,
 .folder-delete-button-wrapper,
-.keep-cancel-button-wrapper{
+.keep-cancel-button-wrapper {
   display: flex;
   justify-content: space-between;
 }
@@ -614,7 +614,7 @@
 .share-delete-button-wrapper button,
 .nouhau-delete-button-wrapper button,
 .folder-delete-button-wrapper button,
-.keep-cancel-button-wrapper button{
+.keep-cancel-button-wrapper button {
   flex: 0 0 120px; /* ボタンの幅を調整する値（例: 120px） */
   margin: 0 5px;
 }

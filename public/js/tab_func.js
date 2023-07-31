@@ -186,80 +186,85 @@ export const cancelButtonClick = (id) => {
   // ) {
   document.getElementById('popup-overlay_keep-cancel').style.display = 'block';
 
-     const nouhauKeepCancelButtonListener = () => {
+  const nouhauKeepCancelButtonListener = () => {
     nouhauKeepCancel(id);
     // イベントリスナーを削除
-         document.getElementById('popup-overlay_keep-cancel').style.display = 'none';
-       
-    document.getElementById('yes-button-keep-cancel').removeEventListener('click',nouhauKeepCancelButtonListener);
+    document.getElementById('popup-overlay_keep-cancel').style.display = 'none';
+
+    document
+      .getElementById('yes-button-keep-cancel')
+      .removeEventListener('click', nouhauKeepCancelButtonListener);
   };
 
   // イベントリスナーを登録
-  document.getElementById('yes-button-keep-cancel').addEventListener('click',nouhauKeepCancelButtonListener);
-    // $.ajax({
-    //   url: '/notePostController/',
-    //   type: 'POST',
-    //   dataType: 'Json',
-    //   contentType: 'application/json',
-    //   data: JSON.stringify({
-    //     flg: 'info',
-    //     id,
-    //   }),
-    //   success: function (res) {
-    //     document.getElementById(`textarea${id}`).value =
-    //       res.fileResult.memo_text;
-    //   },
-    // });
-    // document.getElementById(`tabP${id}`).style.display = 'block';
-    // document.getElementById(`keep-note-btn${id}`).style.display = 'none';
-    // document.getElementById(`cancel-note-btn${id}`).style.display = 'none';
-    // document.getElementById(`titletext${id}`).style.display = 'none';
-    // document.getElementById(`edit-note-btn${id}`).style.display = 'block';
-    // document.getElementById(`share-button-${id}`).style.display = 'block';
-    // document.getElementById(`textarea${id}`).readOnly = true;
-    // document.getElementById(`fade${id}`).style.opacity = '0';
-    // document.getElementById(`tabname${id}`).style.color = 'black';
+  document
+    .getElementById('yes-button-keep-cancel')
+    .addEventListener('click', nouhauKeepCancelButtonListener);
+  // $.ajax({
+  //   url: '/notePostController/',
+  //   type: 'POST',
+  //   dataType: 'Json',
+  //   contentType: 'application/json',
+  //   data: JSON.stringify({
+  //     flg: 'info',
+  //     id,
+  //   }),
+  //   success: function (res) {
+  //     document.getElementById(`textarea${id}`).value =
+  //       res.fileResult.memo_text;
+  //   },
+  // });
+  // document.getElementById(`tabP${id}`).style.display = 'block';
+  // document.getElementById(`keep-note-btn${id}`).style.display = 'none';
+  // document.getElementById(`cancel-note-btn${id}`).style.display = 'none';
+  // document.getElementById(`titletext${id}`).style.display = 'none';
+  // document.getElementById(`edit-note-btn${id}`).style.display = 'block';
+  // document.getElementById(`share-button-${id}`).style.display = 'block';
+  // document.getElementById(`textarea${id}`).readOnly = true;
+  // document.getElementById(`fade${id}`).style.opacity = '0';
+  // document.getElementById(`tabname${id}`).style.color = 'black';
   //}
- 
 };
 
+document
+  .getElementById('pop-delete_keep-cancel')
+  .addEventListener('click', (e) => {
+    e.preventDefault(); // リンクのデフォルトの動作を無効化
+    document.getElementById('popup-overlay_keep-cancel').style.display = 'none';
+  });
 
-document.getElementById('pop-delete_keep-cancel').addEventListener('click', (e) => {
-  e.preventDefault(); // リンクのデフォルトの動作を無効化
-  document.getElementById('popup-overlay_keep-cancel').style.display = 'none';
-});
+document
+  .getElementById('no-button-keep-cancel')
+  .addEventListener('click', (e) => {
+    e.preventDefault(); // リンクのデフォルトの動作を無効化
+    document.getElementById('popup-overlay_keep-cancel').style.display = 'none';
+  });
 
-document.getElementById('no-button-keep-cancel').addEventListener('click', (e) => {
-  e.preventDefault(); // リンクのデフォルトの動作を無効化
-  document.getElementById('popup-overlay_keep-cancel').style.display = 'none';
-});
-
- const nouhauKeepCancel = (id)=>{
-    $.ajax({
-      url: '/notePostController/',
-      type: 'POST',
-      dataType: 'Json',
-      contentType: 'application/json',
-      data: JSON.stringify({
-        flg: 'info',
-        id,
-      }),
-      success: function (res) {
-        document.getElementById(`textarea${id}`).value =
-          res.fileResult.memo_text;
-      },
-    });
-    document.getElementById(`tabP${id}`).style.display = 'block';
-    document.getElementById(`keep-note-btn${id}`).style.display = 'none';
-    document.getElementById(`cancel-note-btn${id}`).style.display = 'none';
-    document.getElementById(`titletext${id}`).style.display = 'none';
-    document.getElementById(`edit-note-btn${id}`).style.display = 'block';
-    document.getElementById(`share-button-${id}`).style.display = 'block';
-    document.getElementById(`textarea${id}`).readOnly = true;
-    document.getElementById(`fade${id}`).style.opacity = '0';
-    document.getElementById(`tabname${id}`).style.color = 'black';
+const nouhauKeepCancel = (id) => {
+  $.ajax({
+    url: '/notePostController/',
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'info',
+      id,
+    }),
+    success: function (res) {
+      document.getElementById(`textarea${id}`).value = res.fileResult.memo_text;
+    },
+  });
+  document.getElementById(`tabP${id}`).style.display = 'block';
+  document.getElementById(`keep-note-btn${id}`).style.display = 'none';
+  document.getElementById(`cancel-note-btn${id}`).style.display = 'none';
+  document.getElementById(`titletext${id}`).style.display = 'none';
+  document.getElementById(`edit-note-btn${id}`).style.display = 'block';
+  document.getElementById(`share-button-${id}`).style.display = 'block';
+  document.getElementById(`textarea${id}`).readOnly = true;
+  document.getElementById(`fade${id}`).style.opacity = '0';
+  document.getElementById(`tabname${id}`).style.color = 'black';
   //}
- }
+};
 
 export function shareButtonClick(id, event, title, flg) {
   document.getElementById('popup-overlay_share').style.display = 'block';
@@ -275,7 +280,6 @@ export function shareButtonClick(id, event, title, flg) {
     this.onclick = null; // クリックイベントを削除
   };
 }
-
 
 export const shareNoteSendFunc = (id, title) => {
   const inputValue = document.getElementsByClassName('share-input')[0].value;

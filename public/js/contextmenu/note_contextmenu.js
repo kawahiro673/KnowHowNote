@@ -23,20 +23,26 @@ export const fileContextmenu = (tabIdArray) => {
     );
 
     document.getElementById('delete').onclick = () => {
-     document.getElementById('popup-overlay_nouhau-delete').style.display = 'block';
-     document.getElementById('nouhau-delete-name').innerHTML = file.title;
-     const nouhauDeleteButtonListener = () => {
-       let tabIndex = orderGet('tab-content', `Tab-ID${file.id}`);
-    noteDelete(file, tabIndex, order, tabIdArray);
-    // イベントリスナーを削除
-         document.getElementById('popup-overlay_nouhau-delete').style.display = 'none';
-       
-    document.getElementById('yes-button-nouhau-delete').removeEventListener('click',nouhauDeleteButtonListener);
-  };
+      document.getElementById('popup-overlay_nouhau-delete').style.display =
+        'block';
+      document.getElementById('nouhau-delete-name').innerHTML = file.title;
+      const nouhauDeleteButtonListener = () => {
+        let tabIndex = orderGet('tab-content', `Tab-ID${file.id}`);
+        noteDelete(file, tabIndex, order, tabIdArray);
+        // イベントリスナーを削除
+        document.getElementById('popup-overlay_nouhau-delete').style.display =
+          'none';
 
-  // イベントリスナーを登録
-  document.getElementById('yes-button-nouhau-delete').addEventListener('click', nouhauDeleteButtonListener);
-};
+        document
+          .getElementById('yes-button-nouhau-delete')
+          .removeEventListener('click', nouhauDeleteButtonListener);
+      };
+
+      // イベントリスナーを登録
+      document
+        .getElementById('yes-button-nouhau-delete')
+        .addEventListener('click', nouhauDeleteButtonListener);
+    };
 
     $(document).ready(function () {
       $('#name').off('click');
@@ -143,59 +149,66 @@ export const fileContextmenu = (tabIdArray) => {
   });
 };
 
-document.getElementById('pop-delete_nouhau-delete').addEventListener('click', (e) => {
-  e.preventDefault(); // リンクのデフォルトの動作を無効化
-  document.getElementById('popup-overlay_nouhau-delete').style.display = 'none';
-});
+document
+  .getElementById('pop-delete_nouhau-delete')
+  .addEventListener('click', (e) => {
+    e.preventDefault(); // リンクのデフォルトの動作を無効化
+    document.getElementById('popup-overlay_nouhau-delete').style.display =
+      'none';
+  });
 
-document.getElementById('no-button-nouhau-delete').addEventListener('click', (e) => {
-  e.preventDefault(); // リンクのデフォルトの動作を無効化
-  document.getElementById('popup-overlay_nouhau-delete').style.display = 'none';
-});
-
+document
+  .getElementById('no-button-nouhau-delete')
+  .addEventListener('click', (e) => {
+    e.preventDefault(); // リンクのデフォルトの動作を無効化
+    document.getElementById('popup-overlay_nouhau-delete').style.display =
+      'none';
+  });
 
 const noteDelete = (file, tabIndex, order, tabIdArray) => {
-    //タブが生成済みであれば、タブを削除
-    if (tabIdArray.includes(Number(file.id))) {
-      closeTab(Number(file.id), tabIndex, tabIdArray);
-      //idArrayの中にあるfile.idを削除
-      tabIdArray = deleteTabArray(file.id, tabIdArray);
-    }
-    $.ajax({
-      url: '/tabPostController/',
-      type: 'POST',
-      dataType: 'Json',
-      contentType: 'application/json',
-      data: JSON.stringify({
-        flg: 'tabDelete',
-        id: file.id,
-        order: tabIndex,
-      }),
-      success: function (res) {
-        //成功！！ここにリストから消した際のタブ削除と、リスト削除を記載→タブの✖️を押下したことにすれば良いのでは？？
-        let parentid = file.elem.parentNode.parentNode.id;
-        $(`#file${file.id}`).parent().remove();
+  //タブが生成済みであれば、タブを削除
+  if (tabIdArray.includes(Number(file.id))) {
+    closeTab(Number(file.id), tabIndex, tabIdArray);
+    //idArrayの中にあるfile.idを削除
+    tabIdArray = deleteTabArray(file.id, tabIdArray);
+  }
+  $.ajax({
+    url: '/tabPostController/',
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'tabDelete',
+      id: file.id,
+      order: tabIndex,
+    }),
+    success: function (res) {
+      //成功！！ここにリストから消した際のタブ削除と、リスト削除を記載→タブの✖️を押下したことにすれば良いのでは？？
+      let parentid = file.elem.parentNode.parentNode.id;
+      $(`#file${file.id}`).parent().remove();
 
-        $.ajax({
-          url: '/notePostController/',
-          type: 'POST',
-          dataType: 'Json',
-          contentType: 'application/json',
-          data: JSON.stringify({
-            flg: 'delete',
-            id: file.id,
-            order,
-            parentId: parentid,
-          }),
-          success: function (res) {
-             document.getElementById('popup-overlay_delete-pop').style.display = 'block';
-            setTimeout(()=>{
-                document.getElementById('popup-overlay_delete-pop').style.display = 'none';
-            },1000)
-          },
-        });
-      },
-    });
+      $.ajax({
+        url: '/notePostController/',
+        type: 'POST',
+        dataType: 'Json',
+        contentType: 'application/json',
+        data: JSON.stringify({
+          flg: 'delete',
+          id: file.id,
+          order,
+          parentId: parentid,
+        }),
+        success: function (res) {
+          document.getElementById('popup-overlay_delete-pop').style.display =
+            'block';
+          setTimeout(() => {
+            document.getElementById('popup-overlay_delete-pop').style.display =
+              'none';
+          }, 1000);
+        },
+      });
+    },
+  });
 };
 
 const noteNameChange = (file) => {
