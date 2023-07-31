@@ -475,7 +475,9 @@
 #yes-button-group-list-delete,
 #no-button-group-list-delete,
 #yes-button-share-delete,
-#no-button-share-delete {
+#no-button-share-delete,
+#yes-button-nouhau-delete,
+#no-button-nouhau-delete{
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
