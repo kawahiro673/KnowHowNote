@@ -22,16 +22,30 @@ export const fileContextmenu = (tabIdArray) => {
       file.elem.parentNode.id
     );
 
+    // document.getElementById('delete').onclick = () => {
+    //   document.getElementById('popup-overlay_nouhau-delete').style.display = 'block';
+    //   // let tabIndex = orderGet('tab-content', `Tab-ID${file.id}`);
+    //   // noteDelete(file, tabIndex, order, tabIdArray);
+    //   document.getElementById('yes-button-nouhau-delete').addEventListener('click', () => {
+    //     let tabIndex = orderGet('tab-content', `Tab-ID${file.id}`);
+    //     console.log(file);
+    //    noteDelete(file, tabIndex, order, tabIdArray);
+    //   });
+    // };
     document.getElementById('delete').onclick = () => {
-      document.getElementById('popup-overlay_nouhau-delete').style.display = 'block';
-      // let tabIndex = orderGet('tab-content', `Tab-ID${file.id}`);
-      // noteDelete(file, tabIndex, order, tabIdArray);
-      document.getElementById('yes-button-nouhau-delete').addEventListener('click', () => {
-        let tabIndex = orderGet('tab-content', `Tab-ID${file.id}`);
-        console.log(file);
-       noteDelete(file, tabIndex, order, tabIdArray);
-      });
-    };
+  document.getElementById('popup-overlay_nouhau-delete').style.display = 'block';
+document.getElementById('nouhau-delete-name').innerHTML = file.title;
+  const yesButtonListener = () => {
+    let tabIndex = orderGet('tab-content', `Tab-ID${file.id}`);
+    console.log(file);
+    noteDelete(file, tabIndex, order, tabIdArray);
+    // イベントリスナーを削除
+    document.getElementById('yes-button-nouhau-delete').removeEventListener('click', yesButtonListener);
+  };
+
+  // イベントリスナーを登録
+  document.getElementById('yes-button-nouhau-delete').addEventListener('click', yesButtonListener);
+};
 
     $(document).ready(function () {
       $('#name').off('click');
