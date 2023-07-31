@@ -33,7 +33,7 @@
 - VSCode（Visual Studio Code）
 
 ## 📝 画面仕様/画面遷移図
-[Figmaデザインを見る]https://www.figma.com/file/tWQotfqXduFKvUqG8kdO6k/%E3%83%8E%E3%82%A6%E3%83%8F%E3%82%A6%E3%83%8E%E3%83%BC_%E7%94%BB%E9%9D%A2%E4%BB%95%E6%A7%98%2F%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB?type=design&node-id=0%3A1&mode=design&t=WK2vuTqV996VRYNG-1
+[Figmaデザイン]https://www.figma.com/file/tWQotfqXduFKvUqG8kdO6k/%E3%83%8E%E3%82%A6%E3%83%8F%E3%82%A6%E3%83%8E%E3%83%BC_%E7%94%BB%E9%9D%A2%E4%BB%95%E6%A7%98%2F%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB?type=design&node-id=0%3A1&mode=design&t=WK2vuTqV996VRYNG-1
 
 ## 🌐 App URL
 
