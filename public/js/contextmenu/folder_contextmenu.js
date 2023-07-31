@@ -30,13 +30,8 @@ export const folderContextmenu = (tabIdArray) => {
     );
 
     document.getElementById('folderDelete').onclick = function () {
-      folderDelete(folder, order, tabIdArray);
-    };
-
-    $(document).ready(function () {
-      $('#folderName').off('click');
-      $('#folderName').on('click', function (e) {
-          document.getElementById('popup-overlay_folder-delete').style.display = 'block';
+      // folderDelete(folder, order, tabIdArray);
+       document.getElementById('popup-overlay_folder-delete').style.display = 'block';
           document.getElementById('folder-delete-name').innerHTML = folder.title;
         //folderNameChange(folder);
            const folderDeleteButtonListener = () => {
@@ -46,7 +41,12 @@ export const folderContextmenu = (tabIdArray) => {
     document.getElementById('yes-button-folder-delete').removeEventListener('click',folderDeleteButtonListener);
   };
   document.getElementById('yes-button-folder-delete').addEventListener('click', folderDeleteButtonListener);
+    };
 
+    $(document).ready(function () {
+      $('#folderName').off('click');
+      $('#folderName').on('click', function (e) {     
+        //folderNameChange(folder);
       });
     });
 
