@@ -3,8 +3,6 @@ import { currentTimeGet, passGet, orderGet } from './stringUtils.js';
 import { hashedIdGet } from './main.js';
 
 export const tabCreate = (id, title, res) => {
-  console.log(res);
-  console.log(res.title);
   const inputTab = document.createElement('input');
   inputTab.setAttribute('id', 'TAB-ID' + id);
   inputTab.setAttribute('type', 'radio');
