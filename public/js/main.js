@@ -305,7 +305,8 @@ function tabUpload() {
   });
 }
 
-async function tabScreenOptions(id, title) {
+//async 
+function tabScreenOptions(id, title) {
   return new Promise((resolve, reject) => {
     //タブ未生成
     if (!tabIdArray.includes(id)) {
@@ -320,6 +321,7 @@ async function tabScreenOptions(id, title) {
         }),
         success: function (res) {
           resolve();
+          console.log(res.fileResult);
           tabCreate(id, title, res.fileResult);
 
           labelContextmenu();
