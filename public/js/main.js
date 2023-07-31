@@ -322,7 +322,6 @@ function tabScreenOptions(id, title) {
         }),
         success: function (res) {
           resolve();
-          console.log(res.fileResult);
           tabCreate(id, title, res.fileResult);
 
           labelContextmenu();
