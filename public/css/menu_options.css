@@ -483,7 +483,9 @@
 #yes-button-share-delete,
 #no-button-share-delete,
 #yes-button-nouhau-delete,
-#no-button-nouhau-delete{
+#no-button-nouhau-delete,
+#yes-button-folder-delete,
+#no-button-folder-delete{
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -525,7 +527,9 @@
 #yes-button-share-delete,
 #no-button-share-delete,
 #yes-button-nouhau-delete,
-#no-button-nouhau-delete{
+#no-button-nouhau-delete,
+#yes-button-folder-delete,
+#no-button-folder-delete{
   padding: 7px 14px;
   font-size: 12px;
 }
