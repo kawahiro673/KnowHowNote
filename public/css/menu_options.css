@@ -84,7 +84,8 @@
 #popup-overlay_group-list-delete,
 #popup-overlay_share-delete,
 #popup-overlay_nouhau-delete,
-#popup-overlay_folder-delete{
+#popup-overlay_folder-delete,
+#popup-overlay_delete-pop{
   display: block;
   position: fixed;
   top: 0;
@@ -117,7 +118,8 @@
 .popup-window_group-list-delete,
 .popup-window_share-delete,
 .popup-window_nouhau-delete,
-.popup-window_folder-delete{
+.popup-window_folder-delete,
+.popup-window_delete-pop{
   width: 500px;
   height: 300px;
   background-color: #fff;
@@ -155,7 +157,8 @@
 .popup-window_friend-delete-ans,
 .popup-window_share-delete,
 .popup-window_nouhau-delete,
-.popup-window_folder-delete{
+.popup-window_folder-delete,
+.popup-window_delete-pop{
   height: 180px;
   width: 330px;
 }
@@ -192,7 +195,8 @@
 .popup-header_group-list-delete,
 .popup-header_share-delete,
 .popup-header_nouhau-delete,
-.popup-header_folder-delete{
+.popup-header_folder-delete,
+.popup-header_delete-pop{
   display: flex;
   align-items: center;
   justify-content: center; /* 中央寄せに変更 */
@@ -223,7 +227,8 @@
 .popup-header_group-list-delete h2,
 .popup-header_share-delete h2,
 .popup-header_nouhau-delete h2,
-.popup-header_folder-delete h2{
+.popup-header_folder-delete h2,
+.popup-header_delete-pop h2{
   font-size: 16px;
   font-weight: normal;
   margin: 0 auto;
@@ -301,7 +306,8 @@
 .popup-body_group-list-delete,
 .popup-body_share-delete,
 .popup-body_nouhau-delete,
-.popup-body_folder-delete{
+.popup-body_folder-delete,
+.popup-body_delete-pop{
   position: relative;
   height: 240px;
   padding: 0 10px;
@@ -780,4 +786,15 @@ input[type='checkbox']:checked + .gray_b {
 
 #friend-delete-q-real-user {
   color: gray;
+}
+
+#popup-overlay_delete-pop {
+  display: flex;
+  justify-content: center; /* 横方向に中央寄せ */
+  align-items: center; /* 縦方向に中央寄せ */
+  height: 100vh; /* 画面の高さいっぱいに表示 */
+}
+
+.popup-window_delete-pop {
+  text-align: center; /* pタグを中央に配置するためのスタイル */
 }
