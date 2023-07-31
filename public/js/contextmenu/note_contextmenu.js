@@ -22,24 +22,15 @@ export const fileContextmenu = (tabIdArray) => {
       file.elem.parentNode.id
     );
 
-    // document.getElementById('delete').onclick = () => {
-    //   document.getElementById('popup-overlay_nouhau-delete').style.display = 'block';
-    //   // let tabIndex = orderGet('tab-content', `Tab-ID${file.id}`);
-    //   // noteDelete(file, tabIndex, order, tabIdArray);
-    //   document.getElementById('yes-button-nouhau-delete').addEventListener('click', () => {
-    //     let tabIndex = orderGet('tab-content', `Tab-ID${file.id}`);
-    //     console.log(file);
-    //    noteDelete(file, tabIndex, order, tabIdArray);
-    //   });
-    // };
     document.getElementById('delete').onclick = () => {
-  document.getElementById('popup-overlay_nouhau-delete').style.display = 'block';
-document.getElementById('nouhau-delete-name').innerHTML = file.title;
-  const yesButtonListener = () => {
-    let tabIndex = orderGet('tab-content', `Tab-ID${file.id}`);
-    console.log(file);
+     document.getElementById('popup-overlay_nouhau-delete').style.display = 'block';
+     document.getElementById('nouhau-delete-name').innerHTML = file.title;
+     const yesButtonListener = () => {
+       let tabIndex = orderGet('tab-content', `Tab-ID${file.id}`);
     noteDelete(file, tabIndex, order, tabIdArray);
     // イベントリスナーを削除
+         document.getElementById('popup-overlay_nouhau-delete').style.display = 'none';
+       
     document.getElementById('yes-button-nouhau-delete').removeEventListener('click', yesButtonListener);
   };
 
@@ -164,9 +155,6 @@ document.getElementById('no-button-nouhau-delete').addEventListener('click', (e)
 
 
 const noteDelete = (file, tabIndex, order, tabIdArray) => {
-  // let btn = confirm(`${file.title} を本当に削除しますか？`);
-console.log(file);
-  // if (btn) {
     //タブが生成済みであれば、タブを削除
     if (tabIdArray.includes(Number(file.id))) {
       closeTab(Number(file.id), tabIndex, tabIdArray);
@@ -185,7 +173,6 @@ console.log(file);
       }),
       success: function (res) {
         //成功！！ここにリストから消した際のタブ削除と、リスト削除を記載→タブの✖️を押下したことにすれば良いのでは？？
-        console.log(file.elem.parentNode.parentNode);
         let parentid = file.elem.parentNode.parentNode.id;
         $(`#file${file.id}`).parent().remove();
 
@@ -200,11 +187,15 @@ console.log(file);
             order,
             parentId: parentid,
           }),
-          success: function (res) {},
+          success: function (res) {
+             document.getElementById('popup-overlay_delete-pop').style.display = 'block';
+            setTimeout(()=>{
+                document.getElementById('popup-overlay_delete-pop').style.display = 'none';
+            },1000)
+          },
         });
       },
     });
- // }
 };
 
 const noteNameChange = (file) => {
