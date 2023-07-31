@@ -46,7 +46,7 @@ export const folderContextmenu = (tabIdArray) => {
     document.getElementById('yes-button-folder-delete').removeEventListener('click',folderDeleteButtonListener);
   };
   document.getElementById('yes-button-folder-delete').addEventListener('click', folderDeleteButtonListener);
-};
+
       });
     });
 
