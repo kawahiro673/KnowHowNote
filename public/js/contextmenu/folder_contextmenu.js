@@ -33,9 +33,8 @@ export const folderContextmenu = (tabIdArray) => {
       // folderDelete(folder, order, tabIdArray);
        document.getElementById('popup-overlay_folder-delete').style.display = 'block';
           document.getElementById('folder-delete-name').innerHTML = folder.title;
-        //folderNameChange(folder);
            const folderDeleteButtonListener = () => {
-            folderNameChange(folder);
+        folderDelete(folder, order, tabIdArray);
          document.getElementById('popup-overlay_folder-delete').style.display = 'none';
        
     document.getElementById('yes-button-folder-delete').removeEventListener('click',folderDeleteButtonListener);
@@ -46,7 +45,7 @@ export const folderContextmenu = (tabIdArray) => {
     $(document).ready(function () {
       $('#folderName').off('click');
       $('#folderName').on('click', function (e) {     
-        //folderNameChange(folder);
+        folderNameChange(folder);
       });
     });
 
