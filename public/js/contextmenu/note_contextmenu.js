@@ -25,17 +25,17 @@ export const fileContextmenu = (tabIdArray) => {
     document.getElementById('delete').onclick = () => {
      document.getElementById('popup-overlay_nouhau-delete').style.display = 'block';
      document.getElementById('nouhau-delete-name').innerHTML = file.title;
-     const yesButtonListener = () => {
+     const nouhauDeleteButtonListener = () => {
        let tabIndex = orderGet('tab-content', `Tab-ID${file.id}`);
     noteDelete(file, tabIndex, order, tabIdArray);
     // イベントリスナーを削除
          document.getElementById('popup-overlay_nouhau-delete').style.display = 'none';
        
-    document.getElementById('yes-button-nouhau-delete').removeEventListener('click', yesButtonListener);
+    document.getElementById('yes-button-nouhau-delete').removeEventListener('click',nouhauDeleteButtonListener);
   };
 
   // イベントリスナーを登録
-  document.getElementById('yes-button-nouhau-delete').addEventListener('click', yesButtonListener);
+  document.getElementById('yes-button-nouhau-delete').addEventListener('click', nouhauDeleteButtonListener);
 };
 
     $(document).ready(function () {
