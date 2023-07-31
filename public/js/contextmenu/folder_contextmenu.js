@@ -109,12 +109,18 @@ export const folderContextmenu = (tabIdArray) => {
   });
 };
 
+document.getElementById('pop-delete_folder-delete').addEventListener('click', (e) => {
+  e.preventDefault(); // リンクのデフォルトの動作を無効化
+  document.getElementById('popup-overlay_folder-delete').style.display = 'none';
+});
+
+document.getElementById('no-button-folder-delete').addEventListener('click', (e) => {
+  e.preventDefault(); // リンクのデフォルトの動作を無効化
+  document.getElementById('popup-overlay_folder-delete').style.display = 'none';
+});
+
+
 const folderDelete = (folder, order, tabIdArray) => {
-  // let btn = confirm(
-  //   `${folder.title} 配下のフォルダやノートも全て削除されますが本当に削除しますか？`
-  // );
-  //はいを押した場合(true)
-  // if (btn) {
     $.ajax({
       url: '/folderPostController/',
       type: 'POST',
@@ -163,7 +169,6 @@ const folderDelete = (folder, order, tabIdArray) => {
         });
       },
     });
-  //}
 };
 
 const folderNameChange = (folder) => {
