@@ -36,7 +36,17 @@ export const folderContextmenu = (tabIdArray) => {
     $(document).ready(function () {
       $('#folderName').off('click');
       $('#folderName').on('click', function (e) {
-        folderNameChange(folder);
+          document.getElementById('popup-overlay_folder-delete').style.display = 'block';
+          document.getElementById('folder-delete-name').innerHTML = folder.title;
+        //folderNameChange(folder);
+           const folderDeleteButtonListener = () => {
+            folderNameChange(folder);
+         document.getElementById('popup-overlay_folder-delete').style.display = 'none';
+       
+    document.getElementById('yes-button-folder-delete').removeEventListener('click',folderDeleteButtonListener);
+  };
+  document.getElementById('yes-button-folder-delete').addEventListener('click', folderDeleteButtonListener);
+};
       });
     });
 
@@ -101,11 +111,11 @@ export const folderContextmenu = (tabIdArray) => {
 };
 
 const folderDelete = (folder, order, tabIdArray) => {
-  let btn = confirm(
-    `${folder.title} 配下のフォルダやノートも全て削除されますが本当に削除しますか？`
-  );
+  // let btn = confirm(
+  //   `${folder.title} 配下のフォルダやノートも全て削除されますが本当に削除しますか？`
+  // );
   //はいを押した場合(true)
-  if (btn) {
+  // if (btn) {
     $.ajax({
       url: '/folderPostController/',
       type: 'POST',
@@ -146,11 +156,15 @@ const folderDelete = (folder, order, tabIdArray) => {
                 );
               }
             }
+              document.getElementById('popup-overlay_delete-pop').style.display = 'block';
+            setTimeout(()=>{
+                document.getElementById('popup-overlay_delete-pop').style.display = 'none';
+            },1000)
           },
         });
       },
     });
-  }
+  //}
 };
 
 const folderNameChange = (folder) => {
