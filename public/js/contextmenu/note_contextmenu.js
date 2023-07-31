@@ -28,6 +28,7 @@ export const fileContextmenu = (tabIdArray) => {
       // noteDelete(file, tabIndex, order, tabIdArray);
       document.getElementById('yes-button-nouhau-delete').addEventListener('click', () => {
         let tabIndex = orderGet('tab-content', `Tab-ID${file.id}`);
+        console.log(file);
        noteDelete(file, tabIndex, order, tabIdArray);
       });
     };
@@ -150,7 +151,7 @@ document.getElementById('no-button-nouhau-delete').addEventListener('click', (e)
 
 const noteDelete = (file, tabIndex, order, tabIdArray) => {
   // let btn = confirm(`${file.title} を本当に削除しますか？`);
-
+console.log(file);
   // if (btn) {
     //タブが生成済みであれば、タブを削除
     if (tabIdArray.includes(Number(file.id))) {
@@ -170,6 +171,7 @@ const noteDelete = (file, tabIndex, order, tabIdArray) => {
       }),
       success: function (res) {
         //成功！！ここにリストから消した際のタブ削除と、リスト削除を記載→タブの✖️を押下したことにすれば良いのでは？？
+        console.log(file.elem.parentNode.parentNode);
         let parentid = file.elem.parentNode.parentNode.id;
         $(`#file${file.id}`).parent().remove();
 
