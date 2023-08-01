@@ -145,6 +145,8 @@ const folderDelete = (folder, order, tabIdArray) => {
     }),
     success: function (res) {
       //成功！！ここにリストから消した際のタブ削除と、リスト削除を記載→タブの✖️を押下したことにすれば良いのでは？？
+      console.log(res.fileResults);
+      console.log(res.folderResults);
       $(`#folder${folder.id}`).parent().remove();
 
       $.ajax({
