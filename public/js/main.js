@@ -372,7 +372,8 @@ function tabScreenOptions(id, title) {
           //タブ上の「✖️」ボタン押下
           document.getElementById(`button${id}`).onclick = () => {
             closeButton(id, title, tabIdArray);
-            tabIdArray = deleteTabArray(id, tabIdArray);
+            //tabIdArray = deleteTabArray(id, tabIdArray);
+            tabIdArray =  getTabIdArray();
           };
 
           //タブをクリックした際の処理
@@ -413,3 +414,11 @@ document.getElementById('idInput').addEventListener('input', () => {
   // フォーマットされたIDを表示
   document.getElementById('idInput').value = formattedID;
 });
+
+
+export function setTabIdArray(newValue) {
+  tabIdArray = newValue;
+}
+export function getTabIdArray() {
+  return tabIdArray;
+}
