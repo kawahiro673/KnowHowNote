@@ -22,7 +22,7 @@ export const newFileCreateFunc = (id) => {
     li.appendChild(span);
     span.appendChild(inputTab);
 
-    const orderH = getInputOrder('inputTab');
+    const orderH = getParentOrder('inputTab');
     console.log(orderH);
 
     let isCreatingFile = false; // ファイル作成中かどうかを示すフラグ
@@ -147,25 +147,25 @@ createfilebutton.addEventListener('click', async (e) => {
   }
 });
 
-export const getInputOrder = (inputId) => {
+export const getParentOrder = (inputId) => {
   const inputElement = document.getElementById(inputId);
 
   if (inputElement) {
-    let order = 1;
-    let currentElement = inputElement.previousElementSibling;
+    const liParentElement = inputElement.closest('li');
+    if (liParentElement) {
+      let order = 1;
+      let currentElement = liParentElement.previousElementSibling;
 
-    while (currentElement) {
-      if (
-        currentElement.tagName === 'INPUT' &&
-        currentElement.type === 'text'
-      ) {
-        order++;
+      while (currentElement) {
+        if (currentElement.tagName === 'LI') {
+          order++;
+        }
+        currentElement = currentElement.previousElementSibling;
       }
-      currentElement = currentElement.previousElementSibling;
-    }
 
-    return order;
-  } else {
-    return -1; // 要素が見つからなかった場合に-1を返すなど、エラー処理を追加することができます
+      return order;
+    }
   }
+
+  return -1; // 要素が見つからなかった場合に-1を返すなど、エラー処理を追加することができます
 };
