@@ -121,6 +121,7 @@ function newCreateFolder2(inputTab, span, li, ul, parentId) {
             while (node.firstChild) {
               node.removeChild(node.firstChild);
             }
+              document.getElementById('list_loader').style.display = 'block';//listCreate()の末尾で消している
             listCreate();
           },
         });
@@ -139,8 +140,8 @@ createbutton.addEventListener(
       disableElements();
       e.stopPropagation();
       await newFolderCreateFunc(id);
-      document.getElementById('list_loader').style.display = 'block';
-      document.getElementById('list_loader').classList.add('loaded');
+      // document.getElementById('list_loader').style.display = 'block';
+      // document.getElementById('list_loader').classList.add('loaded');
     }
   },
   false
