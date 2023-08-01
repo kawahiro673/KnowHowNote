@@ -147,6 +147,7 @@ createfilebutton.addEventListener('click', async (e) => {
   }
 });
 
+//inputの順番を取得
 export const getParentOrder = (inputId) => {
   const inputElement = document.getElementById(inputId);
 
