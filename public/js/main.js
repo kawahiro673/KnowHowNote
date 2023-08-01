@@ -4,7 +4,6 @@ import {
   shareButtonClick,
   closeButton,
   tabClick,
-  deleteTabArray,
   tabCreate,
   binderCreate,
 } from './tab_func.js';
