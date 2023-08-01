@@ -2,7 +2,7 @@ import { closeTab, deleteTabArray } from '../tab_func.js';
 import { newFileCreateFunc } from '../newFileCreate.js';
 import { newFolderCreateFunc } from '../newFolderCreate.js';
 import { orderGet, fileIDUnderTheFolder } from '../stringUtils.js';
-import { tabFocusIDGet, hashedIdGet } from '../main.js';
+import { tabFocusIDGet, hashedIdGet, getTabIdArray } from '../main.js';
 import { disableElements, enableElements } from '../utilityFunction.js';
 
 let tmp1;
@@ -170,7 +170,7 @@ const folderDelete = (folder, order, tabIdArray) => {
             // if (tabIdArray.includes(String(res.response[i]))) {
               closeTab(res.response[i], undefined, tabIdArray);
               //idArrayの中にあるlistTitle.idを削除
-                    tabIdArray = deleteTabArray(res.response[i].id, tabIdArray);
+                tabIdArray =  getTabIdArray();  //tabIdArray = deleteTabArray(res.response[i].id, tabIdArray);
               // tabIdArray = deleteTabArray(String(res.response[i]), tabIdArray);
                console.log(tabIdArray);
             }
