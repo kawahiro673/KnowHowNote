@@ -164,7 +164,7 @@ export const listCreate = () => {
       enableElements();
       allowDragAndDropOfFiles();
       allowDragAndDropOfFolders();
-      document.getElementById('list_loader').style.display = 'block';
+      //document.getElementById('list_loader').style.display = 'block';
     　document.getElementById('list_loader').classList.add('loaded');
     },
   });
