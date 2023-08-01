@@ -1,4 +1,4 @@
-import { closeTab, deleteTabArray } from '../tab_func.js';
+import { closeTab } from '../tab_func.js';
 import { newFileCreateFunc } from '../newFileCreate.js';
 import { newFolderCreateFunc } from '../newFolderCreate.js';
 import { orderGet, fileIDUnderTheFolder } from '../stringUtils.js';
