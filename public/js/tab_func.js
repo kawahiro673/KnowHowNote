@@ -1,6 +1,6 @@
 //タブで必要な関数まとめ
 import { currentTimeGet, passGet, orderGet } from './stringUtils.js';
-import { hashedIdGet } from './main.js';
+import { hashedIdGet,setTabIdArray } from './main.js';
 
 export const tabCreate = (id, title, res) => {
   const inputTab = document.createElement('input');
@@ -433,7 +433,7 @@ export const deleteTabIdArray = (id, tabIdArray) => {
     });
   }
   console.log(tabIdArray)
-  return tabIdArray;
+  setTabIdArray(tabIdArray);
 };
 
 //共有履歴　ユーザー一覧
