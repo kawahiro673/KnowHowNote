@@ -22,6 +22,9 @@ export const newFileCreateFunc = (id) => {
     li.appendChild(span);
     span.appendChild(inputTab);
 
+    const orderH = getInputOrder(id, 'inputTab');
+    console.log(orderH);
+
     let isCreatingFile = false; // ファイル作成中かどうかを示すフラグ
 
     // inputにフォーカスを当てて全選択
@@ -143,3 +146,16 @@ createfilebutton.addEventListener('click', async (e) => {
     await newFileCreateFunc(id);
   }
 });
+
+export const getInputOrder = (parentId, inputId) => {
+  const parentElement = document.getElementById(parentId);
+  const inputElement = document.getElementById(inputId);
+
+  if (parentElement && inputElement) {
+    const inputElements = parentElement.querySelectorAll("input[type='text']");
+    const inputIndex = [].indexOf.call(inputElements, inputElement);
+    return inputIndex + 1;
+  } else {
+    return -1; // 要素が見つからなかった場合に-1を返すなど、エラー処理を追加することができます
+  }
+};
