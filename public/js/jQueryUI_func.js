@@ -79,7 +79,7 @@ export const jQueryUIOptionsFunc = () => {
             return true;
           }
         },
-      
+
         //ファイル・フォルダをD&D後の処理
         onDrop: function (item, container, _super, event) {
           let id = item.prevObject[0].getAttribute('value');

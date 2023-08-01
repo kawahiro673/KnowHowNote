@@ -111,7 +111,7 @@ export const listCreate = () => {
             //file追加
             for (const hoge of Object.keys(resTmp2)) {
               const file = resTmp2[hoge];
-              //for (const file of resTmp2) {
+
               if (
                 file.parent_id == parentId &&
                 orderNumber == file.folder_order &&
@@ -166,7 +166,7 @@ export const listCreate = () => {
       allowDragAndDropOfFolders();
       //document.getElementById('list_loader').style.display = 'block';
       console.log('やあ');
-    　document.getElementById('list_loader').classList.add('loaded');
+      document.getElementById('list_loader').classList.add('loaded');
     },
   });
 };
@@ -375,7 +375,7 @@ function tabScreenOptions(id, title) {
           document.getElementById(`button${id}`).onclick = () => {
             closeButton(id, title, tabIdArray);
             //tabIdArray = deleteTabArray(id, tabIdArray);
-            tabIdArray =  getTabIdArray();
+            tabIdArray = getTabIdArray();
           };
 
           //タブをクリックした際の処理
@@ -416,7 +416,6 @@ document.getElementById('idInput').addEventListener('input', () => {
   // フォーマットされたIDを表示
   document.getElementById('idInput').value = formattedID;
 });
-
 
 export function setTabIdArray(newValue) {
   tabIdArray = newValue;

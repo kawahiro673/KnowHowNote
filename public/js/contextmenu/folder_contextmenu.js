@@ -73,8 +73,6 @@ export const folderContextmenu = (tabIdArray) => {
         setTimeout(() => {
           enableElements();
         }, 1500);
-        // document.getElementById('list_loader').style.display = 'block';
-        // document.getElementById('list_loader').classList.add('loaded');
       });
     });
 
@@ -97,8 +95,6 @@ export const folderContextmenu = (tabIdArray) => {
         setTimeout(() => {
           enableElements();
         }, 1500);
-        // document.getElementById('list_loader').style.display = 'block';
-        // document.getElementById('list_loader').classList.add('loaded');
       });
     });
 
@@ -145,8 +141,7 @@ const folderDelete = (folder, order, tabIdArray) => {
     }),
     success: function (res) {
       //成功！！ここにリストから消した際のタブ削除と、リスト削除を記載→タブの✖️を押下したことにすれば良いのでは？？
-      // console.log(res.fileResults);
-      // console.log(res.folderResults);
+
       $(`#folder${folder.id}`).parent().remove();
 
       $.ajax({
@@ -166,13 +161,11 @@ const folderDelete = (folder, order, tabIdArray) => {
           //削除されたファイルのタブを削除する
           for (let i = 0; i < res.response.length; i++) {
             //idArrayが文字列で格納されているため、num→String変換
-              if (tabIdArray.includes(res.response[i])) {
-            // if (tabIdArray.includes(String(res.response[i]))) {
+            if (tabIdArray.includes(res.response[i])) {
               closeTab(res.response[i], undefined, tabIdArray);
               //idArrayの中にあるlistTitle.idを削除
-                tabIdArray =  getTabIdArray();  //tabIdArray = deleteTabArray(res.response[i].id, tabIdArray);
-              // tabIdArray = deleteTabArray(String(res.response[i]), tabIdArray);
-               console.log(tabIdArray);
+              tabIdArray = getTabIdArray();
+              console.log(tabIdArray);
             }
           }
           document.getElementById('popup-overlay_delete-pop').style.display =
@@ -254,9 +247,7 @@ function eventFunc(e) {
 //右・左クリック時にいろんなものを消したり戻したり。。。
 const bodyClickJuge = (target1, target2, flg1, flg2) => {
   if (flg1) {
-    //console.log('同じ要素です');
   } else {
-    //console.log('違う要素です');
     if (flg2 == 'backgroundColor') {
       target1.style.backgroundColor = 'white';
     } else if (flg2 == 'input') {

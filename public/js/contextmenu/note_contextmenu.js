@@ -1,6 +1,6 @@
 import { closeTab, shareButtonClick } from '../tab_func.js';
 import { currentTimeGet, orderGet } from '../stringUtils.js';
-import { tabFocusIDGet,getTabIdArray } from '../main.js';
+import { tabFocusIDGet, getTabIdArray } from '../main.js';
 import { newFileCreateFunc } from '../newFileCreate.js';
 
 let tmp1;

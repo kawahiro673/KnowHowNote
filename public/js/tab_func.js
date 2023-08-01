@@ -1,6 +1,6 @@
 //タブで必要な関数まとめ
 import { currentTimeGet, passGet, orderGet } from './stringUtils.js';
-import { hashedIdGet,setTabIdArray } from './main.js';
+import { hashedIdGet, setTabIdArray } from './main.js';
 
 export const tabCreate = (id, title, res) => {
   const inputTab = document.createElement('input');
@@ -367,7 +367,7 @@ export const closeTab = async (id, order, tabIdArray) => {
       },
     });
   });
-  deleteTabIdArray(id,tabIdArray);
+  deleteTabIdArray(id, tabIdArray);
 };
 
 //タブ上の✖️ボタン押下時
@@ -432,7 +432,7 @@ export const deleteTabIdArray = (id, tabIdArray) => {
       container.remove();
     });
   }
-  console.log(tabIdArray)
+  console.log(tabIdArray);
   setTabIdArray(tabIdArray);
 };
 

@@ -68,7 +68,6 @@ export const newFileCreateFunc = (id) => {
   });
 };
 export const newCreateFile2 = (inputTab, span, parentId, li) => {
- 
   return new Promise((resolve, reject) => {
     //何も入力されていない時や空白や改行のみ
     if (!inputTab.value || !inputTab.value.match(/\S/g)) {
@@ -120,8 +119,8 @@ export const newCreateFile2 = (inputTab, span, parentId, li) => {
               while (node.firstChild) {
                 node.removeChild(node.firstChild);
               }
-               console.log('ひん');
-    document.getElementById('list_loader').style.display = 'block';//listCreateで消す
+              console.log('ひん');
+              document.getElementById('list_loader').style.display = 'block'; //listCreateで消す
               listCreate();
               resolve();
             },
@@ -142,7 +141,5 @@ createfilebutton.addEventListener('click', async (e) => {
     e.stopPropagation();
     //awaitはPromiseが返ってくるまで待つ。関数内でPromise化し、resolveのタイミングでPromiseが返る
     await newFileCreateFunc(id);
-    // document.getElementById('list_loader').style.display = 'block';
-    // document.getElementById('list_loader').classList.add('loaded');
   }
 });
