@@ -22,7 +22,7 @@ export const jQueryUIOptionsFunc = () => {
       resolve();
       $('#0').sortable({
         delay: 500,
-        tolerance: 'pointer',
+        tolerance: 0,
         onDragStart: function (item) {
           let str = item.prevObject[0].id;
           const regex = /[^0-9]/g;
