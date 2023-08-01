@@ -68,6 +68,7 @@ export const newFileCreateFunc = (id) => {
   });
 };
 export const newCreateFile2 = (inputTab, span, parentId, li) => {
+    document.getElementById('list_loader').style.display = 'block';//listCreateで消す
   return new Promise((resolve, reject) => {
     //何も入力されていない時や空白や改行のみ
     if (!inputTab.value || !inputTab.value.match(/\S/g)) {
