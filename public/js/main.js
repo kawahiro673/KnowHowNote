@@ -421,7 +421,3 @@ export function setTabIdArray(newValue) {
 export function getTabIdArray() {
   return tabIdArray;
 }
-
-$('.folder').on('mousedown', function (e) {
-  e.stopPropagation(); // イベントの伝播を停止
-});
