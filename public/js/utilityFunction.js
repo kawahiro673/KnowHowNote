@@ -63,8 +63,38 @@ export const allowDragAndDropOfFiles = () => {
   });
 };
 
+// export const allowDragAndDropOfFolders = () => {
+//   $('.folder').on('mousedown', function (e) {
+//     const $clone = $(this).clone();
+//     $clone.css('position', 'absolute');
+//     $clone.css('background-color', 'white');
+//     // ゴーストエフェクト要素をbodyに追加
+//     $('body').append($clone);
+
+//     // ドラッグ中の動作を設定
+//     $(document).on('mousemove', function (e) {
+//       // ゴーストエフェクトをドラッグに追従させる
+//       $clone.css('left', e.pageX + 'px');
+//       $clone.css('top', e.pageY + 'px');
+//     });
+
+//     // ドラッグ終了時の処理を設定
+//     $(document).on('mouseup', function (e) {
+//       // ゴーストエフェクト要素を削除
+//       $clone.remove();
+
+//       // 不要なイベントハンドラを解除
+//       $(document).off('mousemove');
+//       $(document).off('mouseup');
+//     });
+//   });
+// };
+
+
 export const allowDragAndDropOfFolders = () => {
   $('.folder').on('mousedown', function (e) {
+    e.stopPropagation(); // イベントの伝播を停止
+
     const $clone = $(this).clone();
     $clone.css('position', 'absolute');
     $clone.css('background-color', 'white');
@@ -73,9 +103,21 @@ export const allowDragAndDropOfFolders = () => {
 
     // ドラッグ中の動作を設定
     $(document).on('mousemove', function (e) {
-      // ゴーストエフェクトをドラッグに追従させる
-      $clone.css('left', e.pageX + 'px');
-      $clone.css('top', e.pageY + 'px');
+      if (!$clone.hasClass('hovered')) {
+        // マウスがフォルダ要素上にない場合のみ、ゴーストエフェクトをドラッグに追従させる
+        $clone.css('left', e.pageX + 'px');
+        $clone.css('top', e.pageY + 'px');
+      }
+    });
+
+    // フォルダ要素の上にマウスが来た時の処理
+    $('.folder').on('mouseenter', function (e) {
+      $clone.addClass('hovered');
+    });
+
+    // フォルダ要素からマウスが離れた時の処理
+    $('.folder').on('mouseleave', function (e) {
+      $clone.removeClass('hovered');
     });
 
     // ドラッグ終了時の処理を設定
@@ -85,6 +127,8 @@ export const allowDragAndDropOfFolders = () => {
 
       // 不要なイベントハンドラを解除
       $(document).off('mousemove');
+      $('.folder').off('mouseenter');
+      $('.folder').off('mouseleave');
       $(document).off('mouseup');
     });
   });
