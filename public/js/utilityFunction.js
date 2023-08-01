@@ -91,22 +91,27 @@ document.getElementById('nouhau').addEventListener('click', () => {
 // };
 
 
+let isDragging = false;
 let offsetX, offsetY;
 
 export const allowDragAndDropOfFiles = () => {
   $('.file').on('mousedown', function (e) {
+    isDragging = true;
     const $target = $(this);
     // ドラッグ開始時のマウスカーソルと要素の相対的な位置を計算
     offsetX = e.pageX - $target.offset().left;
     offsetY = e.pageY - $target.offset().top;
 
     $(document).on('mousemove', function (e) {
-      // ドラッグ中の要素を移動
-      $target.css('left', e.pageX - offsetX + 'px');
-      $target.css('top', e.pageY - offsetY + 'px');
+      if (isDragging) {
+        // ドラッグ中の要素を移動
+        $target.css('left', e.pageX - offsetX + 'px');
+        $target.css('top', e.pageY - offsetY + 'px');
+      }
     });
 
     $(document).on('mouseup', function () {
+      isDragging = false;
       // 不要なイベントハンドラを解除
       $(document).off('mousemove');
       $(document).off('mouseup');
@@ -116,18 +121,22 @@ export const allowDragAndDropOfFiles = () => {
 
 export const allowDragAndDropOfFolders = () => {
   $('.folder').on('mousedown', function (e) {
+    isDragging = true;
     const $target = $(this);
     // ドラッグ開始時のマウスカーソルと要素の相対的な位置を計算
     offsetX = e.pageX - $target.offset().left;
     offsetY = e.pageY - $target.offset().top;
 
     $(document).on('mousemove', function (e) {
-      // ドラッグ中の要素を移動
-      $target.css('left', e.pageX - offsetX + 'px');
-      $target.css('top', e.pageY - offsetY + 'px');
+      if (isDragging) {
+        // ドラッグ中の要素を移動
+        $target.css('left', e.pageX - offsetX + 'px');
+        $target.css('top', e.pageY - offsetY + 'px');
+      }
     });
 
     $(document).on('mouseup', function () {
+      isDragging = false;
       // 不要なイベントハンドラを解除
       $(document).off('mousemove');
       $(document).off('mouseup');
