@@ -60,25 +60,48 @@ export const jQueryUIOptionsFunc = () => {
         },
         //自分のfolder配下にはD&Dをできないようにしている
         //item:D＆Dの自分自身    container:ドラッグ先の要素
+        // isValidTarget: function (item, container) {
+        //   let id = item.prevObject[0].getAttribute('value');
+        //   let b = container.el[0].classList[0];
+
+        //   id = Number(id);
+        //   tmpArray.push(id); //自分自身のidを追加
+        //   //class名の"f_160"とかの数字のみを取り出している
+        //   const regex = /[^0-9]/g;
+        //   const result = b.replace(regex, '');
+        //   let a = Number(result);
+
+        //   //tmpArray:子要素以下のid格納した配列
+        //   //true: D&D可能　　false:D&D不可
+        //   if (tmpArray.includes(a) == true) {
+        //     return false;
+        //   } else {
+        //     return true;
+        //   }
+        // },
         isValidTarget: function (item, container) {
-          let id = item.prevObject[0].getAttribute('value');
-          let b = container.el[0].classList[0];
+  let id = item.prevObject[0].getAttribute('value');
+  let b = container.el[0].classList[0];
 
-          id = Number(id);
-          tmpArray.push(id); //自分自身のidを追加
-          //class名の"f_160"とかの数字のみを取り出している
-          const regex = /[^0-9]/g;
-          const result = b.replace(regex, '');
-          let a = Number(result);
+  id = Number(id);
+  //class名の"f_160"とかの数字のみを取り出している
+  const regex = /[^0-9]/g;
+  const result = b.replace(regex, '');
+  let a = Number(result);
 
-          //tmpArray:子要素以下のid格納した配列
-          //true: D&D可能　　false:D&D不可
-          if (tmpArray.includes(a) == true) {
-            return false;
-          } else {
-            return true;
-          }
-        },
+  //フォルダ要素の子要素（class='file'）の場合は無効化しない
+  if (item.prevObject[0].classList.contains('file')) {
+    return true;
+  }
+
+  //tmpArray:子要素以下のid格納した配列
+  //true: D&D可能　　false:D&D不可
+  if (tmpArray.includes(a) == true) {
+    return false;
+  } else {
+    return true;
+  }
+},
         //ファイル・フォルダをD&D後の処理
         onDrop: function (item, container, _super, event) {
           let id = item.prevObject[0].getAttribute('value');
