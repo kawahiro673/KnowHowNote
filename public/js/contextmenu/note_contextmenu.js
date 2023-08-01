@@ -1,6 +1,6 @@
 import { closeTab, deleteTabArray, shareButtonClick } from '../tab_func.js';
 import { currentTimeGet, orderGet } from '../stringUtils.js';
-import { tabFocusIDGet } from '../main.js';
+import { tabFocusIDGet,getTabIdArray } from '../main.js';
 import { newFileCreateFunc } from '../newFileCreate.js';
 
 let tmp1;
@@ -170,7 +170,7 @@ const noteDelete = (file, tabIndex, order, tabIdArray) => {
   if (tabIdArray.includes(Number(file.id))) {
     closeTab(Number(file.id), tabIndex, tabIdArray);
     //idArrayの中にあるfile.idを削除
-    tabIdArray = deleteTabArray(file.id, tabIdArray);
+    tabIdArray = getTabIdArray();
   }
   $.ajax({
     url: '/tabPostController/',
