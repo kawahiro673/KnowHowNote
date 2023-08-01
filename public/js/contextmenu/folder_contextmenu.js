@@ -162,7 +162,7 @@ const folderDelete = (folder, order, tabIdArray) => {
         }),
         success: function (res) {
           console.log(res.response);
-          conosle.log(tabIdArray);
+          console.log(tabIdArray);
           //削除されたファイルのタブを削除する
           for (let i = 0; i < res.response.length; i++) {
             //idArrayが文字列で格納されているため、num→String変換
@@ -170,7 +170,7 @@ const folderDelete = (folder, order, tabIdArray) => {
               closeTab(res.response[i], undefined, tabIdArray);
               //idArrayの中にあるlistTitle.idを削除
               tabIdArray = deleteTabArray(String(res.response[i]), tabIdArray);
-               conosle.log(tabIdArray);
+               console.log(tabIdArray);
             }
           }
           document.getElementById('popup-overlay_delete-pop').style.display =
