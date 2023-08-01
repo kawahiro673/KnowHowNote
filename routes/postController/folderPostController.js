@@ -381,13 +381,13 @@ router.post('/', (req, res) => {
               if (error) {
                 reject(error);
               } else {
-                resolve();
+                resolve(resultDecoded);
               }
             }
           );
         });
       })
-      .then(() => {
+      .then((resultDecoded) => {
         return new Promise((resolve, reject) => {
           pool.query(
             'DELETE from folder where id = ?',
@@ -396,26 +396,30 @@ router.post('/', (req, res) => {
               if (error) {
                 reject(error);
               } else {
-                resolve();
+                resolve(resultDecoded);
               }
             }
           );
         });
       })
-      .then(() => {
+      .then((resultDecoded) => {
         return new Promise((resolve, reject) => {
-          pool.query('select * from it_memo;', (error, fileResults) => {
+          pool.query('select * from it_memo WHERE UserID = ?;',
+          [resultDecoded[0].id],
+          (error, fileResults) => {
             if (error) {
               reject(error);
             } else {
-              resolve(fileResults);
+              resolve({fileResults:fileResults, resultDecoded:resultDecoded});
             }
           });
         });
       })
-      .then((fileResults) => {
+      .then(({fileResults, resultDecoded}) => {
         return new Promise((resolve, reject) => {
-          pool.query('select * from folder;', (error, folderResults) => {
+          pool.query('select * from folder WHERE UserID = ?;',
+          [resultDecoded[0].id],
+          (error, folderResults) => {
             if (error) {
               reject(error);
             } else {
