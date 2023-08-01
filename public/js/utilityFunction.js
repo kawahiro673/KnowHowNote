@@ -63,70 +63,29 @@ export const allowDragAndDropOfFiles = () => {
   });
 };
 
-// export const allowDragAndDropOfFolders = () => {
-//   $('.folder').on('mousedown', function (e) {
-//     const $clone = $(this).clone();
-//     $clone.css('position', 'absolute');
-//     $clone.css('background-color', 'white');
-//     // ゴーストエフェクト要素をbodyに追加
-//     $('body').append($clone);
-
-//     // ドラッグ中の動作を設定
-//     $(document).on('mousemove', function (e) {
-//       // ゴーストエフェクトをドラッグに追従させる
-//       $clone.css('left', e.pageX + 'px');
-//       $clone.css('top', e.pageY + 'px');
-//     });
-
-//     // ドラッグ終了時の処理を設定
-//     $(document).on('mouseup', function (e) {
-//       // ゴーストエフェクト要素を削除
-//       $clone.remove();
-
-//       // 不要なイベントハンドラを解除
-//       $(document).off('mousemove');
-//       $(document).off('mouseup');
-//     });
-//   });
-// };
-
-
 export const allowDragAndDropOfFolders = () => {
-  let isDragging = false;
-  let $clone;
-
-  $(document).on('mousedown', '.folder', function (e) {
-    e.stopPropagation();
-    isDragging = true;
-    $clone = $(this).clone();
+  $('.folder').on('mousedown', function (e) {
+    const $clone = $(this).clone();
     $clone.css('position', 'absolute');
     $clone.css('background-color', 'white');
+    // ゴーストエフェクト要素をbodyに追加
     $('body').append($clone);
-  });
 
-  $(document).on('mousemove', function (e) {
-    if (isDragging && !$clone.hasClass('hovered')) {
+    // ドラッグ中の動作を設定
+    $(document).on('mousemove', function (e) {
+      // ゴーストエフェクトをドラッグに追従させる
       $clone.css('left', e.pageX + 'px');
       $clone.css('top', e.pageY + 'px');
-    }
-  });
+    });
 
-  $(document).on('mouseup', function (e) {
-    if (isDragging) {
+    // ドラッグ終了時の処理を設定
+    $(document).on('mouseup', function (e) {
+      // ゴーストエフェクト要素を削除
       $clone.remove();
-      isDragging = false;
-    }
-  });
 
-  $(document).on('mouseenter', '.folder', function (e) {
-    if (isDragging) {
-      $clone.addClass('hovered');
-    }
-  });
-
-  $(document).on('mouseleave', '.folder', function (e) {
-    if (isDragging) {
-      $clone.removeClass('hovered');
-    }
+      // 不要なイベントハンドラを解除
+      $(document).off('mousemove');
+      $(document).off('mouseup');
+    });
   });
 };
