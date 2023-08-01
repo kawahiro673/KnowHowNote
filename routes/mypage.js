@@ -162,8 +162,8 @@ router
     //削除したフォルダの配下のファイルとフォルダを全て削除
     else if (req.body.flg === 'childFolder') {
       let tmpIdArray = [];
-      let fileArray = [];
-      let folderArray = [];
+      let fileArray = [];//削除したフォルダの配下のファイルidを格納
+      let folderArray = [];//削除したフォルダの配下のフォルダidを格納
       let tmp;
 
       console.log(`[POST(childFolder)]  id : ${req.body.id}`);
@@ -172,23 +172,23 @@ router
 
       while (tmpIdArray.length !== 0) {
         tmpIdArray.forEach((parentId) => {
-          //console.log('parentID' + parentId);
+         //配下のファイルを配列に格納
           req.body.file.forEach((file) => {
-            //console.log('ファイル' + file.id);
             if (file.parent_id == parentId) {
-              //重複していなければ格納(格納されているのは削除した子要素以下のid。削除するため)
+              //重複していなければ格納(格納されているのは削除したフォルダの子要素ファイルのid)
               if (fileArray.indexOf(file.id) == -1) {
                 fileArray.push(file.id);
               }
             }
           });
+          //配下のフォルダを配列に格納
           req.body.folder.forEach((folder) => {
-            //console.log('フォルダ' + folder.id);
             if (folder.parent_id == parentId) {
-              //重複していなければ格納
+              //重複していなければ格納(格納されているのは削除したフォルダの子要素フォルダのid)
               if (folderArray.indexOf(folder.id) == -1) {
                 folderArray.push(folder.id);
               }
+              //削除したフォルダの配下のフォルダにも、子要素がある可能性があるため、繰り返し用の配列へ格納
               if (tmpIdArray.indexOf(folder.id) == -1) {
                 tmpIdArray.push(folder.id);
               }
@@ -196,7 +196,7 @@ router
           });
           tmp = parentId;
         });
-        //配下を全て削除したフォルダをtmpIdArrayから削除
+        //配下を全て確認したフォルダをtmpIdArrayから削除
         tmpIdArray.splice(tmpIdArray.indexOf(tmp), 1);
       }
       fileArray.forEach((file) => {
