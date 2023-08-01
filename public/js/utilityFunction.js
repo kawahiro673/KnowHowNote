@@ -91,27 +91,32 @@ document.getElementById('nouhau').addEventListener('click', () => {
 // };
 
 
-let isDragging = false;
-let offsetX, offsetY;
-
 export const allowDragAndDropOfFiles = () => {
   $('.file').on('mousedown', function (e) {
-    isDragging = true;
     const $target = $(this);
-    // ドラッグ開始時のマウスカーソルと要素の相対的な位置を計算
-    offsetX = e.pageX - $target.offset().left;
-    offsetY = e.pageY - $target.offset().top;
+    const $clone = $target.clone();
+    $clone.css('position', 'absolute');
+    $clone.css('background-color', 'white');
+    // ゴーストエフェクト要素をbodyに追加
+    $('body').append($clone);
 
+    // 元の要素を非表示にする
+    $target.css('visibility', 'hidden');
+
+    // ドラッグ中の動作を設定
     $(document).on('mousemove', function (e) {
-      if (isDragging) {
-        // ドラッグ中の要素を移動
-        $target.css('left', e.pageX - offsetX + 'px');
-        $target.css('top', e.pageY - offsetY + 'px');
-      }
+      // ゴーストエフェクトをドラッグに追従させる
+      $clone.css('left', e.pageX + 'px');
+      $clone.css('top', e.pageY + 'px');
     });
 
-    $(document).on('mouseup', function () {
-      isDragging = false;
+    // ドラッグ終了時の処理を設定
+    $(document).on('mouseup', function (e) {
+      // ゴーストエフェクト要素を削除
+      $clone.remove();
+      // 元の要素を再表示する
+      $target.css('visibility', 'visible');
+
       // 不要なイベントハンドラを解除
       $(document).off('mousemove');
       $(document).off('mouseup');
@@ -121,22 +126,30 @@ export const allowDragAndDropOfFiles = () => {
 
 export const allowDragAndDropOfFolders = () => {
   $('.folder').on('mousedown', function (e) {
-    isDragging = true;
     const $target = $(this);
-    // ドラッグ開始時のマウスカーソルと要素の相対的な位置を計算
-    offsetX = e.pageX - $target.offset().left;
-    offsetY = e.pageY - $target.offset().top;
+    const $clone = $target.clone();
+    $clone.css('position', 'absolute');
+    $clone.css('background-color', 'white');
+    // ゴーストエフェクト要素をbodyに追加
+    $('body').append($clone);
 
+    // 元の要素を非表示にする
+    $target.css('visibility', 'hidden');
+
+    // ドラッグ中の動作を設定
     $(document).on('mousemove', function (e) {
-      if (isDragging) {
-        // ドラッグ中の要素を移動
-        $target.css('left', e.pageX - offsetX + 'px');
-        $target.css('top', e.pageY - offsetY + 'px');
-      }
+      // ゴーストエフェクトをドラッグに追従させる
+      $clone.css('left', e.pageX + 'px');
+      $clone.css('top', e.pageY + 'px');
     });
 
-    $(document).on('mouseup', function () {
-      isDragging = false;
+    // ドラッグ終了時の処理を設定
+    $(document).on('mouseup', function (e) {
+      // ゴーストエフェクト要素を削除
+      $clone.remove();
+      // 元の要素を再表示する
+      $target.css('visibility', 'visible');
+
       // 不要なイベントハンドラを解除
       $(document).off('mousemove');
       $(document).off('mouseup');
