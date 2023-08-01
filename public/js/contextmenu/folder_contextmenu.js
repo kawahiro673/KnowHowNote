@@ -166,10 +166,12 @@ const folderDelete = (folder, order, tabIdArray) => {
           //削除されたファイルのタブを削除する
           for (let i = 0; i < res.response.length; i++) {
             //idArrayが文字列で格納されているため、num→String変換
-            if (tabIdArray.includes(String(res.response[i]))) {
+              if (tabIdArray.includes(res.response[i])) {
+            // if (tabIdArray.includes(String(res.response[i]))) {
               closeTab(res.response[i], undefined, tabIdArray);
               //idArrayの中にあるlistTitle.idを削除
-              tabIdArray = deleteTabArray(String(res.response[i]), tabIdArray);
+                    tabIdArray = deleteTabArray(res.response[i].id, tabIdArray);
+              // tabIdArray = deleteTabArray(String(res.response[i]), tabIdArray);
                console.log(tabIdArray);
             }
           }
