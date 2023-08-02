@@ -1,6 +1,6 @@
 import { listCreate } from './main.js';
 import { orderGet, currentTimeGet } from './stringUtils.js';
-import { hasInput, disableElements } from './utilityFunction.js';
+import { hasInput, disableElements, getInputOrder } from './utilityFunction.js';
 
 export const newFileCreateFunc = (id) => {
   return new Promise((resolve, reject) => {
@@ -147,23 +147,23 @@ createfilebutton.addEventListener('click', async (e) => {
   }
 });
 
-//ノウハウ作成時に生成されたinput(親のli要素)が、同階層で上から何番目(order)に作成されたかを返す関数
-export const getInputOrder = (inputId) => {
-  const inputElement = document.getElementById(inputId);
-  if (inputElement) {
-    const liParentElement = inputElement.closest('li');
-    if (liParentElement) {
-      let order = 1;
-      let currentElement = liParentElement.previousElementSibling;
+// //ノウハウ作成時に生成されたinput(親のli要素)が、同階層で上から何番目(order)に作成されたかを返す関数
+// export const getInputOrder = (inputId) => {
+//   const inputElement = document.getElementById(inputId);
+//   if (inputElement) {
+//     const liParentElement = inputElement.closest('li');
+//     if (liParentElement) {
+//       let order = 1;
+//       let currentElement = liParentElement.previousElementSibling;
 
-      while (currentElement) {
-        if (currentElement.tagName === 'LI') {
-          order++;
-        }
-        currentElement = currentElement.previousElementSibling;
-      }
-      return order;
-    }
-  }
-  return -1; // 要素が見つからなかった場合に-1を返す、エラー処理を追加
-};
+//       while (currentElement) {
+//         if (currentElement.tagName === 'LI') {
+//           order++;
+//         }
+//         currentElement = currentElement.previousElementSibling;
+//       }
+//       return order;
+//     }
+//   }
+//   return -1; // 要素が見つからなかった場合に-1を返す、エラー処理を追加
+// };
