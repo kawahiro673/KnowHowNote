@@ -89,3 +89,24 @@ export const allowDragAndDropOfFolders = () => {
     });
   });
 };
+
+//ノウハウ作成時に生成されたinput(親のli要素)が、同階層で上から何番目(order)に作成されたかを返す関数
+export const getInputOrder = (inputId) => {
+  const inputElement = document.getElementById(inputId);
+  if (inputElement) {
+    const liParentElement = inputElement.closest('li');
+    if (liParentElement) {
+      let order = 1;
+      let currentElement = liParentElement.previousElementSibling;
+
+      while (currentElement) {
+        if (currentElement.tagName === 'LI') {
+          order++;
+        }
+        currentElement = currentElement.previousElementSibling;
+      }
+      return order;
+    }
+  }
+  return -1; // 要素が見つからなかった場合に-1を返す、エラー処理を追加
+};
