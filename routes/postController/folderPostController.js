@@ -5,13 +5,11 @@ const { reject } = require('bcrypt/promises');
 
 router.post('/', (req, res) => {
   if (req.body.flg === 'newFolder') {
-    if (req.body.pattern === 'new') {
       const token = req.cookies.token;
       const decoded = JWT.verify(token, 'SECRET_KEY');
       let promise = new Promise((resolve, reject) => {
         resolve();
       });
-
       promise
         .then(() => {
           return new Promise((resolve, reject) => {
@@ -45,39 +43,10 @@ router.post('/', (req, res) => {
             );
           });
         })
-        // .then(() => {
-        //   return new Promise((resolve, reject) => {
-        //     pool.query(
-        //       //新規作成後にフォルダーidを取得するためのクエリ
-        //       'select * from folder order by id desc; ',
-        //       (error, result) => {
-        //         if (error) {
-        //           reject(error);
-        //         } else {
-        //           res.send({
-        //             folderResults: result[0],
-        //           });
-        //         }
-        //       }
-        //     );
-        //   });
-        // })
         .catch((error) => {
           console.error(error);
           res.status(500).send('Internal Server Error.(newFolder)');
         });
-      //order
-    } else {
-      pool.query(
-        'UPDATE folder SET folder_order = ? WHERE id = ?',
-        [req.body.order, req.body.id],
-        (error, results) => {
-          res.send({
-            msg: '成功しました',
-          });
-        }
-      );
-    }
   } else if (req.body.flg === 'parentIDSame') {
     const token = req.cookies.token;
     const decoded = JWT.verify(token, 'SECRET_KEY');
