@@ -30,41 +30,44 @@ router.post('/', (req, res) => {
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'INSERT into it_memo(title, parent_id, saved_time, Type, UserID) values(?, ?, ?, ?, ?); ', // 挿入
+              'INSERT into it_memo(title, parent_id, saved_time, Type, UserID,  folder_order) values(?, ?, ?, ?, ?, ?); ', // 挿入
               [
                 req.body.title,
                 req.body.parentId,
                 req.body.time,
                 'Original',
                 resultDecoded[0].id,
+                req.body.order,
               ], //この値が？に入る
               (error, result) => {
                 if (error) {
                   reject(error);
                 } else {
-                  resolve();
-                }
-              }
-            );
-          });
-        })
-        .then(() => {
-          return new Promise((resolve, reject) => {
-            pool.query(
-              //追加したばかりのノートはidが一番大きいため、上を取得
-              'SELECT * FROM  it_memo ORDER BY id DESC;',
-              (error, result) => {
-                if (error) {
-                  reject(error);
-                } else {
                   res.send({
-                    fileResult: result[0],
-                  });
+            msg: '成功しました',
+          });
                 }
               }
             );
           });
         })
+        // .then(() => {
+        //   return new Promise((resolve, reject) => {
+        //     pool.query(
+        //       //追加したばかりのノートはidが一番大きいため、上を取得
+        //       'SELECT * FROM  it_memo ORDER BY id DESC;',
+        //       (error, result) => {
+        //         if (error) {
+        //           reject(error);
+        //         } else {
+        //           res.send({
+        //             fileResult: result[0],
+        //           });
+        //         }
+        //       }
+        //     );
+        //   });
+        // })
         .catch((error) => {
           console.error(error);
           res.status(500).send('Internal Server Error.(newNote)');
