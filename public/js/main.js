@@ -227,6 +227,9 @@ export const fileClick = () => {
     tabScreenOptions(id, file.title);
     const pass = passGet(file.id, file.title);
     let isSomething = tabIdArray.includes(id);
+    const order = orderGet('tab-content', `Tab-ID${id}`);
+    document.getElementById('notepass').innerHTML = pass;
+  　tabFocusID = id;
     $.ajax({
       url: '/tabPostController/',
       type: 'POST',
@@ -237,26 +240,27 @@ export const fileClick = () => {
         isSomething,
         id,
         title: file.title,
+        order,
       }),
       success: function (res) {
-        const order = orderGet('tab-content', `Tab-ID${id}`);
-        //orderを格納し、focus=1へ
-        $.ajax({
-          url: '/tabPostController/',
-          type: 'POST',
-          dataType: 'Json',
-          contentType: 'application/json',
-          data: JSON.stringify({
-            flg: 'clickTab',
-            id,
-            order,
-            title: file.title,
-          }),
-          success: function (res) {
-            document.getElementById('notepass').innerHTML = pass;
-            tabFocusID = id;
-          },
-        });
+        // const order = orderGet('tab-content', `Tab-ID${id}`);
+        // //orderを格納し、focus=1へ
+        // $.ajax({
+        //   url: '/tabPostController/',
+        //   type: 'POST',
+        //   dataType: 'Json',
+        //   contentType: 'application/json',
+        //   data: JSON.stringify({
+        //     flg: 'clickTab',
+        //     id,
+        //     order,
+        //     title: file.title,
+        //   }),
+        //   success: function (res) {
+        //     document.getElementById('notepass').innerHTML = pass;
+        //     tabFocusID = id;
+        //   },
+        // });
       },
       complete: function () {
         isClickEnabled = true; // クリックイベントを有効化
