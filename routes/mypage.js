@@ -371,27 +371,28 @@ router
     } else if (req.body.flg === 'list') {
       //cookieの有効期限が切れたら自動的にログアウト
       //仕様上、期限切れ時に自動でログアウトされては困るので、リロードの際にのみログアウトする
-      const token = req.cookies.token;
-      const decoded = JWT.verify(token, 'SECRET_KEY');
-      let promise = new Promise((resolve, reject) => {
-        resolve();
-      });
-      promise
-        .then(() => {
-          return new Promise((resolve, reject) => {
-            pool.query(
-              'SELECT * FROM register_user WHERE UserName = ?;',
-              [decoded.userName],
-              (error, resultDecoded) => {
-                if (error) {
-                  reject(error);
-                } else {
-                  resolve(resultDecoded);
-                }
-              }
-            );
-          });
-        })
+      // const token = req.cookies.token;
+      // const decoded = JWT.verify(token, 'SECRET_KEY');
+      // let promise = new Promise((resolve, reject) => {
+      //   resolve();
+      // });
+      // promise
+      //   .then(() => {
+      //     return new Promise((resolve, reject) => {
+      //       pool.query(
+      //         'SELECT * FROM register_user WHERE UserName = ?;',
+      //         [decoded.userName],
+      //         (error, resultDecoded) => {
+      //           if (error) {
+      //             reject(error);
+      //           } else {
+      //             resolve(resultDecoded);
+      //           }
+      //         }
+      //       );
+      //     });
+      //   })
+      getUserDataByToken(req)
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
             pool.query(
