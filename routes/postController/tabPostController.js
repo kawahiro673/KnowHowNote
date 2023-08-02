@@ -5,27 +5,7 @@ const { reject } = require('bcrypt/promises');
 
 router.post('/', (req, res) => {
   if (req.body.flg === 'updateFocus') {
-    const token = req.cookies.token;
-    const decoded = JWT.verify(token, 'SECRET_KEY');
-    let promise = new Promise((resolve, reject) => {
-      resolve();
-    });
-    promise
-      .then(() => {
-        return new Promise((resolve, reject) => {
-          pool.query(
-            'SELECT * FROM register_user WHERE UserName = ?;',
-            [decoded.userName],
-            (error, resultDecoded) => {
-              if (error) {
-                reject();
-              } else {
-                resolve(resultDecoded);
-              }
-            }
-          );
-        });
-      })
+    getUserDataByToken(req)
       .then((resultDecoded) => {
         return new Promise((resolve, reject) => {
           pool.query(
@@ -61,30 +41,9 @@ router.post('/', (req, res) => {
         res.status(500).send('Internal Server Error.(updateFocus)');
       });
   } else if (req.body.flg === 'tabDesc') {
-    const token = req.cookies.token;
-    const decoded = JWT.verify(token, 'SECRET_KEY');
-    let promise = new Promise((resolve, reject) => {
-      resolve();
-    });
-    promise
-      .then(() => {
-        return new Promise((resolve, reject) => {
-          pool.query(
-            'SELECT * FROM register_user WHERE UserName = ?;',
-            [decoded.userName],
-            (error, resultDecoded) => {
-              if (error) {
-                reject(error);
-              } else {
-                resolve(resultDecoded);
-              }
-            }
-          );
-        });
-      })
+    getUserDataByToken(req)
       .then((resultDecoded) => {
         return new Promise((resolve, reject) => {
-          console.log(decoded.userName + 'ya100');
           pool.query(
             'SELECT * FROM tab_hold WHERE UserID = ? ORDER BY tabOrder;',
             [resultDecoded[0].id],
@@ -119,28 +78,7 @@ router.post('/', (req, res) => {
         res.status(500).send('Internal Server Error.(tabDesc)');
       });
   } else if (req.body.flg === 'tabDelete') {
-    const token = req.cookies.token;
-    const decoded = JWT.verify(token, 'SECRET_KEY');
-    let promise = new Promise((resolve, reject) => {
-      resolve();
-    });
-
-    promise
-      .then(() => {
-        return new Promise((resolve, reject) => {
-          pool.query(
-            'SELECT * FROM register_user WHERE UserName = ?;',
-            [decoded.userName],
-            (error, resultDecoded) => {
-              if (error) {
-                reject(error);
-              } else {
-                resolve(resultDecoded);
-              }
-            }
-          );
-        });
-      })
+    getUserDataByToken(req)
       .then((resultDecoded) => {
         return new Promise((resolve, reject) => {
           pool.query(
@@ -213,24 +151,7 @@ router.post('/', (req, res) => {
       });
   } else if (req.body.flg === 'tabAdd') {
     //タブが生成されていなければ実施(INSERT処理のため)
-    const token = req.cookies.token;
-    const decoded = JWT.verify(token, 'SECRET_KEY');
-
-    const promise = new Promise((resolve, reject) => {
-      pool.query(
-        'SELECT * FROM register_user WHERE UserName = ?;',
-        [decoded.userName],
-        (error, resultDecoded) => {
-          if (error) {
-            reject(error);
-          } else {
-            resolve(resultDecoded);
-          }
-        }
-      );
-    });
-
-    promise
+    getUserDataByToken(req)
       .then((resultDecoded) => {
         if (!req.body.isSomething) {
           return new Promise((resolve, reject) => {

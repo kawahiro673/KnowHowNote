@@ -44,28 +44,7 @@ router.post('/', (req, res) => {
         res.status(500).send('Internal Server Error.(shareAdd)');
       });
   } else if (req.body.flg === 'sharelist') {
-    const token = req.cookies.token;
-    const decoded = JWT.verify(token, 'SECRET_KEY');
-    let promise = new Promise((resolve, reject) => {
-      resolve();
-    });
-
-    promise
-      .then(() => {
-        return new Promise((resolve, rejct) => {
-          pool.query(
-            'SELECT * FROM register_user WHERE UserName = ?;',
-            [decoded.userName],
-            (error, resultDecoded) => {
-              if (error) {
-                rejct(error);
-              } else {
-                resolve(resultDecoded);
-              }
-            }
-          );
-        });
-      })
+    getUserDataByToken(req)
       .then((resultDecoded) => {
         return new Promise((resolve, rejct) => {
           pool.query(
@@ -399,7 +378,7 @@ router.post('/', (req, res) => {
       'DELETE FROM it_memo WHERE id = ?;',
       [req.body.id],
       (error, result) => {
-        res.send({msg:'成功'});
+        res.send({ msg: '成功' });
       }
     );
   }

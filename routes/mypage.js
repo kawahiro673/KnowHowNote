@@ -29,27 +29,6 @@ router
         }
       );
     } else if (req.body.flg === 'addOrder') {
-      // const token = req.cookies.token;
-      // const decoded = JWT.verify(token, 'SECRET_KEY');
-      // let promise = new Promise((resolve, reject) => {
-      //   resolve();
-      // });
-      // promise
-      //   .then(() => {
-      //     return new Promise((resolve, reject) => {
-      //       pool.query(
-      //         'SELECT * FROM register_user WHERE UserName = ?;',
-      //         [decoded.userName],
-      //         (error, resultDecoded) => {
-      //           if (error) {
-      //             reject(error);
-      //           } else {
-      //             resolve(resultDecoded);
-      //           }
-      //         }
-      //       );
-      //     });
-      //   })
       getUserDataByToken(req)
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
@@ -225,27 +204,6 @@ router
       let idArray = []; //最終的にmain.jsに返す値
       let parentIdArray = [];
       parentIdArray.push(req.body.id);
-      // const token = req.cookies.token;
-      // const decoded = JWT.verify(token, 'SECRET_KEY');
-      // let promise = new Promise((resolve, reject) => {
-      //   resolve();
-      // });
-      // promise
-      //   .then(() => {
-      //     return new Promise((resolve, reject) => {
-      //       pool.query(
-      //         'SELECT * FROM register_user WHERE UserName = ?;',
-      //         [decoded.userName],
-      //         (error, resultDecoded) => {
-      //           if (error) {
-      //             reject(error);
-      //           } else {
-      //             resolve(resultDecoded);
-      //           }
-      //         }
-      //       );
-      //     });
-      //   })
       getUserDataByToken(req)
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
@@ -287,27 +245,6 @@ router
       let idArray = []; //最終的にcodejsに返す値
       let parentIdArray = [];
       parentIdArray.push(req.body.id);
-      // const token = req.cookies.token;
-      // const decoded = JWT.verify(token, 'SECRET_KEY');
-      // let promise = new Promise((resolve, reject) => {
-      //   resolve();
-      // });
-      // promise
-      //   .then(() => {
-      //     return new Promise((resolve, reject) => {
-      //       pool.query(
-      //         'SELECT * FROM register_user WHERE UserName = ?;',
-      //         [decoded.userName],
-      //         (error, resultDecoded) => {
-      //           if (error) {
-      //             reject(error);
-      //           } else {
-      //             resolve(resultDecoded);
-      //           }
-      //         }
-      //       );
-      //     });
-      //   })
       getUserDataByToken(req)
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
@@ -372,29 +309,6 @@ router
           res.status(500).send('Internal Server Error.(noteChild)');
         });
     } else if (req.body.flg === 'list') {
-      //cookieの有効期限が切れたら自動的にログアウト
-      //仕様上、期限切れ時に自動でログアウトされては困るので、リロードの際にのみログアウトする
-      // const token = req.cookies.token;
-      // const decoded = JWT.verify(token, 'SECRET_KEY');
-      // let promise = new Promise((resolve, reject) => {
-      //   resolve();
-      // });
-      // promise
-      //   .then(() => {
-      //     return new Promise((resolve, reject) => {
-      //       pool.query(
-      //         'SELECT * FROM register_user WHERE UserName = ?;',
-      //         [decoded.userName],
-      //         (error, resultDecoded) => {
-      //           if (error) {
-      //             reject(error);
-      //           } else {
-      //             resolve(resultDecoded);
-      //           }
-      //         }
-      //       );
-      //     });
-      //   })
       getUserDataByToken(req)
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
@@ -437,27 +351,6 @@ router
           res.status(500).send('Internal Server Error.(list)');
         });
     } else if (req.body.flg === 'deleteALL') {
-      // const token = req.cookies.token;
-      // const decoded = JWT.verify(token, 'SECRET_KEY');
-      // let promise = new Promise((resolve, reject) => {
-      //   resolve();
-      // });
-      // promise
-      //   .then(() => {
-      //     return new Promise((resolve, reject) => {
-      //       pool.query(
-      //         'SELECT * FROM register_user WHERE UserName = ?;',
-      //         [decoded.userName],
-      //         (error, resultDecoded) => {
-      //           if (error) {
-      //             reject(error);
-      //           } else {
-      //             resolve(resultDecoded);
-      //           }
-      //         }
-      //       );
-      //     });
-      //   })
       getUserDataByToken(req)
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
@@ -519,42 +412,6 @@ router
 
       res.send({ msg: 'ログアウトします' });
     } else if (req.body.flg === 'ShareList') {
-      // const token = req.cookies.token;
-      // const decoded = JWT.verify(token, 'SECRET_KEY');
-      // let promise = new Promise((resolve, reject) => {
-      //   resolve();
-      // });
-      // promise
-      //   .then(() => {
-      //     return new Promise((resolve, reject) => {
-      //       pool.query(
-      //         'SELECT * FROM register_user WHERE UserName = ?;',
-      //         [decoded.userName],
-      //         (error, resultDecoded) => {
-      //           if (error) {
-      //             reject(error);
-      //           } else {
-      //             resolve(resultDecoded);
-      //           }
-      //         }
-      //       );
-      //     });
-      //   })
-      // .then((resultDecoded) => {
-      //   return new Promise((resolve, reject) => {
-      //     pool.query(
-      //       'SELECT * FROM share_user WHERE UserID = ? ORDER BY id DESC LIMIT 100;',
-      //       [resultDecoded[0].id],
-      //       (error, result) => {
-      //         if (error) {
-      //           reject(error);
-      //         } else {
-      //           res.send({ shareResult: result });
-      //         }
-      //       }
-      //     );
-      //   });
-      // });.then((resultDecoded) => {
       getUserDataByToken(req).then((resultDecoded) => {
         return new Promise((resolve, reject) => {
           pool.query(
@@ -608,27 +465,6 @@ router
         }
       );
     } else if (req.body.flg === 'register_user_update') {
-      // const token = req.cookies.token;
-      // const decoded = JWT.verify(token, 'SECRET_KEY');
-      // let promise = new Promise((resolve, reject) => {
-      //   resolve();
-      // });
-      // promise
-      //   .then(() => {
-      //     return new Promise((resolve, reject) => {
-      //       pool.query(
-      //         'SELECT * FROM register_user WHERE UserName = ?;',
-      //         [decoded.userName],
-      //         (error, resultDecoded) => {
-      //           if (error) {
-      //             reject(error);
-      //           } else {
-      //             resolve(resultDecoded);
-      //           }
-      //         }
-      //       );
-      //     });
-      //   })
       getUserDataByToken(req)
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
@@ -650,27 +486,6 @@ router
           res.status(500).json({ message: error.message, nothing });
         });
     } else if (req.body.flg === 'backgroundColor') {
-      // const token = req.cookies.token;
-      // const decoded = JWT.verify(token, 'SECRET_KEY');
-      // let promise = new Promise((resolve, reject) => {
-      //   resolve();
-      // });
-      // promise
-      //   .then(() => {
-      //     return new Promise((resolve, reject) => {
-      //       pool.query(
-      //         'SELECT * FROM register_user WHERE UserName = ?;',
-      //         [decoded.userName],
-      //         (error, resultDecoded) => {
-      //           if (error) {
-      //             reject(error);
-      //           } else {
-      //             resolve(resultDecoded);
-      //           }
-      //         }
-      //       );
-      //     });
-      //   })
       getUserDataByToken(req).then((resultDecoded) => {
         return new Promise((resolve, reject) => {
           pool.query(
@@ -695,27 +510,6 @@ router
         }
       );
     } else if (req.body.flg === 'shareFunctionCheckBoxFlg') {
-      // const token = req.cookies.token;
-      // const decoded = JWT.verify(token, 'SECRET_KEY');
-      // let promise = new Promise((resolve, reject) => {
-      //   resolve();
-      // });
-      // promise
-      //   .then(() => {
-      //     return new Promise((resolve, reject) => {
-      //       pool.query(
-      //         'SELECT * FROM register_user WHERE UserName = ?;',
-      //         [decoded.userName],
-      //         (error, resultDecoded) => {
-      //           if (error) {
-      //             reject(error);
-      //           } else {
-      //             resolve(resultDecoded);
-      //           }
-      //         }
-      //       );
-      //     });
-      //   })
       getUserDataByToken(req)
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
@@ -737,27 +531,6 @@ router
           res.status(500).json({ message: error.message, nothing });
         });
     } else if (req.body.flg === 'Authentication_ID') {
-      // const token = req.cookies.token;
-      // const decoded = JWT.verify(token, 'SECRET_KEY');
-      // let promise = new Promise((resolve, reject) => {
-      //   resolve();
-      // });
-      // promise
-      //   .then(() => {
-      //     return new Promise((resolve, reject) => {
-      //       pool.query(
-      //         'SELECT * FROM register_user WHERE UserName = ?;',
-      //         [decoded.userName],
-      //         (error, resultDecoded) => {
-      //           if (error) {
-      //             reject(error);
-      //           } else {
-      //             resolve(resultDecoded);
-      //           }
-      //         }
-      //       );
-      //     });
-      //   })
       getUserDataByToken(req)
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
@@ -826,27 +599,6 @@ router
           res.status(500).json({ message: error.message, nothing });
         });
     } else if (req.body.flg === 'friend-list-get') {
-      // const token = req.cookies.token;
-      // const decoded = JWT.verify(token, 'SECRET_KEY');
-      // let promise = new Promise((resolve, reject) => {
-      //   resolve();
-      // });
-      // promise
-      //   .then(() => {
-      //     return new Promise((resolve, reject) => {
-      //       pool.query(
-      //         'SELECT * FROM register_user WHERE UserName = ?;',
-      //         [decoded.userName],
-      //         (error, resultDecoded) => {
-      //           if (error) {
-      //             reject(error);
-      //           } else {
-      //             resolve(resultDecoded);
-      //           }
-      //         }
-      //       );
-      //     });
-      //   })
       getUserDataByToken(req)
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
@@ -868,27 +620,6 @@ router
           res.status(500).json({ message: error.message, nothing });
         });
     } else if (req.body.flg === 'friend-list-delete') {
-      // const token = req.cookies.token;
-      // const decoded = JWT.verify(token, 'SECRET_KEY');
-      // let promise = new Promise((resolve, reject) => {
-      //   resolve();
-      // });
-      // promise
-      //   .then(() => {
-      //     return new Promise((resolve, reject) => {
-      //       pool.query(
-      //         'SELECT * FROM register_user WHERE UserName = ?;',
-      //         [decoded.userName],
-      //         (error, resultDecoded) => {
-      //           if (error) {
-      //             reject(error);
-      //           } else {
-      //             resolve(resultDecoded);
-      //           }
-      //         }
-      //       );
-      //     });
-      //   })
       getUserDataByToken(req)
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
@@ -910,27 +641,6 @@ router
           res.status(500).json({ message: error.message, nothing });
         });
     } else if (req.body.flg === 'friend-list-name-change') {
-      // const token = req.cookies.token;
-      // const decoded = JWT.verify(token, 'SECRET_KEY');
-      // let promise = new Promise((resolve, reject) => {
-      //   resolve();
-      // });
-      // promise
-      //   .then(() => {
-      //     return new Promise((resolve, reject) => {
-      //       pool.query(
-      //         'SELECT * FROM register_user WHERE UserName = ?;',
-      //         [decoded.userName],
-      //         (error, resultDecoded) => {
-      //           if (error) {
-      //             reject(error);
-      //           } else {
-      //             resolve(resultDecoded);
-      //           }
-      //         }
-      //       );
-      //     });
-      //   })
       getUserDataByToken(req)
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
@@ -952,27 +662,6 @@ router
           res.status(500).json({ message: error.message, nothing });
         });
     } else if (req.body.flg === 'group_add') {
-      // const token = req.cookies.token;
-      // const decoded = JWT.verify(token, 'SECRET_KEY');
-      // let promise = new Promise((resolve, reject) => {
-      //   resolve();
-      // });
-      // promise
-      //   .then(() => {
-      //     return new Promise((resolve, reject) => {
-      //       pool.query(
-      //         'SELECT * FROM register_user WHERE UserName = ?;',
-      //         [decoded.userName],
-      //         (error, resultDecoded) => {
-      //           if (error) {
-      //             reject(error);
-      //           } else {
-      //             resolve(resultDecoded);
-      //           }
-      //         }
-      //       );
-      //     });
-      //   })
       getUserDataByToken(req)
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
@@ -994,27 +683,6 @@ router
           res.status(500).json({ message: error.message, nothing });
         });
     } else if (req.body.flg === 'group_get') {
-      // const token = req.cookies.token;
-      // const decoded = JWT.verify(token, 'SECRET_KEY');
-      // let promise = new Promise((resolve, reject) => {
-      //   resolve();
-      // });
-      // promise
-      //   .then(() => {
-      //     return new Promise((resolve, reject) => {
-      //       pool.query(
-      //         'SELECT * FROM register_user WHERE UserName = ?;',
-      //         [decoded.userName],
-      //         (error, resultDecoded) => {
-      //           if (error) {
-      //             reject(error);
-      //           } else {
-      //             resolve(resultDecoded);
-      //           }
-      //         }
-      //       );
-      //     });
-      //   })
       getUserDataByToken(req)
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
@@ -1040,27 +708,6 @@ router
         }
       );
     } else if (req.body.flg === 'group_delete') {
-      // const token = req.cookies.token;
-      // const decoded = JWT.verify(token, 'SECRET_KEY');
-      // let promise = new Promise((resolve, reject) => {
-      //   resolve();
-      // });
-      // promise
-      //   .then(() => {
-      //     return new Promise((resolve, reject) => {
-      //       pool.query(
-      //         'SELECT * FROM register_user WHERE UserName = ?;',
-      //         [decoded.userName],
-      //         (error, resultDecoded) => {
-      //           if (error) {
-      //             reject(error);
-      //           } else {
-      //             resolve(resultDecoded);
-      //           }
-      //         }
-      //       );
-      //     });
-      //   })
       getUserDataByToken(req)
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
@@ -1097,28 +744,7 @@ router
           res.status(500).json({ message: error.message, nothing });
         });
     } else if (req.body.flg === 'group_info') {
-      // const token = req.cookies.token;
-      // const decoded = JWT.verify(token, 'SECRET_KEY');
-      // let promise = new Promise((resolve, reject) => {
-      //   resolve();
-      // });
-      // promise
       getUserDataByToken(req)
-        // .then(() => {
-        //   return new Promise((resolve, reject) => {
-        //     pool.query(
-        //       'SELECT * FROM register_user WHERE UserName = ?;',
-        //       [decoded.userName],
-        //       (error, resultDecoded) => {
-        //         if (error) {
-        //           reject(error);
-        //         } else {
-        //           resolve(resultDecoded);
-        //         }
-        //       }
-        //     );
-        //   });
-        // })
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
             pool.query(

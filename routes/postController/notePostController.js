@@ -1,3 +1,5 @@
+const { getUserDataByToken } = require('../databaseQueries');
+
 const router = require('express').Router();
 const pool = require('../../db.js');
 const JWT = require('jsonwebtoken');
@@ -5,27 +7,7 @@ const { reject } = require('bcrypt/promises');
 
 router.post('/', (req, res) => {
   if (req.body.flg === 'newNote') {
-    const token = req.cookies.token;
-    const decoded = JWT.verify(token, 'SECRET_KEY');
-    let promise = new Promise((resolve, reject) => {
-      resolve();
-    });
-    promise
-      .then(() => {
-        return new Promise((resolve, reject) => {
-          pool.query(
-            'SELECT * FROM register_user WHERE UserName = ?;',
-            [decoded.userName],
-            (error, resultDecoded) => {
-              if (error) {
-                reject(error);
-              } else {
-                resolve(resultDecoded);
-              }
-            }
-          );
-        });
-      })
+    getUserDataByToken(req)
       .then((resultDecoded) => {
         return new Promise((resolve, reject) => {
           pool.query(
@@ -116,28 +98,7 @@ router.post('/', (req, res) => {
         res.status(500).send('Internal Server Error.(noteKeep)');
       });
   } else if (req.body.flg === 'delete') {
-    const token = req.cookies.token;
-    const decoded = JWT.verify(token, 'SECRET_KEY');
-    let promise = new Promise((resolve, reject) => {
-      resolve();
-    });
-
-    promise
-      .then(() => {
-        return new Promise((resolve, reject) => {
-          pool.query(
-            'SELECT * FROM register_user WHERE UserName = ?;',
-            [decoded.userName],
-            (error, resultDecoded) => {
-              if (error) {
-                reject(error);
-              } else {
-                resolve(resultDecoded);
-              }
-            }
-          );
-        });
-      })
+    getUserDataByToken(req)
       .then((resultDecoded) => {
         return new Promise((resolve, reject) => {
           pool.query(
@@ -213,27 +174,7 @@ router.post('/', (req, res) => {
       });
   } else if (req.body.flg === 'parentIDSame') {
     //parentIdは変化しないパターン(同じ階層)
-    const token = req.cookies.token;
-    const decoded = JWT.verify(token, 'SECRET_KEY');
-    let promise = new Promise((resolve, reject) => {
-      resolve();
-    });
-    promise
-      .then(() => {
-        return new Promise((resolve, reject) => {
-          pool.query(
-            'SELECT * FROM register_user WHERE UserName = ?;',
-            [decoded.userName],
-            (error, resultDecoded) => {
-              if (error) {
-                reject(error);
-              } else {
-                resolve(resultDecoded);
-              }
-            }
-          );
-        });
-      })
+    getUserDataByToken(req)
       .then((resultDecoded) => {
         return new Promise((resolve, reject) => {
           pool.query(
@@ -387,28 +328,7 @@ router.post('/', (req, res) => {
 
     //移動後は違うparent_id
   } else if (req.body.flg === 'parentIDDiffer') {
-    const token = req.cookies.token;
-    const decoded = JWT.verify(token, 'SECRET_KEY');
-    let promise = new Promise((resolve, reject) => {
-      resolve();
-    });
-
-    promise
-      .then(() => {
-        return new Promise((resolve, reject) => {
-          pool.query(
-            'SELECT * FROM register_user WHERE UserName = ?;',
-            [decoded.userName],
-            (error, resultDecoded) => {
-              if (error) {
-                reject(error);
-              } else {
-                resolve(resultDecoded);
-              }
-            }
-          );
-        });
-      })
+    getUserDataByToken(req)
       .then((resultDecoded) => {
         return new Promise((resolve, reject) => {
           pool.query(
