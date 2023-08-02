@@ -227,6 +227,7 @@ export const fileClick = () => {
     const pass = passGet(file.id, file.title);
     let isSomething = tabIdArray.includes(id);
     const order = orderGet('tab-content', `Tab-ID${id}`);
+    console.log(order);
     document.getElementById('notepass').innerHTML = pass;
   　tabFocusID = id;
     $.ajax({
