@@ -28,10 +28,6 @@ let tabIdArray = []; //タブが生成されているファイルのIDを格納
 let tabFocusID; //　フォーカスが当たっているタブのIDを常に保持。フォルダ名の名前変更・D&D時のパス変更に使用。
 let hashedId = document.getElementById('user_name').dataset.hashedId; // data属性から取得
 
-listCreate();
-tabUpload();
-shareListCreate();
-
 export const listCreate = () => {
   $.ajax({
     url: '/mypage/' + hashedId,
@@ -391,3 +387,7 @@ export function setTabIdArray(newValue) {
 export function getTabIdArray() {
   return tabIdArray;
 }
+
+listCreate();
+tabUpload();
+shareListCreate();
