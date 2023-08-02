@@ -262,31 +262,12 @@ function tabUpload() {
       flg: 'tabDesc',
     }),
     success: async function (res) {
-      console.log(res.tabResult);
       const createTheFirstTab = async () => {
         for (const tab of res.tabResult) {
           await tabScreenOptions(tab.id, tab.tabTitle);
         }
       };
-      // const tabFocusOn = async () => {
-      //   if (res.tabResult.length != 0) {
-      //     await $.ajax({
-      //       url: '/tabPostController/',
-      //       type: 'POST',
-      //       dataType: 'Json',
-      //       contentType: 'application/json',
-      //       data: JSON.stringify({
-      //         flg: 'focusTab',
-      //       }),
-      //       success: function (res) {
-      //         $(`#tab-ID${res.tabResult.id}`).trigger('click');
-      //         tabFocusID = res.tabResult.id;
-      //       },
-      //     });
-      //   }
-      // };
       await createTheFirstTab();
-      //await tabFocusOn();
         $(`#tab-ID${res.focusResult.id}`).trigger('click');
         tabFocusID = res.focusResult.id;
       document.getElementById('reload_loader').classList.add('loaded');
