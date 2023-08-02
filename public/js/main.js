@@ -269,7 +269,8 @@ function tabUpload() {
         }
       };
       await createTheFirstTab();
-      if(res.focusResult.length !== 0){
+     if (res.focusResult && Array.isArray(res.focusResult) && res.focusResult.length !== 0) {
+        // res.focusResultが定義され、かつオブジェクトの配列であり、かつ要素が1つ以上存在する場合の処理
         $(`#tab-ID${res.focusResult.id}`).trigger('click');
         tabFocusID = res.focusResult.id;
       }
