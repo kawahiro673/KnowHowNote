@@ -251,10 +251,10 @@ export function shareButtonClick(id, event, title, flg) {
   //   this.onclick = null; // クリックイベントを削除
   // };
     // 既存のクリックイベントを削除
-  shareSendButton.removeEventListener('click', shareNoteSendFunc);
+  document.getElementById('share-send').removeEventListener('click', shareNoteSendFunc);
 
   // 共有ボタンのクリックイベントを追加
-  shareSendButton.addEventListener('click', shareNoteSendFunc);
+   document.getElementById('share-send').addEventListener('click', shareNoteSendFunc);
 }
 
 export const shareNoteSendFunc = (id, title) => {
