@@ -1,3 +1,5 @@
+import { getUserDataByToken } from './databaseQueries';
+
 const router = require('express').Router();
 const { append } = require('express/lib/response');
 const pool = require('../db.js');
@@ -1081,12 +1083,13 @@ router
           res.status(500).json({ message: error.message, nothing });
         });
     } else if (req.body.flg === 'group_info') {
-      const token = req.cookies.token;
-      const decoded = JWT.verify(token, 'SECRET_KEY');
-      let promise = new Promise((resolve, reject) => {
-        resolve();
-      });
-      promise
+      // const token = req.cookies.token;
+      // const decoded = JWT.verify(token, 'SECRET_KEY');
+      // let promise = new Promise((resolve, reject) => {
+      //   resolve();
+      // });
+      // promise
+      getUserDataByToken(req)
         .then(() => {
           return new Promise((resolve, reject) => {
             pool.query(
