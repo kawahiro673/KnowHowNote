@@ -246,19 +246,19 @@ export function shareButtonClick(id, event, title, flg) {
       event.target.parentNode.parentNode.querySelectorAll('p')[0].innerHTML;
   }
 
-  // document.getElementById('share-send').onclick = function () {
-  //   shareNoteSendFunc(id, title);
-  //   this.onclick = null; // クリックイベントを削除
-  // };
+  document.getElementById('share-send').onclick = function () {
+    shareNoteSendFunc(id, title);
+    this.onclick = null; // クリックイベントを削除
+  };
   // 既存のクリックイベントを削除
-  document
-    .getElementById('share-send')
-    .removeEventListener('click', shareNoteSendFunc);
+  // document
+  //   .getElementById('share-send')
+  //   .removeEventListener('click', shareNoteSendFunc);
 
-  // 共有ボタンのクリックイベントを追加
-  document
-    .getElementById('share-send')
-    .addEventListener('click', shareNoteSendFunc);
+  // // 共有ボタンのクリックイベントを追加
+  // document
+  //   .getElementById('share-send')
+  //   .addEventListener('click', shareNoteSendFunc);
 }
 
 export const shareNoteSendFunc = (id, title) => {
