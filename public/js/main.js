@@ -269,9 +269,11 @@ function tabUpload() {
         }
       };
       await createTheFirstTab();
+      if(res.focusResult.length !== 0){
         $(`#tab-ID${res.focusResult.id}`).trigger('click');
         tabFocusID = res.focusResult.id;
-      document.getElementById('reload_loader').classList.add('loaded');
+      }
+        document.getElementById('reload_loader').classList.add('loaded');
     },
   });
 }
