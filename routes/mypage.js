@@ -162,8 +162,8 @@ router
     //削除したフォルダの配下のファイルとフォルダを全て削除
     else if (req.body.flg === 'childFolder') {
       let tmpIdArray = [];
-      let fileArray = [];//削除したフォルダの配下のファイルidを格納
-      let folderArray = [];//削除したフォルダの配下のフォルダidを格納
+      let fileArray = []; //削除したフォルダの配下のファイルidを格納
+      let folderArray = []; //削除したフォルダの配下のフォルダidを格納
       let tmp;
 
       console.log(`[POST(childFolder)]  id : ${req.body.id}`);
@@ -172,7 +172,7 @@ router
 
       while (tmpIdArray.length !== 0) {
         tmpIdArray.forEach((parentId) => {
-         //配下のファイルを配列に格納
+          //配下のファイルを配列に格納
           req.body.file.forEach((file) => {
             if (file.parent_id == parentId) {
               //重複していなければ格納(格納されているのは削除したフォルダの子要素ファイルのid)

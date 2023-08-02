@@ -5,48 +5,53 @@ const { reject } = require('bcrypt/promises');
 
 router.post('/', (req, res) => {
   if (req.body.flg === 'newFolder') {
-      const token = req.cookies.token;
-      const decoded = JWT.verify(token, 'SECRET_KEY');
-      let promise = new Promise((resolve, reject) => {
-        resolve();
-      });
-      promise
-        .then(() => {
-          return new Promise((resolve, reject) => {
-            pool.query(
-              'SELECT * FROM register_user WHERE UserName = ?;',
-              [decoded.userName],
-              (error, resultDecoded) => {
-                if (error) {
-                  reject(error);
-                } else {
-                  resolve(resultDecoded);
-                }
+    const token = req.cookies.token;
+    const decoded = JWT.verify(token, 'SECRET_KEY');
+    let promise = new Promise((resolve, reject) => {
+      resolve();
+    });
+    promise
+      .then(() => {
+        return new Promise((resolve, reject) => {
+          pool.query(
+            'SELECT * FROM register_user WHERE UserName = ?;',
+            [decoded.userName],
+            (error, resultDecoded) => {
+              if (error) {
+                reject(error);
+              } else {
+                resolve(resultDecoded);
               }
-            );
-          });
-        })
-        .then((resultDecoded) => {
-          return new Promise((resolve, reject) => {
-            pool.query(
-              'INSERT into folder(folder_name, parent_id, UserID, folder_order) values(?, ?, ?, ?);',
-              [req.body.folderName, req.body.parentId, resultDecoded[0].id, req.body.order],
-              (error, result) => {
-                if (error) {
-                  reject(error);
-                } else {
-                   res.send({
-            msg: '成功しました',
-          });
-                }
-              }
-            );
-          });
-        })
-        .catch((error) => {
-          console.error(error);
-          res.status(500).send('Internal Server Error.(newFolder)');
+            }
+          );
         });
+      })
+      .then((resultDecoded) => {
+        return new Promise((resolve, reject) => {
+          pool.query(
+            'INSERT into folder(folder_name, parent_id, UserID, folder_order) values(?, ?, ?, ?);',
+            [
+              req.body.folderName,
+              req.body.parentId,
+              resultDecoded[0].id,
+              req.body.order,
+            ],
+            (error, result) => {
+              if (error) {
+                reject(error);
+              } else {
+                res.send({
+                  msg: '成功しました',
+                });
+              }
+            }
+          );
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        res.status(500).send('Internal Server Error.(newFolder)');
+      });
   } else if (req.body.flg === 'parentIDSame') {
     const token = req.cookies.token;
     const decoded = JWT.verify(token, 'SECRET_KEY');
@@ -375,32 +380,39 @@ router.post('/', (req, res) => {
       })
       .then((resultDecoded) => {
         return new Promise((resolve, reject) => {
-          pool.query('select * from it_memo WHERE UserID = ?;',
-          [resultDecoded[0].id],
-          (error, fileResults) => {
-            if (error) {
-              reject(error);
-            } else {
-              resolve({fileResults:fileResults, resultDecoded:resultDecoded});
+          pool.query(
+            'select * from it_memo WHERE UserID = ?;',
+            [resultDecoded[0].id],
+            (error, fileResults) => {
+              if (error) {
+                reject(error);
+              } else {
+                resolve({
+                  fileResults: fileResults,
+                  resultDecoded: resultDecoded,
+                });
+              }
             }
-          });
+          );
         });
       })
-      .then(({fileResults, resultDecoded}) => {
+      .then(({ fileResults, resultDecoded }) => {
         return new Promise((resolve, reject) => {
-          pool.query('select * from folder WHERE UserID = ?;',
-          [resultDecoded[0].id],
-          (error, folderResults) => {
-            if (error) {
-              reject(error);
-            } else {
-              res.send({
-                response: req.body.id,
-                fileResults: fileResults,
-                folderResults: folderResults,
-              });
+          pool.query(
+            'select * from folder WHERE UserID = ?;',
+            [resultDecoded[0].id],
+            (error, folderResults) => {
+              if (error) {
+                reject(error);
+              } else {
+                res.send({
+                  response: req.body.id,
+                  fileResults: fileResults,
+                  folderResults: folderResults,
+                });
+              }
             }
-          });
+          );
         });
       })
       .catch((error) => {

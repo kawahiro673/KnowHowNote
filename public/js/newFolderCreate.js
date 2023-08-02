@@ -26,7 +26,7 @@ export const newFolderCreateFunc = (id) => {
     li.appendChild(span);
     span.appendChild(inputTab);
 
-      const order = getInputOrder('inputTab');
+    const order = getInputOrder('inputTab');
 
     let isCreatingFolder = false; // フォルダ作成中かどうかを示すフラグ
 
@@ -90,13 +90,13 @@ function newCreateFolder2(inputTab, span, li, ul, parentId, order) {
         order,
       }),
       success: function (res) {
-            //一度listを全て削除して、再び新しく追加している→jQueryUIがうまく適用されないため
-            const node = document.getElementById('0');
-            while (node.firstChild) {
-              node.removeChild(node.firstChild);
-            }
-            document.getElementById('list_loader').style.display = 'block'; //listCreate()の末尾で消している
-            listCreate();
+        //一度listを全て削除して、再び新しく追加している→jQueryUIがうまく適用されないため
+        const node = document.getElementById('0');
+        while (node.firstChild) {
+          node.removeChild(node.firstChild);
+        }
+        document.getElementById('list_loader').style.display = 'block'; //listCreate()の末尾で消している
+        listCreate();
       },
     });
   }

@@ -89,14 +89,14 @@ export const newCreateFile2 = (inputTab, span, parentId, li, order) => {
           order,
         }),
         success: function (res) {
-              //一度listを全て削除して、再び新しく追加している→jQueryUIがうまく適用されないため
-              const node = document.getElementById('0');
-              while (node.firstChild) {
-                node.removeChild(node.firstChild);
-              }
-              document.getElementById('list_loader').style.display = 'block'; //listCreateで消す
-              listCreate();
-              resolve();
+          //一度listを全て削除して、再び新しく追加している→jQueryUIがうまく適用されないため
+          const node = document.getElementById('0');
+          while (node.firstChild) {
+            node.removeChild(node.firstChild);
+          }
+          document.getElementById('list_loader').style.display = 'block'; //listCreateで消す
+          listCreate();
+          resolve();
         },
       });
     }

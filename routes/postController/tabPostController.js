@@ -4,7 +4,7 @@ const JWT = require('jsonwebtoken');
 const { reject } = require('bcrypt/promises');
 
 router.post('/', (req, res) => {
- if (req.body.flg === 'updateFocus') {
+  if (req.body.flg === 'updateFocus') {
     const token = req.cookies.token;
     const decoded = JWT.verify(token, 'SECRET_KEY');
     let promise = new Promise((resolve, reject) => {
@@ -93,13 +93,13 @@ router.post('/', (req, res) => {
                 reject(error);
               } else {
                 //res.send({ tabResult: result });
-                 resolve({resultDecoded: resultDecoded ,result: result });
+                resolve({ resultDecoded: resultDecoded, result: result });
               }
             }
           );
         });
-      })//リロードの際にフォーカスの当たっているタブを取得するため
-           .then(({resultDecoded, result}) => {
+      }) //リロードの際にフォーカスの当たっているタブを取得するため
+      .then(({ resultDecoded, result }) => {
         return new Promise((resolve, reject) => {
           pool.query(
             'select * from tab_hold where focus = 1 AND (UserID = ?);',
@@ -108,7 +108,7 @@ router.post('/', (req, res) => {
               if (error) {
                 reject(error);
               } else {
-                res.send({ tabResult:result, focusResult: focusResult[0] });
+                res.send({ tabResult: result, focusResult: focusResult[0] });
               }
             }
           );
@@ -118,7 +118,7 @@ router.post('/', (req, res) => {
         console.error(error);
         res.status(500).send('Internal Server Error.(tabDesc)');
       });
-   } else if (req.body.flg === 'tabDelete') {
+  } else if (req.body.flg === 'tabDelete') {
     const token = req.cookies.token;
     const decoded = JWT.verify(token, 'SECRET_KEY');
     let promise = new Promise((resolve, reject) => {
@@ -213,49 +213,14 @@ router.post('/', (req, res) => {
       });
   } else if (req.body.flg === 'tabAdd') {
     //タブが生成されていなければ実施(INSERT処理のため)
-const token = req.cookies.token;
-const decoded = JWT.verify(token, 'SECRET_KEY');
+    const token = req.cookies.token;
+    const decoded = JWT.verify(token, 'SECRET_KEY');
 
-const promise = new Promise((resolve, reject) => {
-  pool.query(
-    'SELECT * FROM register_user WHERE UserName = ?;',
-    [decoded.userName],
-    (error, resultDecoded) => {
-      if (error) {
-        reject(error);
-      } else {
-        resolve(resultDecoded);
-      }
-    }
-  );
-});
-
-promise
-  .then((resultDecoded) => {
-    if (!req.body.isSomething) {
-      return new Promise((resolve, reject) => {
-        pool.query(
-          'INSERT into tab_hold(id, tabTitle, UserID) values(?, ?, ?);',
-          [req.body.id, req.body.title, resultDecoded[0].id],
-          (error, result) => {
-            if (error) {
-              reject(error);
-            } else {
-              resolve(resultDecoded);
-            }
-          }
-        );
-      });
-    } else {
-      return resultDecoded; // 何もしない場合はそのままresultDecodedを返す
-    }
-  })
-  .then((resultDecoded) => {
-    return new Promise((resolve, reject) => {
+    const promise = new Promise((resolve, reject) => {
       pool.query(
-        'UPDATE tab_hold SET tabOrder = ?, focus = 1 where id = ?',
-        [req.body.order, req.body.id],
-        (error, result) => {
+        'SELECT * FROM register_user WHERE UserName = ?;',
+        [decoded.userName],
+        (error, resultDecoded) => {
           if (error) {
             reject(error);
           } else {
@@ -264,27 +229,61 @@ promise
         }
       );
     });
-  })
-  .then((resultDecoded) => {
-    return new Promise((resolve, reject) => {
-      pool.query(
-        'UPDATE tab_hold SET focus = 0 where id != ? AND (UserID = ?)',
-        [req.body.id, resultDecoded[0].id],
-        (error, result) => {
-          if (error) {
-            reject(error);
-          } else {
-            res.send({ msg: '成功しました' });
-          }
-        }
-      );
-    });
-  })
-  .catch((error) => {
-    console.error(error);
-    res.status(500).send('Internal Server Error.(tabAdd)');
-  });
 
+    promise
+      .then((resultDecoded) => {
+        if (!req.body.isSomething) {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'INSERT into tab_hold(id, tabTitle, UserID) values(?, ?, ?);',
+              [req.body.id, req.body.title, resultDecoded[0].id],
+              (error, result) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  resolve(resultDecoded);
+                }
+              }
+            );
+          });
+        } else {
+          return resultDecoded; // 何もしない場合はそのままresultDecodedを返す
+        }
+      })
+      .then((resultDecoded) => {
+        return new Promise((resolve, reject) => {
+          pool.query(
+            'UPDATE tab_hold SET tabOrder = ?, focus = 1 where id = ?',
+            [req.body.order, req.body.id],
+            (error, result) => {
+              if (error) {
+                reject(error);
+              } else {
+                resolve(resultDecoded);
+              }
+            }
+          );
+        });
+      })
+      .then((resultDecoded) => {
+        return new Promise((resolve, reject) => {
+          pool.query(
+            'UPDATE tab_hold SET focus = 0 where id != ? AND (UserID = ?)',
+            [req.body.id, resultDecoded[0].id],
+            (error, result) => {
+              if (error) {
+                reject(error);
+              } else {
+                res.send({ msg: '成功しました' });
+              }
+            }
+          );
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        res.status(500).send('Internal Server Error.(tabAdd)');
+      });
   } else if (req.body.flg === 'labelColorUpdate') {
     pool.query(
       'UPDATE it_memo SET tab_color = ? WHERE id = ? ',

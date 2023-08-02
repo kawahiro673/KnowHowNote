@@ -164,7 +164,7 @@ export const listCreate = () => {
       enableElements();
       allowDragAndDropOfFiles();
       allowDragAndDropOfFolders();
-  
+
       document.getElementById('list_loader').classList.add('loaded');
     },
   });
@@ -195,7 +195,7 @@ const shareListCreate = () => {
       });
     },
   });
-}
+};
 
 const noTab = document.createElement('p');
 noTab.innerHTML = 'こちらにnoteが出力されます';
@@ -206,7 +206,7 @@ export const fileClick = () => {
   let isClickEnabled = true; // クリックイベントの有効/無効フラグ
 
   // クリックイベントの定義
- async function handleClick(event) {
+  async function handleClick(event) {
     if (!isClickEnabled) {
       return; // クリックイベントが無効化されている場合は処理を終了
     }
@@ -224,7 +224,7 @@ export const fileClick = () => {
     await tabScreenOptions(id, file.title);
     const order = orderGet('tab-content', `Tab-ID${id}`);
     document.getElementById('notepass').innerHTML = pass;
-  　tabFocusID = id;
+    tabFocusID = id;
     $.ajax({
       url: '/tabPostController/',
       type: 'POST',
@@ -265,11 +265,11 @@ function tabUpload() {
       };
       await createTheFirstTab();
       //リロードの際にfocus(=1)があったっていたタブをクリックしたことにする
-     if (res.focusResult) {
+      if (res.focusResult) {
         $(`#tab-ID${res.focusResult.id}`).trigger('click');
         tabFocusID = res.focusResult.id;
       }
-        document.getElementById('reload_loader').classList.add('loaded');
+      document.getElementById('reload_loader').classList.add('loaded');
     },
   });
 }
@@ -355,7 +355,7 @@ function tabScreenOptions(id, title) {
     } else {
       //タブをクリックしたことにする
       $(`#tab-ID${id}`).trigger('click');
-       resolve();
+      resolve();
     }
   });
 }
