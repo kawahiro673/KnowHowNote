@@ -360,6 +360,7 @@ function tabScreenOptions(id, title) {
     } else {
       //タブをクリックしたことにする
       $(`#tab-ID${id}`).trigger('click');
+       resolve();
     }
   });
 }
