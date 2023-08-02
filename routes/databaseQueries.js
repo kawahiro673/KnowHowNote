@@ -1,7 +1,7 @@
 const pool = require('../db.js');
 const JWT = require('jsonwebtoken');
 
-export function getUserDataByToken(req) {
+function getUserDataByToken(req) {
   const token = req.cookies.token;
   const decoded = JWT.verify(token, 'SECRET_KEY');
   return new Promise((resolve, reject) => {
@@ -18,3 +18,5 @@ export function getUserDataByToken(req) {
     );
   });
 }
+
+module.exports = { getUserDataByToken };

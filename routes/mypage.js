@@ -1,4 +1,4 @@
-import { getUserDataByToken } from './databaseQueries';
+const { getUserDataByToken } = require('./databaseQueries');
 
 const router = require('express').Router();
 const { append } = require('express/lib/response');
