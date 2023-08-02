@@ -98,7 +98,7 @@ router.post('/', (req, res) => {
             }
           );
         });
-      })
+      })//リロードの際にフォーカスの当たっているタブを取得するため
            .then(({resultDecoded, result}) => {
         return new Promise((resolve, reject) => {
           pool.query(
@@ -118,47 +118,6 @@ router.post('/', (req, res) => {
         console.error(error);
         res.status(500).send('Internal Server Error.(tabDesc)');
       });
-  // } else if (req.body.flg === 'focusTab') {
-  //   const token = req.cookies.token;
-  //   const decoded = JWT.verify(token, 'SECRET_KEY');
-  //   let promise = new Promise((resolve, reject) => {
-  //     resolve();
-  //   });
-  //   promise
-  //     .then(() => {
-  //       return new Promise((resolve, reject) => {
-  //         pool.query(
-  //           'SELECT * FROM register_user WHERE UserName = ?;',
-  //           [decoded.userName],
-  //           (error, resultDecoded) => {
-  //             if (error) {
-  //               reject(error);
-  //             } else {
-  //               resolve(resultDecoded);
-  //             }
-  //           }
-  //         );
-  //       });
-  //     })
-  //     .then((resultDecoded) => {
-  //       return new Promise((resolve, reject) => {
-  //         pool.query(
-  //           'select * from tab_hold where focus = 1 AND (UserID = ?);',
-  //           [resultDecoded[0].id],
-  //           (error, result) => {
-  //             if (error) {
-  //               reject(error);
-  //             } else {
-  //               res.send({ tabResult: result[0] });
-  //             }
-  //           }
-  //         );
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //       res.status(500).send('Internal Server Error.(focusTab)');
-  //     });
    } else if (req.body.flg === 'tabDelete') {
     const token = req.cookies.token;
     const decoded = JWT.verify(token, 'SECRET_KEY');
