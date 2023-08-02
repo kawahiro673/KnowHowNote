@@ -85,7 +85,6 @@ function newCreateFolder2(inputTab, span, li, ul, parentId, order) {
       contentType: 'application/json',
       data: JSON.stringify({
         flg: 'newFolder',
-        pattern: 'new',
         folderName: inputTab.value,
         parentId,
         order,
