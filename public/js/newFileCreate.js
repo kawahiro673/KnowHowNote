@@ -22,8 +22,8 @@ export const newFileCreateFunc = (id) => {
     li.appendChild(span);
     span.appendChild(inputTab);
 
-    const orderH = getParentOrder('inputTab');
-    console.log(orderH);
+    const order = getInputOrder('inputTab');
+    console.log(order);
 
     let isCreatingFile = false; // ファイル作成中かどうかを示すフラグ
 
@@ -34,7 +34,7 @@ export const newFileCreateFunc = (id) => {
     const createFile = async () => {
       if (!isCreatingFile) {
         isCreatingFile = true; // ファイル作成中フラグを立てる
-        await newCreateFile2(inputTab, span, id, li);
+        await newCreateFile2(inputTab, span, id, li, order);
         document.removeEventListener('click', handleClick);
         document.removeEventListener('contextmenu', handleContextMenu);
         document.removeEventListener('keypress', handleEnter);
@@ -70,7 +70,7 @@ export const newFileCreateFunc = (id) => {
     inputTab.addEventListener('keypress', handleEnter);
   });
 };
-export const newCreateFile2 = (inputTab, span, parentId, li) => {
+export const newCreateFile2 = (inputTab, span, parentId, li, order) => {
   return new Promise((resolve, reject) => {
     //何も入力されていない時や空白や改行のみ
     if (!inputTab.value || !inputTab.value.match(/\S/g)) {
@@ -88,46 +88,46 @@ export const newCreateFile2 = (inputTab, span, parentId, li) => {
           title: inputTab.value,
           parentId,
           time,
+          order,
         }),
         success: function (res) {
-          li.setAttribute('id', `li${res.fileResult.id}`);
-          span.setAttribute('id', `file${res.fileResult.id}`);
-          span.setAttribute('value', res.fileResult.id);
-          inputTab.remove();
-          span.innerHTML = inputTab.value;
-          span.parentNode.setAttribute(
-            'class',
-            `parent${res.fileResult.parent_id}`
-          );
+          // li.setAttribute('id', `li${res.fileResult.id}`);
+          // span.setAttribute('id', `file${res.fileResult.id}`);
+          // span.setAttribute('value', res.fileResult.id);
+          // inputTab.remove();
+          // span.innerHTML = inputTab.value;
+          // span.parentNode.setAttribute(
+          //   'class',
+          //   `parent${res.fileResult.parent_id}`
+          // );
 
-          const order = orderGet(
-            `parent${res.fileResult.parent_id}`,
-            `li${res.fileResult.id}`
-          );
+          // const order = orderGet(
+          //   `parent${res.fileResult.parent_id}`,
+          //   `li${res.fileResult.id}`
+          // );
 
-          $.ajax({
-            url: '/notePostController/',
-            type: 'POST',
-            dataType: 'Json',
-            contentType: 'application/json',
-            data: JSON.stringify({
-              flg: 'newNote',
-              pattern: 'order',
-              id: res.fileResult.id,
-              order,
-            }),
-            success: function (res) {
+          // $.ajax({
+          //   url: '/notePostController/',
+          //   type: 'POST',
+          //   dataType: 'Json',
+          //   contentType: 'application/json',
+          //   data: JSON.stringify({
+          //     flg: 'newNote',
+          //     pattern: 'order',
+          //     id: res.fileResult.id,
+          //     order,
+          //   }),
+          //   success: function (res) {
               //一度listを全て削除して、再び新しく追加している→jQueryUIがうまく適用されないため
               const node = document.getElementById('0');
               while (node.firstChild) {
                 node.removeChild(node.firstChild);
               }
-              console.log('ひん');
               document.getElementById('list_loader').style.display = 'block'; //listCreateで消す
               listCreate();
               resolve();
-            },
-          });
+            //},
+          //});
         },
       });
     }
@@ -147,10 +147,9 @@ createfilebutton.addEventListener('click', async (e) => {
   }
 });
 
-//inputの順番を取得
-export const getParentOrder = (inputId) => {
+//ノウハウ作成時に生成されたinput(親のli要素)が、同階層で上から何番目(order)に作成されたかを返す関数
+export const getInputOrder = (inputId) => {
   const inputElement = document.getElementById(inputId);
-
   if (inputElement) {
     const liParentElement = inputElement.closest('li');
     if (liParentElement) {
@@ -163,10 +162,8 @@ export const getParentOrder = (inputId) => {
         }
         currentElement = currentElement.previousElementSibling;
       }
-
       return order;
     }
   }
-
-  return -1; // 要素が見つからなかった場合に-1を返すなど、エラー処理を追加することができます
+  return -1; // 要素が見つからなかった場合に-1を返す、エラー処理を追加
 };
