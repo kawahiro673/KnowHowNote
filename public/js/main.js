@@ -210,7 +210,7 @@ export const fileClick = () => {
   let isClickEnabled = true; // クリックイベントの有効/無効フラグ
 
   // クリックイベントの定義
-  function handleClick(event) {
+ async function handleClick(event) {
     if (!isClickEnabled) {
       return; // クリックイベントが無効化されている場合は処理を終了
     }
@@ -223,9 +223,9 @@ export const fileClick = () => {
       elem: this,
     };
     let id = Number(file.id);
-    tabScreenOptions(id, file.title);
     const pass = passGet(file.id, file.title);
     let isSomething = tabIdArray.includes(id);
+    await tabScreenOptions(id, file.title);
     const order = orderGet('tab-content', `Tab-ID${id}`);
     console.log(order);
     document.getElementById('notepass').innerHTML = pass;
