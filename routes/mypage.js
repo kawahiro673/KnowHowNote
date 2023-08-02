@@ -1090,21 +1090,21 @@ router
       // });
       // promise
       getUserDataByToken(req)
-        .then(() => {
-          return new Promise((resolve, reject) => {
-            pool.query(
-              'SELECT * FROM register_user WHERE UserName = ?;',
-              [decoded.userName],
-              (error, resultDecoded) => {
-                if (error) {
-                  reject(error);
-                } else {
-                  resolve(resultDecoded);
-                }
-              }
-            );
-          });
-        })
+        // .then(() => {
+        //   return new Promise((resolve, reject) => {
+        //     pool.query(
+        //       'SELECT * FROM register_user WHERE UserName = ?;',
+        //       [decoded.userName],
+        //       (error, resultDecoded) => {
+        //         if (error) {
+        //           reject(error);
+        //         } else {
+        //           resolve(resultDecoded);
+        //         }
+        //       }
+        //     );
+        //   });
+        // })
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
             pool.query(
