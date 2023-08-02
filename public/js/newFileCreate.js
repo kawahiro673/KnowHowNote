@@ -83,7 +83,6 @@ export const newCreateFile2 = (inputTab, span, parentId, li, order) => {
         contentType: 'application/json',
         data: JSON.stringify({
           flg: 'newNote',
-          pattern: 'new',
           title: inputTab.value,
           parentId,
           time,
