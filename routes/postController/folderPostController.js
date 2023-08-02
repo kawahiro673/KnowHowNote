@@ -31,35 +31,37 @@ router.post('/', (req, res) => {
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'INSERT into folder(folder_name, parent_id, UserID) values(?, ?, ?);',
-              [req.body.folderName, req.body.parentId, resultDecoded[0].id],
+              'INSERT into folder(folder_name, parent_id, UserID, folder_order) values(?, ?, ?, ?);',
+              [req.body.folderName, req.body.parentId, resultDecoded[0].id, req.body.order],
               (error, result) => {
                 if (error) {
                   reject(error);
                 } else {
-                  resolve();
+                   res.send({
+            msg: '成功しました',
+          });
                 }
               }
             );
           });
         })
-        .then(() => {
-          return new Promise((resolve, reject) => {
-            pool.query(
-              //新規作成後にフォルダーidを取得するためのクエリ
-              'select * from folder order by id desc; ',
-              (error, result) => {
-                if (error) {
-                  reject(error);
-                } else {
-                  res.send({
-                    folderResults: result[0],
-                  });
-                }
-              }
-            );
-          });
-        })
+        // .then(() => {
+        //   return new Promise((resolve, reject) => {
+        //     pool.query(
+        //       //新規作成後にフォルダーidを取得するためのクエリ
+        //       'select * from folder order by id desc; ',
+        //       (error, result) => {
+        //         if (error) {
+        //           reject(error);
+        //         } else {
+        //           res.send({
+        //             folderResults: result[0],
+        //           });
+        //         }
+        //       }
+        //     );
+        //   });
+        // })
         .catch((error) => {
           console.error(error);
           res.status(500).send('Internal Server Error.(newFolder)');
