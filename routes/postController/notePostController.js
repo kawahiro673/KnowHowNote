@@ -5,7 +5,6 @@ const { reject } = require('bcrypt/promises');
 
 router.post('/', (req, res) => {
   if (req.body.flg === 'newNote') {
-    if (req.body.pattern === 'new') {
       const token = req.cookies.token;
       const decoded = JWT.verify(token, 'SECRET_KEY');
       let promise = new Promise((resolve, reject) => {
@@ -30,7 +29,7 @@ router.post('/', (req, res) => {
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'INSERT into it_memo(title, parent_id, saved_time, Type, UserID,  folder_order) values(?, ?, ?, ?, ?, ?); ', // 挿入
+              'INSERT into it_memo(title, parent_id, saved_time, Type, UserID,  folder_order) values(?, ?, ?, ?, ?, ?); ', 
               [
                 req.body.title,
                 req.body.parentId,
@@ -38,7 +37,7 @@ router.post('/', (req, res) => {
                 'Original',
                 resultDecoded[0].id,
                 req.body.order,
-              ], //この値が？に入る
+              ], 
               (error, result) => {
                 if (error) {
                   reject(error);
@@ -51,39 +50,10 @@ router.post('/', (req, res) => {
             );
           });
         })
-        // .then(() => {
-        //   return new Promise((resolve, reject) => {
-        //     pool.query(
-        //       //追加したばかりのノートはidが一番大きいため、上を取得
-        //       'SELECT * FROM  it_memo ORDER BY id DESC;',
-        //       (error, result) => {
-        //         if (error) {
-        //           reject(error);
-        //         } else {
-        //           res.send({
-        //             fileResult: result[0],
-        //           });
-        //         }
-        //       }
-        //     );
-        //   });
-        // })
         .catch((error) => {
           console.error(error);
           res.status(500).send('Internal Server Error.(newNote)');
         });
-      //orderを更新するため
-    } else {
-      pool.query(
-        'UPDATE it_memo SET folder_order = ? WHERE id = ?',
-        [req.body.order, req.body.id],
-        (error, result) => {
-          res.send({
-            msg: '成功しました',
-          });
-        }
-      );
-    }
   } else if (req.body.flg === 'noteKeep') {
     let promise = new Promise((resolve, reject) => {
       resolve();
