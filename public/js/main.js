@@ -28,6 +28,10 @@ let tabIdArray = []; //タブが生成されているファイルのIDを格納
 let tabFocusID; //　フォーカスが当たっているタブのIDを常に保持。フォルダ名の名前変更・D&D時のパス変更に使用。
 let hashedId = document.getElementById('user_name').dataset.hashedId; // data属性から取得
 
+listCreate();
+tabUpload();
+shareListCreate();
+
 export const listCreate = () => {
   $.ajax({
     url: '/mypage/' + hashedId,
@@ -172,7 +176,7 @@ export const listCreate = () => {
 
 //「マイノウハウ」タブにファイル/フォルダ全て表示
 //DBから全ての情報を取得
-function shareListCreate() {
+const shareListCreate = () => {
   $.ajax({
     url: '/sharePostController/',
     type: 'POST',
@@ -196,10 +200,6 @@ function shareListCreate() {
     },
   });
 }
-
-listCreate();
-tabUpload();
-shareListCreate();
 
 const noTab = document.createElement('p');
 noTab.innerHTML = 'こちらにnoteが出力されます';
@@ -227,7 +227,6 @@ export const fileClick = () => {
     let isSomething = tabIdArray.includes(id);
     await tabScreenOptions(id, file.title);
     const order = orderGet('tab-content', `Tab-ID${id}`);
-    console.log(order);
     document.getElementById('notepass').innerHTML = pass;
   　tabFocusID = id;
     $.ajax({
@@ -269,8 +268,8 @@ function tabUpload() {
         }
       };
       await createTheFirstTab();
+      //リロードの際にfocus(=1)があったっていたタブをクリックしたことにする
      if (res.focusResult) {
-        // res.focusResultが定義され、かつオブジェクトの配列であり、かつ要素が1つ以上存在する場合の処理
         $(`#tab-ID${res.focusResult.id}`).trigger('click');
         tabFocusID = res.focusResult.id;
       }
@@ -365,18 +364,9 @@ function tabScreenOptions(id, title) {
   });
 }
 
-export function tabFocusIDGet() {
-  return tabFocusID;
-}
-
-export function hashedIdGet() {
-  return hashedId;
-}
-
 document.getElementById('idInput').addEventListener('input', () => {
   // 入力値からハイフンを削除
   const id = document.getElementById('idInput').value.replace(/-/g, '');
-
   // 4桁ごとにハイフンを挿入
   let formattedID = '';
   for (let i = 0; i < id.length; i += 4) {
@@ -389,6 +379,12 @@ document.getElementById('idInput').addEventListener('input', () => {
   document.getElementById('idInput').value = formattedID;
 });
 
+export function tabFocusIDGet() {
+  return tabFocusID;
+}
+export function hashedIdGet() {
+  return hashedId;
+}
 export function setTabIdArray(newValue) {
   tabIdArray = newValue;
 }
