@@ -4,6 +4,7 @@ import {
   hasInput,
   disableElements,
   enableElements,
+  getInputOrder,
 } from './utilityFunction.js';
 
 export const newFolderCreateFunc = (id) => {
@@ -25,6 +26,9 @@ export const newFolderCreateFunc = (id) => {
     li.appendChild(span);
     span.appendChild(inputTab);
 
+      const order = getInputOrder('inputTab');
+    console.log(order);
+
     let isCreatingFolder = false; // フォルダ作成中かどうかを示すフラグ
 
     // inputにフォーカスを当てて全選択
@@ -34,7 +38,7 @@ export const newFolderCreateFunc = (id) => {
     const createFolder = () => {
       if (!isCreatingFolder) {
         isCreatingFolder = true; // フォルダ作成中フラグを立てる
-        newCreateFolder2(inputTab, span, li, ul, id);
+        newCreateFolder2(inputTab, span, li, ul, id, order);
         document.removeEventListener('click', handleClick);
         document.removeEventListener('contextmenu', handleContextMenu);
         document.removeEventListener('keypress', handleEnter);
@@ -70,7 +74,7 @@ export const newFolderCreateFunc = (id) => {
   });
 };
 
-function newCreateFolder2(inputTab, span, li, ul, parentId) {
+function newCreateFolder2(inputTab, span, li, ul, parentId, order) {
   //何も入力されていない時や空白や改行のみの入力
   if (!inputTab.value || !inputTab.value.match(/\S/g)) {
     alert('フォルダ名を入力してください');
@@ -85,37 +89,38 @@ function newCreateFolder2(inputTab, span, li, ul, parentId) {
         pattern: 'new',
         folderName: inputTab.value,
         parentId,
+        order,
       }),
       success: function (res) {
-        li.setAttribute('id', `foli${res.folderResults.id}`);
-        span.setAttribute('id', `folder${res.folderResults.id}`);
-        span.setAttribute('value', res.folderResults.id);
-        inputTab.remove();
-        span.innerHTML = inputTab.value;
-        li.appendChild(ul);
-        span.parentNode.setAttribute(
-          'class',
-          `parent${res.folderResults.parent_id}`
-        );
+        // li.setAttribute('id', `foli${res.folderResults.id}`);
+        // span.setAttribute('id', `folder${res.folderResults.id}`);
+        // span.setAttribute('value', res.folderResults.id);
+        // inputTab.remove();
+        // span.innerHTML = inputTab.value;
+        // li.appendChild(ul);
+        // span.parentNode.setAttribute(
+        //   'class',
+        //   `parent${res.folderResults.parent_id}`
+        // );
 
-        const order = orderGet(
-          `parent${res.folderResults.parent_id}`,
-          `foli${res.folderResults.id}`
-        );
+        // const order = orderGet(
+        //   `parent${res.folderResults.parent_id}`,
+        //   `foli${res.folderResults.id}`
+        // );
 
-        $.ajax({
-          url: '/folderPostController/',
-          type: 'POST',
-          dataType: 'Json',
-          contentType: 'application/json',
-          data: JSON.stringify({
-            flg: 'newFolder',
-            pattern: 'order',
-            folderName: inputTab.value,
-            id: res.folderResults.id,
-            order,
-          }),
-          success: function (res) {
+        // $.ajax({
+        //   url: '/folderPostController/',
+        //   type: 'POST',
+        //   dataType: 'Json',
+        //   contentType: 'application/json',
+        //   data: JSON.stringify({
+        //     flg: 'newFolder',
+        //     pattern: 'order',
+        //     folderName: inputTab.value,
+        //     id: res.folderResults.id,
+        //     order,
+        //   }),
+        //   success: function (res) {
             //一度listを全て削除して、再び新しく追加している→jQueryUIがうまく適用されないため
             const node = document.getElementById('0');
             while (node.firstChild) {
@@ -123,8 +128,8 @@ function newCreateFolder2(inputTab, span, li, ul, parentId) {
             }
             document.getElementById('list_loader').style.display = 'block'; //listCreate()の末尾で消している
             listCreate();
-          },
-        });
+        //   },
+        // });
       },
     });
   }
