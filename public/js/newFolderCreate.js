@@ -27,7 +27,6 @@ export const newFolderCreateFunc = (id) => {
     span.appendChild(inputTab);
 
       const order = getInputOrder('inputTab');
-    console.log(order);
 
     let isCreatingFolder = false; // フォルダ作成中かどうかを示すフラグ
 
@@ -92,35 +91,6 @@ function newCreateFolder2(inputTab, span, li, ul, parentId, order) {
         order,
       }),
       success: function (res) {
-        // li.setAttribute('id', `foli${res.folderResults.id}`);
-        // span.setAttribute('id', `folder${res.folderResults.id}`);
-        // span.setAttribute('value', res.folderResults.id);
-        // inputTab.remove();
-        // span.innerHTML = inputTab.value;
-        // li.appendChild(ul);
-        // span.parentNode.setAttribute(
-        //   'class',
-        //   `parent${res.folderResults.parent_id}`
-        // );
-
-        // const order = orderGet(
-        //   `parent${res.folderResults.parent_id}`,
-        //   `foli${res.folderResults.id}`
-        // );
-
-        // $.ajax({
-        //   url: '/folderPostController/',
-        //   type: 'POST',
-        //   dataType: 'Json',
-        //   contentType: 'application/json',
-        //   data: JSON.stringify({
-        //     flg: 'newFolder',
-        //     pattern: 'order',
-        //     folderName: inputTab.value,
-        //     id: res.folderResults.id,
-        //     order,
-        //   }),
-        //   success: function (res) {
             //一度listを全て削除して、再び新しく追加している→jQueryUIがうまく適用されないため
             const node = document.getElementById('0');
             while (node.firstChild) {
@@ -128,8 +98,6 @@ function newCreateFolder2(inputTab, span, li, ul, parentId, order) {
             }
             document.getElementById('list_loader').style.display = 'block'; //listCreate()の末尾で消している
             listCreate();
-        //   },
-        // });
       },
     });
   }
