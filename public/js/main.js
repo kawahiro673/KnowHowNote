@@ -164,8 +164,7 @@ export const listCreate = () => {
       enableElements();
       allowDragAndDropOfFiles();
       allowDragAndDropOfFolders();
-      //document.getElementById('list_loader').style.display = 'block';
-      console.log('やあ');
+  
       document.getElementById('list_loader').classList.add('loaded');
     },
   });
@@ -242,26 +241,7 @@ export const fileClick = () => {
         title: file.title,
         order,
       }),
-      success: function (res) {
-        // const order = orderGet('tab-content', `Tab-ID${id}`);
-        // //orderを格納し、focus=1へ
-        // $.ajax({
-        //   url: '/tabPostController/',
-        //   type: 'POST',
-        //   dataType: 'Json',
-        //   contentType: 'application/json',
-        //   data: JSON.stringify({
-        //     flg: 'clickTab',
-        //     id,
-        //     order,
-        //     title: file.title,
-        //   }),
-        //   success: function (res) {
-        //     document.getElementById('notepass').innerHTML = pass;
-        //     tabFocusID = id;
-        //   },
-        // });
-      },
+      success: function (res) {},
       complete: function () {
         isClickEnabled = true; // クリックイベントを有効化
       },
