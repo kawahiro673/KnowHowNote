@@ -23,7 +23,6 @@ export const newFileCreateFunc = (id) => {
     span.appendChild(inputTab);
 
     const order = getInputOrder('inputTab');
-    console.log(order);
 
     let isCreatingFile = false; // ファイル作成中かどうかを示すフラグ
 
@@ -91,33 +90,6 @@ export const newCreateFile2 = (inputTab, span, parentId, li, order) => {
           order,
         }),
         success: function (res) {
-          // li.setAttribute('id', `li${res.fileResult.id}`);
-          // span.setAttribute('id', `file${res.fileResult.id}`);
-          // span.setAttribute('value', res.fileResult.id);
-          // inputTab.remove();
-          // span.innerHTML = inputTab.value;
-          // span.parentNode.setAttribute(
-          //   'class',
-          //   `parent${res.fileResult.parent_id}`
-          // );
-
-          // const order = orderGet(
-          //   `parent${res.fileResult.parent_id}`,
-          //   `li${res.fileResult.id}`
-          // );
-
-          // $.ajax({
-          //   url: '/notePostController/',
-          //   type: 'POST',
-          //   dataType: 'Json',
-          //   contentType: 'application/json',
-          //   data: JSON.stringify({
-          //     flg: 'newNote',
-          //     pattern: 'order',
-          //     id: res.fileResult.id,
-          //     order,
-          //   }),
-          //   success: function (res) {
               //一度listを全て削除して、再び新しく追加している→jQueryUIがうまく適用されないため
               const node = document.getElementById('0');
               while (node.firstChild) {
@@ -126,8 +98,6 @@ export const newCreateFile2 = (inputTab, span, parentId, li, order) => {
               document.getElementById('list_loader').style.display = 'block'; //listCreateで消す
               listCreate();
               resolve();
-            //},
-          //});
         },
       });
     }
@@ -146,24 +116,3 @@ createfilebutton.addEventListener('click', async (e) => {
     await newFileCreateFunc(id);
   }
 });
-
-// //ノウハウ作成時に生成されたinput(親のli要素)が、同階層で上から何番目(order)に作成されたかを返す関数
-// export const getInputOrder = (inputId) => {
-//   const inputElement = document.getElementById(inputId);
-//   if (inputElement) {
-//     const liParentElement = inputElement.closest('li');
-//     if (liParentElement) {
-//       let order = 1;
-//       let currentElement = liParentElement.previousElementSibling;
-
-//       while (currentElement) {
-//         if (currentElement.tagName === 'LI') {
-//           order++;
-//         }
-//         currentElement = currentElement.previousElementSibling;
-//       }
-//       return order;
-//     }
-//   }
-//   return -1; // 要素が見つからなかった場合に-1を返す、エラー処理を追加
-// };
