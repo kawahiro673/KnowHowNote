@@ -129,6 +129,10 @@ export const tabCreate = (id, title, res) => {
   return [editButton, shareButton, tabClosebutton];
 };
 
+////////////////////////////////////////////////////////////////
+//////////////////////////////保存//////////////////////////////
+////////////////////////////////////////////////////////////////
+
 //タブエリアの[保存]ボタン押下時
 export const keepButtonClick = (id) => {
   const newTitle = document.getElementById(`titletext${id}`).value;
@@ -178,39 +182,25 @@ export const keepButtonClick = (id) => {
   }
 };
 
+////////////////////////////////////////////////////////////////
+/////////////////////////////取り消し////////////////////////////
+////////////////////////////////////////////////////////////////
 //タブエリアの[取り消し]ボタン押下時
 export const cancelButtonClick = (id) => {
   document.getElementById('popup-overlay_keep-cancel').style.display = 'block';
 
   const nouhauKeepCancelButtonListener = () => {
     nouhauKeepCancel(id);
-    // イベントリスナーを削除
     document.getElementById('popup-overlay_keep-cancel').style.display = 'none';
-
     document
       .getElementById('yes-button-keep-cancel')
       .removeEventListener('click', nouhauKeepCancelButtonListener);
   };
 
-  // イベントリスナーを登録
   document
     .getElementById('yes-button-keep-cancel')
     .addEventListener('click', nouhauKeepCancelButtonListener);
 };
-
-document
-  .getElementById('pop-delete_keep-cancel')
-  .addEventListener('click', (e) => {
-    e.preventDefault(); // リンクのデフォルトの動作を無効化
-    document.getElementById('popup-overlay_keep-cancel').style.display = 'none';
-  });
-
-document
-  .getElementById('no-button-keep-cancel')
-  .addEventListener('click', (e) => {
-    e.preventDefault(); // リンクのデフォルトの動作を無効化
-    document.getElementById('popup-overlay_keep-cancel').style.display = 'none';
-  });
 
 const nouhauKeepCancel = (id) => {
   $.ajax({
@@ -237,22 +227,24 @@ const nouhauKeepCancel = (id) => {
   document.getElementById(`tabname${id}`).style.color = 'black';
 };
 
-// export function shareButtonClick(id, title, flg) {
-//   document.getElementById('popup-overlay_share').style.display = 'block';
-//   document.getElementById('share-nouhau-name').innerHTML = title;
+document
+  .getElementById('pop-delete_keep-cancel')
+  .addEventListener('click', (e) => {
+    e.preventDefault(); // リンクのデフォルトの動作を無効化
+    document.getElementById('popup-overlay_keep-cancel').style.display = 'none';
+  });
 
-//  const shareSendButton = document.getElementById('share-send');
-//   // クリックイベントを削除してから新しく追加
-//   shareSendButton.removeEventListener('click', onClick);
-//   shareSendButton.addEventListener('click', onClick);
+document
+  .getElementById('no-button-keep-cancel')
+  .addEventListener('click', (e) => {
+    e.preventDefault(); // リンクのデフォルトの動作を無効化
+    document.getElementById('popup-overlay_keep-cancel').style.display = 'none';
+  });
 
-//   function onClick() {
-//     // 共有処理を実行
-//     shareNoteSendFunc(id, title);
-//   }
 
-// }
-
+////////////////////////////////////////////////////////////////
+/////////////////////////////共有機能////////////////////////////
+////////////////////////////////////////////////////////////////
 let shareSendListenerAdded = false;
 
 export function shareButtonClick(id, title, flg) {
@@ -328,133 +320,6 @@ export const shareNoteSendFunc = (id, title) => {
   }
 };
 
-document.getElementById('pop-delete_share').addEventListener('click', (e) => {
-  e.preventDefault(); // リンクのデフォルトの動作を無効化
-  document.getElementById('popup-overlay_share').style.display = 'none';
-});
-
-//フォーカスの当たっているタブを削除する際には違うタブにフォーカスを当てる
-export const closeTab = async (id, order, tabIdArray) => {
-  // awaitを使ってajaxの処理を非同期待ち合わせ
-  await new Promise((resolve, reject) => {
-    $.ajax({
-      url: '/tabPostController/',
-      type: 'POST',
-      dataType: 'Json',
-      contentType: 'application/json',
-      data: JSON.stringify({
-        flg: 'tabDelete',
-        id,
-        order,
-      }),
-      success: function (res) {
-        document.getElementById('TAB-ID' + id).remove();
-        document.getElementById('tab-ID' + id).remove();
-        document.getElementById('Tab-ID' + id).remove();
-        if (res.tabResult.focus === 1) {
-          document.getElementById('tab_loader').style.display = 'block';
-          // フェードアウト(cssのanimation)が完了したらdisplay=none
-          (async () => {
-            document.getElementById('tab_loader').classList.add('loaded');
-            await new Promise((resolve) => {
-              const tabLoader = document.getElementById('tab_loader');
-              tabLoader.addEventListener(
-                'animationend',
-                () => {
-                  document.getElementById('tab_loader').style.display = 'none';
-                  resolve();
-                },
-                { once: true }
-              );
-            });
-          })();
-          if (tabIdArray.indexOf(id) !== 0) {
-            $(`#tab-ID${tabIdArray[tabIdArray.indexOf(id) - 1]}`).trigger(
-              'click'
-            );
-            //tabIdArrayの０番目の場合。タブの一番上の場合
-          } else {
-            $(`#tab-ID${tabIdArray[tabIdArray.indexOf(id) + 1]}`).trigger(
-              'click'
-            );
-          }
-        }
-        resolve();
-      },
-      error: function (err) {
-        reject(err); // 非同期処理が失敗した場合にreject()を呼ぶ
-      },
-    });
-  });
-  deleteTabIdArray(id, tabIdArray);
-};
-
-//タブ上の✖️ボタン押下時
-export const closeButton = async (id, title, tabIdArray) => {
-  const order = orderGet('tab-content', `Tab-ID${id}`);
-  await closeTab(id, order, tabIdArray);
-};
-
-//タブクリック時
-export const tabClick = (e, id, title) => {
-  //タブの「✖️」ボタン以外押下時
-  if (!e.target.closest('.tabClosebutton')) {
-    //パスを取得する関数
-    let pass = passGet(id, document.getElementById('tabname' + id).innerHTML);
-    //クリックしたTabのfocusを1へ、その他を0へ。passも更新
-    $.ajax({
-      url: '/tabPostController/',
-      type: 'POST',
-      dataType: 'Json',
-      contentType: 'application/json',
-      data: JSON.stringify({
-        flg: 'updateFocus',
-        id,
-        title,
-      }),
-      success: function (res) {
-        document.getElementById('notepass').innerHTML = pass;
-      },
-    });
-  } else {
-    //タブ閉じるボタン押下
-  }
-};
-
-//タブのラベルをランダムな色に付与する
-const tabLabelColorGet = (id) => {
-  $.ajax({
-    url: '/tabPostController/',
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      flg: 'labelColorGet',
-      id,
-    }),
-    success: function (res) {
-      const label = document.getElementById(`tab-ID${id}`);
-      //tab-labelに色を割り当てる
-      label.style.setProperty('--tab-label-background-color', res.labelColor);
-    },
-  });
-};
-
-//タブ削除したタイトルのIDをtabIdArrayから削除
-export const deleteTabIdArray = (id, tabIdArray) => {
-  tabIdArray = tabIdArray.filter((n) => n !== id);
-  //タブを全削除したらnotabを表示。「ここにノートの情報が〜」のやつ
-  if (tabIdArray.length === 0) {
-    document.getElementById('notab').style.display = 'block';
-    document.getElementById('notepass').innerHTML = '';
-    document.querySelectorAll('.image-container').forEach((container) => {
-      container.remove();
-    });
-  }
-  console.log(tabIdArray);
-  setTabIdArray(tabIdArray);
-};
-
 //共有履歴　ユーザー一覧
 document.getElementById('share-user-button').addEventListener('click', () => {
   document.getElementById('popup-overlay_share-user').style.display = 'block';
@@ -519,8 +384,6 @@ document.getElementById('share-user-button').addEventListener('click', () => {
             div.appendChild(checkbox);
             div.appendChild(checkboxLabel);
 
-            /////////////////////////////////////////////////////////////////////////////////
-
             // ラベル要素にマウスカーソルが入ったときの処理
             div.addEventListener('mouseenter', (event) => {
               if (!isPopupShown) {
@@ -570,7 +433,6 @@ document.getElementById('share-user-button').addEventListener('click', () => {
               isPopupShown = false;
             });
 
-            /////////////////////////////////////////////////////////////////////////////////
           }
         }
       });
@@ -702,6 +564,139 @@ document
         .removeChild(document.getElementById('share-group-div').firstChild);
     }
   });
+
+
+document.getElementById('pop-delete_share').addEventListener('click', (e) => {
+  e.preventDefault(); // リンクのデフォルトの動作を無効化
+  document.getElementById('popup-overlay_share').style.display = 'none';
+});
+
+////////////////////////////////////////////////////////////////
+/////////////////////////////タブ機能////////////////////////////
+////////////////////////////////////////////////////////////////
+
+//フォーカスの当たっているタブを削除する際には違うタブにフォーカスを当てる
+export const closeTab = async (id, order, tabIdArray) => {
+  // awaitを使ってajaxの処理を非同期待ち合わせ
+  await new Promise((resolve, reject) => {
+    $.ajax({
+      url: '/tabPostController/',
+      type: 'POST',
+      dataType: 'Json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        flg: 'tabDelete',
+        id,
+        order,
+      }),
+      success: function (res) {
+        document.getElementById('TAB-ID' + id).remove();
+        document.getElementById('tab-ID' + id).remove();
+        document.getElementById('Tab-ID' + id).remove();
+        if (res.tabResult.focus === 1) {
+          document.getElementById('tab_loader').style.display = 'block';
+          // フェードアウト(cssのanimation)が完了したらdisplay=none
+          (async () => {
+            document.getElementById('tab_loader').classList.add('loaded');
+            await new Promise((resolve) => {
+              const tabLoader = document.getElementById('tab_loader');
+              tabLoader.addEventListener(
+                'animationend',
+                () => {
+                  document.getElementById('tab_loader').style.display = 'none';
+                  resolve();
+                },
+                { once: true }
+              );
+            });
+          })();
+          if (tabIdArray.indexOf(id) !== 0) {
+            $(`#tab-ID${tabIdArray[tabIdArray.indexOf(id) - 1]}`).trigger(
+              'click'
+            );
+            //tabIdArrayの０番目の場合。タブの一番上の場合
+          } else {
+            $(`#tab-ID${tabIdArray[tabIdArray.indexOf(id) + 1]}`).trigger(
+              'click'
+            );
+          }
+        }
+        resolve();
+      },
+      error: function (err) {
+        reject(err); // 非同期処理が失敗した場合にreject()を呼ぶ
+      },
+    });
+  });
+  deleteTabIdArray(id, tabIdArray);
+};
+
+//タブ上の✖️ボタン押下時
+export const closeButton = async (id, title, tabIdArray) => {
+  const order = orderGet('tab-content', `Tab-ID${id}`);
+  await closeTab(id, order, tabIdArray);
+};
+
+//タブクリック時
+export const tabClick = (e, id, title) => {
+  //タブの「✖️」ボタン以外押下時
+  if (!e.target.closest('.tabClosebutton')) {
+    //パスを取得する関数
+    let pass = passGet(id, document.getElementById('tabname' + id).innerHTML);
+    //クリックしたTabのfocusを1へ、その他を0へ。passも更新
+    $.ajax({
+      url: '/tabPostController/',
+      type: 'POST',
+      dataType: 'Json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        flg: 'updateFocus',
+        id,
+        title,
+      }),
+      success: function (res) {
+        document.getElementById('notepass').innerHTML = pass;
+      },
+    });
+  } else {
+    //タブ閉じるボタン押下
+  }
+};
+
+//タブのラベルをランダムな色に付与する
+const tabLabelColorGet = (id) => {
+  $.ajax({
+    url: '/tabPostController/',
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'labelColorGet',
+      id,
+    }),
+    success: function (res) {
+      const label = document.getElementById(`tab-ID${id}`);
+      //tab-labelに色を割り当てる
+      label.style.setProperty('--tab-label-background-color', res.labelColor);
+    },
+  });
+};
+
+//タブ削除したタイトルのIDをtabIdArrayから削除
+export const deleteTabIdArray = (id, tabIdArray) => {
+  tabIdArray = tabIdArray.filter((n) => n !== id);
+  //タブを全削除したらnotabを表示。「ここにノートの情報が〜」のやつ
+  if (tabIdArray.length === 0) {
+    document.getElementById('notab').style.display = 'block';
+    document.getElementById('notepass').innerHTML = '';
+    document.querySelectorAll('.image-container').forEach((container) => {
+      container.remove();
+    });
+  }
+  console.log(tabIdArray);
+  setTabIdArray(tabIdArray);
+};
+
 
 //バインダーのリング部分作成
 export const binderCreate = () => {
