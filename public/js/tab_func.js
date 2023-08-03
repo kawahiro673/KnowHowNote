@@ -245,11 +245,11 @@ export function shareButtonClick(id, event, title, flg) {
    // const parentElement = event.target.parentElement.parentElement;
    // const textContent = parentElement.querySelector('.title-txt').innerHTML;
   
-  //共有ボタン押下時のタイトル取得
-  if (flg !== 'contextmenu') {
-    title =
-      event.target.parentNode.parentNode.querySelectorAll('p')[0].innerHTML;
-  }
+   //共有ボタン押下時のタイトル取得
+  // if (flg !== 'contextmenu') {
+  //   title =
+  //     event.target.parentNode.parentNode.querySelectorAll('p')[0].innerHTML;
+  // }
 
  const shareSendButton = document.getElementById('share-send');
   // クリックイベントを削除してから新しく追加
