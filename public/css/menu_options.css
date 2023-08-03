@@ -86,7 +86,8 @@
 #popup-overlay_nouhau-delete,
 #popup-overlay_folder-delete,
 #popup-overlay_delete-pop,
-#popup-overlay_keep-cancel {
+#popup-overlay_keep-cancel,
+#popup-overlay_result-pop{
   display: block;
   position: fixed;
   top: 0;
@@ -121,7 +122,8 @@
 .popup-window_nouhau-delete,
 .popup-window_folder-delete,
 .popup-window_delete-pop,
-.popup-window_keep-cancel {
+.popup-window_keep-cancel,
+.popup-window_result-pop{
   width: 500px;
   height: 300px;
   background-color: #fff;
@@ -161,7 +163,8 @@
 .popup-window_nouhau-delete,
 .popup-window_folder-delete,
 .popup-window_delete-pop,
-.popup-window_keep-cancel {
+.popup-window_keep-cancel,
+.popup-window_result-pop{
   height: 180px;
   width: 330px;
 }
@@ -200,7 +203,8 @@
 .popup-header_nouhau-delete,
 .popup-header_folder-delete,
 .popup-header_delete-pop,
-.popup-header_keep-cancel {
+.popup-header_keep-cancel,
+.popup-header_result-pop{
   display: flex;
   align-items: center;
   justify-content: center; /* 中央寄せに変更 */
@@ -233,7 +237,8 @@
 .popup-header_nouhau-delete h2,
 .popup-header_folder-delete h2,
 .popup-header_delete-pop h2,
-.popup-header_keep-cancel h2 {
+.popup-header_keep-cancel h2,
+.popup-header_result-pop h2{
   font-size: 16px;
   font-weight: normal;
   margin: 0 auto;
@@ -315,7 +320,8 @@
 .popup-body_nouhau-delete,
 .popup-body_folder-delete,
 .popup-body_delete-pop,
-.popup-body_keep-cancel {
+.popup-body_keep-cancel,
+.popup-body_result-pop{
   position: relative;
   height: 240px;
   padding: 0 10px;
@@ -334,10 +340,12 @@
   height: 425px;
 }
 
-.popup-body_explanation {
+.popup-body_explanation,
+.popup-body_result-pop{
   display: flex;
   justify-content: center; /* 要素を水平方向に中央揃え */
   align-items: center; /* 要素を垂直方向に中央揃え */
+  text-align: center;
 }
 
 .popup-body_share-history {
