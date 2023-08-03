@@ -82,8 +82,8 @@ export const resultPopUp = (headerStr,bodyStr)=>{
             'block';
   document.getElementById('result-pop-header-h2').innerHTML = headerStr;
    document.getElementById('result-pop-body-p').innerHTML = bodyStr;
-          setTimeout(() => {
-            document.getElementById('popup-overlay_result-pop').style.display =
-              'none';
-          }, 1500);
+          // setTimeout(() => {
+          //   document.getElementById('popup-overlay_result-pop').style.display =
+          //     'none';
+          // }, 1500);
 }
