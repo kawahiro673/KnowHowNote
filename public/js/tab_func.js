@@ -293,12 +293,13 @@ export const shareNoteSendFunc = (id, title) => {
       success: function (res) {
         if (res.nothingUser.length === 0) {
           document.getElementById('popup-overlay_share').style.display = 'none';
-          document.getElementById('popup-overlay_share_ans').style.display =
-            'block';
-          setTimeout(function () {
-            document.getElementById('popup-overlay_share_ans').style.display =
-              'none';
-          }, 1500);
+          // document.getElementById('popup-overlay_share_ans').style.display =
+          //   'block';
+          // setTimeout(function () {
+          //   document.getElementById('popup-overlay_share_ans').style.display =
+          //     'none';
+          // }, 1500);
+          resultPopUp('共有','共有しました');
         } else {
           //見つからないユーザーがあるパターン
           document.getElementById('popup-overlay_share_no').style.display =
