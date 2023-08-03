@@ -54,7 +54,7 @@ export const fileContextmenu = (tabIdArray) => {
     $(document).ready(function () {
       $('#file-share').off('click');
       $('#file-share').on('click', function (event) {
-        shareButtonClick(file.id, null, file.title, 'contextmenu');
+        shareButtonClick(file.id, file.title, 'contextmenu');
       });
     });
 
