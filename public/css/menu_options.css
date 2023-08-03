@@ -352,10 +352,6 @@
   overflow-x: auto;
 }
 /*******************************************************************************/
-#result-pop-body-p {
-  text-align: center;
-}
-
 .friend-list-top {
   display: flex;
   justify-content: space-between;
