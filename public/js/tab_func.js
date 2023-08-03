@@ -235,23 +235,39 @@ const nouhauKeepCancel = (id) => {
   document.getElementById(`textarea${id}`).readOnly = true;
   document.getElementById(`fade${id}`).style.opacity = '0';
   document.getElementById(`tabname${id}`).style.color = 'black';
-  //}
 };
+
+// export function shareButtonClick(id, title, flg) {
+//   document.getElementById('popup-overlay_share').style.display = 'block';
+//   document.getElementById('share-nouhau-name').innerHTML = title;
+
+//  const shareSendButton = document.getElementById('share-send');
+//   // クリックイベントを削除してから新しく追加
+//   shareSendButton.removeEventListener('click', onClick);
+//   shareSendButton.addEventListener('click', onClick);
+
+//   function onClick() {
+//     // 共有処理を実行
+//     shareNoteSendFunc(id, title);
+//   }
+
+// }
 
 export function shareButtonClick(id, title, flg) {
   document.getElementById('popup-overlay_share').style.display = 'block';
   document.getElementById('share-nouhau-name').innerHTML = title;
 
- const shareSendButton = document.getElementById('share-send');
-  // クリックイベントを削除してから新しく追加
-  shareSendButton.removeEventListener('click', onClick);
-  shareSendButton.addEventListener('click', onClick);
+  const shareSendButton = document.getElementById('share-send');
 
   function onClick() {
     // 共有処理を実行
     shareNoteSendFunc(id, title);
   }
 
+  // 既にクリックイベントリスナーが追加されていない場合のみ、新しく追加する
+  if (!shareSendButton.hasEventListener('click', onClick)) {
+    shareSendButton.addEventListener('click', onClick);
+  }
 }
 
 export const shareNoteSendFunc = (id, title) => {
