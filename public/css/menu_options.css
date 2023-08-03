@@ -320,12 +320,17 @@
 .popup-body_nouhau-delete,
 .popup-body_folder-delete,
 .popup-body_delete-pop,
-.popup-body_keep-cancel,
-.popup-body_result-pop{
+.popup-body_keep-cancel{
   position: relative;
   height: 240px;
   padding: 0 10px;
   overflow-y: scroll;
+}
+
+.popup-body_result-pop{
+  position: relative;
+  height: 240px;
+  padding: 0 10px;
 }
 
 .popup-body_friend-list {
@@ -340,7 +345,8 @@
   height: 425px;
 }
 
-.popup-body_explanation{
+.popup-body_explanation,
+.popup-body_result-pop{
   display: flex;
   justify-content: center; /* 要素を水平方向に中央揃え */
   align-items: center; /* 要素を垂直方向に中央揃え */
@@ -349,14 +355,6 @@
 .popup-body_share-history {
   width: 100%;
   overflow-x: auto;
-}
-
-.popup-body_result-pop {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  /* 他のスタイルを追加する場合はここに記述 */
 }
 /*******************************************************************************/
 .friend-list-top {
