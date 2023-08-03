@@ -340,8 +340,7 @@
   height: 425px;
 }
 
-.popup-body_explanation,
-.popup-body_result-pop{
+.popup-body_explanation{
   display: flex;
   justify-content: center; /* 要素を水平方向に中央揃え */
   align-items: center; /* 要素を垂直方向に中央揃え */
@@ -822,4 +821,11 @@ input[type='checkbox']:checked + .gray_b {
 
 .popup-window_delete-pop {
   text-align: center; /* pタグを中央に配置するためのスタイル */
+}
+
+#popup-overlay_result-pop {
+  display: flex;
+  justify-content: center; /* 横方向に中央寄せ */
+  align-items: center; /* 縦方向に中央寄せ */
+  height: 100vh; /* 画面の高さいっぱいに表示 */
 }
