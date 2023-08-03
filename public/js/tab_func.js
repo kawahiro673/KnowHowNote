@@ -246,13 +246,15 @@ export function shareButtonClick(id, event, title, flg) {
       event.target.parentNode.parentNode.querySelectorAll('p')[0].innerHTML;
   }
 
- document.getElementById('share-send').addEventListener('click', function onClick() {
-  // 共有処理を実行
-  shareNoteSendFunc(id, title);
+ const shareSendButton = document.getElementById('share-send');
+  // クリックイベントを削除してから新しく追加
+  shareSendButton.removeEventListener('click', onClick);
+  shareSendButton.addEventListener('click', onClick);
 
-  // クリックイベントを削除
-  this.removeEventListener('click', onClick);
-});
+  function onClick() {
+    // 共有処理を実行
+    shareNoteSendFunc(id, title);
+  }
 
 }
 
