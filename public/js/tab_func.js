@@ -84,7 +84,7 @@ export const tabCreate = (id, title, res) => {
   shareButton.setAttribute('id', `share-button-${id}`);
   shareButton.innerHTML = '共有';
   shareButton.disabled = false;
-  shareButton.addEventListener('click', shareButtonClick.bind(null, id, null ,title));
+  shareButton.addEventListener('click', shareButtonClick.bind(null, id, title));
 
   const keepButton = document.createElement('button');
   keepButton.innerHTML = '保存';
@@ -238,18 +238,9 @@ const nouhauKeepCancel = (id) => {
   //}
 };
 
-export function shareButtonClick(id, event, title, flg) {
+export function shareButtonClick(id, title, flg) {
   document.getElementById('popup-overlay_share').style.display = 'block';
   document.getElementById('share-nouhau-name').innerHTML = title;
-
-   // const parentElement = event.target.parentElement.parentElement;
-   // const textContent = parentElement.querySelector('.title-txt').innerHTML;
-  
-   //共有ボタン押下時のタイトル取得
-  // if (flg !== 'contextmenu') {
-  //   title =
-  //     event.target.parentNode.parentNode.querySelectorAll('p')[0].innerHTML;
-  // }
 
  const shareSendButton = document.getElementById('share-send');
   // クリックイベントを削除してから新しく追加
