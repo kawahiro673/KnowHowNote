@@ -199,13 +199,7 @@ const noteDelete = (file, tabIndex, order, tabIdArray) => {
           parentId: parentid,
         }),
         success: function (res) {
-          // document.getElementById('popup-overlay_delete-pop').style.display =
-          //   'block';
-          // setTimeout(() => {
-          //   document.getElementById('popup-overlay_delete-pop').style.display =
-          //     'none';
-          // }, 1000);
-          resultPopUp('削除','削除しました');
+          resultPopUp('ノウハウ削除','削除しました');
         },
       });
     },
