@@ -1,7 +1,7 @@
 //MENUボタンの主な機能を実装
 
 import { hashedIdGet } from '../main.js';
-import { currentTimeGet } from '../stringUtils.js';
+import { currentTimeGet, resultPopUp } from '../stringUtils.js';
 import { friendListDelete, friendListUpdate } from './friend-list.js';
 import {
   openGroupAddPopup,
@@ -11,7 +11,6 @@ import {
 import { backgroundColorCheckBoxOption } from './my-profile.js';
 import { sortTableByUser, sortTableByDate } from './share-history.js';
 import { groupNameDelete } from './group-list.js';
-
 //=============================================================================================================
 //====================================================個別設定=================================================
 //=============================================================================================================
@@ -514,13 +513,7 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
       }),
       success: function (res) {
         document.getElementById('popup-overlay_inquiry').style.display = 'none';
-        document.getElementById('popup-overlay_inquiry_result').style.display =
-          'block';
-        setTimeout(() => {
-          document.getElementById(
-            'popup-overlay_inquiry_result'
-          ).style.display = 'none';
-        }, 1500);
+        resultPopUp('問い合わせ','受け付けました');
       },
     });
   } else {
