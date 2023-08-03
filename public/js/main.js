@@ -329,29 +329,9 @@ function tabScreenOptions(id, title) {
               'inline-block';
           };
 
-          // document.getElementById(`share-button-${id}`).onclick = (event) => {
-          //   const parentElement = event.target.parentElement.parentElement;
-          //   const textContent =
-          //     parentElement.querySelector('.title-txt').innerHTML;
-          //   console.log(textContent);
-          //   shareButtonClick(id, event, textContent);
-          // };
-
-//           document.getElementById(`share-button-${id}`).addEventListener('click', onClick);
-// function onClick(event) {
-//   const parentElement = event.target.parentElement.parentElement;
-//   const textContent = parentElement.querySelector('.title-txt').innerHTML;
-//   console.log(textContent);
-//   shareButtonClick(id, event, textContent);
-
-//   // イベントリスナーを削除
-//   document.getElementById(`share-button-${id}`).removeEventListener('click', onClick);
-// }
-
           //タブ上の「✖️」ボタン押下
           document.getElementById(`button${id}`).onclick = () => {
             closeButton(id, title, tabIdArray);
-            //tabIdArray = deleteTabArray(id, tabIdArray);
             tabIdArray = getTabIdArray();
           };
 
