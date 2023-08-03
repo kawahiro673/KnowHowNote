@@ -76,7 +76,6 @@ export const tabCreate = (id, title, res) => {
   const time = document.createElement('p');
   time.setAttribute('class', 'updatetime');
   time.setAttribute('id', `time${id}`);
-  time.style.color = 'black';
   time.innerHTML = res.saved_time;
 
  const shareButton = document.createElement('button');
