@@ -48,12 +48,6 @@ export const tabCreate = (id, title, res) => {
   p.setAttribute('id', 'tabP' + id);
   p.innerHTML = res.title;
 
-  const shareButton = document.createElement('button');
-  shareButton.setAttribute('class', 'sharebtn');
-  shareButton.setAttribute('id', `share-button-${id}`);
-  shareButton.innerHTML = '共有';
-  shareButton.disabled = false;
-
   const divFade = document.createElement('div');
 
   const div2 = document.createElement('div');
@@ -84,6 +78,13 @@ export const tabCreate = (id, title, res) => {
   time.setAttribute('id', `time${id}`);
   time.style.color = 'black';
   time.innerHTML = res.saved_time;
+
+ const shareButton = document.createElement('button');
+  shareButton.setAttribute('class', 'sharebtn');
+  shareButton.setAttribute('id', `share-button-${id}`);
+  shareButton.innerHTML = '共有';
+  shareButton.disabled = false;
+  shareButton.addEventListener('click', shareButtonClick.bind(null, id, null ,title));
 
   const keepButton = document.createElement('button');
   keepButton.innerHTML = '保存';
@@ -240,6 +241,10 @@ const nouhauKeepCancel = (id) => {
 export function shareButtonClick(id, event, title, flg) {
   document.getElementById('popup-overlay_share').style.display = 'block';
   document.getElementById('share-nouhau-name').innerHTML = title;
+
+   // const parentElement = event.target.parentElement.parentElement;
+   // const textContent = parentElement.querySelector('.title-txt').innerHTML;
+  
   //共有ボタン押下時のタイトル取得
   if (flg !== 'contextmenu') {
     title =
