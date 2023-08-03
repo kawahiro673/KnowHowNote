@@ -1,5 +1,5 @@
 import { closeTab, shareButtonClick } from '../tab_func.js';
-import { currentTimeGet, orderGet } from '../stringUtils.js';
+import { currentTimeGet, orderGet, resultPopUp } from '../stringUtils.js';
 import { tabFocusIDGet, getTabIdArray } from '../main.js';
 import { newFileCreateFunc } from '../newFileCreate.js';
 
@@ -199,12 +199,13 @@ const noteDelete = (file, tabIndex, order, tabIdArray) => {
           parentId: parentid,
         }),
         success: function (res) {
-          document.getElementById('popup-overlay_delete-pop').style.display =
-            'block';
-          setTimeout(() => {
-            document.getElementById('popup-overlay_delete-pop').style.display =
-              'none';
-          }, 1000);
+          // document.getElementById('popup-overlay_delete-pop').style.display =
+          //   'block';
+          // setTimeout(() => {
+          //   document.getElementById('popup-overlay_delete-pop').style.display =
+          //     'none';
+          // }, 1000);
+          resultPopUp('削除','削除しました');
         },
       });
     },
