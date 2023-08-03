@@ -345,7 +345,6 @@
   display: flex;
   justify-content: center; /* 要素を水平方向に中央揃え */
   align-items: center; /* 要素を垂直方向に中央揃え */
-  text-align: center;
 }
 
 .popup-body_share-history {
@@ -353,6 +352,9 @@
   overflow-x: auto;
 }
 /*******************************************************************************/
+#result-pop-body-p {
+  text-align: center;
+}
 
 .friend-list-top {
   display: flex;
