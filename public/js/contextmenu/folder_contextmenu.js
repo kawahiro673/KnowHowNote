@@ -168,13 +168,7 @@ const folderDelete = (folder, order, tabIdArray) => {
               console.log(tabIdArray);
             }
           }
-          // document.getElementById('popup-overlay_delete-pop').style.display =
-          //   'block';
-          // setTimeout(() => {
-          //   document.getElementById('popup-overlay_delete-pop').style.display =
-          //     'none';
-          // }, 1000);
-           resultPopUp('削除','削除しました');
+           resultPopUp('フォルダ削除','削除しました');
         },
       });
     },
