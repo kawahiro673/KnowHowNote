@@ -2,16 +2,18 @@
 
 import { hashedIdGet } from '../main.js';
 import { friendListGroupChange } from './group-list.js';
+import { resultPopUp } from '../stringUtils.js';
 
 export const friendListDelete = (name) => {
   document.getElementById('popup-overlay_friend-delete-q').style.display =
     'none';
-  document.getElementById('popup-overlay_friend-delete-ans').style.display =
-    'block';
-  setTimeout(() => {
-    document.getElementById('popup-overlay_friend-delete-ans').style.display =
-      'none';
-  }, 1500);
+  // document.getElementById('popup-overlay_friend-delete-ans').style.display =
+  //   'block';
+  // setTimeout(() => {
+  //   document.getElementById('popup-overlay_friend-delete-ans').style.display =
+  //     'none';
+  // }, 1500);
+  resultPopUp('フレンド削除','フレンドから登録解除しました');
 
   $.ajax({
     url: '/mypage/' + hashedIdGet,
