@@ -1,7 +1,7 @@
 import { closeTab } from '../tab_func.js';
 import { newFileCreateFunc } from '../newFileCreate.js';
 import { newFolderCreateFunc } from '../newFolderCreate.js';
-import { orderGet, fileIDUnderTheFolder } from '../stringUtils.js';
+import { orderGet, fileIDUnderTheFolder, resultPopUp } from '../stringUtils.js';
 import { tabFocusIDGet, hashedIdGet, getTabIdArray } from '../main.js';
 import { disableElements, enableElements } from '../utilityFunction.js';
 
@@ -168,12 +168,13 @@ const folderDelete = (folder, order, tabIdArray) => {
               console.log(tabIdArray);
             }
           }
-          document.getElementById('popup-overlay_delete-pop').style.display =
-            'block';
-          setTimeout(() => {
-            document.getElementById('popup-overlay_delete-pop').style.display =
-              'none';
-          }, 1000);
+          // document.getElementById('popup-overlay_delete-pop').style.display =
+          //   'block';
+          // setTimeout(() => {
+          //   document.getElementById('popup-overlay_delete-pop').style.display =
+          //     'none';
+          // }, 1000);
+           resultPopUp('削除','削除しました');
         },
       });
     },
