@@ -1,5 +1,5 @@
 //タブで必要な関数まとめ
-import { currentTimeGet, passGet, orderGet } from './stringUtils.js';
+import { currentTimeGet, passGet, orderGet, resultPopUp } from './stringUtils.js';
 import { hashedIdGet, setTabIdArray } from './main.js';
 
 export const tabCreate = (id, title, res) => {
