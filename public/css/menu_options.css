@@ -350,6 +350,14 @@
   width: 100%;
   overflow-x: auto;
 }
+
+.popup-body_result-pop {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* 他のスタイルを追加する場合はここに記述 */
+}
 /*******************************************************************************/
 .friend-list-top {
   display: flex;
@@ -821,11 +829,4 @@ input[type='checkbox']:checked + .gray_b {
 
 .popup-window_delete-pop {
   text-align: center; /* pタグを中央に配置するためのスタイル */
-}
-
-#popup-overlay_result-pop {
-  display: flex;
-  justify-content: center; /* 横方向に中央寄せ */
-  align-items: center; /* 縦方向に中央寄せ */
-  height: 100vh; /* 画面の高さいっぱいに表示 */
 }
