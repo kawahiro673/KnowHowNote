@@ -75,3 +75,15 @@ export const fileIDUnderTheFolder = (elem) => {
   }
   return fileIDs;
 };
+
+//「削除しました」「共有しました」等のポップアップを1.5秒間出力する。タイトル内容指定。
+export const resultPopUp = (headerStr,bodyStr)=>{
+    document.getElementById('popup-overlay_result-pop').style.display =
+            'block';
+  document.getElementById('result-pop-header-h2').innerHTML = headerStr;
+   document.getElementById('result-pop-body-p').innerHTML = bodyStr;
+          setTimeout(() => {
+            document.getElementById('popup-overlay_result-pop').style.display =
+              'none';
+          }, 1500);
+}
