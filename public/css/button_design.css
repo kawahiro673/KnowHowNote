@@ -161,3 +161,7 @@
   justify-content: flex-end;
   margin: 10px;
 }
+
+#inquiry-button{
+vertical-align: bottom; /* 追加 */
+}
