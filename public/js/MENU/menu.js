@@ -368,6 +368,7 @@ document
   .getElementById('friend-list-add-button')
   .addEventListener('click', () => {
     document.getElementById('popup-overlay_friend-add').style.display = 'block';
+    document.getElementById('idInput').value = '';
   });
 
 document
