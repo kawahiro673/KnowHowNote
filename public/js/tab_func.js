@@ -259,9 +259,6 @@ export function shareButtonClick(id, title, flg) {
   }
 
   function onClick() {
-    console.log(title);
-  console.log(id);
-
     shareNoteSendFunc(id, title);
   }
 }
@@ -277,6 +274,8 @@ export const shareNoteSendFunc = (id, title) => {
 
   //inputタブに自分の名前が含まれていない場合のみ実行
   if (inputValue !== '') {
+      console.log(title);
+  console.log(id);
     $.ajax({
       url: '/sharePostController/',
       type: 'POST',
