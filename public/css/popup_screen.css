@@ -251,7 +251,6 @@
 .popup-body_nouhau-delete,
 .popup-body_folder-delete,
 .popup-body_delete-pop,
-.popup-body_keep-cancel,
 .popup-body_share_no{
   position: relative;
   height: 240px;
@@ -298,6 +297,7 @@
 .popup-body_share,
 .popup-body_logout,
 .popup-body_inquiry,
+.popup-body_keep-cancel,
 .popup-body_friend-add,
 .popup-body_friend-add-ans,
 .popup-body_friend-delete-q,
