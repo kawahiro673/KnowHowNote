@@ -1,4 +1,5 @@
 import { listCreate } from '../main.js';
+import { resultPopUp } from '../stringUtils.js';
 
 export const shareContextmenu = () => {
   $('.sharenote').on('contextmenu  click', function (event) {
@@ -192,6 +193,7 @@ const myShareNoteDelete = (id) => {
     success: function (res) {
       document.getElementById('popup-overlay_share-delete').style.display =
         'none';
+      resultPopUp('共有ノウハウ削除','削除しました');
     },
   });
 };
