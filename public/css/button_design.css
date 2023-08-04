@@ -4,7 +4,7 @@
 #share-pass-butotn,
 #no-button-delete,
 #share-pass-butotn,
-.popup-body_inquiry button,
+#inquiry-button,
 #share-user-button,
 #share-user-add-button,
 #share-user-clear-button,
@@ -46,11 +46,11 @@
   cursor: pointer;
 }
 
-.popup-body_inquiry button {
+/* #inquiry-button {
   position: absolute;
   bottom: 0;
   right: 0;
-}
+} */
 
 /*小さめのボタン*/
 #yes-button-logout,
