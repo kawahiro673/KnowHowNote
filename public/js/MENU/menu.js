@@ -242,11 +242,6 @@ document
     e.preventDefault(); // リンクのデフォルトの動作を無効化
     document.getElementById('popup-overlay_share-history').style.display =
       'none';
-
-    // const table = document.getElementById('share-history-table');
-    // if(table){
-    // table.parentNode.removeChild(table);
-    // }
     });
 
 document
@@ -255,11 +250,6 @@ document
     const popup = document.getElementById('popup-overlay_share-history');
     if (e.target === popup) {
       popup.style.display = 'none';
-
-     //  const table = document.getElementById('share-history-table');
-     // if(table){
-     //  table.parentNode.removeChild(table);
-     // }
      }
   });
 
@@ -530,7 +520,7 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
 });
 
 //=============================================================================================================
-//=============================================ログアウトポップアップ==========================================
+//================================================ログアウト====================================================
 //=============================================================================================================
 document.getElementById('logout').addEventListener('click', () => {
   document.getElementById('popup-overlay_logout').style.display = 'block';
@@ -546,6 +536,7 @@ document.getElementById('yes-button-logout').addEventListener('click', () => {
       flg: 'cookiedelete',
     }),
     success: function (res) {
+      resultPopUp('ログアウト','ログアウト中です　少々お待ちください')
       location.href = 'https://nodejs-itnote-app.herokuapp.com';
     },
   });
@@ -606,6 +597,8 @@ document.getElementById('yes-button-delete').addEventListener('click', () => {
       document.getElementById('tab').appendChild(p);
       document.getElementById('notepass').innerHTML = '';
       document.getElementById('popup-overlay_delete').style.display = 'none';
+
+       resultPopUp('全削除','ノウハウ/フォルダをすべて削除いたしました')
     },
   });
 });
