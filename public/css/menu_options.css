@@ -342,6 +342,7 @@ input[type='checkbox']:checked + .gray_b {
   text-align: left;
   width: 380px;
   height: 200px;
+   vertical-align: bottom; 
 }
 
 #friend-delete-q-real-user {
