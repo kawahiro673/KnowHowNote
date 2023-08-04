@@ -241,15 +241,9 @@
 .popup-body_profile,
 .popup-body_share-history,
 .popup-body_explanation,
-.popup-body_inquiry,
 .popup-body_About-Website,
-.popup-body_logout,
-.popup-body_delete,
 .popup-body_share-user,
 .popup-body_friend-list,
-.popup-body_friend-add,
-.popup-body_friend-add-ans,
-.popup-body_friend-delete-q,
 .popup-body_group-add,
 .popup-body_group-list,
 .popup-body_group-list-delete,
@@ -299,8 +293,16 @@
   padding: 0 10px;
   text-align: center;
 }
+//スクロールバー無しのポップアップ
 
-.popup-body_share {
+.popup-body_share,
+.popup-body_logout,
+.popup-body_inquiry,
+.popup-body_friend-add,
+.popup-body_friend-add-ans,
+.popup-body_friend-delete-q,
+.popup-body_delete{
+   position: relative;
   padding: 0 10px;
 }
 /*******************************************************************************/
