@@ -46,7 +46,7 @@
 }
 
 /****************共有ボタン******************/
-.keepbtn,
+/* .keepbtn,
 .cancelbtn,
 .editbtn,
 .sharebtn {
@@ -83,7 +83,7 @@
 
 .popup-body_share button {
   margin-right: 10px;
-}
+} */
 
 .share-input {
   width: 400px;
@@ -91,7 +91,7 @@
   min-height: 40px;
   resize: vertical;
 }
-#share-send {
+/* #share-send {
   display: inline-block;
   padding: 8px 16px;
   font-size: 14px;
@@ -104,7 +104,7 @@
   color: #fff;
   cursor: pointer;
   vertical-align: bottom; 
-}
+} */
 
 /************************ タブ側 ******************************/
 .tab-wrap {
@@ -255,9 +255,9 @@
   margin: 0px 30px;
 }
 
-.edit-save-button {
+/* .edit-save-button {
   text-align: center;
-}
+} */
 .edit {
   margin: 20px;
   width: 200px;
@@ -348,9 +348,9 @@ input[name='tab_item'] {
   align-items: center;
   margin: 8px;
 }
-.share-row button {
+/* .share-row button {
   margin-left: 50px;
-}
+} */
 
 .share-row p,
 .share-row button {
