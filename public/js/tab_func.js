@@ -260,9 +260,8 @@ export function shareButtonClick(id, title, flg) {
 　console.log(title + ' 正');
   console.log(id+ ' 正');
   function onClick() {
-    console.log(title + ' ?');
-  console.log(id+ ' ?');
     shareNoteSendFunc(id, title);
+   shareSendListenerAdded = false;
   }
 }
 
