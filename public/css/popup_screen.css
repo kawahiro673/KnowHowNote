@@ -293,8 +293,8 @@
   padding: 0 10px;
   text-align: center;
 }
-//スクロールバー無しのポップアップ
 
+/*スクロールバー無しのポップアップ*/
 .popup-body_share,
 .popup-body_logout,
 .popup-body_inquiry,
