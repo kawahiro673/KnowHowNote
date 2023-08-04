@@ -536,7 +536,7 @@ document.getElementById('yes-button-logout').addEventListener('click', () => {
       flg: 'cookiedelete',
     }),
     success: function (res) {
-      resultPopUp('ログアウト','ログアウト中です　少々お待ちください')
+      resultPopUp('ログアウト','ログアウト中です\n少々お待ちください')
       location.href = 'https://nodejs-itnote-app.herokuapp.com';
     },
   });
@@ -598,7 +598,7 @@ document.getElementById('yes-button-delete').addEventListener('click', () => {
       document.getElementById('notepass').innerHTML = '';
       document.getElementById('popup-overlay_delete').style.display = 'none';
 
-       resultPopUp('全削除','ノウハウ/フォルダをすべて削除いたしました')
+       resultPopUp('全削除','ノウハウ/フォルダを\nすべて削除いたしました')
     },
   });
 });
