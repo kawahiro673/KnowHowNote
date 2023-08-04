@@ -103,6 +103,7 @@
   background-color: #007bff;
   color: #fff;
   cursor: pointer;
+  vertical-align: bottom; 
 }
 
 /************************ タブ側 ******************************/
@@ -356,8 +357,9 @@ input[name='tab_item'] {
   margin-right: 10px;
 }
 .share-message {
-  height: 110px;
+  height: 130px;
   width: 400px;
+  vertical-align: bottom; 
 }
 .popup-body_share p {
   margin: 0;
