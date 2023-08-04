@@ -257,14 +257,18 @@ export function shareButtonClick(id, title, flg) {
     shareSendButton.addEventListener('click', onClick);
     shareSendListenerAdded = true;
   }
-　console.log(title);
-  console.log(id);
+　console.log(title + ' 正');
+  console.log(id+ ' 正');
   function onClick() {
+    console.log(title + ' ?');
+  console.log(id+ ' ?');
     shareNoteSendFunc(id, title);
   }
 }
 
 export const shareNoteSendFunc = (id, title) => {
+    　console.log(title + ' ?');
+  console.log(id+ ' ?');
   const inputValue = document.getElementsByClassName('share-input')[0].value;
   const inputValues = inputValue.split(',').map((value) => value.trim());
 
@@ -275,6 +279,8 @@ export const shareNoteSendFunc = (id, title) => {
 
   //inputタブに自分の名前が含まれていない場合のみ実行
   if (inputValue !== '') {
+    　console.log(title + ' 誤');
+  console.log(id+ ' 誤');
     $.ajax({
       url: '/sharePostController/',
       type: 'POST',
