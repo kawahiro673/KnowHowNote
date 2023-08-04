@@ -257,9 +257,11 @@ export function shareButtonClick(id, title, flg) {
     shareSendButton.addEventListener('click', onClick);
     shareSendListenerAdded = true;
   }
-console.log(title);
+
   function onClick() {
-    // 共有処理を実行
+    console.log(title);
+  console.log(id);
+
     shareNoteSendFunc(id, title);
   }
 }
