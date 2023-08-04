@@ -224,6 +224,8 @@ const nouhauKeepCancel = (id) => {
   document.getElementById(`textarea${id}`).readOnly = true;
   document.getElementById(`fade${id}`).style.opacity = '0';
   document.getElementById(`tabname${id}`).style.color = 'black';
+
+  resultPopUp('取り消し','取り消しました');
 };
 
 document
