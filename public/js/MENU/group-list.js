@@ -1,6 +1,7 @@
 //MENUのフレンドリスト → グループリスト等の実装
 import { hashedIdGet } from '../main.js';
 import { friendListUpdate } from './friend-list.js';
+import { resultPopUp } from '../stringUtils.js';
 
 export const openGroupAddPopup = () => {
   document.getElementById('popup-overlay_group-add').style.display = 'block';
@@ -219,6 +220,7 @@ export const groupNameDelete = (group) => {
       group,
     }),
     success: function (res) {
+      resultPopUp('グループ削除','削除しました')
       groupListUpdate('group-display');
       friendListUpdate();
     },
