@@ -240,8 +240,10 @@ document
       'none';
 
     const table = document.getElementById('share-history-table');
+    if(table){
     table.parentNode.removeChild(table);
-  });
+    }
+    });
 
 document
   .getElementById('popup-overlay_share-history')
@@ -251,8 +253,10 @@ document
       popup.style.display = 'none';
 
       const table = document.getElementById('share-history-table');
+     if(table){
       table.parentNode.removeChild(table);
-    }
+     }
+     }
   });
 
 //=============================================================================================================
