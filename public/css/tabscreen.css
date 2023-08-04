@@ -81,7 +81,7 @@
   margin-left: auto;
 }
 
-#popup-overlay_share {
+/* #popup-overlay_share {
   display: block;
   position: fixed;
   top: 0;
@@ -107,7 +107,7 @@
   display: flex;
   align-items: center;
   justify-content: center; /* 中央寄せに変更 */
-  padding: 10px;
+/*   padding: 10px;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 10px 10px 0 0;
 }
@@ -119,7 +119,7 @@
 }
 .popup-body_share {
   padding: 0 10px;
-}
+}  */
 
 .popup-body_share button {
   margin-right: 10px;
@@ -145,7 +145,7 @@
   cursor: pointer;
 }
 
-#popup-overlay_share_no {
+/* #popup-overlay_share_no {
   display: block;
   position: fixed;
   top: 0;
@@ -172,7 +172,7 @@
   display: flex;
   align-items: center;
   justify-content: center; /* 中央寄せに変更 */
-  padding: 10px;
+/*   padding: 10px;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 10px 10px 0 0;
 }
@@ -181,14 +181,14 @@
   font-size: 16px;
   font-weight: normal;
   margin: 0 auto;
-  padding: 0;
+  padding: 0;f
 }
 
 .popup-body_share_no {
   padding: 0 10px;
   text-align: center;
-}
-
+} 
+ */
 /************************ タブ側 ******************************/
 .tab-wrap {
   height: 960px;
@@ -559,17 +559,6 @@ input[name='friend-list-label'] {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* .popup {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  border: 1px solid #ccc;
-  padding: 8px;
-  z-index: 1;
-  right: 20px;
-  top: 0;
-}
- */
 #popup-group-member {
   display: none;
   /*   position: absolute; */
@@ -617,10 +606,3 @@ input[name='friend-list-label'] {
   color: gray;
   margin: 0;
 }
-/* .friend-list-check-div input[type='checkbox'],
-.friend-list-check-div label,
-.friend-list-group-check-div input[type='checkbox'],
-.friend-list-group-check-div label { */
-/*   transform: scale(1.5); /* チェックボックスとラベルのサイズを調整します */
-/*   margin-right: 5px; /* チェックボックスとラベルの間の余白を調整します */
-/* } */
