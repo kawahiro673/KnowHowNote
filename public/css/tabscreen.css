@@ -81,46 +81,6 @@
   margin-left: auto;
 }
 
-/* #popup-overlay_share {
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
-  z-index: 500;
-}
-
-.popup-window_share {
-  width: 500px;
-  height: 350px;
-  background-color: #fff;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 10px;
-  z-index: 500;
-}
-.popup-header_share {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* 中央寄せに変更 */
-/*   padding: 10px;
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 10px 10px 0 0;
-}
-.popup-header_share h2 {
-  font-size: 16px;
-  font-weight: normal;
-  margin: 0 auto;
-  padding: 0;
-}
-.popup-body_share {
-  padding: 0 10px;
-}  */
-
 .popup-body_share button {
   margin-right: 10px;
 }
@@ -145,50 +105,6 @@
   cursor: pointer;
 }
 
-/* #popup-overlay_share_no {
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
-  z-index: 500;
-}
-
-.popup-window_share_no {
-  width: 300px;
-  height: 200px;
-  background-color: #fff;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 10px;
-  z-index: 1000;
-}
-
-.popup-header_share_no {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* 中央寄せに変更 */
-/*   padding: 10px;
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 10px 10px 0 0;
-}
-
-.popup-header_share_no h2 {
-  font-size: 16px;
-  font-weight: normal;
-  margin: 0 auto;
-  padding: 0;f
-}
-
-.popup-body_share_no {
-  padding: 0 10px;
-  text-align: center;
-} 
- */
 /************************ タブ側 ******************************/
 .tab-wrap {
   height: 960px;
