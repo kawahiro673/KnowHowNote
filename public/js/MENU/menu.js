@@ -150,6 +150,10 @@ document.getElementById('share-history').addEventListener('click', () => {
       flg: 'ShareList',
     }),
     success: function (res) {
+      const shareHistoryTable = document.getElementById('share-history-table');
+       if (shareHistoryTable) {
+  shareHistoryTable.parentNode.removeChild(shareHistoryTable);
+}
       //履歴が未作成の時(連続で押下するたびに作成されるため)
       if (
         !(
@@ -239,10 +243,10 @@ document
     document.getElementById('popup-overlay_share-history').style.display =
       'none';
 
-    const table = document.getElementById('share-history-table');
-    if(table){
-    table.parentNode.removeChild(table);
-    }
+    // const table = document.getElementById('share-history-table');
+    // if(table){
+    // table.parentNode.removeChild(table);
+    // }
     });
 
 document
@@ -252,10 +256,10 @@ document
     if (e.target === popup) {
       popup.style.display = 'none';
 
-      const table = document.getElementById('share-history-table');
-     if(table){
-      table.parentNode.removeChild(table);
-     }
+     //  const table = document.getElementById('share-history-table');
+     // if(table){
+     //  table.parentNode.removeChild(table);
+     // }
      }
   });
 
