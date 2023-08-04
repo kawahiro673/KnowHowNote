@@ -257,7 +257,8 @@ export function shareButtonClick(id, title, flg) {
     shareSendButton.addEventListener('click', onClick);
     shareSendListenerAdded = true;
   }
-
+　console.log(title);
+  console.log(id);
   function onClick() {
     shareNoteSendFunc(id, title);
   }
@@ -274,8 +275,6 @@ export const shareNoteSendFunc = (id, title) => {
 
   //inputタブに自分の名前が含まれていない場合のみ実行
   if (inputValue !== '') {
-      console.log(title);
-  console.log(id);
     $.ajax({
       url: '/sharePostController/',
       type: 'POST',
