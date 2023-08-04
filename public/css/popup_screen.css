@@ -20,7 +20,9 @@
 #popup-overlay_nouhau-delete,
 #popup-overlay_folder-delete,
 #popup-overlay_keep-cancel,
-#popup-overlay_result-pop{
+#popup-overlay_result-pop,
+#popup-overlay_share_no,
+#popup-overlay_share{
   display: block;
   position: fixed;
   top: 0;
@@ -54,7 +56,9 @@
 .popup-window_folder-delete,
 .popup-window_delete-pop,
 .popup-window_keep-cancel,
-.popup-window_result-pop{
+.popup-window_result-pop,
+.popup-window_share_no,
+.popup-window_share{
   width: 500px;
   height: 300px;
   background-color: #fff;
@@ -105,6 +109,15 @@
   height: 400px;
 }
 
+.popup-window_share_no{
+  width: 300px;
+  height: 200px;
+}
+
+.popup-window_share {
+  height: 350px;
+}
+
 /*******************************************************************************/
 /********************************popup-header***********************************/
 /*******************************************************************************/
@@ -128,7 +141,9 @@
 .popup-header_folder-delete,
 .popup-header_delete-pop,
 .popup-header_keep-cancel,
-.popup-header_result-pop{
+.popup-header_result-pop,
+.popup-header_share_no,
+.popup-header_share{
   display: flex;
   align-items: center;
   justify-content: center; /* 中央寄せに変更 */
@@ -160,7 +175,9 @@
 .popup-header_folder-delete h2,
 .popup-header_delete-pop h2,
 .popup-header_keep-cancel h2,
-.popup-header_result-pop h2{
+.popup-header_result-pop h2,
+.popup-header_share_no h2,
+.popup-header_share h2{
   font-size: 16px;
   font-weight: normal;
   margin: 0 auto;
@@ -240,7 +257,9 @@
 .popup-body_nouhau-delete,
 .popup-body_folder-delete,
 .popup-body_delete-pop,
-.popup-body_keep-cancel{
+.popup-body_keep-cancel,
+.popup-body_share_no,
+.popup-body_share{
   position: relative;
   height: 240px;
   padding: 0 10px;
@@ -275,5 +294,10 @@
 .popup-body_share-history {
   width: 100%;
   overflow-x: auto;
+}
+
+.popup-body_share_no {
+  padding: 0 10px;
+  text-align: center;
 }
 /*******************************************************************************/
