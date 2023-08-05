@@ -220,7 +220,7 @@ export const groupNameDelete = (group) => {
       group,
     }),
     success: function (res) {
-      resultPopUp('グループ削除','削除しました')
+      resultPopUp('グループ削除', '削除しました');
       groupListUpdate('group-display');
       friendListUpdate();
     },

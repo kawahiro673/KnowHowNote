@@ -199,7 +199,7 @@ const noteDelete = (file, tabIndex, order, tabIdArray) => {
           parentId: parentid,
         }),
         success: function (res) {
-          resultPopUp('ノウハウ削除','削除しました');
+          resultPopUp('ノウハウ削除', '削除しました');
         },
       });
     },

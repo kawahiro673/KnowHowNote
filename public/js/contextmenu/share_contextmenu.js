@@ -193,7 +193,7 @@ const myShareNoteDelete = (id) => {
     success: function (res) {
       document.getElementById('popup-overlay_share-delete').style.display =
         'none';
-      resultPopUp('共有ノウハウ削除','削除しました');
+      resultPopUp('共有ノウハウ削除', '削除しました');
     },
   });
 };

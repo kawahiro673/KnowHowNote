@@ -162,8 +162,8 @@
   margin: 10px;
 }
 
-#inquiry-button{
-vertical-align: bottom; /* 追加 */
+#inquiry-button {
+  vertical-align: bottom; /* 追加 */
 }
 
 .keepbtn,
@@ -217,7 +217,7 @@ vertical-align: bottom; /* 追加 */
   background-color: #007bff;
   color: #fff;
   cursor: pointer;
-  vertical-align: bottom; 
+  vertical-align: bottom;
 }
 
 .edit-save-button {
@@ -227,4 +227,3 @@ vertical-align: bottom; /* 追加 */
 .share-row button {
   margin-left: 50px;
 }
-

@@ -1,12 +1,4 @@
-import {
-  keepButtonClick,
-  cancelButtonClick,
-  shareButtonClick,
-  closeButton,
-  tabClick,
-  tabCreate,
-  binderCreate,
-} from './tab_func.js';
+import { closeButton, tabClick, tabCreate, binderCreate } from './tab_func.js';
 import { fileContextmenu } from './contextmenu/note_contextmenu.js';
 import { folderContextmenu } from './contextmenu/folder_contextmenu.js';
 import { shareContextmenu } from './contextmenu/share_contextmenu.js';

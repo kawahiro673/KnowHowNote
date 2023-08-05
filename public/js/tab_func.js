@@ -1,5 +1,10 @@
 //タブで必要な関数まとめ
-import { currentTimeGet, passGet, orderGet, resultPopUp } from './stringUtils.js';
+import {
+  currentTimeGet,
+  passGet,
+  orderGet,
+  resultPopUp,
+} from './stringUtils.js';
 import { hashedIdGet, setTabIdArray } from './main.js';
 
 export const tabCreate = (id, title, res) => {
@@ -78,7 +83,7 @@ export const tabCreate = (id, title, res) => {
   time.setAttribute('id', `time${id}`);
   time.innerHTML = res.saved_time;
 
- const shareButton = document.createElement('button');
+  const shareButton = document.createElement('button');
   shareButton.setAttribute('class', 'sharebtn');
   shareButton.setAttribute('id', `share-button-${id}`);
   shareButton.innerHTML = '共有';
@@ -225,7 +230,7 @@ const nouhauKeepCancel = (id) => {
   document.getElementById(`fade${id}`).style.opacity = '0';
   document.getElementById(`tabname${id}`).style.color = 'black';
 
-  resultPopUp('取り消し','取り消しました');
+  resultPopUp('取り消し', '取り消しました');
 };
 
 document
@@ -242,7 +247,6 @@ document
     document.getElementById('popup-overlay_keep-cancel').style.display = 'none';
   });
 
-
 ////////////////////////////////////////////////////////////////
 /////////////////////////////共有機能////////////////////////////
 ////////////////////////////////////////////////////////////////
@@ -257,16 +261,16 @@ export function shareButtonClick(id, title, flg) {
     shareSendButton.addEventListener('click', onClick);
     shareSendListenerAdded = true;
   }
-  
+
   function onClick() {
     shareNoteSendFunc(id, title);
-   shareSendListenerAdded = false;
+    shareSendListenerAdded = false;
   }
 }
 
 export const shareNoteSendFunc = (id, title) => {
-    　console.log(title + ' ?');
-  console.log(id+ ' ?');
+  console.log(title + ' ?');
+  console.log(id + ' ?');
   const inputValue = document.getElementsByClassName('share-input')[0].value;
   const inputValues = inputValue.split(',').map((value) => value.trim());
 
@@ -296,7 +300,7 @@ export const shareNoteSendFunc = (id, title) => {
       success: function (res) {
         if (res.nothingUser.length === 0) {
           document.getElementById('popup-overlay_share').style.display = 'none';
-          resultPopUp('共有','共有しました');
+          resultPopUp('共有', '共有しました');
         } else {
           //見つからないユーザーがあるパターン
           document.getElementById('popup-overlay_share_no').style.display =
@@ -430,7 +434,6 @@ document.getElementById('share-user-button').addEventListener('click', () => {
               popupGroupMember.style.display = 'none';
               isPopupShown = false;
             });
-
           }
         }
       });
@@ -563,7 +566,6 @@ document
     }
   });
 
-
 document.getElementById('pop-delete_share').addEventListener('click', (e) => {
   e.preventDefault(); // リンクのデフォルトの動作を無効化
   document.getElementById('popup-overlay_share').style.display = 'none';
@@ -694,7 +696,6 @@ export const deleteTabIdArray = (id, tabIdArray) => {
   console.log(tabIdArray);
   setTabIdArray(tabIdArray);
 };
-
 
 //バインダーのリング部分作成
 export const binderCreate = () => {

@@ -7,7 +7,7 @@ import { resultPopUp } from '../stringUtils.js';
 export const friendListDelete = (name) => {
   document.getElementById('popup-overlay_friend-delete-q').style.display =
     'none';
-  resultPopUp('フレンド削除','フレンドから登録解除しました');
+  resultPopUp('フレンド削除', 'フレンドから登録解除しました');
 
   $.ajax({
     url: '/mypage/' + hashedIdGet,

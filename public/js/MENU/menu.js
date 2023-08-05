@@ -151,9 +151,9 @@ document.getElementById('share-history').addEventListener('click', () => {
     }),
     success: function (res) {
       const shareHistoryTable = document.getElementById('share-history-table');
-       if (shareHistoryTable) {
-  shareHistoryTable.parentNode.removeChild(shareHistoryTable);
-}
+      if (shareHistoryTable) {
+        shareHistoryTable.parentNode.removeChild(shareHistoryTable);
+      }
       //履歴が未作成の時(連続で押下するたびに作成されるため)
       if (
         !(
@@ -242,7 +242,7 @@ document
     e.preventDefault(); // リンクのデフォルトの動作を無効化
     document.getElementById('popup-overlay_share-history').style.display =
       'none';
-    });
+  });
 
 document
   .getElementById('popup-overlay_share-history')
@@ -250,7 +250,7 @@ document
     const popup = document.getElementById('popup-overlay_share-history');
     if (e.target === popup) {
       popup.style.display = 'none';
-     }
+    }
   });
 
 //=============================================================================================================
@@ -512,7 +512,7 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
       }),
       success: function (res) {
         document.getElementById('popup-overlay_inquiry').style.display = 'none';
-        resultPopUp('問い合わせ','受け付けました');
+        resultPopUp('問い合わせ', '受け付けました');
       },
     });
   } else {
@@ -537,7 +537,7 @@ document.getElementById('yes-button-logout').addEventListener('click', () => {
       flg: 'cookiedelete',
     }),
     success: function (res) {
-      resultPopUp('ログアウト','ログアウト中です\n少々お待ちください')
+      resultPopUp('ログアウト', 'ログアウト中です\n少々お待ちください');
       location.href = 'https://nodejs-itnote-app.herokuapp.com';
     },
   });
@@ -599,7 +599,7 @@ document.getElementById('yes-button-delete').addEventListener('click', () => {
       document.getElementById('notepass').innerHTML = '';
       document.getElementById('popup-overlay_delete').style.display = 'none';
 
-       resultPopUp('全削除','ノウハウ/フォルダを\nすべて削除いたしました')
+      resultPopUp('全削除', 'ノウハウ/フォルダを\nすべて削除いたしました');
     },
   });
 });

@@ -168,7 +168,7 @@ const folderDelete = (folder, order, tabIdArray) => {
               console.log(tabIdArray);
             }
           }
-           resultPopUp('フォルダ削除','削除しました');
+          resultPopUp('フォルダ削除', '削除しました');
         },
       });
     },
