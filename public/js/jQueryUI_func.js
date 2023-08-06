@@ -290,6 +290,13 @@ function addLastClassIfLastChild(element) {
   const siblings = element.parentNode.children;
   const isLastChild = element === siblings[siblings.length - 1];
 
+  // 同階層の兄弟要素に last クラスがあれば削除
+  for (const sibling of siblings) {
+    if (sibling !== element && sibling.classList.contains('last')) {
+      sibling.classList.remove('last');
+    }
+  }
+
   if (isLastChild) {
     element.classList.add('last');
   }
