@@ -131,7 +131,7 @@ export const jQueryUIOptionsFunc = () => {
                     order: afterOrder,
                   }),
                   success: function (res) {
-                    //reapplyStylesToTreeView();
+                    reapplyStylesToTreeView();
                   },
                 });
               } else {
@@ -182,7 +182,7 @@ export const jQueryUIOptionsFunc = () => {
                       if (Number(id) === focusId) {
                         $(`#tab-ID${id}`).trigger('click');
                       }
-                      //reapplyStylesToTreeView();
+                      reapplyStylesToTreeView();
                     },
                   });
                 },
@@ -285,19 +285,9 @@ export const jQueryUIOptionsFunc = () => {
 };
 
 function reapplyStylesToTreeView() {
-  // .treeview li 要素のリストを取得
-  var treeViewItems = document.querySelectorAll('.treeview li');
-
-  // 各要素に対してスタイルを再適用
-  treeViewItems.forEach(function (item) {
-    // background プロパティをリセット
-    item.style.background = '';
-
-    // リフローを促すことで、スタイルの再適用をトリガー
-    void item.offsetWidth;
-
-    // クラスを再適用（background-image の指定を維持するために必要）
-    item.classList.remove('lastCollapsable', 'lastExpandable');
-    item.classList.add('lastCollapsable', 'lastExpandable');
+  const liElements = document.querySelectorAll('.treeview li');
+  liElements.forEach(function (li) {
+    li.style.background =
+      "url('../img/treeview-images/treeview-default-line.gif') 0 0 no-repeat";
   });
 }
