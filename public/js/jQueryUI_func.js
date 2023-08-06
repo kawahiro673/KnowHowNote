@@ -58,7 +58,9 @@ export const jQueryUIOptionsFunc = () => {
             }),
             success: function (res) {},
           });
-          elementsBeforeMoving = item[0];
+          if (item[0].firstElementChild) {
+            elementsBeforeMoving = item[0].parentNode.firstElementChild;
+          }
         },
         //自分のfolder配下にはD&Dをできないようにしている
         //item:D＆Dの自分自身    container:ドラッグ先の要素
