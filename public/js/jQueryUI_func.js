@@ -287,11 +287,14 @@ export const jQueryUIOptionsFunc = () => {
 };
 
 function reapplyTreeViewStyles() {
-  console.log('zikkousaremaist');
-  const treeviewElements = document.querySelectorAll('.treeview');
-  treeviewElements.forEach(function (treeview) {
-    treeview.classList.remove('treeview'); // クラスを一旦削除
-    void treeview.offsetWidth; // リフローを発生させてブラウザにスタイルの再適用を強制
-    treeview.classList.add('treeview'); // クラスを再適用
+  const treeviewElement = document.querySelector('.filetree.treeview'); // treeview要素を選択
+
+  // 子要素に対してスタイルを再適用
+  const childElements = treeviewElement.querySelectorAll('*');
+  childElements.forEach(function (child) {
+    const classNames = child.className;
+    child.className = ''; // クラスを一旦クリア
+    void child.offsetWidth; // リフローを発生させてブラウザにスタイルの再適用を強制
+    child.className = classNames; // クラスを再適用
   });
 }
