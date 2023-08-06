@@ -57,6 +57,7 @@ export const jQueryUIOptionsFunc = () => {
             }),
             success: function (res) {},
           });
+          addLastClassToLastSibling(item[0]);
         },
         //自分のfolder配下にはD&Dをできないようにしている
         //item:D＆Dの自分自身    container:ドラッグ先の要素
@@ -286,6 +287,10 @@ export const jQueryUIOptionsFunc = () => {
   });
 };
 
+//移動後の要素のUI補正。sortableのD&DによるLineの崩れ補正。
+//①関数が受け取った引数(要素A)が同階層の兄弟要素の中で一番下にある時に、要素のクラスにlastを追加し、要素A以外の同階層の兄弟要素にlastというクラスがあれば、その兄弟要素のlastクラスを削除
+//②関数が受け取った引数(要素A)が同階層の兄弟要素の中で一番下でない場合、その要素の クラスにlastがある場合、クラスのlastを削除
+//③同階層の兄弟要素に、lastがなければ、一番下の要素のクラスにlastを追加
 function updateLastClasses(element) {
   const siblings = element.parentNode.children;
   const isLastChild = element === siblings[siblings.length - 1];
@@ -315,4 +320,11 @@ function updateLastClasses(element) {
     const lastSibling = siblings[siblings.length - 1];
     lastSibling.classList.add('last'); // ③ 同階層の兄弟要素に last クラスがなければ、一番下の要素に last クラスを追加
   }
+}
+
+function addLastClassToLastSibling(element) {
+  const siblings = element.parentNode.children;
+  const lastSibling = siblings[siblings.length - 1];
+
+  lastSibling.classList.add('last'); // 同階層の兄弟要素の一番下の要素に last クラスを追加
 }
