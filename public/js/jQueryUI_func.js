@@ -289,26 +289,30 @@ export const jQueryUIOptionsFunc = () => {
 function updateLastClasses(element) {
   const siblings = element.parentNode.children;
   const isLastChild = element === siblings[siblings.length - 1];
-  let hasLastClassSibling = false;
 
   // 同階層の兄弟要素に last クラスがある場合、削除
   for (const sibling of siblings) {
     if (sibling !== element && sibling.classList.contains('last')) {
       sibling.classList.remove('last');
-      hasLastClassSibling = true;
     }
   }
 
   if (isLastChild) {
     element.classList.add('last'); // ① 要素が一番下の場合、last クラスを追加
-  } else {
-    if (element.classList.contains('last')) {
-      element.classList.remove('last'); // ③ 要素が一番下でなく、自身に last クラスがある場合、last クラスを削除
+  } else if (element.classList.contains('last')) {
+    element.classList.remove('last'); // ② 要素が一番下でなく、自身に last クラスがある場合、last クラスを削除
+  }
+
+  let hasLastClassSibling = false;
+  for (const sibling of siblings) {
+    if (sibling !== element && sibling.classList.contains('last')) {
+      hasLastClassSibling = true;
+      break;
     }
   }
 
   if (!hasLastClassSibling) {
     const lastSibling = siblings[siblings.length - 1];
-    lastSibling.classList.add('last'); // ④ 同階層の兄弟要素に last クラスがなければ、一番下の要素に last クラスを追加
+    lastSibling.classList.add('last'); // ③ 同階層の兄弟要素に last クラスがなければ、一番下の要素に last クラスを追加
   }
 }
