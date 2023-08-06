@@ -90,7 +90,7 @@ ul.sample li.placeholder:before {
 
 .treeview li.lastCollapsable,
 .treeview li.lastExpandable {
-  background-image: url(../img/treeview-images/treeview-famfamfam.gif);
+  background-image: url(../img/treeview-images/treeview-default.gif);
 }
 
 .treeview li.lastCollapsable {
@@ -133,12 +133,12 @@ ul.sample li.placeholder:before {
 }
 
 .treeview-famfamfam li {
-  background-image: url(../img/treeview-images/treeview-famfamfam-line.gif);
+  background-image: url(../img/treeview-images/treeview-default-line.gif);
 }
 .treeview-famfamfam .hitarea,
 .treeview-famfamfam li.lastCollapsable,
 .treeview-famfamfam li.lastExpandable {
-  background-image: url(../img/treeview-images/treeview-famfamfam.gif);
+  background-image: url(../img/treeview-images/treeview-default.gif);
 }
 
 .treeview .placeholder {
