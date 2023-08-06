@@ -13,6 +13,7 @@ export const jQueryUIOptionsFunc = () => {
     let className; //順番(oderGet)を取得するために
     let parent_id_Tmp;
     let tmpArray = []; //配下のフォルダの子要素を入れるやつ？必要？？
+    let elementsBeforeMoving;
     $(function () {
       $('#0').treeview({
         animated: 'fast',
@@ -57,7 +58,7 @@ export const jQueryUIOptionsFunc = () => {
             }),
             success: function (res) {},
           });
-          addLastClassToLastSibling(item[0]);
+          elementsBeforeMoving = item[0];
         },
         //自分のfolder配下にはD&Dをできないようにしている
         //item:D＆Dの自分自身    container:ドラッグ先の要素
@@ -115,6 +116,7 @@ export const jQueryUIOptionsFunc = () => {
                   }),
                   success: function (res) {
                     updateLastClasses(item[0]);
+                    addLastClassToLastSibling(elementsBeforeMoving);
                   },
                 });
                 //現在いる場所より上へD＆D
@@ -135,6 +137,7 @@ export const jQueryUIOptionsFunc = () => {
                   }),
                   success: function (res) {
                     updateLastClasses(item[0]);
+                    addLastClassToLastSibling(elementsBeforeMoving);
                   },
                 });
               } else {
@@ -186,6 +189,7 @@ export const jQueryUIOptionsFunc = () => {
                         $(`#tab-ID${id}`).trigger('click');
                       }
                       updateLastClasses(item[0]);
+                      addLastClassToLastSibling(elementsBeforeMoving);
                     },
                   });
                 },
