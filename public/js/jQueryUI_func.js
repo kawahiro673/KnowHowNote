@@ -289,5 +289,21 @@ function reapplyStylesToTreeView() {
   liElements.forEach(function (li) {
     li.style.background =
       "url('../img/treeview-images/treeview-default-line.gif') 0 0 no-repeat";
+    li.classList.remove('collapsable', 'expandable', 'last'); // クラスを一旦削除
+
+    if (
+      li.classList.contains('collapsable') ||
+      li.classList.contains('expandable')
+    ) {
+      li.style.backgroundPosition = '0 -176px';
+    }
+
+    if (li.classList.contains('expandable-hitarea')) {
+      li.style.backgroundPosition = '-80px -3px';
+    }
+
+    if (li.classList.contains('last')) {
+      li.style.backgroundPosition = '0 -1766px';
+    }
   });
 }
