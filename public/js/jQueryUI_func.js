@@ -58,7 +58,7 @@ export const jQueryUIOptionsFunc = () => {
             }),
             success: function (res) {},
           });
-          if (item[0].firstElementChild) {
+          if (item[0].parentNode.firstElementChild) {
             elementsBeforeMoving = item[0].parentNode.firstElementChild;
           }
         },
