@@ -285,6 +285,7 @@ export const jQueryUIOptionsFunc = () => {
 };
 
 function reapplyTreeViewStyles() {
+  console.log('zikkousaremaist');
   const treeviewElements = document.querySelectorAll('.treeview');
   treeviewElements.forEach(function (treeview) {
     treeview.classList.remove('treeview'); // クラスを一旦削除
