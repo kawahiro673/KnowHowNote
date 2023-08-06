@@ -112,7 +112,9 @@ export const jQueryUIOptionsFunc = () => {
                     move: 'down',
                     order: afterOrder,
                   }),
-                  success: function (res) {},
+                  success: function (res) {
+                    reapplyTreeViewStyles();
+                  },
                 });
                 //現在いる場所より上へD＆D
               } else if (beforeOrder > afterOrder) {
