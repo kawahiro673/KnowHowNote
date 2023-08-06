@@ -113,7 +113,7 @@ export const jQueryUIOptionsFunc = () => {
                     order: afterOrder,
                   }),
                   success: function (res) {
-                    addLastClassIfLastChild(item[0]);
+                    updateLastClasses(item[0]);
                   },
                 });
                 //現在いる場所より上へD＆D
@@ -133,7 +133,7 @@ export const jQueryUIOptionsFunc = () => {
                     order: afterOrder,
                   }),
                   success: function (res) {
-                    addLastClassIfLastChild(item[0]);
+                    updateLastClasses(item[0]);
                   },
                 });
               } else {
@@ -184,7 +184,7 @@ export const jQueryUIOptionsFunc = () => {
                       if (Number(id) === focusId) {
                         $(`#tab-ID${id}`).trigger('click');
                       }
-                      addLastClassIfLastChild(item[0]);
+                      updateLastClasses(item[0]);
                     },
                   });
                 },
@@ -286,11 +286,11 @@ export const jQueryUIOptionsFunc = () => {
   });
 };
 
-function addLastClassIfLastChild(element) {
+function updateLastClasses(element) {
   const siblings = element.parentNode.children;
   const isLastChild = element === siblings[siblings.length - 1];
 
-  // 同階層の兄弟要素に last クラスがあれば削除
+  // 同階層の兄弟要素に last クラスがある場合、削除
   for (const sibling of siblings) {
     if (sibling !== element && sibling.classList.contains('last')) {
       sibling.classList.remove('last');
@@ -298,6 +298,10 @@ function addLastClassIfLastChild(element) {
   }
 
   if (isLastChild) {
-    element.classList.add('last');
+    element.classList.add('last'); // 要素が一番下の場合、last クラスを追加
+  } else {
+    if (element.classList.contains('last')) {
+      element.classList.remove('last'); // 要素が一番下でなく、自身に last クラスがある場合、last クラスを削除
+    }
   }
 }
