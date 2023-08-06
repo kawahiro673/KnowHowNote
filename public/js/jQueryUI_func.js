@@ -131,7 +131,7 @@ export const jQueryUIOptionsFunc = () => {
                     order: afterOrder,
                   }),
                   success: function (res) {
-                    reapplyStylesToTreeView();
+                    //reapplyStylesToTreeView();
                   },
                 });
               } else {
@@ -182,7 +182,7 @@ export const jQueryUIOptionsFunc = () => {
                       if (Number(id) === focusId) {
                         $(`#tab-ID${id}`).trigger('click');
                       }
-                      reapplyStylesToTreeView();
+                      //reapplyStylesToTreeView();
                     },
                   });
                 },
