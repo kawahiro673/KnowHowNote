@@ -113,7 +113,7 @@ export const jQueryUIOptionsFunc = () => {
                     order: afterOrder,
                   }),
                   success: function (res) {
-                    reapplyTreeViewStyles();
+                    //reapplyTreeViewStyles();
                   },
                 });
                 //現在いる場所より上へD＆D
@@ -133,7 +133,7 @@ export const jQueryUIOptionsFunc = () => {
                     order: afterOrder,
                   }),
                   success: function (res) {
-                    reapplyTreeViewStyles();
+                    //reapplyTreeViewStyles();
                   },
                 });
               } else {
@@ -184,7 +184,7 @@ export const jQueryUIOptionsFunc = () => {
                       if (Number(id) === focusId) {
                         $(`#tab-ID${id}`).trigger('click');
                       }
-                      reapplyTreeViewStyles();
+                      //reapplyTreeViewStyles();
                     },
                   });
                 },
