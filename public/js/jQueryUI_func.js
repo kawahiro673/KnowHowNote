@@ -113,7 +113,7 @@ export const jQueryUIOptionsFunc = () => {
                     order: afterOrder,
                   }),
                   success: function (res) {
-                    //reapplyTreeViewStyles();
+                    addLastClassIfLastChild(item[0]);
                   },
                 });
                 //現在いる場所より上へD＆D
@@ -133,7 +133,7 @@ export const jQueryUIOptionsFunc = () => {
                     order: afterOrder,
                   }),
                   success: function (res) {
-                    //reapplyTreeViewStyles();
+                    addLastClassIfLastChild(item[0]);
                   },
                 });
               } else {
@@ -184,7 +184,7 @@ export const jQueryUIOptionsFunc = () => {
                       if (Number(id) === focusId) {
                         $(`#tab-ID${id}`).trigger('click');
                       }
-                      //reapplyTreeViewStyles();
+                      addLastClassIfLastChild(item[0]);
                     },
                   });
                 },
@@ -286,15 +286,11 @@ export const jQueryUIOptionsFunc = () => {
   });
 };
 
-function reapplyTreeViewStyles() {
-  const treeviewElement = document.querySelector('.filetree.treeview'); // treeview要素を選択
+function addLastClassIfLastChild(element) {
+  const siblings = element.parentNode.children;
+  const isLastChild = element === siblings[siblings.length - 1];
 
-  // 子要素に対してスタイルを再適用
-  const childElements = treeviewElement.querySelectorAll('*');
-  childElements.forEach(function (child) {
-    const classNames = child.className;
-    child.className = ''; // クラスを一旦クリア
-    void child.offsetWidth; // リフローを発生させてブラウザにスタイルの再適用を強制
-    child.className = classNames; // クラスを再適用
-  });
+  if (isLastChild) {
+    element.classList.add('last');
+  }
 }
