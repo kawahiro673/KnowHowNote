@@ -66,10 +66,15 @@ ul.sample li.placeholder:before {
   cursor: pointer;
 }
 
-.treeview li {
+/* .treeview li {
   background: url(../img/treeview-images/treeview-famfamfam-line.gif) 0 0
     no-repeat;
+} */
+
+.treeview li {
+  background: url(images/treeview-default-line.gif) 0 0 no-repeat;
 }
+
 .treeview li.collapsable,
 .treeview li.expandable {
   background-position: 0 -176px;
