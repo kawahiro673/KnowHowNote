@@ -323,6 +323,7 @@ function updateLastClasses(element) {
 }
 
 function addLastClassToLastSibling(element) {
+  console.log(element);
   const siblings = element.parentNode.children;
   const lastSibling = siblings[siblings.length - 1];
 
