@@ -1,5 +1,6 @@
-/****************************** sortable  *********************************/
-
+/*******************************************************************************/
+/******************************** sortable  ************************************/
+/*******************************************************************************/
 body.dragging,
 body.dragging * {
   cursor: move !important;
@@ -19,8 +20,9 @@ ul.sample li.placeholder:before {
   position: absolute;
 }
 
-/******************************** treeview **************************************/
-
+/*******************************************************************************/
+/******************************** treeview *************************************/
+/*******************************************************************************/
 .treeview,
 .treeview ul {
   padding: 0;
@@ -66,8 +68,12 @@ ul.sample li.placeholder:before {
   cursor: pointer;
 }
 
-.treeview li {
+/* .treeview li {
   background: url(../img/treeview-images/treeview-famfamfam-line.gif) 0 0
+    no-repeat;
+} */
+.treeview li {
+  background: url(../img/treeview-images/treeview-default-line.gif) 0 0
     no-repeat;
 }
 .treeview li.collapsable,
@@ -98,7 +104,7 @@ ul.sample li.placeholder:before {
   background-position: 0;
 }
 
-.treeview-red li {
+/* .treeview-red li {
   background-image: url(../img/treeview-images/treeview-red-line.gif);
 }
 .treeview-red .hitarea,
@@ -132,7 +138,7 @@ ul.sample li.placeholder:before {
 .treeview-famfamfam li.lastCollapsable,
 .treeview-famfamfam li.lastExpandable {
   background-image: url(../img/treeview-images/treeview-famfamfam.gif);
-}
+} */
 
 .treeview .placeholder {
   background: url(../img/treeview-images/ajax-loader.gif) 0 0 no-repeat;
