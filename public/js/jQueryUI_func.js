@@ -302,6 +302,7 @@ export const jQueryUIOptionsFunc = () => {
                        updateLastClasses_Folder(item[0]);
                        addLastClassToLastSibling(elementsBeforeMoving);
                       removeLastHitareaClasses(item[0]);
+                       removeLastHitareaClasses_this(item[0]);
                     },
                   });
                 },
