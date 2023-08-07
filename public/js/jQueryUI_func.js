@@ -332,8 +332,6 @@ function updateLastClasses(element) {
   const siblings = element.parentNode.children;
   const isLastChild = element === siblings[siblings.length - 1];
   let hasLastClassSibling = false;
-  let isCollapsable = false;
-  let isExpandable = false;
 
   // 同階層の兄弟要素に last, lastCollapsable, lastExpandable クラスがある場合、削除
   for (const sibling of siblings) {
@@ -343,12 +341,6 @@ function updateLastClasses(element) {
       }
       if (sibling.classList.contains('last')) {
         hasLastClassSibling = true;
-      }
-      if (sibling.classList.contains('collapsable')) {
-        isCollapsable = true;
-      }
-      if (sibling.classList.contains('expandable')) {
-        isExpandable = true;
       }
     }
   }
@@ -360,6 +352,8 @@ function updateLastClasses(element) {
     if (element.classList.contains('expandable')) {
       element.classList.add('lastExpandable'); // ① 要素が一番下で expandable クラスを持つ場合、lastExpandable クラスを追加
     }
+  } else if (element.classList.contains('last')) {
+    element.classList.remove('last'); // ② 要素が一番下でなく、last クラスを持つ場合、last クラスを削除
   } else if (element.classList.contains('lastCollapsable')) {
     element.classList.remove('lastCollapsable'); // ② 要素が一番下でなく、lastCollapsable クラスを持つ場合、lastCollapsable クラスを削除
   } else if (element.classList.contains('lastExpandable')) {
@@ -372,8 +366,7 @@ function updateLastClasses(element) {
 
     if (lastSibling.classList.contains('collapsable')) {
       lastSibling.classList.add('lastCollapsable'); // ③ 一番下の要素が collapsable クラスを持つ場合、lastCollapsable クラスを追加
-    }
-    if (lastSibling.classList.contains('expandable')) {
+    } else if (lastSibling.classList.contains('expandable')) {
       lastSibling.classList.add('lastExpandable'); // ③ 一番下の要素が expandable クラスを持つ場合、lastExpandable クラスを追加
     }
   }
