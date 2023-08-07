@@ -276,12 +276,12 @@ export function shareButtonClick(id, title, flg) {
   document.getElementById('share-nouhau-name').innerHTML = title;
 
   if (!shareSendListenerAdded) {
-    shareSendButton.addEventListener('click', onClick);
+    shareSendButton.addEventListener('click', () => onClick(id, title));
     shareSendListenerAdded = true;
   }
 }
 
-function onClick() {
+function onClick(id, title) {
   shareNoteSendFunc(id, title);
   // クリックイベント後にイベントリスナーを削除
   shareSendButton.removeEventListener('click', onClick);
