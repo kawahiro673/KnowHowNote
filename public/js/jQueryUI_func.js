@@ -58,6 +58,7 @@ export const jQueryUIOptionsFunc = () => {
             }),
             success: function (res) {},
           });
+          //ドラッグアンドドロップ前の要素群を取得するため
           if (item[0].parentNode.firstElementChild) {
             elementsBeforeMoving = item[0].parentNode.firstElementChild;
           }
@@ -216,7 +217,9 @@ export const jQueryUIOptionsFunc = () => {
                     order: afterOrder,
                     move: 'down',
                   }),
-                  success: function (res) {},
+                  success: function (res) {
+                    updateLastClasses_Folder(item[0]);
+                  },
                 });
                 //orderが小さくなる場合(上へD＆D)
               } else if (beforeOrder > afterOrder) {
@@ -232,7 +235,9 @@ export const jQueryUIOptionsFunc = () => {
                     order: afterOrder,
                     move: 'up',
                   }),
-                  success: function (res) {},
+                  success: function (res) {
+                     updateLastClasses_Folder(item[0]);
+                  },
                 });
               } else {
                 console.log('順番は変化していません');
@@ -281,7 +286,9 @@ export const jQueryUIOptionsFunc = () => {
                       order: afterOrder,
                       pattern: 'folder',
                     }),
-                    success: function (res) {},
+                    success: function (res) {
+                       updateLastClasses_Folder(item[0]);
+                    },
                   });
                 },
               });
@@ -355,6 +362,36 @@ function updateLastClasses(element) {
     }
   } else if (element.classList.contains('last')) {
     element.classList.remove('last'); // ② 要素が一番下でなく、last クラスを持つ場合、last クラスを削除
+  }
+}
+
+function updateLastClasses_Folder(element) {
+  const siblings = element.parentNode.children;
+  const isLastChild = element === siblings[siblings.length - 1];
+
+  for (const sibling of siblings) {
+    if (sibling !== element) {
+      if (sibling.classList.contains('last') || sibling.classList.contains('lastCollapsable') || sibling.classList.contains('lastExpandable')) {
+        sibling.classList.remove('last', 'lastCollapsable', 'lastExpandable');
+      }
+    }
+  }
+
+  if (isLastChild) {
+    if (element.classList.contains('collapsable')) {
+      element.classList.remove('lastExpandable');
+      element.classList.remove('last');
+      element.classList.add('lastCollapsable'); // ① 要素が一番下で collapsable クラスを持つ場合、lastCollapsable クラスを追加
+    } else if (element.classList.contains('expandable')) {
+      element.classList.remove('lastCollapsable');
+      element.classList.remove('last');
+      element.classList.add('lastExpandable'); // ① 要素が一番下で expandable クラスを持つ場合、lastExpandable クラスを追加
+    } else {
+      element.classList.remove('lastCollapsable', 'lastExpandable');
+      element.classList.add('last'); // ① 要素が一番下でない場合、last クラスを追加
+    }
+  } else {
+    element.classList.remove('lastCollapsable', 'lastExpandable'); // ② 要素が一番下でない場合、lastCollapsable と lastExpandable クラスを削除
   }
 }
 
