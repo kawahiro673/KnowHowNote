@@ -51,7 +51,7 @@ router.post('/', (req, res) => {
               if (error) {
                 reject(error);
               } else {
-               res.send({msg : '成功しました'});
+               res.send({order : newOrder});
               }
             }
           );
