@@ -293,7 +293,7 @@ export const jQueryUIOptionsFunc = () => {
   });
 };
 
-//移動後の要素のUI補正。sortableのD&DによるLineの崩れ補正。
+//ドラッグアンドドロップ後parent要素配下内のUI補正。sortableのD&DによるLineの崩れ補正。
 //①関数が受け取った引数(要素A)が同階層の兄弟要素の中で一番下にある時に、要素のクラスにlastを追加し、要素A以外の同階層の兄弟要素にlastというクラスがあれば、その兄弟要素のlastクラスを削除
 //②関数が受け取った引数(要素A)が同階層の兄弟要素の中で一番下でない場合、その要素の クラスにlastがある場合、クラスのlastを削除
 //③同階層の兄弟要素に、lastがなければ、一番下の要素のクラスにlastを追加
@@ -322,6 +322,7 @@ function updateLastClasses(element) {
     }
   }
 
+  //ドラッグアンドドロップ前parent要素配下内のUI補正。sortableのD&DによるLineの崩れ補正。
   if (!hasLastClassSibling) {
     const lastSibling = siblings[siblings.length - 1];
     lastSibling.classList.add('last'); // ③ 同階層の兄弟要素に last クラスがなければ、一番下の要素に last クラスを追加
