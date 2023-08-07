@@ -21,6 +21,7 @@ export const shareContextmenu = () => {
         console.log(share.id);
         console.log(typeof share.id);
         const id = Number(share.id);
+         console.log(typeof id);
         mynoteAddFunc(id);
       });
     });
@@ -137,7 +138,7 @@ const mynoteAddFunc = (id) => {
       let elements = document.getElementsByClassName(`parent0`);
       let order = [].slice.call(elements).indexOf(span.parentNode);
       order++;
-
+console.log(order);
       $.ajax({
         url: '/notePostController/',
         type: 'POST',
@@ -150,6 +151,7 @@ const mynoteAddFunc = (id) => {
           order,
         }),
         success: function (res) {
+          console.log('やあ！');
           //一度listを全て削除して、再び新しく追加している→jQueryUIがうまく適用されないため
           const node = document.getElementById('0');
           while (node.firstChild) {
