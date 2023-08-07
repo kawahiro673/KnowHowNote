@@ -219,6 +219,7 @@ export const jQueryUIOptionsFunc = () => {
                   }),
                   success: function (res) {
                     updateLastClasses_Folder(item[0]);
+                     addLastClassToLastSibling(elementsBeforeMoving);
                   },
                 });
                 //orderが小さくなる場合(上へD＆D)
@@ -237,6 +238,7 @@ export const jQueryUIOptionsFunc = () => {
                   }),
                   success: function (res) {
                      updateLastClasses_Folder(item[0]);
+                     addLastClassToLastSibling(elementsBeforeMoving);
                   },
                 });
               } else {
@@ -288,6 +290,7 @@ export const jQueryUIOptionsFunc = () => {
                     }),
                     success: function (res) {
                        updateLastClasses_Folder(item[0]);
+                       addLastClassToLastSibling(elementsBeforeMoving);
                     },
                   });
                 },
@@ -397,9 +400,24 @@ function updateLastClasses_Folder(element) {
 
  //ドラッグアンドドロップ前parent要素配下内のUI補正。sortableのD&DによるLineの崩れ補正。
 function addLastClassToLastSibling(element) {
-  console.log(element);
-  const siblings = element.parentNode.children;
+  // console.log(element);
+  // const siblings = element.parentNode.children;
+  // const lastSibling = siblings[siblings.length - 1];
+
+  // lastSibling.classList.add('last'); // 同階層の兄弟要素の一番下の要素に last クラスを追加
+    const siblings = element.parentNode.children;
   const lastSibling = siblings[siblings.length - 1];
 
-  lastSibling.classList.add('last'); // 同階層の兄弟要素の一番下の要素に last クラスを追加
+  if (lastSibling) {
+    if (lastSibling.classList.contains('collapsable')) {
+      lastSibling.classList.add('lastCollapsable');
+      lastSibling.classList.remove('lastExpandable');
+    } else if (lastSibling.classList.contains('expandable')) {
+      lastSibling.classList.add('lastExpandable');
+      lastSibling.classList.remove('lastCollapsable');
+    } else {
+      lastSibling.classList.add('last');
+      lastSibling.classList.remove('lastCollapsable', 'lastExpandable');
+    }
+  }
 }
