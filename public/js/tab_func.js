@@ -306,8 +306,6 @@ export function shareButtonClick(id, title, flg) {
   console.log('やあ2');
   document.getElementById('popup-overlay_share').style.display = 'block';
   document.getElementById('share-nouhau-name').innerHTML = title;
- idid = id;
-  titletitle = title;
   
   if (!shareSendListenerAdded) {
     shareSendButton.addEventListener('click', onClick(id,title));
