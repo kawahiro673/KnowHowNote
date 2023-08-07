@@ -8,6 +8,7 @@ import {
 import { hashedIdGet, setTabIdArray } from './main.js';
 
 export const tabCreate = (id, title, res) => {
+    console.log('やあ3');
   const inputTab = document.createElement('input');
   inputTab.setAttribute('id', 'TAB-ID' + id);
   inputTab.setAttribute('type', 'radio');
@@ -272,6 +273,7 @@ let shareSendListenerAdded = false;
 let shareSendButton = document.getElementById('share-send');
 
 export function shareButtonClick(id, title, flg) {
+    console.log('やあ2');
   document.getElementById('popup-overlay_share').style.display = 'block';
   document.getElementById('share-nouhau-name').innerHTML = title;
 
@@ -282,6 +284,7 @@ export function shareButtonClick(id, title, flg) {
 }
 
 function onClick(id, title) {
+  console.log('やあ1');
   shareNoteSendFunc(id, title);
   // クリックイベント後にイベントリスナーを削除
   shareSendButton.removeEventListener('click', onClick);
