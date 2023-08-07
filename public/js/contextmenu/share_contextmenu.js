@@ -1,5 +1,6 @@
 import { listCreate } from '../main.js';
 import { resultPopUp } from '../stringUtils.js';
+import { getInputOrder } from '../utilityFunction.js';
 
 export const shareContextmenu = () => {
   $('.sharenote').on('contextmenu  click', function (event) {
