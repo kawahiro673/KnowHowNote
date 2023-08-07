@@ -95,7 +95,7 @@ export const allowDragAndDropOfFiles = () => {
     const $clone = $(this).clone();
     $clone.css('position', 'absolute');
     $clone.css('background-color', 'white');
-    // ゴーストエフェクト要素をbodyに追加
+    $clone.css('z-index', 1000); // ゴーストエフェクトを他の要素より前面に表示
     $('body').append($clone);
 
     // ドラッグ中の動作を設定
@@ -122,7 +122,7 @@ export const allowDragAndDropOfFolders = () => {
     const $clone = $(this).clone();
     $clone.css('position', 'absolute');
     $clone.css('background-color', 'white');
-    // ゴーストエフェクト要素をbodyに追加
+    $clone.css('z-index', 1000); // ゴーストエフェクトを他の要素より前面に表示
     $('body').append($clone);
 
     // ドラッグ中の動作を設定
@@ -143,6 +143,7 @@ export const allowDragAndDropOfFolders = () => {
     });
   });
 };
+
 
 //ノウハウ作成時に生成されたinput(親のli要素)が、同階層で上から何番目(order)に作成されたかを返す関数
 export const getInputOrder = (inputId) => {
