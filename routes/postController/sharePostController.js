@@ -29,13 +29,29 @@ router.post('/', (req, res) => {
       .then(() => {
         return new Promise((resolve, reject) => {
           pool.query(
-            'SELECT * FROM it_memo WHERE id = ?;',
-            [req.body.id],
+            'SELECT * FROM it_memo WHERE parent_id = ? ORDER BY folder_order DESE;',
+            [0],
             (error, result) => {
               if (error) {
                 reject(error);
               } else {
-                res.send({ fileResult: result[0] });
+                resolve(result);
+              }
+            }
+          );
+        });
+      })
+      .then((result) => {
+        return new Promise((resolve, reject) => {
+          const newOrder = result[0].folder_order + 1;
+          pool.query(
+            'UPDATE it_memo SET folder_order = ? WHERE id = ?;',
+            [newOrder, req.body.id],
+            (error, result) => {
+              if (error) {
+                reject(error);
+              } else {
+               res.send({msg : '成功しました'});
               }
             }
           );
