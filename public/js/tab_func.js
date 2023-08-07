@@ -269,28 +269,36 @@ document
 //   }
 // }
 
+let idid
+let titletitle
+
 let shareSendListenerAdded = false;
-let shareSendButton = document.getElementById('share-send');
+const shareSendButton = document.getElementById('share-send');
 
 export function shareButtonClick(id, title, flg) {
   console.log('やあ2');
   document.getElementById('popup-overlay_share').style.display = 'block';
   document.getElementById('share-nouhau-name').innerHTML = title;
-
+ idid = id;
+  titletitle = title;
+  
   if (!shareSendListenerAdded) {
-    shareSendButton.addEventListener('click', () => onClick(id, title));
+    shareSendButton.addEventListener('click', onClick);
     shareSendListenerAdded = true;
   }
 }
 
-function onClick(id, title) {
+
+function onClick(event) {
   console.log('やあ1');
-  shareNoteSendFunc(id, title);
+
+  shareNoteSendFunc(idid, titletitle);
   
   // イベントリスナーを削除
   shareSendButton.removeEventListener('click', onClick);
   shareSendListenerAdded = false;
 }
+
 
 export const shareNoteSendFunc = (id, title) => {
   console.log(title + ' ?');
