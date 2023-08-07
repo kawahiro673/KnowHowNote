@@ -150,86 +150,92 @@ document.getElementById('share-history').addEventListener('click', () => {
       flg: 'ShareList',
     }),
     success: function (res) {
-      const shareHistoryTable = document.getElementById('share-history-table');
-      if (shareHistoryTable) {
-        shareHistoryTable.parentNode.removeChild(shareHistoryTable);
-      }
-      //履歴が未作成の時(連続で押下するたびに作成されるため)
-      if (
-        !(
-          document
-            .getElementById('share-history-list')
-            .getElementsByTagName('p').length > 0
-        )
-      ) {
-        const table = document.createElement('table');
-        table.setAttribute('border', '1');
-        table.setAttribute('id', 'share-history-table');
-        const headerRow = document.createElement('tr');
-        headerRow.setAttribute('class', 'share-table-header');
-        const header0 = document.createElement('th');
-        header0.textContent = '';
-        const header1 = document.createElement('th');
-        header1.setAttribute('id', 'share-history-date');
-        header1.textContent = '共有日時';
-        const span1 = document.createElement('span');
-        span1.setAttribute('id', 'dateSortIndicator');
-        const header2 = document.createElement('th');
-        header2.setAttribute('id', 'share-history-user');
-        header2.textContent = 'ユーザー/グループ';
-        const span2 = document.createElement('span');
-        span2.setAttribute('id', 'userSortIndicator');
-        const header3 = document.createElement('th');
-        header3.textContent = 'ノウハウ';
+      if (res.shareResult === null) {
+        alert('共有履歴はございません');
+      } else {
+        const shareHistoryTable = document.getElementById(
+          'share-history-table'
+        );
+        if (shareHistoryTable) {
+          shareHistoryTable.parentNode.removeChild(shareHistoryTable);
+        }
+        //履歴が未作成の時(連続で押下するたびに作成されるため)
+        if (
+          !(
+            document
+              .getElementById('share-history-list')
+              .getElementsByTagName('p').length > 0
+          )
+        ) {
+          const table = document.createElement('table');
+          table.setAttribute('border', '1');
+          table.setAttribute('id', 'share-history-table');
+          const headerRow = document.createElement('tr');
+          headerRow.setAttribute('class', 'share-table-header');
+          const header0 = document.createElement('th');
+          header0.textContent = '';
+          const header1 = document.createElement('th');
+          header1.setAttribute('id', 'share-history-date');
+          header1.textContent = '共有日時';
+          const span1 = document.createElement('span');
+          span1.setAttribute('id', 'dateSortIndicator');
+          const header2 = document.createElement('th');
+          header2.setAttribute('id', 'share-history-user');
+          header2.textContent = 'ユーザー/グループ';
+          const span2 = document.createElement('span');
+          span2.setAttribute('id', 'userSortIndicator');
+          const header3 = document.createElement('th');
+          header3.textContent = 'ノウハウ';
 
-        headerRow.appendChild(header0);
-        headerRow.appendChild(header1);
-        headerRow.appendChild(header2);
-        headerRow.appendChild(header3);
-        header1.appendChild(span1);
-        header2.appendChild(span2);
+          headerRow.appendChild(header0);
+          headerRow.appendChild(header1);
+          headerRow.appendChild(header2);
+          headerRow.appendChild(header3);
+          header1.appendChild(span1);
+          header2.appendChild(span2);
 
-        document.getElementById('share-history-list').appendChild(table);
-        table.appendChild(headerRow);
+          document.getElementById('share-history-list').appendChild(table);
+          table.appendChild(headerRow);
 
-        res.shareResult.forEach((share) => {
-          const dataRow1 = document.createElement('tr');
-          const dataCell0 = document.createElement('td');
-          const img = document.createElement('img');
-          //共有を「された」のか「した」のか判別
-          if (share.Share_ToDo_Flg === 'True') {
-            img.src = '../img/share-to-do.png';
-            dataCell0.setAttribute('data-share-status', 'ToDo');
-          } else {
-            img.src = '../img/share-to-be_2.png';
-            dataCell0.setAttribute('data-share-status', 'ToBe');
+          res.shareResult.forEach((share) => {
+            const dataRow1 = document.createElement('tr');
+            const dataCell0 = document.createElement('td');
+            const img = document.createElement('img');
+            //共有を「された」のか「した」のか判別
+            if (share.Share_ToDo_Flg === 'True') {
+              img.src = '../img/share-to-do.png';
+              dataCell0.setAttribute('data-share-status', 'ToDo');
+            } else {
+              img.src = '../img/share-to-be_2.png';
+              dataCell0.setAttribute('data-share-status', 'ToBe');
+            }
+            dataCell0.appendChild(img);
+            const dataCell1 = document.createElement('td');
+            dataCell1.textContent = share.date;
+            const dataCell2 = document.createElement('td');
+            dataCell2.textContent = share.UserName;
+            const dataCell3 = document.createElement('td');
+            dataCell3.textContent = share.ShareNoteTitle;
+            dataRow1.appendChild(dataCell0);
+            dataRow1.appendChild(dataCell1);
+            dataRow1.appendChild(dataCell2);
+            dataRow1.appendChild(dataCell3);
+            table.appendChild(dataRow1);
+
+            shareHistoryTableDownList();
+            document
+              .getElementById('share-history-date')
+              .addEventListener('click', sortTableByDate);
+            document
+              .getElementById('share-history-user')
+              .addEventListener('click', sortTableByUser);
+          });
+          if (res.shareResult.length === 0) {
+            const p = document.createElement('p');
+            p.innerHTML = '共有履歴がありません';
+            p.setAttribute('class', 'no-share-user');
+            document.getElementById('share-history-list').appendChild(p);
           }
-          dataCell0.appendChild(img);
-          const dataCell1 = document.createElement('td');
-          dataCell1.textContent = share.date;
-          const dataCell2 = document.createElement('td');
-          dataCell2.textContent = share.UserName;
-          const dataCell3 = document.createElement('td');
-          dataCell3.textContent = share.ShareNoteTitle;
-          dataRow1.appendChild(dataCell0);
-          dataRow1.appendChild(dataCell1);
-          dataRow1.appendChild(dataCell2);
-          dataRow1.appendChild(dataCell3);
-          table.appendChild(dataRow1);
-
-          shareHistoryTableDownList();
-          document
-            .getElementById('share-history-date')
-            .addEventListener('click', sortTableByDate);
-          document
-            .getElementById('share-history-user')
-            .addEventListener('click', sortTableByUser);
-        });
-        if (res.shareResult.length === 0) {
-          const p = document.createElement('p');
-          p.innerHTML = '共有履歴がありません';
-          p.setAttribute('class', 'no-share-user');
-          document.getElementById('share-history-list').appendChild(p);
         }
       }
     },

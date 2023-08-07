@@ -409,7 +409,6 @@ router
         'token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; Path=/',
         'hashedId=; expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; Path=/',
       ]);
-
       res.send({ msg: 'ログアウトします' });
     } else if (req.body.flg === 'ShareList') {
       getUserDataByToken(req).then((resultDecoded) => {
@@ -423,29 +422,31 @@ router
               } else {
                 // 最新の100行のIDを取得
                 const idsToKeep = rows.map((row) => row.id);
-
-                // 最新の100行以外のレコードを削除
-                pool.query(
-                  'DELETE FROM share_user WHERE UserID = ? AND id NOT IN (?);',
-                  [resultDecoded[0].id, idsToKeep],
-                  (error, deleteResult) => {
-                    if (error) {
-                      reject(error);
-                    } else {
-                      pool.query(
-                        'SELECT * FROM share_user WHERE UserID = ? ORDER BY id DESC;',
-                        [resultDecoded[0].id],
-                        (error, selectResult) => {
-                          if (error) {
-                            reject(error);
-                          } else {
-                            res.send({ shareResult: selectResult });
+                if (idsToKeep.length > 0) {
+                  // 最新の100行以外のレコードを削除
+                  pool.query(
+                    'DELETE FROM share_user WHERE UserID = ? AND id NOT IN (?);',
+                    [resultDecoded[0].id, idsToKeep],
+                    (error, deleteResult) => {
+                      if (error) {
+                        reject(error);
+                      } else {
+                        pool.query(
+                          'SELECT * FROM share_user WHERE UserID = ? ORDER BY id DESC;',
+                          [resultDecoded[0].id],
+                          (error, selectResult) => {
+                            if (error) {
+                              reject(error);
+                            } else {
+                              res.send({ shareResult: selectResult });
+                            }
                           }
-                        }
-                      );
+                        );
+                      }
                     }
-                  }
-                );
+                  );
+                }
+                res.send({ shareResult: null });
               }
             }
           );
