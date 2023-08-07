@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
       .then(() => {
         return new Promise((resolve, reject) => {
           pool.query(
-            'SELECT * FROM it_memo WHERE parent_id = ? ORDER BY folder_order DESE;',
+            'SELECT * FROM it_memo WHERE parent_id = ? ORDER BY folder_order DESC;',
             [0],
             (error, result) => {
               if (error) {
