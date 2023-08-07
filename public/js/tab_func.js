@@ -273,7 +273,7 @@ let shareSendListenerAdded = false;
 let shareSendButton = document.getElementById('share-send');
 
 export function shareButtonClick(id, title, flg) {
-    console.log('やあ2');
+  console.log('やあ2');
   document.getElementById('popup-overlay_share').style.display = 'block';
   document.getElementById('share-nouhau-name').innerHTML = title;
 
@@ -290,7 +290,6 @@ function onClick(id, title) {
   shareSendButton.removeEventListener('click', onClick);
   shareSendListenerAdded = false;
 }
-
 
 export const shareNoteSendFunc = (id, title) => {
   console.log(title + ' ?');
