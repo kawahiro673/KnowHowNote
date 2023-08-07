@@ -318,37 +318,8 @@ export const jQueryUIOptionsFunc = () => {
 //ドラッグアンドドロップ後parent要素配下内のUI補正。sortableのD&DによるLineの崩れ補正。
 //①関数が受け取った引数(要素)が同階層の兄弟要素の中で一番下にある時に、要素のクラスにlastを追加し、要素A以外の同階層の兄弟要素に
 // 「last」または「lastCollapsable」または「lastExpandable」というクラスがあれば、そのクラスを削除
-//②関数が受け取った引数(要素)が同階層の兄弟要素の中で一番下でない場合、その要素の クラスに「last」があれば「last」を削除
-// function updateLastClasses_file(element) {
-//   const siblings = element.parentNode.children;
-//   const isLastChild = element === siblings[siblings.length - 1];
-
-//   for (const sibling of siblings) {
-//     if (sibling !== element) {
-//       if (sibling.classList.contains('last') || sibling.classList.contains('lastCollapsable') || sibling.classList.contains('lastExpandable')) {
-//         sibling.classList.remove('last', 'lastCollapsable', 'lastExpandable');
-//       }
-//     }
-//   }
-
-//   if (isLastChild) {
-//     if (element.classList.contains('collapsable')) {
-//       element.classList.remove('lastExpandable');
-//       element.classList.remove('last');
-//       element.classList.add('lastCollapsable'); // ① 要素が一番下で collapsable クラスを持つ場合、lastCollapsable クラスを追加
-//     } else if (element.classList.contains('expandable')) {
-//       element.classList.remove('lastCollapsable');
-//       element.classList.remove('last');
-//       element.classList.add('lastExpandable'); // ① 要素が一番下で expandable クラスを持つ場合、lastExpandable クラスを追加
-//     } else {
-//       element.classList.remove('lastCollapsable', 'lastExpandable');
-//       element.classList.add('last'); // ① 要素が一番下でない場合、last クラスを追加
-//     }
-//   } else if (element.classList.contains('last')) {
-//     element.classList.remove('last'); // ② 要素が一番下でなく、last クラスを持つ場合、last クラスを削除
-//   }
-// }
-
+//②関数が受け取った引数(要素A)が同階層の兄弟要素の中で一番下でない場合、その要素の クラスに「last」があれば「last」を削除し、同階層の兄弟要素の一番下の要素に「last」を追加する。
+// ただし、その同階層の兄弟要素の一番下の要素のクラスに、「collapsable」または「expandable」があれば追加し、この場合、「last」は追加しない
 function updateLastClasses_file(element) {
   const siblings = element.parentNode.children;
   const lastSibling = siblings[siblings.length - 1];
@@ -390,37 +361,8 @@ function updateLastClasses_file(element) {
 //ドラッグアンドドロップ後parent要素配下内のUI補正。sortableのD&DによるLineの崩れ補正。
 //①関数が受け取った引数(要素)が同階層の兄弟要素の中で一番下にある時に、要素のクラスに「collapsable」がある場合は、「lastCollapsable」を追加し、「expandable」がある場合は、「lastExpandable」を追加
 //  そして要素A以外の同階層の兄弟要素に「last」または「lastCollapsable」または「lastExpandable」というクラスがあれば、そのクラスを削除
-//②関数が受け取った引数(要素)が同階層の兄弟要素の中で一番下でない場合、その要素の クラスに「lastCollapsable」や「lastExpandable」があれば削除
-// function updateLastClasses_Folder(element) {
-//   const siblings = element.parentNode.children;
-//   const isLastChild = element === siblings[siblings.length - 1];
-
-//   for (const sibling of siblings) {
-//     if (sibling !== element) {
-//       if (sibling.classList.contains('last') || sibling.classList.contains('lastCollapsable') || sibling.classList.contains('lastExpandable')) {
-//         sibling.classList.remove('last', 'lastCollapsable', 'lastExpandable');
-//       }
-//     }
-//   }
-
-//   if (isLastChild) {
-//     if (element.classList.contains('collapsable')) {
-//       element.classList.remove('lastExpandable');
-//       element.classList.remove('last');
-//       element.classList.add('lastCollapsable'); // ① 要素が一番下で collapsable クラスを持つ場合、lastCollapsable クラスを追加
-//     } else if (element.classList.contains('expandable')) {
-//       element.classList.remove('lastCollapsable');
-//       element.classList.remove('last');
-//       element.classList.add('lastExpandable'); // ① 要素が一番下で expandable クラスを持つ場合、lastExpandable クラスを追加
-//     } else {
-//       element.classList.remove('lastCollapsable', 'lastExpandable');
-//       element.classList.add('last'); // ① 要素が一番下でない場合、last クラスを追加
-//     }
-//   } else {
-//     element.classList.remove('lastCollapsable', 'lastExpandable'); // ② 要素が一番下でない場合、lastCollapsable と lastExpandable クラスを削除
-//   }
-// }
-
+//②関数が受け取った引数(要素A)が同階層の兄弟要素の中で一番下でない場合、その要素のクラスに「lastCollapsable」や「lastExpandable」があれば削除し、
+// 同階層の兄弟要素の一番下の要素に「last」を追加する。ただし、その同階層の一番下の要素のクラスに「collapsable」または「expandable」があれば追加し、この場合「last」は追加しない
 function updateLastClasses_Folder(element) {
  const siblings = element.parentNode.children;
   const lastSibling = siblings[siblings.length - 1];
