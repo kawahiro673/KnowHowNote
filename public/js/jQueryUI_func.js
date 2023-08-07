@@ -347,7 +347,7 @@ export const jQueryUIOptionsFunc = () => {
 //   }
 // }
 
-function updateLastClasses(element) {
+function updateLastClasses_file(element) {
   const siblings = element.parentNode.children;
   const lastSibling = siblings[siblings.length - 1];
 
