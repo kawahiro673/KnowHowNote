@@ -286,7 +286,8 @@ export function shareButtonClick(id, title, flg) {
 function onClick(id, title) {
   console.log('やあ1');
   shareNoteSendFunc(id, title);
-  // クリックイベント後にイベントリスナーを削除
+  
+  // イベントリスナーを削除
   shareSendButton.removeEventListener('click', onClick);
   shareSendListenerAdded = false;
 }
