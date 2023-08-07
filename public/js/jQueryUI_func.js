@@ -536,6 +536,7 @@ function removeLastHitareaClasses(element) {
 
 //自分自身の要素のクラス名「lastCollapsable-hitarea」と「lastExpandable-hitarea」クラスを削除
 function removeLastHitareaClasses_this(element) {
+  console.log(element);
   const hitareas = element.querySelectorAll('.lastCollapsable-hitarea, .lastExpandable-hitarea');
   
   for (const hitarea of hitareas) {
