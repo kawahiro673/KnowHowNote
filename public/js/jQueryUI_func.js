@@ -420,7 +420,7 @@ function updateLastClasses_file(element) {
 // }
 
 function updateLastClasses_Folder(element) {
-  const siblings = element.parentNode.children;
+ const siblings = element.parentNode.children;
   const lastSibling = siblings[siblings.length - 1];
 
   for (const sibling of siblings) {
@@ -442,15 +442,17 @@ function updateLastClasses_Folder(element) {
     }
   } else {
     element.classList.remove('lastCollapsable', 'lastExpandable');
-    if (element.classList.contains('collapsable')) {
-      element.classList.remove('last');
-      lastSibling.classList.add('lastCollapsable');
-    } else if (element.classList.contains('expandable')) {
-      element.classList.remove('last');
-      lastSibling.classList.add('lastExpandable');
-    } else {
-      lastSibling.classList.remove('lastCollapsable', 'lastExpandable');
-      lastSibling.classList.add('last');
+    if (lastSibling) {
+      if (lastSibling.classList.contains('collapsable')) {
+        lastSibling.classList.remove('last');
+        lastSibling.classList.add('lastCollapsable');
+      } else if (lastSibling.classList.contains('expandable')) {
+        lastSibling.classList.remove('last');
+        lastSibling.classList.add('lastExpandable');
+      } else {
+        lastSibling.classList.remove('lastCollapsable', 'lastExpandable');
+        lastSibling.classList.add('last');
+      }
     }
   }
 }
