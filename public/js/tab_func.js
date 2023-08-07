@@ -8,7 +8,7 @@ import {
 import { hashedIdGet, setTabIdArray } from './main.js';
 
 export const tabCreate = (id, title, res) => {
-    console.log('やあ3');
+  console.log('やあ3');
   const inputTab = document.createElement('input');
   inputTab.setAttribute('id', 'TAB-ID' + id);
   inputTab.setAttribute('type', 'radio');
@@ -278,9 +278,9 @@ export function shareButtonClick(id, title, flg) {
   console.log('やあ2');
   document.getElementById('popup-overlay_share').style.display = 'block';
   document.getElementById('share-nouhau-name').innerHTML = title;
- tmpID = id;
+  tmpID = id;
   tmpTitle = title;
-  
+
   if (!shareSendListenerAdded) {
     shareSendButton.addEventListener('click', onClick);
     shareSendListenerAdded = true;
@@ -289,8 +289,8 @@ export function shareButtonClick(id, title, flg) {
 
 function onClick(event) {
   console.log('やあ1');
-  shareNoteSendFunc(tmpID,tmpTitle);
-  
+  shareNoteSendFunc(tmpID, tmpTitle);
+
   shareSendButton.removeEventListener('click', onClick);
   shareSendListenerAdded = false;
 }

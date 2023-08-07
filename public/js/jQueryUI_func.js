@@ -226,7 +226,7 @@ export const jQueryUIOptionsFunc = () => {
                   }),
                   success: function (res) {
                     updateLastClasses_Folder(item[0]);
-                     addLastClassToLastSibling(elementsBeforeMoving);
+                    addLastClassToLastSibling(elementsBeforeMoving);
                     removeLastHitareaClasses(item[0]);
                   },
                 });
@@ -245,8 +245,8 @@ export const jQueryUIOptionsFunc = () => {
                     move: 'up',
                   }),
                   success: function (res) {
-                     updateLastClasses_Folder(item[0]);
-                     addLastClassToLastSibling(elementsBeforeMoving);
+                    updateLastClasses_Folder(item[0]);
+                    addLastClassToLastSibling(elementsBeforeMoving);
                     removeLastHitareaClasses(item[0]);
                     removeLastHitareaClasses_this(item[0]);
                   },
@@ -299,10 +299,10 @@ export const jQueryUIOptionsFunc = () => {
                       pattern: 'folder',
                     }),
                     success: function (res) {
-                       updateLastClasses_Folder(item[0]);
-                       addLastClassToLastSibling(elementsBeforeMoving);
+                      updateLastClasses_Folder(item[0]);
+                      addLastClassToLastSibling(elementsBeforeMoving);
                       removeLastHitareaClasses(item[0]);
-                       removeLastHitareaClasses_this(item[0]);
+                      removeLastHitareaClasses_this(item[0]);
                     },
                   });
                 },
@@ -326,7 +326,11 @@ function updateLastClasses_file(element) {
 
   for (const sibling of siblings) {
     if (sibling !== element) {
-      if (sibling.classList.contains('last') || sibling.classList.contains('lastCollapsable') || sibling.classList.contains('lastExpandable')) {
+      if (
+        sibling.classList.contains('last') ||
+        sibling.classList.contains('lastCollapsable') ||
+        sibling.classList.contains('lastExpandable')
+      ) {
         sibling.classList.remove('last', 'lastCollapsable', 'lastExpandable');
       }
     }
@@ -364,12 +368,16 @@ function updateLastClasses_file(element) {
 //②関数が受け取った引数(要素A)が同階層の兄弟要素の中で一番下でない場合、その要素のクラスに「lastCollapsable」や「lastExpandable」があれば削除し、
 // 同階層の兄弟要素の一番下の要素に「last」を追加する。ただし、その同階層の一番下の要素のクラスに「collapsable」または「expandable」があれば追加し、この場合「last」は追加しない
 function updateLastClasses_Folder(element) {
- const siblings = element.parentNode.children;
+  const siblings = element.parentNode.children;
   const lastSibling = siblings[siblings.length - 1];
 
   for (const sibling of siblings) {
     if (sibling !== element) {
-      if (sibling.classList.contains('last') || sibling.classList.contains('lastCollapsable') || sibling.classList.contains('lastExpandable')) {
+      if (
+        sibling.classList.contains('last') ||
+        sibling.classList.contains('lastCollapsable') ||
+        sibling.classList.contains('lastExpandable')
+      ) {
         sibling.classList.remove('last', 'lastCollapsable', 'lastExpandable');
       }
     }
@@ -407,7 +415,11 @@ function updateLastClasses(element) {
 
   for (const sibling of siblings) {
     if (sibling !== element) {
-      if (sibling.classList.contains('last') || sibling.classList.contains('lastCollapsable') || sibling.classList.contains('lastExpandable')) {
+      if (
+        sibling.classList.contains('last') ||
+        sibling.classList.contains('lastCollapsable') ||
+        sibling.classList.contains('lastExpandable')
+      ) {
         sibling.classList.remove('last', 'lastCollapsable', 'lastExpandable');
       }
     }
@@ -443,9 +455,9 @@ function updateLastClasses(element) {
   }
 }
 
- //ドラッグアンドドロップ前parent要素配下内のUI補正。sortableのD&DによるLineの崩れ補正。
+//ドラッグアンドドロップ前parent要素配下内のUI補正。sortableのD&DによるLineの崩れ補正。
 function addLastClassToLastSibling(element) {
-    const siblings = element.parentNode.children;
+  const siblings = element.parentNode.children;
   const lastSibling = siblings[siblings.length - 1];
 
   if (lastSibling) {
@@ -469,9 +481,14 @@ function removeLastHitareaClasses(element) {
 
   for (const sibling of siblings) {
     if (sibling !== element) {
-      const hitarea = sibling.querySelector('.lastCollapsable-hitarea, .lastExpandable-hitarea');
+      const hitarea = sibling.querySelector(
+        '.lastCollapsable-hitarea, .lastExpandable-hitarea'
+      );
       if (hitarea) {
-        hitarea.classList.remove('lastCollapsable-hitarea', 'lastExpandable-hitarea');
+        hitarea.classList.remove(
+          'lastCollapsable-hitarea',
+          'lastExpandable-hitarea'
+        );
       }
     }
   }
@@ -480,9 +497,14 @@ function removeLastHitareaClasses(element) {
 //自分自身の要素のクラス名「lastCollapsable-hitarea」と「lastExpandable-hitarea」クラスを削除
 function removeLastHitareaClasses_this(element) {
   console.log(element);
-  const hitareas = element.querySelectorAll('.lastCollapsable-hitarea, .lastExpandable-hitarea');
-  
+  const hitareas = element.querySelectorAll(
+    '.lastCollapsable-hitarea, .lastExpandable-hitarea'
+  );
+
   for (const hitarea of hitareas) {
-    hitarea.classList.remove('lastCollapsable-hitarea', 'lastExpandable-hitarea');
+    hitarea.classList.remove(
+      'lastCollapsable-hitarea',
+      'lastExpandable-hitarea'
+    );
   }
 }

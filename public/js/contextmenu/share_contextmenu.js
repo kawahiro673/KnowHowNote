@@ -18,7 +18,7 @@ export const shareContextmenu = () => {
         const li = share.shareThis.parentElement;
         const ul = li.parentElement;
         ul.removeChild(li);
-         mynoteAddFunc(share.id);
+        mynoteAddFunc(share.id);
       });
     });
 
@@ -115,12 +115,12 @@ const mynoteAddFunc = (id) => {
       id,
     }),
     success: function (res) {
-          //一度listを全て削除して、再び新しく追加している→jQueryUIがうまく適用されないため
-          const node = document.getElementById('0');
-          while (node.firstChild) {
-            node.removeChild(node.firstChild);
-          }
-          listCreate();
+      //一度listを全て削除して、再び新しく追加している→jQueryUIがうまく適用されないため
+      const node = document.getElementById('0');
+      while (node.firstChild) {
+        node.removeChild(node.firstChild);
+      }
+      listCreate();
     },
   });
 };

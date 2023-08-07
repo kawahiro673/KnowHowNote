@@ -7,7 +7,7 @@ const { reject } = require('bcrypt/promises');
 
 router.post('/', (req, res) => {
   if (req.body.flg === 'shareAdd') {
-   getUserDataByToken(req)
+    getUserDataByToken(req)
       .then((resultDecoded) => {
         return new Promise((resolve, reject) => {
           pool.query(
@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
         return new Promise((resolve, reject) => {
           pool.query(
             'SELECT * FROM it_memo WHERE (parent_id = ?) AND (UserID = ?) ORDER BY folder_order DESC;',
-            [0,resultDecoded[0].id],
+            [0, resultDecoded[0].id],
             (error, result) => {
               if (error) {
                 reject(error);
@@ -48,7 +48,7 @@ router.post('/', (req, res) => {
               if (error) {
                 reject(error);
               } else {
-               res.send({order : newOrder});
+                res.send({ order: newOrder });
               }
             }
           );
