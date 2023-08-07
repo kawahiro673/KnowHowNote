@@ -33,7 +33,7 @@ export const newFileCreateFunc = (id) => {
     const createFile = async () => {
       if (!isCreatingFile) {
         isCreatingFile = true; // ファイル作成中フラグを立てる
-        await newCreateFile2(inputTab, span, id, li, order);
+        await newCreateFile2(inputTab, id, order);
         document.removeEventListener('click', handleClick);
         document.removeEventListener('contextmenu', handleContextMenu);
         document.removeEventListener('keypress', handleEnter);
@@ -69,7 +69,7 @@ export const newFileCreateFunc = (id) => {
     inputTab.addEventListener('keypress', handleEnter);
   });
 };
-export const newCreateFile2 = (inputTab, span, parentId, li, order) => {
+export const newCreateFile2 = (inputTab, parentId, order) => {
   return new Promise((resolve, reject) => {
     //何も入力されていない時や空白や改行のみ
     if (!inputTab.value || !inputTab.value.match(/\S/g)) {
