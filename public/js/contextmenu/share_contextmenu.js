@@ -18,7 +18,10 @@ export const shareContextmenu = () => {
         const li = share.shareThis.parentElement;
         const ul = li.parentElement;
         ul.removeChild(li);
-        mynoteAddFunc(share.id);
+        console.log(share.id);
+        console.log(typeof share.id);
+        const id = Number(share.id);
+        mynoteAddFunc(id);
       });
     });
 
