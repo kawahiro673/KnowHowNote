@@ -120,6 +120,7 @@ export const jQueryUIOptionsFunc = () => {
                   success: function (res) {
                     updateLastClasses(item[0]);
                     addLastClassToLastSibling(elementsBeforeMoving);
+                    removeLastHitareaClasses(item[0]);
                   },
                 });
                 //現在いる場所より上へD＆D
@@ -141,6 +142,7 @@ export const jQueryUIOptionsFunc = () => {
                   success: function (res) {
                     updateLastClasses(item[0]);
                     addLastClassToLastSibling(elementsBeforeMoving);
+                    removeLastHitareaClasses(item[0]);
                   },
                 });
               } else {
@@ -193,6 +195,7 @@ export const jQueryUIOptionsFunc = () => {
                       }
                       updateLastClasses(item[0]);
                       addLastClassToLastSibling(elementsBeforeMoving);
+                      removeLastHitareaClasses(item[0]);
                     },
                   });
                 },
@@ -220,6 +223,7 @@ export const jQueryUIOptionsFunc = () => {
                   success: function (res) {
                     updateLastClasses_Folder(item[0]);
                      addLastClassToLastSibling(elementsBeforeMoving);
+                    removeLastHitareaClasses(item[0]);
                   },
                 });
                 //orderが小さくなる場合(上へD＆D)
@@ -239,6 +243,7 @@ export const jQueryUIOptionsFunc = () => {
                   success: function (res) {
                      updateLastClasses_Folder(item[0]);
                      addLastClassToLastSibling(elementsBeforeMoving);
+                    removeLastHitareaClasses(item[0]);
                   },
                 });
               } else {
@@ -291,6 +296,7 @@ export const jQueryUIOptionsFunc = () => {
                     success: function (res) {
                        updateLastClasses_Folder(item[0]);
                        addLastClassToLastSibling(elementsBeforeMoving);
+                      removeLastHitareaClasses(item[0]);
                     },
                   });
                 },
