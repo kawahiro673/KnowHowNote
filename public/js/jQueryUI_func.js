@@ -118,7 +118,7 @@ export const jQueryUIOptionsFunc = () => {
                     order: afterOrder,
                   }),
                   success: function (res) {
-                    updateLastClasses(item[0]);
+                    updateLastClasses_file(item[0]);
                     addLastClassToLastSibling(elementsBeforeMoving);
                     removeLastHitareaClasses(item[0]);
                   },
@@ -140,7 +140,7 @@ export const jQueryUIOptionsFunc = () => {
                     order: afterOrder,
                   }),
                   success: function (res) {
-                    updateLastClasses(item[0]);
+                    updateLastClasses_file(item[0]);
                     addLastClassToLastSibling(elementsBeforeMoving);
                     removeLastHitareaClasses(item[0]);
                   },
@@ -193,7 +193,7 @@ export const jQueryUIOptionsFunc = () => {
                       if (Number(id) === focusId) {
                         $(`#tab-ID${id}`).trigger('click');
                       }
-                      updateLastClasses(item[0]);
+                      updateLastClasses_file(item[0]);
                       addLastClassToLastSibling(elementsBeforeMoving);
                       removeLastHitareaClasses(item[0]);
                     },
@@ -310,41 +310,10 @@ export const jQueryUIOptionsFunc = () => {
 };
 
 //ドラッグアンドドロップ後parent要素配下内のUI補正。sortableのD&DによるLineの崩れ補正。
-//①関数が受け取った引数(要素A)が同階層の兄弟要素の中で一番下にある時に、要素のクラスにlastを追加し、要素A以外の同階層の兄弟要素にlastというクラスがあれば、その兄弟要素のlastクラスを削除
-//②関数が受け取った引数(要素A)が同階層の兄弟要素の中で一番下でない場合、その要素の クラスにlastがある場合、クラスのlastを削除
-//③同階層の兄弟要素に、lastがなければ、一番下の要素のクラスにlastを追加
-// function updateLastClasses(element) {
-//   const siblings = element.parentNode.children;
-//   const isLastChild = element === siblings[siblings.length - 1];
-
-//   // 同階層の兄弟要素に last クラスがある場合、削除
-//   for (const sibling of siblings) {
-//     if (sibling !== element && sibling.classList.contains('last')) {
-//       sibling.classList.remove('last');
-//     }
-//   }
-
-//   if (isLastChild) {
-//     element.classList.add('last'); // ① 要素が一番下の場合、last クラスを追加
-//   } else if (element.classList.contains('last')) {
-//     element.classList.remove('last'); // ② 要素が一番下でなく、自身に last クラスがある場合、last クラスを削除
-//   }
-
-//   let hasLastClassSibling = false;
-//   for (const sibling of siblings) {
-//     if (sibling !== element && sibling.classList.contains('last')) {
-//       hasLastClassSibling = true;
-//       break;
-//     }
-//   }
-
-//   if (!hasLastClassSibling) {
-//     const lastSibling = siblings[siblings.length - 1];
-//     lastSibling.classList.add('last'); // ③ 同階層の兄弟要素に last クラスがなければ、一番下の要素に last クラスを追加
-//   }
-// }
-
-function updateLastClasses(element) {
+//①関数が受け取った引数(要素)が同階層の兄弟要素の中で一番下にある時に、要素のクラスにlastを追加し、要素A以外の同階層の兄弟要素に
+// 「last」または「lastCollapsable」または「lastExpandable」というクラスがあれば、そのクラスを削除
+//②関数が受け取った引数(要素)が同階層の兄弟要素の中で一番下でない場合、その要素の クラスに「last」があれば「last」を削除
+function updateLastClasses_file(element) {
   const siblings = element.parentNode.children;
   const isLastChild = element === siblings[siblings.length - 1];
 
@@ -374,6 +343,10 @@ function updateLastClasses(element) {
   }
 }
 
+//ドラッグアンドドロップ後parent要素配下内のUI補正。sortableのD&DによるLineの崩れ補正。
+//①関数が受け取った引数(要素)が同階層の兄弟要素の中で一番下にある時に、要素のクラスに「collapsable」がある場合は、「lastCollapsable」を追加し、「expandable」がある場合は、「lastExpandable」を追加
+//  そして要素A以外の同階層の兄弟要素に「last」または「lastCollapsable」または「lastExpandable」というクラスがあれば、そのクラスを削除
+//②関数が受け取った引数(要素)が同階層の兄弟要素の中で一番下でない場合、その要素の クラスに「lastCollapsable」や「lastExpandable」があれば削除
 function updateLastClasses_Folder(element) {
   const siblings = element.parentNode.children;
   const isLastChild = element === siblings[siblings.length - 1];
@@ -406,11 +379,6 @@ function updateLastClasses_Folder(element) {
 
  //ドラッグアンドドロップ前parent要素配下内のUI補正。sortableのD&DによるLineの崩れ補正。
 function addLastClassToLastSibling(element) {
-  // console.log(element);
-  // const siblings = element.parentNode.children;
-  // const lastSibling = siblings[siblings.length - 1];
-
-  // lastSibling.classList.add('last'); // 同階層の兄弟要素の一番下の要素に last クラスを追加
     const siblings = element.parentNode.children;
   const lastSibling = siblings[siblings.length - 1];
 
@@ -428,6 +396,8 @@ function addLastClassToLastSibling(element) {
   }
 }
 
+//関数が受け取った引数(要素)と同じ、同階層の兄弟要素の中で、クラス名「lastCollapsable-hitarea」と「lastExpandable-hitarea」クラスを削除
+//上記のクラスがあることによって、D&D時に、「⊕」「⊖」が消えてしまう事がある
 function removeLastHitareaClasses(element) {
   const siblings = element.parentNode.children;
 
