@@ -36,92 +36,29 @@ document.getElementById('nouhau').addEventListener('click', () => {
   enableElements();
 });
 
-// export const allowDragAndDropOfFiles = () => {
-//   $('.file').on('mousedown', function (e) {
-//     const $clone = $(this).clone();
-//     $clone.css('position', 'absolute');
-//     $clone.css('background-color', 'white');
-//     // ゴーストエフェクト要素をbodyに追加
-//     $('body').append($clone);
-
-//     // ドラッグ中の動作を設定
-//     $(document).on('mousemove', function (e) {
-//       // ゴーストエフェクトをドラッグに追従させる
-//       $clone.css('left', e.pageX + 'px');
-//       $clone.css('top', e.pageY + 'px');
-//     });
-
-//     // ドラッグ終了時の処理を設定
-//     $(document).on('mouseup', function (e) {
-//       // ゴーストエフェクト要素を削除
-//       $clone.remove();
-
-//       // 不要なイベントハンドラを解除
-//       $(document).off('mousemove');
-//       $(document).off('mouseup');
-//     });
-//   });
-// };
-
-// export const allowDragAndDropOfFolders = () => {
-//   $('.folder').on('mousedown', function (e) {
-//     const $clone = $(this).clone();
-//     $clone.css('position', 'absolute');
-//     $clone.css('background-color', 'white');
-//     // ゴーストエフェクト要素をbodyに追加
-//     $('body').append($clone);
-
-//     // ドラッグ中の動作を設定
-//     $(document).on('mousemove', function (e) {
-//       // ゴーストエフェクトをドラッグに追従させる
-//       $clone.css('left', e.pageX + 'px');
-//       $clone.css('top', e.pageY + 'px');
-//     });
-
-//     // ドラッグ終了時の処理を設定
-//     $(document).on('mouseup', function (e) {
-//       // ゴーストエフェクト要素を削除
-//       $clone.remove();
-
-//       // 不要なイベントハンドラを解除
-//       $(document).off('mousemove');
-//       $(document).off('mouseup');
-//     });
-//   });
-// };
-
 export const allowDragAndDropOfFiles = () => {
   $('.file').on('mousedown', function (e) {
     const $clone = $(this).clone();
-    const offset = $(this).offset();
-
     $clone.css('position', 'absolute');
     $clone.css('background-color', 'white');
-    $clone.css('z-index', 1000); // ゴーストエフェクトを他の要素より前面に表示
-
-    // ゴーストエフェクトを要素の中央に配置
-    const centerX = offset.left + $(this).outerWidth() / 2;
-    const centerY = offset.top + $(this).outerHeight() / 2;
-    $clone.css('left', centerX + 'px');
-    $clone.css('top', centerY + 'px');
-
+    // ゴーストエフェクト要素をbodyに追加
     $('body').append($clone);
 
     // ドラッグ中の動作を設定
-    $(document).on('mousemove.fileDrag', function (e) {
-      // ゴーストエフェクトをマウスに追従させる
+    $(document).on('mousemove', function (e) {
+      // ゴーストエフェクトをドラッグに追従させる
       $clone.css('left', e.pageX + 'px');
       $clone.css('top', e.pageY + 'px');
     });
 
     // ドラッグ終了時の処理を設定
-    $(document).on('mouseup.fileDrag', function (e) {
+    $(document).on('mouseup', function (e) {
       // ゴーストエフェクト要素を削除
       $clone.remove();
 
-      // イベントハンドラを解除
-      $(document).off('mousemove.fileDrag');
-      $(document).off('mouseup.fileDrag');
+      // 不要なイベントハンドラを解除
+      $(document).off('mousemove');
+      $(document).off('mouseup');
     });
   });
 };
@@ -129,40 +66,29 @@ export const allowDragAndDropOfFiles = () => {
 export const allowDragAndDropOfFolders = () => {
   $('.folder').on('mousedown', function (e) {
     const $clone = $(this).clone();
-    const offset = $(this).offset();
-
     $clone.css('position', 'absolute');
     $clone.css('background-color', 'white');
-    $clone.css('z-index', 1000); // ゴーストエフェクトを他の要素より前面に表示
-
-    // ゴーストエフェクトを要素の中央に配置
-    const centerX = offset.left + $(this).outerWidth() / 2;
-    const centerY = offset.top + $(this).outerHeight() / 2;
-    $clone.css('left', centerX + 'px');
-    $clone.css('top', centerY + 'px');
-
+    // ゴーストエフェクト要素をbodyに追加
     $('body').append($clone);
 
     // ドラッグ中の動作を設定
-    $(document).on('mousemove.folderDrag', function (e) {
-      // ゴーストエフェクトをマウスに追従させる
+    $(document).on('mousemove', function (e) {
+      // ゴーストエフェクトをドラッグに追従させる
       $clone.css('left', e.pageX + 'px');
       $clone.css('top', e.pageY + 'px');
     });
 
     // ドラッグ終了時の処理を設定
-    $(document).on('mouseup.folderDrag', function (e) {
+    $(document).on('mouseup', function (e) {
       // ゴーストエフェクト要素を削除
       $clone.remove();
 
-      // イベントハンドラを解除
-      $(document).off('mousemove.folderDrag');
-      $(document).off('mouseup.folderDrag');
+      // 不要なイベントハンドラを解除
+      $(document).off('mousemove');
+      $(document).off('mouseup');
     });
   });
 };
-
-
 
 //ノウハウ作成時に生成されたinput(親のli要素)が、同階層で上から何番目(order)に作成されたかを返す関数
 export const getInputOrder = (inputId) => {
