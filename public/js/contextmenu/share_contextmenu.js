@@ -51,7 +51,6 @@ export const shareContextmenu = () => {
 
       // ボタンに新しいクリックイベントを登録
       $('#share-list-delete').on('click', function (e) {
-        console.log('「削除」が押されました');
         //対象のシェアノウハウを削除
         document.getElementById('popup-overlay_share-delete').style.display =
           'block';
@@ -146,7 +145,7 @@ const mynoteAddFunc = (id) => {
       //     order,
       //   }),
       //   success: function (res) {
-      
+          console.log(res.order);
           //一度listを全て削除して、再び新しく追加している→jQueryUIがうまく適用されないため
           const node = document.getElementById('0');
           while (node.firstChild) {
