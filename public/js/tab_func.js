@@ -190,6 +190,7 @@ export const keepButtonClick = (id) => {
 ////////////////////////////////////////////////////////////////
 /////////////////////////////取り消し////////////////////////////
 ////////////////////////////////////////////////////////////////
+
 //タブエリアの[取り消し]ボタン押下時
 export const cancelButtonClick = (id) => {
   document.getElementById('popup-overlay_keep-cancel').style.display = 'block';
@@ -251,31 +252,12 @@ document
 ////////////////////////////////////////////////////////////////
 /////////////////////////////共有機能////////////////////////////
 ////////////////////////////////////////////////////////////////
-// let shareSendListenerAdded = false;
-
-// export function shareButtonClick(id, title, flg) {
-//   document.getElementById('popup-overlay_share').style.display = 'block';
-//   document.getElementById('share-nouhau-name').innerHTML = title;
-
-//   if (!shareSendListenerAdded) {
-//     const shareSendButton = document.getElementById('share-send');
-//     shareSendButton.addEventListener('click', onClick);
-//     shareSendListenerAdded = true;
-//   }
-
-//   function onClick() {
-//     shareNoteSendFunc(id, title);
-//     shareSendListenerAdded = false;
-//   }
-// }
-
 let tmpID;
 let tmpTitle;
 let shareSendListenerAdded = false;
 const shareSendButton = document.getElementById('share-send');
 
 export function shareButtonClick(id, title, flg) {
-  console.log('やあ2');
   document.getElementById('popup-overlay_share').style.display = 'block';
   document.getElementById('share-nouhau-name').innerHTML = title;
   tmpID = id;
@@ -288,7 +270,6 @@ export function shareButtonClick(id, title, flg) {
 }
 
 function onClick(event) {
-  console.log('やあ1');
   shareNoteSendFunc(tmpID, tmpTitle);
 
   shareSendButton.removeEventListener('click', onClick);
