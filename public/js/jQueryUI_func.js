@@ -421,3 +421,16 @@ function addLastClassToLastSibling(element) {
     }
   }
 }
+
+function removeLastHitareaClasses(element) {
+  const siblings = element.parentNode.children;
+
+  for (const sibling of siblings) {
+    if (sibling !== element) {
+      const hitarea = sibling.querySelector('.lastCollapsable-hitarea, .lastExpandable-hitarea');
+      if (hitarea) {
+        hitarea.classList.remove('lastCollapsable-hitarea', 'lastExpandable-hitarea');
+      }
+    }
+  }
+}
