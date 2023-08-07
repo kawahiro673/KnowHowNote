@@ -93,14 +93,23 @@ document.getElementById('nouhau').addEventListener('click', () => {
 export const allowDragAndDropOfFiles = () => {
   $('.file').on('mousedown', function (e) {
     const $clone = $(this).clone();
+    const offset = $(this).offset();
+
     $clone.css('position', 'absolute');
     $clone.css('background-color', 'white');
     $clone.css('z-index', 1000); // ゴーストエフェクトを他の要素より前面に表示
+
+    // ゴーストエフェクトを要素の中央に配置
+    const centerX = offset.left + $(this).outerWidth() / 2;
+    const centerY = offset.top + $(this).outerHeight() / 2;
+    $clone.css('left', centerX + 'px');
+    $clone.css('top', centerY + 'px');
+
     $('body').append($clone);
 
     // ドラッグ中の動作を設定
     $(document).on('mousemove.fileDrag', function (e) {
-      // ゴーストエフェクトをドラッグに追従させる
+      // ゴーストエフェクトをマウスに追従させる
       $clone.css('left', e.pageX + 'px');
       $clone.css('top', e.pageY + 'px');
     });
@@ -120,14 +129,23 @@ export const allowDragAndDropOfFiles = () => {
 export const allowDragAndDropOfFolders = () => {
   $('.folder').on('mousedown', function (e) {
     const $clone = $(this).clone();
+    const offset = $(this).offset();
+
     $clone.css('position', 'absolute');
     $clone.css('background-color', 'white');
     $clone.css('z-index', 1000); // ゴーストエフェクトを他の要素より前面に表示
+
+    // ゴーストエフェクトを要素の中央に配置
+    const centerX = offset.left + $(this).outerWidth() / 2;
+    const centerY = offset.top + $(this).outerHeight() / 2;
+    $clone.css('left', centerX + 'px');
+    $clone.css('top', centerY + 'px');
+
     $('body').append($clone);
 
     // ドラッグ中の動作を設定
     $(document).on('mousemove.folderDrag', function (e) {
-      // ゴーストエフェクトをドラッグに追従させる
+      // ゴーストエフェクトをマウスに追従させる
       $clone.css('left', e.pageX + 'px');
       $clone.css('top', e.pageY + 'px');
     });
@@ -143,6 +161,7 @@ export const allowDragAndDropOfFolders = () => {
     });
   });
 };
+
 
 
 //ノウハウ作成時に生成されたinput(親のli要素)が、同階層で上から何番目(order)に作成されたかを返す関数
