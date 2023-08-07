@@ -248,6 +248,7 @@ export const jQueryUIOptionsFunc = () => {
                      updateLastClasses_Folder(item[0]);
                      addLastClassToLastSibling(elementsBeforeMoving);
                     removeLastHitareaClasses(item[0]);
+                    removeLastHitareaClasses_this(item[0]);
                   },
                 });
               } else {
@@ -530,5 +531,14 @@ function removeLastHitareaClasses(element) {
         hitarea.classList.remove('lastCollapsable-hitarea', 'lastExpandable-hitarea');
       }
     }
+  }
+}
+
+//自分自身の要素のクラス名「lastCollapsable-hitarea」と「lastExpandable-hitarea」クラスを削除
+function removeLastHitareaClasses_this(element) {
+  const hitareas = element.querySelectorAll('.lastCollapsable-hitarea, .lastExpandable-hitarea');
+  
+  for (const hitarea of hitareas) {
+    hitarea.classList.remove('lastCollapsable-hitarea', 'lastExpandable-hitarea');
   }
 }
