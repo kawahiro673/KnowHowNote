@@ -7,11 +7,8 @@ const { reject } = require('bcrypt/promises');
 
 router.post('/', (req, res) => {
   if (req.body.flg === 'shareAdd') {
-    let promise = new Promise((resolve, reject) => {
-      resolve();
-    });
-    promise
-      .then(() => {
+   getUserDataByToken(req)
+      .then((resultDecoded) => {
         return new Promise((resolve, reject) => {
           pool.query(
             'UPDATE it_memo SET Type = ?, parent_id = ? WHERE id = ?;',
@@ -20,17 +17,17 @@ router.post('/', (req, res) => {
               if (error) {
                 reject(error);
               } else {
-                resolve();
+                resolve(resultDecoded);
               }
             }
           );
         });
       })
-      .then(() => {
+      .then((resultDecoded) => {
         return new Promise((resolve, reject) => {
           pool.query(
-            'SELECT * FROM it_memo WHERE parent_id = ? ORDER BY folder_order DESC;',
-            [0],
+            'SELECT * FROM it_memo WHERE (parent_id = ?) AND (UserID = ?) ORDER BY folder_order DESC;',
+            [0,resultDecoded[0].id],
             (error, result) => {
               if (error) {
                 reject(error);
