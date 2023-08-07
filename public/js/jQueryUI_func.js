@@ -389,9 +389,39 @@ function updateLastClasses_file(element) {
 //①関数が受け取った引数(要素)が同階層の兄弟要素の中で一番下にある時に、要素のクラスに「collapsable」がある場合は、「lastCollapsable」を追加し、「expandable」がある場合は、「lastExpandable」を追加
 //  そして要素A以外の同階層の兄弟要素に「last」または「lastCollapsable」または「lastExpandable」というクラスがあれば、そのクラスを削除
 //②関数が受け取った引数(要素)が同階層の兄弟要素の中で一番下でない場合、その要素の クラスに「lastCollapsable」や「lastExpandable」があれば削除
+// function updateLastClasses_Folder(element) {
+//   const siblings = element.parentNode.children;
+//   const isLastChild = element === siblings[siblings.length - 1];
+
+//   for (const sibling of siblings) {
+//     if (sibling !== element) {
+//       if (sibling.classList.contains('last') || sibling.classList.contains('lastCollapsable') || sibling.classList.contains('lastExpandable')) {
+//         sibling.classList.remove('last', 'lastCollapsable', 'lastExpandable');
+//       }
+//     }
+//   }
+
+//   if (isLastChild) {
+//     if (element.classList.contains('collapsable')) {
+//       element.classList.remove('lastExpandable');
+//       element.classList.remove('last');
+//       element.classList.add('lastCollapsable'); // ① 要素が一番下で collapsable クラスを持つ場合、lastCollapsable クラスを追加
+//     } else if (element.classList.contains('expandable')) {
+//       element.classList.remove('lastCollapsable');
+//       element.classList.remove('last');
+//       element.classList.add('lastExpandable'); // ① 要素が一番下で expandable クラスを持つ場合、lastExpandable クラスを追加
+//     } else {
+//       element.classList.remove('lastCollapsable', 'lastExpandable');
+//       element.classList.add('last'); // ① 要素が一番下でない場合、last クラスを追加
+//     }
+//   } else {
+//     element.classList.remove('lastCollapsable', 'lastExpandable'); // ② 要素が一番下でない場合、lastCollapsable と lastExpandable クラスを削除
+//   }
+// }
+
 function updateLastClasses_Folder(element) {
   const siblings = element.parentNode.children;
-  const isLastChild = element === siblings[siblings.length - 1];
+  const lastSibling = siblings[siblings.length - 1];
 
   for (const sibling of siblings) {
     if (sibling !== element) {
@@ -401,21 +431,27 @@ function updateLastClasses_Folder(element) {
     }
   }
 
-  if (isLastChild) {
+  if (lastSibling === element) {
+    element.classList.remove('last', 'lastCollapsable', 'lastExpandable');
     if (element.classList.contains('collapsable')) {
-      element.classList.remove('lastExpandable');
-      element.classList.remove('last');
-      element.classList.add('lastCollapsable'); // ① 要素が一番下で collapsable クラスを持つ場合、lastCollapsable クラスを追加
+      element.classList.add('lastCollapsable');
     } else if (element.classList.contains('expandable')) {
-      element.classList.remove('lastCollapsable');
-      element.classList.remove('last');
-      element.classList.add('lastExpandable'); // ① 要素が一番下で expandable クラスを持つ場合、lastExpandable クラスを追加
+      element.classList.add('lastExpandable');
     } else {
-      element.classList.remove('lastCollapsable', 'lastExpandable');
-      element.classList.add('last'); // ① 要素が一番下でない場合、last クラスを追加
+      element.classList.add('last');
     }
   } else {
-    element.classList.remove('lastCollapsable', 'lastExpandable'); // ② 要素が一番下でない場合、lastCollapsable と lastExpandable クラスを削除
+    element.classList.remove('lastCollapsable', 'lastExpandable');
+    if (element.classList.contains('collapsable')) {
+      element.classList.remove('last');
+      lastSibling.classList.add('lastCollapsable');
+    } else if (element.classList.contains('expandable')) {
+      element.classList.remove('last');
+      lastSibling.classList.add('lastExpandable');
+    } else {
+      lastSibling.classList.remove('lastCollapsable', 'lastExpandable');
+      lastSibling.classList.add('last');
+    }
   }
 }
 
