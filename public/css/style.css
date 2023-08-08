@@ -92,14 +92,12 @@ header h2 {
   padding: 0;
 }
 
-/* .file:hover,
-.folder:hover {
-  border: 2px solid #b2b2b2;
-  border-radius: 5px;
-}
- */
 .file {
   -webkit-text-stroke: 0.5px black; /* テキストの枠の設定 */
+}
+
+.sharetree{
+ padding: 0px; 
 }
 
 .hide1 {
