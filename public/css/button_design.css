@@ -226,6 +226,7 @@
 .share-update-button-container {
   display: flex;
   justify-content: flex-end; /* ボタンを右端に配置 */
+  margin-right: 10px;
 }
 
 #share-list-update-button{
@@ -237,8 +238,8 @@
 }
 
 #share-list-update-button img {
-  width: 16px; 
-  height: 16px; 
+  width: 20px; 
+  height: 20px; 
 }
 
 /************************************リスト上のボタン***************************************/
@@ -312,7 +313,7 @@
   color: #666800;
   border-radius: 5px;
   font-weight: bold;
-/*   background: linear-gradient(#ffff79 0%, #fffb00 100%); */
+   /* background: linear-gradient(#ffff79 0%, #fffb00 100%); */
   background-color: #FFFFFF;
   text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
