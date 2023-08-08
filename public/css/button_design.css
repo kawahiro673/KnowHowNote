@@ -222,26 +222,26 @@
   margin-left: 50px;
 }
 
-
+/************************************共有ノウハウの更新ボタン***************************************/
 .share-update-button-container {
   display: flex;
   justify-content: flex-end; /* ボタンを右端に配置 */
-  margin: 5px; 
 }
 
 #share-list-update-button{
   display: inline-block;
-  padding: 5px 5px;
   text-decoration: none;
   background-color: white;
   cursor: pointer;
-}
-#share-list-update-button img {
-  width: 32px; 
-  height: 32px; 
+  border: none; 
 }
 
-/************************************リスト上ボタン***************************************/
+#share-list-update-button img {
+  width: 16px; 
+  height: 16px; 
+}
+
+/************************************リスト上のボタン***************************************/
 #closed-button {
   text-decoration: none;
   color: #0b0869;
