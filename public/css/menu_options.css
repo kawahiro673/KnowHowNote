@@ -362,3 +362,10 @@ input[type='checkbox']:checked + .gray_b {
   color:red;
   text-align: center;
 }
+
+
+.friend-list-none-message {
+  grid-column: span 3; /* 3列を横一列に広げて中央に配置 */
+  text-align: center; 
+  color: red;
+}
