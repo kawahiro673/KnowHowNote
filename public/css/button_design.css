@@ -240,3 +240,45 @@
   width: 32px; 
   height: 32px; 
 }
+
+
+#closed-button {
+  text-decoration: none;
+  color: #0b0869;
+  border-radius: 5px;
+  font-weight: bold;
+/*   background: linear-gradient(#61a6f5 0%, #007bff 100%); */
+ background-color: #CBFFD3;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+  border: 2px solid black;
+}
+#closed-button:active {
+  -webkit-transform: translateY(2px);
+  transform: translateY(3px); /*沈むように*/
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  background-image: linear-gradient(
+    #F0FFF0 0%,
+   #E6FFE9 100%
+  ); /*グラデーションを明るく*/
+}
+
+#expandable-button {
+  text-decoration: none;
+  color: #800000;
+  border-radius: 5px;
+  font-weight: bold;
+  background: linear-gradient(#f56161 0%, #ea1b1b 100%);
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+  border: 2px solid black;
+}
+#expandable-button:active {
+  -webkit-transform: translateY(2px);
+  transform: translateY(3px); /*沈むように*/
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  background-image: linear-gradient(
+    #ff8080 0%,
+    #ffaaaa 100%
+  ); /*グラデーションを明るく*/
+}
