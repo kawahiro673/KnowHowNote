@@ -70,7 +70,11 @@ const groupListUpdate = (idElement) => {
       const groupDisplay = document.getElementById(idElement);
       groupDisplay.innerHTML = '';
 
-      res.groupResults.forEach((item) => {
+      if (res.groupResults.length === 0) {
+        document.getElementById('group-add-list-massage').innerHTML = '※グループは作成されていません'; 
+      }else{
+       document.getElementById('group-add-list-massage').innerHTML = '※現在作成されているグループは下記です'; 
+       res.groupResults.forEach((item) => {
         const userGroup = item['User_Group'].trim();
 
         let column = document.createElement('div');
@@ -84,6 +88,7 @@ const groupListUpdate = (idElement) => {
         column.appendChild(groupDelete);
       });
       groupListHoverRedFunc();
+     }
     },
   });
 };
