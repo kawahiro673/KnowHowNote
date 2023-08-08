@@ -358,4 +358,7 @@ input[type='checkbox']:checked + .gray_b {
   line-height: 1.5; 
   margin: 0;
   padding: 0;
+  text-align: center;
+  color:red;
+  text-align: center;
 }
