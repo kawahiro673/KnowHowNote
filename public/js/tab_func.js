@@ -455,7 +455,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
 
       if (res.friend.length === 0) {
         const p = document.createElement('p');
-        p.innerHTML = 'フレンドが登録されていません';
+        p.innerHTML = '※フレンドが登録されていません';
         p.setAttribute('class','friend-list-none-register');
         document.getElementById('share-user-div').appendChild(p);
       }
