@@ -369,3 +369,8 @@ input[type='checkbox']:checked + .gray_b {
   text-align: center; 
   color: red;
 }
+
+#group-add-list-massage{
+   text-align: center; 
+  color: red;
+}
