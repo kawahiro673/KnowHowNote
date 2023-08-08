@@ -374,3 +374,10 @@ input[type='checkbox']:checked + .gray_b {
    text-align: center; 
   color: red;
 }
+
+.group-list-none-belong,
+.friend-list-none-register{
+  grid-column: span 2; /* 2列を横一列に広げて中央に配置 */
+  text-align: center; 
+  color: red;
+}
