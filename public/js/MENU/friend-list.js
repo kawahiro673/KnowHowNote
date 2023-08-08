@@ -43,7 +43,7 @@ export const friendListUpdate = () => {
            const div = document.createElement('div');
           div.setAttribute('class', 'friend-list-none-message');
           div.innerHTML = '※フレンドが登録されていません';
-          friendElement.appendChild(div);
+           friendListDiv.appendChild(div);
           resolve(); // 処理が完了したことを知らせるだけなのでresolve()を呼び出す
         }
 
