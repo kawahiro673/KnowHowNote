@@ -7,6 +7,11 @@ const elements = document.querySelectorAll('.logininput');
 
 loginbtn.addEventListener('click', loginButtonClick);
 
+  document.getElementById("pass-forget").addEventListener("click", function(event) {
+    event.preventDefault(); // デフォルトのクリック動作をキャンセル
+    console.log('ボタンクリック');
+  });
+
 function loginButtonClick() {
   elements.forEach(function (element) {
     element.style.border = '1px solid black';
