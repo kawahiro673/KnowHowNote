@@ -363,10 +363,11 @@ document.getElementById('share-list-update-button').addEventListener('click', fu
   document.getElementById('sharelist').innerHTML = '';
    let button = this;
   button.classList.add("rotate"); // 回転用のクラスを追加
+  console.log(button);
 
-  setTimeout(function() {
-    button.classList.remove("rotate"); // 3秒後にクラスを削除して回転を停止
-  }, 3000); // 3000ミリ秒 = 3秒
+  // setTimeout(function() {
+  //   button.classList.remove("rotate"); // 3秒後にクラスを削除して回転を停止
+  // }, 3000); // 3000ミリ秒 = 3秒
   
   shareListCreate();
 });
