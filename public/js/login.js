@@ -10,6 +10,23 @@ loginbtn.addEventListener('click', loginButtonClick);
   document.getElementById("pass-forget").addEventListener("click", function(event) {
     event.preventDefault(); // デフォルトのクリック動作をキャンセル
     console.log('ボタンクリック');
+      document.getElementById('popup-overlay_pass-forget').style.display = 'block';
+  });
+
+document
+  .getElementById('pop-delete_pass-forget')
+  .addEventListener('click', (e) => {
+    e.preventDefault(); // リンクのデフォルトの動作を無効化
+    document.getElementById('popup-overlay_pass-forget').style.display = 'none';
+  });
+
+document
+  .getElementById('popup-overlay_pass-forget')
+  .addEventListener('click', (e) => {
+    const popup = document.getElementById('popup-overlay_pass-forget');
+    if (e.target === popup) {
+      popup.style.display = 'none';
+    }
   });
 
 function loginButtonClick() {
