@@ -32,7 +32,8 @@
 #yes-button-folder-delete,
 #no-button-folder-delete,
 #yes-button-keep-cancel,
-#no-button-keep-cancel {
+#no-button-keep-cancel,
+#share-list-update{
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -45,12 +46,6 @@
   color: #fff;
   cursor: pointer;
 }
-
-/* #inquiry-button {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-} */
 
 /*小さめのボタン*/
 #yes-button-logout,
@@ -78,7 +73,8 @@
 #yes-button-folder-delete,
 #no-button-folder-delete,
 #yes-button-keep-cancel,
-#no-button-keep-cancel {
+#no-button-keep-cancel,
+#share-list-update{
   padding: 7px 14px;
   font-size: 12px;
 }
