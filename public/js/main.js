@@ -203,7 +203,7 @@ const shareListCreate = () => {
           // 要素作成
           let li = document.createElement('li');
           let span = document.createElement('span');
-          span.setAttribute('class', 'sharenote file');
+          span.setAttribute('class', `sharenote file file-${res.user.BackgroundColor}`);
           span.setAttribute('value', file.id);
           span.innerHTML = file.title;
           document.getElementById('sharelist').appendChild(li);
