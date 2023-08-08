@@ -242,6 +242,11 @@
   height: 20px; 
 }
 
+.rotate {
+  transform: rotate(1800deg); /* 5回転する角度 */
+  transition: transform 15s ease; /* 15秒でアニメーションする（5回転 * 3秒） */
+}
+
 /************************************リスト上のボタン***************************************/
 #closed-button {
   text-decoration: none;
@@ -325,9 +330,4 @@
   transform: translateY(3px);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
   background-image: linear-gradient( #FFFFFF 0%,  #FFFFFF 100%);
-}
-
-.rotate {
-  transform: rotate(360deg); /* 一回転する角度 */
-  transition: transform 3s ease; /* 3秒でアニメーションする */
 }
