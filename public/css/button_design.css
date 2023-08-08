@@ -328,5 +328,6 @@
 }
 
 .rotate {
-  transform: rotate(360deg);
+  transform: rotate(360deg); /* 一回転する角度 */
+  transition: transform 3s ease; /* 3秒でアニメーションする */
 }
