@@ -358,9 +358,16 @@ document.getElementById('idInput').addEventListener('input', () => {
   document.getElementById('idInput').value = formattedID;
 });
 
-document.getElementById('share-list-update-button').addEventListener('click', () => {
+document.getElementById('share-list-update-button').addEventListener('click', function() {
   console.log('更新ボタンクリックしました');
   document.getElementById('sharelist').innerHTML = '';
+   let button = this;
+  button.classList.add("rotate"); // 回転用のクラスを追加
+
+  setTimeout(function() {
+    button.classList.remove("rotate"); // 3秒後にクラスを削除して回転を停止
+  }, 3000); // 3000ミリ秒 = 3秒
+  
   shareListCreate();
 });
 
