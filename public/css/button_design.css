@@ -32,8 +32,7 @@
 #yes-button-folder-delete,
 #no-button-folder-delete,
 #yes-button-keep-cancel,
-#no-button-keep-cancel,
-#share-list-update{
+#no-button-keep-cancel{
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -73,8 +72,7 @@
 #yes-button-folder-delete,
 #no-button-folder-delete,
 #yes-button-keep-cancel,
-#no-button-keep-cancel,
-#share-list-update{
+#no-button-keep-cancel{
   padding: 7px 14px;
   font-size: 12px;
 }
@@ -222,4 +220,19 @@
 
 .share-row button {
   margin-left: 50px;
+}
+
+
+.share-update-button-container {
+  display: flex;
+  justify-content: flex-end; /* ボタンを右端に配置 */
+  margin: 5px; /* 必要に応じてマージンを追加 */
+}
+
+#share-list-update-button{
+  display: inline-block;
+  padding: 5px 5px;
+  text-decoration: none;
+  background-color: white;
+  cursor: pointer;
 }
