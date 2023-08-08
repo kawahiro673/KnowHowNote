@@ -27,11 +27,9 @@ function registerButtonClick() {
       //未入力確認
       if (
         userName.value === '' ||
-        // email_auth.value === '' ||
         password_auth.value === '' ||
         cfPassword.value === ''
       ) {
-        // alert('入力されていない情報があります');
         elements.forEach(function (element) {
           if (element.value === '') {
             element.style.border = '1px solid red';
@@ -46,15 +44,22 @@ function registerButtonClick() {
         (user) => user.UserName === userName.value
       );
       if (user) {
-        // alert('そのユーザーは登録できません');
         message.style.display = 'block';
         message.innerHTML = 'そのユーザーは登録できません';
         userName.style.border = '1px solid red';
         return false;
       }
+      
+  // パスワードの文字数(8文字以上)と英数字チェック
+      if (password_auth.value.length < 8 || !/^[a-zA-Z0-9]+$/.test(password_auth.value)) {
+    message.style.display = 'block';
+    message.innerHTML = 'パスワードは8文字以上の英数字を使用してください';
+    password_auth.style.border = '1px solid red';
+    return false;
+  }
+      
       //確認用パスワード入力チェック
       if (password_auth.value !== cfPassword.value) {
-        // alert('パスワードの入力に誤りがあります');
         message.style.display = 'block';
         message.innerHTML = 'パスワードの入力に誤りがあります';
         password_auth.style.border = '1px solid red';
