@@ -164,29 +164,55 @@ export const listCreate = () => {
 
 //「マイノウハウ」タブにファイル/フォルダ全て表示
 //DBから全ての情報を取得
+// const shareListCreate = () => {
+//   $.ajax({
+//     url: '/sharePostController/',
+//     type: 'POST',
+//     dataType: 'Json',
+//     contentType: 'application/json',
+//     data: JSON.stringify({
+//       flg: 'sharelist',
+//     }),
+//     success: function (res) {
+//       res.fileResult.forEach((file) => {
+//         //要素作成
+//         let li = document.createElement('li');
+//         let span = document.createElement('span');
+//         span.setAttribute('class', 'sharenote file');
+//         span.setAttribute('value', file.id);
+//         span.innerHTML = file.title;
+//         document.getElementById('sharelist').appendChild(li);
+//         li.appendChild(span);
+//         shareContextmenu();
+//       });
+//     },
+//   });
+// };
 const shareListCreate = () => {
-  $.ajax({
-    url: '/sharePostController/',
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      flg: 'sharelist',
-    }),
-    success: function (res) {
-      res.fileResult.forEach((file) => {
-        //要素作成
-        let li = document.createElement('li');
-        let span = document.createElement('span');
-        span.setAttribute('class', 'sharenote file');
-        span.setAttribute('value', file.id);
-        span.innerHTML = file.title;
-        document.getElementById('sharelist').appendChild(li);
-        li.appendChild(span);
-        shareContextmenu();
-      });
-      document.getElementById('share-list-update-button').remove("rotate");
-    },
+  return new Promise((resolve) => {
+    $.ajax({
+      url: '/sharePostController/',
+      type: 'POST',
+      dataType: 'Json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        flg: 'sharelist',
+      }),
+      success: function (res) {
+        res.fileResult.forEach((file) => {
+          // 要素作成
+          let li = document.createElement('li');
+          let span = document.createElement('span');
+          span.setAttribute('class', 'sharenote file');
+          span.setAttribute('value', file.id);
+          span.innerHTML = file.title;
+          document.getElementById('sharelist').appendChild(li);
+          li.appendChild(span);
+          shareContextmenu()
+        });
+        resolve(); // Promiseを解決して終了
+      },
+    });
   });
 };
 
@@ -359,17 +385,14 @@ document.getElementById('idInput').addEventListener('input', () => {
   document.getElementById('idInput').value = formattedID;
 });
 
-document.getElementById('share-list-update-button').addEventListener('click', function() {
+document.getElementById('share-list-update-button').addEventListener('click', async function() {
   console.log('更新ボタンクリックしました');
   document.getElementById('sharelist').innerHTML = '';
-   let button = this;
-  button.classList.add("rotate"); // 回転用のクラスを追加
-  // setTimeout(function() {
-  //   button.classList.remove("rotate"); // 3秒後にクラスを削除して回転を停止
-  // }, 3000); // 3000ミリ秒 = 3秒
-  
-  shareListCreate();
+  document.getElementById('share-list-update-button').classList.add("rotate");
+  await shareListCreate();
+  document.getElementById('share-list-update-button').classList.remove("rotate");
 });
+
 
 export function tabFocusIDGet() {
   return tabFocusID;
