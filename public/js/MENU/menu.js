@@ -153,7 +153,7 @@ document.getElementById('share-history').addEventListener('click', () => {
       if (res.shareResult === null) {
          document.getElementById(
           'share-history-h1'
-        ).innerHTML = '共有履歴がありません';
+        ).innerHTML = '※共有履歴がありません';
       } else {
         const shareHistoryTable = document.getElementById(
           'share-history-table'
@@ -171,7 +171,7 @@ document.getElementById('share-history').addEventListener('click', () => {
         ) {
            document.getElementById(
           'share-history-h1'
-        ).innerHTML = '直近100件まで表示します';
+        ).innerHTML = '※直近100件まで表示します';
           const table = document.createElement('table');
           table.setAttribute('border', '1');
           table.setAttribute('id', 'share-history-table');
