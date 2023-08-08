@@ -243,10 +243,9 @@
 }
 
 .rotate {
-  transform: rotate(1800deg); /* 5回転する角度 */
-  transition: transform 15s ease; /* 15秒でアニメーションする（5回転 * 3秒） */
+  transform: rotate(0); /* 初期の回転角度 */
+  transition: transform 3s linear infinite; /* 無限にアニメーション */
 }
-
 /************************************リスト上のボタン***************************************/
 #closed-button {
   text-decoration: none;
