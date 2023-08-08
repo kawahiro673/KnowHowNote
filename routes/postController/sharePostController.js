@@ -89,6 +89,7 @@ router.post('/', (req, res) => {
               } else {
                 res.send({
                   fileResult: fileResult,
+                  user: resultDecoded[0],
                 });
               }
             }
