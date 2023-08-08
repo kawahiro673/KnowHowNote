@@ -243,8 +243,16 @@
 }
 
 .rotate {
-  transform: rotate(0); /* 初期の回転角度 */
-  transition: transform 3s linear infinite; /* 無限にアニメーション */
+  animation: rotateAnimation 3s linear infinite; /* アニメーションの設定 */
+}
+
+@keyframes rotateAnimation {
+  0% {
+    transform: rotate(0deg); /* 初期の回転角度 */
+  }
+  100% {
+    transform: rotate(1800deg); /* 5回転分の角度 */
+  }
 }
 /************************************リスト上のボタン***************************************/
 #closed-button {
