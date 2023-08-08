@@ -358,6 +358,12 @@ document.getElementById('idInput').addEventListener('input', () => {
   document.getElementById('idInput').value = formattedID;
 });
 
+document.getElementById('share-list-update').addEventListener('click', () => {
+  console.log('更新ボタンクリックしました');
+  document.getElementById('sharelist').innerHTML = '';
+  shareListCreate();
+});
+
 export function tabFocusIDGet() {
   return tabFocusID;
 }
