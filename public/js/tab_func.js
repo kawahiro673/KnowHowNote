@@ -448,13 +448,15 @@ document.getElementById('share-user-button').addEventListener('click', () => {
 
       if (!groupFlg) {
         const p = document.createElement('p');
-        p.innerHTML = 'グループに所属しているユーザーがいません';
+        p.innerHTML = '※グループに所属しているユーザーがいません';
+        p.setAttribute('class','group-list-none-belong')
         document.getElementById('share-group-div').appendChild(p);
       }
 
       if (res.friend.length === 0) {
         const p = document.createElement('p');
         p.innerHTML = 'フレンドが登録されていません';
+        p.setAttribute('class','friend-list-none-register');
         document.getElementById('share-user-div').appendChild(p);
       }
 
