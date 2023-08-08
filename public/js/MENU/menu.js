@@ -151,6 +151,7 @@ document.getElementById('share-history').addEventListener('click', () => {
     }),
     success: function (res) {
       if (res.shareResult === null) {
+        console.log(res.rows);
         alert('共有履歴はございません');
       } else {
         const shareHistoryTable = document.getElementById(
