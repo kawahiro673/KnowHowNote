@@ -352,3 +352,10 @@ input[type='checkbox']:checked + .gray_b {
 .popup-window_delete-pop {
   text-align: center; /* pタグを中央に配置するためのスタイル */
 }
+
+#share-history-h1{
+    font-size: 16px; 
+  line-height: 1.5; 
+  margin: 0;
+  padding: 0;
+}
