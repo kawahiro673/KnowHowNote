@@ -185,6 +185,7 @@ const shareListCreate = () => {
         li.appendChild(span);
         shareContextmenu();
       });
+      document.getElementById('share-list-update-button').remove("rotate");
     },
   });
 };
