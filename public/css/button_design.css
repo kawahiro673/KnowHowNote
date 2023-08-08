@@ -226,7 +226,7 @@
 .share-update-button-container {
   display: flex;
   justify-content: flex-end; /* ボタンを右端に配置 */
-  margin: 5px; /* 必要に応じてマージンを追加 */
+  margin: 5px; 
 }
 
 #share-list-update-button{
@@ -235,4 +235,8 @@
   text-decoration: none;
   background-color: white;
   cursor: pointer;
+}
+#share-list-update-button img {
+  width: 32px; 
+  height: 32px; 
 }
