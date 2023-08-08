@@ -446,7 +446,7 @@ router
                     }
                   );
                 }
-                res.send({ shareResult: null });
+                res.send({ shareResult: null,  rows :  rows });
               }
             }
           );
