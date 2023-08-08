@@ -326,3 +326,7 @@
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
   background-image: linear-gradient( #FFFFFF 0%,  #FFFFFF 100%);
 }
+
+.rotate {
+  transform: rotate(360deg);
+}
