@@ -165,6 +165,7 @@ h1 {
 }
 
 /****** パスワード変更ポップアップ ******/
+
 #popup-overlay_pass-forget {
   display: block;
   position: fixed;
@@ -179,7 +180,7 @@ h1 {
 
 .popup-window_pass-forget {
   width: 500px;
-  height: 500px;
+  height: 400px;
   background-color: #fff;
   position: fixed;
   top: 50%;
@@ -218,11 +219,10 @@ h1 {
 
 .popup-body_pass-forget {
   position: relative;
-  height: 240px;
+  height: 350px;
   padding: 0 10px;
   overflow-y: scroll;
 }
-
  .popup-body_pass-forget label {
     font-size: 14px; /* 任意のフォントサイズに調整 */
   }
