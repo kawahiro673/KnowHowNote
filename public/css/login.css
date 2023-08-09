@@ -114,22 +114,6 @@ h1 {
 }
 
 /*********** ボタン ***********/
-/* #loginbtn,
-#registerbtn{
-  padding: 2em 10em;
-  margin-top: 20px;
-  background: #fff;
-  border-radius: 10px 70px/70px 10px;
-  border: dashed 2px #333;
-  background-color: #2096f3;
-  box-shadow: 0 5px 0 #0055fe; 
-}
-
-#registerbtn{
-    border-radius: 20px 50px/50px 20px;
-   background-color: #e32b2b;
-   box-shadow: 0 5px 0 #840505; 
-} */
 
 #pass-change,
 #loginbtn,
@@ -150,8 +134,8 @@ h1 {
 
 #loginbtn,
 #registerbtn{
-  padding: 2em 10em;
-  margin-top: 20px;
+  padding: 1em 5em;
+  margin-top: 10px;
 }
 
 #registerbtn{
