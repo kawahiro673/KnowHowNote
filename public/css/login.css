@@ -113,6 +113,13 @@ h1 {
   color: red;
 }
 
+.control-pop {
+  text-align: center; 
+}
+.control-pop label {
+  display: block; 
+}
+
 /*********** ボタン ***********/
 
 #pass-change,
