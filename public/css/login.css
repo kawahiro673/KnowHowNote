@@ -114,7 +114,7 @@ h1 {
 }
 
 /*********** ボタン ***********/
-#loginbtn,
+/* #loginbtn,
 #registerbtn{
   padding: 2em 10em;
   margin-top: 20px;
@@ -122,16 +122,18 @@ h1 {
   border-radius: 10px 70px/70px 10px;
   border: dashed 2px #333;
   background-color: #2096f3;
-  box-shadow: 0 5px 0 #0055fe; /* 影の太さ・色 */
+  box-shadow: 0 5px 0 #0055fe; 
 }
 
 #registerbtn{
     border-radius: 20px 50px/50px 20px;
    background-color: #e32b2b;
    box-shadow: 0 5px 0 #840505; 
-}
+} */
 
-#pass-change{
+#pass-change,
+#loginbtn,
+#registerbtn{
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -144,6 +146,11 @@ h1 {
   color: #fff;
   cursor: pointer;
   box-shadow: 0 5px 0 #0055fe; /* 影の太さ・色 */
+}
+
+#registerbtn{
+  background-color: #e32b2b;
+  box-shadow: 0 5px 0 #840505; 
 }
 
 #loginbtn:active,
