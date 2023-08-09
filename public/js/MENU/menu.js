@@ -12,7 +12,7 @@ import { backgroundColorCheckBoxOption } from './my-profile.js';
 import { sortTableByUser, sortTableByDate } from './share-history.js';
 import { groupNameDelete } from './group-list.js';
 
-  document.addEventListener("DOMContentLoaded", function() {
+  //document.addEventListener("DOMContentLoaded", function() {
     const menuCheckbox = document.getElementById("tg");
     const menuLabel = document.querySelector(".dropLabel");
 
@@ -29,7 +29,7 @@ import { groupNameDelete } from './group-list.js';
       event.preventDefault();
       menuCheckbox.checked = !menuCheckbox.checked;
     });
-  });
+  //});
 //=============================================================================================================
 //====================================================個別設定=================================================
 //=============================================================================================================
