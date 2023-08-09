@@ -151,9 +151,16 @@
 }
 
 .popup-body_profile p {
+/*   border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-bottom: 10px; */
+   display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
   border-bottom: 1px solid #ccc;
   padding-bottom: 10px;
   margin-bottom: 10px;
+  position: relative; /* 親要素を相対的な位置に設定 */
 }
 
 .popup-body_About-Website p {
