@@ -290,6 +290,17 @@ input[type='checkbox']:checked + .gray_b {
   margin-bottom: 10px;
 }
 
+.gray-line-fat-1 {
+  border-top: 1px solid #ccc;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.gray-line-fat-2 {
+  border-top: 1px solid #ccc;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
 #idInput {
   font-size: 20px;
   margin: 5px auto;
