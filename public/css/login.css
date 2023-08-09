@@ -54,17 +54,8 @@ h1 {
   padding: 8px;
 }
 
-/* .authinput {
-  border: none;
-  border-bottom: 1px solid #d1d1d1;
-  font-size: 1.2em; 
-  width: 50%;
-  padding: 8px;
-} */
-
 #loginbtn,
-#registerbtn,
-#pass-change{
+#registerbtn{
   padding: 2em 10em;
   margin-top: 20px;
   background: #fff;
@@ -81,26 +72,24 @@ h1 {
    box-shadow: 0 5px 0 #840505; 
 }
 #loginbtn:active,
-#registerbtn:active,
-#pass-change:active{
+#registerbtn:active{
   box-shadow: none;
   transform: translateY(5px);
 }
 
-/* 
-#registerbtn {
-  padding: 2em 10em;
-  margin-top: 20px;
-  background: #fff;
-  border-radius: 20px 50px/50px 20px;
-  border: dashed 2px #333;
-  background-color: #e32b2b;
-  box-shadow: 0 5px 0 #840505; 
+#pass-change{
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
 }
-#registerbtn:active {
-  box-shadow: none;
-  transform: translateY(5px);
-} */
 
 .required {
   color: #f33;
@@ -182,6 +171,7 @@ h1 {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
   z-index: 500;
+   font-family: initial;/*フォントをデフォルトへ*/
 }
 
 .popup-window_pass-forget {
@@ -229,3 +219,7 @@ h1 {
   padding: 0 10px;
   overflow-y: scroll;
 }
+
+ .popup-body_pass-forget label {
+    font-size: 14px; /* 任意のフォントサイズに調整 */
+  }
