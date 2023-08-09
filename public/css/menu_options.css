@@ -390,5 +390,6 @@ input[type='checkbox']:checked + .gray_b {
 }
 
 .registration-date{
-  width: 66.67%;
+  width: 75%;
+  border-bottom: none;
 }
