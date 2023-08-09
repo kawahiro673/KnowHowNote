@@ -54,43 +54,6 @@ h1 {
   padding: 8px;
 }
 
-#loginbtn,
-#registerbtn{
-  padding: 2em 10em;
-  margin-top: 20px;
-  background: #fff;
-  border-radius: 10px 70px/70px 10px;
-  border: dashed 2px #333;
-  background-color: #2096f3;
-  box-shadow: 0 5px 0 #0055fe; /* 影の太さ・色 */
-}
-
-#registerbtn,
-#pass-change{
-    border-radius: 20px 50px/50px 20px;
-   background-color: #e32b2b;
-   box-shadow: 0 5px 0 #840505; 
-}
-#loginbtn:active,
-#registerbtn:active{
-  box-shadow: none;
-  transform: translateY(5px);
-}
-
-#pass-change{
-  display: inline-block;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-  border: none;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: #fff;
-  cursor: pointer;
-}
-
 .required {
   color: #f33;
   font-size: 0.9em;
@@ -131,17 +94,6 @@ h1 {
   margin-bottom: 50px;
 }
 
-.new-account button {
-  width: 30%;
-  background-color: #f37819;
-  color: #fff;
-  padding: 15px;
-  border: 0;
-  border-radius: 3px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
-  float: right;
-}
-
 .email,
 .username{
   margin-top: 25px;
@@ -161,6 +113,57 @@ h1 {
   color: red;
 }
 
+/*********** ボタン ***********/
+#loginbtn,
+#registerbtn{
+  padding: 2em 10em;
+  margin-top: 20px;
+  background: #fff;
+  border-radius: 10px 70px/70px 10px;
+  border: dashed 2px #333;
+  background-color: #2096f3;
+  box-shadow: 0 5px 0 #0055fe; /* 影の太さ・色 */
+}
+
+#registerbtn{
+    border-radius: 20px 50px/50px 20px;
+   background-color: #e32b2b;
+   box-shadow: 0 5px 0 #840505; 
+}
+
+#pass-change{
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #0055fe; /* 影の太さ・色 */
+}
+
+#loginbtn:active,
+#registerbtn:active,
+#pass-change:active{
+  box-shadow: none;
+  transform: translateY(5px);
+}
+
+.new-account button {
+  width: 30%;
+  background-color: #f37819;
+  color: #fff;
+  padding: 15px;
+  border: 0;
+  border-radius: 3px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  float: right;
+}
+
 /****** パスワード変更ポップアップ ******/
 #popup-overlay_pass-forget {
   display: block;
@@ -176,7 +179,7 @@ h1 {
 
 .popup-window_pass-forget {
   width: 500px;
-  height: 300px;
+  height: 500px;
   background-color: #fff;
   position: fixed;
   top: 50%;
