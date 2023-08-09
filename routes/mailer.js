@@ -7,14 +7,14 @@ const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'kmcnt673.9099@gmail.com',
+    user: 'akanuma.9099@gmail.com',
     pass: '9099asaa',
   },
 });
 
 router.post('/', (req, res) => {
   const mailOptions = {
-    from: 'kmcnt673.9099@gmail.com',
+    from: 'akanuma.9099@gmail.com',
     to: req.body.email,
     subject: 'Test Email',
     text: 'This is a test email.',
