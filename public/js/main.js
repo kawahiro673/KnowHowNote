@@ -164,30 +164,6 @@ export const listCreate = () => {
 
 //「マイノウハウ」タブにファイル/フォルダ全て表示
 //DBから全ての情報を取得
-// const shareListCreate = () => {
-//   $.ajax({
-//     url: '/sharePostController/',
-//     type: 'POST',
-//     dataType: 'Json',
-//     contentType: 'application/json',
-//     data: JSON.stringify({
-//       flg: 'sharelist',
-//     }),
-//     success: function (res) {
-//       res.fileResult.forEach((file) => {
-//         //要素作成
-//         let li = document.createElement('li');
-//         let span = document.createElement('span');
-//         span.setAttribute('class', 'sharenote file');
-//         span.setAttribute('value', file.id);
-//         span.innerHTML = file.title;
-//         document.getElementById('sharelist').appendChild(li);
-//         li.appendChild(span);
-//         shareContextmenu();
-//       });
-//     },
-//   });
-// };
 const shareListCreate = () => {
   return new Promise((resolve) => {
     $.ajax({
@@ -199,6 +175,12 @@ const shareListCreate = () => {
         flg: 'sharelist',
       }),
       success: function (res) {
+        if(res.fileResult.length === 0){
+           const  p = document.createElement('p');
+          p.setAttribute('class', 'share-none-p');
+          p.innerHTML = '共有されたノウハウはございません';
+          document.getElementById('sharelist').appendChild(p);
+        }
         res.fileResult.forEach((file) => {
           // 要素作成
           let li = document.createElement('li');
