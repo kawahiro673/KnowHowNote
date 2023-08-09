@@ -130,7 +130,11 @@
 #yes-button-folder-delete,
 #no-button-folder-delete,
 #yes-button-keep-cancel,
-#no-button-keep-cancel{
+#no-button-keep-cancel,
+#closed-button,
+#expandable-button,
+#createbutton,
+#createfilebutton{
   padding: 7px 14px;
   font-size: 12px;
 }
@@ -166,7 +170,7 @@
 #createfilebutton{
   background-color: #f5f5f5;
   color: black;
-  box-shadow: 0 5px 0 #f5f5f5; 
+  box-shadow: 0 5px 0 #dcdcdc; 
 }
 
 .group-name-change-button {
