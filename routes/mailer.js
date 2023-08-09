@@ -4,6 +4,14 @@ const bcrypt = require('bcrypt');
 const JWT = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'kmcnt673.9099@gmail.com',
+    pass: '9099asaa',
+  },
+});
+
 router.post('/', (req, res) => {
   const mailOptions = {
     from: 'kmcnt673.9099@gmail.com',
