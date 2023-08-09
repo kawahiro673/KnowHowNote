@@ -12,30 +12,24 @@ import { backgroundColorCheckBoxOption } from './my-profile.js';
 import { sortTableByUser, sortTableByDate } from './share-history.js';
 import { groupNameDelete } from './group-list.js';
 
+  document.addEventListener("DOMContentLoaded", function() {
     const menuCheckbox = document.getElementById("tg");
-    const menuList = document.querySelector(".menu");
     const menuLabel = document.querySelector(".dropLabel");
-    
-    // ドロップダウンメニュー外をクリックした際にメニューを閉じる
+
+    // ドキュメント全体でクリックイベントを監視
     document.addEventListener("click", function(event) {
-      if (!menuCheckbox.contains(event.target) && !menuList.contains(event.target)) {
+      // MENU 以外をクリックした場合、ドロップダウンメニューを閉じる
+      if (!menuLabel.contains(event.target) && !menuCheckbox.contains(event.target)) {
         menuCheckbox.checked = false;
       }
     });
 
-    // MENU ラベルをクリックした際にメニューを閉じる・開く
-    menuLabel.addEventListener("click", function() {
+    // MENU ラベルのクリックイベントを無効化して、ドロップダウンメニューを閉じる・開く
+    menuLabel.addEventListener("click", function(event) {
+      event.preventDefault();
       menuCheckbox.checked = !menuCheckbox.checked;
     });
-
-    // メニューアイテムをクリックした際にメニューを閉じる
-    const menuItems = document.querySelectorAll(".item");
-    menuItems.forEach(item => {
-      item.addEventListener("click", function() {
-        menuCheckbox.checked = false;
-      });
-    });
-
+  });
 //=============================================================================================================
 //====================================================個別設定=================================================
 //=============================================================================================================
