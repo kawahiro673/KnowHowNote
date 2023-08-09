@@ -45,7 +45,8 @@ h1 {
 }
 
 .logininput,
-.authinput{
+.authinput,
+.pass-change-input{
   border: none;
   border-bottom: 1px solid #d1d1d1;
   font-size: 1.2em; /*文字が１.２倍の大きさ*/
@@ -62,7 +63,8 @@ h1 {
 } */
 
 #loginbtn,
-#registerbtn{
+#registerbtn,
+#pass-change{
   padding: 2em 10em;
   margin-top: 20px;
   background: #fff;
@@ -72,13 +74,15 @@ h1 {
   box-shadow: 0 5px 0 #0055fe; /* 影の太さ・色 */
 }
 
-#registerbtn{
+#registerbtn,
+#pass-change{
     border-radius: 20px 50px/50px 20px;
    background-color: #e32b2b;
    box-shadow: 0 5px 0 #840505; 
 }
 #loginbtn:active,
-#registerbtn:active{
+#registerbtn:active,
+#pass-change:active{
   box-shadow: none;
   transform: translateY(5px);
 }
@@ -106,7 +110,8 @@ h1 {
   font-weight: bold;
 }
 
-.control {
+.control,
+.control-pop{
   margin-bottom: 1em;
 }
 
