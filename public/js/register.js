@@ -39,6 +39,14 @@ function registerButtonClick() {
         message.innerHTML = '入力されていない情報があります';
         return false;
       }
+       // 20文字以内で、英数字のみを含むかを正規表現で判定
+       if (!validateUsername(userName.value)) {
+        message.style.display = 'block';
+        message.innerHTML = 'ユーザー名は20文字以内の英数字を使用してください';
+        userName.style.border = '1px solid red';
+        return false;
+      }
+      
       //ユーザー名かぶりチェック
       const user = res.response.find(
         (user) => user.UserName === userName.value
@@ -85,4 +93,10 @@ function registerButtonClick() {
       });
     },
   });
+}
+
+// 20文字以内で、英数字のみを含むかを正規表現で判定
+function validateUsername(username) {
+  const pattern = /^[a-zA-Z0-9]{1,20}$/;
+  return pattern.test(username);
 }
