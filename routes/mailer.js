@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const JWT = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 
-app.post('/', (req, res) => {
+router.post('/', (req, res) => {
   const mailOptions = {
     from: 'kmcnt673.9099@gmail.com',
     to: req.body.email,
