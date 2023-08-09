@@ -33,7 +33,11 @@
 #yes-button-folder-delete,
 #no-button-folder-delete,
 #yes-button-keep-cancel,
-#no-button-keep-cancel{
+#no-button-keep-cancel,
+.keepbtn,
+.cancelbtn,
+.editbtn,
+.sharebtn{
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -83,7 +87,11 @@
 #yes-button-folder-delete:active,
 #no-button-folder-delete:active,
 #yes-button-keep-cancel:active,
-#no-button-keep-cancel:active{
+#no-button-keep-cancel:active,
+.keepbtn:active,
+.cancelbtn:active,
+.editbtn:active,
+.sharebtn:active{
   box-shadow: none;
   transform: translateY(5px);
 }
@@ -117,6 +125,24 @@
 #no-button-keep-cancel{
   padding: 7px 14px;
   font-size: 12px;
+}
+
+.keepbtn,
+.cancelbtn,
+.editbtn,
+.sharebtn {
+  margin: 10px;
+  font-family: 'Zen_Kurenaido', 'Hannotate SC', sans-serif;
+}
+
+.sharebtn {
+  background-color: #fdff85;
+  color: black;
+  box-shadow: 0 5px 0 #ffd700; 
+}
+.keepbtn {
+  background-color: #71f26c;
+  box-shadow: 0 5px 0 #32cd32; 
 }
 
 #share-send{
@@ -169,7 +195,8 @@
 #no-button-share-delete,
 #no-button-nouhau-delete,
 #no-button-folder-delete,
-#no-button-keep-cancel {
+#no-button-keep-cancel,
+.cancelbtn{
  background-color: #e32b2b;
  box-shadow: 0 5px 0 #840505; 
 }
@@ -209,7 +236,7 @@
   vertical-align: bottom; /* 追加 */
 }
 
-.keepbtn,
+/* .keepbtn,
 .cancelbtn,
 .editbtn,
 .sharebtn {
@@ -223,9 +250,9 @@
   border-radius: 4px;
   color: #fff;
   cursor: pointer;
-}
+} */
 
-.editbtn {
+/* .editbtn {
   background-color: #007bff;
 }
 .sharebtn {
@@ -237,7 +264,8 @@
 }
 .cancelbtn {
   background-color: #f48269;
-}
+} */
+
 .title-btns {
   display: flex;
   align-items: center;
