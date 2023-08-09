@@ -117,9 +117,8 @@ h1 {
   text-align: center; 
 }
 .control-pop label {
-  display: block; 
+  text-align: left; 
 }
-
 /*********** ボタン ***********/
 
 #pass-change,
