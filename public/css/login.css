@@ -118,7 +118,9 @@ h1 {
 #pass-change,
 #loginbtn,
 #registerbtn{
-  display: inline-block;
+/*   display: inline-block; */
+    display: block;
+  margin: 0 auto;
   padding: 10px 20px;
   font-size: 16px;
   font-weight: bold;
