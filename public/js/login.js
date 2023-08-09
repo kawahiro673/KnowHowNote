@@ -7,10 +7,13 @@ const elements = document.querySelectorAll('.logininput');
 
 loginbtn.addEventListener('click', loginButtonClick);
 
-  document.getElementById("pass-forget").addEventListener("click", function(event) {
+document
+  .getElementById('pass-forget')
+  .addEventListener('click', function (event) {
     event.preventDefault(); // デフォルトのクリック動作をキャンセル
     console.log('ボタンクリック');
-      document.getElementById('popup-overlay_pass-forget').style.display = 'block';
+    document.getElementById('popup-overlay_pass-forget').style.display =
+      'block';
   });
 
 document

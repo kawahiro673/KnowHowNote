@@ -151,7 +151,7 @@
 }
 
 .popup-body_profile p {
-   display: flex;
+  display: flex;
   justify-content: space-between;
   align-items: flex-end;
   padding-bottom: 3px;
@@ -366,35 +366,34 @@ input[type='checkbox']:checked + .gray_b {
   text-align: center; /* pタグを中央に配置するためのスタイル */
 }
 
-#share-history-h1{
-    font-size: 16px; 
-  line-height: 1.5; 
+#share-history-h1 {
+  font-size: 16px;
+  line-height: 1.5;
   margin: 0;
   padding: 0;
   text-align: center;
-  color:red;
+  color: red;
   text-align: center;
 }
 
-
 .friend-list-none-message {
   grid-column: span 3; /* 3列を横一列に広げて中央に配置 */
-  text-align: center; 
+  text-align: center;
   color: red;
 }
 
-#group-add-list-massage{
-   text-align: center; 
+#group-add-list-massage {
+  text-align: center;
   color: red;
 }
 
 .group-list-none-belong,
-.friend-list-none-register{
+.friend-list-none-register {
   grid-column: span 2; /* 2列を横一列に広げて中央に配置 */
-  text-align: center; 
+  text-align: center;
   color: red;
 }
 
-.registration-date{
+.registration-date {
   width: 75%;
 }

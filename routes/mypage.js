@@ -445,10 +445,10 @@ router
                       }
                     }
                   );
-                }else{
-                res.send({ shareResult: null });
+                } else {
+                  res.send({ shareResult: null });
                 }
-             }
+              }
             }
           );
         });

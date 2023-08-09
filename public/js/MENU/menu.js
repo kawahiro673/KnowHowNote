@@ -12,24 +12,27 @@ import { backgroundColorCheckBoxOption } from './my-profile.js';
 import { sortTableByUser, sortTableByDate } from './share-history.js';
 import { groupNameDelete } from './group-list.js';
 
-  //document.addEventListener("DOMContentLoaded", function() {
-    const menuCheckbox = document.getElementById("tg");
-    const menuLabel = document.querySelector(".dropLabel");
+//document.addEventListener("DOMContentLoaded", function() {
+const menuCheckbox = document.getElementById('tg');
+const menuLabel = document.querySelector('.dropLabel');
 
-    // ドキュメント全体でクリックイベントを監視
-    document.addEventListener("click", function(event) {
-      // MENU 以外をクリックした場合、ドロップダウンメニューを閉じる
-      if (!menuLabel.contains(event.target) && !menuCheckbox.contains(event.target)) {
-        menuCheckbox.checked = false;
-      }
-    });
+// ドキュメント全体でクリックイベントを監視
+document.addEventListener('click', function (event) {
+  // MENU 以外をクリックした場合、ドロップダウンメニューを閉じる
+  if (
+    !menuLabel.contains(event.target) &&
+    !menuCheckbox.contains(event.target)
+  ) {
+    menuCheckbox.checked = false;
+  }
+});
 
-    // MENU ラベルのクリックイベントを無効化して、ドロップダウンメニューを閉じる・開く
-    menuLabel.addEventListener("click", function(event) {
-      event.preventDefault();
-      menuCheckbox.checked = !menuCheckbox.checked;
-    });
-  //});
+// MENU ラベルのクリックイベントを無効化して、ドロップダウンメニューを閉じる・開く
+menuLabel.addEventListener('click', function (event) {
+  event.preventDefault();
+  menuCheckbox.checked = !menuCheckbox.checked;
+});
+//});
 //=============================================================================================================
 //====================================================個別設定=================================================
 //=============================================================================================================
@@ -170,9 +173,8 @@ document.getElementById('share-history').addEventListener('click', () => {
     }),
     success: function (res) {
       if (res.shareResult === null) {
-         document.getElementById(
-          'share-history-h1'
-        ).innerHTML = '※共有履歴がありません';
+        document.getElementById('share-history-h1').innerHTML =
+          '※共有履歴がありません';
       } else {
         const shareHistoryTable = document.getElementById(
           'share-history-table'
@@ -188,9 +190,8 @@ document.getElementById('share-history').addEventListener('click', () => {
               .getElementsByTagName('p').length > 0
           )
         ) {
-           document.getElementById(
-          'share-history-h1'
-        ).innerHTML = '※直近100件まで表示します';
+          document.getElementById('share-history-h1').innerHTML =
+            '※直近100件まで表示します';
           const table = document.createElement('table');
           table.setAttribute('border', '1');
           table.setAttribute('id', 'share-history-table');

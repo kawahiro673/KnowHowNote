@@ -15,7 +15,7 @@ h1 {
 }
 
 .content input,
-.popup-body_pass-forget input{
+.popup-body_pass-forget input {
   display: initial;
 }
 
@@ -46,7 +46,7 @@ h1 {
 
 .logininput,
 .authinput,
-.pass-change-input{
+.pass-change-input {
   border: none;
   border-bottom: 1px solid #d1d1d1;
   font-size: 1.2em; /*文字が１.２倍の大きさ*/
@@ -54,7 +54,7 @@ h1 {
   padding: 8px;
 }
 
-.pass-change-input{
+.pass-change-input {
   width: 70%;
 }
 
@@ -67,7 +67,7 @@ h1 {
 }
 
 .control,
-.control-pop{
+.control-pop {
   margin-bottom: 1em;
 }
 
@@ -99,12 +99,12 @@ h1 {
 }
 
 .email,
-.username{
+.username {
   margin-top: 25px;
 }
 .password,
 .email_auth,
-.confirmedPassword{
+.confirmedPassword {
   margin-top: 20px;
 }
 .password_auth {
@@ -118,18 +118,18 @@ h1 {
 }
 
 .control-pop {
-  text-align: center; 
+  text-align: center;
 }
 .control-pop label {
-  text-align: left; 
+  text-align: left;
 }
 /*********** ボタン ***********/
 
 #pass-change,
 #loginbtn,
-#registerbtn{
-/*   display: inline-block; */
-    display: block;
+#registerbtn {
+  /*   display: inline-block; */
+  display: block;
   margin: 0 auto;
   padding: 10px 20px;
   font-size: 16px;
@@ -145,19 +145,19 @@ h1 {
 }
 
 #loginbtn,
-#registerbtn{
+#registerbtn {
   padding: 1em 7em;
   margin-top: 10px;
 }
 
-#registerbtn{
+#registerbtn {
   background-color: #e32b2b;
-  box-shadow: 0 5px 0 #840505; 
+  box-shadow: 0 5px 0 #840505;
 }
 
 #loginbtn:active,
 #registerbtn:active,
-#pass-change:active{
+#pass-change:active {
   box-shadow: none;
   transform: translateY(5px);
 }
@@ -184,7 +184,7 @@ h1 {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
   z-index: 500;
-   font-family: initial;/*フォントをデフォルトへ*/
+  font-family: initial; /*フォントをデフォルトへ*/
 }
 
 .popup-window_pass-forget {
@@ -231,6 +231,6 @@ h1 {
   height: 350px;
   padding: 0 10px;
 }
- .popup-body_pass-forget label {
-    font-size: 14px; /* 任意のフォントサイズに調整 */
-  }
+.popup-body_pass-forget label {
+  font-size: 14px; /* 任意のフォントサイズに調整 */
+}

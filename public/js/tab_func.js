@@ -364,16 +364,15 @@ document.getElementById('share-user-button').addEventListener('click', () => {
         div.appendChild(checkboxLabel);
       });
 
+      const checkDivs = document.querySelectorAll('.friend-list-check-div');
+      checkDivs.forEach((div) => {
+        div.addEventListener('click', function () {
+          const checkbox = div.querySelector('input[type="checkbox"]');
+          // チェックボックスの状態を切り替える
+          checkbox.checked = !checkbox.checked;
+        });
+      });
 
-const checkDivs = document.querySelectorAll('.friend-list-check-div');
-checkDivs.forEach(div => {
-  div.addEventListener('click', function() {
-    const checkbox = div.querySelector('input[type="checkbox"]');
-    // チェックボックスの状態を切り替える
-    checkbox.checked = !checkbox.checked;
-  });
-});
-      
       const popupGroupMember = document.getElementById('popup-group-member');
       let timer;
       let isPopupShown = false;
@@ -456,28 +455,30 @@ checkDivs.forEach(div => {
         }
       });
 
-const groupCheckDivs = document.querySelectorAll('.friend-list-group-check-div');
-groupCheckDivs.forEach(div => {
-  const checkbox = div.querySelector('input[type="checkbox"]');
-  // ラベル要素内でのクリックをチェックボックスの切り替えと関連付ける
-  div.addEventListener('click', function(event) {
-    if (event.target.tagName !== 'INPUT') {
-      checkbox.checked = !checkbox.checked;
-    }
-  });
-});
+      const groupCheckDivs = document.querySelectorAll(
+        '.friend-list-group-check-div'
+      );
+      groupCheckDivs.forEach((div) => {
+        const checkbox = div.querySelector('input[type="checkbox"]');
+        // ラベル要素内でのクリックをチェックボックスの切り替えと関連付ける
+        div.addEventListener('click', function (event) {
+          if (event.target.tagName !== 'INPUT') {
+            checkbox.checked = !checkbox.checked;
+          }
+        });
+      });
 
       if (!groupFlg) {
         const p = document.createElement('p');
         p.innerHTML = '※グループに所属しているユーザーがいません';
-        p.setAttribute('class','group-list-none-belong')
+        p.setAttribute('class', 'group-list-none-belong');
         document.getElementById('share-group-div').appendChild(p);
       }
 
       if (res.friend.length === 0) {
         const p = document.createElement('p');
         p.innerHTML = '※フレンドが登録されていません';
-        p.setAttribute('class','friend-list-none-register');
+        p.setAttribute('class', 'friend-list-none-register');
         document.getElementById('share-user-div').appendChild(p);
       }
 

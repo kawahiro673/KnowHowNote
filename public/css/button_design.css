@@ -44,7 +44,7 @@
 #createfilebutton,
 #change-email-button,
 #change-Myname-button,
-#update-authenticationID-button{
+#update-authenticationID-button {
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -56,7 +56,7 @@
   background-color: #007bff;
   color: #fff;
   cursor: pointer;
-  box-shadow: 0 5px 0 #0055fe; 
+  box-shadow: 0 5px 0 #0055fe;
 }
 
 #yes-button-logout:active,
@@ -105,7 +105,7 @@
 #createfilebutton:active,
 #change-email-button:active,
 #change-Myname-button:active,
-#update-authenticationID-button:active{
+#update-authenticationID-button:active {
   box-shadow: none;
   transform: translateY(5px);
 }
@@ -143,7 +143,7 @@
 #createfilebutton,
 #change-email-button,
 #change-Myname-button,
-#update-authenticationID-button{
+#update-authenticationID-button {
   padding: 7px 14px;
   font-size: 12px;
 }
@@ -157,29 +157,28 @@
 }
 
 .sharebtn,
-#createbutton{
+#createbutton {
   background-color: #fdff85;
   color: black;
-  box-shadow: 0 5px 0 #ffd700; 
+  box-shadow: 0 5px 0 #ffd700;
 }
-
 
 .keepbtn,
-#expandable-button{
+#expandable-button {
   background-color: #71f26c;
-  box-shadow: 0 5px 0 #32cd32; 
+  box-shadow: 0 5px 0 #32cd32;
 }
 
-#share-send{
- padding: 8px 16px;
+#share-send {
+  padding: 8px 16px;
   font-size: 14px;
   vertical-align: bottom;
 }
 
-#createfilebutton{
+#createfilebutton {
   background-color: #f5f5f5;
   color: black;
-  box-shadow: 0 5px 0 #dcdcdc; 
+  box-shadow: 0 5px 0 #dcdcdc;
 }
 
 .group-name-change-button {
@@ -205,7 +204,7 @@
   color: black;
   font-size: larger;
   font-weight: bold;
-  box-shadow: none
+  box-shadow: none;
 }
 
 .friend-delete:hover,
@@ -229,9 +228,9 @@
 #no-button-folder-delete,
 #no-button-keep-cancel,
 .cancelbtn,
-#closed-button{
- background-color: #e32b2b;
- box-shadow: 0 5px 0 #840505; 
+#closed-button {
+  background-color: #e32b2b;
+  box-shadow: 0 5px 0 #840505;
 }
 
 /*「はい」「いいえ」の一定間隔をあける*/
@@ -255,7 +254,7 @@
 .nouhau-delete-button-wrapper button,
 .folder-delete-button-wrapper button,
 .keep-cancel-button-wrapper button {
-  flex: 0 0 120px; 
+  flex: 0 0 120px;
   margin: 0 5px;
 }
 
@@ -266,7 +265,7 @@
 }
 
 #inquiry-button {
-  vertical-align: bottom; 
+  vertical-align: bottom;
 }
 
 .title-btns {
@@ -303,17 +302,17 @@
   margin-right: 10px;
 }
 
-#share-list-update-button{
+#share-list-update-button {
   display: inline-block;
   text-decoration: none;
   background-color: white;
   cursor: pointer;
-  border: none; 
+  border: none;
 }
 
 #share-list-update-button img {
-  width: 20px; 
-  height: 20px; 
+  width: 20px;
+  height: 20px;
 }
 
 .rotate {

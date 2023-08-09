@@ -175,8 +175,8 @@ const shareListCreate = () => {
         flg: 'sharelist',
       }),
       success: function (res) {
-        if(res.fileResult.length === 0){
-           const  p = document.createElement('p');
+        if (res.fileResult.length === 0) {
+          const p = document.createElement('p');
           p.setAttribute('class', 'share-none-p');
           p.innerHTML = '共有されたノウハウはございません';
           document.getElementById('sharelist').appendChild(p);
@@ -185,12 +185,15 @@ const shareListCreate = () => {
           // 要素作成
           let li = document.createElement('li');
           let span = document.createElement('span');
-          span.setAttribute('class', `sharenote file file-${res.user.BackgroundColor}`);
+          span.setAttribute(
+            'class',
+            `sharenote file file-${res.user.BackgroundColor}`
+          );
           span.setAttribute('value', file.id);
           span.innerHTML = file.title;
           document.getElementById('sharelist').appendChild(li);
           li.appendChild(span);
-          shareContextmenu()
+          shareContextmenu();
         });
         resolve(); // Promiseを解決して終了
       },
@@ -367,14 +370,17 @@ document.getElementById('idInput').addEventListener('input', () => {
   document.getElementById('idInput').value = formattedID;
 });
 
-document.getElementById('share-list-update-button').addEventListener('click', async function() {
-  console.log('更新ボタンクリックしました');
-  document.getElementById('sharelist').innerHTML = '';
-  document.getElementById('share-list-update-button').classList.add("rotate");
-  await shareListCreate();
-  document.getElementById('share-list-update-button').classList.remove("rotate");
-});
-
+document
+  .getElementById('share-list-update-button')
+  .addEventListener('click', async function () {
+    console.log('更新ボタンクリックしました');
+    document.getElementById('sharelist').innerHTML = '';
+    document.getElementById('share-list-update-button').classList.add('rotate');
+    await shareListCreate();
+    document
+      .getElementById('share-list-update-button')
+      .classList.remove('rotate');
+  });
 
 export function tabFocusIDGet() {
   return tabFocusID;
