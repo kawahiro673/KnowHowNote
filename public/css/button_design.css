@@ -5,6 +5,7 @@
 #no-button-delete,
 #share-pass-butotn,
 #inquiry-button,
+#share-send,
 #share-user-button,
 #share-user-add-button,
 #share-user-clear-button,
@@ -54,6 +55,7 @@
 #no-button-delete:active,
 #share-pass-butotn:active,
 #inquiry-button:active,
+#share-send:active,
 #share-user-button:active,
 #share-user-add-button:active,
 #share-user-clear-button:active,
@@ -115,6 +117,12 @@
 #no-button-keep-cancel{
   padding: 7px 14px;
   font-size: 12px;
+}
+
+#share-send{
+ padding: 8px 16px;
+  font-size: 14px;
+  vertical-align: bottom;
 }
 
 .group-name-change-button {
@@ -240,7 +248,7 @@
   margin-right: 10px;
 }
 
-#share-send {
+/* #share-send {
   display: inline-block;
   padding: 8px 16px;
   font-size: 14px;
@@ -253,7 +261,7 @@
   color: #fff;
   cursor: pointer;
   vertical-align: bottom;
-}
+} */
 
 .edit-save-button {
   text-align: center;
