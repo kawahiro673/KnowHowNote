@@ -154,8 +154,8 @@
    display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
+  padding-bottom: 3px;
+  margin-bottom: 3px;
   position: relative; /* 親要素を相対的な位置に設定 */
 }
 
