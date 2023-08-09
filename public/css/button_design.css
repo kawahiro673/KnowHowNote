@@ -148,7 +148,9 @@
   color: black;
   box-shadow: 0 5px 0 #ffd700; 
 }
-.keepbtn {
+
+.keepbtn,
+#expandable-button{
   background-color: #71f26c;
   box-shadow: 0 5px 0 #32cd32; 
 }
@@ -204,7 +206,8 @@
 #no-button-nouhau-delete,
 #no-button-folder-delete,
 #no-button-keep-cancel,
-.cancelbtn{
+.cancelbtn,
+#closed-button{
  background-color: #e32b2b;
  box-shadow: 0 5px 0 #840505; 
 }
