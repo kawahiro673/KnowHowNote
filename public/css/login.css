@@ -148,6 +148,12 @@ h1 {
   box-shadow: 0 5px 0 #0055fe; /* 影の太さ・色 */
 }
 
+#loginbtn,
+#registerbtn{
+  padding: 2em 10em;
+  margin-top: 20px;
+}
+
 #registerbtn{
   background-color: #e32b2b;
   box-shadow: 0 5px 0 #840505; 
