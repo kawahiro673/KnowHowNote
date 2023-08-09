@@ -12,7 +12,7 @@ import { backgroundColorCheckBoxOption } from './my-profile.js';
 import { sortTableByUser, sortTableByDate } from './share-history.js';
 import { groupNameDelete } from './group-list.js';
 
-  const menuCheckbox = document.getElementById("tg");
+    const menuCheckbox = document.getElementById("tg");
     const menuList = document.querySelector(".menu");
     const menuLabel = document.querySelector(".dropLabel");
     
@@ -22,10 +22,18 @@ import { groupNameDelete } from './group-list.js';
         menuCheckbox.checked = false;
       }
     });
-    
+
     // MENU ラベルをクリックした際にメニューを閉じる・開く
     menuLabel.addEventListener("click", function() {
       menuCheckbox.checked = !menuCheckbox.checked;
+    });
+
+    // メニューアイテムをクリックした際にメニューを閉じる
+    const menuItems = document.querySelectorAll(".item");
+    menuItems.forEach(item => {
+      item.addEventListener("click", function() {
+        menuCheckbox.checked = false;
+      });
     });
 
 //=============================================================================================================
