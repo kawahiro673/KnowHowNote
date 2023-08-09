@@ -32,6 +32,21 @@ document
     }
   });
 
+document.getElementById('pass-change').addEventListener('click', (e) => {
+  $.ajax({
+    url: '/mailer/',
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      email: '9099.asaa@gmail.com',
+    }),
+    success: function (res) {
+      console.log(res.msg);
+    },
+  });
+});
+
 function loginButtonClick() {
   elements.forEach(function (element) {
     element.style.border = '1px solid black';
