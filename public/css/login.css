@@ -54,6 +54,10 @@ h1 {
   padding: 8px;
 }
 
+.pass-change-input{
+  width: 70%;
+}
+
 .required {
   color: #f33;
   font-size: 0.9em;
