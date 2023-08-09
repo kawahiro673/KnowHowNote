@@ -364,6 +364,21 @@ document.getElementById('share-user-button').addEventListener('click', () => {
         div.appendChild(checkboxLabel);
       });
 
+// "friend-list-check-div" クラスを持つ要素をすべて取得
+const checkDivs = document.querySelectorAll('.friend-list-check-div');
+
+// 各 "friend-list-check-div" 要素に対してイベントリスナーを追加
+checkDivs.forEach(div => {
+  div.addEventListener('click', function() {
+    // チェックボックス要素を取得
+    const checkbox = div.querySelector('input[type="checkbox"]');
+    
+    // チェックボックスの状態を切り替える
+    checkbox.checked = !checkbox.checked;
+  });
+});
+
+      
       const popupGroupMember = document.getElementById('popup-group-member');
       let timer;
       let isPopupShown = false;
