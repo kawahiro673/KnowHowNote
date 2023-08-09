@@ -47,6 +47,45 @@
   box-shadow: 0 5px 0 #0055fe; 
 }
 
+#yes-button-logout:active,
+#no-button-logout:active,
+#yes-button-delete:active,
+#share-pass-butotn:active,
+#no-button-delete:active,
+#share-pass-butotn:active,
+#inquiry-button:active,
+#share-user-button:active,
+#share-user-add-button:active,
+#share-user-clear-button:active,
+#Add-from-Details:active,
+#friend-list-add-button:active,
+#friend-list-group-add-button:active,
+#friend-search-button:active,
+.friend-change-name:active,
+.friend-delete:active,
+.group-delete:active,
+#friend-delete-q-button:active,
+#friend-delete-q-cancel:active,
+.friend-change-name-button:active,
+#group-add-button:active,
+.group-name-change-button:active,
+#group-list-decision-button:active,
+#share-group-add-button:active,
+#share-group-clear-button:active,
+#yes-button-group-list-delete:active,
+#no-button-group-list-delete:active,
+#yes-button-share-delete:active,
+#no-button-share-delete:active,
+#yes-button-nouhau-delete:active,
+#no-button-nouhau-delete:active,
+#yes-button-folder-delete:active,
+#no-button-folder-delete:active,
+#yes-button-keep-cancel:active,
+#no-button-keep-cancel:active{
+  box-shadow: none;
+  transform: translateY(5px);
+}
+
 /*小さめのボタン*/
 #yes-button-logout,
 #no-button-logout,
