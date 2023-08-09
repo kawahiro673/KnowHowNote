@@ -364,20 +364,15 @@ document.getElementById('share-user-button').addEventListener('click', () => {
         div.appendChild(checkboxLabel);
       });
 
-// "friend-list-check-div" クラスを持つ要素をすべて取得
-const checkDivs = document.querySelectorAll('.friend-list-check-div');
 
-// 各 "friend-list-check-div" 要素に対してイベントリスナーを追加
+const checkDivs = document.querySelectorAll('.friend-list-check-div');
 checkDivs.forEach(div => {
   div.addEventListener('click', function() {
-    // チェックボックス要素を取得
     const checkbox = div.querySelector('input[type="checkbox"]');
-    
     // チェックボックスの状態を切り替える
     checkbox.checked = !checkbox.checked;
   });
 });
-
       
       const popupGroupMember = document.getElementById('popup-group-member');
       let timer;
@@ -460,6 +455,17 @@ checkDivs.forEach(div => {
           }
         }
       });
+
+const groupCheckDivs = document.querySelectorAll('.friend-list-group-check-div');
+groupCheckDivs.forEach(div => {
+  const checkbox = div.querySelector('input[type="checkbox"]');
+  // ラベル要素内でのクリックをチェックボックスの切り替えと関連付ける
+  div.addEventListener('click', function(event) {
+    if (event.target.tagName !== 'INPUT') {
+      checkbox.checked = !checkbox.checked;
+    }
+  });
+});
 
       if (!groupFlg) {
         const p = document.createElement('p');
