@@ -388,3 +388,7 @@ input[type='checkbox']:checked + .gray_b {
   text-align: center; 
   color: red;
 }
+
+.registration-date{
+  width: 66.67%;
+}
