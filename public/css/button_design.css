@@ -42,7 +42,9 @@
 #expandable-button,
 #createbutton,
 #createfilebutton,
-#change-email-button{
+#change-email-button,
+#change-Myname-button,
+#update-authenticationID-button{
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -101,7 +103,9 @@
 #expandable-button:active,
 #createbutton:active,
 #createfilebutton:active,
-#change-email-button:active{
+#change-email-button:active,
+#change-Myname-button:active,
+#update-authenticationID-button:active{
   box-shadow: none;
   transform: translateY(5px);
 }
@@ -137,7 +141,9 @@
 #expandable-button,
 #createbutton,
 #createfilebutton,
-#change-email-button{
+#change-email-button,
+#change-Myname-button,
+#update-authenticationID-button{
   padding: 7px 14px;
   font-size: 12px;
 }
