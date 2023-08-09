@@ -393,3 +393,7 @@ input[type='checkbox']:checked + .gray_b {
   width: 75%;
   border-bottom: none;
 }
+
+.gray-border{
+  border-bottom: 1px solid #ccc;
+}
