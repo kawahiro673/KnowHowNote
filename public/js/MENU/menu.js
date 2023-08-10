@@ -611,8 +611,7 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
 //================================================ログアウト====================================================
 //=============================================================================================================
 document.getElementById('logout').addEventListener('click', async function() {
-  console.log('ちょんぼ');
-const result = await answerPopUp('ログアウト','ログアウトしますか？※編集中のノウハウは保存されません');
+ const result = await answerPopUp('ログアウト','ログアウトしますか？※編集中のノウハウは保存されません');
   if (result === true) {
      $.ajax({
     url: '/mypage/' + hashedIdGet,
@@ -631,41 +630,6 @@ const result = await answerPopUp('ログアウト','ログアウトしますか�
     // 「いいえ」が押された場合の処理 おそらくポップが閉じる
   }
 });
-
-// document.getElementById('yes-button-logout').addEventListener('click', () => {
-//   $.ajax({
-//     url: '/mypage/' + hashedIdGet,
-//     type: 'POST',
-//     dataType: 'Json',
-//     contentType: 'application/json',
-//     data: JSON.stringify({
-//       flg: 'cookiedelete',
-//     }),
-//     success: function (res) {
-//       resultPopUp('ログアウト', 'ログアウト中です\n少々お待ちください');
-//       location.href = 'https://nodejs-itnote-app.herokuapp.com';
-//     },
-//   });
-// });
-
-// document.getElementById('pop-delete_logout').addEventListener('click', (e) => {
-//   e.preventDefault(); // リンクのデフォルトの動作を無効化
-//   document.getElementById('popup-overlay_logout').style.display = 'none';
-// });
-
-// document.getElementById('no-button-logout').addEventListener('click', (e) => {
-//   e.preventDefault(); // リンクのデフォルトの動作を無効化
-//   document.getElementById('popup-overlay_logout').style.display = 'none';
-// });
-
-// document
-//   .getElementById('popup-overlay_logout')
-//   .addEventListener('click', (e) => {
-//     const popup = document.getElementById('popup-overlay_logout');
-//     if (e.target === popup) {
-//       popup.style.display = 'none';
-//     }
-//   });
 
 //=============================================================================================================
 //==================================================全削除====================================================
