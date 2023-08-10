@@ -1,7 +1,12 @@
 import { closeTab } from '../tab_func.js';
 import { newFileCreateFunc } from '../newFileCreate.js';
 import { newFolderCreateFunc } from '../newFolderCreate.js';
-import { orderGet, fileIDUnderTheFolder, resultPopUp, answerPopUp } from '../stringUtils.js';
+import {
+  orderGet,
+  fileIDUnderTheFolder,
+  resultPopUp,
+  answerPopUp,
+} from '../stringUtils.js';
 import { tabFocusIDGet, hashedIdGet, getTabIdArray } from '../main.js';
 import { disableElements, enableElements } from '../utilityFunction.js';
 
@@ -29,7 +34,7 @@ export const folderContextmenu = (tabIdArray) => {
       folder.elem.parentNode.id
     );
 
-    document.getElementById('folderDelete').onclick = function () {
+    document.getElementById('folderDelete').onclick = async () => {
       // document.getElementById('popup-overlay_folder-delete').style.display =
       //   'block';
       // document.getElementById('folder-delete-name').innerHTML = folder.title;
@@ -65,9 +70,9 @@ export const folderContextmenu = (tabIdArray) => {
           }),
           success: function (res) {
             //成功！！ここにリストから消した際のタブ削除と、リスト削除を記載→タブの✖️を押下したことにすれば良いのでは？？
-      
+
             $(`#folder${folder.id}`).parent().remove();
-      
+
             $.ajax({
               url: '/mypage/' + hashedIdGet,
               type: 'POST',
