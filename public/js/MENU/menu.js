@@ -12,7 +12,6 @@ import { backgroundColorCheckBoxOption } from './my-profile.js';
 import { sortTableByUser, sortTableByDate } from './share-history.js';
 import { groupNameDelete } from './group-list.js';
 
-//document.addEventListener("DOMContentLoaded", function() {
 const menuCheckbox = document.getElementById('tg');
 const menuLabel = document.querySelector('.dropLabel');
 
@@ -32,7 +31,7 @@ menuLabel.addEventListener('click', function (event) {
   event.preventDefault();
   menuCheckbox.checked = !menuCheckbox.checked;
 });
-//});
+
 //=============================================================================================================
 //====================================================個別設定=================================================
 //=============================================================================================================
@@ -184,6 +183,11 @@ document
     }),
     success: function (res) {
       alert(res.msg);
+      document.getElementById('change-email-input').style.display = 'none';
+      document.getElementById('my-mail').style.display = 'block';
+      document.getElementById('my-mail').innerHTML = email;
+      document.getElementById('change-email-button-decision').style.display = 'none';
+      document.getElementById('change-email-button').style.display = 'block';
     },
   });
   
