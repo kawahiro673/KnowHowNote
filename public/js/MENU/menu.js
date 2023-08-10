@@ -1,7 +1,7 @@
 //MENUボタンの主な機能を実装
 
 import { hashedIdGet } from '../main.js';
-import { currentTimeGet, resultPopUp } from '../stringUtils.js';
+import { currentTimeGet, resultPopUp, validateEmail } from '../stringUtils.js';
 import { friendListDelete, friendListUpdate } from './friend-list.js';
 import {
   openGroupAddPopup,
@@ -169,9 +169,9 @@ document
 document
   .getElementById('change-email-button-decision')
   .addEventListener('click', (e) => {
-  console.log('適用を押下しました');
     const email = document.getElementById('change-email-input').value;
-    console.log(email);
+    const flg = validateEmail(email);
+  if(flg){
     $.ajax({
     url: '/mypage/' + hashedIdGet,
     type: 'POST',
@@ -189,9 +189,12 @@ document
       document.getElementById('change-email-button-decision').style.display = 'none';
       document.getElementById('change-email-button').style.display = 'block';
     },
-  });
-  
-  });
+   });
+  }else{
+    alert('ちゃう');
+  }
+});
+
 //=============================================================================================================
 //=================================================共有履歴====================================================
 //=============================================================================================================
