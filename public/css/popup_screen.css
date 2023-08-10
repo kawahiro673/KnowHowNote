@@ -6,20 +6,15 @@
 #popup-overlay_explanation,
 #popup-overlay_inquiry,
 #popup-overlay_About-Website,
-#popup-overlay_logout,
-#popup-overlay_delete,
 #popup-overlay_share-user,
 #popup-overlay_friend-list,
 #popup-overlay_friend-add,
 #popup-overlay_friend-add-ans,
-#popup-overlay_friend-delete-q,
 #popup-overlay_group-add,
 #popup-overlay_group-list,
-#popup-overlay_group-list-delete,
 #popup-overlay_share-delete,
 #popup-overlay_nouhau-delete,
 #popup-overlay_folder-delete,
-#popup-overlay_keep-cancel,
 #popup-overlay_result-pop,
 #popup-overlay_share_no,
 #popup-overlay_share,
@@ -42,21 +37,16 @@
 .popup-window_explanation,
 .popup-window_inquiry,
 .popup-window_About-Website,
-.popup-window_logout,
-.popup-window_delete,
 .popup-window_share-user,
 .popup-window_friend-list,
 .popup-window_friend-add,
 .popup-window_friend-add-ans,
-.popup-window_friend-delete-q,
 .popup-window_group-add,
 .popup-window_group-list,
-.popup-window_group-list-delete,
 .popup-window_share-delete,
 .popup-window_nouhau-delete,
 .popup-window_folder-delete,
 .popup-window_delete-pop,
-.popup-window_keep-cancel,
 .popup-window_result-pop,
 .popup-window_share_no,
 .popup-window_share,
@@ -78,24 +68,15 @@
   height: 450px;
 }
 
-.popup-window_delete,
-.popup-window_friend-add,
-.popup-window_group-list-delete {
+.popup-window_friend-add {
   height: 150px;
 }
 
-.popup-window_group-list-delete {
-  height: 200px;
-}
-
-.popup-window_logout,
 .popup-window_friend-add-ans,
-.popup-window_friend-delete-q,
 .popup-window_share-delete,
 .popup-window_nouhau-delete,
 .popup-window_folder-delete,
 .popup-window_delete-pop,
-.popup-window_keep-cancel,
 .popup-window_result-pop,
 .popup-window_answer-pop{
   height: 180px;
@@ -129,21 +110,16 @@
 .popup-header_explanation,
 .popup-header_inquiry,
 .popup-header_About-Website,
-.popup-header_logout,
-.popup-header_delete,
 .popup-header_share-user,
 .popup-header_friend-list,
 .popup-header_friend-add,
 .popup-header_friend-add-ans,
-.popup-header_friend-delete-q,
 .popup-header_group-add,
 .popup-header_group-list,
-.popup-header_group-list-delete,
 .popup-header_share-delete,
 .popup-header_nouhau-delete,
 .popup-header_folder-delete,
 .popup-header_delete-pop,
-.popup-header_keep-cancel,
 .popup-header_result-pop,
 .popup-header_share_no,
 .popup-header_share,
@@ -164,21 +140,16 @@
 .popup-header_explanation h2,
 .popup-header_inquiry h2,
 .popup-header_About-Website h2,
-.popup-header_logout h2,
-.popup-header_delete h2,
 .popup-header_share-user h2,
 .popup-header_friend-list h2,
 .popup-header_friend-add h2,
 .popup-header_friend-add-ans h2,
-.popup-header_friend-delete-q h2,
 .popup-header_group-add h2,
 .popup-header_group-list h2,
-.popup-header_group-list-delete h2,
 .popup-header_share-delete h2,
 .popup-header_nouhau-delete h2,
 .popup-header_folder-delete h2,
 .popup-header_delete-pop h2,
-.popup-header_keep-cancel h2,
 .popup-header_result-pop h2,
 .popup-header_share_no h2,
 .popup-header_share h2,
@@ -197,21 +168,16 @@
 #pop-delete_explanation,
 #pop-delete_inquiry,
 #pop-delete_About-Website,
-#pop-delete_logout,
-#pop-delete_delete,
 #pop-delete_share,
 #pop-delete_share-user,
 #pop-delete_share_no,
 #pop-delete_friend-list,
 #pop-delete_friend-add,
-#pop-delete_friend-delete-q,
 #pop-delete_group-add,
 #pop-delete_group-list,
-#pop-delete_group-list-delete,
 #pop-delete_share-delete,
 #pop-delete_nouhau-delete,
 #pop-delete_folder-delete,
-#pop-delete_keep-cancel,
 #pop-delete_answer-pop{
   text-decoration: none;
   font-size: 1.2em;
@@ -223,21 +189,16 @@
 #pop-delete_explanation:hover,
 #pop-delete_inquiry:hover,
 #pop-delete_About-Website:hover,
-#pop-delete_logout:hover,
-#pop-delete_delete:hover,
 #pop-delete_share:hover,
 #pop-delete_share-user:hover,
 #pop-delete_share_no:hover,
 #pop-delete_friend-list:hover,
 #pop-delete_friend-add:hover,
-#pop-delete_friend-delete-q:hover,
 #pop-delete_group-add:hover,
 #pop-delete_group-list:hover,
-#pop-delete_group-list-delete:hover,
 #pop-delete_share-delete:hover,
 #pop-delete_nouhau-delete:hover,
 #pop-delete_folder-delete:hover,
-#pop-delete_keep-cancel:hover,
 #pop-delete_answer-pop:hover{
   color: red;
 }
@@ -253,7 +214,6 @@
 .popup-body_friend-list,
 .popup-body_group-add,
 .popup-body_group-list,
-.popup-body_group-list-delete,
 .popup-body_share-delete,
 .popup-body_nouhau-delete,
 .popup-body_folder-delete,
@@ -302,13 +262,9 @@
 
 /*スクロールバー無しのポップアップ*/
 .popup-body_share,
-.popup-body_logout,
 .popup-body_inquiry,
-.popup-body_keep-cancel,
 .popup-body_friend-add,
 .popup-body_friend-add-ans,
-.popup-body_friend-delete-q,
-.popup-body_delete
 .popup-body_answer-pop{
   position: relative;
   padding: 0 10px;
