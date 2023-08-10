@@ -160,9 +160,9 @@ const shareFunctionCheckBoxFlg = (checkbox) => {
 document
   .getElementById('change-Myname-button')
   .addEventListener('click', (e) => {
-     document.getElementById('change-Myname-input').style.display = block;
+     document.getElementById('change-Myname-input').style.display = 'block';
      document.getElementById('change-Myname-input').value = document.getElementById('myName').innerHTML;
-     document.getElementById('myName').style.display = none;
+     document.getElementById('myName').style.display = 'none';
   });
 
 //=============================================================================================================
