@@ -43,9 +43,7 @@
 #createbutton,
 #createfilebutton,
 #change-email-button,
-#change-Myname-button,
 #update-authenticationID-button,
-#change-Myname-button-decision,
 #change-email-button-decision{
   display: inline-block;
   padding: 10px 20px;
@@ -106,9 +104,7 @@
 #createbutton:active,
 #createfilebutton:active,
 #change-email-button:active,
-#change-Myname-button:active,
 #update-authenticationID-button:active,
-#change-Myname-button-decision:active,
 #change-email-button-decision:active{
   box-shadow: none;
   transform: translateY(5px);
@@ -146,9 +142,7 @@
 #createbutton,
 #createfilebutton,
 #change-email-button,
-#change-Myname-button,
 #update-authenticationID-button,
-#change-Myname-button-decision,
 #change-email-button-decision{
   padding: 7px 14px;
   font-size: 12px;
