@@ -86,6 +86,15 @@ export const resultPopUp = (headerStr, bodyStr) => {
   }, 1500);
 };
 
+export const answerPopUp = (headerStr, bodyStr) => {
+  document.getElementById('popup-overlay_result-pop').style.display = 'block';
+  document.getElementById('result-pop-header-h2').innerHTML = headerStr;
+  document.getElementById('result-pop-body-p').innerHTML = bodyStr;
+  setTimeout(() => {
+    document.getElementById('popup-overlay_result-pop').style.display = 'none';
+  }, 1500);
+};
+
 //Emailバリデーション関数(GmailとYahoo!メールのみ)
 export const validateEmail = (email) => {
   // メールアドレスの正規表現
