@@ -248,7 +248,8 @@
 .share-delete-button-wrapper,
 .nouhau-delete-button-wrapper,
 .folder-delete-button-wrapper,
-.keep-cancel-button-wrapper {
+.keep-cancel-button-wrapper,
+.answer-pop-button-wrapper{
   display: flex;
   justify-content: space-between;
 }
@@ -260,7 +261,8 @@
 .share-delete-button-wrapper button,
 .nouhau-delete-button-wrapper button,
 .folder-delete-button-wrapper button,
-.keep-cancel-button-wrapper button {
+.keep-cancel-button-wrapper button,
+.answer-pop-button-wrapper button{
   flex: 0 0 120px;
   margin: 0 5px;
 }
