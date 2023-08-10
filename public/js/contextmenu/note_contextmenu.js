@@ -1,5 +1,10 @@
 import { closeTab, shareButtonClick } from '../tab_func.js';
-import { currentTimeGet, orderGet, resultPopUp } from '../stringUtils.js';
+import {
+  currentTimeGet,
+  orderGet,
+  resultPopUp,
+  answerPopUp,
+} from '../stringUtils.js';
 import { tabFocusIDGet, getTabIdArray } from '../main.js';
 import { newFileCreateFunc } from '../newFileCreate.js';
 
