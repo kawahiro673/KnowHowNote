@@ -204,20 +204,16 @@ const groupCheckListScreen = (button) => {
 
 //グループリストからグループ削除
 const groupDeleteButton = (event) => {
-  document.getElementById('popup-overlay_group-list-delete').style.display =
-    'block';
+  // document.getElementById('popup-overlay_group-list-delete').style.display =
+  //   'block';
   const group = event.target
     .closest('.column')
     .querySelector('.column-inner').innerHTML;
 
-  document.getElementById('delete-group').innerHTML = group;
-};
-
-export const groupNameDelete = (group) => {
-  document.getElementById('popup-overlay_group-list-delete').style.display =
-    'none';
-
-  $.ajax({
+  // document.getElementById('delete-group').innerHTML = group;
+  const result = await answerPopUp('グループ追加',`"${group}"へ所属しているユーザーのグループが解除されます削除してもよろしいですか？`);
+  if (result === true) {
+    $.ajax({
     url: '/mypage/' + hashedIdGet,
     type: 'POST',
     dataType: 'Json',
@@ -232,7 +228,31 @@ export const groupNameDelete = (group) => {
       friendListUpdate();
     },
   });
+  } else {
+    // 「いいえ」が押された場合の処理 おそらくポップが閉じる
+  }
 };
+
+// export const groupNameDelete = (group) => {
+//   document.getElementById('popup-overlay_group-list-delete').style.display =
+//     'none';
+
+//   $.ajax({
+//     url: '/mypage/' + hashedIdGet,
+//     type: 'POST',
+//     dataType: 'Json',
+//     contentType: 'application/json',
+//     data: JSON.stringify({
+//       flg: 'group_delete',
+//       group,
+//     }),
+//     success: function (res) {
+//       resultPopUp('グループ削除', '削除しました');
+//       groupListUpdate('group-display');
+//       friendListUpdate();
+//     },
+//   });
+// };
 
 //フレンドリスト内の、グループのみの更新
 export const friendListGroupUpdate = () => {
