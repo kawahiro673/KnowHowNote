@@ -4,7 +4,7 @@ import {
   passGet,
   orderGet,
   resultPopUp,
-  answerPopUp
+  answerPopUp,
 } from './stringUtils.js';
 import { hashedIdGet, setTabIdArray } from './main.js';
 
@@ -194,32 +194,36 @@ export const keepButtonClick = (id) => {
 
 //タブエリアの[取り消し]ボタン押下時
 export const cancelButtonClick = async (id) => {
-   const result = await answerPopUp('取り消し','本当に編集を取り消しますか？保存していないものは取り消されます');
-   if (result === true) {
-       $.ajax({
-    url: '/notePostController/',
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      flg: 'info',
-      id,
-    }),
-    success: function (res) {
-      document.getElementById(`textarea${id}`).value = res.fileResult.memo_text;
-    },
-  });
-  document.getElementById(`tabP${id}`).style.display = 'block';
-  document.getElementById(`keep-note-btn${id}`).style.display = 'none';
-  document.getElementById(`cancel-note-btn${id}`).style.display = 'none';
-  document.getElementById(`titletext${id}`).style.display = 'none';
-  document.getElementById(`edit-note-btn${id}`).style.display = 'block';
-  document.getElementById(`share-button-${id}`).style.display = 'block';
-  document.getElementById(`textarea${id}`).readOnly = true;
-  document.getElementById(`fade${id}`).style.opacity = '0';
-  document.getElementById(`tabname${id}`).style.color = 'black';
+  const result = await answerPopUp(
+    '取り消し',
+    '本当に編集を取り消しますか？保存していないものは取り消されます'
+  );
+  if (result === true) {
+    $.ajax({
+      url: '/notePostController/',
+      type: 'POST',
+      dataType: 'Json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        flg: 'info',
+        id,
+      }),
+      success: function (res) {
+        document.getElementById(`textarea${id}`).value =
+          res.fileResult.memo_text;
+      },
+    });
+    document.getElementById(`tabP${id}`).style.display = 'block';
+    document.getElementById(`keep-note-btn${id}`).style.display = 'none';
+    document.getElementById(`cancel-note-btn${id}`).style.display = 'none';
+    document.getElementById(`titletext${id}`).style.display = 'none';
+    document.getElementById(`edit-note-btn${id}`).style.display = 'block';
+    document.getElementById(`share-button-${id}`).style.display = 'block';
+    document.getElementById(`textarea${id}`).readOnly = true;
+    document.getElementById(`fade${id}`).style.opacity = '0';
+    document.getElementById(`tabname${id}`).style.color = 'black';
 
-  resultPopUp('取り消し', '取り消しました');
+    resultPopUp('取り消し', '取り消しました');
   } else {
     // 「いいえ」が押された場合の処理 おそらくポップが閉じる
   }

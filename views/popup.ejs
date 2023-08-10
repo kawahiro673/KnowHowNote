@@ -1,389 +1,490 @@
 <div id="popup-overlay_profile" style="display: none">
-    <div class="popup-window_profile">
-      <div class="popup-header_profile">
-        <h2>個別設定</h2>
-        <div class="popup-close_profile">
-          <a id="pop-delete_profile" href="">×</a>
-        </div>
+  <div class="popup-window_profile">
+    <div class="popup-header_profile">
+      <h2>個別設定</h2>
+      <div class="popup-close_profile">
+        <a id="pop-delete_profile" href="">×</a>
       </div>
-      <div class="popup-body_profile">
-        <p class="user-name-position">ユーザー名：<span id="myName"></span></p>
-        <div class='gray-line'></div>
-        <p>利用者ID：<span id="authentication-ID"></span><button id="update-authenticationID-button">更新</button></p>
-        <div class='gray-line'></div>
-        <p>メールアドレス：<span id="my-mail">-</span><input id="change-email-input" style="display:none;"><button id="change-email-button">変更</button><button id="change-email-button-decision" style="display:none;">適用</button></p>
-        <div class='gray-line'></div>
-        <p class='registration-date'>登録日：<span id="RegistrationDate"></span></p>
-        <div class='gray-line-fat-1'></div>
-        <div class="checkbox-share-container">
-          共有機能：
-          <label>
-            <input type="checkbox" name="checkboxshare" class="checkbox-share" id="onCheckbox">
-            <span class="checkmark-share "></span>
+    </div>
+    <div class="popup-body_profile">
+      <p class="user-name-position">ユーザー名：<span id="myName"></span></p>
+      <div class="gray-line"></div>
+      <p>
+        利用者ID：<span id="authentication-ID"></span
+        ><button id="update-authenticationID-button">更新</button>
+      </p>
+      <div class="gray-line"></div>
+      <p>
+        メールアドレス：<span id="my-mail">-</span
+        ><input id="change-email-input" style="display: none" /><button
+          id="change-email-button"
+        >
+          変更</button
+        ><button id="change-email-button-decision" style="display: none">
+          適用
+        </button>
+      </p>
+      <div class="gray-line"></div>
+      <p class="registration-date">
+        登録日：<span id="RegistrationDate"></span>
+      </p>
+      <div class="gray-line-fat-1"></div>
+      <div class="checkbox-share-container">
+        共有機能：
+        <label>
+          <input
+            type="checkbox"
+            name="checkboxshare"
+            class="checkbox-share"
+            id="onCheckbox"
+          />
+          <span class="checkmark-share"></span>
           ON
-          </label>
-        </div>
-        <div class="checkbox-container">
-          <label>
-            <input type="checkbox" name="checkboxshare" class="checkbox-share" id="offCheckbox">
-            <span class="checkmark-share"></span>
+        </label>
+      </div>
+      <div class="checkbox-container">
+        <label>
+          <input
+            type="checkbox"
+            name="checkboxshare"
+            class="checkbox-share"
+            id="offCheckbox"
+          />
+          <span class="checkmark-share"></span>
           OFF
-          </label>
-        </div>
+        </label>
+      </div>
 
-        <br>
-        <div class='gray-line-fat-2'></div>
-        <div class="checkbox-container">
-          背景色：
-          <label>
-            <input type="checkbox" name="checkbox" class="checkbox-color" id="checkbox-color-red">
-            <span class="checkmark red_b"></span>
+      <br />
+      <div class="gray-line-fat-2"></div>
+      <div class="checkbox-container">
+        背景色：
+        <label>
+          <input
+            type="checkbox"
+            name="checkbox"
+            class="checkbox-color"
+            id="checkbox-color-red"
+          />
+          <span class="checkmark red_b"></span>
           赤
-          </label>
-        </div>
-        <div class="checkbox-container">
-          <label>
-            <input type="checkbox" name="checkbox" class="checkbox-color" id="checkbox-color-blue">
-            <span class="checkmark blue_b"></span>
+        </label>
+      </div>
+      <div class="checkbox-container">
+        <label>
+          <input
+            type="checkbox"
+            name="checkbox"
+            class="checkbox-color"
+            id="checkbox-color-blue"
+          />
+          <span class="checkmark blue_b"></span>
           青
-          </label>
-        </div>
-        <div class="checkbox-container">
-          <label>
-            <input type="checkbox" name="checkbox" class="checkbox-color" id="checkbox-color-yellow">
-            <span class="checkmark yellow_b"></span>
+        </label>
+      </div>
+      <div class="checkbox-container">
+        <label>
+          <input
+            type="checkbox"
+            name="checkbox"
+            class="checkbox-color"
+            id="checkbox-color-yellow"
+          />
+          <span class="checkmark yellow_b"></span>
           黄
-          </label>
-        </div>
-        <div class="checkbox-container">
-          <label>
-            <input type="checkbox" name="checkbox" class="checkbox-color" id="checkbox-color-green">
-            <span class="checkmark green_b"></span>
+        </label>
+      </div>
+      <div class="checkbox-container">
+        <label>
+          <input
+            type="checkbox"
+            name="checkbox"
+            class="checkbox-color"
+            id="checkbox-color-green"
+          />
+          <span class="checkmark green_b"></span>
           緑
-          </label>
-        </div>
-        <div class="checkbox-container">
-          <label>
-            <input type="checkbox" name="checkbox" class="checkbox-color" id="checkbox-color-purple">
-            <span class="checkmark purple_b"></span>
+        </label>
+      </div>
+      <div class="checkbox-container">
+        <label>
+          <input
+            type="checkbox"
+            name="checkbox"
+            class="checkbox-color"
+            id="checkbox-color-purple"
+          />
+          <span class="checkmark purple_b"></span>
           紫
-          </label>
-        </div>
-        <div class="checkbox-container">
-          <label>
-            <input type="checkbox" name="checkbox" class="checkbox-color" id="checkbox-color-orange">
-            <span class="checkmark orange_b"></span>
+        </label>
+      </div>
+      <div class="checkbox-container">
+        <label>
+          <input
+            type="checkbox"
+            name="checkbox"
+            class="checkbox-color"
+            id="checkbox-color-orange"
+          />
+          <span class="checkmark orange_b"></span>
           橙
-          </label>
-        </div>
-        <div class="checkbox-container">
-          <label>
-            <input type="checkbox" name="checkbox" class="checkbox-color" id="checkbox-color-gray">
-            <span class="checkmark gray_b"></span>
+        </label>
+      </div>
+      <div class="checkbox-container">
+        <label>
+          <input
+            type="checkbox"
+            name="checkbox"
+            class="checkbox-color"
+            id="checkbox-color-gray"
+          />
+          <span class="checkmark gray_b"></span>
           灰色
-          </label>
-        </div>
-          <div class='gray-line-fat-2'></div>
-        <div class="account-delete"><span><a href="">アカウントを削除する</a></span></div>
+        </label>
+      </div>
+      <div class="gray-line-fat-2"></div>
+      <div class="account-delete">
+        <span><a href="">アカウントを削除する</a></span>
       </div>
     </div>
   </div>
+</div>
 
-  <div id="popup-overlay_share-history" style="display: none">
-    <div class="popup-window_share-history">
-      <div class="popup-header_share-history">
-        <h2>共有履歴</h2>
-        <div class="popup-close_share-history">
-          <a id="pop-delete_share-history" href="">×</a>
-        </div>
+<div id="popup-overlay_share-history" style="display: none">
+  <div class="popup-window_share-history">
+    <div class="popup-header_share-history">
+      <h2>共有履歴</h2>
+      <div class="popup-close_share-history">
+        <a id="pop-delete_share-history" href="">×</a>
       </div>
-      <div class="popup-body_share-history" id="share-history-list">
+    </div>
+    <div class="popup-body_share-history" id="share-history-list">
       <select id="filter-select">
         <option value="">全て</option>
         <option value="ToDo">共有した</option>
         <option value="ToBe">共有された</option>
       </select>
-        <h1 id = 'share-history-h1'></h1>
-      </div>
+      <h1 id="share-history-h1"></h1>
     </div>
   </div>
+</div>
 
-  <div id="popup-overlay_explanation" style="display: none">
-    <div class="popup-window_explanation">
-      <div class="popup-header_explanation">
-        <h2>使い方</h2>
-        <div class="popup-close_explanation">
-          <a id="pop-delete_explanation" href="">×</a>
-        </div>
-      </div>
-      <div class="popup-body_explanation">
-        <p>〜調整中〜</p>
+<div id="popup-overlay_explanation" style="display: none">
+  <div class="popup-window_explanation">
+    <div class="popup-header_explanation">
+      <h2>使い方</h2>
+      <div class="popup-close_explanation">
+        <a id="pop-delete_explanation" href="">×</a>
       </div>
     </div>
-  </div>
-
-  <div id="popup-overlay_inquiry" style="display: none">
-    <div class="popup-window_inquiry">
-      <div class="popup-header_inquiry">
-        <h2>問い合わせフォーム</h2>
-        <div class="popup-close_inquiry">
-          <a id="pop-delete_inquiry" href="">×</a>
-        </div>
-      </div>
-      <div class="popup-body_inquiry">
-        <select name=”item” id="itemSelect">
-          <option value=”1”>不具合・改善点等</option>
-          <option value=”2”>技術的なお問わせ</option>
-          <option value=”3”>その他お問合せ</option>
-        </select>
-        <textarea id="inquiry-content" placeholder="問い合わせ内容を入力してください"></textarea>
-        <button id ="inquiry-button">送信</button>
-      </div>
+    <div class="popup-body_explanation">
+      <p>〜調整中〜</p>
     </div>
   </div>
+</div>
 
-  <div id="popup-overlay_About-Website" style="display: none">
-    <div class="popup-window_About-Website">
-      <div class="popup-header_About-Website">
-        <h2>このサイトについて</h2>
-        <div class="popup-close_About-Website">
-          <a id="pop-delete_About-Website" href="">×</a>
-        </div>
-      </div>
-      <div class="popup-body_About-Website">
-        <p>バージョン:1.0 (更新日時 6/1 00:00)</p>
+<div id="popup-overlay_inquiry" style="display: none">
+  <div class="popup-window_inquiry">
+    <div class="popup-header_inquiry">
+      <h2>問い合わせフォーム</h2>
+      <div class="popup-close_inquiry">
+        <a id="pop-delete_inquiry" href="">×</a>
       </div>
     </div>
-  </div>
-
-  <div id="popup-overlay_share" style="display: none">
-    <div class="popup-window_share">
-      <div class="popup-header_share">
-        <h2>共有</h2>
-        <div class="popup-close_share">
-          <a id="pop-delete_share" href="">×</a>
-        </div>
-      </div>
-      <div class="popup-body_share">
-        <div class="share-row">
-         <p>"<span id='share-nouhau-name'></span>"を共有するユーザー/グループをフレンドリストから選択してください</p>
-         <button id="share-user-button">フレンドリスト</button>
-        </div>
-        <input type="text" class="share-input" maxlength="1000" placeholder="フレンドを選択してください" readonly />
-        <p>メッセージ：</p>
-        <textarea class="share-message" maxlength="500" placeholder="メッセージがあれば入力してください"></textarea>
-        <button id="share-send">送信</button>
-      </div>
+    <div class="popup-body_inquiry">
+      <select name="”item”" id="itemSelect">
+        <option value="”1”">不具合・改善点等</option>
+        <option value="”2”">技術的なお問わせ</option>
+        <option value="”3”">その他お問合せ</option>
+      </select>
+      <textarea
+        id="inquiry-content"
+        placeholder="問い合わせ内容を入力してください"
+      ></textarea>
+      <button id="inquiry-button">送信</button>
     </div>
   </div>
+</div>
 
-  <div id="popup-overlay_share-user" style="display: none">
-    <div class="popup-window_share-user" id="draggable-popup">
-      <div class="popup-header_share-user">
-        <h2>フレンド 一覧</h2>
-        <div class="popup-close_share-user">
-          <a id="pop-delete_share-user" href="">×</a>
-        </div>
+<div id="popup-overlay_About-Website" style="display: none">
+  <div class="popup-window_About-Website">
+    <div class="popup-header_About-Website">
+      <h2>このサイトについて</h2>
+      <div class="popup-close_About-Website">
+        <a id="pop-delete_About-Website" href="">×</a>
       </div>
-      <div class="popup-body_share-user">
-      <input id="friend-list-check-id" type="radio" name="friend-list-label" checked />
-      <label class="friend-list-label" id="friend-tab" for="friend-list-check-id">フレンド</label>
+    </div>
+    <div class="popup-body_About-Website">
+      <p>バージョン:1.0 (更新日時 6/1 00:00)</p>
+    </div>
+  </div>
+</div>
+
+<div id="popup-overlay_share" style="display: none">
+  <div class="popup-window_share">
+    <div class="popup-header_share">
+      <h2>共有</h2>
+      <div class="popup-close_share">
+        <a id="pop-delete_share" href="">×</a>
+      </div>
+    </div>
+    <div class="popup-body_share">
+      <div class="share-row">
+        <p>
+          "<span id="share-nouhau-name"></span
+          >"を共有するユーザー/グループをフレンドリストから選択してください
+        </p>
+        <button id="share-user-button">フレンドリスト</button>
+      </div>
+      <input
+        type="text"
+        class="share-input"
+        maxlength="1000"
+        placeholder="フレンドを選択してください"
+        readonly
+      />
+      <p>メッセージ：</p>
+      <textarea
+        class="share-message"
+        maxlength="500"
+        placeholder="メッセージがあれば入力してください"
+      ></textarea>
+      <button id="share-send">送信</button>
+    </div>
+  </div>
+</div>
+
+<div id="popup-overlay_share-user" style="display: none">
+  <div class="popup-window_share-user" id="draggable-popup">
+    <div class="popup-header_share-user">
+      <h2>フレンド 一覧</h2>
+      <div class="popup-close_share-user">
+        <a id="pop-delete_share-user" href="">×</a>
+      </div>
+    </div>
+    <div class="popup-body_share-user">
+      <input
+        id="friend-list-check-id"
+        type="radio"
+        name="friend-list-label"
+        checked
+      />
+      <label
+        class="friend-list-label"
+        id="friend-tab"
+        for="friend-list-check-id"
+        >フレンド</label
+      >
       <input id="group-list-check-id" type="radio" name="friend-list-label" />
-      <label class="friend-list-label" id="group-tab" for="group-list-check-id">グループ</label>
+      <label class="friend-list-label" id="group-tab" for="group-list-check-id"
+        >グループ</label
+      >
 
       <div class="friend-list_content" id="friend_content">
         <div id="share-user-div"></div>
       </div>
 
       <div class="friend-list_content" id="group_content">
-         <div id="share-group-div"></div> 
+        <div id="share-group-div"></div>
       </div>
 
-       <div class="friend-list-button-wrapper">
-          <button id="share-user-add-button">追加</button>
-          <button id="share-user-clear-button">全てのチェックを外す</button>
-      </div>
-       
+      <div class="friend-list-button-wrapper">
+        <button id="share-user-add-button">追加</button>
+        <button id="share-user-clear-button">全てのチェックを外す</button>
       </div>
     </div>
   </div>
+</div>
 
-  <div id="popup-overlay_share_no" style="display: none">
-    <div class="popup-window_share_no">
-      <div class="popup-header_share_no">
-        <h2>共有</h2>
-        <div class="popup-close_share_no">
-          <a id="pop-delete_share_no" href="">×</a>
-        </div>
+<div id="popup-overlay_share_no" style="display: none">
+  <div class="popup-window_share_no">
+    <div class="popup-header_share_no">
+      <h2>共有</h2>
+      <div class="popup-close_share_no">
+        <a id="pop-delete_share_no" href="">×</a>
       </div>
-      <div class="popup-body_share_no">
-        <p id="nothingUser">ユーザーが見つかりません</p>
-      </div>
+    </div>
+    <div class="popup-body_share_no">
+      <p id="nothingUser">ユーザーが見つかりません</p>
     </div>
   </div>
+</div>
 
-  <div id="popup-overlay_friend-list" style="display: none">
-    <div class="popup-window_friend-list">
-      <div class="popup-header_friend-list">
-        <h2>フレンドリスト</h2>
-        <div class="popup-close_friend-list">
-          <a id="pop-delete_friend-list" href="">×</a>
+<div id="popup-overlay_friend-list" style="display: none">
+  <div class="popup-window_friend-list">
+    <div class="popup-header_friend-list">
+      <h2>フレンドリスト</h2>
+      <div class="popup-close_friend-list">
+        <a id="pop-delete_friend-list" href="">×</a>
+      </div>
+    </div>
+    <div class="popup-body_friend-list">
+      <div class="friend-list-top">
+        <p>あなたの利用者ID:　<span id="myID"></span></p>
+        <div class="friend-list-button-group">
+          <button id="friend-list-add-button">フレンド追加</button>
+          <button id="friend-list-group-add-button">グループ追加</button>
         </div>
       </div>
-      <div class="popup-body_friend-list" >
-       <div class='friend-list-top'>
-        <p>あなたの利用者ID:　<span id='myID'></span></p>
-        <div class='friend-list-button-group'>
-         <button id="friend-list-add-button">フレンド追加</button>        
-         <button id="friend-list-group-add-button">グループ追加</button>
-        </div>
-       </div> 
-       <div id="friend-list-div"></div>
-      </div>
+      <div id="friend-list-div"></div>
     </div>
   </div>
+</div>
 
-  <div id="popup-overlay_friend-add" style="display: none">
-    <div class="popup-window_friend-add">
-      <div class="popup-header_friend-add">
-        <h2>フレンド追加</h2>
-        <div class="popup-close_friend-add">
-          <a id="pop-delete_friend-add" href="">×</a>
-        </div>
+<div id="popup-overlay_friend-add" style="display: none">
+  <div class="popup-window_friend-add">
+    <div class="popup-header_friend-add">
+      <h2>フレンド追加</h2>
+      <div class="popup-close_friend-add">
+        <a id="pop-delete_friend-add" href="">×</a>
       </div>
-      <div class="popup-body_friend-add" >
-       <p>フレンドリストに追加したいユーザーの利用者IDを入力してください</p>
-       <input type="text" id="idInput" maxlength="19" placeholder="abcd-1234-efgh-5678" />
-       <button id="friend-search-button">検索</button>
-      </div>
+    </div>
+    <div class="popup-body_friend-add">
+      <p>フレンドリストに追加したいユーザーの利用者IDを入力してください</p>
+      <input
+        type="text"
+        id="idInput"
+        maxlength="19"
+        placeholder="abcd-1234-efgh-5678"
+      />
+      <button id="friend-search-button">検索</button>
     </div>
   </div>
+</div>
 
-  <div id="popup-overlay_friend-add-ans" style="display: none">
-    <div class="popup-window_friend-add-ans">
-      <div class="popup-header_friend-add-ans">
-        <h2>フレンド追加</h2>
-      </div>
-      <div class="popup-body_friend-add-ans">
-        <p>"<span id="new-friend-user"></span>"さんをフレンドリストに追加しました</p>
-      </div>
+<div id="popup-overlay_friend-add-ans" style="display: none">
+  <div class="popup-window_friend-add-ans">
+    <div class="popup-header_friend-add-ans">
+      <h2>フレンド追加</h2>
+    </div>
+    <div class="popup-body_friend-add-ans">
+      <p>
+        "<span id="new-friend-user"></span>"さんをフレンドリストに追加しました
+      </p>
     </div>
   </div>
+</div>
 
-   <div id="popup-overlay_group-add" style="display: none">
-     <div class="popup-window_group-add">
-       <div class="popup-header_group-add">
-         <h2>グループ追加</h2>
-         <div class="popup-close_group-add">
-           <a id="pop-delete_group-add" href="">×</a>
-         </div>
-        </div>
-        <div class="popup-body_group-add">
-          <p>ここに追加したいグループ名を記載してください</p>
-          <input type="text" id="group-Name-input" maxlength="15" placeholder="グループ名" />
-          <button id="group-add-button">追加</button>
-          <p id ="group-add-list-massage"></p>
-          <div id="group-display" class="group-list-display">
-          </div>
-        </div>
+<div id="popup-overlay_group-add" style="display: none">
+  <div class="popup-window_group-add">
+    <div class="popup-header_group-add">
+      <h2>グループ追加</h2>
+      <div class="popup-close_group-add">
+        <a id="pop-delete_group-add" href="">×</a>
       </div>
     </div>
- 
-
- <div id="popup-overlay_group-list" style="display: none">
-    <div class="popup-window_group-list">
-      <div class="popup-header_group-list">
-        <h2>グループリスト</h2>
-        <div class="popup-close_group-list">
-          <a id="pop-delete_group-list" href="">×</a>
-        </div>
-      </div>
-      <div class="popup-body_group-list">
-        <p>下記からグループを一つ選択してください</p>
-        <div id="all-group-list" class="group-list-display"></div>
-      </div>
+    <div class="popup-body_group-add">
+      <p>ここに追加したいグループ名を記載してください</p>
+      <input
+        type="text"
+        id="group-Name-input"
+        maxlength="15"
+        placeholder="グループ名"
+      />
+      <button id="group-add-button">追加</button>
+      <p id="group-add-list-massage"></p>
+      <div id="group-display" class="group-list-display"></div>
     </div>
   </div>
+</div>
 
-  <div id="popup-overlay_share-delete" style="display: none">
-    <div class="popup-window_share-delete">
-      <div class="popup-header_share-delete">
-        <h2>シェアノウハウ削除</h2>
-        <div class="popup-close_share-delete">
-          <a id="pop-delete_share-delete" href="">×</a>
-        </div>
+<div id="popup-overlay_group-list" style="display: none">
+  <div class="popup-window_group-list">
+    <div class="popup-header_group-list">
+      <h2>グループリスト</h2>
+      <div class="popup-close_group-list">
+        <a id="pop-delete_group-list" href="">×</a>
       </div>
-      <div class="popup-body_share-delete">
-        <p>"<span id="share-delete-name"></span>"を削除しますがよろしいですか</p>
-       <div class = "share-delete-button-wrapper">
+    </div>
+    <div class="popup-body_group-list">
+      <p>下記からグループを一つ選択してください</p>
+      <div id="all-group-list" class="group-list-display"></div>
+    </div>
+  </div>
+</div>
+
+<div id="popup-overlay_share-delete" style="display: none">
+  <div class="popup-window_share-delete">
+    <div class="popup-header_share-delete">
+      <h2>シェアノウハウ削除</h2>
+      <div class="popup-close_share-delete">
+        <a id="pop-delete_share-delete" href="">×</a>
+      </div>
+    </div>
+    <div class="popup-body_share-delete">
+      <p>"<span id="share-delete-name"></span>"を削除しますがよろしいですか</p>
+      <div class="share-delete-button-wrapper">
         <button id="yes-button-share-delete">はい</button>
         <button id="no-button-share-delete">いいえ</button>
-       </div>
       </div>
     </div>
   </div>
+</div>
 
-   <div id="popup-overlay_nouhau-delete" style="display: none">
-    <div class="popup-window_nouhau-delete">
-      <div class="popup-header_nouhau-delete">
-        <h2>ノウハウ削除</h2>
-        <div class="popup-close_nouhau-delete">
-          <a id="pop-delete_nouhau-delete" href="">×</a>
-        </div>
+<div id="popup-overlay_nouhau-delete" style="display: none">
+  <div class="popup-window_nouhau-delete">
+    <div class="popup-header_nouhau-delete">
+      <h2>ノウハウ削除</h2>
+      <div class="popup-close_nouhau-delete">
+        <a id="pop-delete_nouhau-delete" href="">×</a>
       </div>
-      <div class="popup-body_nouhau-delete">
-        <p>"<span id="nouhau-delete-name"></span>"を削除しますがよろしいですか</p>
-       <div class = "nouhau-delete-button-wrapper">
+    </div>
+    <div class="popup-body_nouhau-delete">
+      <p>"<span id="nouhau-delete-name"></span>"を削除しますがよろしいですか</p>
+      <div class="nouhau-delete-button-wrapper">
         <button id="yes-button-nouhau-delete">はい</button>
         <button id="no-button-nouhau-delete">いいえ</button>
-       </div>
       </div>
     </div>
   </div>
+</div>
 
-   <div id="popup-overlay_folder-delete" style="display: none">
-    <div class="popup-window_folder-delete">
-      <div class="popup-header_folder-delete">
-        <h2>フォルダ削除</h2>
-        <div class="popup-close_folder-delete">
-          <a id="pop-delete_folder-delete" href="">×</a>
-        </div>
+<div id="popup-overlay_folder-delete" style="display: none">
+  <div class="popup-window_folder-delete">
+    <div class="popup-header_folder-delete">
+      <h2>フォルダ削除</h2>
+      <div class="popup-close_folder-delete">
+        <a id="pop-delete_folder-delete" href="">×</a>
       </div>
-      <div class="popup-body_folder-delete">
-        <p>"<span id="folder-delete-name"></span>"の配下のフォルダやノートも全て削除されますが本当に削除しますか？</p>
-       <div class = "folder-delete-button-wrapper">
+    </div>
+    <div class="popup-body_folder-delete">
+      <p>
+        "<span id="folder-delete-name"></span
+        >"の配下のフォルダやノートも全て削除されますが本当に削除しますか？
+      </p>
+      <div class="folder-delete-button-wrapper">
         <button id="yes-button-folder-delete">はい</button>
         <button id="no-button-folder-delete">いいえ</button>
-       </div>
       </div>
     </div>
   </div>
+</div>
 
-  <div id="popup-overlay_result-pop" style="display: none">
-    <div class="popup-window_result-pop">
-      <div class="popup-header_result-pop">
-        <h2 id="result-pop-header-h2"></h2>
-      </div>
-      <div class="popup-body_result-pop">
-        <p id="result-pop-body-p"></p>
-      </div>
+<div id="popup-overlay_result-pop" style="display: none">
+  <div class="popup-window_result-pop">
+    <div class="popup-header_result-pop">
+      <h2 id="result-pop-header-h2"></h2>
+    </div>
+    <div class="popup-body_result-pop">
+      <p id="result-pop-body-p"></p>
     </div>
   </div>
+</div>
 
-   <div id="popup-overlay_answer-pop" style="display: none">
-    <div class="popup-window_answer-pop">
-      <div class="popup-header_answer-pop">
-        <h2 id="answer-pop-h2"></h2>
-        <div class="popup-close_answer-pop">
-          <a id="pop-delete_answer-pop" href="">×</a>
-        </div>
+<div id="popup-overlay_answer-pop" style="display: none">
+  <div class="popup-window_answer-pop">
+    <div class="popup-header_answer-pop">
+      <h2 id="answer-pop-h2"></h2>
+      <div class="popup-close_answer-pop">
+        <a id="pop-delete_answer-pop" href="">×</a>
       </div>
-      <div class="popup-body_answer-pop">
-        <p id='answer-pop-p'></p>
-       <div class = "answer-pop-button-wrapper">
+    </div>
+    <div class="popup-body_answer-pop">
+      <p id="answer-pop-p"></p>
+      <div class="answer-pop-button-wrapper">
         <button id="yes-button-answer-pop">はい</button>
         <button id="no-button-answer-pop">いいえ</button>
-       </div>
       </div>
     </div>
   </div>
+</div>

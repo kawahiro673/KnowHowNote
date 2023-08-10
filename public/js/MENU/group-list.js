@@ -203,28 +203,31 @@ const groupCheckListScreen = (button) => {
 };
 
 //グループリストからグループ削除
-const groupDeleteButton = async(event) => {
+const groupDeleteButton = async (event) => {
   const group = event.target
     .closest('.column')
     .querySelector('.column-inner').innerHTML;
 
-  const result = await answerPopUp('グループ追加',`"${group}"へ所属しているユーザーのグループが解除されます削除してもよろしいですか？`);
+  const result = await answerPopUp(
+    'グループ追加',
+    `"${group}"へ所属しているユーザーのグループが解除されます削除してもよろしいですか？`
+  );
   if (result === true) {
     $.ajax({
-    url: '/mypage/' + hashedIdGet,
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      flg: 'group_delete',
-      group,
-    }),
-    success: function (res) {
-      resultPopUp('グループ削除', '削除しました');
-      groupListUpdate('group-display');
-      friendListUpdate();
-    },
-  });
+      url: '/mypage/' + hashedIdGet,
+      type: 'POST',
+      dataType: 'Json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        flg: 'group_delete',
+        group,
+      }),
+      success: function (res) {
+        resultPopUp('グループ削除', '削除しました');
+        groupListUpdate('group-display');
+        friendListUpdate();
+      },
+    });
   } else {
     // 「いいえ」が押された場合の処理 おそらくポップが閉じる
   }

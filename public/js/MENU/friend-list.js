@@ -140,23 +140,26 @@ async function friendListDeleteCross(event) {
   const friendRealName = event.target
     .closest('.friend-Box')
     .querySelector('.real-name-p').textContent;
-   const name = friendRealName.replace(/[()]/g, '');
-   const result = await answerPopUp('フレンド削除',`"${friendName}"さんをフレンドリストから削除しますか`);
- if (result === true) {
-  $.ajax({
-    url: '/mypage/' + hashedIdGet,
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      flg: 'friend-list-delete',
-      name,
-    }),
-    success: function (res) {
-      resultPopUp('フレンド削除', 'フレンドから登録解除しました');
-      friendListUpdate();
-    },
-   });
+  const name = friendRealName.replace(/[()]/g, '');
+  const result = await answerPopUp(
+    'フレンド削除',
+    `"${friendName}"さんをフレンドリストから削除しますか`
+  );
+  if (result === true) {
+    $.ajax({
+      url: '/mypage/' + hashedIdGet,
+      type: 'POST',
+      dataType: 'Json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        flg: 'friend-list-delete',
+        name,
+      }),
+      success: function (res) {
+        resultPopUp('フレンド削除', 'フレンドから登録解除しました');
+        friendListUpdate();
+      },
+    });
   } else {
     // 「いいえ」が押された場合の処理 おそらくポップが閉じる
   }

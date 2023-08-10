@@ -1,7 +1,12 @@
 //MENUボタンの主な機能を実装
 
 import { hashedIdGet } from '../main.js';
-import { currentTimeGet, resultPopUp, validateEmail, answerPopUp } from '../stringUtils.js';
+import {
+  currentTimeGet,
+  resultPopUp,
+  validateEmail,
+  answerPopUp,
+} from '../stringUtils.js';
 import { friendListUpdate } from './friend-list.js';
 import {
   openGroupAddPopup,
@@ -49,7 +54,7 @@ document.getElementById('profile').addEventListener('click', () => {
       document.getElementById('myName').innerHTML = res.user.UserName;
       document.getElementById('authentication-ID').innerHTML =
         res.user.Authentication_ID;
-     document.getElementById('my-mail').innerHTML = res.user.Email;
+      document.getElementById('my-mail').innerHTML = res.user.Email;
       const date = new Date(res.user.CreationDay);
       document.getElementById('RegistrationDate').innerHTML =
         res.user.CreationDay;
@@ -159,11 +164,13 @@ const shareFunctionCheckBoxFlg = (checkbox) => {
 document
   .getElementById('change-email-button')
   .addEventListener('click', (e) => {
-     document.getElementById('change-email-input').style.display = 'block';
-     document.getElementById('change-email-input').value = document.getElementById('my-mail').innerHTML;
-     document.getElementById('my-mail').style.display = 'none';
-     document.getElementById('change-email-button').style.display = 'none';
-     document.getElementById('change-email-button-decision').style.display = 'block';
+    document.getElementById('change-email-input').style.display = 'block';
+    document.getElementById('change-email-input').value =
+      document.getElementById('my-mail').innerHTML;
+    document.getElementById('my-mail').style.display = 'none';
+    document.getElementById('change-email-button').style.display = 'none';
+    document.getElementById('change-email-button-decision').style.display =
+      'block';
   });
 
 document
@@ -171,46 +178,51 @@ document
   .addEventListener('click', (e) => {
     const email = document.getElementById('change-email-input').value;
     const flg = validateEmail(email);
-  if(flg){
-    $.ajax({
-    url: '/mypage/' + hashedIdGet,
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      flg: 'EmailUpdte',
-      email,
-    }),
-    success: function (res) {
-      alert(res.msg);
-      document.getElementById('change-email-input').style.display = 'none';
-      document.getElementById('my-mail').style.display = 'block';
-      document.getElementById('my-mail').innerHTML = email;
-      document.getElementById('change-email-button-decision').style.display = 'none';
-      document.getElementById('change-email-button').style.display = 'block';
-    },
-   });
-  }else{
-    alert('ちゃう');
-  }
-});
+    if (flg) {
+      $.ajax({
+        url: '/mypage/' + hashedIdGet,
+        type: 'POST',
+        dataType: 'Json',
+        contentType: 'application/json',
+        data: JSON.stringify({
+          flg: 'EmailUpdte',
+          email,
+        }),
+        success: function (res) {
+          alert(res.msg);
+          document.getElementById('change-email-input').style.display = 'none';
+          document.getElementById('my-mail').style.display = 'block';
+          document.getElementById('my-mail').innerHTML = email;
+          document.getElementById(
+            'change-email-button-decision'
+          ).style.display = 'none';
+          document.getElementById('change-email-button').style.display =
+            'block';
+        },
+      });
+    } else {
+      alert('ちゃう');
+    }
+  });
 
 document
   .getElementById('update-authenticationID-button')
   .addEventListener('click', (e) => {
-  console.log('更新押下');
-      $.ajax({
-    url: '/mypage/' + hashedIdGet,
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      flg: 'AuthenticationIDUpdte',
-    }),success: function (res) {
-     alert('更新しました');
-      document.getElementById('authentication-ID').innerHTML = res.authenticationID;
-       },
-   });
+    console.log('更新押下');
+    $.ajax({
+      url: '/mypage/' + hashedIdGet,
+      type: 'POST',
+      dataType: 'Json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        flg: 'AuthenticationIDUpdte',
+      }),
+      success: function (res) {
+        alert('更新しました');
+        document.getElementById('authentication-ID').innerHTML =
+          res.authenticationID;
+      },
+    });
   });
 
 //=============================================================================================================
@@ -563,22 +575,25 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
 //=============================================================================================================
 //================================================ログアウト====================================================
 //=============================================================================================================
-document.getElementById('logout').addEventListener('click', async function() {
- const result = await answerPopUp('ログアウト','ログアウトしますか？※編集中のノウハウは保存されません');
+document.getElementById('logout').addEventListener('click', async function () {
+  const result = await answerPopUp(
+    'ログアウト',
+    'ログアウトしますか？※編集中のノウハウは保存されません'
+  );
   if (result === true) {
-     $.ajax({
-    url: '/mypage/' + hashedIdGet,
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      flg: 'cookiedelete',
-    }),
-    success: function (res) {
-      resultPopUp('ログアウト', 'ログアウト中です\n少々お待ちください');
-      location.href = 'https://nodejs-itnote-app.herokuapp.com';
-    },
-   });
+    $.ajax({
+      url: '/mypage/' + hashedIdGet,
+      type: 'POST',
+      dataType: 'Json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        flg: 'cookiedelete',
+      }),
+      success: function (res) {
+        resultPopUp('ログアウト', 'ログアウト中です\n少々お待ちください');
+        location.href = 'https://nodejs-itnote-app.herokuapp.com';
+      },
+    });
   } else {
     // 「いいえ」が押された場合の処理 おそらくポップが閉じる
   }
@@ -587,42 +602,48 @@ document.getElementById('logout').addEventListener('click', async function() {
 //=============================================================================================================
 //==================================================全削除====================================================
 //=============================================================================================================
-document.getElementById('all-delete').addEventListener('click', async function() {
- const result = await answerPopUp('全削除','ノートやフォルダが全て削除されますが本当に削除しますか？');
-   if (result === true) {
-     $.ajax({
-    url: '/mypage/' + hashedIdGet,
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      flg: 'deleteALL',
-    }),
-    success: function (res) {
-      //全削除
-      $('#0').empty();
-      // loader以外（タブの要素のみ）を削除させる
-      const tabLoader = document.getElementById('tab_loader');
-      const tabWrap = document.getElementById('tab');
-      while (tabWrap.firstChild !== tabLoader) {
-        tabWrap.removeChild(tabWrap.firstChild);
-      }
-      while (tabWrap.lastChild !== tabLoader) {
-        tabWrap.removeChild(tabWrap.lastChild);
-      }
+document
+  .getElementById('all-delete')
+  .addEventListener('click', async function () {
+    const result = await answerPopUp(
+      '全削除',
+      'ノートやフォルダが全て削除されますが本当に削除しますか？'
+    );
+    if (result === true) {
+      $.ajax({
+        url: '/mypage/' + hashedIdGet,
+        type: 'POST',
+        dataType: 'Json',
+        contentType: 'application/json',
+        data: JSON.stringify({
+          flg: 'deleteALL',
+        }),
+        success: function (res) {
+          //全削除
+          $('#0').empty();
+          // loader以外（タブの要素のみ）を削除させる
+          const tabLoader = document.getElementById('tab_loader');
+          const tabWrap = document.getElementById('tab');
+          while (tabWrap.firstChild !== tabLoader) {
+            tabWrap.removeChild(tabWrap.firstChild);
+          }
+          while (tabWrap.lastChild !== tabLoader) {
+            tabWrap.removeChild(tabWrap.lastChild);
+          }
 
-      let p = document.createElement('p');
-      p.setAttribute('id', 'notab');
-      p.innerHTML = 'こちらにノウハウが出力されます';
-      document.getElementById('tab').appendChild(p);
-      document.getElementById('notepass').innerHTML = '';
-      document.getElementById('popup-overlay_delete').style.display = 'none';
+          let p = document.createElement('p');
+          p.setAttribute('id', 'notab');
+          p.innerHTML = 'こちらにノウハウが出力されます';
+          document.getElementById('tab').appendChild(p);
+          document.getElementById('notepass').innerHTML = '';
+          document.getElementById('popup-overlay_delete').style.display =
+            'none';
 
-      resultPopUp('全削除', 'ノウハウ/フォルダを\nすべて削除いたしました');
-    },
+          resultPopUp('全削除', 'ノウハウ/フォルダを\nすべて削除いたしました');
+        },
+      });
+    } else {
+      // 「いいえ」が押された場合の処理 おそらくポップが閉じる
+    }
   });
-  } else {
-    // 「いいえ」が押された場合の処理 おそらくポップが閉じる
-  }
-});
 //=============================================================================================================

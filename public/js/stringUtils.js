@@ -89,36 +89,45 @@ export const resultPopUp = (headerStr, bodyStr) => {
 //「はい」「いいえ」ポップアップ
 export const answerPopUp = (title, content) => {
   console.log('はい、いいえ');
-   document.getElementById('popup-overlay_answer-pop').style.display = 'block';
-   document.getElementById('answer-pop-h2').innerHTML = title;
-   document.getElementById('answer-pop-p').innerHTML = content;
+  document.getElementById('popup-overlay_answer-pop').style.display = 'block';
+  document.getElementById('answer-pop-h2').innerHTML = title;
+  document.getElementById('answer-pop-p').innerHTML = content;
 
-    document.getElementById('pop-delete_answer-pop').addEventListener('click', (e) => {
-       e.preventDefault(); // リンクのデフォルトの動作を無効化
-       document.getElementById('popup-overlay_answer-pop').style.display = 'none';
-     });
+  document
+    .getElementById('pop-delete_answer-pop')
+    .addEventListener('click', (e) => {
+      e.preventDefault(); // リンクのデフォルトの動作を無効化
+      document.getElementById('popup-overlay_answer-pop').style.display =
+        'none';
+    });
 
-    document
-     .getElementById('popup-overlay_answer-pop')
-     .addEventListener('click', (e) => {
-        const popup = document.getElementById('popup-overlay_answer-pop');
-        if (e.target === popup) {
-          popup.style.display = 'none';
-        }
-      });
+  document
+    .getElementById('popup-overlay_answer-pop')
+    .addEventListener('click', (e) => {
+      const popup = document.getElementById('popup-overlay_answer-pop');
+      if (e.target === popup) {
+        popup.style.display = 'none';
+      }
+    });
 
   return new Promise((resolve) => {
-   // 「いいえ」が押されたことを解決する値としてtrue返す
-   document.getElementById('yes-button-answer-pop').addEventListener('click', function () {
-      document.getElementById('popup-overlay_answer-pop').style.display = 'none';
-      resolve(true); // 「はい」が押されたことを解決する値として返す
-    });
+    // 「いいえ」が押されたことを解決する値としてtrue返す
+    document
+      .getElementById('yes-button-answer-pop')
+      .addEventListener('click', function () {
+        document.getElementById('popup-overlay_answer-pop').style.display =
+          'none';
+        resolve(true); // 「はい」が押されたことを解決する値として返す
+      });
 
     // 「いいえ」が押されたことを解決する値としてfalse返す
-    document.getElementById('no-button-answer-pop').addEventListener('click', function () {
-      document.getElementById('popup-overlay_answer-pop').style.display = 'none';
-      resolve(false); 
-    });
+    document
+      .getElementById('no-button-answer-pop')
+      .addEventListener('click', function () {
+        document.getElementById('popup-overlay_answer-pop').style.display =
+          'none';
+        resolve(false);
+      });
   });
 };
 
@@ -137,4 +146,4 @@ export const validateEmail = (email) => {
     return false;
   }
   return true;
-}
+};

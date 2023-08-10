@@ -18,7 +18,7 @@
 #popup-overlay_result-pop,
 #popup-overlay_share_no,
 #popup-overlay_share,
-#popup-overlay_answer-pop{
+#popup-overlay_answer-pop {
   display: block;
   position: fixed;
   top: 0;
@@ -50,7 +50,7 @@
 .popup-window_result-pop,
 .popup-window_share_no,
 .popup-window_share,
-.popup-window_answer-pop{
+.popup-window_answer-pop {
   width: 500px;
   height: 300px;
   background-color: #fff;
@@ -78,7 +78,7 @@
 .popup-window_folder-delete,
 .popup-window_delete-pop,
 .popup-window_result-pop,
-.popup-window_answer-pop{
+.popup-window_answer-pop {
   height: 180px;
   width: 330px;
 }
@@ -123,7 +123,7 @@
 .popup-header_result-pop,
 .popup-header_share_no,
 .popup-header_share,
-.popup-header_answer-pop{
+.popup-header_answer-pop {
   display: flex;
   align-items: center;
   justify-content: center; /* 中央寄せに変更 */
@@ -153,7 +153,7 @@
 .popup-header_result-pop h2,
 .popup-header_share_no h2,
 .popup-header_share h2,
-.popup-header_answer-pop h2{
+.popup-header_answer-pop h2 {
   font-size: 16px;
   font-weight: normal;
   margin: 0 auto;
@@ -178,7 +178,7 @@
 #pop-delete_share-delete,
 #pop-delete_nouhau-delete,
 #pop-delete_folder-delete,
-#pop-delete_answer-pop{
+#pop-delete_answer-pop {
   text-decoration: none;
   font-size: 1.2em;
   font-weight: bold;
@@ -199,7 +199,7 @@
 #pop-delete_share-delete:hover,
 #pop-delete_nouhau-delete:hover,
 #pop-delete_folder-delete:hover,
-#pop-delete_answer-pop:hover{
+#pop-delete_answer-pop:hover {
   color: red;
 }
 
@@ -218,7 +218,7 @@
 .popup-body_nouhau-delete,
 .popup-body_folder-delete,
 .popup-body_delete-pop,
-.popup-body_share_no{
+.popup-body_share_no {
   position: relative;
   height: 240px;
   padding: 0 10px;
@@ -265,7 +265,7 @@
 .popup-body_inquiry,
 .popup-body_friend-add,
 .popup-body_friend-add-ans,
-.popup-body_answer-pop{
+.popup-body_answer-pop {
   position: relative;
   padding: 0 10px;
 }

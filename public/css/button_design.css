@@ -46,7 +46,7 @@
 #update-authenticationID-button,
 #change-email-button-decision,
 #yes-button-answer-pop,
-#no-button-answer-pop{
+#no-button-answer-pop {
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -109,7 +109,7 @@
 #update-authenticationID-button:active,
 #change-email-button-decision:active,
 #yes-button-answer-pop:active,
-#no-button-answer-pop:active{
+#no-button-answer-pop:active {
   box-shadow: none;
   transform: translateY(5px);
 }
@@ -149,7 +149,7 @@
 #update-authenticationID-button,
 #change-email-button-decision,
 #yes-button-answer-pop,
-#no-button-answer-pop{
+#no-button-answer-pop {
   padding: 7px 14px;
   font-size: 12px;
 }
@@ -235,7 +235,7 @@
 #no-button-keep-cancel,
 .cancelbtn,
 #closed-button,
-#no-button-answer-pop{
+#no-button-answer-pop {
   background-color: #e32b2b;
   box-shadow: 0 5px 0 #840505;
 }
@@ -249,7 +249,7 @@
 .nouhau-delete-button-wrapper,
 .folder-delete-button-wrapper,
 .keep-cancel-button-wrapper,
-.answer-pop-button-wrapper{
+.answer-pop-button-wrapper {
   display: flex;
   justify-content: space-between;
 }
@@ -262,7 +262,7 @@
 .nouhau-delete-button-wrapper button,
 .folder-delete-button-wrapper button,
 .keep-cancel-button-wrapper button,
-.answer-pop-button-wrapper button{
+.answer-pop-button-wrapper button {
   flex: 0 0 120px;
   margin: 0 5px;
 }
