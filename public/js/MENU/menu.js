@@ -158,13 +158,13 @@ const shareFunctionCheckBoxFlg = (checkbox) => {
 };
 
 document
-  .getElementById('change-Myname-button')
+  .getElementById('change-email-button')
   .addEventListener('click', (e) => {
-     document.getElementById('change-Myname-input').style.display = 'block';
-     document.getElementById('change-Myname-input').value = document.getElementById('myName').innerHTML;
-     document.getElementById('myName').style.display = 'none';
-     document.getElementById('change-Myname-button').style.display = 'none';
-     document.getElementById('change-Myname-button-decision').style.display = 'block';
+     document.getElementById('change-email-input').style.display = 'block';
+     document.getElementById('change-email-input').value = document.getElementById('my-mail').innerHTML;
+     document.getElementById('my-mail').style.display = 'none';
+     document.getElementById('change-email-button').style.display = 'none';
+     document.getElementById('change-email-button-decision').style.display = 'block';
   });
 
 document
