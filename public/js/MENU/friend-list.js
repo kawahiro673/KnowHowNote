@@ -165,7 +165,8 @@ async function friendListDeleteCross(event) {
   // document.getElementById('friend-delete-q-user').innerHTML = friendName;
   // document.getElementById('friend-delete-q-real-user').innerHTML =
   //   friendRealName;
-  console.log(friendRealName);
+   const name = friendRealName.replace(/[()]/g, '')
+  console.log(name);
    const result = await answerPopUp('フレンド削除',`"${friendName}"さんをフレンドリストから削除しますか`);
  if (result === true) {
   $.ajax({
@@ -175,7 +176,7 @@ async function friendListDeleteCross(event) {
     contentType: 'application/json',
     data: JSON.stringify({
       flg: 'friend-list-delete',
-      name:friendRealName,
+      name,
     }),
     success: function (res) {
       resultPopUp('フレンド削除', 'フレンドから登録解除しました');
