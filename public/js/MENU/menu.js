@@ -509,27 +509,27 @@ document
     document.getElementById('popup-overlay_group-list').style.display = 'none';
   });
 
-document
-  .getElementById('no-button-group-list-delete')
-  .addEventListener('click', (e) => {
-    document.getElementById('popup-overlay_group-list-delete').style.display =
-      'none';
-  });
+// document
+//   .getElementById('no-button-group-list-delete')
+//   .addEventListener('click', (e) => {
+//     document.getElementById('popup-overlay_group-list-delete').style.display =
+//       'none';
+//   });
 
-document
-  .getElementById('pop-delete_group-list-delete')
-  .addEventListener('click', (e) => {
-    e.preventDefault();
-    document.getElementById('popup-overlay_group-list-delete').style.display =
-      'none';
-  });
+// document
+//   .getElementById('pop-delete_group-list-delete')
+//   .addEventListener('click', (e) => {
+//     e.preventDefault();
+//     document.getElementById('popup-overlay_group-list-delete').style.display =
+//       'none';
+//   });
 
-document
-  .getElementById('yes-button-group-list-delete')
-  .addEventListener('click', (e) => {
-    const group = document.getElementById('delete-group').textContent;
-    groupNameDelete(group);
-  });
+// document
+//   .getElementById('yes-button-group-list-delete')
+//   .addEventListener('click', (e) => {
+//     const group = document.getElementById('delete-group').textContent;
+//     groupNameDelete(group);
+//   });
 
 document
   .getElementById('friend-list-group-add-button')
