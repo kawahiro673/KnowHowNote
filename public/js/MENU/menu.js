@@ -2,7 +2,8 @@
 
 import { hashedIdGet } from '../main.js';
 import { currentTimeGet, resultPopUp, validateEmail, answerPopUp } from '../stringUtils.js';
-import { friendListDelete, friendListUpdate } from './friend-list.js';
+//import { friendListDelete, friendListUpdate } from './friend-list.js';
+import { friendListUpdate } from './friend-list.js';
 import {
   openGroupAddPopup,
   addGroup,
@@ -418,30 +419,30 @@ document
     }
   });
 
-document
-  .getElementById('pop-delete_friend-delete-q')
-  .addEventListener('click', (e) => {
-    e.preventDefault(); // リンクのデフォルトの動作を無効化
-    document.getElementById('popup-overlay_friend-delete-q').style.display =
-      'none';
-  });
+// document
+//   .getElementById('pop-delete_friend-delete-q')
+//   .addEventListener('click', (e) => {
+//     e.preventDefault(); // リンクのデフォルトの動作を無効化
+//     document.getElementById('popup-overlay_friend-delete-q').style.display =
+//       'none';
+//   });
 
-document
-  .getElementById('friend-delete-q-button')
-  .addEventListener('click', (e) => {
-    const realName = document.getElementById(
-      'friend-delete-q-real-user'
-    ).textContent;
-    const result = realName.replace(/[()]/g, '');
-    friendListDelete(result);
-  });
+// document
+//   .getElementById('friend-delete-q-button')
+//   .addEventListener('click', (e) => {
+//     const realName = document.getElementById(
+//       'friend-delete-q-real-user'
+//     ).textContent;
+//     const result = realName.replace(/[()]/g, '');
+//     friendListDelete(result);
+//   });
 
-document
-  .getElementById('friend-delete-q-cancel')
-  .addEventListener('click', (e) => {
-    document.getElementById('popup-overlay_friend-delete-q').style.display =
-      'none';
-  });
+// document
+//   .getElementById('friend-delete-q-cancel')
+//   .addEventListener('click', (e) => {
+//     document.getElementById('popup-overlay_friend-delete-q').style.display =
+//       'none';
+//   });
 
 document
   .getElementById('pop-delete_friend-list')
