@@ -167,6 +167,26 @@ document
      document.getElementById('change-Myname-button-decision').style.display = 'block';
   });
 
+document
+  .getElementById('change-Myname-button-decision')
+  .addEventListener('click', (e) => {
+  console.log('適用を押下しました');
+    const name = document.getElementById('change-Myname-input').value;
+    $.ajax({
+    url: '/mypage/' + hashedIdGet,
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'UserNameUpdte',
+      name,
+    }),
+    success: function (res) {
+      
+    },
+  });
+  
+  });
 //=============================================================================================================
 //=================================================共有履歴====================================================
 //=============================================================================================================
