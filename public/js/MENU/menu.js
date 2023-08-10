@@ -634,12 +634,11 @@ document.getElementById('logout').addEventListener('click', async function() {
 //=============================================================================================================
 //==================================================全削除====================================================
 //=============================================================================================================
-document.getElementById('all-delete').addEventListener('click', () => {
-  document.getElementById('popup-overlay_delete').style.display = 'block';
-});
-
-document.getElementById('yes-button-delete').addEventListener('click', () => {
-  $.ajax({
+document.getElementById('all-delete').addEventListener('click', async function() {
+  //document.getElementById('popup-overlay_delete').style.display = 'block';
+ const result = await answerPopUp('全削除','ノートやフォルダが全て削除されますが本当に削除しますか？');
+   if (result === true) {
+     $.ajax({
     url: '/mypage/' + hashedIdGet,
     type: 'POST',
     dataType: 'Json',
@@ -671,25 +670,63 @@ document.getElementById('yes-button-delete').addEventListener('click', () => {
       resultPopUp('全削除', 'ノウハウ/フォルダを\nすべて削除いたしました');
     },
   });
+  } else {
+    // 「いいえ」が押された場合の処理 おそらくポップが閉じる
+  }
 });
 
-document.getElementById('pop-delete_delete').addEventListener('click', (e) => {
-  e.preventDefault(); // リンクのデフォルトの動作を無効化
-  document.getElementById('popup-overlay_delete').style.display = 'none';
-});
+// document.getElementById('yes-button-delete').addEventListener('click', () => {
+//   $.ajax({
+//     url: '/mypage/' + hashedIdGet,
+//     type: 'POST',
+//     dataType: 'Json',
+//     contentType: 'application/json',
+//     data: JSON.stringify({
+//       flg: 'deleteALL',
+//     }),
+//     success: function (res) {
+//       //全削除
+//       $('#0').empty();
 
-document.getElementById('no-button-delete').addEventListener('click', (e) => {
-  e.preventDefault(); // リンクのデフォルトの動作を無効化
-  document.getElementById('popup-overlay_delete').style.display = 'none';
-});
+//       // loader以外（タブの要素のみ）を削除させる
+//       const tabLoader = document.getElementById('tab_loader');
+//       const tabWrap = document.getElementById('tab');
+//       while (tabWrap.firstChild !== tabLoader) {
+//         tabWrap.removeChild(tabWrap.firstChild);
+//       }
+//       while (tabWrap.lastChild !== tabLoader) {
+//         tabWrap.removeChild(tabWrap.lastChild);
+//       }
 
-document
-  .getElementById('popup-overlay_delete')
-  .addEventListener('click', (e) => {
-    const popup = document.getElementById('popup-overlay_delete');
-    if (e.target === popup) {
-      popup.style.display = 'none';
-    }
-  });
+//       let p = document.createElement('p');
+//       p.setAttribute('id', 'notab');
+//       p.innerHTML = 'こちらにノウハウが出力されます';
+//       document.getElementById('tab').appendChild(p);
+//       document.getElementById('notepass').innerHTML = '';
+//       document.getElementById('popup-overlay_delete').style.display = 'none';
+
+//       resultPopUp('全削除', 'ノウハウ/フォルダを\nすべて削除いたしました');
+//     },
+//   });
+// });
+
+// document.getElementById('pop-delete_delete').addEventListener('click', (e) => {
+//   e.preventDefault(); // リンクのデフォルトの動作を無効化
+//   document.getElementById('popup-overlay_delete').style.display = 'none';
+// });
+
+// document.getElementById('no-button-delete').addEventListener('click', (e) => {
+//   e.preventDefault(); // リンクのデフォルトの動作を無効化
+//   document.getElementById('popup-overlay_delete').style.display = 'none';
+// });
+
+// document
+//   .getElementById('popup-overlay_delete')
+//   .addEventListener('click', (e) => {
+//     const popup = document.getElementById('popup-overlay_delete');
+//     if (e.target === popup) {
+//       popup.style.display = 'none';
+//     }
+//   });
 
 //=============================================================================================================
