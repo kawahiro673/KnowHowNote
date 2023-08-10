@@ -4,26 +4,6 @@ import { hashedIdGet } from '../main.js';
 import { friendListGroupChange } from './group-list.js';
 import { resultPopUp, answerPopUp } from '../stringUtils.js';
 
-// export const friendListDelete = (name) => {
-//   document.getElementById('popup-overlay_friend-delete-q').style.display =
-//     'none';
-//   resultPopUp('フレンド削除', 'フレンドから登録解除しました');
-
-//   $.ajax({
-//     url: '/mypage/' + hashedIdGet,
-//     type: 'POST',
-//     dataType: 'Json',
-//     contentType: 'application/json',
-//     data: JSON.stringify({
-//       flg: 'friend-list-delete',
-//       name,
-//     }),
-//     success: function (res) {
-//       friendListUpdate();
-//     },
-//   });
-// };
-
 //フレンドリストのフレンド表示を更新
 export const friendListUpdate = () => {
   return new Promise((resolve, reject) => {
@@ -160,13 +140,7 @@ async function friendListDeleteCross(event) {
   const friendRealName = event.target
     .closest('.friend-Box')
     .querySelector('.real-name-p').textContent;
-  // document.getElementById('popup-overlay_friend-delete-q').style.display =
-  //   'block';
-  // document.getElementById('friend-delete-q-user').innerHTML = friendName;
-  // document.getElementById('friend-delete-q-real-user').innerHTML =
-  //   friendRealName;
-   const name = friendRealName.replace(/[()]/g, '')
-  console.log(name);
+   const name = friendRealName.replace(/[()]/g, '');
    const result = await answerPopUp('フレンド削除',`"${friendName}"さんをフレンドリストから削除しますか`);
  if (result === true) {
   $.ajax({
