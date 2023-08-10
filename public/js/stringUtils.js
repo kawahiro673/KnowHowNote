@@ -102,18 +102,3 @@ export const validateEmail = (email) => {
   }
   return true;
 }
-
-//数字とアルファベットの文字セットからランダムな文字を選択し、4文字ずつ区切った形式で16桁のユーザーIDを生成
-export const generateRandomID=()=> {
-  const characters =
-    '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  let userID = '';
-  for (let i = 0; i < 16; i++) {
-    const randomIndex = Math.floor(Math.random() * characters.length);
-    userID += characters.charAt(randomIndex);
-    if ((i + 1) % 4 === 0 && i !== 15) {
-      userID += '-';
-    }
-  }
-  return userID;
-}
