@@ -766,7 +766,7 @@ router
           console.error(error);
           res.status(500).json({ message: error.message, nothing });
         });
-    }  else if (req.body.flg === 'UserNameUpdte') {
+    }  else if (req.body.flg === 'EmailUpdte') {
       getUserDataByToken(req)
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
@@ -778,10 +778,10 @@ router
                 } else {
                  //ユーザー名かぶりチェック
                  const user = result.find(
-                  (user) => user.UserName === req.body.name
+                  (user) => user.Email === req.body.email
                  );
                  if (user) {
-                   res.send({msg: 'ユーザー名は使われています'});
+                   res.send({msg: 'そのアドレスは使われています'});
                   }else{
                    resolve(resultDecoded)
                   }            
@@ -792,8 +792,8 @@ router
         }).then((resultDecoded) => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'UPDATE register_user SET UserName = ? WHERE id = ?;',
-              [req.body.name, resultDecoded[0].id],
+              'UPDATE register_user SET Email = ? WHERE id = ?;',
+              [req.body.email, resultDecoded[0].id],
               (error, result) => {
                 if (error) {
                   reject(error);
