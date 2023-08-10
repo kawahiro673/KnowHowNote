@@ -611,6 +611,7 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
 //================================================ログアウト====================================================
 //=============================================================================================================
 document.getElementById('logout').addEventListener('click', async function() {
+  console.log('ちょんぼ');
 const result = await answerPopUp('ログアウト','ログアウトしますか？※編集中のノウハウは保存されません');
   if (result === true) {
      $.ajax({
