@@ -168,19 +168,19 @@ document
   });
 
 document
-  .getElementById('change-Myname-button-decision')
+  .getElementById('change-email-button-decision')
   .addEventListener('click', (e) => {
   console.log('適用を押下しました');
-    const name = document.getElementById('change-Myname-input').value;
-    console.log(name);
+    const email = document.getElementById('change-email-input').value;
+    console.log(email);
     $.ajax({
     url: '/mypage/' + hashedIdGet,
     type: 'POST',
     dataType: 'Json',
     contentType: 'application/json',
     data: JSON.stringify({
-      flg: 'UserNameUpdte',
-      name,
+      flg: 'EmailUpdte',
+      email,
     }),
     success: function (res) {
       alert(res.msg);
