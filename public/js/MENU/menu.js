@@ -1,7 +1,7 @@
 //MENUボタンの主な機能を実装
 
 import { hashedIdGet } from '../main.js';
-import { currentTimeGet, resultPopUp, validateEmail } from '../stringUtils.js';
+import { currentTimeGet, resultPopUp, validateEmail, answerPopUp } from '../stringUtils.js';
 import { friendListDelete, friendListUpdate } from './friend-list.js';
 import {
   openGroupAddPopup,
@@ -610,12 +610,10 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
 //=============================================================================================================
 //================================================ログアウト====================================================
 //=============================================================================================================
-document.getElementById('logout').addEventListener('click', () => {
-  document.getElementById('popup-overlay_logout').style.display = 'block';
-});
-
-document.getElementById('yes-button-logout').addEventListener('click', () => {
-  $.ajax({
+document.getElementById('logout').addEventListener('click', async function() {
+const result = await answerPopUp('ログアウト','ログアウトしますか？※編集中のノウハウは保存されません');
+  if (result === true) {
+     $.ajax({
     url: '/mypage/' + hashedIdGet,
     type: 'POST',
     dataType: 'Json',
@@ -627,27 +625,46 @@ document.getElementById('yes-button-logout').addEventListener('click', () => {
       resultPopUp('ログアウト', 'ログアウト中です\n少々お待ちください');
       location.href = 'https://nodejs-itnote-app.herokuapp.com';
     },
-  });
+   });
+  } else {
+    // 「いいえ」が押された場合の処理 おそらくポップが閉じる
+  }
 });
 
-document.getElementById('pop-delete_logout').addEventListener('click', (e) => {
-  e.preventDefault(); // リンクのデフォルトの動作を無効化
-  document.getElementById('popup-overlay_logout').style.display = 'none';
-});
+// document.getElementById('yes-button-logout').addEventListener('click', () => {
+//   $.ajax({
+//     url: '/mypage/' + hashedIdGet,
+//     type: 'POST',
+//     dataType: 'Json',
+//     contentType: 'application/json',
+//     data: JSON.stringify({
+//       flg: 'cookiedelete',
+//     }),
+//     success: function (res) {
+//       resultPopUp('ログアウト', 'ログアウト中です\n少々お待ちください');
+//       location.href = 'https://nodejs-itnote-app.herokuapp.com';
+//     },
+//   });
+// });
 
-document.getElementById('no-button-logout').addEventListener('click', (e) => {
-  e.preventDefault(); // リンクのデフォルトの動作を無効化
-  document.getElementById('popup-overlay_logout').style.display = 'none';
-});
+// document.getElementById('pop-delete_logout').addEventListener('click', (e) => {
+//   e.preventDefault(); // リンクのデフォルトの動作を無効化
+//   document.getElementById('popup-overlay_logout').style.display = 'none';
+// });
 
-document
-  .getElementById('popup-overlay_logout')
-  .addEventListener('click', (e) => {
-    const popup = document.getElementById('popup-overlay_logout');
-    if (e.target === popup) {
-      popup.style.display = 'none';
-    }
-  });
+// document.getElementById('no-button-logout').addEventListener('click', (e) => {
+//   e.preventDefault(); // リンクのデフォルトの動作を無効化
+//   document.getElementById('popup-overlay_logout').style.display = 'none';
+// });
+
+// document
+//   .getElementById('popup-overlay_logout')
+//   .addEventListener('click', (e) => {
+//     const popup = document.getElementById('popup-overlay_logout');
+//     if (e.target === popup) {
+//       popup.style.display = 'none';
+//     }
+//   });
 
 //=============================================================================================================
 //==================================================全削除====================================================
