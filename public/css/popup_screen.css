@@ -258,8 +258,7 @@
 .popup-body_nouhau-delete,
 .popup-body_folder-delete,
 .popup-body_delete-pop,
-.popup-body_share_no,
-.popup-body_answer-pop{
+.popup-body_share_no{
   position: relative;
   height: 240px;
   padding: 0 10px;
