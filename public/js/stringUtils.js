@@ -105,6 +105,20 @@ export const answerPopUp = (title, content) => {
       resolve(false); 
     });
   });
+
+  document.getElementById('pop-delete_answer-pop').addEventListener('click', (e) => {
+  e.preventDefault(); // リンクのデフォルトの動作を無効化
+  document.getElementById('popup-overlay_answer-pop').style.display = 'none';
+});
+
+document
+  .getElementById('popup-overlay_answer-pop')
+  .addEventListener('click', (e) => {
+    const popup = document.getElementById('popup-overlay_answer-pop');
+    if (e.target === popup) {
+      popup.style.display = 'none';
+    }
+  });
 };
 
 //Emailバリデーション関数(GmailとYahoo!メールのみ)
