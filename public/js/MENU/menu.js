@@ -1,7 +1,7 @@
 //MENUボタンの主な機能を実装
 
 import { hashedIdGet } from '../main.js';
-import { currentTimeGet, resultPopUp, validateEmail } from '../stringUtils.js';
+import { currentTimeGet, resultPopUp, validateEmail, generateRandomID } from '../stringUtils.js';
 import { friendListDelete, friendListUpdate } from './friend-list.js';
 import {
   openGroupAddPopup,
@@ -200,7 +200,7 @@ document
   .getElementById('update-authenticationID-button')
   .addEventListener('click', (e) => {
   console.log('更新押下');
-  
+  document.getElementById('authentication-ID').innerHTML = generateRandomID();
   });
 
 //=============================================================================================================
