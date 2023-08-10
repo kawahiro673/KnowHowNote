@@ -200,7 +200,20 @@ document
   .getElementById('update-authenticationID-button')
   .addEventListener('click', (e) => {
   console.log('更新押下');
-  document.getElementById('authentication-ID').innerHTML = generateRandomID();
+  const authenticationID = generateRandomID()
+      $.ajax({
+    url: '/mypage/' + hashedIdGet,
+    type: 'POST',
+    dataType: 'Json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      flg: 'AuthenticationIDUpdte',
+      authenticationID,
+    }),success: function (res) {
+     alert('更新しました');
+      document.getElementById('authentication-ID').innerHTML = authenticationID;
+       },
+   });
   });
 
 //=============================================================================================================
