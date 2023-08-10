@@ -85,3 +85,20 @@ export const resultPopUp = (headerStr, bodyStr) => {
     document.getElementById('popup-overlay_result-pop').style.display = 'none';
   }, 1500);
 };
+
+//Emailバリデーション関数(GmailとYahoo!メールのみ)
+const validateEmail = (email) => {
+  // メールアドレスの正規表現
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  // メールアドレスのフォーマットをチェック
+  if (!emailRegex.test(email)) {
+    return false;
+  }
+  // ドメインのチェック
+  const allowedDomains = ['gmail.com', 'yahoo.co.jp'];
+  const domain = email.split('@')[1];
+  if (!allowedDomains.includes(domain)) {
+    return false;
+  }
+  return true;
+}
