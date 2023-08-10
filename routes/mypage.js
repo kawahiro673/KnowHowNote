@@ -872,7 +872,7 @@ router
               const count = result[0].count;
               if (count === 0) {
                 // 重複しない authenticationID が見つかった場合
-                resolve(authenticationID);
+                resolve({resultDecoded:resultDecoded,authenticationID:authenticationID});
               } else {
                 // 重複する場合は新しい authenticationID を生成して再度チェック
                 authenticationID = generateRandomID();
@@ -886,7 +886,7 @@ router
       checkAndInsert();
     });
   })
-  .then((authenticationID) => {
+  .then(({resultDecoded, authenticationID}) => {
     return new Promise((resolve, reject) => {
       pool.query(
         'UPDATE register_user SET Authentication_ID = ? WHERE id = ?;',
