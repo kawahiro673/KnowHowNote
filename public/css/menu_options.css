@@ -358,10 +358,6 @@ input[type='checkbox']:checked + .gray_b {
   vertical-align: bottom;
 }
 
-#friend-delete-q-real-user {
-  color: gray;
-}
-
 .popup-window_delete-pop {
   text-align: center; /* pタグを中央に配置するためのスタイル */
 }
