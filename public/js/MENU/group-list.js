@@ -203,7 +203,7 @@ const groupCheckListScreen = (button) => {
 };
 
 //グループリストからグループ削除
-const groupDeleteButton = (event) => {
+const groupDeleteButton = async(event) => {
   // document.getElementById('popup-overlay_group-list-delete').style.display =
   //   'block';
   const group = event.target
