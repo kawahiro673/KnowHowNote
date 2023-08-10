@@ -172,6 +172,7 @@ document
   .addEventListener('click', (e) => {
   console.log('適用を押下しました');
     const name = document.getElementById('change-Myname-input').value;
+    console.log(name);
     $.ajax({
     url: '/mypage/' + hashedIdGet,
     type: 'POST',
@@ -182,7 +183,7 @@ document
       name,
     }),
     success: function (res) {
-      
+      alert(res.msg);
     },
   });
   
