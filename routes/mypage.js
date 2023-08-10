@@ -766,7 +766,49 @@ router
           console.error(error);
           res.status(500).json({ message: error.message, nothing });
         });
-    } else {
+    }  else if (req.body.flg === 'UserNameUpdte') {
+      getUserDataByToken(req)
+        .then((resultDecoded) => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'SELECT * FROM register_user;',
+              (error, result) => {
+                if (error) {
+                  reject(error);
+                } else {
+                 //ユーザー名かぶりチェック
+                 const user = result.find(
+                  (user) => user.UserName === req.body.name
+                 );
+                 if (user) {
+                   res.send({msg: 'ユーザー名は使われています'});
+                  }else{
+                   resolve(resultDecoded)
+                  }            
+                }
+              }
+            );
+          });
+        }).then((resultDecoded) => {
+          return new Promise((resolve, reject) => {
+            pool.query(
+              'UPDATE register_user SET UserName = ? WHERE id = ?;',
+              [req.body.name, resultDecoded[0].id],
+              (error, result) => {
+                if (error) {
+                  reject(error);
+                } else {
+                  res.send({ msg: '更新完了しました'});
+                }
+              }
+            );
+          });
+        })
+        .catch((error) => {
+          console.error(error);
+          res.status(500).json({ message: error.message});
+        });
+    }else {
       console.log('flgで何も受け取ってません');
     }
   });
