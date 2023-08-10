@@ -86,13 +86,25 @@ export const resultPopUp = (headerStr, bodyStr) => {
   }, 1500);
 };
 
-export const answerPopUp = (headerStr, bodyStr) => {
-  document.getElementById('popup-overlay_result-pop').style.display = 'block';
-  document.getElementById('result-pop-header-h2').innerHTML = headerStr;
-  document.getElementById('result-pop-body-p').innerHTML = bodyStr;
-  setTimeout(() => {
-    document.getElementById('popup-overlay_result-pop').style.display = 'none';
-  }, 1500);
+//「はい」「いいえ」ポップアップ
+export const answerPopUp = (title, content) => {
+  document.getElementById('popup-overlay_answer-pop').style.display = 'block';
+   document.getElementById('answer-pop-h2').innerHTML = title;
+   document.getElementById('answer-pop-p').innerHTML = content;
+
+  return new Promise((resolve) => {
+   // 「いいえ」が押されたことを解決する値としてtrue返す
+   document.getElementById('yes-button-answer-pop').addEventListener('click', function () {
+      document.getElementById('popup-overlay_answer-pop').style.display = 'none';
+      resolve(true); // 「はい」が押されたことを解決する値として返す
+    });
+
+    // 「いいえ」が押されたことを解決する値としてfalse返す
+    document.getElementById('no-button-answer-pop').addEventListener('click', function () {
+      document.getElementById('popup-overlay_answer-pop').style.display = 'none';
+      resolve(false); 
+    });
+  });
 };
 
 //Emailバリデーション関数(GmailとYahoo!メールのみ)
