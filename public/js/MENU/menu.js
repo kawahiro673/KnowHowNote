@@ -190,7 +190,7 @@ document
           email,
         }),
         success: function (res) {
-          alert(res.msg);
+          //alert(res.msg);
           document.getElementById('change-email-input').style.display = 'none';
           document.getElementById('my-mail').style.display = 'block';
           document.getElementById('my-mail').innerHTML = email;
