@@ -58,14 +58,15 @@ export const fileContextmenu = (tabIdArray) => {
           }),
           success: function (res) {
             //削除するファイルにlast(一番下の要素)があれば、treeviewのLineを更新
-            if (file.elem.parentNode.classList.contains('last')) {
-              console.log('last');
+            if (
+              file.elem.parentNode.classList.contains('last') &&
+              file.elem.parentNode.parentNode.children.length > 1
+            ) {
               elementsBeforeMoving =
                 file.elem.parentNode.parentNode.firstElementChild;
               $(`#file${file.id}`).parent().remove();
               addLastClassToLastSibling(elementsBeforeMoving);
             } else {
-              console.log('lastない');
               $(`#file${file.id}`).parent().remove();
             }
             resultPopUp('ノウハウ削除', '削除しました');

@@ -57,16 +57,15 @@ export const folderContextmenu = (tabIdArray) => {
           success: function (res) {
             //削除するファイルにlastCollapsableまたはlastExpandable(一番下の要素)があれば、treeviewのLineを更新
             if (
-              folder.elem.parentNode.classList.contains('lastCollapsable') ||
-              folder.elem.parentNode.classList.contains('lastExpandable')
+              (folder.elem.parentNode.classList.contains('lastCollapsable') ||
+                folder.elem.parentNode.classList.contains('lastExpandable')) &&
+              folder.elem.parentNode.parentNode.children.length > 1
             ) {
-              console.log('last');
               elementsBeforeMoving =
                 folder.elem.parentNode.parentNode.firstElementChild;
               $(`#folder${folder.id}`).parent().remove();
               addLastClassToLastSibling(elementsBeforeMoving);
             } else {
-              console.log('lastない');
               $(`#folder${folder.id}`).parent().remove();
             }
 
