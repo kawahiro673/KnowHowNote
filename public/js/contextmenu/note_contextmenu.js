@@ -65,14 +65,11 @@ export const fileContextmenu = (tabIdArray) => {
           success: function (res) {
             console.log(file.elem.parentNode);
             console.log(file.elem.parentNode.parentNode);
-            $(`#file${file.id}`).parent().remove();
-            console.log(file.elem.parentNode);
-            console.log(file.elem.parentNode.parentNode);
             if (file.elem.parentNode.parentNode.firstElementChild) {
               elementsBeforeMoving =
                 file.elem.parentNode.parentNode.firstElementChild;
             }
-            console.log(file.elem.parentNode);
+            $(`#file${file.id}`).parent().remove();
             addLastClassToLastSibling(elementsBeforeMoving);
 
             resultPopUp('ノウハウ削除', '削除しました');
