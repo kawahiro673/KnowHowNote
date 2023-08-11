@@ -63,15 +63,13 @@ export const fileContextmenu = (tabIdArray) => {
             parentId,
           }),
           success: function (res) {
-            console.log(file.elem.parentNode);
-            console.log(file.elem.parentNode.parentNode);
+            //削除したファイルの同階層にファイル/フォルダがあれば、
             if (file.elem.parentNode.parentNode.firstElementChild) {
               elementsBeforeMoving =
                 file.elem.parentNode.parentNode.firstElementChild;
+              addLastClassToLastSibling(elementsBeforeMoving);
             }
             $(`#file${file.id}`).parent().remove();
-            addLastClassToLastSibling(elementsBeforeMoving);
-
             resultPopUp('ノウハウ削除', '削除しました');
           },
         });
