@@ -41,6 +41,7 @@ export const fileContextmenu = (tabIdArray) => {
           //idArrayの中にあるfile.idを削除
           tabIdArray = getTabIdArray();
         }
+        const parentId = file.elem.parentNode.parentNode.id;
         $.ajax({
           url: '/notePostController/',
           type: 'POST',
@@ -51,10 +52,9 @@ export const fileContextmenu = (tabIdArray) => {
             id: file.id,
             tabOrder: tabIndex,
             fileOrder: order,
-            parentId: parentid,
+            parentId,
           }),
           success: function (res) {
-            const parentid = file.elem.parentNode.parentNode.id;
             $(`#file${file.id}`).parent().remove();
             resultPopUp('ノウハウ削除', '削除しました');
             // $.ajax({
