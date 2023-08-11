@@ -12,9 +12,6 @@
 #popup-overlay_friend-add-ans,
 #popup-overlay_group-add,
 #popup-overlay_group-list,
-#popup-overlay_share-delete,
-#popup-overlay_nouhau-delete,
-#popup-overlay_folder-delete,
 #popup-overlay_result-pop,
 #popup-overlay_share_no,
 #popup-overlay_share,
@@ -43,10 +40,6 @@
 .popup-window_friend-add-ans,
 .popup-window_group-add,
 .popup-window_group-list,
-.popup-window_share-delete,
-.popup-window_nouhau-delete,
-.popup-window_folder-delete,
-.popup-window_delete-pop,
 .popup-window_result-pop,
 .popup-window_share_no,
 .popup-window_share,
@@ -73,10 +66,6 @@
 }
 
 .popup-window_friend-add-ans,
-.popup-window_share-delete,
-.popup-window_nouhau-delete,
-.popup-window_folder-delete,
-.popup-window_delete-pop,
 .popup-window_result-pop,
 .popup-window_answer-pop {
   height: 180px;
@@ -116,10 +105,6 @@
 .popup-header_friend-add-ans,
 .popup-header_group-add,
 .popup-header_group-list,
-.popup-header_share-delete,
-.popup-header_nouhau-delete,
-.popup-header_folder-delete,
-.popup-header_delete-pop,
 .popup-header_result-pop,
 .popup-header_share_no,
 .popup-header_share,
@@ -146,10 +131,6 @@
 .popup-header_friend-add-ans h2,
 .popup-header_group-add h2,
 .popup-header_group-list h2,
-.popup-header_share-delete h2,
-.popup-header_nouhau-delete h2,
-.popup-header_folder-delete h2,
-.popup-header_delete-pop h2,
 .popup-header_result-pop h2,
 .popup-header_share_no h2,
 .popup-header_share h2,
@@ -175,9 +156,6 @@
 #pop-delete_friend-add,
 #pop-delete_group-add,
 #pop-delete_group-list,
-#pop-delete_share-delete,
-#pop-delete_nouhau-delete,
-#pop-delete_folder-delete,
 #pop-delete_answer-pop {
   text-decoration: none;
   font-size: 1.2em;
@@ -196,9 +174,6 @@
 #pop-delete_friend-add:hover,
 #pop-delete_group-add:hover,
 #pop-delete_group-list:hover,
-#pop-delete_share-delete:hover,
-#pop-delete_nouhau-delete:hover,
-#pop-delete_folder-delete:hover,
 #pop-delete_answer-pop:hover {
   color: red;
 }
@@ -214,10 +189,6 @@
 .popup-body_friend-list,
 .popup-body_group-add,
 .popup-body_group-list,
-.popup-body_share-delete,
-.popup-body_nouhau-delete,
-.popup-body_folder-delete,
-.popup-body_delete-pop,
 .popup-body_share_no {
   position: relative;
   height: 240px;
