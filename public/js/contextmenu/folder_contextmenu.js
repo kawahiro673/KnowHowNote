@@ -7,8 +7,9 @@ import {
   resultPopUp,
   answerPopUp,
 } from '../stringUtils.js';
-import { tabFocusIDGet, hashedIdGet, getTabIdArray } from '../main.js';
+import { tabFocusIDGet, getTabIdArray } from '../main.js';
 import { disableElements, enableElements } from '../utilityFunction.js';
+import { addLastClassToLastSibling } from '../treeviewLineUpdate.js';
 
 let tmp1;
 let tmp2;
@@ -25,6 +26,7 @@ export const folderContextmenu = (tabIdArray) => {
       id: $(this).attr('value'),
       elem: this,
     };
+    let elementsBeforeMoving;
 
     folder.elem.style.backgroundColor = '#F5F5F5';
     folder.elem.style.borderRadius = '5px';
@@ -53,7 +55,16 @@ export const folderContextmenu = (tabIdArray) => {
             parentId: folder.elem.parentNode.parentNode.id,
           }),
           success: function (res) {
-            $(`#folder${folder.id}`).parent().remove();
+            //削除するファイルの同階層に他にファイル/フォルダがあれば、treeviewのLineを更新
+            if (folder.elem.parentNode.parentNode.firstElementChild) {
+              elementsBeforeMoving =
+                folder.elem.parentNode.parentNode.firstElementChild;
+              $(`#folder${folder.id}`).parent().remove();
+              addLastClassToLastSibling(elementsBeforeMoving);
+            } else {
+              $(`#folder${folder.id}`).parent().remove();
+            }
+
             //削除されたファイルのタブを削除する
             for (let i = 0; i < res.response.length; i++) {
               //idArrayが文字列で格納されているため、num→String変換

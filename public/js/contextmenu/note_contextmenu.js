@@ -63,13 +63,15 @@ export const fileContextmenu = (tabIdArray) => {
             parentId,
           }),
           success: function (res) {
-            //削除したファイルの同階層にファイル/フォルダがあれば、
+            //削除するファイルの同階層に他にファイル/フォルダがあれば、treeviewのLineを更新
             if (file.elem.parentNode.parentNode.firstElementChild) {
               elementsBeforeMoving =
                 file.elem.parentNode.parentNode.firstElementChild;
+              $(`#file${file.id}`).parent().remove();
               addLastClassToLastSibling(elementsBeforeMoving);
+            } else {
+              $(`#file${file.id}`).parent().remove();
             }
-            $(`#file${file.id}`).parent().remove();
             resultPopUp('ノウハウ削除', '削除しました');
           },
         });
