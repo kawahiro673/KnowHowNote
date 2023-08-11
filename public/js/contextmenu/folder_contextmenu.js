@@ -60,11 +60,13 @@ export const folderContextmenu = (tabIdArray) => {
               folder.elem.classList.contains('lastCollapsable') ||
               folder.elem.classList.contains('lastExpandable')
             ) {
+              console.log('last');
               elementsBeforeMoving =
                 folder.elem.parentNode.parentNode.firstElementChild;
               $(`#folder${folder.id}`).parent().remove();
               addLastClassToLastSibling(elementsBeforeMoving);
             } else {
+              console.log('lastない');
               $(`#folder${folder.id}`).parent().remove();
             }
 
