@@ -53,24 +53,7 @@ export const folderContextmenu = (tabIdArray) => {
             parentId: folder.elem.parentNode.parentNode.id,
           }),
           success: function (res) {
-            //成功！！ここにリストから消した際のタブ削除と、リスト削除を記載→タブの✖️を押下したことにすれば良いのでは？？
-
             $(`#folder${folder.id}`).parent().remove();
-
-            // $.ajax({
-            //   url: '/mypage/' + hashedIdGet,
-            //   type: 'POST',
-            //   dataType: 'Json',
-            //   contentType: 'application/json',
-            //   data: JSON.stringify({
-            //     flg: 'childFolder',
-            //     id: folder.id,
-            //     file: res.fileResults,
-            //     folder: res.folderResults,
-            //   }),
-            //   success: function (res) {
-            //     console.log(res.response);
-            //     console.log(tabIdArray);
             //削除されたファイルのタブを削除する
             for (let i = 0; i < res.response.length; i++) {
               //idArrayが文字列で格納されているため、num→String変換
@@ -78,12 +61,9 @@ export const folderContextmenu = (tabIdArray) => {
                 closeTab(res.response[i], undefined, tabIdArray);
                 //idArrayの中にあるlistTitle.idを削除
                 tabIdArray = getTabIdArray();
-                console.log(tabIdArray);
               }
             }
             resultPopUp('フォルダ削除', '削除しました');
-            //   },
-            // });
           },
         });
       } else {
