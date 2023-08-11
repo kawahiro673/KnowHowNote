@@ -57,8 +57,8 @@ export const folderContextmenu = (tabIdArray) => {
           success: function (res) {
             //削除するファイルにlastCollapsableまたはlastExpandable(一番下の要素)があれば、treeviewのLineを更新
             if (
-              folder.elem.classList.contains('lastCollapsable') ||
-              folder.elem.classList.contains('lastExpandable')
+              folder.elem.parentNode.classList.contains('lastCollapsable') ||
+              folder.elem.parentNode.classList.contains('lastExpandable')
             ) {
               console.log('last');
               elementsBeforeMoving =

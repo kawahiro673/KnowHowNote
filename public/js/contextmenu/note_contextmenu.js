@@ -58,7 +58,7 @@ export const fileContextmenu = (tabIdArray) => {
           }),
           success: function (res) {
             //削除するファイルにlast(一番下の要素)があれば、treeviewのLineを更新
-            if (file.elem.classList.contains('last')) {
+            if (file.elem.parentNode.classList.contains('last')) {
               console.log('last');
               elementsBeforeMoving =
                 file.elem.parentNode.parentNode.firstElementChild;
