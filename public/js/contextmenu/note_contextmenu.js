@@ -57,7 +57,7 @@ export const fileContextmenu = (tabIdArray) => {
             parentId,
           }),
           success: function (res) {
-            //削除するファイルにlast(一番下の要素)があれば、treeviewのLineを更新
+            //削除するファイルにlast(一番下の要素)がある　かつ　他に兄弟要素がある場合、treeviewのLineを更新
             if (
               file.elem.parentNode.classList.contains('last') &&
               file.elem.parentNode.parentNode.children.length > 1

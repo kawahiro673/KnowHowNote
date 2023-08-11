@@ -55,7 +55,7 @@ export const folderContextmenu = (tabIdArray) => {
             parentId: folder.elem.parentNode.parentNode.id,
           }),
           success: function (res) {
-            //削除するファイルにlastCollapsableまたはlastExpandable(一番下の要素)があれば、treeviewのLineを更新
+            //削除するファイルにlastCollapsableまたはlastExpandable(一番下の要素)がある　かつ　他に兄弟要素がある場合、treeviewのLineを更新
             if (
               (folder.elem.parentNode.classList.contains('lastCollapsable') ||
                 folder.elem.parentNode.classList.contains('lastExpandable')) &&
