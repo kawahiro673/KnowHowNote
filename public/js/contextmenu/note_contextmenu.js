@@ -63,6 +63,8 @@ export const fileContextmenu = (tabIdArray) => {
             parentId,
           }),
           success: function (res) {
+            console.log(file.elem.parentNode);
+            console.log(file.elem.parentNode.parentNode);
             $(`#file${file.id}`).parent().remove();
             console.log(file.elem.parentNode);
             console.log(file.elem.parentNode.parentNode);
