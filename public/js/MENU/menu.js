@@ -208,22 +208,28 @@ document
 
 document
   .getElementById('update-authenticationID-button')
-  .addEventListener('click', (e) => {
-    console.log('更新押下');
-    $.ajax({
-      url: '/mypage/' + hashedIdGet,
-      type: 'POST',
-      dataType: 'Json',
-      contentType: 'application/json',
-      data: JSON.stringify({
-        flg: 'AuthenticationIDUpdte',
-      }),
-      success: function (res) {
-        alert('更新しました');
-        document.getElementById('authentication-ID').innerHTML =
-          res.authenticationID;
-      },
-    });
+  .addEventListener('click', async (e) => {
+    const result = await answerPopUp(
+      '利用者ID 変更',
+      '利用者IDを変更しますが、よろしいですか'
+    );
+    if (result === true) {
+      console.log('更新押下');
+      $.ajax({
+        url: '/mypage/' + hashedIdGet,
+        type: 'POST',
+        dataType: 'Json',
+        contentType: 'application/json',
+        data: JSON.stringify({
+          flg: 'AuthenticationIDUpdte',
+        }),
+        success: function (res) {
+          document.getElementById('authentication-ID').innerHTML =
+            res.authenticationID;
+          resultPopUp('利用者ID 変更', '変更しました');
+        },
+      });
+    }
   });
 
 //=============================================================================================================

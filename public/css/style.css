@@ -214,3 +214,7 @@ footer {
   font-size: 24px;
   text-decoration: underline;
 }
+
+#change-email-input {
+  width: 250px;
+}
