@@ -7,13 +7,7 @@ import {
 } from '../stringUtils.js';
 import { tabFocusIDGet, getTabIdArray } from '../main.js';
 import { newFileCreateFunc } from '../newFileCreate.js';
-import {
-  updateLastClasses_file,
-  updateLastClasses_Folder,
-  addLastClassToLastSibling,
-  removeLastHitareaClasses,
-  removeLastHitareaClasses_this,
-} from '../treeviewLineUpdate.js';
+import { addLastClassToLastSibling } from '../treeviewLineUpdate.js';
 
 let tmp1;
 let tmp2;
@@ -63,8 +57,8 @@ export const fileContextmenu = (tabIdArray) => {
             parentId,
           }),
           success: function (res) {
-            //削除するファイルの同階層に他にファイル/フォルダがあれば、treeviewのLineを更新
-            if (file.elem.parentNode.parentNode.firstElementChild) {
+            //削除するファイルにlast(一番下の要素)があれば、treeviewのLineを更新
+            if (file.elem.classList.contains('last')) {
               elementsBeforeMoving =
                 file.elem.parentNode.parentNode.firstElementChild;
               $(`#file${file.id}`).parent().remove();

@@ -55,8 +55,11 @@ export const folderContextmenu = (tabIdArray) => {
             parentId: folder.elem.parentNode.parentNode.id,
           }),
           success: function (res) {
-            //削除するファイルの同階層に他にファイル/フォルダがあれば、treeviewのLineを更新
-            if (folder.elem.parentNode.parentNode.firstElementChild) {
+            //削除するファイルにlastCollapsableまたはlastExpandable(一番下の要素)があれば、treeviewのLineを更新
+            if (
+              folder.elem.classList.contains('lastCollapsable') ||
+              folder.elem.classList.contains('lastExpandable')
+            ) {
               elementsBeforeMoving =
                 folder.elem.parentNode.parentNode.firstElementChild;
               $(`#folder${folder.id}`).parent().remove();
