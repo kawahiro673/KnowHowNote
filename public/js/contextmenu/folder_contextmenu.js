@@ -57,33 +57,33 @@ export const folderContextmenu = (tabIdArray) => {
 
             $(`#folder${folder.id}`).parent().remove();
 
-            $.ajax({
-              url: '/mypage/' + hashedIdGet,
-              type: 'POST',
-              dataType: 'Json',
-              contentType: 'application/json',
-              data: JSON.stringify({
-                flg: 'childFolder',
-                id: folder.id,
-                file: res.fileResults,
-                folder: res.folderResults,
-              }),
-              success: function (res) {
-                console.log(res.response);
+            // $.ajax({
+            //   url: '/mypage/' + hashedIdGet,
+            //   type: 'POST',
+            //   dataType: 'Json',
+            //   contentType: 'application/json',
+            //   data: JSON.stringify({
+            //     flg: 'childFolder',
+            //     id: folder.id,
+            //     file: res.fileResults,
+            //     folder: res.folderResults,
+            //   }),
+            //   success: function (res) {
+            //     console.log(res.response);
+            //     console.log(tabIdArray);
+            //削除されたファイルのタブを削除する
+            for (let i = 0; i < res.response.length; i++) {
+              //idArrayが文字列で格納されているため、num→String変換
+              if (tabIdArray.includes(res.response[i])) {
+                closeTab(res.response[i], undefined, tabIdArray);
+                //idArrayの中にあるlistTitle.idを削除
+                tabIdArray = getTabIdArray();
                 console.log(tabIdArray);
-                //削除されたファイルのタブを削除する
-                for (let i = 0; i < res.response.length; i++) {
-                  //idArrayが文字列で格納されているため、num→String変換
-                  if (tabIdArray.includes(res.response[i])) {
-                    closeTab(res.response[i], undefined, tabIdArray);
-                    //idArrayの中にあるlistTitle.idを削除
-                    tabIdArray = getTabIdArray();
-                    console.log(tabIdArray);
-                  }
-                }
-                resultPopUp('フォルダ削除', '削除しました');
-              },
-            });
+              }
+            }
+            resultPopUp('フォルダ削除', '削除しました');
+            //   },
+            // });
           },
         });
       } else {

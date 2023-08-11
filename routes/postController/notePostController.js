@@ -98,6 +98,7 @@ router.post('/', (req, res) => {
         res.status(500).send('Internal Server Error.(noteKeep)');
       });
   } else if (req.body.flg === 'delete') {
+    //ファイルを削除&前後のorder調整と、タブ削除＆タブorder調整
     getUserDataByToken(req)
       .then((resultDecoded) => {
         return new Promise((resolve, reject) => {
@@ -174,30 +175,6 @@ router.post('/', (req, res) => {
           );
         });
       })
-      // .then(() => {
-      //   return new Promise((resolve, reject) => {
-      //     pool.query('select * from it_memo', (error, result) => {
-      //       if (error) {
-      //         reject(error);
-      //       } else {
-      //         resolve();
-      //       }
-      //     });
-      //   });
-      // })
-      // .then(() => {
-      //   return new Promise((resolve, reject) => {
-      //     pool.query('select * from folder', (error, result) => {
-      //       if (error) {
-      //         reject(error);
-      //       } else {
-      //         res.send({
-      //           msg: '成功しました',
-      //         });
-      //       }
-      //     });
-      //   });
-      // })
       .catch((error) => {
         console.error(error);
         res.status(500).send('Internal Server Error.(delete)');

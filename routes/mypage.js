@@ -141,66 +141,65 @@ router
           res.status(500).send('Internal Server Error.(addOrder)');
         });
     }
-    //削除したフォルダの配下のファイルとフォルダを全て削除
-    else if (req.body.flg === 'childFolder') {
-      let tmpIdArray = [];
-      let fileArray = []; //削除したフォルダの配下のファイルidを格納
-      let folderArray = []; //削除したフォルダの配下のフォルダidを格納
-      let tmp;
+    // //削除したフォルダの配下のファイルとフォルダを全て削除
+    // else if (req.body.flg === 'childFolder') {
+    //   let tmpIdArray = [];
+    //   let fileArray = []; //削除したフォルダの配下のファイルidを格納
+    //   let folderArray = []; //削除したフォルダの配下のフォルダidを格納
+    //   let tmp;
 
-      console.log(`[POST(childFolder)]  id : ${req.body.id}`);
+    //   tmpIdArray.push(req.body.id); //削除したフォルダidを格納
 
-      tmpIdArray.push(req.body.id); //削除したフォルダidを格納
+    //   while (tmpIdArray.length !== 0) {
+    //     tmpIdArray.forEach((parentId) => {
+    //       //配下のファイルを配列に格納
+    //       req.body.file.forEach((file) => {
+    //         if (file.parent_id == parentId) {
+    //           //重複していなければ格納(格納されているのは削除したフォルダの子要素ファイルのid)
+    //           if (fileArray.indexOf(file.id) == -1) {
+    //             fileArray.push(file.id);
+    //           }
+    //         }
+    //       });
+    //       //配下のフォルダを配列に格納
+    //       req.body.folder.forEach((folder) => {
+    //         if (folder.parent_id == parentId) {
+    //           //重複していなければ格納(格納されているのは削除したフォルダの子要素フォルダのid)
+    //           if (folderArray.indexOf(folder.id) == -1) {
+    //             folderArray.push(folder.id);
+    //           }
+    //           //削除したフォルダの配下のフォルダにも、子要素がある可能性があるため、繰り返し用の配列へ格納
+    //           if (tmpIdArray.indexOf(folder.id) == -1) {
+    //             tmpIdArray.push(folder.id);
+    //           }
+    //         }
+    //       });
+    //       tmp = parentId;
+    //     });
+    //     //配下を全て確認したフォルダをtmpIdArrayから削除
+    //     tmpIdArray.splice(tmpIdArray.indexOf(tmp), 1);
+    //   }
+    //   fileArray.forEach((file) => {
+    //     //ここでクエリを使用してファイル消す
+    //     pool.query(
+    //       'DELETE from it_memo where id =?',
+    //       [file],
+    //       (error, result) => {}
+    //     );
+    //   });
+    //   folderArray.forEach((folder) => {
+    //     //ここでクエリを使用してフォルダ消す
+    //     pool.query(
+    //       'DELETE from folder where id =?',
+    //       [folder],
+    //       (error, result) => {}
+    //     );
+    //   });
+    //   res.send({ response: fileArray });
 
-      while (tmpIdArray.length !== 0) {
-        tmpIdArray.forEach((parentId) => {
-          //配下のファイルを配列に格納
-          req.body.file.forEach((file) => {
-            if (file.parent_id == parentId) {
-              //重複していなければ格納(格納されているのは削除したフォルダの子要素ファイルのid)
-              if (fileArray.indexOf(file.id) == -1) {
-                fileArray.push(file.id);
-              }
-            }
-          });
-          //配下のフォルダを配列に格納
-          req.body.folder.forEach((folder) => {
-            if (folder.parent_id == parentId) {
-              //重複していなければ格納(格納されているのは削除したフォルダの子要素フォルダのid)
-              if (folderArray.indexOf(folder.id) == -1) {
-                folderArray.push(folder.id);
-              }
-              //削除したフォルダの配下のフォルダにも、子要素がある可能性があるため、繰り返し用の配列へ格納
-              if (tmpIdArray.indexOf(folder.id) == -1) {
-                tmpIdArray.push(folder.id);
-              }
-            }
-          });
-          tmp = parentId;
-        });
-        //配下を全て確認したフォルダをtmpIdArrayから削除
-        tmpIdArray.splice(tmpIdArray.indexOf(tmp), 1);
-      }
-      fileArray.forEach((file) => {
-        //ここでクエリを使用してファイル消す
-        pool.query(
-          'DELETE from it_memo where id =?',
-          [file],
-          (error, result) => {}
-        );
-      });
-      folderArray.forEach((folder) => {
-        //ここでクエリを使用してフォルダ消す
-        pool.query(
-          'DELETE from folder where id =?',
-          [folder],
-          (error, result) => {}
-        );
-      });
-      res.send({ response: fileArray });
-
-      //配下のフォルダのidを全て配列に格納している
-    } else if (req.body.flg === 'folderChild') {
+    //   //配下のフォルダのidを全て配列に格納している
+    // }
+    else if (req.body.flg === 'folderChild') {
       let idArray = []; //最終的にmain.jsに返す値
       let parentIdArray = [];
       parentIdArray.push(req.body.id);

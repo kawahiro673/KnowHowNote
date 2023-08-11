@@ -28,7 +28,7 @@ export const fileContextmenu = (tabIdArray) => {
     );
 
     document.getElementById('delete').onclick = async () => {
-      let tabIndex = orderGet('tab-content', `Tab-ID${file.id}`);
+      let tabOrder = orderGet('tab-content', `Tab-ID${file.id}`);
 
       const result = await answerPopUp(
         'ノウハウ削除',
@@ -37,7 +37,7 @@ export const fileContextmenu = (tabIdArray) => {
       if (result === true) {
         //タブが生成済みであれば、タブを削除
         if (tabIdArray.includes(Number(file.id))) {
-          closeTab(Number(file.id), tabIndex, tabIdArray);
+          closeTab(Number(file.id), tabOrder, tabIdArray);
           //idArrayの中にあるfile.idを削除
           tabIdArray = getTabIdArray();
         }
@@ -50,28 +50,13 @@ export const fileContextmenu = (tabIdArray) => {
           data: JSON.stringify({
             flg: 'delete',
             id: file.id,
-            tabOrder: tabIndex,
+            tabOrder,
             fileOrder: order,
             parentId,
           }),
           success: function (res) {
             $(`#file${file.id}`).parent().remove();
             resultPopUp('ノウハウ削除', '削除しました');
-            // $.ajax({
-            //   url: '/notePostController/',
-            //   type: 'POST',
-            //   dataType: 'Json',
-            //   contentType: 'application/json',
-            //   data: JSON.stringify({
-            //     flg: 'delete',
-            //     id: file.id,
-            //     order,
-            //     parentId: parentid,
-            //   }),
-            //   success: function (res) {
-            //     resultPopUp('ノウハウ削除', '削除しました');
-            //   },
-            // });
           },
         });
       } else {
