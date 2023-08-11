@@ -25,6 +25,7 @@ export const fileContextmenu = (tabIdArray) => {
       id: $(this).attr('value'),
       elem: this,
     };
+    let elementsBeforeMoving;
 
     file.elem.style.backgroundColor = '#F5F5F5';
     file.elem.style.borderRadius = '5px';
@@ -62,10 +63,14 @@ export const fileContextmenu = (tabIdArray) => {
             parentId,
           }),
           success: function (res) {
-            console.log(file.elem.parentNode);
             $(`#file${file.id}`).parent().remove();
-            addLastClassToLastSibling(file.elem.parentNode);
+            if (file.elem.parentNode.parentNode.firstElementChild) {
+              elementsBeforeMoving =
+                file.elem.parentNode.parentNode.firstElementChild;
+            }
             console.log(file.elem.parentNode);
+            addLastClassToLastSibling(elementsBeforeMoving);
+
             resultPopUp('ノウハウ削除', '削除しました');
           },
         });
