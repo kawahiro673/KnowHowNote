@@ -68,7 +68,7 @@ export const shareContextmenu = () => {
                 'popup-overlay_share-delete'
               ).style.display = 'none';
               resultPopUp('共有ノウハウ削除', '削除しました');
-              document.getElementById('share-list-update-button').onclick();
+              document.getElementById('share-list-update-button').click();
             },
           });
         } else {
