@@ -255,124 +255,140 @@ router.post('/', (req, res) => {
   } else if (req.body.flg === 'folderDel') {
     getUserDataByToken(req)
       .then((resultDecoded) => {
-        const updateFolderOrder = new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => {
           pool.query(
             'UPDATE folder SET folder_order = folder_order - 1 where parent_id = ? AND folder_order > ? AND (UserID = ?)',
             [req.body.parentId, req.body.order, resultDecoded[0].id],
             (error, result) => {
-              if (error) reject(error);
-              else resolve(resultDecoded);
+              if (error) {
+                reject(error);
+              } else {
+                resolve(resultDecoded);
+              }
             }
           );
         });
-
-        const updateMemoOrder = new Promise((resolve, reject) => {
+      })
+      .then((resultDecoded) => {
+        return new Promise((resolve, reject) => {
           pool.query(
             'UPDATE it_memo SET folder_order = folder_order - 1 where parent_id = ? AND folder_order > ? AND (UserID = ?)',
             [req.body.parentId, req.body.order, resultDecoded[0].id],
             (error, result) => {
-              if (error) reject(error);
-              else resolve(resultDecoded);
+              if (error) {
+                reject(error);
+              } else {
+                resolve(resultDecoded);
+              }
             }
           );
         });
-
-        const deleteFolder = new Promise((resolve, reject) => {
+      })
+      .then((resultDecoded) => {
+        return new Promise((resolve, reject) => {
           pool.query(
             'DELETE from folder where id = ?',
             [req.body.id],
             (error, result) => {
-              if (error) reject(error);
-              else resolve(resultDecoded);
+              if (error) {
+                reject(error);
+              } else {
+                resolve(resultDecoded);
+              }
             }
           );
         });
-
-        return Promise.all([updateFolderOrder, updateMemoOrder, deleteFolder]);
       })
-      .then(([resultDecoded]) => {
-        const getFileResults = new Promise((resolve, reject) => {
+      .then((resultDecoded) => {
+        return new Promise((resolve, reject) => {
           pool.query(
             'select * from it_memo WHERE UserID = ?;',
             [resultDecoded[0].id],
             (error, fileResults) => {
-              if (error) reject(error);
-              else resolve({ fileResults, resultDecoded });
+              if (error) {
+                reject(error);
+              } else {
+                resolve({
+                  fileResults: fileResults,
+                  resultDecoded: resultDecoded,
+                });
+              }
             }
           );
         });
-
-        const getFolderResults = new Promise((resolve, reject) => {
+      })
+      .then(({ fileResults, resultDecoded }) => {
+        return new Promise((resolve, reject) => {
           pool.query(
             'select * from folder WHERE UserID = ?;',
             [resultDecoded[0].id],
             (error, folderResults) => {
-              if (error) reject(error);
-              else resolve({ fileResults, folderResults });
+              if (error) {
+                reject(error);
+              } else {
+                resolve({
+                  fileResults: fileResults,
+                  folderResults: folderResults,
+                });
+              }
             }
           );
         });
-
-        return Promise.all([getFileResults, getFolderResults]);
       })
-      .then(([{ fileResults, folderResults }]) => {
-        const tmpIdArray = [req.body.id];
-        const fileArray = [];
-        const folderArray = [];
+      .then(({ fileResults, folderResults }) => {
+        return new Promise((resolve, reject) => {
+          let tmpIdArray = [];
+          let fileArray = []; //削除したフォルダの配下のファイルidを格納
+          let folderArray = []; //削除したフォルダの配下のフォルダidを格納
+          let tmp;
 
-        function addToIdArray(array, id) {
-          if (array.indexOf(id) === -1) {
-            array.push(id);
+          tmpIdArray.push(req.body.id); //削除したフォルダidを格納
+
+          while (tmpIdArray.length !== 0) {
+            tmpIdArray.forEach((parentId) => {
+              //配下のファイルを配列に格納
+              fileResults.forEach((file) => {
+                if (file.parent_id == parentId) {
+                  //重複していなければ格納(格納されているのは削除したフォルダの子要素ファイルのid)
+                  if (fileArray.indexOf(file.id) == -1) {
+                    fileArray.push(file.id);
+                  }
+                }
+              });
+              //配下のフォルダを配列に格納
+              folderResults.forEach((folder) => {
+                if (folder.parent_id == parentId) {
+                  //重複していなければ格納(格納されているのは削除したフォルダの子要素フォルダのid)
+                  if (folderArray.indexOf(folder.id) == -1) {
+                    folderArray.push(folder.id);
+                  }
+                  //削除したフォルダの配下のフォルダにも、子要素がある可能性があるため、繰り返し用の配列へ格納
+                  if (tmpIdArray.indexOf(folder.id) == -1) {
+                    tmpIdArray.push(folder.id);
+                  }
+                }
+              });
+              tmp = parentId;
+            });
+            //配下を全て確認したフォルダをtmpIdArrayから削除
+            tmpIdArray.splice(tmpIdArray.indexOf(tmp), 1);
           }
-        }
-
-        while (tmpIdArray.length !== 0) {
-          tmpIdArray.forEach((parentId) => {
-            fileResults.forEach((file) => {
-              if (file.parent_id === parentId) {
-                addToIdArray(fileArray, file.id);
-              }
-            });
-            folderResults.forEach((folder) => {
-              if (folder.parent_id === parentId) {
-                addToIdArray(folderArray, folder.id);
-                addToIdArray(tmpIdArray, folder.id);
-              }
-            });
-          });
-          tmpIdArray.shift();
-        }
-
-        const deleteFilePromises = fileArray.map((file) => {
-          return new Promise((resolve, reject) => {
+          fileArray.forEach((file) => {
             pool.query(
-              'DELETE from it_memo where id = ?',
+              'DELETE from it_memo where id =?',
               [file],
-              (error, result) => {
-                if (error) reject(error);
-                else resolve();
-              }
+              (error, result) => {}
             );
           });
-        });
-
-        const deleteFolderPromises = folderArray.map((folder) => {
-          return new Promise((resolve, reject) => {
+          folderArray.forEach((folder) => {
             pool.query(
-              'DELETE from folder where id = ?',
+              'DELETE from folder where id =?',
               [folder],
-              (error, result) => {
-                if (error) reject(error);
-                else resolve();
-              }
+              (error, result) => {}
             );
           });
+          res.send({ response: fileArray });
         });
-
-        return Promise.all([...deleteFilePromises, ...deleteFolderPromises]);
-      })
-      .then((fileArray) => {
-        res.send({ response: fileArray });
       })
       .catch((error) => {
         console.error(error);
