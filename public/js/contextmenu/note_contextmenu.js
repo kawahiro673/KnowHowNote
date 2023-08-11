@@ -42,35 +42,36 @@ export const fileContextmenu = (tabIdArray) => {
           tabIdArray = getTabIdArray();
         }
         $.ajax({
-          url: '/tabPostController/',
+          url: '/notePostController/',
           type: 'POST',
           dataType: 'Json',
           contentType: 'application/json',
           data: JSON.stringify({
-            flg: 'tabDelete',
+            flg: 'delete',
             id: file.id,
-            order: tabIndex,
+            tabOrder: tabIndex,
+            fileOrder: order,
+            parentId: parentid,
           }),
           success: function (res) {
-            //成功！！ここにリストから消した際のタブ削除と、リスト削除を記載→タブの✖️を押下したことにすれば良いのでは？？
-            let parentid = file.elem.parentNode.parentNode.id;
+            const parentid = file.elem.parentNode.parentNode.id;
             $(`#file${file.id}`).parent().remove();
-
-            $.ajax({
-              url: '/notePostController/',
-              type: 'POST',
-              dataType: 'Json',
-              contentType: 'application/json',
-              data: JSON.stringify({
-                flg: 'delete',
-                id: file.id,
-                order,
-                parentId: parentid,
-              }),
-              success: function (res) {
-                resultPopUp('ノウハウ削除', '削除しました');
-              },
-            });
+            resultPopUp('ノウハウ削除', '削除しました');
+            // $.ajax({
+            //   url: '/notePostController/',
+            //   type: 'POST',
+            //   dataType: 'Json',
+            //   contentType: 'application/json',
+            //   data: JSON.stringify({
+            //     flg: 'delete',
+            //     id: file.id,
+            //     order,
+            //     parentId: parentid,
+            //   }),
+            //   success: function (res) {
+            //     resultPopUp('ノウハウ削除', '削除しました');
+            //   },
+            // });
           },
         });
       } else {

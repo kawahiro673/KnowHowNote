@@ -103,7 +103,7 @@ router.post('/', (req, res) => {
         return new Promise((resolve, reject) => {
           pool.query(
             'UPDATE folder SET folder_order = folder_order - 1 where parent_id = ? AND folder_order > ? AND UserID = ?',
-            [req.body.parentId, req.body.order, resultDecoded[0].id],
+            [req.body.parentId, req.body.fileOrder, resultDecoded[0].id],
             (error, result) => {
               if (error) {
                 reject(error);
@@ -118,18 +118,18 @@ router.post('/', (req, res) => {
         return new Promise((resolve, reject) => {
           pool.query(
             'UPDATE it_memo SET folder_order = folder_order - 1 where parent_id = ? AND folder_order > ? AND UserID = ?',
-            [req.body.parentId, req.body.order, resultDecoded[0].id],
+            [req.body.parentId, req.body.fileOrder, resultDecoded[0].id],
             (error, result) => {
               if (error) {
                 reject(error);
               } else {
-                resolve();
+                resolve(resultDecoded);
               }
             }
           );
         });
       })
-      .then(() => {
+      .then((resultDecoded) => {
         return new Promise((resolve, reject) => {
           pool.query(
             'DELETE from it_memo where id = ?',
@@ -138,36 +138,66 @@ router.post('/', (req, res) => {
               if (error) {
                 reject(error);
               } else {
-                resolve();
+                resolve(resultDecoded);
               }
             }
           );
         });
       })
-      .then(() => {
+      .then((resultDecoded) => {
         return new Promise((resolve, reject) => {
-          pool.query('select * from it_memo', (error, result) => {
-            if (error) {
-              reject(error);
-            } else {
-              resolve();
+          pool.query(
+            'DELETE from tab_hold where id = ?',
+            [req.body.id],
+            (error, result) => {
+              if (error) {
+                reject(error);
+              } else {
+                resolve(resultDecoded);
+              }
             }
-          });
+          );
         });
       })
-      .then(() => {
+      .then((resultDecoded) => {
         return new Promise((resolve, reject) => {
-          pool.query('select * from folder', (error, result) => {
-            if (error) {
-              reject(error);
-            } else {
-              res.send({
-                msg: '成功しました',
-              });
+          pool.query(
+            'UPDATE tab_hold SET tabOrder = tabOrder - 1 WHERE tabOrder > ? AND (UserID = ?); ',
+            [req.body.tabOrder, resultDecoded[0].id],
+            (error, result) => {
+              if (error) {
+                reject(error);
+              } else {
+                res.send({ msg: '成功しました' });
+              }
             }
-          });
+          );
         });
       })
+      // .then(() => {
+      //   return new Promise((resolve, reject) => {
+      //     pool.query('select * from it_memo', (error, result) => {
+      //       if (error) {
+      //         reject(error);
+      //       } else {
+      //         resolve();
+      //       }
+      //     });
+      //   });
+      // })
+      // .then(() => {
+      //   return new Promise((resolve, reject) => {
+      //     pool.query('select * from folder', (error, result) => {
+      //       if (error) {
+      //         reject(error);
+      //       } else {
+      //         res.send({
+      //           msg: '成功しました',
+      //         });
+      //       }
+      //     });
+      //   });
+      // })
       .catch((error) => {
         console.error(error);
         res.status(500).send('Internal Server Error.(delete)');

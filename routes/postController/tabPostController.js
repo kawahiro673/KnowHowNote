@@ -81,21 +81,21 @@ router.post('/', (req, res) => {
       });
   } else if (req.body.flg === 'tabDelete') {
     getUserDataByToken(req)
-      .then((resultDecoded) => {
-        return new Promise((resolve, reject) => {
-          pool.query(
-            'SELECT * FROM it_memo WHERE id = ?',
-            [req.body.id],
-            (error, result) => {
-              if (error) {
-                reject(error);
-              } else {
-                resolve(resultDecoded);
-              }
-            }
-          );
-        });
-      })
+      // .then((resultDecoded) => {
+      //   return new Promise((resolve, reject) => {
+      //     pool.query(
+      //       'SELECT * FROM it_memo WHERE id = ?',
+      //       [req.body.id],
+      //       (error, result) => {
+      //         if (error) {
+      //           reject(error);
+      //         } else {
+      //           resolve(resultDecoded);
+      //         }
+      //       }
+      //     );
+      //   });
+      // })
       .then((resultDecoded) => {
         return new Promise((resolve, reject) => {
           pool.query(
