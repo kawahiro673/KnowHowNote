@@ -100,10 +100,10 @@ export const addLastClassToLastSibling = (element) => {
   if (lastSibling) {
     if (lastSibling.classList.contains('collapsable')) {
       lastSibling.classList.add('lastCollapsable');
-      lastSibling.classList.remove('lastExpandable');
+      //lastSibling.classList.remove('lastExpandable');
     } else if (lastSibling.classList.contains('expandable')) {
       lastSibling.classList.add('lastExpandable');
-      lastSibling.classList.remove('lastCollapsable');
+      //lastSibling.classList.remove('lastCollapsable');
     } else {
       lastSibling.classList.add('last');
       //lastSibling.classList.remove('lastCollapsable', 'lastExpandable');

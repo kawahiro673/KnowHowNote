@@ -7,6 +7,13 @@ import {
 } from '../stringUtils.js';
 import { tabFocusIDGet, getTabIdArray } from '../main.js';
 import { newFileCreateFunc } from '../newFileCreate.js';
+import {
+  updateLastClasses_file,
+  updateLastClasses_Folder,
+  addLastClassToLastSibling,
+  removeLastHitareaClasses,
+  removeLastHitareaClasses_this,
+} from '../treeviewLineUpdate.js';
 
 let tmp1;
 let tmp2;
@@ -55,7 +62,10 @@ export const fileContextmenu = (tabIdArray) => {
             parentId,
           }),
           success: function (res) {
+            console.log(file.elem.parentNode);
             $(`#file${file.id}`).parent().remove();
+            addLastClassToLastSibling(file.elem.parentNode);
+            console.log(file.elem.parentNode);
             resultPopUp('ノウハウ削除', '削除しました');
           },
         });
