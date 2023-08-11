@@ -199,10 +199,14 @@ document
           ).style.display = 'none';
           document.getElementById('change-email-button').style.display =
             'block';
+          resultPopUp('メールアドレス 変更', '変更しました');
         },
       });
     } else {
-      alert('ちゃう');
+      resultPopUp(
+        'メールアドレス　変更',
+        '正しいメールアドレスが入力されていません。メールアドレスはGmailとYahoo!メールにのみ対応しています'
+      );
     }
   });
 
