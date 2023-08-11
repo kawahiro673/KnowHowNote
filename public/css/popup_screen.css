@@ -9,7 +9,6 @@
 #popup-overlay_share-user,
 #popup-overlay_friend-list,
 #popup-overlay_friend-add,
-#popup-overlay_friend-add-ans,
 #popup-overlay_group-add,
 #popup-overlay_group-list,
 #popup-overlay_result-pop,
@@ -37,7 +36,6 @@
 .popup-window_share-user,
 .popup-window_friend-list,
 .popup-window_friend-add,
-.popup-window_friend-add-ans,
 .popup-window_group-add,
 .popup-window_group-list,
 .popup-window_result-pop,
@@ -65,7 +63,6 @@
   height: 150px;
 }
 
-.popup-window_friend-add-ans,
 .popup-window_result-pop,
 .popup-window_answer-pop {
   height: 180px;
@@ -102,7 +99,6 @@
 .popup-header_share-user,
 .popup-header_friend-list,
 .popup-header_friend-add,
-.popup-header_friend-add-ans,
 .popup-header_group-add,
 .popup-header_group-list,
 .popup-header_result-pop,
@@ -128,7 +124,6 @@
 .popup-header_share-user h2,
 .popup-header_friend-list h2,
 .popup-header_friend-add h2,
-.popup-header_friend-add-ans h2,
 .popup-header_group-add h2,
 .popup-header_group-list h2,
 .popup-header_result-pop h2,
@@ -235,7 +230,6 @@
 .popup-body_share,
 .popup-body_inquiry,
 .popup-body_friend-add,
-.popup-body_friend-add-ans,
 .popup-body_answer-pop {
   position: relative;
   padding: 0 10px;

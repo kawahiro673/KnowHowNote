@@ -489,27 +489,6 @@ document
               'フレンド追加',
               `"${res.userName}"さんをフレンドリストに追加しました`
             );
-            // document.getElementById(
-            //   'popup-overlay_friend-add-ans'
-            // ).style.display = 'block';
-            // document.getElementById('new-friend-user').innerHTML = res.userName;
-
-            // document
-            //   .getElementById('popup-overlay_friend-add-ans')
-            //   .addEventListener('click', (e) => {
-            //     const popup = document.getElementById(
-            //       'popup-overlay_friend-add-ans'
-            //     );
-            //     if (e.target === popup) {
-            //       popup.style.display = 'none';
-            //     }
-            //   });
-
-            // setTimeout(() => {
-            //   document.getElementById(
-            //     'popup-overlay_friend-add-ans'
-            //   ).style.display = 'none';
-            // }, 1500);
           }
         },
       });
