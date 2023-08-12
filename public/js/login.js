@@ -1,4 +1,8 @@
-import { currentTimeGet, validateEmail, resultPopUp } from './stringUtils.js';
+import {
+  currentTimeGet,
+  validateEmail,
+  explanationPopUp,
+} from './stringUtils.js';
 
 const loginbtn = document.getElementById('loginbtn');
 const password = document.getElementById('password');
@@ -47,11 +51,14 @@ document.getElementById('pass-change').addEventListener('click', (e) => {
         email,
       }),
       success: function (res) {
-        console.log(res.msg);
+        explanationPopUp(
+          'パスワード変更',
+          '指定のアドレスにメールを送信しました　URLから新しくパスワードを設定してください'
+        );
       },
     });
   } else {
-    resultPopUp(
+    explanationPopUp(
       'パスワード変更',
       '正しいメールアドレスが入力されていません。メールアドレスはGmailとYahoo!メールにのみ対応しています'
     );

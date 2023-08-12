@@ -52,8 +52,8 @@ router.post('/', (req, res) => {
           const mailOptions = {
             from: auth.user,
             to: req.body.email,
-            subject: 'Test Email',
-            text: 'メール送信確認テスト',
+            subject: '【パスワード変更】Know How Note',
+            text: '下記URLからパスワード変更してください',
           };
 
           transporter.sendMail(mailOptions, (error, info) => {
@@ -62,7 +62,7 @@ router.post('/', (req, res) => {
               res.status(500).send('Error sending email');
             } else {
               console.log('Email sent:', info.response);
-              res.send({ msg: 'Email sent successfully' });
+              res.send({ msg: 'OK' });
             }
           });
         } else {

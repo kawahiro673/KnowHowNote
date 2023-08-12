@@ -87,8 +87,7 @@ export const resultPopUp = (headerStr, bodyStr) => {
 };
 
 //「はい」「いいえ」ポップアップ
-export const answerPopUp = (title, content) => {
-  console.log('はい、いいえ');
+export const PopUp = (title, content) => {
   document.getElementById('popup-overlay_answer-pop').style.display = 'block';
   document.getElementById('answer-pop-h2').innerHTML = title;
   document.getElementById('answer-pop-p').innerHTML = content;
@@ -146,4 +145,36 @@ export const validateEmail = (email) => {
     return false;
   }
   return true;
+};
+
+//「OK」押下で閉じる説明や注意点のポップアップ生成
+export const explanationPopUp = (title, content) => {
+  document.getElementById('popup-overlay_explanation-pop').style.display =
+    'block';
+  document.getElementById('answer-explanation-h2').innerHTML = title;
+  document.getElementById('explanation-pop-p').innerHTML = content;
+
+  document
+    .getElementById('pop-delete_explanation-pop')
+    .addEventListener('click', (e) => {
+      e.preventDefault(); // リンクのデフォルトの動作を無効化
+      document.getElementById('popup-overlay_explanation-pop').style.display =
+        'none';
+    });
+
+  document
+    .getElementById('popup-overlay_explanation-pop')
+    .addEventListener('click', (e) => {
+      const popup = document.getElementById('popup-overlay_explanation-pop');
+      if (e.target === popup) {
+        popup.style.display = 'none';
+      }
+    });
+  document
+    .getElementById('yes-button-explanation-pop')
+    .addEventListener('click', (e) => {
+      e.preventDefault(); // リンクのデフォルトの動作を無効化
+      document.getElementById('popup-overlay_explanation-pop').style.display =
+        'none';
+    });
 };
