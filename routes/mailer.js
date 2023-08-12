@@ -24,22 +24,49 @@ const transport = {
 const transporter = nodemailer.createTransport(transport);
 
 router.post('/', (req, res) => {
-  const mailOptions = {
-    from: auth.user,
-    to: req.body.email,
-    subject: 'Test Email',
-    text: 'メール送信確認テスト',
-  };
-
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log('Error:', error);
-      res.status(500).send('Error sending email');
-    } else {
-      console.log('Email sent:', info.response);
-      res.send({ msg: 'Email sent successfully' });
-    }
+  let promise = new Promise((resolve, reject) => {
+    resolve();
   });
+  promise
+    .then(() => {
+      return new Promise((resolve, reject) => {
+        pool.query(
+          'SELECT * FROM register_user WHERE UserName = ?;',
+          [req.body.userName],
+          (error, userResult) => {
+            if (error) {
+              reject(error);
+            } else {
+              resolve(userResult);
+            }
+          }
+        );
+      });
+    })
+    .then((userResult) => {
+      return new Promise((resolve, reject) => {
+        if (userResult.Email === req.body.email) {
+          const mailOptions = {
+            from: auth.user,
+            to: req.body.email,
+            subject: 'Test Email',
+            text: 'メール送信確認テスト',
+          };
+
+          transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+              console.log('Error:', error);
+              res.status(500).send('Error sending email');
+            } else {
+              console.log('Email sent:', info.response);
+              res.send({ msg: 'Email sent successfully' });
+            }
+          });
+        } else {
+          res.send({ msg: 'ちゃう' });
+        }
+      });
+    });
 });
 
 module.exports = router;

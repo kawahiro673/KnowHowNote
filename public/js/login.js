@@ -33,13 +33,16 @@ document
   });
 
 document.getElementById('pass-change').addEventListener('click', (e) => {
+  const userName = document.getElementById('username-pop').value;
+  const email = document.getElementById('email').value;
   $.ajax({
     url: '/mailer/',
     type: 'POST',
     dataType: 'Json',
     contentType: 'application/json',
     data: JSON.stringify({
-      email: '9099.asaa@gmail.com',
+      userName,
+      email,
     }),
     success: function (res) {
       console.log(res.msg);
