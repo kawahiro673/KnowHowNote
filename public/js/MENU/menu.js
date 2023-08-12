@@ -214,7 +214,7 @@ document
   .getElementById('update-authenticationID-button')
   .addEventListener('click', async (e) => {
     const result = await answerPopUp(
-      '利用者ID 変更',
+      '利用者ID変更',
       '利用者IDを変更しますが、よろしいですか'
     );
     if (result === true) {

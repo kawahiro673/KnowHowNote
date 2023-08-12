@@ -132,7 +132,6 @@ export const answerPopUp = (title, content) => {
 
 // 通常のメールアドレスバリデーション関数
 export const validateEmail = (email) => {
-  // メールアドレスの正規表現
   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   // メールアドレスのフォーマットをチェック
   if (!emailRegex.test(email)) {

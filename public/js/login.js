@@ -51,12 +51,21 @@ document.getElementById('pass-change').addEventListener('click', (e) => {
         email,
       }),
       success: function (res) {
-        explanationPopUp(
-          'パスワード変更',
-          '指定のアドレスにメールを送信しました　URLから新しくパスワードを設定してください'
-        );
-        document.getElementById('popup-overlay_pass-forget').style.display =
-          'none';
+        if (res.msg === 'nothingUser') {
+          explanationPopUp('パスワード変更', 'ユーザーが見つかりませんでした');
+        } else if (res.msg === 'nothingEmail') {
+          explanationPopUp(
+            'パスワード変更',
+            '正しいメールアドレスが入力されていません'
+          );
+        } else {
+          explanationPopUp(
+            'パスワード変更',
+            '指定のアドレスにメールを送信しました　URLから新しくパスワードを設定してください'
+          );
+          document.getElementById('popup-overlay_pass-forget').style.display =
+            'none';
+        }
       },
     });
   } else {
