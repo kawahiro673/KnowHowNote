@@ -41,27 +41,27 @@ document.getElementById('pass-change').addEventListener('click', (e) => {
   const email = document.getElementById('email').value;
   const flg = validateEmail(email);
   if (flg) {
-    if (isGmail(email)) {
-      $.ajax({
-        url: '/mailer/',
-        type: 'POST',
-        dataType: 'Json',
-        contentType: 'application/json',
-        data: JSON.stringify({
-          userName,
-          email,
-        }),
-        success: function (res) {
-          explanationPopUp(
-            'パスワード変更',
-            '指定のアドレスにメールを送信しました　URLから新しくパスワードを設定してください'
-          );
-          document.getElementById('popup-overlay_pass-forget').style.display =
-            'none';
-        },
-      });
-    } else if (isYahooEmail(email)) {
-    }
+    // if (isGmail(email)) {
+    $.ajax({
+      url: '/mailer/',
+      type: 'POST',
+      dataType: 'Json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        userName,
+        email,
+      }),
+      success: function (res) {
+        explanationPopUp(
+          'パスワード変更',
+          '指定のアドレスにメールを送信しました　URLから新しくパスワードを設定してください'
+        );
+        document.getElementById('popup-overlay_pass-forget').style.display =
+          'none';
+      },
+    });
+    // } else if (isYahooEmail(email)) {
+    //}
   } else {
     explanationPopUp(
       'パスワード変更',
