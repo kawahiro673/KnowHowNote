@@ -41,7 +41,6 @@ document.getElementById('pass-change').addEventListener('click', (e) => {
   const email = document.getElementById('email').value;
   const flg = validateEmail(email);
   if (flg) {
-    // if (isGmail(email)) {
     $.ajax({
       url: '/mailer/',
       type: 'POST',
@@ -60,12 +59,10 @@ document.getElementById('pass-change').addEventListener('click', (e) => {
           'none';
       },
     });
-    // } else if (isYahooEmail(email)) {
-    //}
   } else {
     explanationPopUp(
       'パスワード変更',
-      '正しいメールアドレスが入力されていません。メールアドレスはGmailとYahoo!メールにのみ対応しています'
+      '正しいメールアドレスが入力されていません'
     );
   }
 });
@@ -116,15 +113,4 @@ function loginButtonClick() {
       },
     });
   }
-}
-
-// Gmailアドレスの判定ロジックを実装して返す
-function isGmail(email) {
-  const gmailRegex = /@gmail\.com$/i; // @gmail.comで終わる正規表現
-  return gmailRegex.test(email);
-}
-// Yahoo!メールアドレスの判定ロジックを実装して返す
-function isYahooEmail(email) {
-  const yahooRegex = /@yahoo\.com$/i; // @yahoo.comで終わる正規表現
-  return yahooRegex.test(email);
 }

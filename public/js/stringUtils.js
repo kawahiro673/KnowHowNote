@@ -130,18 +130,12 @@ export const answerPopUp = (title, content) => {
   });
 };
 
-//Emailバリデーション関数(GmailとYahoo!メールのみ)
+// 通常のメールアドレスバリデーション関数
 export const validateEmail = (email) => {
   // メールアドレスの正規表現
   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   // メールアドレスのフォーマットをチェック
   if (!emailRegex.test(email)) {
-    return false;
-  }
-  // ドメインのチェック
-  const allowedDomains = ['gmail.com', 'yahoo.co.jp'];
-  const domain = email.split('@')[1];
-  if (!allowedDomains.includes(domain)) {
     return false;
   }
   return true;
