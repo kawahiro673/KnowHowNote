@@ -1,4 +1,4 @@
-import { currentTimeGet } from './stringUtils.js';
+import { currentTimeGet, validateEmail, resultPopUp } from './stringUtils.js';
 
 const loginbtn = document.getElementById('loginbtn');
 const password = document.getElementById('password');
@@ -35,19 +35,27 @@ document
 document.getElementById('pass-change').addEventListener('click', (e) => {
   const userName = document.getElementById('username-pop').value;
   const email = document.getElementById('email').value;
-  $.ajax({
-    url: '/mailer/',
-    type: 'POST',
-    dataType: 'Json',
-    contentType: 'application/json',
-    data: JSON.stringify({
-      userName,
-      email,
-    }),
-    success: function (res) {
-      console.log(res.msg);
-    },
-  });
+  const flg = validateEmail(email);
+  if (flg) {
+    $.ajax({
+      url: '/mailer/',
+      type: 'POST',
+      dataType: 'Json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        userName,
+        email,
+      }),
+      success: function (res) {
+        console.log(res.msg);
+      },
+    });
+  } else {
+    resultPopUp(
+      'パスワード変更',
+      '正しいメールアドレスが入力されていません。メールアドレスはGmailとYahoo!メールにのみ対応しています'
+    );
+  }
 });
 
 function loginButtonClick() {

@@ -45,7 +45,10 @@ router.post('/', (req, res) => {
     })
     .then((userResult) => {
       return new Promise((resolve, reject) => {
-        if (userResult[0].Email === req.body.email) {
+        if (userResult.length === 0) {
+          // ユーザーが見つからなかった場合
+          res.send({ msg: 'ユーザーが見つかりません' });
+        } else if (userResult[0].Email === req.body.email) {
           const mailOptions = {
             from: auth.user,
             to: req.body.email,
