@@ -45,7 +45,7 @@ router.post('/', (req, res) => {
     })
     .then((userResult) => {
       return new Promise((resolve, reject) => {
-        if (userResult.Email === req.body.email) {
+        if (userResult[0].Email === req.body.email) {
           const mailOptions = {
             from: auth.user,
             to: req.body.email,
