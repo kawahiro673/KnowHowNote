@@ -79,7 +79,7 @@
 #change-email-button-decision:active,
 #yes-button-answer-pop:active,
 #no-button-answer-pop:active,
-#yes-button-explanation-pop {
+#yes-button-explanation-pop:active {
   box-shadow: none;
   transform: translateY(5px);
 }
