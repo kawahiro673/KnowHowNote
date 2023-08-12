@@ -41,22 +41,27 @@ document.getElementById('pass-change').addEventListener('click', (e) => {
   const email = document.getElementById('email').value;
   const flg = validateEmail(email);
   if (flg) {
-    $.ajax({
-      url: '/mailer/',
-      type: 'POST',
-      dataType: 'Json',
-      contentType: 'application/json',
-      data: JSON.stringify({
-        userName,
-        email,
-      }),
-      success: function (res) {
-        explanationPopUp(
-          'パスワード変更',
-          '指定のアドレスにメールを送信しました　URLから新しくパスワードを設定してください'
-        );
-      },
-    });
+    if (isGmail(email)) {
+      $.ajax({
+        url: '/mailer/',
+        type: 'POST',
+        dataType: 'Json',
+        contentType: 'application/json',
+        data: JSON.stringify({
+          userName,
+          email,
+        }),
+        success: function (res) {
+          explanationPopUp(
+            'パスワード変更',
+            '指定のアドレスにメールを送信しました　URLから新しくパスワードを設定してください'
+          );
+          document.getElementById('popup-overlay_pass-forget').style.display =
+            'none';
+        },
+      });
+    } else if (isYahooEmail(email)) {
+    }
   } else {
     explanationPopUp(
       'パスワード変更',
@@ -71,7 +76,6 @@ function loginButtonClick() {
   });
   document.querySelector('.login-error-message').style.display = 'none';
   if (password.value === '' || username.value === '') {
-    // alert('入力されていない情報があります');
     elements.forEach(function (element) {
       if (element.value === '') {
         element.style.border = '1px solid red';
@@ -112,4 +116,15 @@ function loginButtonClick() {
       },
     });
   }
+}
+
+// Gmailアドレスの判定ロジックを実装して返す
+function isGmail(email) {
+  const gmailRegex = /@gmail\.com$/i; // @gmail.comで終わる正規表現
+  return gmailRegex.test(email);
+}
+// Yahoo!メールアドレスの判定ロジックを実装して返す
+function isYahooEmail(email) {
+  const yahooRegex = /@yahoo\.com$/i; // @yahoo.comで終わる正規表現
+  return yahooRegex.test(email);
 }

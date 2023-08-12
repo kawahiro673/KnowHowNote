@@ -14,6 +14,7 @@ const sharePostController = require('./routes/postController/sharePostController
 const auth = require('./routes/auth');
 const login = require('./routes/srv_login');
 const mailer = require('./routes/mailer');
+const mailer2 = require('./routes/mailer2');
 const check = require('./routes/check');
 const cookieParser = require('cookie-parser');
 
@@ -41,6 +42,7 @@ app.use('/folderPostController', folderPostController);
 app.use('/sharePostController', sharePostController);
 app.use('/login', login);
 app.use('/mailer', mailer);
+app.use('/mailer2', mailer2);
 
 app.listen(process.env.PORT || 8080, () => {
   console.log('サーバー接続成功');

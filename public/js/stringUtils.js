@@ -87,7 +87,7 @@ export const resultPopUp = (headerStr, bodyStr) => {
 };
 
 //「はい」「いいえ」ポップアップ
-export const PopUp = (title, content) => {
+export const answerPopUp = (title, content) => {
   document.getElementById('popup-overlay_answer-pop').style.display = 'block';
   document.getElementById('answer-pop-h2').innerHTML = title;
   document.getElementById('answer-pop-p').innerHTML = content;
