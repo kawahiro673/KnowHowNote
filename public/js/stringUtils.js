@@ -151,7 +151,7 @@ export const validateEmail = (email) => {
 export const explanationPopUp = (title, content) => {
   document.getElementById('popup-overlay_explanation-pop').style.display =
     'block';
-  document.getElementById('answer-explanation-h2').innerHTML = title;
+  document.getElementById('explanation-pop-h2').innerHTML = title;
   document.getElementById('explanation-pop-p').innerHTML = content;
 
   document
