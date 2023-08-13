@@ -64,7 +64,8 @@ function registerButtonClick() {
         !/^[a-zA-Z0-9]+$/.test(password_auth.value)
       ) {
         message.style.display = 'block';
-        message.innerHTML = 'パスワードは8文字以上の英数字を使用してください';
+        message.innerHTML =
+          'パスワードは8文字以上の半角英数字を使用してください';
         password_auth.style.border = '1px solid red';
         return false;
       }

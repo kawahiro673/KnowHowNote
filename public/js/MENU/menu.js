@@ -6,6 +6,7 @@ import {
   resultPopUp,
   validateEmail,
   answerPopUp,
+  explanationPopUp,
 } from '../stringUtils.js';
 import { friendListUpdate } from './friend-list.js';
 import {
@@ -15,7 +16,6 @@ import {
 } from './group-list.js';
 import { backgroundColorCheckBoxOption } from './my-profile.js';
 import { sortTableByUser, sortTableByDate } from './share-history.js';
-// import { groupNameDelete } from './group-list.js';
 
 const menuCheckbox = document.getElementById('tg');
 const menuLabel = document.querySelector('.dropLabel');
@@ -258,14 +258,14 @@ document
     label2.setAttribute('for', 'change-password-input');
     const changePasswordInput = document.createElement('input');
     changePasswordInput.id = 'change-password-input';
-    changePasswordInput.placeholder = '新しいパスワード';
+    changePasswordInput.placeholder = '8文字以上の半角英数字';
 
     const label3 = document.createElement('label');
     label3.innerHTML = '新しいパスワード';
     label3.setAttribute('for', 'again-password-input');
     const againPasswordInput = document.createElement('input');
     againPasswordInput.id = 'again-password-input';
-    againPasswordInput.placeholder = '新しいパスワード（再入力）';
+    againPasswordInput.placeholder = 'パスワードを再入力';
 
     div1.appendChild(label1);
     div1.appendChild(currentPasswordInput);
@@ -342,6 +342,10 @@ document
     document
       .getElementById('my-password')
       .parentNode.setAttribute('id', 'password-container');
+    explanationPopUp(
+      'パスワード変更',
+      'パスワードの変更が完了しました\nパスワードはログインするときに必要となります\n忘れることのないようどこかに控えておいてください'
+    );
   });
 
 //=============================================================================================================
