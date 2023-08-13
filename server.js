@@ -34,17 +34,19 @@ app.get('/', check, (req, res) => {
 
 // app.get('/change-password/', (req, res) => {
 //   res.render('pass-change.ejs');
-// });
+// }); console.log(req.params.token);
 
-app.get('/change-password/:token', (req, res) => {
+app.get('/change-password/:token', async (req, res) => {
   const token = req.params.token;
+  console.log(req.params.token);
+
   try {
-    const decodedToken = JWT.verify(token, 'SECRET_KEY'); // トークンを復号化
-    // トークンから取得した情報を使ってユーザーを識別し、パスワード変更画面を表示
-    res.render('pass-change.ejs', { user_name: decodedToken.user_name });
+    const decodedToken = await JWT.verify(token, 'SECRET_KEY');
+    // ここでトークンから得られた情報を使用して処理を行う
+    res.render('pass-change.ejs');
   } catch (error) {
-    console.error('Token verification error:', error);
-    // トークンが無効な場合やエラーが発生した場合の処理をここに記述
+    // トークンが無効な場合や有効期限切れの場合のエラーハンドリング
+    console.error('Invalid token:', error);
     res.status(400).send('Invalid token');
   }
 });
