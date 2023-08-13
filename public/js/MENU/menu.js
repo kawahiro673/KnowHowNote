@@ -259,10 +259,12 @@ document
     div.appendChild(changePasswordInput);
     div.appendChild(againPasswordInput);
 
-    document.body.insertBefore(
-      div,
-      document.getElementById('change-password-button').nextSibling
-    );
+    document
+      .getElementById('change-password-button')
+      .parentNode.insertBefore(
+        div,
+        document.getElementById('change-password-button')
+      );
 
     // ボタンと表示を調整
     document.getElementById('change-password-button').style.display = 'none';
