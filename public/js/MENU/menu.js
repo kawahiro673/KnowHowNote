@@ -309,6 +309,14 @@ document
   .addEventListener('click', async (e) => {
     console.log('キャンセル押下');
 
+    // 動的に追加した div 要素を削除
+    const passwordInputsContainers =
+      document.querySelectorAll('.password-inputs');
+    passwordInputsContainers.forEach((container) => {
+      container.remove();
+    });
+
+    // ボタンと表示を調整
     document.getElementById('change-password-button').style.display = 'block';
     document.getElementById('my-password').style.display = 'block';
     document.getElementById('change-password-button-cancel').style.display =
@@ -319,12 +327,22 @@ document
       .getElementById('my-password')
       .parentNode.setAttribute('id', 'password-container');
 
-    const passwordInputsElements =
-      document.querySelectorAll('.password-inputs');
+    // document.getElementById('change-password-button').style.display = 'block';
+    // document.getElementById('my-password').style.display = 'block';
+    // document.getElementById('change-password-button-cancel').style.display =
+    //   'none';
+    // document.getElementById('change-password-button-decision').style.display =
+    //   'none';
+    // document
+    //   .getElementById('my-password')
+    //   .parentNode.setAttribute('id', 'password-container');
 
-    passwordInputsElements.forEach((element) => {
-      element.classList.remove('password-inputs');
-    });
+    // const passwordInputsElements =
+    //   document.querySelectorAll('.password-inputs');
+
+    // passwordInputsElements.forEach((element) => {
+    //   element.classList.remove('password-inputs');
+    // });
   });
 
 document
