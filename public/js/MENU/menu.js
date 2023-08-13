@@ -237,7 +237,7 @@ document
   });
 
 document
-  .getElementById('update-authenticationID-button')
+  .getElementById('change-password-button')
   .addEventListener('click', async (e) => {
     const passParent = document.getElementById('password-container');
     const div = document.createElement('div');
