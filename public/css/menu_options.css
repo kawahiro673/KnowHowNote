@@ -150,13 +150,25 @@
   transform: translate(-50%, -50%);
 }
 
-.popup-body_profile p {
+/* .popup-body_profile p {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   padding-bottom: 3px;
   margin-bottom: 3px;
-  position: relative; /* 親要素を相対的な位置に設定 */
+  position: relative;
+} */
+
+.user-name-position,
+.authentication-ID-position,
+.email-position,
+#password-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 3px;
+  margin-bottom: 3px;
+  position: relative;
 }
 
 .popup-body_About-Website p {
