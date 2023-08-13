@@ -31,7 +31,10 @@
 #change-email-button-decision,
 #yes-button-answer-pop,
 #no-button-answer-pop,
-#yes-button-explanation-pop {
+#yes-button-explanation-pop,
+#change-password-button,
+#change-password-button-decision,
+#change-password-button-cancel {
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -79,7 +82,10 @@
 #change-email-button-decision:active,
 #yes-button-answer-pop:active,
 #no-button-answer-pop:active,
-#yes-button-explanation-pop:active {
+#yes-button-explanation-pop:active,
+#change-password-button:active,
+#change-password-button-decision:active,
+#change-password-button-cancel:active {
   box-shadow: none;
   transform: translateY(5px);
 }
@@ -104,7 +110,10 @@
 #change-email-button-decision,
 #yes-button-answer-pop,
 #no-button-answer-pop,
-#yes-button-explanation-pop {
+#yes-button-explanation-pop,
+#change-password-button,
+#change-password-button-decision,
+#change-password-button-cancel {
   padding: 7px 14px;
   font-size: 12px;
 }
@@ -188,11 +197,13 @@
 }
 
 /*「はい」「いいえ」の一定間隔をあける*/
-.answer-pop-button-wrapper {
+.answer-pop-button-wrapper,
+.change-password-button-wrapper {
   display: flex;
   justify-content: space-between;
 }
-.answer-pop-button-wrapper button {
+.answer-pop-button-wrapper button,
+.change-password-button-wrapper button {
   flex: 0 0 120px;
   margin: 0 5px;
 }
