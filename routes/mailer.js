@@ -49,11 +49,15 @@ router.post('/', (req, res) => {
         if (userResult.length === 0) {
           res.send({ msg: 'nothingUser' });
         } else if (userResult[0].Email === req.body.email) {
+          const hashedId = bcrypt.hashSync(userResult[0].toString(), 10);
+          const encodedId = encodeURIComponent(hashedId);
+          const url = `https://nodejs-itnote-app.herokuapp.com/change-password/${encodedId}`;
+
           const mailOptions = {
             from: auth.user,
             to: req.body.email,
             subject: '【パスワード変更】Know How Note',
-            text: '下記URLからパスワード変更してください',
+            text: `下記URLからパスワード変更してください。有効期限は24時間です。\n${url}`,
           };
 
           transporter.sendMail(mailOptions, (error, info) => {
