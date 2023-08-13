@@ -2,6 +2,7 @@ var express = require('express'); //Express使う定型分
 var app = express(); //expressオブジェクトでappインスタンス作成
 //bodyーparserとはHTML(ejs)のformのinputに入力された値を受け取れるようにするもの
 const bodyParser = require('body-parser');
+const JWT = require('jsonwebtoken');
 const { Template } = require('ejs');
 const http = express('http');
 //connectionだとmysqlとの通信が切れてしまうため、poolを使用
