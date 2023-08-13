@@ -236,6 +236,42 @@ document
     }
   });
 
+document
+  .getElementById('update-authenticationID-button')
+  .addEventListener('click', async (e) => {
+    const passParent = document.getElementById('password-container');
+    const div = document.createElement('div');
+    div.className = 'password-inputs';
+
+    const currentPasswordInput = document.createElement('input');
+    currentPasswordInput.id = 'current-password-input';
+    currentPasswordInput.placeholder = '現在のパスワード';
+
+    const changePasswordInput = document.createElement('input');
+    changePasswordInput.id = 'change-password-input';
+    changePasswordInput.placeholder = '新しいパスワード';
+
+    const againPasswordInput = document.createElement('input');
+    againPasswordInput.id = 'again-password-input';
+    againPasswordInput.placeholder = '新しいパスワード（再入力）';
+
+    div.appendChild(currentPasswordInput);
+    div.appendChild(changePasswordInput);
+    div.appendChild(againPasswordInput);
+
+    document.body.insertBefore(
+      div,
+      document.getElementById('change-password-button').nextSibling
+    );
+
+    // ボタンと表示を調整
+    document.getElementById('change-password-button').style.display = 'none';
+    document.getElementById('change-password-button-cancel').style.display =
+      'inline-block';
+    document.getElementById('change-password-button-decision').style.display =
+      'inline-block';
+  });
+
 //=============================================================================================================
 //=================================================共有履歴====================================================
 //=============================================================================================================
