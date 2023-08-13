@@ -302,7 +302,7 @@ document
     document.getElementById('change-password-button-decision').style.display =
       'inline-block';
 
-    document.getElementById('current-password-input').removeAttribute('id');
+    document.getElementById('password-container').removeAttribute('id');
   });
 
 //=============================================================================================================
