@@ -159,26 +159,6 @@
   position: relative; /* 親要素を相対的な位置に設定 */
 }
 
-.password-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding-bottom: 3px;
-  margin-bottom: 3px;
-}
-
-/* 各要素のスタイリング */
-.password-container > span {
-  flex: 1; /* 余白を均等に分割 */
-}
-
-.password-container > div {
-  flex: 2; /* 余白を均等に分割 */
-  margin-left: 10px; /* 各 div 要素の間隔を設定 */
-  display: flex;
-  align-items: flex-end;
-}
-
 .popup-body_About-Website p {
   text-align: center;
 }
