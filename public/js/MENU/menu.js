@@ -301,6 +301,8 @@ document
       'inline-block';
     document.getElementById('change-password-button-decision').style.display =
       'inline-block';
+
+    document.getElementById('current-password-input').removeAttribute('id');
   });
 
 //=============================================================================================================
