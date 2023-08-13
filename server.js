@@ -33,18 +33,16 @@ app.get('/', check, (req, res) => {
   res.redirect('/mypage/' + hashedId);
 });
 
-// app.get('/change-password/', (req, res) => {
-//   res.render('pass-change.ejs');
-// }); console.log(req.params.token);
-
 app.get('/change-password/:token', async (req, res) => {
   const token = req.params.token;
   console.log(req.params.token);
 
   try {
     const decodedToken = await JWT.verify(token, 'SECRET_KEY');
+    console.log(decodedToken);
     // ここでトークンから得られた情報を使用して処理を行う
-    res.render('pass-change.ejs');
+    res.json({ decodedToken });
+    res.render('pass-change.ejs', { decodedToken });
   } catch (error) {
     // トークンが無効な場合や有効期限切れの場合のエラーハンドリング
     console.error('Invalid token:', error);
