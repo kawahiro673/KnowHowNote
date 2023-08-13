@@ -32,6 +32,10 @@ app.get('/', check, (req, res) => {
   res.redirect('/mypage/' + hashedId);
 });
 
+app.get('/change-password/', (req, res) => {
+  res.render('pass-change.ejs');
+});
+
 //authというエンドポイントで./routes/authファイルでWebAPIを構築できる
 app.use('/auth', auth);
 app.use('/mypage', mypage1);

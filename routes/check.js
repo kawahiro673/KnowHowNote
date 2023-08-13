@@ -19,7 +19,6 @@ function check(req, res, next) {
     //下記で続きを実行、今回の場合は res.render('index.ejs');
     next();
   } catch (err) {
-    //return res.redirect('/login');
     res.render('top.ejs');
   }
 }

@@ -43,36 +43,45 @@ router.post('/', (req, res) => {
         );
       });
     })
-    .then((userResult) => {
-      return new Promise((resolve, reject) => {
-        // ユーザーが見つからなかった場合
-        if (userResult.length === 0) {
-          res.send({ msg: 'nothingUser' });
-        } else if (userResult[0].Email === req.body.email) {
-          const hashedId = bcrypt.hashSync(userResult[0].toString(), 10);
-          const encodedId = encodeURIComponent(hashedId);
-          const url = `https://nodejs-itnote-app.herokuapp.com/change-password/${encodedId}`;
+    .then(async (userResult) => {
+      // ユーザーが見つからなかった場合
+      if (userResult.length === 0) {
+        res.send({ msg: 'nothingUser' });
+      } else if (userResult[0].Email === req.body.email) {
+        const user_name = userResult[0].UserName;
 
-          const mailOptions = {
-            from: auth.user,
-            to: req.body.email,
-            subject: '【パスワード変更】Know How Note',
-            text: `下記URLからパスワード変更してください。有効期限は24時間です。\n${url}`,
-          };
+        const token = await JWT.sign(
+          {
+            user_name,
+            exp: Math.floor(Date.now() / 1000) + 24 * 60 * 60, //24時間後
+          },
+          'SECRET_KEY' // 秘密鍵。envファイルなどに隠して管理することが推奨されます。
+        );
 
-          transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-              console.log('Error:', error);
-              res.status(500).send('Error sending email');
-            } else {
-              console.log('Email sent:', info.response);
-              res.send({ msg: 'OK' });
-            }
-          });
-        } else {
-          res.send({ msg: 'nothingEmail' });
-        }
-      });
+        const hashedId = bcrypt.hashSync(userResult[0].id.toString(), 10);
+        const encodedId = encodeURIComponent(hashedId);
+        const url = `https://nodejs-itnote-app.herokuapp.com/change-password/`;
+        //${encodedId}`;
+
+        const mailOptions = {
+          from: auth.user,
+          to: req.body.email,
+          subject: '【パスワード変更】Know How Note',
+          text: `ご利用いただきありがとうございます。\n\n下記URLからパスワード変更してください。有効期限は24時間です。\n${url}`,
+        };
+
+        transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+            console.log('Error:', error);
+            res.status(500).send('Error sending email');
+          } else {
+            console.log('Email sent:', info.response);
+            res.send({ msg: 'OK' });
+          }
+        });
+      } else {
+        res.send({ msg: 'nothingEmail' });
+      }
     });
 });
 
