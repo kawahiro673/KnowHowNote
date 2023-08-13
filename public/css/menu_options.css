@@ -161,8 +161,8 @@
 
 .user-name-position,
 .authentication-ID-position,
-.email-position,
-#password-container {
+.email-position
+/* #password-container */ {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
