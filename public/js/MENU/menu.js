@@ -240,11 +240,11 @@ document
   .getElementById('change-password-button')
   .addEventListener('click', async (e) => {
     const div1 = document.createElement('div');
-    div.className = 'password-inputs';
+    div1.className = 'password-inputs';
     const div2 = document.createElement('div');
-    div.className = 'password-inputs';
+    div2.className = 'password-inputs';
     const div3 = document.createElement('div');
-    div.className = 'password-inputs';
+    div3.className = 'password-inputs';
 
     const currentPasswordInput = document.createElement('input');
     currentPasswordInput.id = 'current-password-input';
