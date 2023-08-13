@@ -403,9 +403,13 @@ input[type='checkbox']:checked + .gray_b {
 .password-inputs {
   display: flex;
   align-items: center;
+  margin-bottom: 7px;
 }
 
 .password-inputs label {
   margin-right: 10px;
-  background-color: gray;
+  background-color: #f5f5f5;
+}
+.password-inputs input {
+  width: 250px;
 }
