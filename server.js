@@ -32,8 +32,21 @@ app.get('/', check, (req, res) => {
   res.redirect('/mypage/' + hashedId);
 });
 
-app.get('/change-password/', (req, res) => {
-  res.render('pass-change.ejs');
+// app.get('/change-password/', (req, res) => {
+//   res.render('pass-change.ejs');
+// });
+
+app.get('/change-password/:token', (req, res) => {
+  const token = req.params.token;
+  try {
+    const decodedToken = JWT.verify(token, 'SECRET_KEY'); // トークンを復号化
+    // トークンから取得した情報を使ってユーザーを識別し、パスワード変更画面を表示
+    res.render('pass-change.ejs', { user_name: decodedToken.user_name });
+  } catch (error) {
+    console.error('Token verification error:', error);
+    // トークンが無効な場合やエラーが発生した場合の処理をここに記述
+    res.status(400).send('Invalid token');
+  }
 });
 
 //authというエンドポイントで./routes/authファイルでWebAPIを構築できる

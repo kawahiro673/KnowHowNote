@@ -58,10 +58,9 @@ router.post('/', (req, res) => {
           'SECRET_KEY' // 秘密鍵。envファイルなどに隠して管理することが推奨されます。
         );
 
-        const hashedId = bcrypt.hashSync(userResult[0].id.toString(), 10);
-        const encodedId = encodeURIComponent(hashedId);
-        const url = `https://nodejs-itnote-app.herokuapp.com/change-password/`;
-        //${encodedId}`;
+        // const hashedId = bcrypt.hashSync(userResult[0].id.toString(), 10);
+        // const encodedId = encodeURIComponent(hashedId);
+        const url = `https://nodejs-itnote-app.herokuapp.com/change-password/${token}`;
 
         const mailOptions = {
           from: auth.user,
