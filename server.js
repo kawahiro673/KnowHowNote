@@ -41,8 +41,8 @@ app.get('/change-password/:token', async (req, res) => {
     const decodedToken = await JWT.verify(token, 'SECRET_KEY');
     console.log(decodedToken);
     // ここでトークンから得られた情報を使用して処理を行う
-    res.json({ decodedToken });
-    res.render('pass-change.ejs', { decodedToken });
+
+    res.render('pass-change.ejs', { user_name: decodedToken.user_name });
   } catch (error) {
     // トークンが無効な場合や有効期限切れの場合のエラーハンドリング
     console.error('Invalid token:', error);
