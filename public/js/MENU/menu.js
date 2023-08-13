@@ -294,7 +294,6 @@ document
         document.getElementById('change-password-button')
       );
 
-    // ボタンと表示を調整
     document.getElementById('change-password-button').style.display = 'none';
     document.getElementById('my-password').style.display = 'none';
     document.getElementById('change-password-button-cancel').style.display =
@@ -303,6 +302,60 @@ document
       'inline-block';
 
     document.getElementById('password-container').removeAttribute('id');
+  });
+
+document
+  .getElementById('change-password-button-cancel')
+  .addEventListener('click', async (e) => {
+    console.log('キャンセル押下');
+
+    document.getElementById('change-password-button');
+    document.getElementById('change-password-button');
+    document.getElementById('change-password-button');
+
+    document.getElementById('change-password-button').style.display = 'block';
+    document.getElementById('my-password').style.display = 'block';
+    document.getElementById('change-password-button-cancel').style.display =
+      'none';
+    document.getElementById('change-password-button-decision').style.display =
+      'none';
+    document
+      .getElementById('my-password')
+      .parentNode.setAttribute('id', 'password-container');
+
+    const passwordInputsElements =
+      document.querySelectorAll('.password-inputs');
+
+    passwordInputsElements.forEach((element) => {
+      element.classList.remove('password-inputs');
+    });
+  });
+
+document
+  .getElementById('change-password-button-decision')
+  .addEventListener('click', async (e) => {
+    console.log('適用押下');
+
+    document.getElementById('change-password-button');
+    document.getElementById('change-password-button');
+    document.getElementById('change-password-button');
+
+    document.getElementById('change-password-button').style.display = 'block';
+    document.getElementById('my-password').style.display = 'block';
+    document.getElementById('change-password-button-cancel').style.display =
+      'none';
+    document.getElementById('change-password-button-decision').style.display =
+      'none';
+    document
+      .getElementById('my-password')
+      .parentNode.setAttribute('id', 'password-container');
+
+    const passwordInputsElements =
+      document.querySelectorAll('.password-inputs');
+
+    passwordInputsElements.forEach((element) => {
+      element.classList.remove('password-inputs');
+    });
   });
 
 //=============================================================================================================
