@@ -239,8 +239,11 @@ document
 document
   .getElementById('change-password-button')
   .addEventListener('click', async (e) => {
-    const passParent = document.getElementById('password-container');
-    const div = document.createElement('div');
+    const div1 = document.createElement('div');
+    div.className = 'password-inputs';
+    const div2 = document.createElement('div');
+    div.className = 'password-inputs';
+    const div3 = document.createElement('div');
     div.className = 'password-inputs';
 
     const currentPasswordInput = document.createElement('input');
@@ -255,19 +258,33 @@ document
     againPasswordInput.id = 'again-password-input';
     againPasswordInput.placeholder = '新しいパスワード（再入力）';
 
-    div.appendChild(currentPasswordInput);
-    div.appendChild(changePasswordInput);
-    div.appendChild(againPasswordInput);
+    div1.appendChild(currentPasswordInput);
+    div2.appendChild(changePasswordInput);
+    div3.appendChild(againPasswordInput);
 
     document
       .getElementById('change-password-button')
       .parentNode.insertBefore(
-        div,
+        div1,
+        document.getElementById('change-password-button')
+      );
+    document
+      .getElementById('change-password-button')
+      .parentNode.insertBefore(
+        div2,
+        document.getElementById('change-password-button')
+      );
+
+    document
+      .getElementById('change-password-button')
+      .parentNode.insertBefore(
+        div3,
         document.getElementById('change-password-button')
       );
 
     // ボタンと表示を調整
     document.getElementById('change-password-button').style.display = 'none';
+    document.getElementById('my-password').style.display = 'none';
     document.getElementById('change-password-button-cancel').style.display =
       'inline-block';
     document.getElementById('change-password-button-decision').style.display =
