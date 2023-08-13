@@ -309,10 +309,6 @@ document
   .addEventListener('click', async (e) => {
     console.log('キャンセル押下');
 
-    document.getElementById('change-password-button');
-    document.getElementById('change-password-button');
-    document.getElementById('change-password-button');
-
     document.getElementById('change-password-button').style.display = 'block';
     document.getElementById('my-password').style.display = 'block';
     document.getElementById('change-password-button-cancel').style.display =
@@ -335,10 +331,6 @@ document
   .getElementById('change-password-button-decision')
   .addEventListener('click', async (e) => {
     console.log('適用押下');
-
-    document.getElementById('change-password-button');
-    document.getElementById('change-password-button');
-    document.getElementById('change-password-button');
 
     document.getElementById('change-password-button').style.display = 'block';
     document.getElementById('my-password').style.display = 'block';
