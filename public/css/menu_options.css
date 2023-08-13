@@ -161,8 +161,8 @@
 
 .user-name-position,
 .authentication-ID-position,
-.email-position
-/* #password-container */ {
+.email-position,
+#password-container {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -407,4 +407,9 @@ input[type='checkbox']:checked + .gray_b {
 }
 .user-name-position {
   width: 60%;
+}
+
+.password-inputs {
+  display: flex;
+  align-items: center;
 }

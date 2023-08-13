@@ -246,20 +246,32 @@ document
     const div3 = document.createElement('div');
     div3.className = 'password-inputs';
 
+    const label1 = document.createElement('label');
+    label1.innerHTML = '現在のパスワード';
+    label1.setAttribute('for', 'current-password-input');
     const currentPasswordInput = document.createElement('input');
     currentPasswordInput.id = 'current-password-input';
     currentPasswordInput.placeholder = '現在のパスワード';
 
+    const label2 = document.createElement('label');
+    label2.innerHTML = '新しいパスワード';
+    label2.setAttribute('for', 'change-password-input');
     const changePasswordInput = document.createElement('input');
     changePasswordInput.id = 'change-password-input';
     changePasswordInput.placeholder = '新しいパスワード';
 
+    const label3 = document.createElement('label');
+    label3.innerHTML = '新しいパスワード（再入力）';
+    label3.setAttribute('for', 'again-password-input');
     const againPasswordInput = document.createElement('input');
     againPasswordInput.id = 'again-password-input';
     againPasswordInput.placeholder = '新しいパスワード（再入力）';
 
+    div1.appendChild(label1);
     div1.appendChild(currentPasswordInput);
+    div2.appendChild(label2);
     div2.appendChild(changePasswordInput);
+    div3.appendChild(label3);
     div3.appendChild(againPasswordInput);
 
     document
