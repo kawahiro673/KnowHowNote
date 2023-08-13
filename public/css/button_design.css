@@ -191,7 +191,8 @@
 #share-user-clear-button,
 .cancelbtn,
 #closed-button,
-#no-button-answer-pop {
+#no-button-answer-pop,
+#change-password-button-cancel {
   background-color: #e32b2b;
   box-shadow: 0 5px 0 #840505;
 }
