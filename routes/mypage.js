@@ -834,13 +834,7 @@ router
           pool.query(
             'UPDATE register_user SET HashedPassword = ? WHERE id = ?;',
             [hashedPassword, resultDecoded[0].id],
-            (error, result) => {
-              if (error) {
-                reject(error);
-              } else {
-                resolve(result);
-              }
-            }
+            (error, result) => {}
           );
         }
 
