@@ -822,22 +822,18 @@ router
             }
           );
         });
-
         const isMatch = await bcrypt.compare(
           req.body.password,
           resultDecoded[0].HashedPassword
         );
-
         if (isMatch) {
           let hashedPassword = await bcrypt.hash(req.body.newPassword, 10);
-
           pool.query(
             'UPDATE register_user SET HashedPassword = ? WHERE id = ?;',
             [hashedPassword, resultDecoded[0].id],
             (error, result) => {}
           );
         }
-
         res.send({
           isMatch: isMatch,
         });
