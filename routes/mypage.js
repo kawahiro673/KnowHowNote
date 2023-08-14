@@ -19,8 +19,9 @@ router
     const encodedId = req.params.hashedId.replace(/\//g, '%2F');
     res.render('index.ejs', { hashedId: encodedId });
   })
-  .post((req, res) => {
+  .post(async (req, res) => {
     if (req.body.flg === 'color') {
+
       pool.query(
         'UPDATE it_memo SET title_color=? WHERE id=?',
         [req.body.color, req.body.id],
@@ -803,6 +804,25 @@ router
           console.error(error);
           res.status(500).json({ message: error.message, nothing });
         });
+    } else if (req.body.flg === 'PassCheck') {
+      const token = req.cookies.token;
+      const decoded = JWT.verify(token, 'SECRET_KEY');
+      pool.query(
+        'SELECT * FROM register_user WHERE UserName = ?;',
+        [decoded.userName],
+        (error, resultDecoded) => {
+          const isMatch = await bcrypt.compare(
+            req.body.password,
+            resultDecoded[0].HashedPassword
+          );
+          console.log(isMatch);
+          res.send({
+            user: resultDecoded[0],
+            email: decoded.email,
+            isMatch:isMatch
+          });
+        }
+      );
     } else {
       console.log('flgで何も受け取ってません');
     }

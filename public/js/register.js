@@ -1,4 +1,8 @@
-import { currentTimeGet } from './stringUtils.js';
+import {
+  currentTimeGet,
+  validatePassword,
+  validateUsername,
+} from './stringUtils.js';
 
 const userName = document.getElementById('username');
 const password_auth = document.getElementById('password_auth');
@@ -58,14 +62,11 @@ function registerButtonClick() {
         return false;
       }
 
-      // パスワードの文字数(8文字以上)と英数字チェック
-      if (
-        password_auth.value.length < 8 ||
-        !/^[a-zA-Z0-9]+$/.test(password_auth.value)
-      ) {
+      // パスワードの文字数(8文字以上20文字以内)と英数字チェック
+      if (!validatePassword(password_auth.value)) {
         message.style.display = 'block';
         message.innerHTML =
-          'パスワードは8文字以上の半角英数字を使用してください';
+          'パスワードは8文字以上20文字以下の半角英数字を使用してください';
         password_auth.style.border = '1px solid red';
         return false;
       }
@@ -97,10 +98,4 @@ function registerButtonClick() {
       });
     },
   });
-}
-
-// 20文字以内で、英数字のみを含むかを正規表現で判定
-function validateUsername(username) {
-  const pattern = /^[a-zA-Z0-9]{1,20}$/;
-  return pattern.test(username);
 }

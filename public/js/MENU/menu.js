@@ -7,6 +7,7 @@ import {
   validateEmail,
   answerPopUp,
   explanationPopUp,
+  validatePassword,
 } from '../stringUtils.js';
 import { friendListUpdate } from './friend-list.js';
 import {
@@ -236,6 +237,7 @@ document
     }
   });
 
+//パスワード変更ボタン押下時
 document
   .getElementById('change-password-button')
   .addEventListener('click', async (e) => {
@@ -304,6 +306,7 @@ document
     document.getElementById('password-container').removeAttribute('id');
   });
 
+//パスワード変更のキャンセルボタン押下時
 document
   .getElementById('change-password-button-cancel')
   .addEventListener('click', async (e) => {
@@ -324,28 +327,73 @@ document
       .parentNode.setAttribute('id', 'password-container');
   });
 
+//パスワード変更の適用ボタン押下時
 document
   .getElementById('change-password-button-decision')
   .addEventListener('click', async (e) => {
-    const passwordInputsContainers =
-      document.querySelectorAll('.password-inputs');
-    passwordInputsContainers.forEach((container) => {
-      container.remove();
-    });
+    e.preventDefault();
 
-    document.getElementById('change-password-button').style.display = 'block';
-    document.getElementById('my-password').style.display = 'block';
-    document.getElementById('change-password-button-cancel').style.display =
-      'none';
-    document.getElementById('change-password-button-decision').style.display =
-      'none';
-    document
-      .getElementById('my-password')
-      .parentNode.setAttribute('id', 'password-container');
-    explanationPopUp(
-      'パスワード変更',
-      'パスワードの変更が完了しました\nパスワードはログインするときに必要となります\n忘れることのないようどこかに控えておいてください'
-    );
+    $.ajax({
+      url: '/mypage/' + hashedIdGet,
+      type: 'POST',
+      dataType: 'Json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        flg: 'PassCheck',
+        password: document.getElementById('current-password-input').value,
+      }),
+      success: function (res) {
+        if (!res.isMatch) {
+          explanationPopUp('パスワード変更', '現在のパスワードが違います');
+          return false;
+        }
+        // パスワードの文字数(8文字以上20文字以内)と英数字チェック
+        if (
+          !validatePassword(
+            document.getElementById('change-password-input').value
+          )
+        ) {
+          explanationPopUp(
+            'パスワード変更',
+            'パスワードは8文字以上20文字以下の半角英数字を使用してください'
+          );
+          return false;
+        }
+        //確認用パスワード入力チェック
+        if (
+          document.getElementById('change-password-input').value !==
+          document.getElementById('again-password-input').value
+        ) {
+          explanationPopUp(
+            'パスワード変更',
+            'パスワードの入力に誤りがあります'
+          );
+          return false;
+        }
+
+        const passwordInputsContainers =
+          document.querySelectorAll('.password-inputs');
+        passwordInputsContainers.forEach((container) => {
+          container.remove();
+        });
+
+        document.getElementById('change-password-button').style.display =
+          'block';
+        document.getElementById('my-password').style.display = 'block';
+        document.getElementById('change-password-button-cancel').style.display =
+          'none';
+        document.getElementById(
+          'change-password-button-decision'
+        ).style.display = 'none';
+        document
+          .getElementById('my-password')
+          .parentNode.setAttribute('id', 'password-container');
+        explanationPopUp(
+          'パスワード変更',
+          'パスワードの変更が完了しました\nパスワードはログインするときに必要となります\n忘れることのないようどこかに控えておいてください'
+        );
+      },
+    });
   });
 
 //=============================================================================================================

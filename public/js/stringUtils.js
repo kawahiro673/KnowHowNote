@@ -171,3 +171,15 @@ export const explanationPopUp = (title, content) => {
         'none';
     });
 };
+
+export const validatePassword = (input) => {
+  // 正規表現を使用して半角英数字の8文字以上20文字以下かを判定
+  const regex = /^[a-zA-Z0-9]{8,20}$/;
+  return regex.test(input);
+};
+
+// 20文字以内で、英数字のみを含むかを正規表現で判定
+export const validateUsername = (username) => {
+  const pattern = /^[a-zA-Z0-9]{1,20}$/;
+  return pattern.test(username);
+};
