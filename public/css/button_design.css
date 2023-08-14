@@ -46,7 +46,7 @@
   background-color: #007bff;
   color: #fff;
   cursor: pointer;
-  box-shadow: 0 5px 0 #004de6;
+  box-shadow: 0 5px 0 #042d81;
 }
 
 #share-pass-butotn:active,
@@ -198,10 +198,7 @@
 }
 
 /*「はい」「いいえ」の一定間隔をあける*/
-.answer-pop-button-wrapper,
-.change-password-button-wrapper {
-  /* display: flex;
-  justify-content: space-between; */
+.answer-pop-button-wrapper {
   position: absolute;
   bottom: 0;
   width: 100%; /* ボタンを親要素の幅いっぱいに広げる */
@@ -210,10 +207,19 @@
   padding: 10px; /* 必要に応じて余白を調整 */
   box-sizing: border-box; /* paddingが要素のサイズに含まれるようにする */
 }
+
+.change-password-button-wrapper {
+  width: 100%; /* ボタンを親要素の幅いっぱいに広げる */
+  display: flex;
+  justify-content: center; /* ボタンを中央に配置 */
+  padding: 10px; /* 必要に応じて余白を調整 */
+  box-sizing: border-box; /* paddingが要素のサイズに含まれるようにする */
+}
+
 .answer-pop-button-wrapper button,
 .change-password-button-wrapper button {
   flex: 0 0 120px;
-  margin: 0 5px;
+  margin: 5px 20px;
 }
 
 .group-list-check-button-div {
