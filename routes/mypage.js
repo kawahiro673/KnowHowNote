@@ -829,7 +829,7 @@ router
         );
 
         if (isMatch) {
-          let hashedPassword = await bcrypt.hash(req.body.password, 10);
+          let hashedPassword = await bcrypt.hash(req.body.newPassword, 10);
 
           pool.query(
             'UPDATE register_user SET HashedPassword = ? WHERE id = ?;',
