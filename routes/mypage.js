@@ -4,6 +4,7 @@ const router = require('express').Router();
 const { append } = require('express/lib/response');
 const pool = require('../db.js');
 const JWT = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 const { resetWatchers } = require('nodemon/lib/monitor/watch');
 const { request } = require('express');
 const res = require('express/lib/response');

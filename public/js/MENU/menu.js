@@ -343,6 +343,15 @@ document
         password: document.getElementById('current-password-input').value,
       }),
       success: function (res) {
+        if (
+          document.getElementById('current-password-input').value === '' ||
+          document.getElementById('change-password-input').value === '' ||
+          document.getElementById('again-password-input').value === ''
+        ) {
+          explanationPopUp('パスワード変更', '入力されていない情報があります');
+          return false;
+        }
+
         if (!res.isMatch) {
           explanationPopUp('パスワード変更', '現在のパスワードが違います');
           return false;
