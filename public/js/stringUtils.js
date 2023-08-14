@@ -147,9 +147,9 @@ export const explanationPopUp = (title, content, width) => {
   document.getElementById('explanation-pop-h2').innerHTML = title;
   document.getElementById('explanation-pop-p').innerHTML = content;
 
-  document.getElementsByClassName(
-    'popup-window_explanation-pop'
-  )[0].style.width = width;
+  // document.getElementsByClassName(
+  //   'popup-window_explanation-pop'
+  // )[0].style.width = width;
 
   document
     .getElementById('pop-delete_explanation-pop')
