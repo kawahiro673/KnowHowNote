@@ -18,7 +18,11 @@ router.post('/', async (req, res) => {
         req.body.password,
         user.HashedPassword
       );
-      if (!isMatch) {
+      const isMatch_dummyPassword = await bcrypt.compare(
+        req.body.password,
+        user.DummyPassword
+      );
+      if (!isMatch && !isMatch_dummyPassword) {
         return res.send({
           message: 'ユーザー名またはパスワードが間違っています',
         });
