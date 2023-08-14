@@ -338,7 +338,11 @@ document
       document.getElementById('change-password-input').value === '' ||
       document.getElementById('again-password-input').value === ''
     ) {
-      explanationPopUp('パスワード変更', '入力されていない情報があります');
+      explanationPopUp(
+        'パスワード変更',
+        '入力されていない情報があります',
+        '330px'
+      );
       return false;
     }
 
@@ -348,7 +352,8 @@ document
     ) {
       explanationPopUp(
         'パスワード変更',
-        'パスワードは8文字以上20文字以下の半角英数字を使用してください'
+        'パスワードは8文字以上20文字以下の半角英数字を使用してください',
+        '330px'
       );
       return false;
     }
@@ -358,7 +363,11 @@ document
       document.getElementById('change-password-input').value !==
       document.getElementById('again-password-input').value
     ) {
-      explanationPopUp('パスワード変更', 'パスワードの入力に誤りがあります');
+      explanationPopUp(
+        'パスワード変更',
+        'パスワードの入力に誤りがあります',
+        '330px'
+      );
       return false;
     }
 
@@ -374,7 +383,11 @@ document
       }),
       success: function (res) {
         if (!res.isMatch) {
-          explanationPopUp('パスワード変更', '現在のパスワードが違います');
+          explanationPopUp(
+            'パスワード変更',
+            '現在のパスワードが違います',
+            '330px'
+          );
           return false;
         }
 
