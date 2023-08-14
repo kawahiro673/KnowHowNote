@@ -249,9 +249,13 @@
 .popup-body_share,
 .popup-body_inquiry,
 .popup-body_friend-add,
-.popup-body_answer-pop,
+.popup-body_answer-pop {
+  position: relative;
+  padding: 0 10px;
+}
 .popup-body_explanation-pop {
   position: relative;
+  height: 148px;
   padding: 0 10px;
 }
 
