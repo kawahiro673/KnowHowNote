@@ -213,7 +213,7 @@
   /* display: flex; */
   justify-content: center; /* ボタンを中央に配置 */
   /* padding: 10px; 必要に応じて余白を調整 */
-  box-sizing: border-box; /* paddingが要素のサイズに含まれるようにする */
+  /* box-sizing: border-box; paddingが要素のサイズに含まれるようにする */
 }
 
 .answer-pop-button-wrapper button,
