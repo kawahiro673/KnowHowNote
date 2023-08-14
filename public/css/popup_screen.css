@@ -251,4 +251,16 @@
   padding: 0 10px;
 }
 
+.popup-body_explanation-pop {
+  display: flex;
+  flex-direction: column; /* 縦方向に要素を配置 */
+  align-items: center; /* 水平方向に中央揃え */
+  justify-content: center; /* 垂直方向に中央揃え */
+}
+
+.explanation-pop-button-wrapper {
+  display: flex;
+  justify-content: flex-end; /* 水平方向に右揃え */
+  align-items: flex-end; /* 垂直方向に下揃え */
+}
 /*******************************************************************************/
