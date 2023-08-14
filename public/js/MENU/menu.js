@@ -263,7 +263,7 @@ document
     changePasswordInput.placeholder = '8文字以上の半角英数字';
 
     const label3 = document.createElement('label');
-    label3.innerHTML = '新しいパスワード';
+    label3.innerHTML = '新しいパスワード(再入力)';
     label3.setAttribute('for', 'again-password-input');
     const againPasswordInput = document.createElement('input');
     againPasswordInput.id = 'again-password-input';
