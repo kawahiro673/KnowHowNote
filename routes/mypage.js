@@ -19,9 +19,8 @@ router
     const encodedId = req.params.hashedId.replace(/\//g, '%2F');
     res.render('index.ejs', { hashedId: encodedId });
   })
-  .post(async (req, res) => {
+  .post((req, res) => {
     if (req.body.flg === 'color') {
-
       pool.query(
         'UPDATE it_memo SET title_color=? WHERE id=?',
         [req.body.color, req.body.id],
@@ -811,7 +810,7 @@ router
         'SELECT * FROM register_user WHERE UserName = ?;',
         [decoded.userName],
         (error, resultDecoded) => {
-          const isMatch = await bcrypt.compare(
+          const isMatch = bcrypt.compare(
             req.body.password,
             resultDecoded[0].HashedPassword
           );
@@ -819,7 +818,7 @@ router
           res.send({
             user: resultDecoded[0],
             email: decoded.email,
-            isMatch:isMatch
+            isMatch: isMatch,
           });
         }
       );
