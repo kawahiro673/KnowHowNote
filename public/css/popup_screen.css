@@ -270,7 +270,7 @@
 
 .explanation-pop-button-wrapper {
   position: absolute;
-  margin-bottom: 10px;
-  margin-right: 10px;
+  bottom: 0;
+  right: 0;
 }
 /*******************************************************************************/
