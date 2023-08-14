@@ -254,8 +254,7 @@
   padding: 0 10px;
 }
 
-.popup-body_explanation-pop,
-.popup-body_answer-pop {
+.popup-body_explanation-pop {
   position: relative;
   display: flex;
   flex-direction: column;
