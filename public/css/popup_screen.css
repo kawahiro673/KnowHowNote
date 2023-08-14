@@ -249,21 +249,10 @@
 .popup-body_share,
 .popup-body_inquiry,
 .popup-body_friend-add,
-.popup-body_answer-pop
-/* ,
-.popup-body_explanation-pop  */ {
+.popup-body_answer-pop,
+.popup-body_explanation-pop {
   position: relative;
   padding: 0 10px;
-}
-
-.popup-body_explanation-pop {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%; /* 親要素の幅を100%に設定 */
-  height: 100%; /* 親要素の高さを100%に設定 */
-  position: relative; /* ボタンの絶対位置指定の基準にする */
 }
 
 #explanation-pop-p {
