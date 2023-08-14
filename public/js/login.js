@@ -106,7 +106,6 @@ function loginButtonClick() {
       }),
       success: function (res) {
         if (res.message !== 'ok') {
-          //alert(res.message);
           document.querySelector('.login-error-message').style.display =
             'block';
           document.querySelector('.login-error-message').innerHTML =

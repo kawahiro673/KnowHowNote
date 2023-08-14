@@ -351,7 +351,7 @@ document
           explanationPopUp('パスワード変更', '入力されていない情報があります');
           return false;
         }
-
+        console.log(res.isMatch);
         if (!res.isMatch) {
           explanationPopUp('パスワード変更', '現在のパスワードが違います');
           return false;
