@@ -210,7 +210,7 @@
 
 .change-password-button-wrapper {
   width: 100%; /* ボタンを親要素の幅いっぱいに広げる */
-  /* display: flex; */
+  display: flex;
   justify-content: center; /* ボタンを中央に配置 */
   /* padding: 10px; 必要に応じて余白を調整 */
   /* box-sizing: border-box; paddingが要素のサイズに含まれるようにする */
