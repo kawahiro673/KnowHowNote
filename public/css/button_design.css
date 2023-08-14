@@ -209,6 +209,11 @@
   margin: 0 5px;
 }
 
+.explanation-pop-button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .group-list-check-button-div {
   display: flex;
   justify-content: flex-end;

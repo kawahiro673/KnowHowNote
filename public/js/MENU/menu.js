@@ -333,6 +333,35 @@ document
   .addEventListener('click', async (e) => {
     e.preventDefault();
 
+    if (
+      document.getElementById('current-password-input').value === '' ||
+      document.getElementById('change-password-input').value === '' ||
+      document.getElementById('again-password-input').value === ''
+    ) {
+      explanationPopUp('パスワード変更', '入力されていない情報があります');
+      return false;
+    }
+
+    // パスワードの文字数(8文字以上20文字以内)と英数字チェック
+    if (
+      !validatePassword(document.getElementById('change-password-input').value)
+    ) {
+      explanationPopUp(
+        'パスワード変更',
+        'パスワードは8文字以上20文字以下の半角英数字を使用してください'
+      );
+      return false;
+    }
+
+    //確認用パスワード入力チェック
+    if (
+      document.getElementById('change-password-input').value !==
+      document.getElementById('again-password-input').value
+    ) {
+      explanationPopUp('パスワード変更', 'パスワードの入力に誤りがあります');
+      return false;
+    }
+
     $.ajax({
       url: '/mypage/' + hashedIdGet,
       type: 'POST',
@@ -341,42 +370,11 @@ document
       data: JSON.stringify({
         flg: 'PassCheck',
         password: document.getElementById('current-password-input').value,
+        newPassword: document.getElementById('change-password-input').value,
       }),
       success: function (res) {
-        if (
-          document.getElementById('current-password-input').value === '' ||
-          document.getElementById('change-password-input').value === '' ||
-          document.getElementById('again-password-input').value === ''
-        ) {
-          explanationPopUp('パスワード変更', '入力されていない情報があります');
-          return false;
-        }
-        console.log(res.isMatch);
         if (!res.isMatch) {
           explanationPopUp('パスワード変更', '現在のパスワードが違います');
-          return false;
-        }
-        // パスワードの文字数(8文字以上20文字以内)と英数字チェック
-        if (
-          !validatePassword(
-            document.getElementById('change-password-input').value
-          )
-        ) {
-          explanationPopUp(
-            'パスワード変更',
-            'パスワードは8文字以上20文字以下の半角英数字を使用してください'
-          );
-          return false;
-        }
-        //確認用パスワード入力チェック
-        if (
-          document.getElementById('change-password-input').value !==
-          document.getElementById('again-password-input').value
-        ) {
-          explanationPopUp(
-            'パスワード変更',
-            'パスワードの入力に誤りがあります'
-          );
           return false;
         }
 

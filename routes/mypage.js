@@ -828,10 +828,23 @@ router
           resultDecoded[0].HashedPassword
         );
 
-        console.log(isMatch);
+        if (isMatch) {
+          let hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+          pool.query(
+            'UPDATE register_user SET HashedPassword = ? WHERE id = ?;',
+            [hashedPassword, resultDecoded[0].id],
+            (error, result) => {
+              if (error) {
+                reject(error);
+              } else {
+                resolve(result);
+              }
+            }
+          );
+        }
+
         res.send({
-          user: resultDecoded[0],
-          email: decoded.email,
           isMatch: isMatch,
         });
       } catch (error) {
