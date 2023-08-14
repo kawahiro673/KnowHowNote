@@ -141,11 +141,15 @@ export const validateEmail = (email) => {
 };
 
 //「OK」押下で閉じる説明や注意点のポップアップ生成
-export const explanationPopUp = (title, content) => {
+export const explanationPopUp = (title, content, width) => {
   document.getElementById('popup-overlay_explanation-pop').style.display =
     'block';
   document.getElementById('explanation-pop-h2').innerHTML = title;
   document.getElementById('explanation-pop-p').innerHTML = content;
+
+  if (width) {
+    document.getElementById('popup-window_explanation-pop').style.width = width;
+  }
 
   document
     .getElementById('pop-delete_explanation-pop')
