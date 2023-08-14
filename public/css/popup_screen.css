@@ -260,6 +260,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* justify-content: center; */
+  height: 150px;
+  padding: 0 10px;
+}
+
+.popup-body_answer-pop {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   height: 150px;
   padding: 0 10px;
