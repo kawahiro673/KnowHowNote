@@ -48,23 +48,31 @@ router.post('/', (req, res) => {
       if (userResult.length === 0) {
         res.send({ msg: 'nothingUser' });
       } else if (userResult[0].Email === req.body.email) {
-        const user_name = userResult[0].UserName;
+        const userName = userResult[0].UserName;
+        const tmpPassword = generateRandomString(10);
+        // const token = await JWT.sign(
+        //   {
+        //     user_name,
+        //     exp: Math.floor(Date.now() / 1000) + 24 * 60 * 60, //24時間後
+        //   },
+        //   'SECRET_KEY' // 秘密鍵。envファイルなどに隠して管理することが推奨されます。
+        // );
 
-        const token = await JWT.sign(
-          {
-            user_name,
-            exp: Math.floor(Date.now() / 1000) + 24 * 60 * 60, //24時間後
-          },
-          'SECRET_KEY' // 秘密鍵。envファイルなどに隠して管理することが推奨されます。
-        );
-
-        const url = `https://nodejs-itnote-app.herokuapp.com/change-password/${token}`;
+        // const url = `https://nodejs-itnote-app.herokuapp.com/change-password/${token}`;
 
         const mailOptions = {
           from: auth.user,
           to: req.body.email,
           subject: '【パスワード変更】Know How Note',
-          text: `ご利用いただきありがとうございます。\n\n下記URLからパスワード変更してください。有効期限は24時間です。\n${url}`,
+          text: `${userName}様\n\n日頃より「ノウハウノート」をご利用くださり誠にありがとうございます。あなたのアカウントについて、パスワードの変更を承りました。\n
+          以下の仮パスワードを発行いたしましたので、これを使用してアカウントにログイン後、パスワードの変更を行ってください。\n\n
+          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n
+          仮パスワード: ${tmpPassword}\n
+          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n
+          ※当メールは送信専用メールアドレスから配信されています。
+          このままご返信いただいてもお答えできませんのでご了承ください。
+          ※当メールに心当たりの無い場合は、誠に恐れ入りますが\n\n
+          破棄して頂けますよう、よろしくお願いいたします。`,
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
@@ -83,3 +91,17 @@ router.post('/', (req, res) => {
 });
 
 module.exports = router;
+
+//10文字の半角英数字をランダムに生成
+function generateRandomString(length) {
+  const charset =
+    'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let randomString = '';
+
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * charset.length);
+    randomString += charset[randomIndex];
+  }
+
+  return randomString;
+}
