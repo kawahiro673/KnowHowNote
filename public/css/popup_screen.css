@@ -231,8 +231,8 @@
 .popup-body_explanation,
 .popup-body_result-pop {
   display: flex;
-  justify-content: center; /* 要素を水平方向に中央揃え */
-  align-items: center; /* 要素を垂直方向に中央揃え */
+  justify-content: center;
+  align-items: center;
 }
 
 .popup-body_share-history {
@@ -275,7 +275,7 @@
 
 #explanation-pop-p,
 #answer-pop-p {
-  text-align: center; /* pタグのテキストを中央揃えにする */
+  text-align: center;
 }
 
 .explanation-pop-button-wrapper {

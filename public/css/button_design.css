@@ -184,7 +184,7 @@
 
 .group-name-div {
   display: flex;
-  align-items: center; /* 要素を垂直方向に中央揃え */
+  align-items: center;
 }
 
 /*「いいえ」を赤色に配色*/
@@ -201,19 +201,17 @@
 .answer-pop-button-wrapper {
   position: absolute;
   bottom: 0;
-  width: 100%; /* ボタンを親要素の幅いっぱいに広げる */
+  width: 100%;
   display: flex;
-  justify-content: center; /* ボタンを中央に配置 */
-  padding: 10px; /* 必要に応じて余白を調整 */
-  box-sizing: border-box; /* paddingが要素のサイズに含まれるようにする */
+  justify-content: center;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .change-password-button-wrapper {
-  width: 100%; /* ボタンを親要素の幅いっぱいに広げる */
+  width: 100%;
   display: flex;
-  justify-content: center; /* ボタンを中央に配置 */
-  /* padding: 10px; 必要に応じて余白を調整 */
-  /* box-sizing: border-box; paddingが要素のサイズに含まれるようにする */
+  justify-content: center;
 }
 
 .answer-pop-button-wrapper button,
@@ -262,7 +260,7 @@
 /*********************************共有ノウハウリストの更新ボタン************************************/
 .share-update-button-container {
   display: flex;
-  justify-content: flex-end; /* ボタンを右端に配置 */
+  justify-content: flex-end;
   margin-right: 10px;
 }
 
