@@ -245,22 +245,30 @@
 .popup-body_share,
 .popup-body_inquiry,
 .popup-body_friend-add,
-.popup-body_answer-pop,
-.popup-body_explanation-pop {
+.popup-body_answer-pop
+/* ,
+.popup-body_explanation-pop  */ {
   position: relative;
   padding: 0 10px;
 }
 
 .popup-body_explanation-pop {
   display: flex;
-  flex-direction: column; /* 縦方向に要素を配置 */
-  align-items: center; /* 水平方向に中央揃え */
-  justify-content: center; /* 垂直方向に中央揃え */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* 親要素の幅を100%に設定 */
+  height: 100%; /* 親要素の高さを100%に設定 */
+  position: relative; /* ボタンの絶対位置指定の基準にする */
+}
+
+#explanation-pop-p {
+  text-align: center; /* pタグのテキストを中央揃えにする */
 }
 
 .explanation-pop-button-wrapper {
-  display: flex;
-  justify-content: flex-end; /* 水平方向に右揃え */
-  align-items: flex-end; /* 垂直方向に下揃え */
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 /*******************************************************************************/
