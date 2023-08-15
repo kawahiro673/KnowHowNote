@@ -15,9 +15,7 @@
       </p>
       <div class="gray-line"></div>
       <p id="email-container">
-        メールアドレス：<span id="my-mail"></span
-        >
-        <!-- <input id="change-email-input" style="display: none" /> -->
+        メールアドレス：<span id="my-mail"></span>
        <button id="change-email-button">変更</button>
        <div class="change-email-button-wrapper">
         <button id="change-email-button-cancel" style="display: none">
@@ -380,13 +378,15 @@
     </div>
     <div class="popup-body_group-add">
       <p>ここに追加したいグループ名を記載してください</p>
-      <input
-        type="text"
-        id="group-Name-input"
-        maxlength="15"
-        placeholder="グループ名"
-      />
-      <button id="group-add-button">追加</button>
+      <div class="group-input-container">
+        <input
+          type="text"
+          id="group-Name-input"
+          maxlength="15"
+          placeholder="グループ名"
+        />
+        <button id="group-add-button">追加</button>
+      </div>
       <p id="group-add-list-massage"></p>
       <div id="group-display" class="group-list-display"></div>
     </div>
