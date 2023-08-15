@@ -276,6 +276,7 @@ document
 
         document.getElementById('change-email-button').style.display = 'block';
         document.getElementById('my-mail').style.display = 'block';
+        document.getElementById('my-mail').innerHTML = email;
         document.getElementById('change-email-button-cancel').style.display =
           'none';
         document.getElementById('change-email-button-decision').style.display =
