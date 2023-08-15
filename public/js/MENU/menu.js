@@ -268,14 +268,22 @@ document
         email,
       }),
       success: function (res) {
-        document.getElementById('change-email-input').style.display = 'none';
+        const EmailInputsContainers =
+          document.querySelectorAll('.email-inputs');
+        EmailInputsContainers.forEach((container) => {
+          container.remove();
+        });
+
+        document.getElementById('change-email-button').style.display = 'block';
         document.getElementById('my-mail').style.display = 'block';
-        document.getElementById('my-mail').innerHTML = email;
-        document.getElementById('change-email-button-decision').style.display =
-          'none';
         document.getElementById('change-email-button-cancel').style.display =
           'none';
-        document.getElementById('change-email-button').style.display = 'block';
+        document.getElementById('change-email-button-decision').style.display =
+          'none';
+        document
+          .getElementById('my-mail')
+          .parentNode.setAttribute('id', 'email-container');
+
         resultPopUp('メールアドレス変更', '変更しました');
       },
     });
