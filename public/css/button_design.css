@@ -29,6 +29,7 @@
 #change-email-button,
 #update-authenticationID-button,
 #change-email-button-decision,
+#change-email-button-cancel,
 #yes-button-answer-pop,
 #no-button-answer-pop,
 #yes-button-explanation-pop,
@@ -80,6 +81,7 @@
 #change-email-button:active,
 #update-authenticationID-button:active,
 #change-email-button-decision:active,
+#change-email-button-cancel:active,
 #yes-button-answer-pop:active,
 #no-button-answer-pop:active,
 #yes-button-explanation-pop:active,
@@ -108,6 +110,7 @@
 #change-email-button,
 #update-authenticationID-button,
 #change-email-button-decision,
+#change-email-button-cancel,
 #yes-button-answer-pop,
 #no-button-answer-pop,
 #yes-button-explanation-pop,
@@ -192,6 +195,7 @@
 .cancelbtn,
 #closed-button,
 #no-button-answer-pop,
+#change-email-button-cancel,
 #change-password-button-cancel {
   background-color: #e32b2b;
   box-shadow: 0 5px 0 #840505;
@@ -208,14 +212,16 @@
   box-sizing: border-box;
 }
 
-.change-password-button-wrapper {
+.change-password-button-wrapper,
+.change-email-button-wrapper {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
 .answer-pop-button-wrapper button,
-.change-password-button-wrapper button {
+.change-password-button-wrapper button,
+.change-email-button-wrapper button {
   flex: 0 0 120px;
   margin: 5px 20px;
 }

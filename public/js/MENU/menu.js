@@ -166,49 +166,119 @@ const shareFunctionCheckBoxFlg = (checkbox) => {
 document
   .getElementById('change-email-button')
   .addEventListener('click', (e) => {
-    document.getElementById('change-email-input').style.display = 'block';
-    document.getElementById('change-email-input').value =
-      document.getElementById('my-mail').innerHTML;
+    const div1 = document.createElement('div');
+    div1.className = 'email-inputs';
+    const div2 = document.createElement('div');
+    div2.className = 'email-inputs';
+
+    const label1 = document.createElement('label');
+    label1.innerHTML = '現在のメールアドレス';
+    label1.setAttribute('for', 'current-email-input');
+    const p = document.createElement('p');
+    p.innerHTML = document.getElementById('my-mail').innerHTML;
+    p.setAttribute('id', 'current-email-input');
+
+    const label2 = document.createElement('label');
+    label2.innerHTML = '新しいメールアドレス';
+    label2.setAttribute('for', 'change-email-input');
+    const changeEmailInput = document.createElement('input');
+    changeEmailInput.id = 'change-email-input';
+    changeEmailInput.placeholder = '新しいメールアドレス';
+
+    div1.appendChild(label1);
+    div1.appendChild(p);
+    div2.appendChild(label2);
+    div2.appendChild(changeEmailInput);
+
+    document
+      .getElementById('change-email-button')
+      .parentNode.insertBefore(
+        div1,
+        document.getElementById('change-email-button')
+      );
+    document
+      .getElementById('change-email-button')
+      .parentNode.insertBefore(
+        div2,
+        document.getElementById('change-email-button')
+      );
+
     document.getElementById('my-mail').style.display = 'none';
     document.getElementById('change-email-button').style.display = 'none';
     document.getElementById('change-email-button-decision').style.display =
       'block';
+    document.getElementById('change-email-button-cancel').style.display =
+      'block';
+
+    document.getElementById('email-container').removeAttribute('id');
   });
 
+//メールアドレス変更のキャンセルボタン押下時
+document
+  .getElementById('change-email-button-cancel')
+  .addEventListener('click', async (e) => {
+    const EmailInputsContainers = document.querySelectorAll('.email-inputs');
+    EmailInputsContainers.forEach((container) => {
+      container.remove();
+    });
+
+    document.getElementById('change-email-button').style.display = 'block';
+    document.getElementById('my-mail').style.display = 'block';
+    document.getElementById('change-email-button-cancel').style.display =
+      'none';
+    document.getElementById('change-email-button-decision').style.display =
+      'none';
+    document
+      .getElementById('my-mail')
+      .parentNode.setAttribute('id', 'email-container');
+  });
+
+//メールアドレス変更の適用ボタン押下時
 document
   .getElementById('change-email-button-decision')
   .addEventListener('click', (e) => {
+    e.preventDefault();
+
     const email = document.getElementById('change-email-input').value;
-    const flg = validateEmail(email);
-    if (flg) {
-      $.ajax({
-        url: '/mypage/' + hashedIdGet,
-        type: 'POST',
-        dataType: 'Json',
-        contentType: 'application/json',
-        data: JSON.stringify({
-          flg: 'EmailUpdte',
-          email,
-        }),
-        success: function (res) {
-          //alert(res.msg);
-          document.getElementById('change-email-input').style.display = 'none';
-          document.getElementById('my-mail').style.display = 'block';
-          document.getElementById('my-mail').innerHTML = email;
-          document.getElementById(
-            'change-email-button-decision'
-          ).style.display = 'none';
-          document.getElementById('change-email-button').style.display =
-            'block';
-          resultPopUp('メールアドレス 変更', '変更しました');
-        },
-      });
-    } else {
-      resultPopUp(
-        'メールアドレス変更',
-        '正しいメールアドレスが入力されていません'
+
+    if (email.value === '') {
+      explanationPopUp(
+        'メールドレス変更',
+        '新しいメールアドレスが入力されておりません'
       );
+      return false;
     }
+
+    // パスワードの文字数(8文字以上20文字以内)と英数字チェック
+    if (!validateEmail(email)) {
+      explanationPopUp(
+        'メールアドレス変更',
+        'メールアドレスが正しく入力されていません'
+      );
+      return false;
+    }
+
+    $.ajax({
+      url: '/mypage/' + hashedIdGet,
+      type: 'POST',
+      dataType: 'Json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        flg: 'EmailUpdte',
+        email,
+      }),
+      success: function (res) {
+        document.getElementById('change-email-input').style.display = 'none';
+        document.getElementById('my-mail').style.display = 'block';
+        document.getElementById('my-mail').innerHTML = email;
+        document.getElementById('change-email-button-decision').style.display =
+          'none';
+        document.getElementById('change-email-button-cancel').style.display =
+          'none';
+        document.getElementById('change-email-button').style.display = 'block';
+        resultPopUp('メールアドレス変更', '変更しました');
+      },
+    });
   });
 
 document

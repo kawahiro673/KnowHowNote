@@ -14,15 +14,19 @@
         ><button id="update-authenticationID-button">変更</button>
       </p>
       <div class="gray-line"></div>
-      <p class="email-position">
-        メールアドレス：<span id="my-mail">-</span
-        ><input id="change-email-input" style="display: none" /><button
-          id="change-email-button"
+      <p id="email-container">
+        メールアドレス：<span id="my-mail"></span
         >
-          変更</button
-        ><button id="change-email-button-decision" style="display: none">
+        <!-- <input id="change-email-input" style="display: none" /> -->
+       <button id="change-email-button">変更</button>
+       <div class="change-email-button-wrapper">
+        <button id="change-email-button-cancel" style="display: none">
+          キャンセル
+        </button>
+        <button id="change-email-button-decision" style="display: none">
           適用
         </button>
+       </div>
       </p>
       <div class="gray-line"></div>
      
