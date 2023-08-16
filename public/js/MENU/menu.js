@@ -485,6 +485,36 @@ document
     });
   });
 
+document
+  .getElementById('delete-account-link')
+  .addEventListener('click', async (event) => {
+    event.preventDefault(); // リンクのデフォルトの動作をキャンセル
+
+    const result = await answerPopUp(
+      'アカウント削除',
+      '作成したノウハウなど全て削除されます\n本当にアカウントを削除してよろしいですか。'
+    );
+    if (result === true) {
+      $.ajax({
+        url: '/mypage/' + hashedIdGet,
+        type: 'POST',
+        dataType: 'Json',
+        contentType: 'application/json',
+        data: JSON.stringify({
+          flg: 'Acount-Delte',
+        }),
+        success: function (res) {
+          resultPopUp(
+            'アカウント削除',
+            'TOPページに戻ります\n少々お待ちください'
+          );
+          location.href = 'https://nodejs-itnote-app.herokuapp.com';
+        },
+      });
+    } else {
+    }
+  });
+
 //=============================================================================================================
 //=================================================共有履歴====================================================
 //=============================================================================================================
