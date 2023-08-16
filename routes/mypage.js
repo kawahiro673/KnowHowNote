@@ -968,7 +968,7 @@ router
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'DELETE from register_user where UserID = ?;',
+              'DELETE from register_user where id = ?;',
               [resultDecoded[0].id],
               (error, result) => {
                 if (error) {
