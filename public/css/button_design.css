@@ -315,13 +315,9 @@
 }  
 
   #share-user-button{
-  width: 80px; 
-   height: 40px;
+  width: 60px; 
+  height: 40px;
    padding:0px;
-  }
-  
-  .share-user-button {
-    font-size: 15px;
   }
   
   .cancelbtn {
