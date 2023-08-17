@@ -127,6 +127,18 @@
   font-family: 'Zen_Kurenaido', 'Hannotate SC', sans-serif;
 }
 
+.keepbtn,
+.sharebtn,
+.editbtn{
+    width: 75px; 
+   height: 45px;
+}
+
+.cancelbtn{
+    width: 105px; 
+   height: 45px;
+}
+
 .sharebtn,
 #createbutton {
   background-color: #fdff85;
