@@ -100,6 +100,10 @@ document
     }
   });
 
+//======================================================
+//================背景色チェックボックス==================
+//======================================================
+
 //チェックボックスへチェック後、他のチェックを外す(falseへ)
 $('.checkbox-color').on('click', (event) => {
   const clickedCheckbox = event.target;
@@ -110,6 +114,10 @@ $('.checkbox-color').on('click', (event) => {
     }
   });
 });
+
+//======================================================
+//====================共有機能ON/OFF=====================
+//======================================================
 
 $('.checkbox-share').on('click', (event) => {
   const clickedCheckbox = event.target;
@@ -162,6 +170,10 @@ const shareFunctionCheckBoxFlg = (checkbox) => {
     success: function (res) {},
   });
 };
+
+//======================================================
+//==================メールアドレス変更====================
+//======================================================
 
 document
   .getElementById('change-email-button')
@@ -293,6 +305,10 @@ document
     });
   });
 
+//======================================================
+//==================利用者ID変更=========================
+//======================================================
+
 document
   .getElementById('update-authenticationID-button')
   .addEventListener('click', async (e) => {
@@ -318,6 +334,10 @@ document
       });
     }
   });
+
+//======================================================
+//==================パスワード変更=======================
+//======================================================
 
 //パスワード変更ボタン押下時
 document
@@ -485,6 +505,9 @@ document
     });
   });
 
+//======================================================
+//==================アカウント削除=======================
+//======================================================
 document
   .getElementById('delete-account-link')
   .addEventListener('click', async (event) => {
@@ -711,14 +734,14 @@ document.getElementById('friend-list').addEventListener('click', async () => {
   });
 });
 
-document
-  .getElementById('popup-overlay_friend-list')
-  .addEventListener('click', (e) => {
-    const popup = document.getElementById('popup-overlay_friend-list');
-    if (e.target === popup) {
-      popup.style.display = 'none';
-    }
-  });
+// document
+//   .getElementById('popup-overlay_friend-list')
+//   .addEventListener('click', (e) => {
+//     const popup = document.getElementById('popup-overlay_friend-list');
+//     if (e.target === popup) {
+//       popup.style.display = 'none';
+//     }
+//   });
 
 document
   .getElementById('pop-delete_friend-list')
