@@ -251,6 +251,7 @@
 .createfolder,
 .treecontrol {
   display: inline-block;
+  margin-bottom:10px;
 }
 
 #change-email-button {
