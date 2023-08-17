@@ -44,7 +44,7 @@ export const friendListUpdate = () => {
           groupDiv.setAttribute('class', 'group-name-div');
           const groupP = document.createElement('p');
           groupP.setAttribute('class', 'group-name-p');
-          groupP.innerHTML = 'グループ: ';
+          groupP.innerHTML = '所属: ';
           const span = document.createElement('span');
           span.setAttribute('class', `group-name-span`);
           span.setAttribute('id', `group-name-span${friend.id}`);
