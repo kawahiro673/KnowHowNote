@@ -140,7 +140,7 @@
     width: 60px;
   }
   .group-name-p {
-    width: 80px;
+    width: 100px;
   }
    .column {
     width: calc(50% - 10px); /* 2列にするための幅指定 */
