@@ -40,15 +40,15 @@ export const shareContextmenu = () => {
       mynoteAddFunc(share.id);
     });
 
-    document
-      .getElementById('Add-from-Details')
-      .addEventListener('click', () => {
-        console.log('下の関数です');
-        const li = share.shareThis.parentElement;
-        const ul = li.parentElement;
-        ul.removeChild(li);
-        mynoteAddFunc(share.id);
-      });
+    // document
+    //   .getElementById('Add-from-Details')
+    //   .addEventListener('click', () => {
+    //     console.log('下の関数です');
+    //     const li = share.shareThis.parentElement;
+    //     const ul = li.parentElement;
+    //     ul.removeChild(li);
+    //     mynoteAddFunc(share.id);
+    //   });
 
     (async () => {
       try {
