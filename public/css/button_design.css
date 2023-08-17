@@ -337,16 +337,20 @@
 .editbtn{
     width: 60px; 
    height: 35px;
+  padding: 5px 10px;
 }
 
 .cancelbtn{
     width: 60px; 
    height: 55px;
+    padding: 5px 10px;
+   font-size: 12px;
 }
 
   
   .cancelbtn {
     font-size: 12px;
+     padding: 5px 10px;
   }
   
   #inquiry-button {
