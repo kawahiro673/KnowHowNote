@@ -142,4 +142,7 @@
   .group-name-p {
     width: 80px;
   }
+   .column {
+    width: calc(50% - 10px); /* 2列にするための幅指定 */
+  }
 }
