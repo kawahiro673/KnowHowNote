@@ -129,14 +129,14 @@
 
 .keepbtn,
 .sharebtn,
-.editbtn{
-    width: 75px; 
-   height: 45px;
+.editbtn {
+  width: 75px;
+  height: 45px;
 }
 
-.cancelbtn{
-    width: 105px; 
-   height: 45px;
+.cancelbtn {
+  width: 105px;
+  height: 45px;
 }
 
 .sharebtn,
@@ -152,8 +152,8 @@
   box-shadow: 0 5px 0 #32cd32;
 }
 
-#share-user-button{
-  margin-left:20px;
+#share-user-button {
+  margin-left: 20px;
 }
 
 #share-send {
@@ -267,7 +267,7 @@
 .createfolder,
 .treecontrol {
   display: inline-block;
-  margin-bottom:10px;
+  margin-bottom: 10px;
 }
 
 #change-email-button {
@@ -307,72 +307,68 @@
   }
 }
 
-
 /*******************************************************************************/
 /********************************ボタンサイズの縮小*******************************/
 /*******************************************************************************/
 @media screen and (max-width: 1000px) {
- .friend-change-name,
- .group-name-change-button{
-    width: 40px; 
+  .friend-change-name,
+  .group-name-change-button {
+    width: 40px;
     height: 30px;
-   padding:0px;
- }
+    padding: 0px;
+  }
 
-#update-authenticationID-button,
-#change-email-button,
-#change-password-button{
-   width: 50px; 
-   height: 30px;
-   padding:0px;
-}  
+  #update-authenticationID-button,
+  #change-email-button,
+  #change-password-button {
+    width: 50px;
+    height: 30px;
+    padding: 0px;
+  }
 
-  #share-user-button{
-  width: 70px; 
-  height: 50px;
+  #share-user-button {
+    width: 70px;
+    height: 50px;
   }
 
   .keepbtn,
-.sharebtn,
-.editbtn{
-    width: 60px; 
-   height: 35px;
-  padding: 5px 10px;
-}
+  .sharebtn,
+  .editbtn {
+    width: 60px;
+    height: 35px;
+    padding: 5px 10px;
+  }
 
-.cancelbtn{
-    width: 60px; 
-   height: 35px;
+  .cancelbtn {
+    width: 60px;
+    height: 35px;
     padding: 5px 5px;
-   font-size: 12px;
-}
+    font-size: 12px;
+  }
 
-  
   .cancelbtn {
     font-size: 12px;
-     padding: 5px 10px;
+    padding: 5px 10px;
   }
-  
+
   #inquiry-button {
     position: absolute;
     bottom: 0;
     right: 0;
   }
-  
+
   #friend-list-add-button,
-  #friend-list-group-add-button{
+  #friend-list-group-add-button {
     margin: 10px;
   }
-    .friend-delete {
+  .friend-delete {
     font-size: smaller;
     padding: 4px 8px;
   }
- #inquiry-button {
-  vertical-align: baseline;
-}
+  #inquiry-button {
+    vertical-align: baseline;
+  }
   #share-send {
- vertical-align: baseline;
-}
-
-  
+    vertical-align: baseline;
+  }
 }

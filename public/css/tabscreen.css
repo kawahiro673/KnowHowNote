@@ -288,15 +288,15 @@ input[name='tab_item'] {
 }
 
 .share-row p {
-  flex: 3; 
-  margin-right: 10px; 
+  flex: 3;
+  margin-right: 10px;
 }
 
 .share-row button {
-  flex: 1; 
-   width: 100px;
-   height: 50px;
-   padding:0px;
+  flex: 1;
+  width: 100px;
+  height: 50px;
+  padding: 0px;
 }
 
 .share-message {

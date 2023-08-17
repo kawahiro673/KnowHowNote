@@ -123,9 +123,9 @@
   #all-group-list {
     grid-template-columns: repeat(2, 1fr);
   }
-    #friend-list-div{
-     padding:10px 0;
-    }
+  #friend-list-div {
+    padding: 10px 0;
+  }
 
   .friend-list-label {
     width: 48%; /*フレンドリストのタブの折り返しを防ぐ  */
@@ -142,7 +142,7 @@
   .group-name-p {
     width: 100px;
   }
-   .column {
+  .column {
     width: calc(50% - 10px); /* 2列にするための幅指定 */
   }
 }

@@ -55,10 +55,10 @@ document.getElementById('profile').addEventListener('click', () => {
       document.getElementById('myName').innerHTML = res.user.UserName;
       document.getElementById('authentication-ID').innerHTML =
         res.user.Authentication_ID;
-      if(res.user.Email === '-'){
-      document.getElementById('my-mail').innerHTML = '未設定';
-      }else{
-         document.getElementById('my-mail').innerHTML = res.user.Email;
+      if (res.user.Email === '-') {
+        document.getElementById('my-mail').innerHTML = '未設定';
+      } else {
+        document.getElementById('my-mail').innerHTML = res.user.Email;
       }
       const date = new Date(res.user.CreationDay);
       document.getElementById('RegistrationDate').innerHTML =
@@ -300,7 +300,7 @@ document
           .getElementById('my-mail')
           .parentNode.setAttribute('id', 'email-container');
 
-          explanationPopUp(
+        explanationPopUp(
           'メールアドレス変更',
           `"${email}"に確認用のメールを送信しました。メールが届いていなければ正しいメールアドレスを入力し直してください。`
         );

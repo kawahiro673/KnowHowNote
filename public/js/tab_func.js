@@ -225,9 +225,9 @@ export const cancelButtonClick = async (id) => {
     //テキストが「!」で始まっている場合取り除く
     const element = document.getElementById(`tabname${id}`);
     if (element.innerHTML.startsWith('⚠')) {
-     element.innerHTML = element.innerHTML.substring(1);
+      element.innerHTML = element.innerHTML.substring(1);
     }
-    
+
     resultPopUp('取り消し', '取り消しました');
   } else {
     // 「いいえ」が押された場合の処理 おそらくポップが閉じる

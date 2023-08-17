@@ -286,12 +286,11 @@
   margin-right: 10px;
 }
 
-
 /*******************************************************************************/
 /******************************ポップアップサイズの縮小***************************/
 /*******************************************************************************/
 @media screen and (max-width: 1000px) {
-/*********windows*********/
+  /*********windows*********/
   .popup-window_profile,
   .popup-window_share-history,
   .popup-window_explanation,
@@ -332,7 +331,7 @@
     width: 350px;
     height: 300px;
   }
-/*********body*********/  
+  /*********body*********/
   .popup-body_friend-list,
   .popup-body_share-history,
   .popup-body_profile {
@@ -347,8 +346,8 @@
   }
   .popup-body_group-add {
     height: 270px;
-  } 
-  .popup-body_share{
+  }
+  .popup-body_share {
     height: 280px;
     overflow-y: scroll;
   }
