@@ -224,7 +224,7 @@ export const cancelButtonClick = async (id) => {
     document.getElementById(`tabname${id}`).style.color = 'black';
     //テキストが「!」で始まっている場合取り除く
     const element = document.getElementById(`tabname${id}`);
-    if (element.innerHTML.startsWith('!')) {
+    if (element.innerHTML.startsWith('⚠')) {
      element.innerHTML = element.innerHTML.substring(1);
     }
     
