@@ -21,9 +21,8 @@ import { sortTableByUser, sortTableByDate } from './share-history.js';
 const menuCheckbox = document.getElementById('tg');
 const menuLabel = document.querySelector('.dropLabel');
 
-// ドキュメント全体でクリックイベントを監視
+// MENU 以外をクリックした場合、ドロップダウンメニューを閉じる
 document.addEventListener('click', function (event) {
-  // MENU 以外をクリックした場合、ドロップダウンメニューを閉じる
   if (
     !menuLabel.contains(event.target) &&
     !menuCheckbox.contains(event.target)
@@ -733,15 +732,6 @@ document.getElementById('friend-list').addEventListener('click', async () => {
     },
   });
 });
-
-// document
-//   .getElementById('popup-overlay_friend-list')
-//   .addEventListener('click', (e) => {
-//     const popup = document.getElementById('popup-overlay_friend-list');
-//     if (e.target === popup) {
-//       popup.style.display = 'none';
-//     }
-//   });
 
 document
   .getElementById('pop-delete_friend-list')
