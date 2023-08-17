@@ -296,14 +296,29 @@
 
 
 /*******************************************************************************/
-/******************************ポップアップサイズの縮小***************************/
+/********************************ボタンサイズの縮小*******************************/
 /*******************************************************************************/
 @media screen and (max-width: 1000px) {
- .friend-change-name{
-    width: 40px; /* 1000px以下の場合のサイズ */
+ .friend-change-name,
+ .group-name-change-button{
+    width: 40px; 
     height: 30px;
    padding:0px;
  }
+
+#update-authenticationID-button,
+#change-email-button,
+#change-password-button{
+   width: 50px; 
+   height: 30px;
+   padding:0px;
+}  
+
+  #share-user-button{
+  width: 80px; 
+   height: 40px;
+   padding:0px;
+  }
   
   .share-user-button {
     font-size: 15px;
@@ -319,7 +334,8 @@
     right: 0;
   }
   
-  #friend-list-add-button {
+  #friend-list-add-button,
+  #friend-list-group-add-button{
     margin: 10px;
   }
     .friend-delete {
