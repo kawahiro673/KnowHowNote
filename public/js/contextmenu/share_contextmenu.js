@@ -13,7 +13,7 @@ export const shareContextmenu = () => {
     $(document).ready(function () {
       $('#MyNoteAdd').off('click');
       $('#MyNoteAdd').on('click', function (e) {
-        // share.shareThis.parentNode.removeChild(share.shareThis);
+        console.log('上の関数です');
         const li = share.shareThis.parentElement;
         const ul = li.parentElement;
         ul.removeChild(li);
@@ -24,7 +24,7 @@ export const shareContextmenu = () => {
     document
       .getElementById('Add-from-Details')
       .addEventListener('click', () => {
-        // share.shareThis.parentNode.removeChild(share.shareThis);
+        console.log('下の関数です');
         const li = share.shareThis.parentElement;
         const ul = li.parentElement;
         ul.removeChild(li);
@@ -45,9 +45,7 @@ export const shareContextmenu = () => {
 
     //シャアノウハウ削除
     $(document).ready(function () {
-      // ボタンに既存のクリックイベントを解除
       $('#share-list-delete').off('click');
-      // ボタンに新しいクリックイベントを登録
       $('#share-list-delete').on('click', async function (e) {
         const result = await answerPopUp(
           'シェアノウハウ削除',
@@ -96,6 +94,7 @@ const mynoteAddFunc = (id) => {
         node.removeChild(node.firstChild);
       }
       listCreate();
+      resultPopUp('共有ノウハウ追加', 'マイノウハウへ追加しました');
     },
   });
 };
