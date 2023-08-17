@@ -415,7 +415,8 @@ input[type='checkbox']:checked + .gray_b {
   text-align: center;
 }
 .password-inputs input,
-.email-inputs input {
+.email-inputs input,
+.email-inputs p {
   width: 250px;
 }
 
