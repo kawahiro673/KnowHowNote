@@ -91,9 +91,7 @@
   .sab-share-p {
     font-size: 10px;
   }
-  .share-user-button {
-    font-size: 15px;
-  }
+
   .friend-Box {
     width: 140px;
   }
@@ -120,25 +118,12 @@
     display: inline-block; /* インラインブロック要素にすることで横幅を自動調整 */
   }
 
-  .cancelbtn {
-    font-size: 12px;
-  }
-  .popup-body_inquiry {
-    position: relative;
-  }
-  #inquiry-button {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-  }
   #friend-list-div,
   #group-display,
   #all-group-list {
     grid-template-columns: repeat(2, 1fr);
   }
-  #friend-list-add-button {
-    margin: 10px;
-  }
+
   .friend-list-label {
     width: 48%; /*フレンドリストのタブの折り返しを防ぐ  */
   }
