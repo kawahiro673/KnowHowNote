@@ -333,6 +333,25 @@
     height: 300px;
   }
 /*********body*********/
+.popup-body_profile,
+.popup-body_share-history,
+.popup-body_explanation,
+.popup-body_About-Website,
+.popup-body_share-user,
+.popup-body_friend-list,
+.popup-body_group-add,
+.popup-body_group-list,
+.popup-body_share_no,
+  .popup-body_share,
+.popup-body_inquiry,
+.popup-body_friend-add,
+.popup-body_answer-pop,
+  .popup-body_result-pop,
+  .popup-body_explanation-pop,
+  .popup-body_answer-pop{
+  padding: 0 5px;
+}
+  
   .popup-body_friend-list,
   .popup-body_share-history,
   .popup-body_profile {
