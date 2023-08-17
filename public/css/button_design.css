@@ -248,10 +248,6 @@
   text-align: center;
 }
 
-.share-row button {
-  margin-left: 50px;
-}
-
 .createfolder,
 .treecontrol {
   display: inline-block;
@@ -315,8 +311,8 @@
 }  
 
   #share-user-button{
-  width: 60px; 
-  height: 40px;
+  width: 70px; 
+  height: 35px;
    padding:0px;
   }
   
