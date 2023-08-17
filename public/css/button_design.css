@@ -5,7 +5,7 @@
 #share-user-button,
 #share-user-add-button,
 #share-user-clear-button,
-#Add-from-Details,
+/* #Add-from-Details, */
 #friend-list-add-button,
 #friend-list-group-add-button,
 #friend-search-button,
@@ -57,7 +57,7 @@
 #share-user-button:active,
 #share-user-add-button:active,
 #share-user-clear-button:active,
-#Add-from-Details:active,
+/* #Add-from-Details:active, */
 #friend-list-add-button:active,
 #friend-list-group-add-button:active,
 #friend-search-button:active,
