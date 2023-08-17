@@ -333,4 +333,10 @@
     font-size: smaller;
     padding: 4px 8px;
   }
+ #inquiry-button {
+  vertical-align: baseline;
+}
+  #share-send {
+ vertical-align: baseline;
+}
 }
