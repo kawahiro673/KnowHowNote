@@ -285,9 +285,9 @@ document
           .getElementById('my-mail')
           .parentNode.setAttribute('id', 'email-container');
 
-        resultPopUp(
+          explanationPopUp(
           'メールアドレス変更',
-          `"${email}"に本人確認用のメールを送信しました。メールが届いていなければ設定をやり直してください。`
+          `"${email}"に確認用のメールを送信しました。メールが届いていなければ正しいメールアドレスを入力し直してください。`
         );
       },
     });
