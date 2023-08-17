@@ -283,18 +283,19 @@ input[name='tab_item'] {
 
 .share-row {
   display: flex;
-  flex-direction: row;
   align-items: center;
   margin: 8px;
 }
-/* .share-row button {
-  margin-left: 50px;
-} */
 
-.share-row p,
-.share-row button {
-  margin-right: 10px;
+.share-row p {
+  flex: 2; 
+  margin-right: 10px; 
 }
+
+.share-row button {
+  flex: 1; 
+}
+
 .share-message {
   height: 130px;
   width: 400px;
