@@ -140,6 +140,10 @@
   box-shadow: 0 5px 0 #32cd32;
 }
 
+#share-user-button{
+  margin-left:20px;
+}
+
 #share-send {
   padding: 8px 16px;
   font-size: 14px;
