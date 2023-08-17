@@ -55,7 +55,11 @@ document.getElementById('profile').addEventListener('click', () => {
       document.getElementById('myName').innerHTML = res.user.UserName;
       document.getElementById('authentication-ID').innerHTML =
         res.user.Authentication_ID;
-      document.getElementById('my-mail').innerHTML = res.user.Email;
+      if(res.user.Email === '-'){
+      document.getElementById('my-mail').innerHTML = '未設定';
+      }else{
+         document.getElementById('my-mail').innerHTML = res.user.Email;
+      }
       const date = new Date(res.user.CreationDay);
       document.getElementById('RegistrationDate').innerHTML =
         res.user.CreationDay;
