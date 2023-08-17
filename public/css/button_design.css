@@ -5,7 +5,6 @@
 #share-user-button,
 #share-user-add-button,
 #share-user-clear-button,
-/* #Add-from-Details, */
 #friend-list-add-button,
 #friend-list-group-add-button,
 #friend-search-button,
@@ -57,7 +56,6 @@
 #share-user-button:active,
 #share-user-add-button:active,
 #share-user-clear-button:active,
-/* #Add-from-Details:active, */
 #friend-list-add-button:active,
 #friend-list-group-add-button:active,
 #friend-search-button:active,
@@ -295,4 +293,28 @@
     transform: rotate(1800deg); /* 5回転分の角度 */
   }
 }
-/*********************************************************************************************/
+
+
+/*******************************************************************************/
+/******************************ポップアップサイズの縮小***************************/
+/*******************************************************************************/
+@media screen and (max-width: 1000px) {
+
+  .share-user-button {
+    font-size: 15px;
+  }
+  
+  .cancelbtn {
+    font-size: 12px;
+  }
+  
+  #inquiry-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+  
+  #friend-list-add-button {
+    margin: 10px;
+  }
+}
