@@ -305,7 +305,7 @@ function tabScreenOptions(id, title) {
 
           document.getElementById(`edit-note-btn${id}`).onclick = function () {
             const element = document.getElementById(`tabname${id}`);
-　　　　　　　element.innerHTML = `!${element.innerHTML}`;
+　　　　　　　element.innerHTML = `⚠${element.innerHTML}`;
             document.getElementById(`tabname${id}`).style.color = 'red';
 
             document.getElementById(`fade${id}`).style.opacity = '1';
