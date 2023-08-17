@@ -349,6 +349,7 @@
     height: 270px;
   } 
   .popup-body_share{
+    height: 300px;
     overflow-y: scroll;
   }
 }
