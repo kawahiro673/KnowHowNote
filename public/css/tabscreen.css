@@ -288,7 +288,7 @@ input[name='tab_item'] {
 }
 
 .share-row p {
-  flex: 2; 
+  flex: 3; 
   margin-right: 10px; 
 }
 
