@@ -56,7 +56,7 @@ export const addGroup = () => {
   }
 };
 
-//グループリスト画面を更新（三列に表示する）
+//グループリスト画面を更新
 const groupListUpdate = (idElement) => {
   $.ajax({
     url: '/mypage/' + hashedIdGet,
