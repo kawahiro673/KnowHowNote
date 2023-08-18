@@ -421,31 +421,9 @@ router
         (error, resultDecoded) => {
           res.send({
             user: resultDecoded[0],
-            email: decoded.email,
           });
         }
       );
-    } else if (req.body.flg === 'register_user_update') {
-      getUserDataByToken(req)
-        .then((resultDecoded) => {
-          return new Promise((resolve, reject) => {
-            pool.query(
-              'UPDATE register_user SET SharePass = ? WHERE id = ?;',
-              [req.body.sharePass, resultDecoded[0].id],
-              (error, result) => {
-                if (error) {
-                  reject(error);
-                } else {
-                  res.send({ msg: '成功' });
-                }
-              }
-            );
-          });
-        })
-        .catch((error) => {
-          console.error(error);
-          res.status(500).json({ message: error.message, nothing });
-        });
     } else if (req.body.flg === 'backgroundColor') {
       getUserDataByToken(req).then((resultDecoded) => {
         return new Promise((resolve, reject) => {
