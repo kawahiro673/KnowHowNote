@@ -49,6 +49,7 @@ export const newFileCreateFunc = (id) => {
 
     const handleClick = (e) => {
       if (!e.target.closest('#inputTab')) {
+        inputTab.value = '新しいノート';
         createFile();
       }
     };
@@ -56,6 +57,7 @@ export const newFileCreateFunc = (id) => {
     const handleContextMenu = (e) => {
       e.preventDefault();
       if (!e.target.closest('#inputTab')) {
+        inputTab.value = '新しいノート';
         createFile();
       }
     };
