@@ -104,7 +104,7 @@ export const jQueryUIOptionsFunc = () => {
               let afterOrder = orderGet(className, item[0].id);
 
               //現在いる場所より下へD＆D
-              if (beforeOrder < afterOrder) {
+              if (orderBeforeMoving < afterOrder) {
                 let id = item[0].childNodes[0].getAttribute('value');
 
                 $.ajax({
@@ -126,7 +126,7 @@ export const jQueryUIOptionsFunc = () => {
                   },
                 });
                 //現在いる場所より上へD＆D
-              } else if (beforeOrder > afterOrder) {
+              } else if (orderBeforeMoving > afterOrder) {
                 let id = item[0].childNodes[0].getAttribute('value');
 
                 $.ajax({
@@ -211,7 +211,7 @@ export const jQueryUIOptionsFunc = () => {
             if (tmpParentID == item[0].parentNode.id) {
               let afterOrder = orderGet(className, item[0].id);
               //orderが大きくなる場合(下へD＆D);
-              if (beforeOrder < afterOrder) {
+              if (orderBeforeMoving < afterOrder) {
                 $.ajax({
                   url: '/folderPostController/',
                   type: 'POST',
@@ -231,7 +231,7 @@ export const jQueryUIOptionsFunc = () => {
                   },
                 });
                 //orderが小さくなる場合(上へD＆D)
-              } else if (beforeOrder > afterOrder) {
+              } else if (orderBeforeMoving > afterOrder) {
                 $.ajax({
                   url: '/folderPostController/',
                   type: 'POST',
