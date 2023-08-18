@@ -932,8 +932,6 @@ document
           p.innerHTML = 'こちらにノウハウが出力されます';
           document.getElementById('tab').appendChild(p);
           document.getElementById('notepass').innerHTML = '';
-          document.getElementById('popup-overlay_delete').style.display =
-            'none';
 
           resultPopUp('全削除', 'ノウハウ/フォルダを\nすべて削除いたしました');
         },
