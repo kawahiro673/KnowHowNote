@@ -907,12 +907,12 @@ document
     );
     if (result === true) {
       $.ajax({
-        url: '/mypage/' + hashedIdGet,
+        url: '/listDelete/',
         type: 'POST',
         dataType: 'Json',
         contentType: 'application/json',
         data: JSON.stringify({
-          flg: 'deleteALL',
+          flg: 'Delete-ALL',
         }),
         success: function (res) {
           //全削除
