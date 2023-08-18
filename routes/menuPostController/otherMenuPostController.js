@@ -24,7 +24,7 @@ const transport = {
 const transporter = nodemailer.createTransport(transport);
 
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
  if (req.body.flg === 'RegisterUser') {
       const token = req.cookies.token;
       const decoded = JWT.verify(token, 'SECRET_KEY');
