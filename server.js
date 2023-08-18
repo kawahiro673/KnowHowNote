@@ -19,6 +19,7 @@ const check = require('./routes/check');
 const listCreate = require('./routes/listCreate');
 const friendListPostController = require('./routes/menuPostController/friendListPostController');
 const groupListPostController = require('./routes/menuPostController/groupListPostController');
+const accountActions = require('./routes/menuPostController/accountActions');
 const cookieParser = require('cookie-parser');
 
 
@@ -49,6 +50,7 @@ app.use('/mailer', mailer);
 app.use('/data',listCreate );
 app.use('/friendListPostController', friendListPostController );
 app.use('/groupListPostController', groupListPostController );
+app.use('/accountActions', accountActions );
 
 app.listen(process.env.PORT || 8080, () => {
   console.log('サーバー接続成功');
