@@ -16,7 +16,7 @@ export const newFileCreateFunc = (id) => {
     inputTab.setAttribute('maxlength', '20');
     inputTab.setAttribute('size', '20');
     inputTab.style.display = 'block';
-    inputTab.setAttribute('value', 'NewNote');
+    inputTab.setAttribute('value', '新しいノート');
 
     document.getElementById(id).appendChild(li);
     li.appendChild(span);
