@@ -5,11 +5,11 @@ import {
   orderGet,
   resultPopUp,
   answerPopUp,
+  explanationPopUp,
 } from './stringUtils.js';
 import { hashedIdGet, setTabIdArray } from './main.js';
 
 export const tabCreate = (id, title, res) => {
-  console.log('やあ3');
   const inputTab = document.createElement('input');
   inputTab.setAttribute('id', 'TAB-ID' + id);
   inputTab.setAttribute('type', 'radio');
@@ -184,7 +184,8 @@ export const keepButtonClick = (id) => {
     document.getElementById('notepass').innerHTML = pass;
     document.getElementById(`tabname${id}`).style.color = 'black';
   } else {
-    alert('タイトルを入力してください');
+    //alert('タイトルを入力してください');
+     explanationPopUp('ノウハウ編集','タイトルを入力してください');
   }
 };
 
@@ -262,8 +263,6 @@ function onClick(event) {
 }
 
 export const shareNoteSendFunc = (id, title) => {
-  console.log(title + ' ?');
-  console.log(id + ' ?');
   const inputValue = document.getElementsByClassName('share-input')[0].value;
   const inputValues = inputValue.split(',').map((value) => value.trim());
 
@@ -311,7 +310,8 @@ export const shareNoteSendFunc = (id, title) => {
       error: function (jqXHR, textStatus, errorThrown) {},
     });
   } else {
-    alert('フレンドリストから共有したいユーザー/グループを選択してください');
+    //alert('フレンドリストから共有したいユーザー/グループを選択してください');
+    explanationPopUp('共有','フレンドリストから共有したいユーザー/グループを選択してください');
   }
 };
 
@@ -710,7 +710,6 @@ export const deleteTabIdArray = (id, tabIdArray) => {
       container.remove();
     });
   }
-  console.log(tabIdArray);
   setTabIdArray(tabIdArray);
 };
 
