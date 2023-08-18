@@ -135,3 +135,17 @@ router.post('/', (req, res) => {
 });
 
 module.exports = router;
+
+function generateRandomID() {
+  const characters =
+    '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  let userID = '';
+  for (let i = 0; i < 16; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    userID += characters.charAt(randomIndex);
+    if ((i + 1) % 4 === 0 && i !== 15) {
+      userID += '-';
+    }
+  }
+  return userID;
+}
