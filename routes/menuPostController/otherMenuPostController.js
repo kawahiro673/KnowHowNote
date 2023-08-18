@@ -3,6 +3,7 @@ const { getUserDataByToken } = require('../databaseQueries');
 const router = require('express').Router();
 const pool = require('../../db.js');
 const JWT = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 const { reject } = require('bcrypt/promises');
 const nodemailer = require('nodemailer');
 
