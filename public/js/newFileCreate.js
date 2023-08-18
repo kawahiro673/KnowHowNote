@@ -48,7 +48,7 @@ export const newFileCreateFunc = (id) => {
 
     const handleClick = (e) => {
       if (!e.target.closest('#inputTab')) {
-        inputTab.value = '新しいノート';
+        if (!inputTab.value || !inputTab.value.match(/\S/g)) inputTab.value = '新しいノート';
         createFile();
       }
     };
@@ -65,7 +65,6 @@ export const newFileCreateFunc = (id) => {
       if (e.keyCode === 13) {
         e.preventDefault();
         if (!isCreatingFile) {
-      　　if (!inputTab.value || !inputTab.value.match(/\S/g)) inputTab.value = '新しいノート';
           createFile();
         }
       }
@@ -81,7 +80,6 @@ export const newCreateFile2 = (inputTab, parentId, order) => {
     //何も入力されていない時や空白や改行のみ
     if (!inputTab.value || !inputTab.value.match(/\S/g)) {
      resultPopUp('名前変更','名前を入力してください');
-     console.log('yaa');
       reject();
     } else {
       const time = currentTimeGet();
