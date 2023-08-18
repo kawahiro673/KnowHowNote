@@ -16,7 +16,7 @@ export const addGroup = () => {
   const groupName = document.getElementById('group-Name-input').value;
   if (groupName !== '') {
     $.ajax({
-      url: '/mypage/' + hashedIdGet,
+      url: '/groupListPostController/',
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
@@ -39,7 +39,7 @@ export const addGroup = () => {
 
         document.getElementById('group-Name-input').value = '';
         $.ajax({
-          url: '/mypage/' + hashedIdGet,
+          url: '/groupListPostController/',
           type: 'POST',
           dataType: 'Json',
           contentType: 'application/json',
@@ -62,7 +62,7 @@ export const addGroup = () => {
 //グループリスト画面を更新
 const groupListUpdate = (idElement) => {
   $.ajax({
-    url: '/mypage/' + hashedIdGet,
+    url: '/groupListPostController/',
     type: 'POST',
     dataType: 'Json',
     contentType: 'application/json',
@@ -131,7 +131,7 @@ const groupCheckListScreen = (button) => {
 
   return new Promise((resolve, reject) => {
     $.ajax({
-      url: '/mypage/' + hashedIdGet,
+      url: '/groupListPostController/',
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
@@ -217,7 +217,7 @@ const groupDeleteButton = async (event) => {
   );
   if (result === true) {
     $.ajax({
-      url: '/mypage/' + hashedIdGet,
+      url: '/groupListPostController/',
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
@@ -239,7 +239,7 @@ const groupDeleteButton = async (event) => {
 //フレンドリスト内の、グループのみの更新
 export const friendListGroupUpdate = () => {
   $.ajax({
-    url: '/mypage/' + hashedIdGet,
+    url: '/friendListPostController/',
     type: 'POST',
     dataType: 'Json',
     contentType: 'application/json',
@@ -283,7 +283,7 @@ export async function friendListGroupChange(event) {
       }
     }
     $.ajax({
-      url: '/mypage/' + hashedIdGet,
+      url: '/groupListPostController/',
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
