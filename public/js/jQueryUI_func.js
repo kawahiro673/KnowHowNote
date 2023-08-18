@@ -16,11 +16,10 @@ import {
 
 export const jQueryUIOptionsFunc = () => {
   return new Promise((resolve, reject) => {
-    let beforeOrder; //D&D前の順番
-    let className; //順番(oderGet)を取得するために
-    let parent_id_Tmp;
-    let tmpArray = []; //配下のフォルダの子要素を入れるやつ？必要？？
-    let elementsBeforeMoving;
+    let orderBeforeMoving; //ドラッグアンドドロップ前の順番
+    let tmpParentID;
+    let childFolders = []; //配下のフォルダの子要素を入れるやつ？必要？？
+    let elementsBeforeMoving; //リストの親子関係を見やすくする線を調整するため、移動前の要素を格納
     $(function () {
       $('#0').treeview({
         animated: 'fast',
@@ -32,14 +31,15 @@ export const jQueryUIOptionsFunc = () => {
         delay: 500,
         tolerance: -10,
         onDragStart: function (item) {
-          let str = item.prevObject[0].id;
-          const regex = /[^0-9]/g;
-          let id = str.replace(regex, '');
+          // let str = item.prevObject[0].id;
+          // const regex = /[^0-9]/g;
+          // let id = str.replace(regex, '');
+          const id = item.prevObject[0].id.replace(/[^0-9]/g, '');
 
-          className = classNameGet(document.getElementById(item[0].id));
-          beforeOrder = orderGet(className, item[0].id);
-
-          parent_id_Tmp = item[0].parentNode.id;
+          //orderNameGetは同一のクラス名を対象に順番を取得する
+          const className = classNameGet(document.getElementById(item[0].id));
+          orderBeforeMoving = orderGet(className, item[0].id);
+          tmpParentID = item[0].parentNode.id;
           $.ajax({
             url: '/mypage/' + hashedIdGet,
             type: 'POST',
@@ -50,44 +50,36 @@ export const jQueryUIOptionsFunc = () => {
               id,
             }),
             success: function (res) {
-              tmpArray = res.response;
+              childFolders = res.response;
             },
           });
-          //フォルダの子ノートを全て取得する(passの更新に使用するため) ← いらないのでは？？サーバーもコメントアウト 8/18
-          // $.ajax({
-          //   url: '/mypage/' + hashedIdGet,
-          //   type: 'POST',
-          //   dataType: 'Json',
-          //   contentType: 'application/json',
-          //   data: JSON.stringify({
-          //     flg: 'noteChild',
-          //     id,
-          //   }),
-          //   success: function (res) {},
-          // });
-          //ドラッグアンドドロップ前の要素群を取得するため
+          //ドラッグアンドドロップ前の要素群を取得
           if (item[0].parentNode.firstElementChild) {
             elementsBeforeMoving = item[0].parentNode.firstElementChild;
           }
         },
-        //自分のfolder配下にはD&Dをできないようにしている
+        //自分自身の配下にはドラッグ&ドロップ不可にしている(folder)
         //item:D＆Dの自分自身    container:ドラッグ先の要素
         isValidTarget: function (item, container) {
-          let id = item.prevObject[0].getAttribute('value');
-          let b = container.el[0].classList[0];
+          const id = Number(item.prevObject[0].getAttribute('value'));
+          //let b = container.el[0].classList[0];
 
-          id = Number(id);
-          tmpArray.push(id); //自分自身のidを追加
-          //class名の"f_160"とかの数字のみを取り出している
-          const regex = /[^0-9]/g;
-          const result = b.replace(regex, '');
-          let a = Number(result);
+          //id = Number(id);
+          childFolders.push(id); //自分自身のidを追加
 
-          //tmpArray:子要素以下のid格納した配列
+          // const regex = /[^0-9]/g;
+          // const result = container.el[0].classList[0].replace(/[^0-9]/g, '');
+          //親folderのulのclass名"f_160"とかの数字のみを取り出している(これがParentIDとなる)
+          const draggedFolderID = Number(
+            container.el[0].classList[0].replace(/[^0-9]/g, '')
+          );
+
           //true: D&D可能　　false:D&D不可
-          if (tmpArray.includes(a) == true) {
+          if (childFolders.includes(draggedFolderID) == true) {
+            console.log('✖️');
             return false;
           } else {
+            console.log('○');
             return true;
           }
         },
@@ -106,7 +98,7 @@ export const jQueryUIOptionsFunc = () => {
           //*******************************************************************************
           if (item.prevObject[0].className.indexOf('file') != -1) {
             //移動後も同じparent_id
-            if (parent_id_Tmp == item[0].parentNode.id) {
+            if (tmpParentID == item[0].parentNode.id) {
               //同じparent_id内でD＆D後の順番
               let afterOrder = orderGet(className, item[0].id);
 
@@ -158,7 +150,7 @@ export const jQueryUIOptionsFunc = () => {
                 //順番は変化なし
               }
               //D&D後は違うフォルダ(parent_id)へ移動した時
-            } else if (parent_id_Tmp != item[0].parentNode.id) {
+            } else if (tmpParentID != item[0].parentNode.id) {
               let id = item[0].childNodes[0].getAttribute('value');
 
               $.ajax({
@@ -169,17 +161,19 @@ export const jQueryUIOptionsFunc = () => {
                 data: JSON.stringify({
                   flg: 'parentIDDiffer',
                   parent_id: item[0].parentNode.id,
-                  old_parent_id: parent_id_Tmp,
+                  old_parent_id: tmpParentID,
                   id,
-                  old_order: beforeOrder,
+                  old_order: orderBeforeMoving,
                 }),
                 success: function (res) {
                   item[0].classList.replace(
-                    `parent${parent_id_Tmp}`,
+                    `parent${tmpParentID}`,
                     `parent${item[0].parentNode.id}`
                   );
 
-                  className = classNameGet(document.getElementById(item[0].id));
+                  const className = classNameGet(
+                    document.getElementById(item[0].id)
+                  );
                   let afterOrder = orderGet(className, item[0].id);
 
                   const pass = passGet(id, item[0].childNodes[0].innerHTML);
@@ -215,7 +209,7 @@ export const jQueryUIOptionsFunc = () => {
             //********************************************************************************
           } else {
             //移動後も同じparent_id
-            if (parent_id_Tmp == item[0].parentNode.id) {
+            if (tmpParentID == item[0].parentNode.id) {
               let afterOrder = orderGet(className, item[0].id);
               //orderが大きくなる場合(下へD＆D);
               if (beforeOrder < afterOrder) {
@@ -262,7 +256,7 @@ export const jQueryUIOptionsFunc = () => {
                 //順番は変化なし
               }
               //D&D後は違うフォルダ(parent_id)へ移動した時
-            } else if (parent_id_Tmp != item[0].parentNode.id) {
+            } else if (tmpParentID != item[0].parentNode.id) {
               //D&D後に新しく追加された側のorderの動き
               $.ajax({
                 url: '/folderPostController/',
@@ -272,18 +266,20 @@ export const jQueryUIOptionsFunc = () => {
                 data: JSON.stringify({
                   flg: 'parentIDDiffer',
                   parent_id: item[0].parentNode.id,
-                  old_parent_id: parent_id_Tmp,
+                  old_parent_id: tmpParentID,
                   id,
-                  old_order: beforeOrder,
+                  old_order: orderBeforeMoving,
                 }),
                 success: function (res) {
                   item[0].classList.replace(
-                    `parent${parent_id_Tmp}`,
+                    `parent${tmpParentID}`,
                     `parent${item[0].parentNode.id}`
                   );
 
                   //D&D後の順番を取得
-                  className = classNameGet(document.getElementById(item[0].id));
+                  const className = classNameGet(
+                    document.getElementById(item[0].id)
+                  );
                   let afterOrder = orderGet(className, item[0].id);
 
                   //フォルダのD&D時に、タブのフォーカスが当たっているファイルが配下にあればパスを変更する(対象のタブをクリックする)
