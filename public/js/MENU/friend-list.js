@@ -8,7 +8,7 @@ import { resultPopUp, answerPopUp,explanationPopUp } from '../stringUtils.js';
 export const friendListUpdate = () => {
   return new Promise((resolve, reject) => {
     $.ajax({
-      url: '/mypage/' + hashedIdGet,
+      url: '/friendListPostController/',
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
@@ -147,7 +147,7 @@ async function friendListDeleteCross(event) {
   );
   if (result === true) {
     $.ajax({
-      url: '/mypage/' + hashedIdGet,
+      url: '/friendListPostController/',
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
@@ -200,7 +200,7 @@ function friendListNameChange(event) {
 
     if (name !== '') {
       $.ajax({
-        url: '/mypage/' + hashedIdGet,
+        url: '/friendListPostController/',
         type: 'POST',
         dataType: 'Json',
         contentType: 'application/json',
