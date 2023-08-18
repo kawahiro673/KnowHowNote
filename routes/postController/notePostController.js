@@ -362,7 +362,7 @@ router.post('/', (req, res) => {
               if (error) {
                 reject(error);
               } else {
-                resolve();
+                resolve(resultDecoded);
               }
             }
           );
@@ -394,10 +394,7 @@ router.post('/', (req, res) => {
               if (error) {
                 reject(error);
               } else {
-                resolve({
-                  pattern: req.body.pattern,
-                  resultDecoded,
-                });
+                resolve();
               }
             }
           );
