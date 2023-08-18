@@ -266,48 +266,49 @@ router
           console.error(error);
           res.status(500).send('Internal Server Error.(noteChild)');
         });
-    } else if (req.body.flg === 'list') {
-      getUserDataByToken(req)
-        .then((resultDecoded) => {
-          return new Promise((resolve, reject) => {
-            pool.query(
-              'select * from folder WHERE (Type IS NULL)  AND (UserID = ?) order by folder_order ASC ',
-              [resultDecoded[0].id],
-              (error, results) => {
-                if (error) {
-                  reject(error);
-                } else {
-                  resolve({ results, resultDecoded });
-                }
-              }
-            );
-          });
-        })
-        .then(({ results, resultDecoded }) => {
-          return new Promise((resolve, reject) => {
-            pool.query(
-              'select * from it_memo WHERE (Type != "Share") AND (UserID = ?) order by folder_order ASC',
-              [resultDecoded[0].id],
-              (error, result) => {
-                if (error) {
-                  reject(error);
-                } else {
-                  res.send({
-                    response: results,
-                    response2: result,
-                    userName: resultDecoded[0].UserName,
-                    id: resultDecoded[0].id,
-                    user: resultDecoded[0],
-                  });
-                }
-              }
-            );
-          });
-        })
-        .catch((error) => {
-          console.error(error);
-          res.status(500).send('Internal Server Error.(list)');
-        });
+    // } 
+    // else if (req.body.flg === 'list') {
+    //   getUserDataByToken(req)
+    //     .then((resultDecoded) => {
+    //       return new Promise((resolve, reject) => {
+    //         pool.query(
+    //           'select * from folder WHERE (Type IS NULL)  AND (UserID = ?) order by folder_order ASC ',
+    //           [resultDecoded[0].id],
+    //           (error, results) => {
+    //             if (error) {
+    //               reject(error);
+    //             } else {
+    //               resolve({ results, resultDecoded });
+    //             }
+    //           }
+    //         );
+    //       });
+    //     })
+    //     .then(({ results, resultDecoded }) => {
+    //       return new Promise((resolve, reject) => {
+    //         pool.query(
+    //           'select * from it_memo WHERE (Type != "Share") AND (UserID = ?) order by folder_order ASC',
+    //           [resultDecoded[0].id],
+    //           (error, result) => {
+    //             if (error) {
+    //               reject(error);
+    //             } else {
+    //               res.send({
+    //                 response: results,
+    //                 response2: result,
+    //                 userName: resultDecoded[0].UserName,
+    //                 id: resultDecoded[0].id,
+    //                 user: resultDecoded[0],
+    //               });
+    //             }
+    //           }
+    //         );
+    //       });
+    //     })
+    //     .catch((error) => {
+    //       console.error(error);
+    //       res.status(500).send('Internal Server Error.(list)');
+    //     });
     } else if (req.body.flg === 'deleteALL') {
       getUserDataByToken(req)
         .then((resultDecoded) => {
