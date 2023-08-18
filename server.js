@@ -16,7 +16,7 @@ const auth = require('./routes/auth');
 const login = require('./routes/srv_login');
 const mailer = require('./routes/mailer');
 const check = require('./routes/check');
-const mypage1 = require('./routes/listCreate');
+const listCreate = require('./routes/listCreate');
 const cookieParser = require('cookie-parser');
 
 
