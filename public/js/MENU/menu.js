@@ -321,7 +321,7 @@ document
     );
     if (result === true) {
       $.ajax({
-        url: '/mypage/' + hashedIdGet,
+        url: '/authenticationIDPostController/',
         type: 'POST',
         dataType: 'Json',
         contentType: 'application/json',
