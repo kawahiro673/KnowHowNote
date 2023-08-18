@@ -32,7 +32,7 @@ export const newFileCreateFunc = (id) => {
 
     const createFile = async () => {
       if (!isCreatingFile) {
-        isCreatingFile = true; // ファイル作成中フラグを立てる
+        isCreatingFile = true;
         try{
         await newCreateFile2(inputTab, id, order);
         document.removeEventListener('click', handleClick);
@@ -40,9 +40,8 @@ export const newFileCreateFunc = (id) => {
         document.removeEventListener('keypress', handleEnter);
         resolve();
         } catch{
-          // 条件が満たされない場合の処理
           isCreatingFile = false;
-          inputTab.focus(); // 再度入力が行われるように input にフォーカスを戻す
+          inputTab.focus(); 
         }
       }
     };
@@ -57,7 +56,7 @@ export const newFileCreateFunc = (id) => {
     const handleContextMenu = (e) => {
       e.preventDefault();
       if (!e.target.closest('#inputTab')) {
-        inputTab.value = '新しいノート';
+      　if (!inputTab.value || !inputTab.value.match(/\S/g)) inputTab.value = '新しいノート';
         createFile();
       }
     };
@@ -66,6 +65,7 @@ export const newFileCreateFunc = (id) => {
       if (e.keyCode === 13) {
         e.preventDefault();
         if (!isCreatingFile) {
+      　　if (!inputTab.value || !inputTab.value.match(/\S/g)) inputTab.value = '新しいノート';
           createFile();
         }
       }
