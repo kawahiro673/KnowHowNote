@@ -23,7 +23,7 @@ let hashedId = document.getElementById('user_name').dataset.hashedId; // data属
 export const listCreate = () => {
   $.ajax({
     //url: '/mypage/' + hashedId,
-    url: '/data/' + hashedId,
+    url: '/data/',
     type: 'POST',
     dataType: 'Json',
     contentType: 'application/json',
