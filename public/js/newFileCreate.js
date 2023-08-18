@@ -1,5 +1,5 @@
 import { listCreate } from './main.js';
-import { orderGet, currentTimeGet } from './stringUtils.js';
+import { orderGet, currentTimeGet,explanationPopUp } from './stringUtils.js';
 import { hasInput, disableElements, getInputOrder } from './utilityFunction.js';
 
 export const newFileCreateFunc = (id) => {
@@ -73,7 +73,7 @@ export const newCreateFile2 = (inputTab, parentId, order) => {
   return new Promise((resolve, reject) => {
     //何も入力されていない時や空白や改行のみ
     if (!inputTab.value || !inputTab.value.match(/\S/g)) {
-      alert('タイトルを入力してください');
+     explanationPopUp('名前変更','名前を入力してください');
     } else {
       const time = currentTimeGet();
       $.ajax({
