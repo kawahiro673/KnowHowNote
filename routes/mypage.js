@@ -35,6 +35,7 @@ router
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
             pool.query(
+              //移動後要素群。対象の要素以上に順番が大きいもののorderを+１する(folder)
               'UPDATE folder SET folder_order = folder_order +1 where (parent_id = ?) AND (folder_order >= ?) AND (UserID = ?)',
               [req.body.parent_id, req.body.order, resultDecoded[0].id],
               (error, result) => {
@@ -50,6 +51,7 @@ router
         .then((resultDecoded) => {
           return new Promise((resolve, reject) => {
             pool.query(
+              //移動後要素群。対象の要素以上に順番が大きいもののorderを+１する(it_memo)
               'UPDATE it_memo SET folder_order = folder_order +1 where (parent_id = ?) AND (folder_order >= ?) AND (UserID = ?)',
               [req.body.parent_id, req.body.order, resultDecoded[0].id],
               (error, result) => {
@@ -115,19 +117,6 @@ router
                       } else {
                         resolve();
                       }
-                    }
-                  );
-                });
-              })
-              .then(() => {
-                return new Promise((resolve, reject) => {
-                  pool.query(
-                    'SELECT * FROM tab_hold WHERE id = ?',
-                    [req.body.id],
-                    (error, result) => {
-                      res.send({
-                        msg: '成功しました',
-                      });
                     }
                   );
                 });

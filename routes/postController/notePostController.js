@@ -339,9 +339,9 @@ router.post('/', (req, res) => {
       .then((resultDecoded) => {
         return new Promise((resolve, reject) => {
           pool.query(
-            //移動前の階層での変化。対象の要素より、順番が大きいもののorderを-１する
+            //移動前要素群。対象の要素より順番が大きいもののorderを-１する(folder)
             'UPDATE folder SET folder_order = folder_order -1 where (parent_id = ?) AND (folder_order > ?) AND (UserID = ?)',
-            [req.body.old_parent_id, req.body.old_order, resultDecoded[0].id],
+            [req.body.oldParentID, req.body.oldOrder, resultDecoded[0].id],
             (error, result) => {
               if (error) {
                 reject(error);
@@ -355,8 +355,59 @@ router.post('/', (req, res) => {
       .then((resultDecoded) => {
         return new Promise((resolve, reject) => {
           pool.query(
+            //移動前要素群。対象の要素より順番が大きいもののorderを-１する(it_memo)
             'UPDATE it_memo SET folder_order = folder_order -1 where (parent_id = ?) AND (folder_order > ?) AND (UserID = ?)',
-            [req.body.old_parent_id, req.body.old_order, resultDecoded[0].id],
+            [req.body.oldParentID, req.body.oldOrder, resultDecoded[0].id],
+            (error, result) => {
+              if (error) {
+                reject(error);
+              } else {
+                resolve();
+              }
+            }
+          );
+        });
+      })
+      .then((resultDecoded) => {
+        return new Promise((resolve, reject) => {
+          pool.query(
+            //移動後要素群。対象の要素以上に順番が大きいもののorderを+１する(folder)
+            'UPDATE folder SET folder_order = folder_order +1 where (parent_id = ?) AND (folder_order >= ?) AND (UserID = ?)',
+            [req.body.newParentID, req.body.newOrder, resultDecoded[0].id],
+            (error, result) => {
+              if (error) {
+                reject(error);
+              } else {
+                resolve(resultDecoded);
+              }
+            }
+          );
+        });
+      })
+      .then((resultDecoded) => {
+        return new Promise((resolve, reject) => {
+          pool.query(
+            //移動後要素群。対象の要素以上に順番が大きいもののorderを+１する(it_memo)
+            'UPDATE it_memo SET folder_order = folder_order +1 where (parent_id = ?) AND (folder_order >= ?) AND (UserID = ?)',
+            [req.body.newParentID, req.body.newOrder, resultDecoded[0].id],
+            (error, result) => {
+              if (error) {
+                reject(error);
+              } else {
+                resolve({
+                  pattern: req.body.pattern,
+                  resultDecoded,
+                });
+              }
+            }
+          );
+        });
+      })
+      .then(() => {
+        return new Promise((resolve, reject) => {
+          pool.query(
+            'UPDATE it_memo SET parent_id = ? WHERE id = ?',
+            [req.body.newParentID, req.body.id],
             (error, result) => {
               if (error) {
                 reject(error);
@@ -370,8 +421,8 @@ router.post('/', (req, res) => {
       .then(() => {
         return new Promise((resolve, reject) => {
           pool.query(
-            'UPDATE it_memo SET parent_id = ? WHERE id = ?',
-            [req.body.parent_id, req.body.id],
+            'UPDATE it_memo SET folder_order =? WHERE id = ?',
+            [req.body.newOrder, req.body.id],
             (error, result) => {
               if (error) {
                 reject(error);
