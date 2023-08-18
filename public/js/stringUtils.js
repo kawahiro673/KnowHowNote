@@ -160,15 +160,6 @@ export const explanationPopUp = (title, content) => {
         'none';
     });
 
-  // document
-  //   .getElementById('popup-overlay_explanation-pop')
-  //   .addEventListener('click', (e) => {
-  //     const popup = document.getElementById('popup-overlay_explanation-pop');
-  //     if (e.target === popup) {
-  //       popup.style.display = 'none';
-  //     }
-  //   });
-
   document
     .getElementById('yes-button-explanation-pop')
     .addEventListener('click', (e) => {

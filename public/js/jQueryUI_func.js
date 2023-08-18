@@ -1,9 +1,4 @@
-import {
-  orderGet,
-  passGet,
-  classNameGet,
-  fileIDUnderTheFolder,
-} from './stringUtils.js';
+import { orderGet, classNameGet, fileIDUnderTheFolder } from './stringUtils.js';
 
 import { tabFocusIDGet, hashedIdGet } from './main.js';
 import {
@@ -142,6 +137,10 @@ export const jQueryUIOptionsFunc = () => {
             } else if (tmpParentID != item[0].parentNode.id) {
               const id = item[0].childNodes[0].getAttribute('value');
 
+              item[0].classList.replace(
+                `parent${tmpParentID}`,
+                `parent${item[0].parentNode.id}`
+              );
               className = classNameGet(document.getElementById(item[0].id));
               const orderAfterMoving = orderGet(className, item[0].id);
               console.log(item[0].parentNode.id);
@@ -162,10 +161,6 @@ export const jQueryUIOptionsFunc = () => {
                   newOrder: orderAfterMoving,
                 }),
                 success: function (res) {
-                  item[0].classList.replace(
-                    `parent${tmpParentID}`,
-                    `parent${item[0].parentNode.id}`
-                  );
                   //フォルダのD&D時に、タブのフォーカスが当たっていればパスを変更する(対象のタブをクリックする)
                   if (Number(id) === tabFocusIDGet()) {
                     $(`#tab-ID${id}`).trigger('click');
@@ -229,6 +224,10 @@ export const jQueryUIOptionsFunc = () => {
               }
               //D&D後は違うフォルダ(parent_id)へ移動した時
             } else if (tmpParentID != item[0].parentNode.id) {
+              item[0].classList.replace(
+                `parent${tmpParentID}`,
+                `parent${item[0].parentNode.id}`
+              );
               className = classNameGet(document.getElementById(item[0].id));
               const orderAfterMoving = orderGet(className, item[0].id);
               console.log(item[0].parentNode.id);
@@ -249,10 +248,6 @@ export const jQueryUIOptionsFunc = () => {
                   newOrder: orderAfterMoving,
                 }),
                 success: function (res) {
-                  item[0].classList.replace(
-                    `parent${tmpParentID}`,
-                    `parent${item[0].parentNode.id}`
-                  );
                   //フォルダのD&D時に、タブのフォーカスが当たっているファイルが配下にあればパスを変更する(対象のタブをクリックする)
                   const fileUnder = fileIDUnderTheFolder(item[0].parentNode);
                   const tabFocusID = tabFocusIDGet();
