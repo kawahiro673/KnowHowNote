@@ -143,10 +143,7 @@ export const jQueryUIOptionsFunc = () => {
               );
               className = classNameGet(document.getElementById(item[0].id));
               const orderAfterMoving = orderGet(className, item[0].id);
-              console.log(item[0].parentNode.id);
-              console.log(tmpParentID);
-              console.log(orderBeforeMoving);
-              console.log(orderAfterMoving);
+
               $.ajax({
                 url: '/notePostController/',
                 type: 'POST',
@@ -230,10 +227,7 @@ export const jQueryUIOptionsFunc = () => {
               );
               className = classNameGet(document.getElementById(item[0].id));
               const orderAfterMoving = orderGet(className, item[0].id);
-              console.log(item[0].parentNode.id);
-              console.log(tmpParentID);
-              console.log(orderBeforeMoving);
-              console.log(orderAfterMoving);
+
               $.ajax({
                 url: '/folderPostController/',
                 type: 'POST',
@@ -255,25 +249,10 @@ export const jQueryUIOptionsFunc = () => {
                     $(`#tab-ID${tabFocusID}`).trigger('click');
                   }
 
-                  // $.ajax({
-                  //   url: '/mypage/' + hashedIdGet,
-                  //   type: 'POST',
-                  //   dataType: 'Json',
-                  //   contentType: 'application/json',
-                  //   data: JSON.stringify({
-                  //     flg: 'addOrder',
-                  //     id,
-                  //     parent_id: item[0].parentNode.id,
-                  //     order: orderAfterMoving,
-                  //     pattern: 'folder',
-                  //   }),
-                  //   success: function (res) {
                   updateLastClasses_Folder(item[0]);
                   addLastClassToLastSibling(elementsBeforeMoving);
                   removeLastHitareaClasses(item[0]);
                   removeLastHitareaClasses_this(item[0]);
-                  //   },
-                  // });
                 },
               });
             }

@@ -9,28 +9,6 @@ export const shareContextmenu = () => {
       shareThis: this,
     };
 
-    //[マイノートへ追加する]押下時
-    //$(document).ready(function () {
-    //   $('#MyNoteAdd').off('click');
-    //   $('#MyNoteAdd').on('click', function (e) {
-    //     console.log('上の関数です');
-    //     const li = share.shareThis.parentElement;
-    //     const ul = li.parentElement;
-    //     ul.removeChild(li);
-    //     mynoteAddFunc(share.id);
-    //   });
-    // });
-
-    // document
-    //   .getElementById('Add-from-Details')
-    //   .addEventListener('click', () => {
-    //     console.log('下の関数です');
-    //     const li = share.shareThis.parentElement;
-    //     const ul = li.parentElement;
-    //     ul.removeChild(li);
-    //     mynoteAddFunc(share.id);
-    //   });
-
     //[マイノートへ追加する]押下時のイベントリスナーは一度だけ設定
     $('#MyNoteAdd')
       .off('click')
@@ -41,16 +19,6 @@ export const shareContextmenu = () => {
         ul.removeChild(li);
         mynoteAddFunc(share.id);
       });
-
-    // document
-    //   .getElementById('Add-from-Details')
-    //   .addEventListener('click', () => {
-    //     console.log('下の関数です');
-    //     const li = share.shareThis.parentElement;
-    //     const ul = li.parentElement;
-    //     ul.removeChild(li);
-    //     mynoteAddFunc(share.id);
-    //   });
 
     (async () => {
       try {
