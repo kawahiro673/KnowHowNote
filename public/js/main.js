@@ -31,6 +31,7 @@ export const listCreate = () => {
       flg: 'list',
     }),
     success: async (res) => {
+      console.log(res.response);
       if (res.status === 500) {
         console.log('ログイン画面に戻ります');
         location.href = 'https://nodejs-itnote-app.herokuapp.com';
