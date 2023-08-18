@@ -13,7 +13,6 @@ const { off } = require('../db.js');
 const rules = require('nodemon/lib/rules');
 const Connection = require('mysql/lib/Connection');
 const PoolCluster = require('mysql/lib/PoolCluster');
-const nodemailer = require('nodemailer');
 
 
 async function getUserDataAndQueries(req) {
@@ -47,7 +46,7 @@ async function executeQuery(query, params) {
 }
 
 // メインのルートハンドラ
-app.get('/data', async (req, res) => {
+router.get('/data', async (req, res) => {
   try {
     const { resultDecoded, results1, results2 } = await getUserDataAndQueries(req);
 
@@ -63,3 +62,5 @@ app.get('/data', async (req, res) => {
     res.status(500).send('Internal Server Error.(list)');
   }
 });
+
+module.exports = router;
