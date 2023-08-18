@@ -162,7 +162,7 @@ const shareFunctionCheckBoxOption = () => {
 //各ユーザーが設定している共有機能のON・OFFを取得する
 const shareFunctionCheckBoxFlg = (checkbox) => {
   $.ajax({
-    url: '/mypage/' + hashedIdGet,
+    url: '/otherMenuPostController/',
     type: 'POST',
     dataType: 'Json',
     contentType: 'application/json',
@@ -274,7 +274,7 @@ document
     }
 
     $.ajax({
-      url: '/mypage/' + hashedIdGet,
+      url: '/otherMenuPostController/',
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
@@ -467,7 +467,7 @@ document
     }
 
     $.ajax({
-      url: '/mypage/' + hashedIdGet,
+      url: '/otherMenuPostController/',
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
@@ -722,7 +722,7 @@ document.getElementById('friend-list').addEventListener('click', async () => {
   document.getElementById('popup-overlay_friend-list').style.display = 'block';
 
   $.ajax({
-    url: '/mypage/' + hashedIdGet,
+    url: '/otherMenuPostController/',
     type: 'POST',
     dataType: 'Json',
     contentType: 'application/json',
@@ -845,7 +845,7 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
   if (document.getElementById('inquiry-content').value !== '') {
     const date = currentTimeGet();
     $.ajax({
-      url: '/mypage/' + hashedIdGet,
+      url: '/otherMenuPostController/',
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
