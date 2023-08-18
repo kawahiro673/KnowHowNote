@@ -521,7 +521,7 @@ document
     );
     if (result === true) {
       $.ajax({
-        url: '/mypage/' + hashedIdGet,
+        url: '/accountActions/',
         type: 'POST',
         dataType: 'Json',
         contentType: 'application/json',
@@ -878,7 +878,7 @@ document.getElementById('logout').addEventListener('click', async function () {
   );
   if (result === true) {
     $.ajax({
-      url: '/mypage/' + hashedIdGet,
+      url: '/accountActions/',
       type: 'POST',
       dataType: 'Json',
       contentType: 'application/json',
