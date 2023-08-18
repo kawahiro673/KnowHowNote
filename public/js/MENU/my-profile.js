@@ -185,7 +185,7 @@ export const backgroundColorDelete = () => {
 
 const backgroundColorPreservation = (color) => {
   $.ajax({
-    url: '/mypage/' + hashedIdGet,
+    url: '/otherMenuPostController/',
     type: 'POST',
     dataType: 'Json',
     contentType: 'application/json',
