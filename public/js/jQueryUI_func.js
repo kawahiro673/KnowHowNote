@@ -138,12 +138,16 @@ export const jQueryUIOptionsFunc = () => {
               } else {
                 //順番は変化なし
               }
-              //D&D後は違うフォルダ(parent_id)へ移動した時
+              //D&D後は違うフォルダへ移動した時
             } else if (tmpParentID != item[0].parentNode.id) {
               const id = item[0].childNodes[0].getAttribute('value');
 
               className = classNameGet(document.getElementById(item[0].id));
               const orderAfterMoving = orderGet(className, item[0].id);
+              console.log(item[0].parentNode.id);
+              console.log(tmpParentID);
+              console.log(orderBeforeMoving);
+              console.log(orderAfterMoving);
               $.ajax({
                 url: '/notePostController/',
                 type: 'POST',
