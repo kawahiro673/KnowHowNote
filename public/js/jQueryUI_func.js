@@ -162,20 +162,6 @@ export const jQueryUIOptionsFunc = () => {
                     `parent${tmpParentID}`,
                     `parent${item[0].parentNode.id}`
                   );
-
-                  // $.ajax({
-                  //   url: '/mypage/' + hashedIdGet,
-                  //   type: 'POST',
-                  //   dataType: 'Json',
-                  //   contentType: 'application/json',
-                  //   data: JSON.stringify({
-                  //     flg: 'addOrder',
-                  //     id,
-                  //     parent_id: item[0].parentNode.id,
-                  //     order: orderAfterMoving,
-                  //     pattern: 'file',
-                  //   }),
-                  //   success: function (res) {
                   //フォルダのD&D時に、タブのフォーカスが当たっていればパスを変更する(対象のタブをクリックする)
                   if (Number(id) === tabFocusIDGet()) {
                     $(`#tab-ID${id}`).trigger('click');
@@ -183,8 +169,6 @@ export const jQueryUIOptionsFunc = () => {
                   updateLastClasses_file(item[0]);
                   addLastClassToLastSibling(elementsBeforeMoving);
                   removeLastHitareaClasses(item[0]);
-                  //   },
-                  // });
                 },
               });
             }
@@ -241,7 +225,8 @@ export const jQueryUIOptionsFunc = () => {
               }
               //D&D後は違うフォルダ(parent_id)へ移動した時
             } else if (tmpParentID != item[0].parentNode.id) {
-              //D&D後に新しく追加された側のorderの動き
+              className = classNameGet(document.getElementById(item[0].id));
+              const orderAfterMoving = orderGet(className, item[0].id);
               $.ajax({
                 url: '/folderPostController/',
                 type: 'POST',
@@ -249,21 +234,17 @@ export const jQueryUIOptionsFunc = () => {
                 contentType: 'application/json',
                 data: JSON.stringify({
                   flg: 'parentIDDiffer',
-                  parent_id: item[0].parentNode.id,
-                  old_parent_id: tmpParentID,
+                  newParentID: item[0].parentNode.id,
+                  oldParentID: tmpParentID,
                   id,
-                  old_order: orderBeforeMoving,
+                  oldOrder: orderBeforeMoving,
+                  newOrder: orderAfterMoving,
                 }),
                 success: function (res) {
                   item[0].classList.replace(
                     `parent${tmpParentID}`,
                     `parent${item[0].parentNode.id}`
                   );
-
-                  //D&D後の順番を取得
-                  className = classNameGet(document.getElementById(item[0].id));
-                  let orderAfterMoving = orderGet(className, item[0].id);
-
                   //フォルダのD&D時に、タブのフォーカスが当たっているファイルが配下にあればパスを変更する(対象のタブをクリックする)
                   const fileUnder = fileIDUnderTheFolder(item[0].parentNode);
                   const tabFocusID = tabFocusIDGet();
@@ -271,25 +252,25 @@ export const jQueryUIOptionsFunc = () => {
                     $(`#tab-ID${tabFocusID}`).trigger('click');
                   }
 
-                  $.ajax({
-                    url: '/mypage/' + hashedIdGet,
-                    type: 'POST',
-                    dataType: 'Json',
-                    contentType: 'application/json',
-                    data: JSON.stringify({
-                      flg: 'addOrder',
-                      id,
-                      parent_id: item[0].parentNode.id,
-                      order: orderAfterMoving,
-                      pattern: 'folder',
-                    }),
-                    success: function (res) {
-                      updateLastClasses_Folder(item[0]);
-                      addLastClassToLastSibling(elementsBeforeMoving);
-                      removeLastHitareaClasses(item[0]);
-                      removeLastHitareaClasses_this(item[0]);
-                    },
-                  });
+                  // $.ajax({
+                  //   url: '/mypage/' + hashedIdGet,
+                  //   type: 'POST',
+                  //   dataType: 'Json',
+                  //   contentType: 'application/json',
+                  //   data: JSON.stringify({
+                  //     flg: 'addOrder',
+                  //     id,
+                  //     parent_id: item[0].parentNode.id,
+                  //     order: orderAfterMoving,
+                  //     pattern: 'folder',
+                  //   }),
+                  //   success: function (res) {
+                  updateLastClasses_Folder(item[0]);
+                  addLastClassToLastSibling(elementsBeforeMoving);
+                  removeLastHitareaClasses(item[0]);
+                  removeLastHitareaClasses_this(item[0]);
+                  //   },
+                  // });
                 },
               });
             }
