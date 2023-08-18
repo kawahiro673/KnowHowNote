@@ -4,6 +4,7 @@ import {
   orderGet,
   resultPopUp,
   answerPopUp,
+  explanationPopUp,
 } from '../stringUtils.js';
 import { tabFocusIDGet, getTabIdArray } from '../main.js';
 import { newFileCreateFunc } from '../newFileCreate.js';
@@ -207,7 +208,7 @@ const noteNameChange = (file) => {
     if (e.keyCode === 13) {
       //何も入力されていない時や空白や改行のみの入力
       if (!inputTab.value || !inputTab.value.match(/\S/g)) {
-        alert('タイトルを入力してください');
+        explanationPopUp('名前変更','名前を変更してください');
       } else {
         const time = currentTimeGet();
         $.ajax({
