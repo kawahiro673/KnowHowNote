@@ -44,7 +44,7 @@ menuLabel.addEventListener('click', function (event) {
 document.getElementById('profile').addEventListener('click', () => {
   document.getElementById('popup-overlay_profile').style.display = 'block';
   $.ajax({
-    url: '/mypage/' + hashedIdGet,
+    url: '/otherMenuPostController/',
     type: 'POST',
     dataType: 'Json',
     contentType: 'application/json',
