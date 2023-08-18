@@ -182,75 +182,78 @@ router
           console.error(error);
           res.status(500).send('Internal Server Error.(folderChild)');
         });
-      //フォルダの子ノートを全て取得する(passの更新に使用するため)
-    } else if (req.body.flg === 'noteChild') {
-      let idArray = []; //最終的にcodejsに返す値
-      let parentIdArray = [];
-      parentIdArray.push(req.body.id);
-      getUserDataByToken(req)
-        .then((resultDecoded) => {
-          return new Promise((resolve, reject) => {
-            pool.query(
-              'SELECT * FROM folder WHERE UserID = ?;',
-              [resultDecoded[0].id],
-              (error, result_folder) => {
-                if (error) {
-                  reject(error);
-                } else {
-                  resolve({
-                    result_folder,
-                    resultDecoded,
-                  });
-                }
-              }
-            );
-          });
-        })
-        .then(({ result_folder, resultDecoded }) => {
-          return new Promise((resolve, reject) => {
-            pool.query(
-              'SELECT * FROM it_memo WHERE UserID = ?;',
-              [resultDecoded[0].id],
-              (error, result_note) => {
-                if (error) {
-                  reject(error);
-                } else {
-                  while (parentIdArray.length !== 0) {
-                    parentIdArray.forEach((parentId) => {
-                      //まず配下のノート格納
-                      result_note.forEach((note) => {
-                        if (parentId == note.parent_id) {
-                          //重複していないなら格納する
-                          if (idArray.indexOf(note.id) == -1) {
-                            idArray.push(note.id);
-                          }
-                        }
-                      });
-                      result_folder.forEach((folder) => {
-                        if (parentId == folder.parent_id) {
-                          //重複していないなら格納する
-                          if (parentIdArray.indexOf(folder.id) == -1) {
-                            parentIdArray.push(folder.id);
-                          }
-                        }
-                      });
-                      parentIdArray.splice(parentIdArray.indexOf(parentId), 1);
-                    });
-                  }
-                  resolve();
-                }
-              }
-            );
-          });
-        })
-        .then(() => {
-          res.send({ response: idArray });
-        })
-        .catch((error) => {
-          console.error(error);
-          res.status(500).send('Internal Server Error.(noteChild)');
-        });
-    } else {
+     
+    } 
+       //フォルダの子ノートを全て取得する(passの更新に使用するため)
+    // else if (req.body.flg === 'noteChild') {
+    //   let idArray = []; //最終的にcodejsに返す値
+    //   let parentIdArray = [];
+    //   parentIdArray.push(req.body.id);
+    //   getUserDataByToken(req)
+    //     .then((resultDecoded) => {
+    //       return new Promise((resolve, reject) => {
+    //         pool.query(
+    //           'SELECT * FROM folder WHERE UserID = ?;',
+    //           [resultDecoded[0].id],
+    //           (error, result_folder) => {
+    //             if (error) {
+    //               reject(error);
+    //             } else {
+    //               resolve({
+    //                 result_folder,
+    //                 resultDecoded,
+    //               });
+    //             }
+    //           }
+    //         );
+    //       });
+    //     })
+    //     .then(({ result_folder, resultDecoded }) => {
+    //       return new Promise((resolve, reject) => {
+    //         pool.query(
+    //           'SELECT * FROM it_memo WHERE UserID = ?;',
+    //           [resultDecoded[0].id],
+    //           (error, result_note) => {
+    //             if (error) {
+    //               reject(error);
+    //             } else {
+    //               while (parentIdArray.length !== 0) {
+    //                 parentIdArray.forEach((parentId) => {
+    //                   //まず配下のノート格納
+    //                   result_note.forEach((note) => {
+    //                     if (parentId == note.parent_id) {
+    //                       //重複していないなら格納する
+    //                       if (idArray.indexOf(note.id) == -1) {
+    //                         idArray.push(note.id);
+    //                       }
+    //                     }
+    //                   });
+    //                   result_folder.forEach((folder) => {
+    //                     if (parentId == folder.parent_id) {
+    //                       //重複していないなら格納する
+    //                       if (parentIdArray.indexOf(folder.id) == -1) {
+    //                         parentIdArray.push(folder.id);
+    //                       }
+    //                     }
+    //                   });
+    //                   parentIdArray.splice(parentIdArray.indexOf(parentId), 1);
+    //                 });
+    //               }
+    //               resolve();
+    //             }
+    //           }
+    //         );
+    //       });
+    //     })
+    //     .then(() => {
+    //       res.send({ response: idArray });
+    //     })
+    //     .catch((error) => {
+    //       console.error(error);
+    //       res.status(500).send('Internal Server Error.(noteChild)');
+    //     });
+    // }
+    else {
       console.log('flgで何も受け取ってません');
     }
   });
