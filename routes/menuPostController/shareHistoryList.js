@@ -6,7 +6,7 @@ const JWT = require('jsonwebtoken');
 const { reject } = require('bcrypt/promises');
 
 router.post('/', (req, res) => {
-  if (req.body.flg === 'ShareList') {
+  if (req.body.flg === 'ShareHistoryList') {
       getUserDataByToken(req).then((resultDecoded) => {
         return new Promise((resolve, reject) => {
           pool.query(
