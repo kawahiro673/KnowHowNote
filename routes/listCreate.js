@@ -14,13 +14,14 @@ const rules = require('nodemon/lib/rules');
 const Connection = require('mysql/lib/Connection');
 const PoolCluster = require('mysql/lib/PoolCluster');
 
-
 async function getUserDataAndQueries(req) {
   try {
     const resultDecoded = await getUserDataByToken(req);
 
-    const query1 = 'SELECT * FROM folder WHERE (Type IS NULL) AND (UserID = ?) ORDER BY folder_order ASC';
-    const query2 = 'SELECT * FROM it_memo WHERE (Type != "Share") AND (UserID = ?) ORDER BY folder_order ASC';
+    const query1 =
+      'SELECT * FROM folder WHERE (Type IS NULL) AND (UserID = ?) ORDER BY folder_order ASC';
+    const query2 =
+      'SELECT * FROM it_memo WHERE (Type != "Share") AND (UserID = ?) ORDER BY folder_order ASC';
 
     const [results1, results2] = await Promise.all([
       executeQuery(query1, [resultDecoded[0].id]),
@@ -48,7 +49,9 @@ async function executeQuery(query, params) {
 // メインのルートハンドラ
 router.post('/', async (req, res) => {
   try {
-    const { resultDecoded, results1, results2 } = await getUserDataAndQueries(req);
+    const { resultDecoded, results1, results2 } = await getUserDataAndQueries(
+      req
+    );
 
     res.send({
       response: results1,

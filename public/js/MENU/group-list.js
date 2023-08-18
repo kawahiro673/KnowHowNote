@@ -1,7 +1,7 @@
 //MENUのフレンドリスト → グループリスト等の実装
 import { hashedIdGet } from '../main.js';
 import { friendListUpdate } from './friend-list.js';
-import { resultPopUp, answerPopUp,explanationPopUp } from '../stringUtils.js';
+import { resultPopUp, answerPopUp, explanationPopUp } from '../stringUtils.js';
 
 export const openGroupAddPopup = () => {
   document.getElementById('popup-overlay_group-add').style.display = 'block';
@@ -29,11 +29,17 @@ export const addGroup = () => {
         );
         if (groupExistFlg) {
           //alert('そのグループ名は既に登録されています');
-          explanationPopUp('グループ登録','そのグループ名は既に登録されています');
+          explanationPopUp(
+            'グループ登録',
+            'そのグループ名は既に登録されています'
+          );
           return;
         } else if (groupName === 'なし') {
           //alert('グループ名「なし」は作成することができません');
-          explanationPopUp('グループ登録','グループ名「なし」は作成することができません')
+          explanationPopUp(
+            'グループ登録',
+            'グループ名「なし」は作成することができません'
+          );
           return;
         }
 
@@ -55,7 +61,7 @@ export const addGroup = () => {
     });
   } else {
     //alert('登録したいグループ名を入力してください');
-    explanationPopUp('グループ登録','登録したいグループ名を入力してください')
+    explanationPopUp('グループ登録', '登録したいグループ名を入力してください');
   }
 };
 

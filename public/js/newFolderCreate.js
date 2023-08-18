@@ -36,23 +36,24 @@ export const newFolderCreateFunc = (id) => {
 
     const createFolder = () => {
       if (!isCreatingFolder) {
-        isCreatingFolder = true; 
-        try{
-        newCreateFolder2(inputTab, id, order);
-        document.removeEventListener('click', handleClick);
-        document.removeEventListener('contextmenu', handleContextMenu);
-        document.removeEventListener('keypress', handleEnter);
-        resolve();
-        } catch{
+        isCreatingFolder = true;
+        try {
+          newCreateFolder2(inputTab, id, order);
+          document.removeEventListener('click', handleClick);
+          document.removeEventListener('contextmenu', handleContextMenu);
+          document.removeEventListener('keypress', handleEnter);
+          resolve();
+        } catch {
           isCreatingFolder = false;
-          inputTab.focus(); 
+          inputTab.focus();
         }
       }
     };
 
     const handleClick = (e) => {
       if (!e.target.closest('#inputTab')) {
-        if (!inputTab.value || !inputTab.value.match(/\S/g)) inputTab.value = '新しいフォルダ';
+        if (!inputTab.value || !inputTab.value.match(/\S/g))
+          inputTab.value = '新しいフォルダ';
         createFolder();
       }
     };
@@ -60,7 +61,8 @@ export const newFolderCreateFunc = (id) => {
     const handleContextMenu = (e) => {
       e.preventDefault();
       if (!e.target.closest('#inputTab')) {
-        if (!inputTab.value || !inputTab.value.match(/\S/g)) inputTab.value = '新しいフォルダ';
+        if (!inputTab.value || !inputTab.value.match(/\S/g))
+          inputTab.value = '新しいフォルダ';
         createFolder();
       }
     };
@@ -83,8 +85,8 @@ export const newFolderCreateFunc = (id) => {
 function newCreateFolder2(inputTab, parentId, order) {
   //何も入力されていない時や空白や改行のみの入力
   if (!inputTab.value || !inputTab.value.match(/\S/g)) {
-   resultPopUp('名前変更','名前を入力してください');
-   reject();
+    resultPopUp('名前変更', '名前を入力してください');
+    reject();
   } else {
     $.ajax({
       url: '/folderPostController/',

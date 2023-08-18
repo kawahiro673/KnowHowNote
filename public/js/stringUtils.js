@@ -149,9 +149,9 @@ export const explanationPopUp = (title, content) => {
 
   const yesButton = document.getElementById('yes-button-explanation-pop');
   if (yesButton) {
-    yesButton.focus(); 
+    yesButton.focus();
   }
-  
+
   document
     .getElementById('pop-delete_explanation-pop')
     .addEventListener('click', (e) => {
@@ -159,7 +159,7 @@ export const explanationPopUp = (title, content) => {
       document.getElementById('popup-overlay_explanation-pop').style.display =
         'none';
     });
-  
+
   // document
   //   .getElementById('popup-overlay_explanation-pop')
   //   .addEventListener('click', (e) => {
@@ -168,7 +168,7 @@ export const explanationPopUp = (title, content) => {
   //       popup.style.display = 'none';
   //     }
   //   });
-  
+
   document
     .getElementById('yes-button-explanation-pop')
     .addEventListener('click', (e) => {

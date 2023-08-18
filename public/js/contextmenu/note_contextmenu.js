@@ -208,7 +208,7 @@ const noteNameChange = (file) => {
     if (e.keyCode === 13) {
       //何も入力されていない時や空白や改行のみの入力
       if (!inputTab.value || !inputTab.value.match(/\S/g)) {
-        explanationPopUp('名前変更','名前を変更してください');
+        explanationPopUp('名前変更', '名前を変更してください');
       } else {
         const time = currentTimeGet();
         $.ajax({

@@ -185,7 +185,7 @@ export const keepButtonClick = (id) => {
     document.getElementById(`tabname${id}`).style.color = 'black';
   } else {
     //alert('タイトルを入力してください');
-     explanationPopUp('ノウハウ編集','タイトルを入力してください');
+    explanationPopUp('ノウハウ編集', 'タイトルを入力してください');
   }
 };
 
@@ -311,7 +311,10 @@ export const shareNoteSendFunc = (id, title) => {
     });
   } else {
     //alert('フレンドリストから共有したいユーザー/グループを選択してください');
-    explanationPopUp('共有','フレンドリストから共有したいユーザー/グループを選択してください');
+    explanationPopUp(
+      '共有',
+      'フレンドリストから共有したいユーザー/グループを選択してください'
+    );
   }
 };
 

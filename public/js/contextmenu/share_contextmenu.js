@@ -31,14 +31,16 @@ export const shareContextmenu = () => {
     //     mynoteAddFunc(share.id);
     //   });
 
-      //[マイノートへ追加する]押下時のイベントリスナーは一度だけ設定
-    $('#MyNoteAdd').off('click').on('click', () => {
-      console.log('上の関数です');
-      const li = share.shareThis.parentElement;
-      const ul = li.parentElement;
-      ul.removeChild(li);
-      mynoteAddFunc(share.id);
-    });
+    //[マイノートへ追加する]押下時のイベントリスナーは一度だけ設定
+    $('#MyNoteAdd')
+      .off('click')
+      .on('click', () => {
+        console.log('上の関数です');
+        const li = share.shareThis.parentElement;
+        const ul = li.parentElement;
+        ul.removeChild(li);
+        mynoteAddFunc(share.id);
+      });
 
     // document
     //   .getElementById('Add-from-Details')

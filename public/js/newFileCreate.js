@@ -1,5 +1,10 @@
 import { listCreate } from './main.js';
-import { orderGet, currentTimeGet,explanationPopUp, resultPopUp } from './stringUtils.js';
+import {
+  orderGet,
+  currentTimeGet,
+  explanationPopUp,
+  resultPopUp,
+} from './stringUtils.js';
 import { hasInput, disableElements, getInputOrder } from './utilityFunction.js';
 
 export const newFileCreateFunc = (id) => {
@@ -33,22 +38,23 @@ export const newFileCreateFunc = (id) => {
     const createFile = async () => {
       if (!isCreatingFile) {
         isCreatingFile = true;
-        try{
-        await newCreateFile2(inputTab, id, order);
-        document.removeEventListener('click', handleClick);
-        document.removeEventListener('contextmenu', handleContextMenu);
-        document.removeEventListener('keypress', handleEnter);
-        resolve();
-        } catch{
+        try {
+          await newCreateFile2(inputTab, id, order);
+          document.removeEventListener('click', handleClick);
+          document.removeEventListener('contextmenu', handleContextMenu);
+          document.removeEventListener('keypress', handleEnter);
+          resolve();
+        } catch {
           isCreatingFile = false;
-          inputTab.focus(); 
+          inputTab.focus();
         }
       }
     };
 
     const handleClick = (e) => {
       if (!e.target.closest('#inputTab')) {
-        if (!inputTab.value || !inputTab.value.match(/\S/g)) inputTab.value = '新しいノート';
+        if (!inputTab.value || !inputTab.value.match(/\S/g))
+          inputTab.value = '新しいノート';
         createFile();
       }
     };
@@ -56,7 +62,8 @@ export const newFileCreateFunc = (id) => {
     const handleContextMenu = (e) => {
       e.preventDefault();
       if (!e.target.closest('#inputTab')) {
-      　if (!inputTab.value || !inputTab.value.match(/\S/g)) inputTab.value = '新しいノート';
+        if (!inputTab.value || !inputTab.value.match(/\S/g))
+          inputTab.value = '新しいノート';
         createFile();
       }
     };
@@ -79,7 +86,7 @@ export const newCreateFile2 = (inputTab, parentId, order) => {
   return new Promise((resolve, reject) => {
     //何も入力されていない時や空白や改行のみ
     if (!inputTab.value || !inputTab.value.match(/\S/g)) {
-     resultPopUp('名前変更','名前を入力してください');
+      resultPopUp('名前変更', '名前を入力してください');
       reject();
     } else {
       const time = currentTimeGet();

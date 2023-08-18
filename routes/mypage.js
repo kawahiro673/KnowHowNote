@@ -182,9 +182,8 @@ router
           console.error(error);
           res.status(500).send('Internal Server Error.(folderChild)');
         });
-     
-    } 
-       //フォルダの子ノートを全て取得する(passの更新に使用するため)
+    }
+    //フォルダの子ノートを全て取得する(passの更新に使用するため)
     // else if (req.body.flg === 'noteChild') {
     //   let idArray = []; //最終的にcodejsに返す値
     //   let parentIdArray = [];

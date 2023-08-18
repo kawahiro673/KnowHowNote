@@ -767,11 +767,13 @@ document
       document.getElementById('myID').innerHTML
     ) {
       //alert('自分自身はフレンドリストに登録できません');
-  explanationPopUp('フレンド追加','自分自身はフレンドに登録できません');
-      
+      explanationPopUp('フレンド追加', '自分自身はフレンドに登録できません');
     } else if (document.getElementById('idInput').value === '') {
       //alert('フレンドリストに追加したい利用者IDを入力してください');
-  explanationPopUp('フレンド追加','フレンドリストに追加したい利用者IDを入力してください');     
+      explanationPopUp(
+        'フレンド追加',
+        'フレンドリストに追加したい利用者IDを入力してください'
+      );
     } else {
       const time = currentTimeGet();
       $.ajax({
@@ -787,10 +789,16 @@ document
         success: function (res) {
           if (res.msg === 'NG') {
             //alert('その利用者IDのユーザーは存在しません');
-             explanationPopUp('フレンド追加','その利用者IDのユーザーは存在しません');
+            explanationPopUp(
+              'フレンド追加',
+              'その利用者IDのユーザーは存在しません'
+            );
           } else if (res.msg === 'already') {
             //alert(`${res.userName}さんは既に追加済みです`);
-             explanationPopUp('フレンド追加',`${res.userName}さんは既に追加済みです`);
+            explanationPopUp(
+              'フレンド追加',
+              `${res.userName}さんは既に追加済みです`
+            );
           } else {
             friendListUpdate();
             document.getElementById('popup-overlay_friend-add').style.display =
@@ -863,7 +871,7 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
     });
   } else {
     //alert('問い合わせ内容を記載してください');
-    explanationPopUp('フレンド追加','問い合わせ内容を記載してください');
+    explanationPopUp('フレンド追加', '問い合わせ内容を記載してください');
   }
 });
 

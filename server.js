@@ -26,7 +26,6 @@ const shareHistoryList = require('./routes/menuPostController/shareHistoryList')
 const otherMenuPostController = require('./routes/menuPostController/otherMenuPostController');
 const cookieParser = require('cookie-parser');
 
-
 app.set('view engine', 'ejs');
 //publicフォルダ内のファイルを読み込めるようにする
 app.use(express.static('public'));
@@ -51,14 +50,14 @@ app.use('/folderPostController', folderPostController);
 app.use('/sharePostController', sharePostController);
 app.use('/login', login);
 app.use('/mailer', mailer);
-app.use('/data',listCreate );
-app.use('/friendListPostController', friendListPostController );
-app.use('/groupListPostController', groupListPostController );
-app.use('/accountActions', accountActions );
-app.use('/authenticationIDPostController', authenticationIDPostController );
-app.use('/listDelete', listDelete );
-app.use('/shareHistoryList', shareHistoryList );
-app.use('/otherMenuPostController', otherMenuPostController );
+app.use('/data', listCreate);
+app.use('/friendListPostController', friendListPostController);
+app.use('/groupListPostController', groupListPostController);
+app.use('/accountActions', accountActions);
+app.use('/authenticationIDPostController', authenticationIDPostController);
+app.use('/listDelete', listDelete);
+app.use('/shareHistoryList', shareHistoryList);
+app.use('/otherMenuPostController', otherMenuPostController);
 
 app.listen(process.env.PORT || 8080, () => {
   console.log('サーバー接続成功');
