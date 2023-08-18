@@ -42,7 +42,7 @@ export const newFileCreateFunc = (id) => {
         } catch{
           // 条件が満たされない場合の処理
           isCreatingFile = false;
-          inputTab.focus(); // 再度入力が行われるように input にフォーカスを戻す
+          //inputTab.focus(); // 再度入力が行われるように input にフォーカスを戻す
         }
       }
     };
