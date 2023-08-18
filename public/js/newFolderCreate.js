@@ -1,5 +1,5 @@
 import { listCreate } from './main.js';
-import { orderGet } from './stringUtils.js';
+import { orderGet, explanationPopUp } from './stringUtils.js';
 import {
   hasInput,
   disableElements,
@@ -76,7 +76,7 @@ export const newFolderCreateFunc = (id) => {
 function newCreateFolder2(inputTab, span, li, ul, parentId, order) {
   //何も入力されていない時や空白や改行のみの入力
   if (!inputTab.value || !inputTab.value.match(/\S/g)) {
-    alert('フォルダ名を入力してください');
+   explanationPopUp('名前変更','フォルダ名を入力してください');
   } else {
     $.ajax({
       url: '/folderPostController/',
