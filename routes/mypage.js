@@ -15,22 +15,6 @@ const Connection = require('mysql/lib/Connection');
 const PoolCluster = require('mysql/lib/PoolCluster');
 const nodemailer = require('nodemailer');
 
-//認証情報
-const auth = {
-  type: 'OAuth2',
-  user: 'akanuma.9099@gmail.com',
-  clientId:
-    '755195789659-0lt6su9q88eq0585igj83b4m5ont4bbi.apps.googleusercontent.com',
-  clientSecret: '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',
-  refreshToken:
-    '1//04_aWdS9pheLjCgYIARAAGAQSNwF-L9IrHvN4nWm4Th8Q2Bub24PndrddgDhDZZGm3THAbFv22Mt2bRwjxf9eUDjyhvYDNU52pDw',
-};
-const transport = {
-  service: 'gmail',
-  auth,
-};
-const transporter = nodemailer.createTransport(transport);
-
 router
   .route('/:hashedId')
   .get((req, res) => {
