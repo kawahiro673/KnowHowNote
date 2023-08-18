@@ -16,7 +16,9 @@ const auth = require('./routes/auth');
 const login = require('./routes/srv_login');
 const mailer = require('./routes/mailer');
 const check = require('./routes/check');
+const mypage1 = require('./routes/listCreate');
 const cookieParser = require('cookie-parser');
+
 
 app.set('view engine', 'ejs');
 //publicフォルダ内のファイルを読み込めるようにする
@@ -59,6 +61,7 @@ app.use('/folderPostController', folderPostController);
 app.use('/sharePostController', sharePostController);
 app.use('/login', login);
 app.use('/mailer', mailer);
+app.use('/data',listCreate );
 
 app.listen(process.env.PORT || 8080, () => {
   console.log('サーバー接続成功');
