@@ -21,6 +21,7 @@ const friendListPostController = require('./routes/menuPostController/friendList
 const groupListPostController = require('./routes/menuPostController/groupListPostController');
 const accountActions = require('./routes/menuPostController/accountActions');
 const authenticationIDPostController = require('./routes/menuPostController/authenticationIDPostController');
+const listDelete = require('./routes/menuPostController/listDelete');
 const cookieParser = require('cookie-parser');
 
 
@@ -53,6 +54,7 @@ app.use('/friendListPostController', friendListPostController );
 app.use('/groupListPostController', groupListPostController );
 app.use('/accountActions', accountActions );
 app.use('/authenticationIDPostController', authenticationIDPostController );
+app.use('/listDelete', listDelete );
 
 app.listen(process.env.PORT || 8080, () => {
   console.log('サーバー接続成功');
