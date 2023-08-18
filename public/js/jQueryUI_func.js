@@ -17,6 +17,7 @@ import {
 export const jQueryUIOptionsFunc = () => {
   return new Promise((resolve, reject) => {
     let orderBeforeMoving; //ドラッグアンドドロップ前の順番
+    let className;
     let tmpParentID;
     let childFolders = []; //配下のフォルダの子要素を入れるやつ？必要？？
     let elementsBeforeMoving; //リストの親子関係を見やすくする線を調整するため、移動前の要素を格納
@@ -37,7 +38,7 @@ export const jQueryUIOptionsFunc = () => {
           const id = item.prevObject[0].id.replace(/[^0-9]/g, '');
 
           //orderNameGetは同一のクラス名を対象に順番を取得する
-          const className = classNameGet(document.getElementById(item[0].id));
+          className = classNameGet(document.getElementById(item[0].id));
           orderBeforeMoving = orderGet(className, item[0].id);
           tmpParentID = item[0].parentNode.id;
           $.ajax({
@@ -171,9 +172,7 @@ export const jQueryUIOptionsFunc = () => {
                     `parent${item[0].parentNode.id}`
                   );
 
-                  const className = classNameGet(
-                    document.getElementById(item[0].id)
-                  );
+                  className = classNameGet(document.getElementById(item[0].id));
                   let afterOrder = orderGet(className, item[0].id);
 
                   const pass = passGet(id, item[0].childNodes[0].innerHTML);
@@ -277,9 +276,7 @@ export const jQueryUIOptionsFunc = () => {
                   );
 
                   //D&D後の順番を取得
-                  const className = classNameGet(
-                    document.getElementById(item[0].id)
-                  );
+                  className = classNameGet(document.getElementById(item[0].id));
                   let afterOrder = orderGet(className, item[0].id);
 
                   //フォルダのD&D時に、タブのフォーカスが当たっているファイルが配下にあればパスを変更する(対象のタブをクリックする)
