@@ -33,12 +33,18 @@ export const newFileCreateFunc = (id) => {
     const createFile = async () => {
       if (!isCreatingFile) {
         isCreatingFile = true; // ファイル作成中フラグを立てる
+        try{
         await newCreateFile2(inputTab, id, order);
         document.removeEventListener('click', handleClick);
         document.removeEventListener('contextmenu', handleContextMenu);
         document.removeEventListener('keypress', handleEnter);
-
         resolve();
+        } catch{
+          // 条件が満たされない場合の処理
+          isCreatingFile = false;
+          inputTab.focus(); // 再度入力が行われるように input にフォーカスを戻す
+        }
+        }
       }
     };
 
@@ -73,8 +79,8 @@ export const newCreateFile2 = (inputTab, parentId, order) => {
   return new Promise((resolve, reject) => {
     //何も入力されていない時や空白や改行のみ
     if (!inputTab.value || !inputTab.value.match(/\S/g)) {
-     //explanationPopUp('名前変更','名前を入力してください');
-     console.log('名前を入力しろ');
+     explanationPopUp('名前変更','名前を入力してください');
+     reject();
     } else {
       const time = currentTimeGet();
       $.ajax({
