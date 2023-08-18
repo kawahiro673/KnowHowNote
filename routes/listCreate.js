@@ -46,7 +46,7 @@ async function executeQuery(query, params) {
 }
 
 // メインのルートハンドラ
-router.get('/data', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const { resultDecoded, results1, results2 } = await getUserDataAndQueries(req);
 
