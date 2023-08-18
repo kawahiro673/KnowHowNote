@@ -73,7 +73,8 @@ export const newCreateFile2 = (inputTab, parentId, order) => {
   return new Promise((resolve, reject) => {
     //何も入力されていない時や空白や改行のみ
     if (!inputTab.value || !inputTab.value.match(/\S/g)) {
-     explanationPopUp('名前変更','名前を入力してください');
+     //explanationPopUp('名前変更','名前を入力してください');
+     console.log('名前を入力しろ');
     } else {
       const time = currentTimeGet();
       $.ajax({
