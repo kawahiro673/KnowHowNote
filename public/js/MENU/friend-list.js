@@ -2,7 +2,7 @@
 
 import { hashedIdGet } from '../main.js';
 import { friendListGroupChange } from './group-list.js';
-import { resultPopUp, answerPopUp } from '../stringUtils.js';
+import { resultPopUp, answerPopUp,explanationPopUp } from '../stringUtils.js';
 
 //フレンドリストのフレンド表示を更新
 export const friendListUpdate = () => {
@@ -218,7 +218,7 @@ function friendListNameChange(event) {
         },
       });
     } else {
-      alert('ユーザー名を入力してください');
+     explanationPopUp('フレンド名前変更','ユーザー名を入力してください');
     }
   });
 }
