@@ -227,6 +227,10 @@ export const jQueryUIOptionsFunc = () => {
             } else if (tmpParentID != item[0].parentNode.id) {
               className = classNameGet(document.getElementById(item[0].id));
               const orderAfterMoving = orderGet(className, item[0].id);
+              console.log(item[0].parentNode.id);
+              console.log(tmpParentID);
+              console.log(orderBeforeMoving);
+              console.log(orderAfterMoving);
               $.ajax({
                 url: '/folderPostController/',
                 type: 'POST',
