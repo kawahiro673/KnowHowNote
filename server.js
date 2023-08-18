@@ -17,6 +17,7 @@ const login = require('./routes/srv_login');
 const mailer = require('./routes/mailer');
 const check = require('./routes/check');
 const listCreate = require('./routes/listCreate');
+const friendListPostController = require('./routes/menuPostController/friendListPostController');
 const cookieParser = require('cookie-parser');
 
 
@@ -35,23 +36,6 @@ app.get('/', check, (req, res) => {
   res.redirect('/mypage/' + hashedId);
 });
 
-// app.get('/change-password/:token', async (req, res) => {
-//   const token = req.params.token;
-//   console.log(req.params.token);
-
-//   try {
-//     const decodedToken = await JWT.verify(token, 'SECRET_KEY');
-//     console.log(decodedToken);
-//     // ここでトークンから得られた情報を使用して処理を行う
-
-//     res.render('pass-change.ejs', { user_name: decodedToken.user_name });
-//   } catch (error) {
-//     // トークンが無効な場合や有効期限切れの場合のエラーハンドリング
-//     console.error('Invalid token:', error);
-//     res.status(400).send('Invalid token');
-//   }
-// });
-
 //authというエンドポイントで./routes/authファイルでWebAPIを構築できる
 app.use('/auth', auth);
 app.use('/mypage', mypage1);
@@ -62,6 +46,7 @@ app.use('/sharePostController', sharePostController);
 app.use('/login', login);
 app.use('/mailer', mailer);
 app.use('/data',listCreate );
+app.use('/friendListPostController', friendListPostController );
 
 app.listen(process.env.PORT || 8080, () => {
   console.log('サーバー接続成功');
