@@ -44,7 +44,6 @@ export const newFileCreateFunc = (id) => {
           isCreatingFile = false;
           inputTab.focus(); // 再度入力が行われるように input にフォーカスを戻す
         }
-        }
       }
     };
 
