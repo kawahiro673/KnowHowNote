@@ -775,7 +775,7 @@ document
     } else {
       const time = currentTimeGet();
       $.ajax({
-        url: '/mypage/' + hashedIdGet,
+        url: 'authenticationIDPostController',
         type: 'POST',
         dataType: 'Json',
         contentType: 'application/json',
