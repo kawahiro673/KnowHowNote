@@ -6,6 +6,7 @@ import {
   fileIDUnderTheFolder,
   resultPopUp,
   answerPopUp,
+  explanationPopUp,
 } from '../stringUtils.js';
 import { tabFocusIDGet, getTabIdArray } from '../main.js';
 import { disableElements, enableElements } from '../utilityFunction.js';
@@ -173,7 +174,7 @@ const folderNameChange = (folder) => {
     if (e.keyCode === 13) {
       //何も入力されていない時や空白や改行のみの入力
       if (!inputTab.value || !inputTab.value.match(/\S/g)) {
-        alert('タイトルを入力してください');
+        explanationPopUp('名前変更','名前を変更してください');
       } else {
         $.ajax({
           url: '/folderPostController/',
