@@ -29,7 +29,7 @@ $('#right').on('click contextmenu', (e) => {
     conme2.style.display = 'none';
     conme3.style.display = 'none';
     conme5.style.display = 'none';
-  } else {
+  } else if (e.target.closest('#nouhau_content')) {
     conme2.style.left = e.clientX + 'px';
     conme2.style.top = e.clientY + 'px';
     conme2.style.display = 'block';
