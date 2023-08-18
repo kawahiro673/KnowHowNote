@@ -53,18 +53,18 @@ export const jQueryUIOptionsFunc = () => {
               tmpArray = res.response;
             },
           });
-          //フォルダの子ノートを全て取得する(passの更新に使用するため)
-          $.ajax({
-            url: '/mypage/' + hashedIdGet,
-            type: 'POST',
-            dataType: 'Json',
-            contentType: 'application/json',
-            data: JSON.stringify({
-              flg: 'noteChild',
-              id,
-            }),
-            success: function (res) {},
-          });
+          //フォルダの子ノートを全て取得する(passの更新に使用するため) ← いらないのでは？？サーバーもコメントアウト 8/18
+          // $.ajax({
+          //   url: '/mypage/' + hashedIdGet,
+          //   type: 'POST',
+          //   dataType: 'Json',
+          //   contentType: 'application/json',
+          //   data: JSON.stringify({
+          //     flg: 'noteChild',
+          //     id,
+          //   }),
+          //   success: function (res) {},
+          // });
           //ドラッグアンドドロップ前の要素群を取得するため
           if (item[0].parentNode.firstElementChild) {
             elementsBeforeMoving = item[0].parentNode.firstElementChild;
