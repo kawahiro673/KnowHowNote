@@ -319,7 +319,7 @@ export const shareNoteSendFunc = (id, title) => {
 document.getElementById('share-user-button').addEventListener('click', () => {
   document.getElementById('popup-overlay_share-user').style.display = 'block';
   $.ajax({
-    url: '/mypage/' + hashedIdGet,
+    url: '/friendListPostController/',
     type: 'POST',
     dataType: 'Json',
     contentType: 'application/json',
@@ -401,7 +401,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
                   popupGroupMember.style.top = event.clientY + 'px';
 
                   $.ajax({
-                    url: '/mypage/' + hashedIdGet,
+                    url: '/groupListPostController/',
                     type: 'POST',
                     dataType: 'Json',
                     contentType: 'application/json',
