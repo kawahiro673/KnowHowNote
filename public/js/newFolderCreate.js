@@ -38,13 +38,13 @@ export const newFolderCreateFunc = (id) => {
       if (!isCreatingFolder) {
         isCreatingFolder = true; 
         try{
-        newCreateFolder2(inputTab, span, li, ul, id, order);
+        newCreateFolder2(inputTab, id, order);
         document.removeEventListener('click', handleClick);
         document.removeEventListener('contextmenu', handleContextMenu);
         document.removeEventListener('keypress', handleEnter);
         resolve();
         } catch{
-          isCreatingFile = false;
+          isCreatingFolder = false;
           inputTab.focus(); 
         }
       }
@@ -80,7 +80,7 @@ export const newFolderCreateFunc = (id) => {
   });
 };
 
-function newCreateFolder2(inputTab, span, li, ul, parentId, order) {
+function newCreateFolder2(inputTab, parentId, order) {
   //何も入力されていない時や空白や改行のみの入力
   if (!inputTab.value || !inputTab.value.match(/\S/g)) {
    resultPopUp('名前変更','名前を入力してください');
