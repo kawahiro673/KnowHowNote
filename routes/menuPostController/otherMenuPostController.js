@@ -4,6 +4,7 @@ const router = require('express').Router();
 const pool = require('../../db.js');
 const JWT = require('jsonwebtoken');
 const { reject } = require('bcrypt/promises');
+const nodemailer = require('nodemailer');
 
 //認証情報
 const auth = {
