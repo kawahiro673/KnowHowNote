@@ -547,12 +547,12 @@ document.getElementById('share-history').addEventListener('click', () => {
   document.getElementById('popup-overlay_share-history').style.display =
     'block';
   $.ajax({
-    url: '/mypage/' + hashedIdGet,
+    url: '/shareHistoryList/',
     type: 'POST',
     dataType: 'Json',
     contentType: 'application/json',
     data: JSON.stringify({
-      flg: 'ShareList',
+      flg: 'ShareHistoryList',
     }),
     success: function (res) {
       if (res.shareResult === null) {
