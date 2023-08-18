@@ -360,16 +360,17 @@ router
           console.error(error);
           res.status(500).send('Internal Server Error.(sharelist)');
         });
-
-      //ログアウト時にcookie削除
-    } else if (req.body.flg === 'cookiedelete') {
-      //cookie削除
-      res.setHeader('Set-Cookie', [
-        'token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; Path=/',
-        'hashedId=; expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; Path=/',
-      ]);
-      res.send({ msg: 'ログアウトします' });
-    } else if (req.body.flg === 'ShareList') {
+     } 
+        //ログアウト時にcookie削除
+      //else if (req.body.flg === 'cookiedelete') {
+    //   //cookie削除
+    //   res.setHeader('Set-Cookie', [
+    //     'token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; Path=/',
+    //     'hashedId=; expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly; Path=/',
+    //   ]);
+    //   res.send({ msg: 'ログアウトします' });
+    // } 
+      else if (req.body.flg === 'ShareList') {
       getUserDataByToken(req).then((resultDecoded) => {
         return new Promise((resolve, reject) => {
           pool.query(
