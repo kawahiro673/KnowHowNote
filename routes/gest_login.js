@@ -5,6 +5,7 @@ const JWT = require('jsonwebtoken');
 const { reject } = require('bcrypt/promises');
 
 router.post('/', async (req, res) => {
+  let userName = req.body.name;
   let promise = new Promise((resolve, reject) => {
     resolve();
   });
