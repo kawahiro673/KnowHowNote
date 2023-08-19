@@ -892,6 +892,7 @@ document.getElementById('logout').addEventListener('click', async function () {
       contentType: 'application/json',
       data: JSON.stringify({
         flg: 'cookiedelete',
+        name: document.getElementById('user_name').innerHTML,
       }),
       success: function (res) {
         resultPopUp('ログアウト', 'ログアウト中です\n少々お待ちください');
