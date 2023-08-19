@@ -160,6 +160,109 @@ router.post('/', async (req, res) => {
         );
       });
     })
+    .then(({ userResult }) => {
+      return new Promise((resolve, reject) => {
+        pool.query(
+          'INSERT INTO friend_list (user_name, UserID, date, Changed_Name, User_Group) VALUES(?,?,?,?,?);',
+          [
+            'GestUser_1',
+            userResult[0].id,
+            '2023年01月01日 00:00',
+            'GestUser_1',
+            'グループ１',
+          ],
+          (error, result) => {
+            if (error) {
+              reject();
+            } else {
+              resolve({
+                userResult: userResult,
+              });
+            }
+          }
+        );
+      });
+    })
+    .then(({ userResult }) => {
+      return new Promise((resolve, reject) => {
+        pool.query(
+          'INSERT INTO friend_list (user_name, UserID, date, Changed_Name, User_Group) VALUES(?,?,?,?,?);',
+          [
+            'GestUser_2',
+            userResult[0].id,
+            '2023年01月01日 00:00',
+            'GestUser_2',
+            'グループ１',
+          ],
+          (error, result) => {
+            if (error) {
+              reject();
+            } else {
+              resolve({
+                userResult: userResult,
+              });
+            }
+          }
+        );
+      });
+    })
+    .then(({ userResult }) => {
+      return new Promise((resolve, reject) => {
+        pool.query(
+          'INSERT INTO friend_list (user_name, UserID, date, Changed_Name, User_Group) VALUES(?,?,?,?,?);',
+          [
+            'GestUser_3',
+            userResult[0].id,
+            '2023年01月01日 00:00',
+            'GestUser_3',
+            'グループ2',
+          ],
+          (error, result) => {
+            if (error) {
+              reject();
+            } else {
+              resolve({
+                userResult: userResult,
+              });
+            }
+          }
+        );
+      });
+    })
+    .then(({ userResult }) => {
+      return new Promise((resolve, reject) => {
+        pool.query(
+          'INSERT INTO group_list (User_Group, UserID) VALUES(?,?);',
+          ['グループ１', userResult[0].id],
+          (error, result) => {
+            if (error) {
+              reject();
+            } else {
+              resolve({
+                userResult: userResult,
+              });
+            }
+          }
+        );
+      });
+    })
+    .then(({ userResult }) => {
+      return new Promise((resolve, reject) => {
+        pool.query(
+          'INSERT INTO group_list (User_Group, UserID) VALUES(?,?);',
+          ['グループ２', userResult[0].id],
+          (error, result) => {
+            if (error) {
+              reject();
+            } else {
+              resolve({
+                userResult: userResult,
+              });
+            }
+          }
+        );
+      });
+    })
     .then(async ({ userResult }) => {
       try {
         const token = await JWT.sign(

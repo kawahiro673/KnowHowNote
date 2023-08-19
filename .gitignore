@@ -5,3 +5,8 @@ node_modules/
 # Local development
 .DS_Store
 .env
+
+#ゲストユーザーのフレンドとなるユーザー追加クエリ
+INSERT INTO register_user (UserName, ShareFlg, CreationDay, LoginDate) VALUES('GestUser_1', 'ON', '2023年01月01日 00:00', '2023年01月01日 00:00');
+INSERT INTO register_user (UserName, ShareFlg, CreationDay, LoginDate) VALUES('GestUser_2', 'ON', '2023年01月01日 00:00', '2023年01月01日 00:00');
+INSERT INTO register_user (UserName, ShareFlg, CreationDay, LoginDate) VALUES('GestUser_3', 'ON', '2023年01月01日 00:00', '2023年01月01日 00:00');
