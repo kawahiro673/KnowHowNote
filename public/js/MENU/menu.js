@@ -256,6 +256,14 @@ document
 
     const email = document.getElementById('change-email-input').value;
 
+    if (document.getElementById('user_name').innerHTML.length > 20) {
+      explanationPopUp(
+        'メールアドレス変更',
+        'ゲストユーザーはメールアドレスを設定できません'
+      );
+      return false;
+    }
+
     if (email.value === '') {
       explanationPopUp(
         'メールドレス変更',
@@ -315,6 +323,14 @@ document
 document
   .getElementById('update-authenticationID-button')
   .addEventListener('click', async (e) => {
+    if (document.getElementById('user_name').innerHTML.length > 20) {
+      explanationPopUp(
+        '利用者ID変更',
+        'ゲストユーザーは利用者IDを変更できません'
+      );
+      return false;
+    }
+
     const result = await answerPopUp(
       '利用者ID変更',
       '利用者IDを変更しますが、よろしいですか'
@@ -436,6 +452,14 @@ document
   .getElementById('change-password-button-decision')
   .addEventListener('click', async (e) => {
     e.preventDefault();
+
+    if (document.getElementById('user_name').innerHTML.length > 20) {
+      explanationPopUp(
+        'パスワード変更',
+        'ゲストユーザーはパスワードを設定できません'
+      );
+      return false;
+    }
 
     if (
       document.getElementById('current-password-input').value === '' ||
@@ -880,10 +904,18 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
 //=============================================================================================================
 
 document.getElementById('logout').addEventListener('click', async function () {
-  const result = await answerPopUp(
-    'ログアウト',
-    'ログアウトしますか？※編集中のノウハウは保存されません'
-  );
+  let result;
+  if (document.getElementById('user_name').innerHTML.length > 20) {
+    result = await answerPopUp(
+      'ログアウト',
+      'ゲストユーザーはログアウトするとデータが全て削除されます'
+    );
+  } else {
+    result = await answerPopUp(
+      'ログアウト',
+      'ログアウトしますか？※編集中のノウハウは保存されません'
+    );
+  }
   if (result === true) {
     $.ajax({
       url: '/accountActions/',
