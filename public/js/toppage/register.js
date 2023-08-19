@@ -2,7 +2,7 @@ import {
   currentTimeGet,
   validatePassword,
   validateUsername,
-} from './stringUtils.js';
+} from '../stringUtils.js';
 
 const userName = document.getElementById('username');
 const password_auth = document.getElementById('password_auth');

@@ -2,7 +2,7 @@ import {
   currentTimeGet,
   validateEmail,
   explanationPopUp,
-} from './stringUtils.js';
+} from '../stringUtils.js';
 
 const loginbtn = document.getElementById('loginbtn');
 const password = document.getElementById('password');
@@ -15,7 +15,6 @@ document
   .getElementById('pass-forget')
   .addEventListener('click', function (event) {
     event.preventDefault(); // デフォルトのクリック動作をキャンセル
-    console.log('ボタンクリック');
     document.getElementById('popup-overlay_pass-forget').style.display =
       'block';
   });

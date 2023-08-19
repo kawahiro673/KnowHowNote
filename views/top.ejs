@@ -48,6 +48,7 @@
       <label>
         <input type="checkbox" />
         <span style="z-index: 98" class="note">
+          <button type="submit" id="gestloginbtn">ゲストログイン</button>
           <div class="content">
             <h1 class="login">　　　　ログインはこちらから →</h1>
           </div>
@@ -103,7 +104,7 @@
             </div>
 
             <div class="control">
-              <button type="submit" id="loginbtn">ログインする</button>
+              <button type="submit" id="loginbtn">ログイン</button>
             </div>
 
             <div class="passforgetdiv">
@@ -230,7 +231,8 @@
     <%- include('popup') %>
 
     <script type="text/javascript" src="/js/jQuery/jquery.min.js"></script>
-    <script type="module" src="/js/login.js"></script>
-    <script type="module" src="/js/register.js"></script>
+    <script type="module" src="/js/toppage/login.js"></script>
+    <script type="module" src="/js/toppage/register.js"></script>
+    <script type="module" src="/js/toppage/gestlogin.js"></script>
   </body>
 </html>

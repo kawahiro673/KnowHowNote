@@ -127,8 +127,8 @@ h1 {
 
 #pass-change,
 #loginbtn,
-#registerbtn {
-  /*   display: inline-block; */
+#registerbtn,
+#gestloginbtn {
   display: block;
   margin: 0 auto;
   padding: 10px 20px;
@@ -145,7 +145,8 @@ h1 {
 }
 
 #loginbtn,
-#registerbtn {
+#registerbtn,
+#gestloginbtn {
   padding: 1em 7em;
   margin-top: 10px;
 }
@@ -157,7 +158,8 @@ h1 {
 
 #loginbtn:active,
 #registerbtn:active,
-#pass-change:active {
+#pass-change:active,
+#gestloginbtn {
   box-shadow: none;
   transform: translateY(5px);
 }
