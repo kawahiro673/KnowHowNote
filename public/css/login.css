@@ -141,7 +141,7 @@ h1 {
   background-color: #007bff;
   color: #fff;
   cursor: pointer;
-  box-shadow: 0 5px 0 #0055fe; /* 影の太さ・色 */
+  box-shadow: 0 5px 0 #042d81;
 }
 
 #loginbtn,
