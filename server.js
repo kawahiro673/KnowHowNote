@@ -24,6 +24,7 @@ const authenticationIDPostController = require('./routes/menuPostController/auth
 const listDelete = require('./routes/menuPostController/listDelete');
 const shareHistoryList = require('./routes/menuPostController/shareHistoryList');
 const otherMenuPostController = require('./routes/menuPostController/otherMenuPostController');
+const gestLogin = require('./routes/gestLogin');
 const cookieParser = require('cookie-parser');
 
 app.set('view engine', 'ejs');
@@ -58,6 +59,7 @@ app.use('/authenticationIDPostController', authenticationIDPostController);
 app.use('/listDelete', listDelete);
 app.use('/shareHistoryList', shareHistoryList);
 app.use('/otherMenuPostController', otherMenuPostController);
+app.use('/gestLogin', gestLogin);
 
 app.listen(process.env.PORT || 8080, () => {
   console.log('サーバー接続成功');

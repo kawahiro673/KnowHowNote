@@ -180,3 +180,15 @@ export const validateUsername = (username) => {
   const pattern = /^[a-zA-Z0-9]{1,20}$/;
   return pattern.test(username);
 };
+
+//ランダムな半角英数字をlengthの長さ分生成する関数
+export const generateRandomString = (length) => {
+  const characters =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let randomString = '';
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    randomString += characters.charAt(randomIndex);
+  }
+  return randomString;
+};
