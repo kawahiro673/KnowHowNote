@@ -18,7 +18,7 @@ function gestloginButtonClick() {
     contentType: 'application/json',
     data: JSON.stringify({
       time: currentTimeGet,
-      name: `user_${generateRandomString}`,
+      name: `user_${generateRandomString(12)}`,
     }),
     success: function (res) {
       location.href = res.url;
