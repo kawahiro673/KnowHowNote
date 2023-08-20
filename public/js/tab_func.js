@@ -296,16 +296,21 @@ export const shareNoteSendFunc = (id, title) => {
           resultPopUp('共有', '共有しました');
         } else {
           //見つからないユーザーがあるパターン
-          document.getElementById('popup-overlay_share_no').style.display =
-            'block';
-          document.getElementById(
-            'nothingUser'
-          ).innerHTML = `${res.notShareUsers} は見つかりませんでした。
-        アカウントが削除された可能性があります。`;
-          setTimeout(() => {
-            document.getElementById('popup-overlay_share_no').style.display =
-              'none';
-          }, 3000);
+          // document.getElementById('popup-overlay_share_no').style.display =
+          //   'block';
+          //   document.getElementById(
+          //     'nothingUser'
+          //   ).innerHTML = `${res.notShareUsers} は見つかりませんでした。
+          // アカウントが削除された可能性があります。`;
+          // setTimeout(() => {
+          //   document.getElementById('popup-overlay_share_no').style.display =
+          //     'none';
+          // }, 3000);
+
+          explanationPopUp(
+            '共有',
+            `${res.notShareUsers}は見つかりませんでした。アカウントが削除された可能性があります。`
+          );
         }
       },
       error: function (jqXHR, textStatus, errorThrown) {},
