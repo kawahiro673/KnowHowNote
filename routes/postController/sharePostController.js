@@ -135,22 +135,24 @@ router.post('/', (req, res) => {
                   const shareUser = result.find(
                     (user) => user.id === RecipientID
                   );
+                  console.log(shareUser);
+                  console.log(shareUser.ShareFlg);
                   // ユーザーが見つからない場合、次のユーザーの処理に進む
                   if (!shareUser) {
                     nothingUser.push(RecipientID);
                     resolve({ skip: true });
                     //共有機能OFFの場合
-                  }
-                  // else if (shareUser.ShareFlg === 'OFF') {
-                  //   nothingUser.push(RecipientID);
-                  //   resolve({ skip: true });
-                  // }
-                  else {
+                  } else {
                     pool.query(
                       'SELECT * FROM register_user WHERE UserName = ?;',
                       [shareUser.user_name],
                       (error, user) => {
-                        resolve({ user });
+                        if (user.ShareFlg === 'OFF') {
+                          nothingUser.push(RecipientID);
+                          resolve({ skip: true });
+                        } else {
+                          resolve({ user });
+                        }
                       }
                     );
                   }
