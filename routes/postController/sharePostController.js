@@ -145,8 +145,8 @@ router.post('/', (req, res) => {
                       'SELECT * FROM register_user WHERE UserName = ?;',
                       [shareUser.user_name],
                       (error, user) => {
-                        console.log(user.ShareFlg);
-                        if (user.ShareFlg === 'OFF') {
+                        console.log(user[0].ShareFlg);
+                        if (user[0].ShareFlg === 'OFF') {
                           nothingUser.push(RecipientID);
                           resolve({ skip: true });
                         } else {
