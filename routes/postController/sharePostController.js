@@ -140,10 +140,12 @@ router.post('/', (req, res) => {
                     nothingUser.push(RecipientID);
                     resolve({ skip: true });
                     //共有機能OFFの場合
-                  } else if (shareUser.ShareFlg === 'OFF') {
-                    nothingUser.push(RecipientID);
-                    resolve({ skip: true });
-                  } else {
+                  }
+                  // else if (shareUser.ShareFlg === 'OFF') {
+                  //   nothingUser.push(RecipientID);
+                  //   resolve({ skip: true });
+                  // }
+                  else {
                     pool.query(
                       'SELECT * FROM register_user WHERE UserName = ?;',
                       [shareUser.user_name],
