@@ -135,8 +135,6 @@ router.post('/', (req, res) => {
                   const shareUser = result.find(
                     (user) => user.id === RecipientID
                   );
-                  console.log(shareUser);
-                  console.log(shareUser.ShareFlg);
                   // ユーザーが見つからない場合、次のユーザーの処理に進む
                   if (!shareUser) {
                     nothingUser.push(RecipientID);
@@ -147,6 +145,7 @@ router.post('/', (req, res) => {
                       'SELECT * FROM register_user WHERE UserName = ?;',
                       [shareUser.user_name],
                       (error, user) => {
+                        console.log(user.ShareFlg);
                         if (user.ShareFlg === 'OFF') {
                           nothingUser.push(RecipientID);
                           resolve({ skip: true });
