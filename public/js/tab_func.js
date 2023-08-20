@@ -290,6 +290,7 @@ export const shareNoteSendFunc = (id, title) => {
         RecipientGroups: shareGroupValues,
       }),
       success: function (res) {
+        console.log(res.nothingUser);
         if (res.nothingUser.length === 0) {
           document.getElementById('popup-overlay_share').style.display = 'none';
           resultPopUp('共有', '共有しました');

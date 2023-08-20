@@ -111,7 +111,7 @@ router.post('/', (req, res) => {
       }
     );
   } else if (req.body.flg === 'getuser') {
-    let nothingUser = [];
+    let nothingUser = []; //見つからないユーザー（削除されている恐れのある or 共有機能をOFFにしている）
     let resultDecodedTmp;
     let recipientGroupsCopy = [...req.body.RecipientGroups];
 
@@ -135,9 +135,14 @@ router.post('/', (req, res) => {
                   const shareUser = result.find(
                     (user) => user.id === RecipientID
                   );
+                  // ユーザーが見つからない場合、次のユーザーの処理に進む
                   if (!shareUser) {
                     nothingUser.push(RecipientID);
-                    resolve({ skip: true }); // ユーザーが見つからない場合、次のユーザーの処理に進む
+                    resolve({ skip: true });
+                    //共有機能OFFの場合
+                  } else if (shareUser.ShareFlg === 'OFF') {
+                    nothingUser.push(RecipientID);
+                    resolve({ skip: true });
                   } else {
                     pool.query(
                       'SELECT * FROM register_user WHERE UserName = ?;',
