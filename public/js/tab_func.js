@@ -290,8 +290,8 @@ export const shareNoteSendFunc = (id, title) => {
         RecipientGroups: shareGroupValues,
       }),
       success: function (res) {
-        console.log(res.nothingUser);
-        if (res.nothingUser.length === 0) {
+        console.log(res.notShareUsers);
+        if (res.notShareUsers.length === 0) {
           document.getElementById('popup-overlay_share').style.display = 'none';
           resultPopUp('共有', '共有しました');
         } else {
@@ -300,7 +300,7 @@ export const shareNoteSendFunc = (id, title) => {
             'block';
           document.getElementById(
             'nothingUser'
-          ).innerHTML = `${res.nothingUser} は見つかりませんでした。
+          ).innerHTML = `${res.notShareUsers} は見つかりませんでした。
         アカウントが削除された可能性があります。`;
           setTimeout(() => {
             document.getElementById('popup-overlay_share_no').style.display =

@@ -111,7 +111,7 @@ router.post('/', (req, res) => {
       }
     );
   } else if (req.body.flg === 'getuser') {
-    let nothingUser = []; //見つからないユーザー（削除されている恐れのある or 共有機能をOFFにしている）
+    let notShareUsers = []; //見つからないユーザー（削除されている恐れのある or 共有機能をOFFにしている）
     let resultDecodedTmp;
     let recipientGroupsCopy = [...req.body.RecipientGroups];
 
@@ -137,7 +137,7 @@ router.post('/', (req, res) => {
                   );
                   // ユーザーが見つからない場合、次のユーザーの処理に進む
                   if (!shareUser) {
-                    nothingUser.push(RecipientID);
+                    notShareUsers.push(RecipientID);
                     resolve({ skip: true });
                     //共有機能OFFの場合
                   } else {
@@ -145,9 +145,8 @@ router.post('/', (req, res) => {
                       'SELECT * FROM register_user WHERE UserName = ?;',
                       [shareUser.user_name],
                       (error, user) => {
-                        console.log(user[0].ShareFlg);
                         if (user[0].ShareFlg === 'OFF') {
-                          nothingUser.push(RecipientID);
+                          notShareUsers.push(shareUser.user_name);
                           resolve({ skip: true });
                         } else {
                           resolve({ user });
@@ -390,12 +389,12 @@ router.post('/', (req, res) => {
               }
             });
         }, Promise.resolve()).then(() => {
-          res.send({ message: '共有しました', nothingUser });
+          res.send({ message: '共有しました', notShareUsers });
         });
       })
       .catch((error) => {
         console.error(error);
-        res.status(500).json({ message: error.message, nothing });
+        res.status(500).json({ message: error.message });
       });
   } else if (req.body.flg === 'share-delete') {
     pool.query(
