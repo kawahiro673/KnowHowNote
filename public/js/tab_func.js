@@ -217,6 +217,7 @@ export const cancelButtonClick = async (id) => {
     document.getElementById(`tabP${id}`).style.display = 'block';
     document.getElementById(`keep-note-btn${id}`).style.display = 'none';
     document.getElementById(`cancel-note-btn${id}`).style.display = 'none';
+    document.getElementById(`titletext${id}`).value = '';
     document.getElementById(`titletext${id}`).style.display = 'none';
     document.getElementById(`edit-note-btn${id}`).style.display = 'block';
     document.getElementById(`share-button-${id}`).style.display = 'block';
