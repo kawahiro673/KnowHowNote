@@ -357,100 +357,190 @@ document.getElementById('share-user-button').addEventListener('click', () => {
         });
       });
 
+      // const popupGroupMember = document.getElementById('popup-group-member');
+      // let timer;
+      // let isPopupShown = false;
+
+      // //グループ側のチェックボックス作成
+      // let groupFlg = false;
+      // const groupSet = new Set(); // ユニークな User_Group を格納するための Set
+      // res.friend.forEach((friend) => {
+      //   if (friend.User_Group !== 'なし') {
+      //     const userGroup = friend.User_Group;
+      //     if (!groupSet.has(userGroup)) {
+      //       groupSet.add(userGroup);
+      //       groupFlg = true;
+
+      //       const div = document.createElement('div');
+      //       div.setAttribute('class', 'friend-list-group-check-div');
+
+      //       const checkbox = document.createElement('input');
+      //       checkbox.type = 'checkbox';
+      //       checkbox.id = `checkbox${userGroup}`;
+
+      //       const checkboxLabel = document.createElement('label');
+      //       checkboxLabel.textContent = userGroup;
+      //       checkboxLabel.setAttribute('for', `checkbox${userGroup}`);
+      //       checkboxLabel.setAttribute('class', `popup-label`);
+
+      //       document.getElementById('share-group-div').appendChild(div);
+      //       div.appendChild(checkbox);
+      //       div.appendChild(checkboxLabel);
+
+      //       // ラベル要素にマウスカーソルが入ったときの処理
+      //       div.addEventListener('mouseenter', (event) => {
+      //         if (!isPopupShown) {
+      //           // タイマーをクリアして遅延処理を実行。タイマーがないと、連続してDB参照してしまうため、サーバー不具合発生
+      //           clearTimeout(timer);
+      //           timer = setTimeout(() => {
+      //             popupGroupMember.style.display = 'block';
+
+      //             // マウスの座標を取得し、ポップアップ要素を移動
+      //             popupGroupMember.style.left = event.clientX + 'px';
+      //             popupGroupMember.style.top = event.clientY + 'px';
+
+      //             $.ajax({
+      //               url: '/groupListPostController/',
+      //               type: 'POST',
+      //               dataType: 'Json',
+      //               contentType: 'application/json',
+      //               data: JSON.stringify({
+      //                 flg: 'group_info',
+      //                 group: userGroup,
+      //               }),
+      //               success: function (res) {
+      //                 document.getElementById(
+      //                   'group-member-groupname'
+      //                 ).innerHTML = userGroup;
+      //                 const memberList =
+      //                   document.getElementsByClassName('group-member-list')[0];
+      //                 memberList.innerHTML = '';
+      //                 res.friendResult.forEach((friend) => {
+      //                   const p = document.createElement('p');
+      //                   p.setAttribute('class', `group-member`);
+      //                   p.innerHTML = friend.Changed_Name;
+      //                   memberList.appendChild(p);
+      //                 });
+      //               },
+      //             });
+      //             isPopupShown = true;
+      //           }, 500);
+      //         }
+      //       });
+
+      //       // ラベル要素からマウスカーソルが出たときの処理
+      //       div.addEventListener('mouseleave', () => {
+      //         // タイマーをクリアしてポップアップを非表示にする
+      //         clearTimeout(timer);
+      //         popupGroupMember.style.display = 'none';
+      //         isPopupShown = false;
+      //       });
+      //     }
+      //   }
+      // });
+
+      // const groupCheckDivs = document.querySelectorAll(
+      //   '.friend-list-group-check-div'
+      // );
+      // groupCheckDivs.forEach((div) => {
+      //   const checkbox = div.querySelector('input[type="checkbox"]');
+      //   // ラベル要素内でのクリックをチェックボックスの切り替えと関連付ける
+      //   div.addEventListener('click', function (event) {
+      //     if (event.target.tagName !== 'INPUT') {
+      //       checkbox.checked = !checkbox.checked;
+      //     }
+      //   });
+      // });
+
       const popupGroupMember = document.getElementById('popup-group-member');
-      let timer;
-      let isPopupShown = false;
+let timer;
+let isPopupShown = false;
 
-      //グループ側のチェックボックス作成
-      let groupFlg = false;
-      const groupSet = new Set(); // ユニークな User_Group を格納するための Set
-      res.friend.forEach((friend) => {
-        if (friend.User_Group !== 'なし') {
-          const userGroup = friend.User_Group;
-          if (!groupSet.has(userGroup)) {
-            groupSet.add(userGroup);
-            groupFlg = true;
+// グループ側のチェックボックス作成
+let groupFlg = false;
+const groupSet = new Set(); // ユニークな User_Group を格納するための Set
+res.friend.forEach((friend) => {
+  if (friend.User_Group !== 'なし') {
+    const userGroup = friend.User_Group;
+    if (!groupSet.has(userGroup)) {
+      groupSet.add(userGroup);
+      groupFlg = true;
 
-            const div = document.createElement('div');
-            div.setAttribute('class', 'friend-list-group-check-div');
+      const div = document.createElement('div');
+      div.setAttribute('class', 'friend-list-group-check-div');
 
-            const checkbox = document.createElement('input');
-            checkbox.type = 'checkbox';
-            checkbox.id = `checkbox${userGroup}`;
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.id = `checkbox${userGroup}`;
 
-            const checkboxLabel = document.createElement('label');
-            checkboxLabel.textContent = userGroup;
-            checkboxLabel.setAttribute('for', `checkbox${userGroup}`);
-            checkboxLabel.setAttribute('class', `popup-label`);
+      const checkboxLabel = document.createElement('label');
+      checkboxLabel.textContent = userGroup;
+      checkboxLabel.setAttribute('for', `checkbox${userGroup}`);
+      checkboxLabel.setAttribute('class', `popup-label`);
 
-            document.getElementById('share-group-div').appendChild(div);
-            div.appendChild(checkbox);
-            div.appendChild(checkboxLabel);
+      document.getElementById('share-group-div').appendChild(div);
+      div.appendChild(checkbox);
+      div.appendChild(checkboxLabel);
 
-            // ラベル要素にマウスカーソルが入ったときの処理
-            div.addEventListener('mouseenter', (event) => {
-              if (!isPopupShown) {
-                // タイマーをクリアして遅延処理を実行。タイマーがないと、連続してDB参照してしまうため、サーバー不具合発生
-                clearTimeout(timer);
-                timer = setTimeout(() => {
-                  popupGroupMember.style.display = 'block';
+      // ラベル要素にマウスカーソルが入ったときの処理
+      div.addEventListener('mouseenter', (event) => {
+        if (!isPopupShown) {
+          clearTimeout(timer);
+          timer = setTimeout(() => {
+            popupGroupMember.style.display = 'block';
 
-                  // マウスの座標を取得し、ポップアップ要素を移動
-                  popupGroupMember.style.left = event.clientX + 'px';
-                  popupGroupMember.style.top = event.clientY + 'px';
+            // マウスの座標を取得し、ポップアップ要素を移動
+            popupGroupMember.style.left = event.clientX + 'px';
+            popupGroupMember.style.top = event.clientY + 'px';
 
-                  $.ajax({
-                    url: '/groupListPostController/',
-                    type: 'POST',
-                    dataType: 'Json',
-                    contentType: 'application/json',
-                    data: JSON.stringify({
-                      flg: 'group_info',
-                      group: userGroup,
-                    }),
-                    success: function (res) {
-                      document.getElementById(
-                        'group-member-groupname'
-                      ).innerHTML = userGroup;
-                      const memberList =
-                        document.getElementsByClassName('group-member-list')[0];
-                      memberList.innerHTML = '';
-                      res.friendResult.forEach((friend) => {
-                        const p = document.createElement('p');
-                        p.setAttribute('class', `group-member`);
-                        p.innerHTML = friend.Changed_Name;
-                        memberList.appendChild(p);
-                      });
-                    },
-                  });
-                  isPopupShown = true;
-                }, 500);
-              }
+            $.ajax({
+              url: '/groupListPostController/',
+              type: 'POST',
+              dataType: 'Json',
+              contentType: 'application/json',
+              data: JSON.stringify({
+                flg: 'group_info',
+                group: userGroup,
+              }),
+              success: function (res) {
+                document.getElementById('group-member-groupname').innerHTML = userGroup;
+                const memberList = document.getElementsByClassName('group-member-list')[0];
+                memberList.innerHTML = '';
+                res.friendResult.forEach((friend) => {
+                  const p = document.createElement('p');
+                  p.setAttribute('class', `group-member`);
+                  p.innerHTML = friend.Changed_Name;
+                  memberList.appendChild(p);
+                });
+              },
             });
-
-            // ラベル要素からマウスカーソルが出たときの処理
-            div.addEventListener('mouseleave', () => {
-              // タイマーをクリアしてポップアップを非表示にする
-              clearTimeout(timer);
-              popupGroupMember.style.display = 'none';
-              isPopupShown = false;
-            });
-          }
+            isPopupShown = true;
+          }, 500);
         }
       });
 
-      const groupCheckDivs = document.querySelectorAll(
-        '.friend-list-group-check-div'
-      );
-      groupCheckDivs.forEach((div) => {
-        const checkbox = div.querySelector('input[type="checkbox"]');
-        // ラベル要素内でのクリックをチェックボックスの切り替えと関連付ける
-        div.addEventListener('click', function (event) {
-          if (event.target.tagName !== 'INPUT') {
-            checkbox.checked = !checkbox.checked;
-          }
-        });
+      // ラベル要素からマウスカーソルが出たときの処理
+      div.addEventListener('mouseleave', () => {
+        clearTimeout(timer);
+        if (!isPopupHovered) {
+          popupGroupMember.style.display = 'none';
+          isPopupShown = false;
+        }
       });
+
+      checkbox.addEventListener('click', (event) => {
+        event.stopPropagation(); // クリックイベントが親要素に伝播しないようにする
+      });
+
+      div.addEventListener('click', function (event) {
+        if (event.target.tagName !== 'INPUT') {
+          checkbox.checked = !checkbox.checked;
+        }
+      });
+    }
+  }
+});
+
 
       if (!groupFlg) {
         const p = document.createElement('p');
