@@ -211,7 +211,8 @@ input[type='checkbox']:checked + .blue_b {
   background-color: #007bff;
   border-color: #007bff;
 }
-input[type='checkbox']:checked + .red_b {
+input[type='checkbox']:checked + .red_b,
+input[type='checkbox']:checked + .red_s{
   background-color: #ff0000;
   border-color: #ff0000;
 }
