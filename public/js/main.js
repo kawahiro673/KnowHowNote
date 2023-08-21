@@ -178,7 +178,7 @@ const shareListCreate = () => {
         if (res.fileResult.length === 0) {
           const p = document.createElement('p');
           p.setAttribute('class', 'share-none-p');
-          p.innerHTML = '共有されたノウハウはございません';
+          p.innerHTML = '共有されたノウハウは<br>ございません';
           document.getElementById('sharelist').appendChild(p);
         }
         res.fileResult.forEach((file) => {
