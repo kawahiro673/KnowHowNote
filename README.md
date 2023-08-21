@@ -1,10 +1,16 @@
-## 📘 Know How Note 📘
+##  ![KnowHowNote-タイトル](https://github.com/kawahiro673/nodejs-itnote-app/assets/126426280/502a5c04-a2e4-4796-9ca2-57b060aa46b1)
 
-## 📝 概要
+Know How Note 
 
-仕事中やプライベートで得たノウハウを一括管理し、共有できる Web サイトです
+##  サービス概要
 
-## 🕹️ 機能
+業務で得たノウハウや自宅学習での学びを一括管理し、フレンドに共有することのできる Web サービスです。
+
+相手の「利用者ID」を登録することによりフレンドへの追加が可能で、個々人でのノウハウを共有し合うことができます。また、独自のグループを作成することにより、グループへ配属されたフレンド全員へ一括共有することも可能です。
+
+業務内や学習の中で得たノウハウを管理することは非常に大事なことです。ノウハウを効果的に蓄積・共有すれば、「業務効率化・生産性向上」に繋がりますし、学習したことを復習として学び直すことにより「記憶の定着」に繋がります。「どこでノウハウを管理していたか忘れてしまった・・・」そんな方にお勧めのWebサービスです。
+
+##  機能
 
 **1.ノウハウの作成**
 　　- ノウハウを作成し、フォルダごとにまとめて一括管理
@@ -22,7 +28,7 @@
 
 ここにシステムの図を入れる
 
-## 💻 開発環境
+##  開発環境
 
 - HTML
 - CSS
@@ -32,8 +38,8 @@
 - HEROKU
 - VSCode（Visual Studio Code）
 
-## 📝 画面仕様/画面遷移図
-[Figmaデザイン]https://www.figma.com/file/tWQotfqXduFKvUqG8kdO6k/%E3%83%8E%E3%82%A6%E3%83%8F%E3%82%A6%E3%83%8E%E3%83%BC_%E7%94%BB%E9%9D%A2%E4%BB%95%E6%A7%98%2F%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB?type=design&node-id=0%3A1&mode=design&t=WK2vuTqV996VRYNG-1
+##  画面仕様/画面遷移図
+[Figma]https://www.figma.com/file/tWQotfqXduFKvUqG8kdO6k/%E3%83%8E%E3%82%A6%E3%83%8F%E3%82%A6%E3%83%8E%E3%83%BC_%E7%94%BB%E9%9D%A2%E4%BB%95%E6%A7%98%2F%E7%94%BB%E9%9D%A2%E9%81%B7%E7%A7%BB?type=design&node-id=0%3A1&mode=design&t=WK2vuTqV996VRYNG-1
 
 ## 🌐 App URL
 
