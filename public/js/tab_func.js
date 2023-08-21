@@ -391,6 +391,11 @@ document.getElementById('share-user-button').addEventListener('click', () => {
             div.appendChild(checkboxLabel);
             div.appendChild(imgElement);
 
+            checkboxLabel.addEventListener('click', function (event) {
+              checkbox.checked = !checkbox.checked;
+              event.stopPropagation();
+            });
+
             // ラベル要素にマウスカーソルが入ったときの処理
             imgElement.addEventListener('mouseenter', (event) => {
               if (!isPopupShown) {
@@ -428,7 +433,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
                     },
                   });
                   isPopupShown = true;
-                }, 500);
+                }, 250);
               }
             });
 
@@ -443,35 +448,16 @@ document.getElementById('share-user-button').addEventListener('click', () => {
         }
       });
 
-      // const groupCheckDivs = document.querySelectorAll(
-      //   '.friend-list-group-check-div'
-      // );
-      // groupCheckDivs.forEach((div) => {
-      //   const checkbox = div.querySelector('input[type="checkbox"]');
-      //   // ラベル要素内でのクリックをチェックボックスの切り替えと関連付ける
-      //   div.addEventListener('click', function (event) {
-      //     if (event.target.tagName !== 'INPUT') {
-      //       checkbox.checked = !checkbox.checked;
-      //     }
-      //   });
-      // });
-
       const groupCheckDivs = document.querySelectorAll(
         '.friend-list-group-check-div'
       );
       groupCheckDivs.forEach((div) => {
         const checkbox = div.querySelector('input[type="checkbox"]');
-        const label = div.querySelector('label');
-
         // ラベル要素内でのクリックをチェックボックスの切り替えと関連付ける
-        label.addEventListener('click', function (event) {
-          checkbox.checked = !checkbox.checked;
-          event.stopPropagation(); // ラベルクリック時に親要素のクリックイベントが発火しないようにする
-        });
-
-        // チェックボックス自体のクリックイベントは処理しない
-        checkbox.addEventListener('click', function (event) {
-          event.stopPropagation();
+        div.addEventListener('click', function (event) {
+          if (event.target.tagName !== 'INPUT') {
+            checkbox.checked = !checkbox.checked;
+          }
         });
       });
 

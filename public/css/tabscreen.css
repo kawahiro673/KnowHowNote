@@ -354,7 +354,7 @@ input[name='tab_item'] {
   margin: 0 5px;
 }
 
-.friend-list-check-div img {
+.friend-list-group-check-div img {
   width: 20px;
   height: 20px;
 }
@@ -421,7 +421,8 @@ input[name='friend-list-label'] {
 }
 
 .friend-list-check-div:hover,
-.friend-list-group-check-div:hover {
+.popup-label
+/* .friend-list-group-check-div:hover */ {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
