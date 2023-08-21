@@ -396,6 +396,13 @@ document.getElementById('share-user-button').addEventListener('click', () => {
               event.stopPropagation();
             });
 
+            // ラベル要素内でのクリックをチェックボックスの切り替えと関連付ける
+            div.addEventListener('click', function (event) {
+              if (event.target.tagName !== 'INPUT') {
+                checkbox.checked = !checkbox.checked;
+              }
+            });
+
             // ラベル要素にマウスカーソルが入ったときの処理
             imgElement.addEventListener('mouseenter', (event) => {
               if (!isPopupShown) {
@@ -448,18 +455,18 @@ document.getElementById('share-user-button').addEventListener('click', () => {
         }
       });
 
-      const groupCheckDivs = document.querySelectorAll(
-        '.friend-list-group-check-div'
-      );
-      groupCheckDivs.forEach((div) => {
-        const checkbox = div.querySelector('input[type="checkbox"]');
-        // ラベル要素内でのクリックをチェックボックスの切り替えと関連付ける
-        div.addEventListener('click', function (event) {
-          if (event.target.tagName !== 'INPUT') {
-            checkbox.checked = !checkbox.checked;
-          }
-        });
-      });
+      // const groupCheckDivs = document.querySelectorAll(
+      //   '.friend-list-group-check-div'
+      // );
+      // groupCheckDivs.forEach((div) => {
+      //   const checkbox = div.querySelector('input[type="checkbox"]');
+      //   // ラベル要素内でのクリックをチェックボックスの切り替えと関連付ける
+      //   div.addEventListener('click', function (event) {
+      //     if (event.target.tagName !== 'INPUT') {
+      //       checkbox.checked = !checkbox.checked;
+      //     }
+      //   });
+      // });
 
       if (!groupFlg) {
         const p = document.createElement('p');

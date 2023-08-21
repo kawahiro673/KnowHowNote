@@ -421,8 +421,8 @@ input[name='friend-list-label'] {
 }
 
 .friend-list-check-div:hover,
-.popup-label
-/* .friend-list-group-check-div:hover */ {
+.popup-label:hover
+/* .friend-list-group-check-div:hover  */ {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
