@@ -212,8 +212,7 @@ export const cancelButtonClick = async (id) => {
       success: function (res) {
         document.getElementById(`textarea${id}`).value =
           res.fileResult.memo_text;
-        document.getElementById(`titletext${id}`).value =
-          res.fileResult.title;
+        document.getElementById(`titletext${id}`).value = res.fileResult.title;
       },
     });
     document.getElementById(`tabP${id}`).style.display = 'block';
@@ -357,8 +356,6 @@ document.getElementById('share-user-button').addEventListener('click', () => {
         });
       });
 
-
-      
       const popupGroupMember = document.getElementById('popup-group-member');
       let timer;
       let isPopupShown = false;
@@ -453,11 +450,6 @@ document.getElementById('share-user-button').addEventListener('click', () => {
           }
         });
       });
-
-
-
-
-
 
       if (!groupFlg) {
         const p = document.createElement('p');
