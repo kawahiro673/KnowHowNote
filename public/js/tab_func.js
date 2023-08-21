@@ -452,9 +452,10 @@ document.getElementById('share-user-button').addEventListener('click', () => {
       //   });
       // });
 
-      const popupGroupMember = document.getElementById('popup-group-member');
+    const popupGroupMember = document.getElementById('popup-group-member');
 let timer;
 let isPopupShown = false;
+let isPopupHovered = false; // ポップアップ要素にマウスがあるかどうかのフラグ
 
 // グループ側のチェックボックス作成
 let groupFlg = false;
@@ -528,6 +529,17 @@ res.friend.forEach((friend) => {
         }
       });
 
+      popupGroupMember.addEventListener('mouseenter', () => {
+        isPopupHovered = true;
+      });
+
+      popupGroupMember.addEventListener('mouseleave', () => {
+        isPopupHovered = false;
+        if (!isPopupShown) {
+          popupGroupMember.style.display = 'none';
+        }
+      });
+
       checkbox.addEventListener('click', (event) => {
         event.stopPropagation(); // クリックイベントが親要素に伝播しないようにする
       });
@@ -540,6 +552,7 @@ res.friend.forEach((friend) => {
     }
   }
 });
+
 
 
       if (!groupFlg) {
