@@ -404,53 +404,53 @@ document.getElementById('share-user-button').addEventListener('click', () => {
             });
 
             // ラベル要素にマウスカーソルが入ったときの処理
-            imgElement.addEventListener('mouseenter', (event) => {
-              if (!isPopupShown) {
-                // タイマーをクリアして遅延処理を実行。タイマーがないと、連続してDB参照してしまうため、サーバー不具合発生
-                clearTimeout(timer);
-                timer = setTimeout(() => {
-                  popupGroupMember.style.display = 'block';
+            // imgElement.addEventListener('mouseenter', (event) => {
+            //   if (!isPopupShown) {
+            //     // タイマーをクリアして遅延処理を実行。タイマーがないと、連続してDB参照してしまうため、サーバー不具合発生
+            //     clearTimeout(timer);
+            //     timer = setTimeout(() => {
+            //       popupGroupMember.style.display = 'block';
 
-                  // マウスの座標を取得し、ポップアップ要素を移動
-                  popupGroupMember.style.left = event.clientX + 'px';
-                  popupGroupMember.style.top = event.clientY + 'px';
+            //       // マウスの座標を取得し、ポップアップ要素を移動
+            //       popupGroupMember.style.left = event.clientX + 'px';
+            //       popupGroupMember.style.top = event.clientY + 'px';
 
-                  $.ajax({
-                    url: '/groupListPostController/',
-                    type: 'POST',
-                    dataType: 'Json',
-                    contentType: 'application/json',
-                    data: JSON.stringify({
-                      flg: 'group_info',
-                      group: userGroup,
-                    }),
-                    success: function (res) {
-                      document.getElementById(
-                        'group-member-groupname'
-                      ).innerHTML = userGroup;
-                      const memberList =
-                        document.getElementsByClassName('group-member-list')[0];
-                      memberList.innerHTML = '';
-                      res.friendResult.forEach((friend) => {
-                        const p = document.createElement('p');
-                        p.setAttribute('class', `group-member`);
-                        p.innerHTML = friend.Changed_Name;
-                        memberList.appendChild(p);
-                      });
-                    },
-                  });
-                  isPopupShown = true;
-                }, 250);
-              }
-            });
+            //       $.ajax({
+            //         url: '/groupListPostController/',
+            //         type: 'POST',
+            //         dataType: 'Json',
+            //         contentType: 'application/json',
+            //         data: JSON.stringify({
+            //           flg: 'group_info',
+            //           group: userGroup,
+            //         }),
+            //         success: function (res) {
+            //           document.getElementById(
+            //             'group-member-groupname'
+            //           ).innerHTML = userGroup;
+            //           const memberList =
+            //             document.getElementsByClassName('group-member-list')[0];
+            //           memberList.innerHTML = '';
+            //           res.friendResult.forEach((friend) => {
+            //             const p = document.createElement('p');
+            //             p.setAttribute('class', `group-member`);
+            //             p.innerHTML = friend.Changed_Name;
+            //             memberList.appendChild(p);
+            //           });
+            //         },
+            //       });
+            //       isPopupShown = true;
+            //     }, 250);
+            //   }
+            // });
 
-            // ラベル要素からマウスカーソルが出たときの処理
-            imgElement.addEventListener('mouseleave', () => {
-              // タイマーをクリアしてポップアップを非表示にする
-              clearTimeout(timer);
-              popupGroupMember.style.display = 'none';
-              isPopupShown = false;
-            });
+            // // ラベル要素からマウスカーソルが出たときの処理
+            // imgElement.addEventListener('mouseleave', () => {
+            //   // タイマーをクリアしてポップアップを非表示にする
+            //   clearTimeout(timer);
+            //   popupGroupMember.style.display = 'none';
+            //   isPopupShown = false;
+            // });
           }
         }
       });
