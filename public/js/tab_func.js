@@ -361,14 +361,14 @@ document.getElementById('share-user-button').addEventListener('click', () => {
       let isPopupShown = false;
 
       //グループ側のチェックボックス作成
-      // let groupFlg = false;
+      let groupFlg = false;
       // const groupSet = new Set(); // ユニークな User_Group を格納するための Set
       res.friend.forEach((friend) => {
         if (friend.User_Group !== 'なし') {
           const userGroup = friend.User_Group;
           // if (!groupSet.has(userGroup)) {
           //   groupSet.add(userGroup);
-          //   groupFlg = true;
+          groupFlg = true;
 
           const div = document.createElement('div');
           div.setAttribute('class', 'friend-list-group-check-div');
@@ -382,14 +382,14 @@ document.getElementById('share-user-button').addEventListener('click', () => {
           checkboxLabel.setAttribute('for', `checkbox${userGroup}`);
           checkboxLabel.setAttribute('class', `popup-label`);
 
-          const imgElement = document.createElement('img');
-          imgElement.src = '/img/reload.png';
-          imgElement.alt = 'Hover User Info';
+          // const imgElement = document.createElement('img');
+          // imgElement.src = '/img/reload.png';
+          // imgElement.alt = 'Hover User Info';
 
           document.getElementById('share-group-div').appendChild(div);
           div.appendChild(checkbox);
           div.appendChild(checkboxLabel);
-          div.appendChild(imgElement);
+          //div.appendChild(imgElement);
 
           // checkboxLabel.addEventListener('click', function (event) {
           //   checkbox.checked = !checkbox.checked;
@@ -467,6 +467,15 @@ document.getElementById('share-user-button').addEventListener('click', () => {
           }
         });
       });
+
+      // const checkDivs = document.querySelectorAll('.friend-list-check-div');
+      // checkDivs.forEach((div) => {
+      //   div.addEventListener('click', function () {
+      //     const checkbox = div.querySelector('input[type="checkbox"]');
+      //     // チェックボックスの状態を切り替える
+      //     checkbox.checked = !checkbox.checked;
+      //   });
+      // });
 
       if (!groupFlg) {
         const p = document.createElement('p');
