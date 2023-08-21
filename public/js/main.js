@@ -317,7 +317,7 @@ function tabScreenOptions(id, title) {
               'none';
             document.getElementById(`textarea${id}`).readOnly = false;
 
-            document.getElementById(`tabP${id}`).style.display = 'none';
+            // document.getElementById(`tabP${id}`).style.display = 'none';
             document.getElementById(`titletext${id}`).style.display = 'block';
             document
               .getElementById(`titletext${id}`)
@@ -325,6 +325,7 @@ function tabScreenOptions(id, title) {
                 'value',
                 document.getElementById(`tabP${id}`).innerHTML
               );
+            document.getElementById(`tabP${id}`).style.display = 'none';
 
             document.getElementById(`edit-note-btn${id}`).style.display =
               'none';
