@@ -1,6 +1,6 @@
 ![KnowHowNote-タイトル](https://github.com/kawahiro673/nodejs-itnote-app/assets/126426280/502a5c04-a2e4-4796-9ca2-57b060aa46b1)
 
-##　Know How Note 
+##  Know How Note 
 
 ##  サービス概要
 
