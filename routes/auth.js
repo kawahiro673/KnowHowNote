@@ -101,7 +101,7 @@ router
             pool.query(
               'INSERT INTO it_memo (title, memo_text, saved_time, parent_id, folder_order, Type, UserID) VALUES(?,?,?,?,?,?,?);',
               [
-                'sample1',
+                '新しいノウハウ１',
                 'こちらはサンプルになります',
                 req.body.time,
                 0,
@@ -164,7 +164,7 @@ router
             pool.query(
               'INSERT INTO it_memo (title, memo_text, saved_time, parent_id, folder_order, Type, UserID) VALUES(?,?,?,?,?,?,?);',
               [
-                'sample2',
+                '新しいノウハウ２',
                 'こちらはサンプルになります',
                 req.body.time,
                 folderResult[0].id,
