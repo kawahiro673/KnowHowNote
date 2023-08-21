@@ -452,7 +452,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
       //   });
       // });
 
-  const popupGroupMember = document.getElementById('popup-group-member');
+const popupGroupMember = document.getElementById('popup-group-member');
 let timer;
 let isPopupShown = false;
 let isPopupHovered = false; // ポップアップ要素にマウスがあるかどうかのフラグ
@@ -480,8 +480,8 @@ res.friend.forEach((friend) => {
       checkboxLabel.setAttribute('class', `popup-label`);
 
       document.getElementById('share-group-div').appendChild(div);
-      div.appendChild(checkboxLabel); // ラベルを先に追加
-      div.appendChild(checkbox); // チェックボックスをラベルの後に追加
+      div.appendChild(checkbox); // チェックボックスを先に追加
+      div.appendChild(checkboxLabel); // ラベルをチェックボックスの後に追加
 
       // ラベル要素にマウスカーソルが入ったときの処理
       div.addEventListener('mouseenter', (event) => {
@@ -544,13 +544,15 @@ res.friend.forEach((friend) => {
         event.stopPropagation(); // クリックイベントが親要素に伝播しないようにする
       });
 
-      checkboxLabel.addEventListener('click', function (event) {
-        checkbox.checked = !checkbox.checked;
-        event.stopPropagation(); // クリックイベントが親要素に伝播しないようにする
+      div.addEventListener('click', function (event) {
+        if (event.target.tagName !== 'INPUT') {
+          checkbox.checked = !checkbox.checked;
+        }
       });
     }
   }
 });
+
 
 
 
