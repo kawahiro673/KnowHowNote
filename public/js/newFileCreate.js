@@ -21,7 +21,7 @@ export const newFileCreateFunc = (id) => {
     inputTab.setAttribute('maxlength', '20');
     inputTab.setAttribute('size', '20');
     inputTab.style.display = 'block';
-    inputTab.setAttribute('value', '新しいノート');
+    inputTab.setAttribute('value', '新しいノウハウ');
 
     document.getElementById(id).appendChild(li);
     li.appendChild(span);
@@ -54,7 +54,7 @@ export const newFileCreateFunc = (id) => {
     const handleClick = (e) => {
       if (!e.target.closest('#inputTab')) {
         if (!inputTab.value || !inputTab.value.match(/\S/g))
-          inputTab.value = '新しいノート';
+          inputTab.value = '新しいノウハウ';
         createFile();
       }
     };
@@ -63,7 +63,7 @@ export const newFileCreateFunc = (id) => {
       e.preventDefault();
       if (!e.target.closest('#inputTab')) {
         if (!inputTab.value || !inputTab.value.match(/\S/g))
-          inputTab.value = '新しいノート';
+          inputTab.value = '新しいノウハウ';
         createFile();
       }
     };
@@ -117,7 +117,7 @@ export const newCreateFile2 = (inputTab, parentId, order) => {
   });
 };
 
-//「ノート追加」ボタン押下時(root(id=0)に作成)
+//「ノウハウ追加」ボタン押下時(root(id=0)に作成)
 // hasInputは、input要素の有無を確認している
 createfilebutton.addEventListener('click', async (e) => {
   const root = hasInput(document.getElementById('0'));
