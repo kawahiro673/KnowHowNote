@@ -423,3 +423,7 @@ input[type='checkbox']:checked + .gray_b {
 .group-input-container {
   text-align: center;
 }
+
+.account-delete {
+  text-align: right;
+}
