@@ -219,6 +219,6 @@ footer {
   width: 250px;
 }
 
-##sharelist {
-  text-align: center; 
-}
+.share-none-p {
+  white-space: pre-line;
+  text-align: center;
