@@ -354,6 +354,11 @@ input[name='tab_item'] {
   margin: 0 5px;
 }
 
+.friend-list-check-div img {
+  width: 20px;
+  height: 20px;
+}
+
 /************************　フレンド一覧　******************************/
 /*タブのスタイル*/
 .popup-body_share-user label:first-of-type {
