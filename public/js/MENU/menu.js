@@ -326,7 +326,7 @@ document
     if (document.getElementById('user_name').innerHTML.length > 20) {
       explanationPopUp(
         '利用者ID変更',
-        'ゲストユーザーは利用者IDを変更できません'
+        'ゲストユーザーは利用者IDをご利用できません'
       );
       return false;
     }
