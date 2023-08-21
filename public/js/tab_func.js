@@ -540,14 +540,10 @@ res.friend.forEach((friend) => {
         }
       });
 
-      checkbox.addEventListener('click', (event) => {
+      // ラベル要素内でのクリックをチェックボックスの切り替えと関連付ける
+      checkboxLabel.addEventListener('click', function (event) {
+        checkbox.checked = !checkbox.checked;
         event.stopPropagation(); // クリックイベントが親要素に伝播しないようにする
-      });
-
-      div.addEventListener('click', function (event) {
-        if (event.target.tagName !== 'INPUT') {
-          checkbox.checked = !checkbox.checked;
-        }
       });
     }
   }
