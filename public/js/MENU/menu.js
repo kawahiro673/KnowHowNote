@@ -790,14 +790,14 @@ document
       document.getElementById('idInput').value ===
       document.getElementById('myID').innerHTML
     ) {
-      //alert('自分自身はフレンドリストに登録できません');
       explanationPopUp('フレンド追加', '自分自身はフレンドに登録できません');
     } else if (document.getElementById('idInput').value === '') {
-      //alert('フレンドリストに追加したい利用者IDを入力してください');
       explanationPopUp(
         'フレンド追加',
         'フレンドリストに追加したい利用者IDを入力してください'
       );
+    } else if (document.getElementById('idInput').value === '****-****-****-****'){
+      explanationPopUp('フレンド追加', 'ゲストユーザーはフレンド登録できません');
     } else {
       const time = currentTimeGet();
       $.ajax({
