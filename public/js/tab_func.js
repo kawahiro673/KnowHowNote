@@ -390,70 +390,86 @@ document.getElementById('share-user-button').addEventListener('click', () => {
             div.appendChild(checkboxLabel);
 
             // ラベル要素にマウスカーソルが入ったときの処理
-            // div.addEventListener('mouseenter', (event) => {
-            //   if (!isPopupShown) {
-            //     // タイマーをクリアして遅延処理を実行。タイマーがないと、連続してDB参照してしまうため、サーバー不具合発生
-            //     clearTimeout(timer);
-            //     timer = setTimeout(() => {
-            //       popupGroupMember.style.display = 'block';
+            div.addEventListener('mouseenter', (event) => {
+              if (!isPopupShown) {
+                // タイマーをクリアして遅延処理を実行。タイマーがないと、連続してDB参照してしまうため、サーバー不具合発生
+                clearTimeout(timer);
+                timer = setTimeout(() => {
+                  popupGroupMember.style.display = 'block';
 
-            //       // マウスの座標を取得し、ポップアップ要素を移動
-            //       popupGroupMember.style.left = event.clientX + 'px';
-            //       popupGroupMember.style.top = event.clientY + 'px';
+                  // マウスの座標を取得し、ポップアップ要素を移動
+                  popupGroupMember.style.left = event.clientX + 'px';
+                  popupGroupMember.style.top = event.clientY + 'px';
 
-            //       $.ajax({
-            //         url: '/groupListPostController/',
-            //         type: 'POST',
-            //         dataType: 'Json',
-            //         contentType: 'application/json',
-            //         data: JSON.stringify({
-            //           flg: 'group_info',
-            //           group: userGroup,
-            //         }),
-            //         success: function (res) {
-            //           document.getElementById(
-            //             'group-member-groupname'
-            //           ).innerHTML = userGroup;
-            //           const memberList =
-            //             document.getElementsByClassName('group-member-list')[0];
-            //           memberList.innerHTML = '';
-            //           res.friendResult.forEach((friend) => {
-            //             const p = document.createElement('p');
-            //             p.setAttribute('class', `group-member`);
-            //             p.innerHTML = friend.Changed_Name;
-            //             memberList.appendChild(p);
-            //           });
-            //         },
-            //       });
-            //       isPopupShown = true;
-            //     }, 500);
-            //   }
-            // });
+                  $.ajax({
+                    url: '/groupListPostController/',
+                    type: 'POST',
+                    dataType: 'Json',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                      flg: 'group_info',
+                      group: userGroup,
+                    }),
+                    success: function (res) {
+                      document.getElementById(
+                        'group-member-groupname'
+                      ).innerHTML = userGroup;
+                      const memberList =
+                        document.getElementsByClassName('group-member-list')[0];
+                      memberList.innerHTML = '';
+                      res.friendResult.forEach((friend) => {
+                        const p = document.createElement('p');
+                        p.setAttribute('class', `group-member`);
+                        p.innerHTML = friend.Changed_Name;
+                        memberList.appendChild(p);
+                      });
+                    },
+                  });
+                  isPopupShown = true;
+                }, 500);
+              }
+            });
 
-            // // ラベル要素からマウスカーソルが出たときの処理
-            // div.addEventListener('mouseleave', () => {
-            //   // タイマーをクリアしてポップアップを非表示にする
-            //   clearTimeout(timer);
-            //   popupGroupMember.style.display = 'none';
-            //   isPopupShown = false;
-            // });
+            // ラベル要素からマウスカーソルが出たときの処理
+            div.addEventListener('mouseleave', () => {
+              // タイマーをクリアしてポップアップを非表示にする
+              clearTimeout(timer);
+              popupGroupMember.style.display = 'none';
+              isPopupShown = false;
+            });
           }
         }
       });
 
-      const groupCheckDivs = document.querySelectorAll(
-        '.friend-list-group-check-div'
-      );
-      groupCheckDivs.forEach((div) => {
-        const checkbox = div.querySelector('input[type="checkbox"]');
-        // ラベル要素内でのクリックをチェックボックスの切り替えと関連付ける
-        div.addEventListener('click', function (event) {
-          if (event.target.tagName !== 'INPUT') {
-            checkbox.checked = !checkbox.checked;
-          }
-        });
-      });
+      // const groupCheckDivs = document.querySelectorAll(
+      //   '.friend-list-group-check-div'
+      // );
+      // groupCheckDivs.forEach((div) => {
+      //   const checkbox = div.querySelector('input[type="checkbox"]');
+      //   // ラベル要素内でのクリックをチェックボックスの切り替えと関連付ける
+      //   div.addEventListener('click', function (event) {
+      //     if (event.target.tagName !== 'INPUT') {
+      //       checkbox.checked = !checkbox.checked;
+      //     }
+      //   });
+      // });
 
+const groupCheckDivs = document.querySelectorAll('.friend-list-group-check-div');
+groupCheckDivs.forEach((div) => {
+  const checkbox = div.querySelector('input[type="checkbox"]');
+  const label = div.querySelector('label');
+
+  // ラベル要素内でのクリックをチェックボックスの切り替えと関連付ける
+  label.addEventListener('click', function (event) {
+    checkbox.checked = !checkbox.checked;
+    event.stopPropagation(); // ラベルクリック時に親要素のクリックイベントが発火しないようにする
+  });
+  
+  // チェックボックス自体のクリックイベントは処理しない
+  checkbox.addEventListener('click', function (event) {
+    event.stopPropagation();
+  });
+});
 
 
 
