@@ -27,18 +27,27 @@
 
 **3.ノウハウ・フォルダの配置** -ノウハウまたはフォルダをドラッグ&ドロップすることによりお好みの位置に配置することが可能です。
 
+![ドラッグアンドドロップ](https://github.com/kawahiro673/nodejs-itnote-app/assets/126426280/3a667feb-f816-4955-a634-c4c063d638bd)
 
 **4.ノウハウの表示** - 作成したノウハウをクリックすることにより、タブが生成され、ノウハウの内容を確認することができます。
 
-![タブ生成](https://github.com/kawahiro673/nodejs-itnote-app/assets/126426280/ebd39c04-a822-45b0-857f-9e9a20f9dc18)
+![タブ](https://github.com/kawahiro673/nodejs-itnote-app/assets/126426280/38b665f3-34e0-498e-a1ea-0800d97895cf)
 
+
+**5.ユーザー新規登録 & ユーザーログイン & パスワードリセット機能 - ユーザーの新規登録からログイン、パスワードリセットを行う事ができます。フレンドの追加や利用者IDの更新、パスワードとメールアドレスの更新以外は、未登録ユーザーでも操作可能となっています。
+
+![トップページ](https://github.com/kawahiro673/nodejs-itnote-app/assets/126426280/7d05f1e7-2626-4f4c-a82c-0d529e1e50ef)
+    
 **5.その他機能** - ノウハウの共有履歴の確認やタブやノウハウ・背景の配色変更が可能です。
 
+![共有履歴](https://github.com/kawahiro673/nodejs-itnote-app/assets/126426280/ed967563-07be-46fa-bf9b-ccdf4a805e8f)
+![タブの色](https://github.com/kawahiro673/nodejs-itnote-app/assets/126426280/1a27572b-69fa-4e01-82a9-42e97e6d8966)
 
+<!-- 
 ## 👀 全体的な仕組み
 
 ここにシステムの図を入れる
-
+-->
 ##  開発環境
 
 - HTML
