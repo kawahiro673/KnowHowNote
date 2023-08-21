@@ -212,8 +212,7 @@ export const cancelButtonClick = async (id) => {
       success: function (res) {
         document.getElementById(`textarea${id}`).value =
           res.fileResult.memo_text;
-      },
-       document.getElementById(`titletext${id}`).value =
+        document.getElementById(`titletext${id}`).value =
           res.fileResult.title;
       },
     });
