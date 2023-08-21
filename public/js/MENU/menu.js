@@ -796,8 +796,13 @@ document
         'フレンド追加',
         'フレンドリストに追加したい利用者IDを入力してください'
       );
-    } else if (document.getElementById('idInput').value === '****-****-****-****'){
-      explanationPopUp('フレンド追加', 'ゲストユーザーはフレンド登録できません');
+    } else if (
+      document.getElementById('idInput').value === '****-****-****-****'
+    ) {
+      explanationPopUp(
+        'フレンド追加',
+        'ゲストユーザーはフレンド登録できません'
+      );
     } else {
       const time = currentTimeGet();
       $.ajax({
@@ -847,8 +852,14 @@ document
     document.getElementById('popup-overlay_group-list').style.display = 'none';
   });
 
+//フレンドリストから
 document
   .getElementById('friend-list-group-add-button')
+  .addEventListener('click', openGroupAddPopup);
+
+//MENUから
+document
+  .getElementById('group-list')
   .addEventListener('click', openGroupAddPopup);
 
 document
