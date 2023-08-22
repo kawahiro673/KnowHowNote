@@ -117,6 +117,29 @@ const groupListUpdate = (idElement) => {
                  popupGroupMember.style.top = event.clientY + 'px';
               
                  //ここでajax処理
+                $.ajax({
+                  url: '/groupListPostController/',
+                  type: 'POST',
+                  dataType: 'Json',
+                  contentType: 'application/json',
+                  data: JSON.stringify({
+                    flg: 'group_info',
+                    group: userGroup,
+                  }),
+                  success: function (res) {
+                    document.getElementById(
+                      'group-member-groupname'
+                    ).innerHTML = userGroup;
+                    const memberList =
+                      document.getElementsByClassName('group-member-list')[0];
+                    memberList.innerHTML = '';
+                    res.friendResult.forEach((friend) => {
+                      const p = document.createElement('p');
+                      p.setAttribute('class', `group-member`);
+                      p.innerHTML = friend.Changed_Name;
+                      memberList.appendChild(p);
+                    });
+                  });
               
                 isPopupShown = true;
               },250);
