@@ -37,11 +37,6 @@ function registerButtonClick() {
         password_auth.value === '' ||
         cfPassword.value === ''
       ) {
-        // elements.forEach(function (element) {
-        //   if (element.value === '') {
-        //     element.style.border = '1px solid red';
-        //   }
-        // });
     elements.forEach(function (element) {
     if (element.value === '' && element.getAttribute('name') !== 'email') {
         element.style.border = '1px solid red';
@@ -106,6 +101,7 @@ function registerButtonClick() {
           flg: 'cipher',
           username: userName.value,
           password: password_auth.value,
+          email: authEmail.value,
           time,
         }),
         success: function (res) {
