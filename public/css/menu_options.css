@@ -403,9 +403,9 @@ input[type='checkbox']:checked + .gray_b {
 .registration-date {
   width: 75%;
 }
-.user-name-position {
+/* .user-name-position {
   width: 60%;
-}
+} */
 
 .password-inputs,
 .email-inputs {
