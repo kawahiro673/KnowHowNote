@@ -390,7 +390,6 @@ document.getElementById('share-user-button').addEventListener('click', () => {
               timer = setTimeout(() => {
                 popupGroupMember.style.display = 'block';
 
-                // マウスの座標を取得し、ポップアップ要素を移動
                 popupGroupMember.style.left = event.clientX + 'px';
                 popupGroupMember.style.top = event.clientY + 'px';
 
