@@ -202,7 +202,7 @@ const shareListCreate = () => {
 };
 
 const noTab = document.createElement('p');
-noTab.innerHTML = 'こちらにnoteが出力されます';
+noTab.innerHTML = 'こちらにノウハウが出力されます';
 noTab.setAttribute('id', 'notab');
 document.getElementById('tab').appendChild(noTab);
 
