@@ -414,6 +414,12 @@ input[type='checkbox']:checked + .gray_b {
 .email-inputs input,
 .email-inputs p {
   width: 250px;
+  height:24px;
+}
+
+#group-Name-input{
+    width: 250px;
+  height:30px;
 }
 
 .group-input-container {
