@@ -428,3 +428,9 @@ input[type='checkbox']:checked + .gray_b {
 .account-delete {
   text-align: right;
 }
+
+.invisible-element {
+  display: none;
+  padding: 7px 14px;
+  font-size: 12px;
+}
