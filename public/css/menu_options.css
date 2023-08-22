@@ -396,10 +396,6 @@ input[type='checkbox']:checked + .gray_b {
   color: red;
 }
 
-.registration-date {
-  width: 75%;
-}
-
 .password-inputs,
 .email-inputs {
   display: flex;
