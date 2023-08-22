@@ -438,3 +438,7 @@ input[type='checkbox']:checked + .gray_b {
 .checkbox-share-p{
   margin:0;
 }
+
+.column-inner:hover{
+  background-color: #D3D3D3;
+}
