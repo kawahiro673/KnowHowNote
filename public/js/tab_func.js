@@ -297,7 +297,7 @@ export const shareNoteSendFunc = (id, title) => {
           //見つからないユーザーがあるパターン
           explanationPopUp(
             '共有',
-            `${res.notShareUsers}は見つかりませんでした。アカウントが削除されたか、共有機能をOFFにしている可能性があります。`
+            `${res.notShareUsers}へ共有できませんでした。アカウントが削除されたか、共有機能をOFFにしている可能性があります。`
           );
         }
       },
