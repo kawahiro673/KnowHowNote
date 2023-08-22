@@ -3,6 +3,23 @@ const pool = require('../db');
 const bcrypt = require('bcrypt');
 const JWT = require('jsonwebtoken');
 const { reject } = require('bcrypt/promises');
+const nodemailer = require('nodemailer');
+
+//認証情報
+const auth = {
+  type: 'OAuth2',
+  user: 'akanuma.9099@gmail.com',
+  clientId:
+    '755195789659-0lt6su9q88eq0585igj83b4m5ont4bbi.apps.googleusercontent.com',
+  clientSecret: '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',
+  refreshToken:
+    '1//04_aWdS9pheLjCgYIARAAGAQSNwF-L9IrHvN4nWm4Th8Q2Bub24PndrddgDhDZZGm3THAbFv22Mt2bRwjxf9eUDjyhvYDNU52pDw',
+};
+const transport = {
+  service: 'gmail',
+  auth,
+};
+const transporter = nodemailer.createTransport(transport);
 
 router
   .route('/')
@@ -202,6 +219,24 @@ router
               maxAge: 1000 * 60 * 360,
             };
 
+            if(req.body.email){
+             const mailOptions = {
+                  from: auth.user,
+                  to: req.body.email,
+                  subject: '【Know How Note】メールアドレス設定',
+                  text: `${resultDecoded[0].UserName}様\n\n日頃より「Know How Note」をご利用くださり誠にありがとうございます。\nあなたのアカウントについて、こちらのアドレスを承りました。\n\n※当メールは送信専用メールアドレスから配信されています。このままご返信いただいてもお答えできませんのでご了承ください。\n\n※当メールに心当たりの無い場合は、誠に恐れ入りますが破棄して頂けますよう、よろしくお願いいたします。\n`,
+                };
+
+                transporter.sendMail(mailOptions, (error, info) => {
+                  if (error) {
+                    console.log('Error:', error);
+                    res.status(500).send('Error sending email');
+                  } else {
+                    console.log('Email sent:', info.response);
+                  }
+                });
+            }
+            
             res.cookie('token', token, options);
             res.cookie('hashedId', encodedId, options);
 
