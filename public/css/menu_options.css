@@ -150,7 +150,13 @@
   transform: translate(-50%, -50%);
 }
 
-.user-name-position,
+.user-name-position{
+  display: flex;
+  justify-content: center; /* ユーザー名を水平方向に中央揃え */
+  align-items: flex-start; /* ユーザー名を上端に配置 */
+  padding-top: 3px; /* 適切な間隔を調整 */
+}
+
 .authentication-ID-position,
 #email-container,
 #password-container {
