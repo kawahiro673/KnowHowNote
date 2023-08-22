@@ -30,10 +30,11 @@ router
         .then(() => {
           return new Promise((resolve, reject) => {
             pool.query(
-              'INSERT INTO register_user (UserName, HashedPassword, CreationDay, Authentication_ID, LoginDate) VALUES(?, ?, ?, ?, ?);',
+              'INSERT INTO register_user (UserName, HashedPassword, Email, CreationDay, Authentication_ID, LoginDate) VALUES(?, ?, ?, ?, ?, ?);',
               [
                 userName,
                 hashedPassword,
+                req.body.email,
                 req.body.time,
                 randomID,
                 req.body.time,
@@ -213,12 +214,10 @@ router
         })
         .catch((error) => {
           console.error(error);
-          // res.status(500).send('Internal Server Error.(Register user)');
+          res.status(500).send('Internal Server Error.(Register user)');
         });
     }
   });
-
-//ログイン用のAPI
 
 module.exports = router;
 
