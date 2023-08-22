@@ -139,7 +139,8 @@ export const answerPopUp = (title, content) => {
       resolve(true);
     };
 
-    const noClickHandler = function () {
+    const noClickHandler = function (e) {
+       e.preventDefault();
       document.getElementById('popup-overlay_answer-pop').style.display = 'none';
       resolve(false);
     };
