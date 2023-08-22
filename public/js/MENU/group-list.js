@@ -77,26 +77,43 @@ const groupListUpdate = (idElement) => {
     }),
     success: function (res) {
       const groupDisplay = document.getElementById(idElement);
-      groupDisplay.innerHTML = '';
+      const popupGroupMember = document.getElementById('popup-group-member');
+      groupDisplay.innerHTML = '';  
 
       if (res.groupResults.length === 0) {
         document.getElementById('group-add-list-massage').innerHTML =
           '※グループは作成されていません';
       } else {
         document.getElementById('group-add-list-massage').innerHTML =
-          '※現在作成されているグループは下記です';
+          '※現在作成されているグループになります';
         res.groupResults.forEach((item) => {
           const userGroup = item['User_Group'].trim();
 
           let column = document.createElement('div');
           column.classList.add('column');
           column.innerHTML = `<div class="column-inner">${userGroup}</div>`;
+          
           const groupDelete = document.createElement('button');
           groupDelete.setAttribute('class', 'group-delete');
           groupDelete.addEventListener('click', groupDeleteButton);
           groupDelete.innerHTML = '×';
+          
           groupDisplay.appendChild(column);
           column.appendChild(groupDelete);
+
+          column.addEventListener('mouseenter', (event) => {
+            console.log(column.innerHTML);
+            popupGroupMember.style.display = 'block';
+
+                popupGroupMember.style.left = event.clientX + 'px';
+                popupGroupMember.style.top = event.clientY + 'px';
+
+          });  
+          
+          column.addEventListener('mouseleave', () => {
+            console.log('話しました');
+          });
+          
         });
         groupListHoverRedFunc();
       }
