@@ -139,6 +139,7 @@ const groupListUpdate = (idElement) => {
                       p.innerHTML = friend.Changed_Name;
                       memberList.appendChild(p);
                     });
+                   },
                   });
               
                 isPopupShown = true;
