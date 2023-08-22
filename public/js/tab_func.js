@@ -154,7 +154,7 @@ export const keepButtonClick = (id) => {
       data: JSON.stringify({
         flg: 'noteKeep',
         id,
-        titleContent: newTitle, //p.innerHTML,
+        titleContent: newTitle, 
         memoContent: document.getElementById(`textarea${id}`).value, //ここに入力した値が入る
         time,
       }),
@@ -184,7 +184,6 @@ export const keepButtonClick = (id) => {
     document.getElementById('notepass').innerHTML = pass;
     document.getElementById(`tabname${id}`).style.color = 'black';
   } else {
-    //alert('タイトルを入力してください');
     explanationPopUp('ノウハウ編集', 'タイトルを入力してください');
   }
 };
@@ -229,7 +228,6 @@ export const cancelButtonClick = async (id) => {
     if (element.innerHTML.startsWith('⚠')) {
       element.innerHTML = element.innerHTML.substring(1);
     }
-
     resultPopUp('取り消し', '取り消しました');
   } else {
     // 「いいえ」が押された場合の処理 おそらくポップが閉じる
@@ -329,18 +327,15 @@ document.getElementById('share-user-button').addEventListener('click', () => {
       res.friend.forEach((friend) => {
         const div = document.createElement('div');
         div.setAttribute('class', `friend-list-check-div`);
-
         // チェックボックス要素の作成
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.id = `checkbox${friend.Changed_Name}`;
         checkbox.value = friend.id;
-
         // ラベル要素の作成
         const checkboxLabel = document.createElement('label');
         checkboxLabel.textContent = friend.Changed_Name;
         checkboxLabel.setAttribute('for', `checkbox${friend.Changed_Name}`);
-
         // 要素の追加
         document.getElementById('share-user-div').appendChild(div);
         div.appendChild(checkbox);
@@ -382,26 +377,9 @@ document.getElementById('share-user-button').addEventListener('click', () => {
           checkboxLabel.setAttribute('for', `checkbox${userGroup}`);
           checkboxLabel.setAttribute('class', `popup-label`);
 
-          // const imgElement = document.createElement('img');
-          // imgElement.src = '/img/reload.png';
-          // imgElement.alt = 'Hover User Info';
-
           document.getElementById('share-group-div').appendChild(div);
           div.appendChild(checkbox);
           div.appendChild(checkboxLabel);
-          //div.appendChild(imgElement);
-
-          // checkboxLabel.addEventListener('click', function (event) {
-          //   checkbox.checked = !checkbox.checked;
-          //   event.stopPropagation();
-          // });
-
-          // //ラベル要素内でのクリックをチェックボックスの切り替えと関連付ける
-          // div.addEventListener('click', function (event) {
-          //   if (event.target.tagName !== 'INPUT') {
-          //     checkbox.checked = !checkbox.checked;
-          //   }
-          // });
 
           //ラベル要素にマウスカーソルが入ったときの処理
           div.addEventListener('mouseenter', (event) => {
@@ -455,19 +433,6 @@ document.getElementById('share-user-button').addEventListener('click', () => {
         }
       });
 
-      // const groupCheckDivs = document.querySelectorAll(
-      //   '.friend-list-group-check-div'
-      // );
-      // groupCheckDivs.forEach((div) => {
-      //   const checkbox = div.querySelector('input[type="checkbox"]');
-      //   // ラベル要素内でのクリックをチェックボックスの切り替えと関連付ける
-      //   div.addEventListener('click', function (event) {
-      //     if (event.target.tagName !== 'INPUT') {
-      //       checkbox.checked = !checkbox.checked;
-      //     }
-      //   });
-      // });
-
         const groupCheckDivs = document.querySelectorAll(
         '.friend-list-group-check-div'
       );
@@ -479,7 +444,6 @@ document.getElementById('share-user-button').addEventListener('click', () => {
         });
       });
       
-
       if (!groupFlg) {
         const p = document.createElement('p');
         p.innerHTML = '※グループに所属しているユーザーがいません';
