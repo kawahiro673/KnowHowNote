@@ -243,6 +243,7 @@ let shareSendListenerAdded = false;
 const shareSendButton = document.getElementById('share-send');
 
 export function shareButtonClick(id, title, flg) {
+ title = document.getElementById(`tabP${id}`).innerHTML;
   document.getElementById('popup-overlay_share').style.display = 'block';
   document.getElementById('share-nouhau-name').innerHTML = title;
   tmpID = id;
