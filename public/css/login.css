@@ -58,12 +58,18 @@ h1 {
   width: 70%;
 }
 
-.required {
+.required,
+.arbitrary{
   color: #f33;
   font-size: 0.9em;
   padding: 3px;
   background-color: #fee;
   font-weight: bold;
+}
+
+.arbitrary{
+   color: #1e90ff;
+   background-color: #afeeee;
 }
 
 .control,
@@ -104,7 +110,8 @@ h1 {
 }
 .password,
 .email_auth,
-.confirmedPassword {
+.confirmedPassword,
+.authEmail{
   margin-top: 20px;
 }
 .password_auth {
