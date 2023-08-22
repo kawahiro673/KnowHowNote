@@ -455,27 +455,30 @@ document.getElementById('share-user-button').addEventListener('click', () => {
         }
       });
 
-      const groupCheckDivs = document.querySelectorAll(
+      // const groupCheckDivs = document.querySelectorAll(
+      //   '.friend-list-group-check-div'
+      // );
+      // groupCheckDivs.forEach((div) => {
+      //   const checkbox = div.querySelector('input[type="checkbox"]');
+      //   // ラベル要素内でのクリックをチェックボックスの切り替えと関連付ける
+      //   div.addEventListener('click', function (event) {
+      //     if (event.target.tagName !== 'INPUT') {
+      //       checkbox.checked = !checkbox.checked;
+      //     }
+      //   });
+      // });
+
+        const groupCheckDivs = document.querySelectorAll(
         '.friend-list-group-check-div'
       );
       groupCheckDivs.forEach((div) => {
-        const checkbox = div.querySelector('input[type="checkbox"]');
         // ラベル要素内でのクリックをチェックボックスの切り替えと関連付ける
         div.addEventListener('click', function (event) {
-          if (event.target.tagName !== 'INPUT') {
+          const checkbox = div.querySelector('input[type="checkbox"]');
             checkbox.checked = !checkbox.checked;
-          }
         });
       });
-
-      // const checkDivs = document.querySelectorAll('.friend-list-check-div');
-      // checkDivs.forEach((div) => {
-      //   div.addEventListener('click', function () {
-      //     const checkbox = div.querySelector('input[type="checkbox"]');
-      //     // チェックボックスの状態を切り替える
-      //     checkbox.checked = !checkbox.checked;
-      //   });
-      // });
+      
 
       if (!groupFlg) {
         const p = document.createElement('p');
