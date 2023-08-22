@@ -139,6 +139,11 @@ const groupListUpdate = (idElement) => {
                       p.innerHTML = friend.Changed_Name;
                       memberList.appendChild(p);
                     });
+                     if(document.getElementsByClassName('group-member-list')[0].innerHTML === ''){
+                       const p = document.createElement('p');
+                       p.innerHTML =`${userGroup}に所属しているフレンドリストが見つかりません`;
+                       memberList.appendChild(p);
+                    }
                    },
                   });
               
