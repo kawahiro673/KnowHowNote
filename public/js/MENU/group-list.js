@@ -78,12 +78,17 @@ const groupListUpdate = (idElement) => {
     success: function (res) {
       const groupDisplay = document.getElementById(idElement);
       const popupGroupMember = document.getElementById('popup-group-member');
+      let timer;
+      let isPopupShown = false;
       groupDisplay.innerHTML = '';  
 
       if (res.groupResults.length === 0) {
+      
         document.getElementById('group-add-list-massage').innerHTML =
           '※グループは作成されていません';
+      
       } else {
+      
         document.getElementById('group-add-list-massage').innerHTML =
           '※現在作成されているグループになります';
         res.groupResults.forEach((item) => {
@@ -101,17 +106,28 @@ const groupListUpdate = (idElement) => {
           groupDisplay.appendChild(column);
           column.appendChild(groupDelete);
 
+          
           column.addEventListener('mouseenter', (event) => {
-            console.log(column.innerHTML);
-            popupGroupMember.style.display = 'block';
+            if (!isPopupShown) {
+              clearTimeout(timer);
+               timer = setTimeout(() => {
+                 popupGroupMember.style.display = 'block';
 
-                popupGroupMember.style.left = event.clientX + 'px';
-                popupGroupMember.style.top = event.clientY + 'px';
-
+                 popupGroupMember.style.left = event.clientX + 'px';
+                 popupGroupMember.style.top = event.clientY + 'px';
+              
+                 //ここでajax処理
+              
+                isPopupShown = true;
+              },250);
+            }
           });  
           
           column.addEventListener('mouseleave', () => {
             console.log('話しました');
+            clearTimeout(timer);
+            popupGroupMember.style.display = 'none';
+            isPopupShown = false;
           });
           
         });
