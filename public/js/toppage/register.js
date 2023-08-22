@@ -37,11 +37,16 @@ function registerButtonClick() {
         password_auth.value === '' ||
         cfPassword.value === ''
       ) {
-        elements.forEach(function (element) {
-          if (element.value === '') {
-            element.style.border = '1px solid red';
-          }
-        });
+        // elements.forEach(function (element) {
+        //   if (element.value === '') {
+        //     element.style.border = '1px solid red';
+        //   }
+        // });
+    elements.forEach(function (element) {
+    if (element.value === '' && element.getAttribute('name') !== 'email') {
+        element.style.border = '1px solid red';
+    }
+});
         message.style.display = 'block';
         message.innerHTML = '入力されていない情報があります';
         return false;
