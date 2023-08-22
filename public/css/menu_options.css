@@ -429,3 +429,6 @@ input[type='checkbox']:checked + .gray_b {
   height: 32px;
   font-size: 12px;
 }
+.checkbox-share-p{
+  margin:0;
+}
