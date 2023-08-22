@@ -256,12 +256,12 @@ export function shareButtonClick(id, title, flg) {
 
 function onClick(event) {
   shareNoteSendFunc(tmpID, tmpTitle);
-
-  shareSendButton.removeEventListener('click', onClick);
-  shareSendListenerAdded = false;
+  // shareSendButton.removeEventListener('click', onClick);
+  // shareSendListenerAdded = false;
 }
 
 export const shareNoteSendFunc = (id, title) => {
+  console.log('やあ');
   const inputValue = document.getElementsByClassName('share-input')[0].value;
   const inputValues = inputValue.split(',').map((value) => value.trim());
 
@@ -293,6 +293,8 @@ export const shareNoteSendFunc = (id, title) => {
         if (res.notShareUsers.length === 0) {
           document.getElementById('popup-overlay_share').style.display = 'none';
           resultPopUp('共有', '共有しました');
+          shareSendButton.removeEventListener('click', onClick);
+  　　　　shareSendListenerAdded = false;
         } else {
           //見つからないユーザーがあるパターン
           explanationPopUp(
