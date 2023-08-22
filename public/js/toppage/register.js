@@ -92,8 +92,7 @@ function registerButtonClick() {
       if (authEmail.value !== '' &&  !validateEmail(authEmail.value)) {
         message.style.display = 'block';
         message.innerHTML = 'メールアドレスの入力に誤りがあります';
-        password_auth.style.border = '1px solid red';
-        cfPassword.style.border = '1px solid red';
+        authEmail.style.border = '1px solid red';
         return false;
       }
 
