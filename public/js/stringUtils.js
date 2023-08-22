@@ -132,6 +132,7 @@ export const answerPopUp = (title, content) => {
    return new Promise((resolve) => {
     const yesButton = document.getElementById('yes-button-answer-pop');
     const noButton = document.getElementById('no-button-answer-pop');
+    const deleteButton = document.getElementById('pop-delete_answer-pop');
 
     const yesClickHandler = function () {
       document.getElementById('popup-overlay_answer-pop').style.display = 'none';
@@ -146,10 +147,12 @@ export const answerPopUp = (title, content) => {
     // 以前のリスナーを削除
     yesButton.removeEventListener('click', yesClickHandler);
     noButton.removeEventListener('click', noClickHandler);
+    deleteButton.removeEventListener('click', noClickHandler); 
 
     // 新しいリスナーを追加
     yesButton.addEventListener('click', yesClickHandler);
     noButton.addEventListener('click', noClickHandler);
+    deleteButton.addEventListener('click', noClickHandler); 
   });
   
 };
