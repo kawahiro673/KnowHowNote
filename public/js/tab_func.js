@@ -382,14 +382,14 @@ document.getElementById('share-user-button').addEventListener('click', () => {
           checkboxLabel.setAttribute('for', `checkbox${userGroup}`);
           checkboxLabel.setAttribute('class', `popup-label`);
 
-          // const imgElement = document.createElement('img');
-          // imgElement.src = '/img/reload.png';
-          // imgElement.alt = 'Hover User Info';
+          const imgElement = document.createElement('img');
+          imgElement.src = '/img/reload.png';
+          imgElement.alt = 'Hover User Info';
 
           document.getElementById('share-group-div').appendChild(div);
           div.appendChild(checkbox);
           div.appendChild(checkboxLabel);
-          //div.appendChild(imgElement);
+          div.appendChild(imgElement);
 
           checkboxLabel.addEventListener('click', function (event) {
             checkbox.checked = !checkbox.checked;
@@ -404,7 +404,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
           });
 
           ラベル要素にマウスカーソルが入ったときの処理
-          div.addEventListener('mouseenter', (event) => {
+          imgElement.addEventListener('mouseenter', (event) => {
             if (!isPopupShown) {
               // タイマーをクリアして遅延処理を実行。タイマーがないと、連続してDB参照してしまうため、サーバー不具合発生
               clearTimeout(timer);
@@ -445,7 +445,7 @@ document.getElementById('share-user-button').addEventListener('click', () => {
           });
 
           // ラベル要素からマウスカーソルが出たときの処理
-          div.addEventListener('mouseleave', () => {
+          imgElement.addEventListener('mouseleave', () => {
             // タイマーをクリアしてポップアップを非表示にする
             clearTimeout(timer);
             popupGroupMember.style.display = 'none';
