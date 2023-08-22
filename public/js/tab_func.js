@@ -362,12 +362,12 @@ document.getElementById('share-user-button').addEventListener('click', () => {
 
       //グループ側のチェックボックス作成
       let groupFlg = false;
-      // const groupSet = new Set(); // ユニークな User_Group を格納するための Set
+      const groupSet = new Set(); // ユニークな User_Group を格納するための Set
       res.friend.forEach((friend) => {
         if (friend.User_Group !== 'なし') {
           const userGroup = friend.User_Group;
-          // if (!groupSet.has(userGroup)) {
-          //   groupSet.add(userGroup);
+          if (!groupSet.has(userGroup)) {
+            groupSet.add(userGroup);
           groupFlg = true;
 
           const div = document.createElement('div');
@@ -391,67 +391,67 @@ document.getElementById('share-user-button').addEventListener('click', () => {
           div.appendChild(checkboxLabel);
           //div.appendChild(imgElement);
 
-          // checkboxLabel.addEventListener('click', function (event) {
-          //   checkbox.checked = !checkbox.checked;
-          //   event.stopPropagation();
-          // });
+          checkboxLabel.addEventListener('click', function (event) {
+            checkbox.checked = !checkbox.checked;
+            event.stopPropagation();
+          });
 
-          // ラベル要素内でのクリックをチェックボックスの切り替えと関連付ける
-          // div.addEventListener('click', function (event) {
-          //   if (event.target.tagName !== 'INPUT') {
-          //     checkbox.checked = !checkbox.checked;
-          //   }
-          // });
+          ラベル要素内でのクリックをチェックボックスの切り替えと関連付ける
+          div.addEventListener('click', function (event) {
+            if (event.target.tagName !== 'INPUT') {
+              checkbox.checked = !checkbox.checked;
+            }
+          });
 
-          // ラベル要素にマウスカーソルが入ったときの処理
-          // imgElement.addEventListener('mouseenter', (event) => {
-          //   if (!isPopupShown) {
-          //     // タイマーをクリアして遅延処理を実行。タイマーがないと、連続してDB参照してしまうため、サーバー不具合発生
-          //     clearTimeout(timer);
-          //     timer = setTimeout(() => {
-          //       popupGroupMember.style.display = 'block';
+          ラベル要素にマウスカーソルが入ったときの処理
+          div.addEventListener('mouseenter', (event) => {
+            if (!isPopupShown) {
+              // タイマーをクリアして遅延処理を実行。タイマーがないと、連続してDB参照してしまうため、サーバー不具合発生
+              clearTimeout(timer);
+              timer = setTimeout(() => {
+                popupGroupMember.style.display = 'block';
 
-          //       // マウスの座標を取得し、ポップアップ要素を移動
-          //       popupGroupMember.style.left = event.clientX + 'px';
-          //       popupGroupMember.style.top = event.clientY + 'px';
+                // マウスの座標を取得し、ポップアップ要素を移動
+                popupGroupMember.style.left = event.clientX + 'px';
+                popupGroupMember.style.top = event.clientY + 'px';
 
-          //       $.ajax({
-          //         url: '/groupListPostController/',
-          //         type: 'POST',
-          //         dataType: 'Json',
-          //         contentType: 'application/json',
-          //         data: JSON.stringify({
-          //           flg: 'group_info',
-          //           group: userGroup,
-          //         }),
-          //         success: function (res) {
-          //           document.getElementById(
-          //             'group-member-groupname'
-          //           ).innerHTML = userGroup;
-          //           const memberList =
-          //             document.getElementsByClassName('group-member-list')[0];
-          //           memberList.innerHTML = '';
-          //           res.friendResult.forEach((friend) => {
-          //             const p = document.createElement('p');
-          //             p.setAttribute('class', `group-member`);
-          //             p.innerHTML = friend.Changed_Name;
-          //             memberList.appendChild(p);
-          //           });
-          //         },
-          //       });
-          //       isPopupShown = true;
-          //     }, 250);
-          //   }
-          // });
+                $.ajax({
+                  url: '/groupListPostController/',
+                  type: 'POST',
+                  dataType: 'Json',
+                  contentType: 'application/json',
+                  data: JSON.stringify({
+                    flg: 'group_info',
+                    group: userGroup,
+                  }),
+                  success: function (res) {
+                    document.getElementById(
+                      'group-member-groupname'
+                    ).innerHTML = userGroup;
+                    const memberList =
+                      document.getElementsByClassName('group-member-list')[0];
+                    memberList.innerHTML = '';
+                    res.friendResult.forEach((friend) => {
+                      const p = document.createElement('p');
+                      p.setAttribute('class', `group-member`);
+                      p.innerHTML = friend.Changed_Name;
+                      memberList.appendChild(p);
+                    });
+                  },
+                });
+                isPopupShown = true;
+              }, 250);
+            }
+          });
 
-          // // ラベル要素からマウスカーソルが出たときの処理
-          // imgElement.addEventListener('mouseleave', () => {
-          //   // タイマーをクリアしてポップアップを非表示にする
-          //   clearTimeout(timer);
-          //   popupGroupMember.style.display = 'none';
-          //   isPopupShown = false;
-          // });
-          //   }
+          // ラベル要素からマウスカーソルが出たときの処理
+          div.addEventListener('mouseleave', () => {
+            // タイマーをクリアしてポップアップを非表示にする
+            clearTimeout(timer);
+            popupGroupMember.style.display = 'none';
+            isPopupShown = false;
+           });
+         }
         }
       });
 
