@@ -90,7 +90,7 @@ export const tabCreate = (id, title, res) => {
   shareButton.setAttribute('id', `share-button-${id}`);
   shareButton.innerHTML = '共有';
   shareButton.disabled = false;
-  shareButton.addEventListener('click', shareButtonClick.bind(null, id, title));
+  shareButton.addEventListener('click', shareButtonClick.bind(null, id));
 
   const keepButton = document.createElement('button');
   keepButton.innerHTML = '保存';
@@ -242,8 +242,8 @@ let tmpTitle;
 let shareSendListenerAdded = false;
 const shareSendButton = document.getElementById('share-send');
 
-export function shareButtonClick(id, title, flg) {
- title = document.getElementById(`tabP${id}`).innerHTML;
+export function shareButtonClick(id, flg) {
+  let title = document.getElementById(`tabP${id}`).innerHTML;
   document.getElementById('popup-overlay_share').style.display = 'block';
   document.getElementById('share-nouhau-name').innerHTML = title;
   tmpID = id;
@@ -257,8 +257,6 @@ export function shareButtonClick(id, title, flg) {
 
 function onClick(event) {
   shareNoteSendFunc(tmpID, tmpTitle);
-  // shareSendButton.removeEventListener('click', onClick);
-  // shareSendListenerAdded = false;
 }
 
 export const shareNoteSendFunc = (id, title) => {
