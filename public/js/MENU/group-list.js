@@ -141,7 +141,8 @@ const groupListUpdate = (idElement) => {
                     });
                      if(document.getElementsByClassName('group-member-list')[0].innerHTML === ''){
                        const p = document.createElement('p');
-                       p.innerHTML =`${userGroup}に所属しているフレンドリストが見つかりません`;
+                        p.setAttribute('class', `group-member-none`);
+                       p.innerHTML =`${userGroup}に所属しているフレンドが見つかりません`;
                        memberList.appendChild(p);
                     }
                    },
