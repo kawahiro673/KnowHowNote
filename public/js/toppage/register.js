@@ -2,13 +2,16 @@ import {
   currentTimeGet,
   validatePassword,
   validateUsername,
+  validateEmail,
 } from '../stringUtils.js';
 
 const userName = document.getElementById('username');
 const password_auth = document.getElementById('password_auth');
 const cfPassword = document.getElementById('confirmedPassword');
+const authEmail = document.getElementById('authEmail');
 const elements = document.querySelectorAll('.authinput');
 const message = document.querySelector('.auth-error-message');
+
 
 document
   .getElementById('registerbtn')
@@ -75,6 +78,15 @@ function registerButtonClick() {
       if (password_auth.value !== cfPassword.value) {
         message.style.display = 'block';
         message.innerHTML = 'パスワードの入力に誤りがあります';
+        password_auth.style.border = '1px solid red';
+        cfPassword.style.border = '1px solid red';
+        return false;
+      }
+
+       //メールアドレスに何か入力されていれば、バリデーションチェック
+      if (authEmail.value !== '' &&  !validateEmail(authEmail.value)) {
+        message.style.display = 'block';
+        message.innerHTML = 'メールアドレスの入力に誤りがあります';
         password_auth.style.border = '1px solid red';
         cfPassword.style.border = '1px solid red';
         return false;
