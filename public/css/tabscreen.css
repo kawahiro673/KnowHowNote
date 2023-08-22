@@ -194,9 +194,6 @@
   margin: 0px 30px;
 }
 
-/* .edit-save-button {
-  text-align: center;
-} */
 .edit {
   margin: 20px;
   width: 200px;
@@ -354,10 +351,10 @@ input[name='tab_item'] {
   margin: 0 5px;
 }
 
-.friend-list-group-check-div img {
+/* .friend-list-group-check-div img {
   width: 20px;
   height: 20px;
-}
+} */
 
 /************************　フレンド一覧　******************************/
 /*タブのスタイル*/
@@ -421,8 +418,7 @@ input[name='friend-list-label'] {
 }
 
 .friend-list-check-div:hover,
-.popup-label:hover
-/* .friend-list-group-check-div:hover  */ {
+.friend-list-group-check-div:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
