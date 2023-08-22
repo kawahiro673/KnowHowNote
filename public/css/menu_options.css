@@ -397,9 +397,6 @@ input[type='checkbox']:checked + .gray_b {
 .registration-date {
   width: 75%;
 }
-/* .user-name-position {
-  width: 60%;
-} */
 
 .password-inputs,
 .email-inputs {
@@ -430,6 +427,7 @@ input[type='checkbox']:checked + .gray_b {
 }
 
 .invisible-element {
-  padding: 7px 14px;
+  width: 52px;
+  height: 32px;
   font-size: 12px;
 }
