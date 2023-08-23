@@ -12,13 +12,15 @@ import { tabFocusIDGet, getTabIdArray } from '../main.js';
 import { disableElements, enableElements } from '../utilityFunction.js';
 import { addLastClassToLastSibling } from '../treeviewLineUpdate.js';
 
-let tmp1;
-let tmp2;
+// let tmp1;
+// let tmp2;
 
 let conme = document.getElementById('contextmenu');
 let conme2 = document.getElementById('contextmenu2');
 let conme3 = document.getElementById('contextmenu3');
 let conme4 = document.getElementById('contextmenu4');
+
+let previousClickedElement = null;//前回右クリックした要素を格納(灰色の背景を付与するため)
 
 export const folderContextmenu = (tabIdArray) => {
   $('.folder').on('contextmenu', function () {
@@ -27,10 +29,29 @@ export const folderContextmenu = (tabIdArray) => {
       id: $(this).attr('value'),
       elem: this,
     };
-    let elementsBeforeMoving;
 
-    folder.elem.style.backgroundColor = '#F5F5F5';
-    folder.elem.style.borderRadius = '5px';
+    // folder.elem.style.backgroundColor = '#F5F5F5';
+    // folder.elem.style.borderRadius = '5px';
+
+   const currentClickedElement = folder.elem;
+   if (previousClickedElement !== null) {
+      previousClickedElement.style.backgroundColor = 'white';
+    }
+    
+    currentClickedElement.style.backgroundColor = '#DCDCDC';
+    currentClickedElement.style.borderRadius = '5px';
+    previousClickedElement = currentClickedElement;
+
+    document.addEventListener(
+      'mousedown',
+      (e) => {
+      if (e.target !== currentClickedElement) {
+        currentClickedElement.style.backgroundColor = 'white';
+        previousClickedElement = null;
+       }
+      },
+     { once: true }
+    );
 
     const order = orderGet(
       `parent${folder.elem.parentNode.parentNode.id}`,
@@ -62,7 +83,7 @@ export const folderContextmenu = (tabIdArray) => {
                 folder.elem.parentNode.classList.contains('lastExpandable')) &&
               folder.elem.parentNode.parentNode.children.length > 1
             ) {
-              elementsBeforeMoving =
+            const elementsBeforeMoving =
                 folder.elem.parentNode.parentNode.firstElementChild;
               $(`#folder${folder.id}`).parent().remove();
               addLastClassToLastSibling(elementsBeforeMoving);
@@ -136,15 +157,15 @@ export const folderContextmenu = (tabIdArray) => {
       });
     });
 
-    document.addEventListener(
-      'mousedown',
-      (e) => {
-        let flg = false;
-        if (e.target == folder.elem) flg = true;
-        bodyClickJuge(folder.elem, null, flg, 'backgroundColor');
-      },
-      { once: true }
-    );
+    // document.addEventListener(
+    //   'mousedown',
+    //   (e) => {
+    //     let flg = false;
+    //     if (e.target == folder.elem) flg = true;
+    //     bodyClickJuge(folder.elem, null, flg, 'backgroundColor');
+    //   },
+    //   { once: true }
+    // );
   });
 };
 
@@ -200,30 +221,40 @@ const folderNameChange = (folder) => {
       }
     }
   });
-  tmp1 = inputTab;
-  tmp2 = folder.elem;
-  document.addEventListener('mousedown', eventFunc);
-};
 
-//わからん。。。。nameクリック後の判定が、、、、なぜか上手くいく。。
-function eventFunc(e) {
-  let flg = false;
-  if (e.target == tmp1) flg = true;
-  bodyClickJuge(tmp1, tmp2, flg, 'input');
-}
-
-//右・左クリック時にいろんなものを消したり戻したり。。。
-const bodyClickJuge = (target1, target2, flg1, flg2) => {
-  if (flg1) {
-  } else {
-    if (flg2 == 'backgroundColor') {
-      target1.style.backgroundColor = 'white';
-    } else if (flg2 == 'input') {
-      target1.remove();
-      target2.style.display = 'block';
+　 const removeInputAndRestoreFileElem = (e) => {
+    if (e.target !== inputTab) { 
+      inputTab.remove();
+      folder.elem.style.display = 'block';
+      document.removeEventListener('mousedown', removeInputAndRestoreFileElem);
     }
-  }
+  };
+  document.addEventListener('mousedown', removeInputAndRestoreFileElem);
+  
+  // tmp1 = inputTab;
+  // tmp2 = folder.elem;
+  // document.addEventListener('mousedown', eventFunc);
 };
+
+// //わからん。。。。nameクリック後の判定が、、、、なぜか上手くいく。。
+// function eventFunc(e) {
+//   let flg = false;
+//   if (e.target == tmp1) flg = true;
+//   bodyClickJuge(tmp1, tmp2, flg, 'input');
+// }
+
+// //右・左クリック時にいろんなものを消したり戻したり。。。
+// const bodyClickJuge = (target1, target2, flg1, flg2) => {
+//   if (flg1) {
+//   } else {
+//     if (flg2 == 'backgroundColor') {
+//       target1.style.backgroundColor = 'white';
+//     } else if (flg2 == 'input') {
+//       target1.remove();
+//       target2.style.display = 'block';
+//     }
+//   }
+// };
 
 //rootの右クリックから「フォルダ新規作成」押下
 document.getElementById('newfolder').onclick = async (e) => {
