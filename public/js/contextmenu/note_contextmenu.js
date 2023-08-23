@@ -270,7 +270,9 @@ const noteNameChange = (file) => {
   //  }
   // });
  const removeInputAndRestoreFileElem = (e) => {
+     console.log('やあ1000000');
     if (e.target !== inputTab) { 
+       console.log('ひん');
       inputTab.remove();
       file.elem.style.display = 'block';
       document.removeEventListener('mousedown', removeInputAndRestoreFileElem);
