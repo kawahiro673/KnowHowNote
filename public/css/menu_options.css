@@ -423,7 +423,8 @@ input[type='checkbox']:checked + .gray_b {
   height:30px;
 }
 
-.group-input-container {
+.group-input-container,
+.friend-add-container{
   text-align: center;
 }
 
