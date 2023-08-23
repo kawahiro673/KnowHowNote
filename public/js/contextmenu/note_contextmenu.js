@@ -32,7 +32,7 @@ export const fileContextmenu = (tabIdArray) => {
       previousClickedElement.style.backgroundColor = 'white';
     }
     
-    currentClickedElement.style.backgroundColor = '#F5F5F5';
+    currentClickedElement.style.backgroundColor = '#DCDCDC';
     currentClickedElement.style.borderRadius = '5px';
     previousClickedElement = currentClickedElement;
 
