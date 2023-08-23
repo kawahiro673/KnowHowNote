@@ -261,7 +261,7 @@ const noteNameChange = (file) => {
     }
   });
   document.addEventListener('mousedown', function (e) {
-    consle.log(e.target);
+    console.log(e.target);
     console.log(inputTab);
    if (e.target !== inputTab) { 
      console.log('ひん');
