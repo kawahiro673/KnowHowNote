@@ -20,7 +20,6 @@ export const fileContextmenu = (tabIdArray) => {
       id: $(this).attr('value'),
       elem: this,
     };
-    // let elementsBeforeMoving;
 
     file.elem.style.backgroundColor = '#F5F5F5';
     file.elem.style.borderRadius = '5px';
@@ -73,9 +72,7 @@ export const fileContextmenu = (tabIdArray) => {
             resultPopUp('ノウハウ削除', '削除しました');
           },
         });
-      } else {
-        // 「いいえ」が押された場合の処理 おそらくポップが閉じる
-      }
+      } 
     };
 
     $(document).ready(function () {
@@ -96,11 +93,11 @@ export const fileContextmenu = (tabIdArray) => {
       'mousedown',
       (e) => {
         console.log('やあ');
-        let flg = false;
-        if (e.target == file.elem) flg = true;
-        bodyClickJuge(file.elem, null, flg, 'backgroundColor');
+        //let flg = false;
+        //if (e.target == file.elem) flg = true;
+        //bodyClickJuge(file.elem, null, flg, 'backgroundColor');
       },
-      { once: true }
+    //  { once: true }
     );
 
     $(document).ready(function () {
@@ -246,32 +243,32 @@ const noteNameChange = (file) => {
       }
     }
   });
-  tmp1 = inputTab;
-  tmp2 = file.elem;
-  document.addEventListener('mousedown', eventFunc);
+  // tmp1 = inputTab;
+  // tmp2 = file.elem;
+  // document.addEventListener('mousedown', eventFunc);
 };
 
 //わからん。。。。nameクリック後の判定が、、、、なぜか上手くいく。。
-function eventFunc(e) {
-  let flg = false;
-  if (e.target == tmp1) flg = true;
-  bodyClickJuge(tmp1, tmp2, flg, 'input');
-}
+// function eventFunc(e) {
+//   let flg = false;
+//   if (e.target == tmp1) flg = true;
+//   bodyClickJuge(tmp1, tmp2, flg, 'input');
+// }
 
 //右・左クリック時にいろんなものを消したり戻したり。。。
-const bodyClickJuge = (target1, target2, flg1, flg2) => {
-  if (flg1) {
-    console.log('同じ要素です');
-  } else {
-    console.log('違う要素です');
-    if (flg2 == 'backgroundColor') {
-      target1.style.backgroundColor = 'white';
-    } else if (flg2 == 'input') {
-      target1.remove();
-      target2.style.display = 'block';
-    }
-  }
-};
+// const bodyClickJuge = (target1, target2, flg1, flg2) => {
+//   if (flg1) {
+//     console.log('同じ要素です');
+//   } else {
+//     console.log('違う要素です');
+//     if (flg2 == 'backgroundColor') {
+//       target1.style.backgroundColor = 'white';
+//     } else if (flg2 == 'input') {
+//       target1.remove();
+//       target2.style.display = 'block';
+//     }
+//   }
+// };
 
 const fileColorUpdate = (id, color) => {
   document.getElementById(`file${id}`).style.color = color;
