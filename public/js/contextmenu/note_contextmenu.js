@@ -47,8 +47,8 @@ export const fileContextmenu = (tabIdArray) => {
         currentClickedElement.style.backgroundColor = 'white';
         previousClickedElement = null;
       }
-      }
-    //  { once: true }
+      },
+     { once: true }
     );
 /*******************************************************************/
     
