@@ -12,9 +12,6 @@ import { tabFocusIDGet, getTabIdArray } from '../main.js';
 import { disableElements, enableElements } from '../utilityFunction.js';
 import { addLastClassToLastSibling } from '../treeviewLineUpdate.js';
 
-// let tmp1;
-// let tmp2;
-
 let conme = document.getElementById('contextmenu');
 let conme2 = document.getElementById('contextmenu2');
 let conme3 = document.getElementById('contextmenu3');
@@ -29,9 +26,6 @@ export const folderContextmenu = (tabIdArray) => {
       id: $(this).attr('value'),
       elem: this,
     };
-
-    // folder.elem.style.backgroundColor = '#F5F5F5';
-    // folder.elem.style.borderRadius = '5px';
 
    const currentClickedElement = folder.elem;
    if (previousClickedElement !== null) {
@@ -156,16 +150,6 @@ export const folderContextmenu = (tabIdArray) => {
         }, 1500);
       });
     });
-
-    // document.addEventListener(
-    //   'mousedown',
-    //   (e) => {
-    //     let flg = false;
-    //     if (e.target == folder.elem) flg = true;
-    //     bodyClickJuge(folder.elem, null, flg, 'backgroundColor');
-    //   },
-    //   { once: true }
-    // );
   });
 };
 
@@ -221,7 +205,6 @@ const folderNameChange = (folder) => {
       }
     }
   });
-
 　 const removeInputAndRestoreFileElem = (e) => {
     if (e.target !== inputTab) { 
       inputTab.remove();
@@ -230,31 +213,7 @@ const folderNameChange = (folder) => {
     }
   };
   document.addEventListener('mousedown', removeInputAndRestoreFileElem);
-  
-  // tmp1 = inputTab;
-  // tmp2 = folder.elem;
-  // document.addEventListener('mousedown', eventFunc);
 };
-
-// //わからん。。。。nameクリック後の判定が、、、、なぜか上手くいく。。
-// function eventFunc(e) {
-//   let flg = false;
-//   if (e.target == tmp1) flg = true;
-//   bodyClickJuge(tmp1, tmp2, flg, 'input');
-// }
-
-// //右・左クリック時にいろんなものを消したり戻したり。。。
-// const bodyClickJuge = (target1, target2, flg1, flg2) => {
-//   if (flg1) {
-//   } else {
-//     if (flg2 == 'backgroundColor') {
-//       target1.style.backgroundColor = 'white';
-//     } else if (flg2 == 'input') {
-//       target1.remove();
-//       target2.style.display = 'block';
-//     }
-//   }
-// };
 
 //rootの右クリックから「フォルダ新規作成」押下
 document.getElementById('newfolder').onclick = async (e) => {
