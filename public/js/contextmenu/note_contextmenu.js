@@ -10,8 +10,10 @@ import { tabFocusIDGet, getTabIdArray } from '../main.js';
 import { newFileCreateFunc } from '../newFileCreate.js';
 import { addLastClassToLastSibling } from '../treeviewLineUpdate.js';
 
-let tmp1;
-let tmp2;
+// let tmp1;
+// let tmp2;
+
+let previousClickedElement = null;
 
 export const fileContextmenu = (tabIdArray) => {
   $('.list_title').on('contextmenu', function () {
@@ -21,8 +23,14 @@ export const fileContextmenu = (tabIdArray) => {
       elem: this,
     };
 
-    file.elem.style.backgroundColor = '#F5F5F5';
-    file.elem.style.borderRadius = '5px';
+    // file.elem.style.backgroundColor = '#F5F5F5';
+    // file.elem.style.borderRadius = '5px';
+
+     const currentClickedElement = file.elem;
+
+    currentClickedElement.style.backgroundColor = '#F5F5F5';
+    currentClickedElement.style.borderRadius = '5px';
+    previousClickedElement = currentClickedElement;
 
     const order = orderGet(
       `parent${file.elem.parentNode.parentNode.id}`,
@@ -89,6 +97,10 @@ export const fileContextmenu = (tabIdArray) => {
       });
     });
 
+    if (previousClickedElement !== null) {
+      previousClickedElement.style.backgroundColor = 'white';
+    }
+    
     document.addEventListener(
       'mousedown',
       (e) => {
@@ -96,6 +108,10 @@ export const fileContextmenu = (tabIdArray) => {
         //let flg = false;
         //if (e.target == file.elem) flg = true;
         //bodyClickJuge(file.elem, null, flg, 'backgroundColor');
+      if (e.target !== currentClickedElement) {
+        currentClickedElement.style.backgroundColor = 'white';
+        previousClickedElement = null;
+      }
       },
     //  { once: true }
     );
