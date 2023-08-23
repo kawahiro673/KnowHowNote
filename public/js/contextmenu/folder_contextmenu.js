@@ -20,7 +20,7 @@ let conme4 = document.getElementById('contextmenu4');
 let previousClickedElement = null;//前回右クリックした要素を格納(灰色の背景を付与するため)
 
 export const folderContextmenu = (tabIdArray) => {
-  $('.folder').on('contextmenu', function () {
+  $('.folder').on('contextmenu click', function () {
     let folder = {
       title: $(this).html(),
       id: $(this).attr('value'),
