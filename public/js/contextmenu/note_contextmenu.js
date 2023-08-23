@@ -264,7 +264,7 @@ const noteNameChange = (file) => {
     console.log('ひん');
     inputTab.remove()
     file.elem.style.display = 'block';
-  }
+  });
   // tmp1 = inputTab;
   // tmp2 = file.elem;
   // document.addEventListener('mousedown', eventFunc);
