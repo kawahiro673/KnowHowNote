@@ -91,6 +91,10 @@ function registerButtonClick() {
         return false;
       }
 
+       if (authEmail.value === '') {
+        authEmail.value = '未設定';
+      }
+      
       const time = currentTimeGet();
       $.ajax({
         url: '/auth/',
