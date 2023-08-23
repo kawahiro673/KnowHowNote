@@ -20,7 +20,7 @@ export const fileContextmenu = (tabIdArray) => {
       id: $(this).attr('value'),
       elem: this,
     };
-    let elementsBeforeMoving;
+    // let elementsBeforeMoving;
 
     file.elem.style.backgroundColor = '#F5F5F5';
     file.elem.style.borderRadius = '5px';
@@ -63,7 +63,7 @@ export const fileContextmenu = (tabIdArray) => {
               file.elem.parentNode.classList.contains('last') &&
               file.elem.parentNode.parentNode.children.length > 1
             ) {
-              elementsBeforeMoving =
+             const elementsBeforeMoving =
                 file.elem.parentNode.parentNode.firstElementChild;
               $(`#file${file.id}`).parent().remove();
               addLastClassToLastSibling(elementsBeforeMoving);
