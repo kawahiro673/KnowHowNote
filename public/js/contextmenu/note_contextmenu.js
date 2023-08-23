@@ -199,6 +199,8 @@ export const fileContextmenu = (tabIdArray) => {
   });
 };
 
+let mousedownListener;
+
 const noteNameChange = (file) => {
   const inputTab = document.createElement('input');
   inputTab.setAttribute('type', 'text');
@@ -256,23 +258,37 @@ const noteNameChange = (file) => {
             if (tabFocusID === Number(file.id)) {
               $(`#tab-ID${tabFocusID}`).trigger('click');
             }
+             removeMousedownListener();
           },
         });
       }
     }
   });
-  document.addEventListener('mousedown', function (e) {
-    console.log('やあ1000000');
+  // document.addEventListener('mousedown', function (e) {
+  //   console.log('やあ1000000');
+  //  if (e.target !== inputTab) { 
+  //    console.log('ひん');
+  //    inputTab.remove()
+  //    file.elem.style.display = 'block';
+  //  }
+  // });
+
+   mousedownListener = function (e) {
+        console.log('やあ1000000');
    if (e.target !== inputTab) { 
      console.log('ひん');
      inputTab.remove()
      file.elem.style.display = 'block';
    }
-  });
+    };
+   document.addEventListener('mousedown', mousedownListener);
   // tmp1 = inputTab;
   // tmp2 = file.elem;
   // document.addEventListener('mousedown', eventFunc);
 };
+function removeMousedownListener() {
+  document.removeEventListener('mousedown', mousedownListener);
+}
 
 //わからん。。。。nameクリック後の判定が、、、、なぜか上手くいく。。
 // function eventFunc(e) {
