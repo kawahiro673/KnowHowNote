@@ -95,6 +95,7 @@ export const fileContextmenu = (tabIdArray) => {
     document.addEventListener(
       'mousedown',
       (e) => {
+        console.log('やあ');
         let flg = false;
         if (e.target == file.elem) flg = true;
         bodyClickJuge(file.elem, null, flg, 'backgroundColor');
@@ -260,9 +261,9 @@ function eventFunc(e) {
 //右・左クリック時にいろんなものを消したり戻したり。。。
 const bodyClickJuge = (target1, target2, flg1, flg2) => {
   if (flg1) {
-    //console.log('同じ要素です');
+    console.log('同じ要素です');
   } else {
-    //console.log('違う要素です');
+    console.log('違う要素です');
     if (flg2 == 'backgroundColor') {
       target1.style.backgroundColor = 'white';
     } else if (flg2 == 'input') {
@@ -290,7 +291,7 @@ const fileColorUpdate = (id, color) => {
 
 //rootの右クリックから「ファイル新規作成」押下
 document.getElementById('newfile').onclick = async (e) => {
-  const id = 0;
   e.stopPropagation();
+  const id = 0;
   await newFileCreateFunc(id);
 };
