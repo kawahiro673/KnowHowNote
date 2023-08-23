@@ -13,7 +13,7 @@ import { addLastClassToLastSibling } from '../treeviewLineUpdate.js';
 let previousClickedElement = null;//前回右クリックした要素を格納(灰色の背景を付与するため)
 
 export const fileContextmenu = (tabIdArray) => {
-  $('.list_title').on('contextmenu', function () {
+  $('.list_title').on('contextmenu click', function () {
     let file = {
       title: $(this).html(),
       id: $(this).attr('value'),
