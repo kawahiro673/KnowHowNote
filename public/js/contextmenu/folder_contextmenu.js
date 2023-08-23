@@ -82,8 +82,6 @@ export const folderContextmenu = (tabIdArray) => {
             resultPopUp('フォルダ削除', '削除しました');
           },
         });
-      } else {
-        // 「いいえ」が押された場合の処理 おそらくポップが閉じる
       }
     };
 
