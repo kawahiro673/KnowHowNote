@@ -22,11 +22,11 @@ export const fileContextmenu = (tabIdArray) => {
       id: $(this).attr('value'),
       elem: this,
     };
-
+/*******************************************************************/
     // file.elem.style.backgroundColor = '#F5F5F5';
     // file.elem.style.borderRadius = '5px';
     
-     const currentClickedElement = file.elem;
+   const currentClickedElement = file.elem;
 
    if (previousClickedElement !== null) {
       previousClickedElement.style.backgroundColor = 'white';
@@ -36,6 +36,22 @@ export const fileContextmenu = (tabIdArray) => {
     currentClickedElement.style.borderRadius = '5px';
     previousClickedElement = currentClickedElement;
 
+    document.addEventListener(
+      'mousedown',
+      (e) => {
+        console.log('やあ');
+        //let flg = false;
+        //if (e.target == file.elem) flg = true;
+        //bodyClickJuge(file.elem, null, flg, 'backgroundColor');
+      if (e.target !== currentClickedElement) {
+        currentClickedElement.style.backgroundColor = 'white';
+        previousClickedElement = null;
+      }
+      }
+    //  { once: true }
+    );
+/*******************************************************************/
+    
     const order = orderGet(
       `parent${file.elem.parentNode.parentNode.id}`,
       file.elem.parentNode.id
@@ -100,21 +116,6 @@ export const fileContextmenu = (tabIdArray) => {
         shareButtonClick(file.id, 'contextmenu');
       });
     });
-    
-    document.addEventListener(
-      'mousedown',
-      (e) => {
-        console.log('やあ');
-        //let flg = false;
-        //if (e.target == file.elem) flg = true;
-        //bodyClickJuge(file.elem, null, flg, 'backgroundColor');
-      if (e.target !== currentClickedElement) {
-        currentClickedElement.style.backgroundColor = 'white';
-        previousClickedElement = null;
-      }
-      },
-    //  { once: true }
-    );
 
     $(document).ready(function () {
       $('#pink_n').off('click');
