@@ -1,20 +1,42 @@
 import { listCreate } from '../main.js';
 import { resultPopUp, answerPopUp } from '../stringUtils.js';
 
+let previousClickedElement = null;//前回右クリックした要素を格納(灰色の背景を付与するため)
+
 export const shareContextmenu = () => {
   $('.sharenote').on('contextmenu  click', function (event) {
     const share = {
       shareTitle: $(this).html(),
       id: $(this).attr('value'),
-      shareThis: this,
+      elem: this,
     };
+
+     const currentClickedElement = share.elem;
+   if (previousClickedElement !== null) {
+      previousClickedElement.style.backgroundColor = 'white';
+    }
+    
+    currentClickedElement.style.backgroundColor = '#DCDCDC';
+    currentClickedElement.style.borderRadius = '5px';
+    previousClickedElement = currentClickedElement;
+
+    document.addEventListener(
+      'mousedown',
+      (e) => {
+      if (e.target !== currentClickedElement) {
+        currentClickedElement.style.backgroundColor = 'white';
+        previousClickedElement = null;
+       }
+      },
+     { once: true }
+    );
 
     //[マイノートへ追加する]押下時のイベントリスナーは一度だけ設定
     $('#MyNoteAdd')
       .off('click')
       .on('click', () => {
         console.log('上の関数です');
-        const li = share.shareThis.parentElement;
+        const li = share.elem.parentElement;
         const ul = li.parentElement;
         ul.removeChild(li);
         mynoteAddFunc(share.id);
