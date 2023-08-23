@@ -25,9 +25,13 @@ export const fileContextmenu = (tabIdArray) => {
 
     // file.elem.style.backgroundColor = '#F5F5F5';
     // file.elem.style.borderRadius = '5px';
-
+    
      const currentClickedElement = file.elem;
 
+   if (previousClickedElement !== null) {
+      previousClickedElement.style.backgroundColor = 'white';
+    }
+    
     currentClickedElement.style.backgroundColor = '#F5F5F5';
     currentClickedElement.style.borderRadius = '5px';
     previousClickedElement = currentClickedElement;
@@ -96,10 +100,6 @@ export const fileContextmenu = (tabIdArray) => {
         shareButtonClick(file.id, 'contextmenu');
       });
     });
-
-    if (previousClickedElement !== null) {
-      previousClickedElement.style.backgroundColor = 'white';
-    }
     
     document.addEventListener(
       'mousedown',
