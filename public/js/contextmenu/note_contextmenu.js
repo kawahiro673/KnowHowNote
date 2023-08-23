@@ -261,9 +261,13 @@ const noteNameChange = (file) => {
     }
   });
   document.addEventListener('mousedown', function (e) {
-    console.log('ひん');
-    inputTab.remove()
-    file.elem.style.display = 'block';
+    consle.log(e.target);
+    console.log(inputTab);
+   if (e.target !== inputTab) { 
+     console.log('ひん');
+     inputTab.remove()
+     file.elem.style.display = 'block';
+   }
   });
   // tmp1 = inputTab;
   // tmp2 = file.elem;
