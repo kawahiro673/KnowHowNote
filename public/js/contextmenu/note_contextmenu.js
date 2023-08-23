@@ -39,7 +39,7 @@ export const fileContextmenu = (tabIdArray) => {
     document.addEventListener(
       'mousedown',
       (e) => {
-        console.log('やあ');
+        console.log('やあ1');
         //let flg = false;
         //if (e.target == file.elem) flg = true;
         //bodyClickJuge(file.elem, null, flg, 'backgroundColor');
@@ -106,6 +106,7 @@ export const fileContextmenu = (tabIdArray) => {
     $(document).ready(function () {
       $('#name').off('click');
       $('#name').on('click', function (event) {
+        console.log('やあ100');
         noteNameChange(file);
       });
     });
@@ -261,8 +262,7 @@ const noteNameChange = (file) => {
     }
   });
   document.addEventListener('mousedown', function (e) {
-    console.log(e.target);
-    console.log(inputTab);
+    console.log('やあ1000000');
    if (e.target !== inputTab) { 
      console.log('ひん');
      inputTab.remove()
