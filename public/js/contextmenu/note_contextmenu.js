@@ -10,10 +10,7 @@ import { tabFocusIDGet, getTabIdArray } from '../main.js';
 import { newFileCreateFunc } from '../newFileCreate.js';
 import { addLastClassToLastSibling } from '../treeviewLineUpdate.js';
 
-// let tmp1;
-// let tmp2;
-
-let previousClickedElement = null;
+let previousClickedElement = null;//前回右クリックした要素を格納(灰色の背景を付与するため)
 
 export const fileContextmenu = (tabIdArray) => {
   $('.list_title').on('contextmenu', function () {
@@ -22,12 +19,8 @@ export const fileContextmenu = (tabIdArray) => {
       id: $(this).attr('value'),
       elem: this,
     };
-/*******************************************************************/
-    // file.elem.style.backgroundColor = '#F5F5F5';
-    // file.elem.style.borderRadius = '5px';
     
    const currentClickedElement = file.elem;
-
    if (previousClickedElement !== null) {
       previousClickedElement.style.backgroundColor = 'white';
     }
@@ -39,18 +32,13 @@ export const fileContextmenu = (tabIdArray) => {
     document.addEventListener(
       'mousedown',
       (e) => {
-        console.log('やあ1');
-        //let flg = false;
-        //if (e.target == file.elem) flg = true;
-        //bodyClickJuge(file.elem, null, flg, 'backgroundColor');
       if (e.target !== currentClickedElement) {
         currentClickedElement.style.backgroundColor = 'white';
         previousClickedElement = null;
-      }
+       }
       },
      { once: true }
     );
-/*******************************************************************/
     
     const order = orderGet(
       `parent${file.elem.parentNode.parentNode.id}`,
@@ -106,7 +94,6 @@ export const fileContextmenu = (tabIdArray) => {
     $(document).ready(function () {
       $('#name').off('click');
       $('#name').on('click', function (event) {
-        console.log('やあ100');
         noteNameChange(file);
       });
     });
@@ -261,51 +248,16 @@ const noteNameChange = (file) => {
       }
     }
   });
-  // document.addEventListener('mousedown', function (e) {
-  //   console.log('やあ1000000');
-  //  if (e.target !== inputTab) { 
-  //    console.log('ひん');
-  //    inputTab.remove()
-  //    file.elem.style.display = 'block';
-  //  }
-  // });
+
  const removeInputAndRestoreFileElem = (e) => {
-     console.log('やあ1000000');
     if (e.target !== inputTab) { 
-       console.log('ひん');
       inputTab.remove();
       file.elem.style.display = 'block';
       document.removeEventListener('mousedown', removeInputAndRestoreFileElem);
     }
   };
-
   document.addEventListener('mousedown', removeInputAndRestoreFileElem);
-  // tmp1 = inputTab;
-  // tmp2 = file.elem;
-  // document.addEventListener('mousedown', eventFunc);
 };
-
-//わからん。。。。nameクリック後の判定が、、、、なぜか上手くいく。。
-// function eventFunc(e) {
-//   let flg = false;
-//   if (e.target == tmp1) flg = true;
-//   bodyClickJuge(tmp1, tmp2, flg, 'input');
-// }
-
-//右・左クリック時にいろんなものを消したり戻したり。。。
-// const bodyClickJuge = (target1, target2, flg1, flg2) => {
-//   if (flg1) {
-//     console.log('同じ要素です');
-//   } else {
-//     console.log('違う要素です');
-//     if (flg2 == 'backgroundColor') {
-//       target1.style.backgroundColor = 'white';
-//     } else if (flg2 == 'input') {
-//       target1.remove();
-//       target2.style.display = 'block';
-//     }
-//   }
-// };
 
 const fileColorUpdate = (id, color) => {
   document.getElementById(`file${id}`).style.color = color;
