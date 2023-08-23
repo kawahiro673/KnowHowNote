@@ -261,15 +261,23 @@ const noteNameChange = (file) => {
       }
     }
   });
-  document.addEventListener('mousedown', function (e) {
-    console.log('やあ1000000');
-   if (e.target !== inputTab) { 
-     console.log('ひん');
-     inputTab.remove()
-     file.elem.style.display = 'block';
-   }
-  });
+  // document.addEventListener('mousedown', function (e) {
+  //   console.log('やあ1000000');
+  //  if (e.target !== inputTab) { 
+  //    console.log('ひん');
+  //    inputTab.remove()
+  //    file.elem.style.display = 'block';
+  //  }
+  // });
+ const removeInputAndRestoreFileElem = (e) => {
+    if (e.target !== inputTab) { 
+      inputTab.remove();
+      file.elem.style.display = 'block';
+      document.removeEventListener('mousedown', removeInputAndRestoreFileElem);
+    }
+  };
 
+  document.addEventListener('mousedown', removeInputAndRestoreFileElem);
   // tmp1 = inputTab;
   // tmp2 = file.elem;
   // document.addEventListener('mousedown', eventFunc);
