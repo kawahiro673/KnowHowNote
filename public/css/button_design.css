@@ -152,20 +152,18 @@
 }
 
 #closed-button {
-  background-color: #F5F5F5;
-  box-shadow: 0 5px 0 #D3D3D3;
-  border: 2px solid black;
-  color:black;
+  background-color: #FF8856;
+  box-shadow: 0 5px 0 #FF4F02;
+  color:white;
   margin:0;
   width: 36px;
   height: 36px;
 }
 #expandable-button{
-  background-color: white;
-  box-shadow: 0 5px 0 #F5F5F5;
+  background-color: #FF4F02;
+  box-shadow: 0 5px 0 #00FF3B;
   margin:0;
-  color:black;
-  border: 2px solid black;
+ color:white;
    width: 36px;
   height: 36px;
 }
