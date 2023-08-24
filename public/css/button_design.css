@@ -168,7 +168,8 @@
 #createfilebutton {
 /*   background-color: #f5f5f5; */
   background-color: #A2F1F1;
-  color: black;
+/*   color: black; */
+  color: white;
 /*   box-shadow: 0 5px 0 #dcdcdc; */
    box-shadow: 0 5px 0 #007BFF;
 }
