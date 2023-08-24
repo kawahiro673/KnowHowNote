@@ -152,6 +152,8 @@ header h2 {
 }
 
 .createfolder{
+  display: flex;
+  justify-content: space-between;
 width: 250px;
   margin-left: 10px; 
 }
