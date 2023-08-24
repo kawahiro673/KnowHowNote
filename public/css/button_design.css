@@ -156,6 +156,8 @@
   box-shadow: 0 5px 0 #D3D3D3;
   border: 2px solid black;
   color:black;
+   width: 36px;
+  height: 36px;
 }
 #expandable-button{
   background-color: white;
@@ -163,6 +165,8 @@
   margin:0;
   color:black;
   border: 2px solid black;
+   width: 36px;
+  height: 36px;
 }
 
 #share-user-button {
