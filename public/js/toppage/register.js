@@ -3,6 +3,7 @@ import {
   validatePassword,
   validateUsername,
   validateEmail,
+  resultPopUp
 } from '../stringUtils.js';
 
 const userName = document.getElementById('username');
@@ -109,6 +110,7 @@ function registerButtonClick() {
           time,
         }),
         success: function (res) {
+          resultPopUp('新規登録','ログインしています。しばらくお待ちください。\n確認用のメールを送信しました。メールが届いていなければ正しいメールアドレスを個別設定から入力し直してください。')
           location.href = res.url;
         },
       });
