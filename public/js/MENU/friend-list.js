@@ -2,7 +2,7 @@
 
 import { hashedIdGet } from '../main.js';
 import { friendListGroupChange } from './group-list.js';
-import { resultPopUp, answerPopUp, explanationPopUp } from '../stringUtils.js';
+import { resultPopUp, answerPopUp, explanationPopUp, focusAndAllSelections } from '../stringUtils.js';
 
 //フレンドリストのフレンド表示を更新
 export const friendListUpdate = () => {
@@ -188,6 +188,8 @@ function friendListNameChange(event) {
   changeButton.style.display = 'none';
   name = friendName.innerHTML;
 
+  focusAndAllSelections('friendNameInput');
+  
   // 入力値が変更された時の処理
   friendNameInput.addEventListener('input', () => {
     name = friendNameInput.value;
