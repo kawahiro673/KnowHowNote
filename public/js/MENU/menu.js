@@ -310,7 +310,7 @@ document
 
         explanationPopUp(
           'メールアドレス変更',
-          `"${email}"に確認用のメールを送信しました。メールが届いていなければ正しいメールアドレスを入力し直してください。`
+          `"${email}"に確認用のメールを送信しました<br>メールが届いていなければ正しいメールアドレスを入力し直してください`
         );
       },
     });
@@ -525,7 +525,7 @@ document
           .parentNode.setAttribute('id', 'password-container');
         explanationPopUp(
           'パスワード変更',
-          'パスワードの変更が完了しました\nパスワードはログインするときに必要となります\n忘れることのないようどこかに控えておいてください'
+          'パスワードの変更が完了しました<br>パスワードはログインするときに必要となります<br>忘れることのないようどこかに控えておいてください'
         );
       },
     });
@@ -541,7 +541,7 @@ document
 
     const result = await answerPopUp(
       'アカウント削除',
-      '作成したノウハウなど全て削除されます\n本当にアカウントを削除してよろしいですか。'
+      '作成したノウハウなど全て削除されます<br>本当にアカウントを削除してよろしいですか'
     );
     if (result === true) {
       $.ajax({
@@ -555,13 +555,12 @@ document
         success: function (res) {
           resultPopUp(
             'アカウント削除',
-            'TOPページに戻ります\n少々お待ちください'
+            'TOPページに戻ります<br>少々お待ちください'
           );
           location.href = 'https://nodejs-itnote-app.herokuapp.com';
         },
       });
-    } else {
-    }
+    } 
   });
 
 //=============================================================================================================
@@ -905,7 +904,6 @@ document.getElementById('inquiry-button').addEventListener('click', () => {
       },
     });
   } else {
-    //alert('問い合わせ内容を記載してください');
     explanationPopUp('フレンド追加', '問い合わせ内容を記載してください');
   }
 });
@@ -919,12 +917,12 @@ document.getElementById('logout').addEventListener('click', async function () {
   if (document.getElementById('user_name').innerHTML.length > 20) {
     result = await answerPopUp(
       'ログアウト',
-      'ゲストユーザーはログアウトするとデータが全て削除されます'
+      'ゲストユーザーはログアウトすると<br>データが全て削除されます'
     );
   } else {
     result = await answerPopUp(
       'ログアウト',
-      'ログアウトしますか？※編集中のノウハウは保存されません'
+      'ログアウトしますか？<br>※編集中のノウハウは保存されません'
     );
   }
   if (result === true) {
@@ -938,12 +936,10 @@ document.getElementById('logout').addEventListener('click', async function () {
         name: document.getElementById('user_name').innerHTML,
       }),
       success: function (res) {
-        resultPopUp('ログアウト', 'ログアウト中です\n少々お待ちください');
+        resultPopUp('ログアウト', 'ログアウト中です<br>少々お待ちください');
         location.href = 'https://nodejs-itnote-app.herokuapp.com';
       },
     });
-  } else {
-    // 「いいえ」が押された場合の処理 おそらくポップが閉じる
   }
 });
 
@@ -988,7 +984,5 @@ document
           resultPopUp('全削除', 'ノウハウ/フォルダを\nすべて削除いたしました');
         },
       });
-    } else {
-      // 「いいえ」が押された場合の処理 おそらくポップが閉じる
     }
   });
