@@ -7,6 +7,7 @@ import {
   resultPopUp,
   answerPopUp,
   explanationPopUp,
+  focusAndAllSelections
 } from '../stringUtils.js';
 import { tabFocusIDGet, getTabIdArray } from '../main.js';
 import { disableElements, enableElements } from '../utilityFunction.js';
@@ -167,10 +168,11 @@ const folderNameChange = (folder) => {
   folder.elem.style.display = 'none';
 
   //inputにフォーカスを当てて全選択
-  document
-    .getElementById('inputTab')
-    .addEventListener('focus', (event) => event.target.select());
-  document.getElementById('inputTab').focus();
+  // document
+  //   .getElementById('inputTab')
+  //   .addEventListener('focus', (event) => event.target.select());
+  // document.getElementById('inputTab').focus();
+  focusAndAllSelections('inputTab');
 
   //Enter押下で変更する
   inputTab.addEventListener('keypress', function (e) {
