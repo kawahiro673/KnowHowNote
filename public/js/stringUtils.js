@@ -183,3 +183,11 @@ export const generateRandomString = (length) => {
   }
   return randomString;
 };
+
+//inputにフォーカスを当てて全選択
+export const focusAndAllSelections = (element) =>{
+  document
+    .getElementById(element)
+    .addEventListener('focus', (event) => event.target.select());
+  document.getElementById(element).focus();
+}
