@@ -28,14 +28,12 @@ export const addGroup = () => {
           (result) => result.User_Group === groupName
         );
         if (groupExistFlg) {
-          //alert('そのグループ名は既に登録されています');
           explanationPopUp(
             'グループ登録',
             'そのグループ名は既に登録されています'
           );
           return;
         } else if (groupName === 'なし') {
-          //alert('グループ名「なし」は作成することができません');
           explanationPopUp(
             'グループ登録',
             'グループ名「なし」は作成することができません'
@@ -60,7 +58,6 @@ export const addGroup = () => {
       },
     });
   } else {
-    //alert('登録したいグループ名を入力してください');
     explanationPopUp('グループ登録', '登録したいグループ名を入力してください');
   }
 };
@@ -152,14 +149,11 @@ const groupListUpdate = (idElement) => {
               },250);
             }
           });  
-          
           column.addEventListener('mouseleave', () => {
-            console.log('話しました');
             clearTimeout(timer);
             popupGroupMember.style.display = 'none';
             isPopupShown = false;
           });
-          
         });
         groupListHoverRedFunc();
       }
@@ -282,7 +276,7 @@ const groupDeleteButton = async (event) => {
 
   const result = await answerPopUp(
     'グループ追加',
-    `"${group}"へ所属しているユーザーのグループが解除されます削除してもよろしいですか？`
+    `"${group}"へ所属しているユーザーのグループが解除されます<br>削除してもよろしいですか？`
   );
   if (result === true) {
     $.ajax({
@@ -300,9 +294,7 @@ const groupDeleteButton = async (event) => {
         friendListUpdate();
       },
     });
-  } else {
-    // 「いいえ」が押された場合の処理 おそらくポップが閉じる
-  }
+  } 
 };
 
 //フレンドリスト内の、グループのみの更新
