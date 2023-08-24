@@ -139,32 +139,37 @@
   height: 45px;
 }
 
-.sharebtn,
-#createbutton {
-  background-color:#FF9900;
-  color: white;
-  box-shadow: 0 5px 0 #FF6600;
+.sharebtn {
+  background-color: #eaff00;
+  color: black;
+  box-shadow: 0 5px 0 #7d8603;
 }
 
-.keepbtn{
+#createbutton {
+  background-color: #ff9900;
+  color: white;
+  box-shadow: 0 5px 0 #8d5604;
+}
+
+.keepbtn {
   background-color: #71f26c;
   box-shadow: 0 5px 0 #32cd32;
 }
 
 #closed-button {
-  background-color: #FF8856;
-  box-shadow: 0 5px 0 #FF4F02;
-  color:white;
-  margin:0;
+  background-color: #ff4000;
+  box-shadow: 0 5px 0 #842b04;
+  color: white;
+  margin: 0;
   width: 36px;
   height: 32px;
 }
-#expandable-button{
-  background-color: #78FF94;
-  box-shadow: 0 5px 0 #00FF3B;
-  margin:0;
- color:white;
-   width: 36px;
+#expandable-button {
+  background-color: #00950f;
+  box-shadow: 0 5px 0 #024a02;
+  margin: 0;
+  color: white;
+  width: 36px;
   height: 32px;
 }
 
@@ -179,9 +184,9 @@
 }
 
 #createfilebutton {
- background-color: #007bff;
- color: white;
- box-shadow: 0 5px 0 #042d81;
+  background-color: #007bff;
+  color: white;
+  box-shadow: 0 5px 0 #042d81;
 }
 
 .group-name-change-button {
@@ -279,24 +284,24 @@
   text-align: center;
 }
 
-.treecontrol{
+.treecontrol {
   display: inline-block;
   margin-bottom: 10px;
   width: 100px;
 }
 
-.createfolder{
-   display: inline-block;
-/*   display: flex; */
+.createfolder {
+  display: inline-block;
+  /*   display: flex; */
   justify-content: space-between;
   width: 160px;
-  margin-left: 10px; 
+  margin-left: 10px;
   margin-bottom: 10px;
 }
 
 .treecontrol a {
   display: inline-block;
-/*   padding: 7px 14px; */
+  /*   padding: 7px 14px; */
   font-size: 12px;
   font-weight: bold;
   text-align: center;

@@ -5,13 +5,13 @@ import {
   resultPopUp,
   answerPopUp,
   explanationPopUp,
-  focusAndAllSelections
+  focusAndAllSelections,
 } from '../stringUtils.js';
 import { tabFocusIDGet, getTabIdArray } from '../main.js';
 import { newFileCreateFunc } from '../newFileCreate.js';
 import { addLastClassToLastSibling } from '../treeviewLineUpdate.js';
 
-let previousClickedElement = null;//前回右クリックした要素を格納(灰色の背景を付与するため)
+let previousClickedElement = null; //前回右クリックした要素を格納(灰色の背景を付与するため)
 
 export const fileContextmenu = (tabIdArray) => {
   $('.list_title').on('contextmenu click', function () {
@@ -20,12 +20,12 @@ export const fileContextmenu = (tabIdArray) => {
       id: $(this).attr('value'),
       elem: this,
     };
-    
-   const currentClickedElement = file.elem;
-   if (previousClickedElement !== null) {
+
+    const currentClickedElement = file.elem;
+    if (previousClickedElement !== null) {
       previousClickedElement.style.backgroundColor = 'white';
     }
-    
+
     currentClickedElement.style.backgroundColor = '#DCDCDC';
     currentClickedElement.style.borderRadius = '5px';
     previousClickedElement = currentClickedElement;
@@ -33,14 +33,14 @@ export const fileContextmenu = (tabIdArray) => {
     document.addEventListener(
       'mousedown',
       (e) => {
-      if (e.target !== currentClickedElement) {
-        currentClickedElement.style.backgroundColor = 'white';
-        previousClickedElement = null;
-       }
+        if (e.target !== currentClickedElement) {
+          currentClickedElement.style.backgroundColor = 'white';
+          previousClickedElement = null;
+        }
       },
-     { once: true }
+      { once: true }
     );
-    
+
     const order = orderGet(
       `parent${file.elem.parentNode.parentNode.id}`,
       file.elem.parentNode.id
@@ -79,7 +79,7 @@ export const fileContextmenu = (tabIdArray) => {
               file.elem.parentNode.classList.contains('last') &&
               file.elem.parentNode.parentNode.children.length > 1
             ) {
-             const elementsBeforeMoving =
+              const elementsBeforeMoving =
                 file.elem.parentNode.parentNode.firstElementChild;
               $(`#file${file.id}`).parent().remove();
               addLastClassToLastSibling(elementsBeforeMoving);
@@ -89,7 +89,7 @@ export const fileContextmenu = (tabIdArray) => {
             resultPopUp('ノウハウ削除', '削除しました');
           },
         });
-      } 
+      }
     };
 
     $(document).ready(function () {
@@ -251,8 +251,8 @@ const noteNameChange = (file) => {
     }
   });
 
- const removeInputAndRestoreFileElem = (e) => {
-    if (e.target !== inputTab) { 
+  const removeInputAndRestoreFileElem = (e) => {
+    if (e.target !== inputTab) {
       inputTab.remove();
       file.elem.style.display = 'block';
       document.removeEventListener('mousedown', removeInputAndRestoreFileElem);

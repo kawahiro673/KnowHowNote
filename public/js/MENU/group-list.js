@@ -77,15 +77,12 @@ const groupListUpdate = (idElement) => {
       const popupGroupMember = document.getElementById('popup-group-member');
       let timer;
       let isPopupShown = false;
-      groupDisplay.innerHTML = '';  
+      groupDisplay.innerHTML = '';
 
       if (res.groupResults.length === 0) {
-      
         document.getElementById('group-add-list-massage').innerHTML =
           '※グループは作成されていません';
-      
       } else {
-      
         document.getElementById('group-add-list-massage').innerHTML =
           '※現在作成されているグループになります';
         res.groupResults.forEach((item) => {
@@ -94,26 +91,25 @@ const groupListUpdate = (idElement) => {
           let column = document.createElement('div');
           column.classList.add('column');
           column.innerHTML = `<div class="column-inner">${userGroup}</div>`;
-          
+
           const groupDelete = document.createElement('button');
           groupDelete.setAttribute('class', 'group-delete');
           groupDelete.addEventListener('click', groupDeleteButton);
           groupDelete.innerHTML = '×';
-          
+
           groupDisplay.appendChild(column);
           column.appendChild(groupDelete);
 
-          
           column.addEventListener('mouseenter', (event) => {
             if (!isPopupShown) {
               clearTimeout(timer);
-               timer = setTimeout(() => {
-                 popupGroupMember.style.display = 'block';
+              timer = setTimeout(() => {
+                popupGroupMember.style.display = 'block';
 
-                 popupGroupMember.style.left = event.clientX + 'px';
-                 popupGroupMember.style.top = event.clientY + 'px';
-              
-                 //ここでajax処理
+                popupGroupMember.style.left = event.clientX + 'px';
+                popupGroupMember.style.top = event.clientY + 'px';
+
+                //ここでajax処理
                 $.ajax({
                   url: '/groupListPostController/',
                   type: 'POST',
@@ -136,19 +132,22 @@ const groupListUpdate = (idElement) => {
                       p.innerHTML = friend.Changed_Name;
                       memberList.appendChild(p);
                     });
-                     if(document.getElementsByClassName('group-member-list')[0].innerHTML === ''){
-                       const p = document.createElement('p');
-                        p.setAttribute('class', `group-member-none`);
-                       p.innerHTML =`${userGroup}に所属しているフレンドが見つかりません`;
-                       memberList.appendChild(p);
+                    if (
+                      document.getElementsByClassName('group-member-list')[0]
+                        .innerHTML === ''
+                    ) {
+                      const p = document.createElement('p');
+                      p.setAttribute('class', `group-member-none`);
+                      p.innerHTML = `${userGroup}に所属しているフレンドが見つかりません`;
+                      memberList.appendChild(p);
                     }
-                   },
-                  });
-              
+                  },
+                });
+
                 isPopupShown = true;
-              },250);
+              }, 250);
             }
-          });  
+          });
           column.addEventListener('mouseleave', () => {
             clearTimeout(timer);
             popupGroupMember.style.display = 'none';
@@ -294,7 +293,7 @@ const groupDeleteButton = async (event) => {
         friendListUpdate();
       },
     });
-  } 
+  }
 };
 
 //フレンドリスト内の、グループのみの更新

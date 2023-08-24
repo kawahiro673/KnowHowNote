@@ -187,7 +187,7 @@ function friendListNameChange(event) {
   applyButton.style.display = 'block';
   changeButton.style.display = 'none';
   name = friendName.innerHTML;
-  
+
   // 入力値が変更された時の処理
   friendNameInput.addEventListener('input', () => {
     name = friendNameInput.value;

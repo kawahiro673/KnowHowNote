@@ -7,7 +7,7 @@ import {
   resultPopUp,
   answerPopUp,
   explanationPopUp,
-  focusAndAllSelections
+  focusAndAllSelections,
 } from '../stringUtils.js';
 import { tabFocusIDGet, getTabIdArray } from '../main.js';
 import { disableElements, enableElements } from '../utilityFunction.js';
@@ -18,7 +18,7 @@ let conme2 = document.getElementById('contextmenu2');
 let conme3 = document.getElementById('contextmenu3');
 let conme4 = document.getElementById('contextmenu4');
 
-let previousClickedElement = null;//前回右クリックした要素を格納(灰色の背景を付与するため)
+let previousClickedElement = null; //前回右クリックした要素を格納(灰色の背景を付与するため)
 
 export const folderContextmenu = (tabIdArray) => {
   $('.folder').on('contextmenu click', function () {
@@ -28,11 +28,11 @@ export const folderContextmenu = (tabIdArray) => {
       elem: this,
     };
 
-   const currentClickedElement = folder.elem;
-   if (previousClickedElement !== null) {
+    const currentClickedElement = folder.elem;
+    if (previousClickedElement !== null) {
       previousClickedElement.style.backgroundColor = 'white';
     }
-    
+
     currentClickedElement.style.backgroundColor = '#DCDCDC';
     currentClickedElement.style.borderRadius = '5px';
     previousClickedElement = currentClickedElement;
@@ -40,12 +40,12 @@ export const folderContextmenu = (tabIdArray) => {
     document.addEventListener(
       'mousedown',
       (e) => {
-      if (e.target !== currentClickedElement) {
-        currentClickedElement.style.backgroundColor = 'white';
-        previousClickedElement = null;
-       }
+        if (e.target !== currentClickedElement) {
+          currentClickedElement.style.backgroundColor = 'white';
+          previousClickedElement = null;
+        }
       },
-     { once: true }
+      { once: true }
     );
 
     const order = orderGet(
@@ -78,7 +78,7 @@ export const folderContextmenu = (tabIdArray) => {
                 folder.elem.parentNode.classList.contains('lastExpandable')) &&
               folder.elem.parentNode.parentNode.children.length > 1
             ) {
-            const elementsBeforeMoving =
+              const elementsBeforeMoving =
                 folder.elem.parentNode.parentNode.firstElementChild;
               $(`#folder${folder.id}`).parent().remove();
               addLastClassToLastSibling(elementsBeforeMoving);
@@ -207,8 +207,8 @@ const folderNameChange = (folder) => {
       }
     }
   });
-　 const removeInputAndRestoreFileElem = (e) => {
-    if (e.target !== inputTab) { 
+  const removeInputAndRestoreFileElem = (e) => {
+    if (e.target !== inputTab) {
       inputTab.remove();
       folder.elem.style.display = 'block';
       document.removeEventListener('mousedown', removeInputAndRestoreFileElem);

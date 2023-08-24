@@ -154,7 +154,7 @@ export const keepButtonClick = (id) => {
       data: JSON.stringify({
         flg: 'noteKeep',
         id,
-        titleContent: newTitle, 
+        titleContent: newTitle,
         memoContent: document.getElementById(`textarea${id}`).value, //ここに入力した値が入る
         time,
       }),
@@ -293,7 +293,7 @@ export const shareNoteSendFunc = (id, title) => {
           document.getElementById('popup-overlay_share').style.display = 'none';
           resultPopUp('共有', '共有しました');
           shareSendButton.removeEventListener('click', onClick);
-  　　　　shareSendListenerAdded = false;
+          shareSendListenerAdded = false;
         } else {
           //見つからないユーザーがあるパターン
           explanationPopUp(
@@ -364,86 +364,86 @@ document.getElementById('share-user-button').addEventListener('click', () => {
           const userGroup = friend.User_Group;
           if (!groupSet.has(userGroup)) {
             groupSet.add(userGroup);
-          groupFlg = true;
+            groupFlg = true;
 
-          const div = document.createElement('div');
-          div.setAttribute('class', 'friend-list-group-check-div');
+            const div = document.createElement('div');
+            div.setAttribute('class', 'friend-list-group-check-div');
 
-          const checkbox = document.createElement('input');
-          checkbox.type = 'checkbox';
-          checkbox.id = `checkbox${userGroup}`;
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.id = `checkbox${userGroup}`;
 
-          const checkboxLabel = document.createElement('label');
-          checkboxLabel.textContent = userGroup;
-          checkboxLabel.setAttribute('for', `checkbox${userGroup}`);
-          checkboxLabel.setAttribute('class', `popup-label`);
+            const checkboxLabel = document.createElement('label');
+            checkboxLabel.textContent = userGroup;
+            checkboxLabel.setAttribute('for', `checkbox${userGroup}`);
+            checkboxLabel.setAttribute('class', `popup-label`);
 
-          document.getElementById('share-group-div').appendChild(div);
-          div.appendChild(checkbox);
-          div.appendChild(checkboxLabel);
+            document.getElementById('share-group-div').appendChild(div);
+            div.appendChild(checkbox);
+            div.appendChild(checkboxLabel);
 
-          //ラベル要素にマウスカーソルが入ったときの処理
-          div.addEventListener('mouseenter', (event) => {
-            if (!isPopupShown) {
-              // タイマーをクリアして遅延処理を実行。タイマーがないと、連続してDB参照してしまうため、サーバー不具合発生
+            //ラベル要素にマウスカーソルが入ったときの処理
+            div.addEventListener('mouseenter', (event) => {
+              if (!isPopupShown) {
+                // タイマーをクリアして遅延処理を実行。タイマーがないと、連続してDB参照してしまうため、サーバー不具合発生
+                clearTimeout(timer);
+                timer = setTimeout(() => {
+                  popupGroupMember.style.display = 'block';
+
+                  popupGroupMember.style.left = event.clientX + 'px';
+                  popupGroupMember.style.top = event.clientY + 'px';
+
+                  $.ajax({
+                    url: '/groupListPostController/',
+                    type: 'POST',
+                    dataType: 'Json',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                      flg: 'group_info',
+                      group: userGroup,
+                    }),
+                    success: function (res) {
+                      document.getElementById(
+                        'group-member-groupname'
+                      ).innerHTML = userGroup;
+                      const memberList =
+                        document.getElementsByClassName('group-member-list')[0];
+                      memberList.innerHTML = '';
+                      res.friendResult.forEach((friend) => {
+                        const p = document.createElement('p');
+                        p.setAttribute('class', `group-member`);
+                        p.innerHTML = friend.Changed_Name;
+                        memberList.appendChild(p);
+                      });
+                    },
+                  });
+                  isPopupShown = true;
+                }, 250);
+              }
+            });
+
+            // ラベル要素からマウスカーソルが出たときの処理
+            div.addEventListener('mouseleave', () => {
+              // タイマーをクリアしてポップアップを非表示にする
               clearTimeout(timer);
-              timer = setTimeout(() => {
-                popupGroupMember.style.display = 'block';
-
-                popupGroupMember.style.left = event.clientX + 'px';
-                popupGroupMember.style.top = event.clientY + 'px';
-
-                $.ajax({
-                  url: '/groupListPostController/',
-                  type: 'POST',
-                  dataType: 'Json',
-                  contentType: 'application/json',
-                  data: JSON.stringify({
-                    flg: 'group_info',
-                    group: userGroup,
-                  }),
-                  success: function (res) {
-                    document.getElementById(
-                      'group-member-groupname'
-                    ).innerHTML = userGroup;
-                    const memberList =
-                      document.getElementsByClassName('group-member-list')[0];
-                    memberList.innerHTML = '';
-                    res.friendResult.forEach((friend) => {
-                      const p = document.createElement('p');
-                      p.setAttribute('class', `group-member`);
-                      p.innerHTML = friend.Changed_Name;
-                      memberList.appendChild(p);
-                    });
-                  },
-                });
-                isPopupShown = true;
-              }, 250);
-            }
-          });
-
-          // ラベル要素からマウスカーソルが出たときの処理
-          div.addEventListener('mouseleave', () => {
-            // タイマーをクリアしてポップアップを非表示にする
-            clearTimeout(timer);
-            popupGroupMember.style.display = 'none';
-            isPopupShown = false;
-           });
-         }
+              popupGroupMember.style.display = 'none';
+              isPopupShown = false;
+            });
+          }
         }
       });
 
-        const groupCheckDivs = document.querySelectorAll(
+      const groupCheckDivs = document.querySelectorAll(
         '.friend-list-group-check-div'
       );
       groupCheckDivs.forEach((div) => {
         // ラベル要素内でのクリックをチェックボックスの切り替えと関連付ける
         div.addEventListener('click', function (event) {
           const checkbox = div.querySelector('input[type="checkbox"]');
-            checkbox.checked = !checkbox.checked;
+          checkbox.checked = !checkbox.checked;
         });
       });
-      
+
       if (!groupFlg) {
         const p = document.createElement('p');
         p.innerHTML = '※グループに所属しているユーザーがいません';

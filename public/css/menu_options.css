@@ -155,7 +155,7 @@
 #email-container,
 #password-container,
 .registration-date,
-.checkbox-share-position{
+.checkbox-share-position {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -214,7 +214,7 @@ input[type='checkbox']:checked + .blue_b {
   border-color: #007bff;
 }
 input[type='checkbox']:checked + .red_b,
-input[type='checkbox']:checked + .red_s{
+input[type='checkbox']:checked + .red_s {
   background-color: #ff0000;
   border-color: #ff0000;
 }
@@ -379,7 +379,7 @@ input[type='checkbox']:checked + .gray_b {
 }
 
 .friend-list-none-message,
-.group-member-none{
+.group-member-none {
   grid-column: span 3; /* 3列を横一列に広げて中央に配置 */
   text-align: center;
   color: red;
@@ -415,16 +415,16 @@ input[type='checkbox']:checked + .gray_b {
 .email-inputs input,
 .email-inputs p {
   width: 250px;
-  height:24px;
+  height: 24px;
 }
 
-#group-Name-input{
-    width: 250px;
-  height:30px;
+#group-Name-input {
+  width: 250px;
+  height: 30px;
 }
 
 .group-input-container,
-.friend-add-container{
+.friend-add-container {
   text-align: center;
 }
 
@@ -437,10 +437,10 @@ input[type='checkbox']:checked + .gray_b {
   height: 32px;
   font-size: 12px;
 }
-.checkbox-share-p{
-  margin:0;
+.checkbox-share-p {
+  margin: 0;
 }
 
-.column-inner:hover{
-  background-color: #D3D3D3;
+.column-inner:hover {
+  background-color: #d3d3d3;
 }
