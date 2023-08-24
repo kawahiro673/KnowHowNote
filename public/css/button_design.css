@@ -146,10 +146,19 @@
   box-shadow: 0 5px 0 #FF6600;
 }
 
-.keepbtn,
-#expandable-button {
+.keepbtn{
   background-color: #71f26c;
   box-shadow: 0 5px 0 #32cd32;
+}
+
+#closed-button {
+  background-color: #F5F5F5;
+  box-shadow: 0 5px 0 #D3D3D3;
+}
+#expandable-button{
+  background-color: white;
+  box-shadow: 0 5px 0 #F5F5F5;
+  margin:0;
 }
 
 #share-user-button {
@@ -207,7 +216,6 @@
 /*「いいえ」を赤色に配色*/
 #share-user-clear-button,
 .cancelbtn,
-#closed-button,
 #no-button-answer-pop,
 #change-email-button-cancel,
 #change-password-button-cancel {
