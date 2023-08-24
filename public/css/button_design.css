@@ -141,11 +141,8 @@
 
 .sharebtn,
 #createbutton {
-/*   background-color: #fdff85; */
   background-color:#FFCC00;
-/*   color: black; */
   color: white;
-/*   box-shadow: 0 5px 0 #ffd700; */
   box-shadow: 0 5px 0 #FF9900;
 }
 
@@ -166,12 +163,9 @@
 }
 
 #createfilebutton {
-/*   background-color: #f5f5f5; */
-  background-color: #A2F1F1;
-/*   color: black; */
-  color: white;
-/*   box-shadow: 0 5px 0 #dcdcdc; */
-   box-shadow: 0 5px 0 #007BFF;
+ background-color: #007bff;
+ color: white;
+ box-shadow: 0 5px 0 #042d81;
 }
 
 .group-name-change-button {
