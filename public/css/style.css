@@ -151,8 +151,13 @@ header h2 {
   width: 20px;
 }
 
-.createfolder a,
-.createfilebutton a,
+.createfolder{
+width: 250px;
+  margin-left: 10px; 
+}
+
+/* .createfolder a,
+.createfilebutton a, */
 .treecontrol a {
   display: inline-block;
   padding: 7px 14px;
