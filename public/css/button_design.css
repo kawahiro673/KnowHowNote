@@ -154,11 +154,15 @@
 #closed-button {
   background-color: #F5F5F5;
   box-shadow: 0 5px 0 #D3D3D3;
+  border: 2px solid black;
+  color:black;
 }
 #expandable-button{
   background-color: white;
   box-shadow: 0 5px 0 #F5F5F5;
   margin:0;
+  color:black;
+  border: 2px solid black;
 }
 
 #share-user-button {
