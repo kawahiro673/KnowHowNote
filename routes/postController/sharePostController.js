@@ -305,9 +305,13 @@ router.post('/', (req, res) => {
                                 if (error) {
                                   reject(error);
                                 } else {
-                                  userIDArray.push(user[0].id);
-                                  //console.log(userIDArray);
-                                  resolve();
+                                  if (user[0].ShareFlg === 'OFF') {
+                          　　　　　 notShareUsers.push(user[0].UserName);
+                                    resolve();
+                                   }else{
+                                    userIDArray.push(user[0].id);
+                                    resolve();
+                                  }
                                 }
                               }
                             );
