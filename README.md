@@ -47,10 +47,11 @@ TOP画面から新規登録・ログイン・ゲストログイン・パスワ�
 <img src="public/img/README_img/パスワード変更.png"><br>
     
 **6.その他機能** <br>
-ノウハウの共有履歴の確認やタブやノウハウ・背景の配色変更が可能です。
+ノウハウの共有履歴の確認やタブ・背景の配色変更、共有機能のON/OFFが個別設定から変更が可能です。
 
 <img src="public/img/README_img/共有履歴.png"><br>
 <img src="public/img/README_img/タブ色.png"><br>
+<img src="public/img/README_img/個別設定.png"><br>
 
 <!-- 
 ## 👀 全体的な仕組み
