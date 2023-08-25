@@ -110,7 +110,7 @@ function registerButtonClick() {
           time,
         }),
         success: function (res) {
-          resultPopUp_indelible('新規登録','ログインしています。しばらくお待ちください。<br>確認用のメールを送信しました。メールが届いていなければ正しいメールアドレスを個別設定から入力し直してください。')
+          resultPopUp_indelible('新規登録','新規登録が完了いたしました。しばらくお待ちください。<br>確認用のメールを送信しました。メールが届いていなければ正しいメールアドレスを個別設定から入力し直してください。')
           location.href = res.url;
         },
       });
