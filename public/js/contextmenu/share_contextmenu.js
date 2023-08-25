@@ -73,15 +73,10 @@ export const shareContextmenu = () => {
               id: share.id,
             }),
             success: function (res) {
-              document.getElementById(
-                'popup-overlay_share-delete'
-              ).style.display = 'none';
               resultPopUp('共有ノウハウ削除', '削除しました');
               document.getElementById('share-list-update-button').click();
             },
           });
-        } else {
-          // 「いいえ」が押された場合の処理 おそらくポップが閉じる
         }
       });
     });
@@ -124,7 +119,6 @@ const getShareUser = async (id) => {
     });
     return response.fileResult;
   } catch (error) {
-    // エラーハンドリング
     console.error(error);
     throw error;
   }
