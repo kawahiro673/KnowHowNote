@@ -17,39 +17,41 @@
 「ノウハウ追加」、「フォルダ追加」ボタンからそれぞれノウハウ・フォルダを作成し、フォルダごとにまとめて一括管理することが可能です。 <br>
 フォルダのコンテキストメニューからもノウハウ・フォルダそれぞれ作成可能で、対象のフォルダの配下に作成されます。
     
-<img src="public/img/README_img/ノウハウ作成.png">
+<img src="public/img/README_img/ノウハウ作成.png"><br>
 
 **2.ノウハウの共有** <br>
 1.作成したノウハウはメッセージを添えて「共有」ボタンから任意のユーザーに共有可能です。グループを選択した際にはグループに配属しているユーザーにも共有可能になります。 <br>
 2.共有されたノウハウは、右側リストの「シェアノウハウ」タブへ追加され、コンテキストメニューの「マイノウハウへ追加」を押下時にマイノウハウへ追加されます。<br><br>
 
 1.
-<img src="public/img/README_img/共有ボタン.png">
+<img src="public/img/README_img/共有ボタン.png"><br>
 <img src="public/img/README_img/フレンドリスト.png"><br>
+
 2.
+<img src="public/img/README_img/シェアノウハウ_コンテキストメニュー.png"><br>
 
 **3.ノウハウ・フォルダの配置** <br>
 ノウハウまたはフォルダをドラッグ&ドロップすることによりお好みの位置に配置することが可能です。 <br>
 移動したノウハウやフォルダはその位置がDBに保存されるため、次回以降後も同じ構成で使用することができます。
 
-<img src="public/img/README_img/ドラッグアンドドロップ.png">
+<img src="public/img/README_img/ドラッグアンドドロップ.png"><br>
 
 **4.ノウハウの表示** <br>
 作成したノウハウをクリックすることにより、タブが生成され、ノウハウの内容を確認することができます。 <br>
 右側のタブ画面から、ノウハウの「編集」「保存」「共有」が可能になり、右下に最終保存日付が表示されます。
 
-<img src="public/img/README_img/タブ作成.png">
+<img src="public/img/README_img/タブ作成.png"><br>
 
 **5.ユーザー新規登録 & ユーザーログイン & パスワードリセット機能** <br>
 TOP画面から新規登録・ログイン・ゲストログイン・パスワードリセットを行う事ができます。フレンドの追加や利用者IDの更新、パスワードとメールアドレスの更新以外は、未登録のゲストユーザーでも操作可能となっています。
 
-<img src="public/img/README_img/パスワード変更.png">
+<img src="public/img/README_img/パスワード変更.png"><br>
     
 **6.その他機能** <br>
 ノウハウの共有履歴の確認やタブやノウハウ・背景の配色変更が可能です。
 
-![共有履歴](https://github.com/kawahiro673/nodejs-itnote-app/assets/126426280/ed967563-07be-46fa-bf9b-ccdf4a805e8f)
-![タブの色](https://github.com/kawahiro673/nodejs-itnote-app/assets/126426280/1a27572b-69fa-4e01-82a9-42e97e6d8966)
+<img src="public/img/README_img/共有履歴.png"><br>
+<img src="public/img/README_img/タブ色.png"><br>
 
 <!-- 
 ## 👀 全体的な仕組み
