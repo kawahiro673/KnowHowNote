@@ -197,7 +197,7 @@
 }
 
 #closed-button {
- padding: 6px 12px;
+ padding: 7px 14px;
   background-color: #ff4000;
   box-shadow: 0 5px 0 #842b04;
   color: white;
@@ -206,7 +206,7 @@
   height: 32px;
 }
 #expandable-button {
- padding: 6px 12px;
+ padding: 7px 14px;
   background-color: #00950f;
   box-shadow: 0 5px 0 #024a02;
   margin: 0;
