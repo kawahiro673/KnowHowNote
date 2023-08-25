@@ -110,7 +110,11 @@ function registerButtonClick() {
           time,
         }),
         success: function (res) {
-          resultPopUp_indelible('新規登録','新規登録が完了いたしました。しばらくお待ちください。<br>確認用のメールを送信しました。メールが届いていなければ正しいメールアドレスを個別設定から入力し直してください。')
+          if(authEmail.value === ''){
+            resultPopUp_indelible('新規登録','新規登録が完了いたしました<br>しばらくお待ちください');
+          }else if{
+            resultPopUp_indelible('新規登録','新規登録が完了いたしました。しばらくお待ちください。<br>確認用のメールを送信しました。メールが届いていなければ正しいメールアドレスを個別設定から入力し直してください。');
+          }
           location.href = res.url;
         },
       });
