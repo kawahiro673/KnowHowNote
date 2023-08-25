@@ -284,12 +284,6 @@
   text-align: center;
 }
 
-.treecontrol {
-  display: inline-block;
-  margin-bottom: 10px;
-  width: 100px;
-}
-
 .createfolder {
   display: inline-block;
   /*   display: flex; */
@@ -299,9 +293,14 @@
   margin-bottom: 10px;
 }
 
+/* .treecontrol {
+  display: inline-block;
+  margin-bottom: 10px;
+  width: 100px;
+}
+
 .treecontrol a {
   display: inline-block;
-  /*   padding: 7px 14px; */
   font-size: 12px;
   font-weight: bold;
   text-align: center;
@@ -312,6 +311,29 @@
   cursor: pointer;
   margin: 5px 1px;
 }
+ */
+
+.treecontrol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 100px;
+}
+
+.treecontrol a {
+  /* display: inline-block; */ /* この行を削除 */
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  margin: 5px 1px;
+}
+
 
 #change-email-button {
   float: right;
