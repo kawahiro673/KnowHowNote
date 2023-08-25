@@ -3,7 +3,8 @@ import {
   validatePassword,
   validateUsername,
   validateEmail,
-  resultPopUp
+  resultPopUp,
+  resultPopUp_indelible
 } from '../stringUtils.js';
 
 const userName = document.getElementById('username');
