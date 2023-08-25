@@ -93,7 +93,6 @@ export const resultPopUp_indelible = (headerStr, bodyStr) => {
   document.getElementById('result-pop-body-p').innerHTML = bodyStr;
 };
 
-
 //「はい」「いいえ」ポップアップ
 export const answerPopUp = (title, content) => {
   document.getElementById('popup-overlay_answer-pop').style.display = 'block';

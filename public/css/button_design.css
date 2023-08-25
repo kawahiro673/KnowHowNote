@@ -156,7 +156,6 @@
   box-shadow: 0 5px 0 #32cd32;
 }
 
-
 /* #closed-button,
 #expandable-button{
   display: inline-block;
@@ -187,7 +186,7 @@
   display: inline-block;
   padding: 0px;
   font-size: 12px;
-/*   font-weight: bold; */
+  /*   font-weight: bold; */
   text-align: center;
   text-decoration: none;
   border: none;
@@ -197,7 +196,7 @@
 }
 
 #closed-button {
- padding: 7px 14px;
+  padding: 7px 14px;
   background-color: #ff4000;
   box-shadow: 0 5px 0 #842b04;
   color: white;
@@ -206,7 +205,7 @@
   height: 32px;
 }
 #expandable-button {
- padding: 7px 14px;
+  padding: 7px 14px;
   background-color: #00950f;
   box-shadow: 0 5px 0 #024a02;
   margin: 0;

@@ -2,7 +2,7 @@ import {
   currentTimeGet,
   explanationPopUp,
   generateRandomString,
-   resultPopUp_indelible
+  resultPopUp_indelible,
 } from '../stringUtils.js';
 
 const gestloginbtn = document.getElementById('gestloginbtn');
@@ -21,7 +21,10 @@ function gestloginButtonClick() {
       name: `GestUser_${generateRandomString(12)}`,
     }),
     success: function (res) {
-      resultPopUp_indelible('ゲストログイン','ログイン中です<br>しばらくお待ちください');
+      resultPopUp_indelible(
+        'ゲストログイン',
+        'ログイン中です<br>しばらくお待ちください'
+      );
       location.href = res.url;
     },
   });

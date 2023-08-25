@@ -163,7 +163,14 @@ router
           return new Promise((resolve, reject) => {
             pool.query(
               'INSERT INTO tab_hold (id, focus, tabOrder, tabTitle, UserID, label_color) VALUES(?,?,?,?,?,?);',
-              [fileResult[0].id, 1, 1, '新しいノウハウ１', userResult[0].id, '#0000FF'],
+              [
+                fileResult[0].id,
+                1,
+                1,
+                '新しいノウハウ１',
+                userResult[0].id,
+                '#0000FF',
+              ],
               (error, result) => {
                 if (error) {
                   reject();
@@ -219,24 +226,24 @@ router
               maxAge: 1000 * 60 * 360,
             };
 
-            if(req.body.email){
-             const mailOptions = {
-                  from: auth.user,
-                  to: req.body.email,
-                  subject: '【Know How Note】メールアドレス設定',
-                  text: `${userName}様\n\n日頃より「Know How Note」をご利用くださり誠にありがとうございます。\nあなたのアカウントについて、こちらのアドレスを承りました。\n\n※当メールは送信専用メールアドレスから配信されています。このままご返信いただいてもお答えできませんのでご了承ください。\n\n※当メールに心当たりの無い場合は、誠に恐れ入りますが破棄して頂けますよう、よろしくお願いいたします。\n`,
-                };
+            if (req.body.email) {
+              const mailOptions = {
+                from: auth.user,
+                to: req.body.email,
+                subject: '【Know How Note】メールアドレス設定',
+                text: `${userName}様\n\n日頃より「Know How Note」をご利用くださり誠にありがとうございます。\nあなたのアカウントについて、こちらのアドレスを承りました。\n\n※当メールは送信専用メールアドレスから配信されています。このままご返信いただいてもお答えできませんのでご了承ください。\n\n※当メールに心当たりの無い場合は、誠に恐れ入りますが破棄して頂けますよう、よろしくお願いいたします。\n`,
+              };
 
-                transporter.sendMail(mailOptions, (error, info) => {
-                  if (error) {
-                    console.log('Error:', error);
-                    res.status(500).send('Error sending email');
-                  } else {
-                    console.log('Email sent:', info.response);
-                  }
-                });
+              transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                  console.log('Error:', error);
+                  res.status(500).send('Error sending email');
+                } else {
+                  console.log('Email sent:', info.response);
+                }
+              });
             }
-            
+
             res.cookie('token', token, options);
             res.cookie('hashedId', encodedId, options);
 

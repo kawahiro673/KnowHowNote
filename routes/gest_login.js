@@ -121,7 +121,14 @@ router.post('/', async (req, res) => {
       return new Promise((resolve, reject) => {
         pool.query(
           'INSERT INTO tab_hold (id, focus, tabOrder, tabTitle, UserID, label_color) VALUES(?,?,?,?,?,?);',
-          [fileResult[0].id, 1, 1, '新しいノウハウ１', userResult[0].id, '#0000FF'],
+          [
+            fileResult[0].id,
+            1,
+            1,
+            '新しいノウハウ１',
+            userResult[0].id,
+            '#0000FF',
+          ],
           (error, result) => {
             if (error) {
               reject();

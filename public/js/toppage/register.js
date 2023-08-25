@@ -4,7 +4,7 @@ import {
   validateUsername,
   validateEmail,
   resultPopUp,
-  resultPopUp_indelible
+  resultPopUp_indelible,
 } from '../stringUtils.js';
 
 const userName = document.getElementById('username');
@@ -13,7 +13,6 @@ const cfPassword = document.getElementById('confirmedPassword');
 const authEmail = document.getElementById('authEmail');
 const elements = document.querySelectorAll('.authinput');
 const message = document.querySelector('.auth-error-message');
-
 
 document
   .getElementById('registerbtn')
@@ -39,11 +38,14 @@ function registerButtonClick() {
         password_auth.value === '' ||
         cfPassword.value === ''
       ) {
-    elements.forEach(function (element) {
-    if (element.value === '' && element.getAttribute('name') !== 'email') {
-        element.style.border = '1px solid red';
-    }
-});
+        elements.forEach(function (element) {
+          if (
+            element.value === '' &&
+            element.getAttribute('name') !== 'email'
+          ) {
+            element.style.border = '1px solid red';
+          }
+        });
         message.style.display = 'block';
         message.innerHTML = '入力されていない情報があります';
         return false;
@@ -85,18 +87,18 @@ function registerButtonClick() {
         return false;
       }
 
-       //メールアドレスに何か入力されていれば、バリデーションチェック
-      if (authEmail.value !== '' &&  !validateEmail(authEmail.value)) {
+      //メールアドレスに何か入力されていれば、バリデーションチェック
+      if (authEmail.value !== '' && !validateEmail(authEmail.value)) {
         message.style.display = 'block';
         message.innerHTML = 'メールアドレスの入力に誤りがあります';
         authEmail.style.border = '1px solid red';
         return false;
       }
 
-       if (authEmail.value === '') {
+      if (authEmail.value === '') {
         authEmail.value = '未設定';
       }
-      
+
       const time = currentTimeGet();
       $.ajax({
         url: '/auth/',
@@ -111,10 +113,16 @@ function registerButtonClick() {
           time,
         }),
         success: function (res) {
-          if(authEmail.value === ''){
-            resultPopUp_indelible('新規登録','新規登録が完了いたしました<br>しばらくお待ちください');
-          }else{
-            resultPopUp_indelible('新規登録','新規登録が完了いたしました。しばらくお待ちください。<br>確認用のメールを送信しています。メールが届いていなければ正しいメールアドレスを個別設定から入力し直してください。');
+          if (authEmail.value === '') {
+            resultPopUp_indelible(
+              '新規登録',
+              '新規登録が完了いたしました<br>しばらくお待ちください'
+            );
+          } else {
+            resultPopUp_indelible(
+              '新規登録',
+              '新規登録が完了いたしました。しばらくお待ちください。<br>確認用のメールを送信しています。メールが届いていなければ正しいメールアドレスを個別設定から入力し直してください。'
+            );
           }
           location.href = res.url;
         },
