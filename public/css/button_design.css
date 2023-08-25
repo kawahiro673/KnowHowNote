@@ -185,7 +185,7 @@
 
 .treecontrol a {
   display: inline-block;
-  /*   padding: 7px 14px; */
+  padding: 0px;
   font-size: 12px;
   font-weight: bold;
   text-align: center;
@@ -204,6 +204,7 @@
   margin: 0;
   width: 36px;
   height: 32px;
+  
 }
 #expandable-button {
   background-color: #00950f;
