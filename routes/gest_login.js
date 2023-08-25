@@ -77,7 +77,7 @@ router.post('/', async (req, res) => {
         pool.query(
           'INSERT INTO it_memo (title, memo_text, saved_time, parent_id, folder_order, Type, UserID) VALUES(?,?,?,?,?,?,?);',
           [
-            'sample1',
+            '新しいノウハウ１',
             'こちらはサンプルになります',
             req.body.time,
             0,
@@ -121,7 +121,7 @@ router.post('/', async (req, res) => {
       return new Promise((resolve, reject) => {
         pool.query(
           'INSERT INTO tab_hold (id, focus, tabOrder, tabTitle, UserID, label_color) VALUES(?,?,?,?,?,?);',
-          [fileResult[0].id, 1, 1, 'sample1', userResult[0].id, '#0000FF'],
+          [fileResult[0].id, 1, 1, '新しいノウハウ１', userResult[0].id, '#0000FF'],
           (error, result) => {
             if (error) {
               reject();
@@ -140,7 +140,7 @@ router.post('/', async (req, res) => {
         pool.query(
           'INSERT INTO it_memo (title, memo_text, saved_time, parent_id, folder_order, Type, UserID) VALUES(?,?,?,?,?,?,?);',
           [
-            'sample2',
+            '新しいノウハウ２',
             'こちらはサンプルになります',
             req.body.time,
             folderResult[0].id,
