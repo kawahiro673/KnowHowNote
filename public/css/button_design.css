@@ -157,7 +157,7 @@
 }
 
 
-#closed-button,
+/* #closed-button,
 #expandable-button{
   display: inline-block;
   font-size: 12px;
@@ -181,6 +181,37 @@
 #expandable-button {
   background-color: #00950f;
   box-shadow: 0 5px 0 #024a02;
+} */
+
+.treecontrol a {
+  display: inline-block;
+  /*   padding: 7px 14px; */
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  margin: 5px 1px;
+}
+
+#closed-button {
+  background-color: #ff4000;
+  box-shadow: 0 5px 0 #842b04;
+  color: white;
+  margin: 0;
+  width: 36px;
+  height: 32px;
+}
+#expandable-button {
+  background-color: #00950f;
+  box-shadow: 0 5px 0 #024a02;
+  margin: 0;
+  color: white;
+  width: 36px;
+  height: 32px;
 }
 
 #share-user-button {
