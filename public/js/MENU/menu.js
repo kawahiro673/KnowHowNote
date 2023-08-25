@@ -333,7 +333,7 @@ document
 
     const result = await answerPopUp(
       '利用者ID変更',
-      '利用者IDを変更しますが、よろしいですか'
+      '利用者IDを変更します<br>よろしいですか?'
     );
     if (result === true) {
       $.ajax({
@@ -541,7 +541,7 @@ document
 
     const result = await answerPopUp(
       'アカウント削除',
-      '作成したノウハウなど全て削除されます<br>本当にアカウントを削除してよろしいですか'
+      '作成したノウハウなど全て削除されます<br>本当にアカウントを削除してよろしいですか?'
     );
     if (result === true) {
       $.ajax({
@@ -917,7 +917,7 @@ document.getElementById('logout').addEventListener('click', async function () {
   if (document.getElementById('user_name').innerHTML.length > 20) {
     result = await answerPopUp(
       'ログアウト',
-      'ゲストユーザーはログアウトすると<br>データが全て削除されます'
+      'ログアウトしますか？<br>※ゲストユーザーはログアウトするとデータが全て削除されます'
     );
   } else {
     result = await answerPopUp(
