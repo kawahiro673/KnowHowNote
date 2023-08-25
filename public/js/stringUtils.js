@@ -86,6 +86,14 @@ export const resultPopUp = (headerStr, bodyStr) => {
   }, 1500);
 };
 
+//「削除しました」「共有しました」等のポップアップを間出力する。消えない。ログイン時や新規登録時。
+export const resultPopUp_indelible = (headerStr, bodyStr) => {
+  document.getElementById('popup-overlay_result-pop').style.display = 'block';
+  document.getElementById('result-pop-header-h2').innerHTML = headerStr;
+  document.getElementById('result-pop-body-p').innerHTML = bodyStr;
+};
+
+
 //「はい」「いいえ」ポップアップ
 export const answerPopUp = (title, content) => {
   document.getElementById('popup-overlay_answer-pop').style.display = 'block';
