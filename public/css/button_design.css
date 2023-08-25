@@ -293,12 +293,12 @@
   margin-bottom: 10px;
 }
 
-/* .treecontrol {
+.treecontrol {
   display: inline-block;
   margin-bottom: 10px;
   width: 100px;
 }
-
+/* 
 .treecontrol a {
   display: inline-block;
   font-size: 12px;
@@ -312,14 +312,6 @@
   margin: 5px 1px;
 }
  */
-
-.treecontrol {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 10px;
-  width: 100px;
-}
 
 .treecontrol a {
   /* display: inline-block; */ /* この行を削除 */
