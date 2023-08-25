@@ -2,6 +2,7 @@ import {
   currentTimeGet,
   validateEmail,
   explanationPopUp,
+  resultPopUp_indelible
 } from '../stringUtils.js';
 
 const loginbtn = document.getElementById('loginbtn');
@@ -114,6 +115,7 @@ function loginButtonClick() {
             element.style.border = '1px solid red';
           });
         } else {
+          resultPopUp_indelible('ログイン','ログイン中です<br>しばらくお待ちください');
           //ajax通信を使用していると、nodejs(サーバーサイド)側でredirect()が使用できないっぽいのでこちらを使用
           location.href = res.url;
         }
