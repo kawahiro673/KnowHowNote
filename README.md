@@ -1,7 +1,7 @@
 <img src="public/img/README_img/タイトル.png">
 
 ##  Know How Note 
-### **https://nodejs-itnote-app.herokuapp.com**
+### **https://knowhownote-106672fa32dd.herokuapp.com/**
 
 ##  サービス概要
 
@@ -73,4 +73,4 @@ TOP画面から新規登録・ログイン・ゲストログイン・パスワ�
 
 ## 🌐 App URL
 
-### **https://nodejs-itnote-app.herokuapp.com**
+### **https://knowhownote-106672fa32dd.herokuapp.com/**
