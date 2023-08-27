@@ -32,7 +32,7 @@ export const listCreate = () => {
     success: async (res) => {
       if (res.status === 500) {
         console.log('ログイン画面に戻ります');
-        location.href = 'https://nodejs-itnote-app.herokuapp.com';
+        location.href = 'https://knowhownote-106672fa32dd.herokuapp.com/';
       }
       backgroundColorDelete();
       backgroundColorSet(res.user.BackgroundColor);

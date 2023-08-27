@@ -557,7 +557,7 @@ document
             'アカウント削除',
             'TOPページに戻ります<br>少々お待ちください'
           );
-          location.href = 'https://nodejs-itnote-app.herokuapp.com';
+          location.href = 'https://knowhownote-106672fa32dd.herokuapp.com/';
         },
       });
     }
@@ -937,7 +937,7 @@ document.getElementById('logout').addEventListener('click', async function () {
       }),
       success: function (res) {
         resultPopUp('ログアウト', 'ログアウト中です<br>少々お待ちください');
-        location.href = 'https://nodejs-itnote-app.herokuapp.com';
+        location.href = 'https://knowhownote-106672fa32dd.herokuapp.com/';
       },
     });
   }
