@@ -34,8 +34,7 @@
 #yes-button-explanation-pop,
 #change-password-button,
 #change-password-button-decision,
-#change-password-button-cancel,
-#login-move-button{
+#change-password-button-cancel{
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -319,8 +318,18 @@
 }
 
 #login-move-button{
-  color:black;
+  color:red;
   background-color:white;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  order: -1;
 }
 
 /*********************************共有ノウハウリストの更新ボタン************************************/
