@@ -4,7 +4,8 @@
     format('truetype');
 }
 
-h1 {
+h1,
+.top-introduction{
   font-size: 24px;
   margin-bottom: 15px;
 }
