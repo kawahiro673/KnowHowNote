@@ -1,5 +1,4 @@
 //MENUボタンの主な機能を実装
-
 import { hashedIdGet } from '../main.js';
 import {
   currentTimeGet,
