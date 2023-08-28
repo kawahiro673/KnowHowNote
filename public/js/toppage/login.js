@@ -131,6 +131,6 @@ document.getElementById('login-move-button').addEventListener('click', (e) => {
    console.log('やあ');
     $('.explanation-1').trigger('click');
     setTimeout(() => {
-        $('.explanation-2').trigger('click');
-    }, 1000);
+        $('.explanation-3').trigger('click');
+    }, 500);
 });
