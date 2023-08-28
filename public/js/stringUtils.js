@@ -31,29 +31,57 @@ export const currentTimeGet = () => {
 };
 
 //タブクリック時にrootからパスを取得して返す
+// export const passGet = (id, title) => {
+//   let pass = document.getElementById(`file${id}`);
+//   let parentArray = [];
+//   let answer = '';
+//   let i = 0;
+
+//   while (pass.parentNode.parentNode.id != '0') {
+//     parentArray.push(
+//       pass.parentNode.parentNode.previousElementSibling.innerHTML
+//     );
+//     pass = pass.parentNode.parentNode.previousElementSibling;
+//   }
+//   parentArray.forEach((hoge) => {
+//     i++;
+//     if (i == parentArray.length) {
+//       answer = `  ${hoge}` + answer;
+//     } else {
+//       answer = ` > ${hoge}` + answer;
+//     }
+//   });
+//   if (!answer) return title;
+//   return answer + ' > ' + title;
+// };
 export const passGet = (id, title) => {
   let pass = document.getElementById(`file${id}`);
   let parentArray = [];
   let answer = '';
   let i = 0;
 
-  while (pass.parentNode.parentNode.id != '0') {
-    parentArray.push(
-      pass.parentNode.parentNode.previousElementSibling.innerHTML
-    );
-    pass = pass.parentNode.parentNode.previousElementSibling;
-  }
-  parentArray.forEach((hoge) => {
-    i++;
-    if (i == parentArray.length) {
-      answer = `  ${hoge}` + answer;
-    } else {
-      answer = ` > ${hoge}` + answer;
+  try {
+    while (pass.parentNode.parentNode.id != '0') {
+      parentArray.push(
+        pass.parentNode.parentNode.previousElementSibling.innerHTML
+      );
+      pass = pass.parentNode.parentNode.previousElementSibling;
     }
-  });
-  if (!answer) return title;
-  return answer + ' > ' + title;
+    parentArray.forEach((hoge) => {
+      i++;
+      if (i == parentArray.length) {
+        answer = `  ${hoge}` + answer;
+      } else {
+        answer = ` > ${hoge}` + answer;
+      }
+    });
+    if (!answer) return title;
+    return answer + ' > ' + title;
+  } catch (error) {
+    return title;
+  }
 };
+
 
 //elemの配下の全てのファイルIDを再起的に取得し、fileIDsに格納し返す
 export const fileIDUnderTheFolder = (elem) => {
