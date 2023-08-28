@@ -126,3 +126,8 @@ function loginButtonClick() {
     });
   }
 }
+
+document.getElementById('login-move-button').addEventListener('click', (e) => {
+  console.log('やあ');
+    $(`.login`).trigger('click');
+});
