@@ -3,6 +3,7 @@ import {
   explanationPopUp,
   generateRandomString,
   resultPopUp_indelible,
+  answerPopUp,
 } from '../stringUtils.js';
 
 const gestloginbtn = document.getElementById('gestloginbtn');
@@ -21,11 +22,17 @@ function gestloginButtonClick() {
       name: `GestUser_${generateRandomString(12)}`,
     }),
     success: function (res) {
-      resultPopUp_indelible(
+      const result = await answerPopUp(
         'ゲストログイン',
-        'ログイン中です<br>しばらくお待ちください'
+        'ゲストユーザーとしてログインしますがよろしいですか<br>※一部機能は使用できません'
       );
-      location.href = res.url;
+      if (result === true) {
+       resultPopUp_indelible(
+         'ゲストログイン',
+         'ログイン中です<br>しばらくお待ちください'
+       );
+       location.href = res.url;
+      }
     },
   });
 }
