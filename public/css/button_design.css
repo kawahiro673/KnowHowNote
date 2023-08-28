@@ -34,7 +34,8 @@
 #yes-button-explanation-pop,
 #change-password-button,
 #change-password-button-decision,
-#change-password-button-cancel {
+#change-password-button-cancel,
+#login-move-button{
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -155,32 +156,6 @@
   background-color: #71f26c;
   box-shadow: 0 5px 0 #32cd32;
 }
-
-/* #closed-button,
-#expandable-button{
-  display: inline-block;
-  font-size: 12px;
-  text-align: center;
-  text-decoration: none;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin: 5px 1px;
-  padding:0px;
-  color: white;
-  margin: 0;
-  width: 36px;
-  height: 32px;
-}
-
-#closed-button {
-  background-color: #ff4000;
-  box-shadow: 0 5px 0 #842b04;
-}
-#expandable-button {
-  background-color: #00950f;
-  box-shadow: 0 5px 0 #024a02;
-} */
 
 .treecontrol a {
   display: inline-block;
@@ -327,7 +302,6 @@
 
 .createfolder {
   display: inline-block;
-  /*   display: flex; */
   justify-content: space-between;
   width: 160px;
   margin-left: 10px;
@@ -342,6 +316,11 @@
 
 #change-email-button {
   float: right;
+}
+
+#login-move-button{
+  color:black;
+  background-color:white;
 }
 
 /*********************************共有ノウハウリストの更新ボタン************************************/
