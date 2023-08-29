@@ -30,9 +30,9 @@
     margin-bottom: 10px;
   }
 
-  .cssbk > label > input[type='checkbox'] {
+/*   .cssbk > label > input[type='checkbox'] {
     display: none;
-  }
+  } */
 
   .cssbk > label > span {
     display: flex;
