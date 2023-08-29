@@ -128,9 +128,11 @@ function loginButtonClick() {
 }
 
 document.getElementById('login-move-button').addEventListener('click', (e) => {
-   console.log('やあ');
-    $('.explanation-1').trigger('click');
+  $('.explanation-1').trigger('click');
+  setTimeout(() => {
+    $('.explanation-2').trigger('click');
     setTimeout(() => {
-        $('.explanation-3').trigger('click');
-    }, 500);
+      $('.explanation-3').trigger('click');
+    }, 250);
+  }, 250);
 });
