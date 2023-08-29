@@ -12,6 +12,14 @@ video {
   backface-visibility: hidden;
 }
 
+.content {
+  backface-visibility: hidden;
+}
+
+.cssbook {
+  transform-style: preserve-3d;
+}
+
 h1,
 .top-introduction {
   font-size: 24px;
