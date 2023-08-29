@@ -168,4 +168,11 @@
     top: 510px;
     right: 30px;
   }
+  
+    #ch01:checked ~ #pg01 video {
+    display: none;
+  }
+
 }
+
+
