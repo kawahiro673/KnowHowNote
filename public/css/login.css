@@ -8,7 +8,7 @@
     backface-visibility: hidden;
 }
 
-video {
+/* video {
   backface-visibility: hidden;
 }
 
@@ -18,7 +18,7 @@ video {
 
 .cssbook {
   transform-style: preserve-3d;
-}
+} */
 
 h1,
 .top-introduction {
@@ -270,20 +270,4 @@ h2 {
 }
 .popup-body_pass-forget label {
   font-size: 14px; /* 任意のフォントサイズに調整 */
-}
-
-@supports (-webkit-appearance: none) {
-  /* ChromeとEdge向けにスタイル調整 */
-  /* 必要に応じて適切なスタイルを追加 */
-  
-  /* 例: ラベル要素に対して回転しない設定を追加 */
-  label {
-    transform: none !important;
-  }
-
-  /* 例: 裏面のスタイルにも回転しない設定を追加 */
-  .dummy {
-    backface-visibility: hidden;
-    transform: none !important;
-  }
 }
