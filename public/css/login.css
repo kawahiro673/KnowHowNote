@@ -8,6 +8,10 @@
     backface-visibility: hidden;
 }
 
+video {
+  backface-visibility: hidden;
+}
+
 h1,
 .top-introduction {
   font-size: 24px;
