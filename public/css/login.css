@@ -4,9 +4,8 @@
     format('truetype');
 }
 
-.content img {
-  width: 390px;
-  height: 335px;
+.dummy {
+    backface-visibility: hidden;
 }
 
 h1,
