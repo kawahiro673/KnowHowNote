@@ -169,9 +169,9 @@
     right: 30px;
   }
   
-    #ch01:checked ~ #pg01 video {
+/*     #ch01:checked ~ #pg01 video {
     display: none;
-  }
+  } */
 
 }
 
