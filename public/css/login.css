@@ -55,12 +55,14 @@ h2 {
 
 .inside-cover {
   background-color: gray;
-  width: 100vw; /* 画面の幅いっぱいに */
-  height: 100vh; /* 画面の高さいっぱいに */
-  position: fixed; /* 要素を固定位置に配置 */
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
   top: 0;
   left: 0;
+  box-sizing: border-box; /* 要素の幅と高さにpaddingとborderも含める */
 }
+
 
 
 .logininput,
