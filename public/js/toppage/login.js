@@ -10,6 +10,10 @@ const password = document.getElementById('password');
 const username = document.getElementById('username_login');
 const elements = document.querySelectorAll('.logininput');
 
+setTimeout(() => {
+  $('.front_cover').trigger('click');
+}, 500);
+
 loginbtn.addEventListener('click', loginButtonClick);
 
 document
