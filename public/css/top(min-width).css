@@ -32,10 +32,6 @@
     height: 700px;
   }
 
-  /* .cssbk input {
-    display: none;
-  } */
-
   .cssbk input ~ span {
     transition: 1.5s;
     -webkit-backface-visibility: hidden; /*要素が回転した場合に裏面が見えなくなる*/
