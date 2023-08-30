@@ -12,6 +12,10 @@
     background-color: #f3eee1;
   }
 
+  .inside-cover{
+    display:none;
+  }
+
   input,
   select,
   textarea {
