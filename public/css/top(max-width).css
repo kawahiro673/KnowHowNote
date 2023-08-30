@@ -184,6 +184,12 @@ video{
     width:288px;
     height:56px;
   }
+
+  .popup-window_pass-forget,
+  .popup-window_explanation-pop{
+   width: 350px;
+  height: 400px;
+  }
 }
 
 
