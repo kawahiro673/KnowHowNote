@@ -179,6 +179,11 @@ video{
     top: 510px;
     right: 30px;
   }
+  
+  .gestloginbtn{
+    width:288px;
+    height:56px;
+  }
 }
 
 
