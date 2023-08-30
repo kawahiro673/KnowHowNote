@@ -35,6 +35,7 @@
   }
 
   .cssbk > label > span {
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -63,6 +64,24 @@
     padding: 30px;
     box-sizing: border-box;
   }
+
+  .inside-cover {
+  background-color:  blue; 
+/*   background-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 50%,
+      #fff 50%,
+      #fff 100%
+    ),
+      linear-gradient(180deg, rgb(30, 194, 219) 1px, transparent 0.8px);
+  background-size: 8px 100%, 100% 2.5em; */
+/*   line-height: 2.5em; 
+  padding-bottom: 1px;  */
+  height: 100%;
+  padding: 30px;
+/*   box-sizing: border-box; */
+}
 
   .note {
     border-top: 1px solid black;
