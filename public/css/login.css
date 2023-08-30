@@ -53,6 +53,10 @@ h2 {
   box-sizing: border-box;
 }
 
+.content-video{
+  padding: 0px;
+}
+
 .inside-cover {
   background-color: ghostwhite;
   position: fixed;
@@ -162,6 +166,10 @@ h2 {
 }
 .top-title{
   font-size:24px;
+}
+
+.explain-title{
+  margin:46px 30px 30px 30px;
 }
 
 /*********** ボタン ***********/
