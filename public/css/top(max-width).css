@@ -15,10 +15,14 @@
     font-size: 5px;
   }
 
-  
-  .inside-cover{
-    display:none;
-  }
+ .top-introduction{
+   font-size: 15px
+ }
+
+video{
+  width: 310px;
+  height: 275px;
+}
   
   .cssbk {
     display: flex;
