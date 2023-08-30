@@ -53,9 +53,15 @@ h2 {
   box-sizing: border-box;
 }
 
-.inside-cover{
+.inside-cover {
   background-color: gray;
+  width: 100vw; /* 画面の幅いっぱいに */
+  height: 100vh; /* 画面の高さいっぱいに */
+  position: fixed; /* 要素を固定位置に配置 */
+  top: 0;
+  left: 0;
 }
+
 
 .logininput,
 .authinput,
@@ -143,6 +149,22 @@ h2 {
 .control-pop label {
   text-align: left;
 }
+
+.top-introduction{
+  font-size: 20px;
+  margin-top:35px;
+  margin-bottom: 5px;
+}
+.speech-bubble{
+  font-weight: bold;
+}
+.gestuser-explain{
+  color:red;
+}
+.top-title{
+  font-size:24px;
+}
+
 /*********** ボタン ***********/
 
 #pass-change,
@@ -261,19 +283,4 @@ h2 {
 }
 .popup-body_pass-forget label {
   font-size: 14px; /* 任意のフォントサイズに調整 */
-}
-
-.top-introduction{
-  font-size: 20px;
-  margin-top:35px;
-  margin-bottom: 5px;
-}
-.speech-bubble{
-  font-weight: bold;
-}
-.gestuser-explain{
-  color:red;
-}
-.top-title{
-  font-size:24px;
 }
