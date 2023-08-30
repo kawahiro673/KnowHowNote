@@ -132,6 +132,8 @@ function loginButtonClick() {
 }
 
 document.getElementById('login-move-button').addEventListener('click', (e) => {
+$('.next-page-arrow').trigger('click');
+  setTimeout(() => { 
   $('.explanation-1').trigger('click');
   setTimeout(() => {
     $('.explanation-2').trigger('click');
@@ -139,4 +141,5 @@ document.getElementById('login-move-button').addEventListener('click', (e) => {
       $('.explanation-3').trigger('click');
     }, 250);
   }, 250);
+ }, 250);   
 });
