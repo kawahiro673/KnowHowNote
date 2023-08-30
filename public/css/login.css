@@ -8,8 +8,7 @@
     backface-visibility: hidden;
 }
 
-h1,
-.top-introduction {
+h1{
   font-size: 24px;
   margin-bottom: 15px;
 }
@@ -260,6 +259,10 @@ h2 {
   font-size: 14px; /* 任意のフォントサイズに調整 */
 }
 
+.top-introduction{
+  font-size: 20px;
+  margin-bottom: 15px;
+}
 .speech-bubble{
   font-weight: bold;
 }
@@ -267,5 +270,5 @@ h2 {
   color:red;
 }
 .top-title{
-  font-size:25px;
+  font-size:24px;
 }
