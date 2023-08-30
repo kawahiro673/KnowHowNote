@@ -132,19 +132,20 @@ function loginButtonClick() {
 }
 
 document.getElementById('login-move-button').addEventListener('click', (e) => {
-
-   if (window.innerWidth <= 1000) {
-    document.getElementById('loginbtn').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (window.innerWidth <= 1000) {
+    document
+      .getElementById('loginbtn')
+      .scrollIntoView({ behavior: 'smooth', block: 'start' });
   } else {
-$('.next-page-arrow').trigger('click');
-  setTimeout(() => { 
-  $('.explanation-1').trigger('click');
-  setTimeout(() => {
-    $('.explanation-2').trigger('click');
+    $('.next-page-arrow').trigger('click');
     setTimeout(() => {
-      $('.explanation-3').trigger('click');
+      $('.explanation-1').trigger('click');
+      setTimeout(() => {
+        $('.explanation-2').trigger('click');
+        setTimeout(() => {
+          $('.explanation-3').trigger('click');
+        }, 250);
+      }, 250);
     }, 250);
-  }, 250);
- }, 250);   
-   }
+  }
 });

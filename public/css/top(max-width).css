@@ -12,15 +12,15 @@
     position: relative;
   }
 
- .top-introduction{
-   font-size: 15px;
- }
+  .top-introduction {
+    font-size: 15px;
+  }
 
-video{
-  width: 310px;
-  height: 275px;
-}
-  
+  video {
+    width: 310px;
+    height: 275px;
+  }
+
   .cssbk {
     display: flex;
     flex-direction: column;
@@ -42,7 +42,6 @@ video{
   }
 
   .cssbk > label > span {
-    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -176,20 +175,18 @@ video{
     top: 510px;
     right: 30px;
   }
-  
-  #gestloginbtn{
-    width:288px;
-    height:56px;
+
+  #gestloginbtn {
+    width: 288px;
+    height: 56px;
   }
 
-  .popup-window_pass-forget{
-   width: 350px;
-  height: 400px;
+  .popup-window_pass-forget {
+    width: 350px;
+    height: 400px;
   }
-  .popup-window_explanation-pop{
-  width: 350px;
-  height: 200px;
+  .popup-window_explanation-pop {
+    width: 350px;
+    height: 200px;
   }
 }
-
-

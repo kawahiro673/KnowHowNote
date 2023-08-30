@@ -32,9 +32,9 @@
     height: 700px;
   }
 
-  .cssbk input {
+  /* .cssbk input {
     display: none;
-  }
+  } */
 
   .cssbk input ~ span {
     transition: 1.5s;

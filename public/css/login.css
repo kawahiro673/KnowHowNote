@@ -5,10 +5,10 @@
 }
 
 .dummy {
-    backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
-h1{
+h1 {
   font-size: 24px;
   margin-bottom: 15px;
 }
@@ -35,7 +35,7 @@ h2 {
 }
 
 .content {
-  background-color: #fff; 
+  background-color: #fff;
   background-image: linear-gradient(
       90deg,
       transparent 0%,
@@ -140,32 +140,32 @@ h2 {
   text-align: left;
 }
 
-.top-introduction{
+.top-introduction {
   font-size: 20px;
-  margin-top:35px;
+  margin-top: 35px;
   margin-bottom: 5px;
 }
-.speech-bubble{
+.speech-bubble {
   font-weight: bold;
 }
-.gestuser-explain{
-  color:red;
+.gestuser-explain {
+  color: red;
 }
-.top-title{
-  font-size:24px;
-}
-
-.explain-title{
-  margin:46px 30px 30px 30px;
+.top-title {
+  font-size: 24px;
 }
 
-.gestlogin-p{
-  margin-top:32px;
-  margin-bottom:0px;
+.explain-title {
+  margin: 46px 30px 30px 30px;
+}
+
+.gestlogin-p {
+  margin-top: 32px;
+  margin-bottom: 0px;
 }
 
 .next-page-arrow {
-  margin-top:0px;
+  margin-top: 0px;
   text-align: right;
 }
 
