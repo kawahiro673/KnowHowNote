@@ -35,7 +35,8 @@ h2 {
 }
 
 .content {
-  background-color: #fff; /* 背景色 */
+/*   background-color: #fff;  */
+   background-color: blue;
   background-image: linear-gradient(
       90deg,
       transparent 0%,
