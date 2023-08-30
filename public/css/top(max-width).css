@@ -180,15 +180,18 @@ video{
     right: 30px;
   }
   
-  .gestloginbtn{
+  #gestloginbtn{
     width:288px;
     height:56px;
   }
 
-  .popup-window_pass-forget,
-  .popup-window_explanation-pop{
+  .popup-window_pass-forget{
    width: 350px;
   height: 400px;
+  }
+  .popup-window_explanation-pop{
+  width: 350px;
+  height: 200px;
   }
 }
 
