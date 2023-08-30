@@ -53,6 +53,10 @@ h2 {
   box-sizing: border-box;
 }
 
+.inside-cover{
+  background-color: gray;
+}
+
 .logininput,
 .authinput,
 .pass-change-input {
@@ -261,7 +265,8 @@ h2 {
 
 .top-introduction{
   font-size: 20px;
-  margin-bottom: 15px;
+  margin-top:35px
+  margin-bottom: 5px;
 }
 .speech-bubble{
   font-weight: bold;
