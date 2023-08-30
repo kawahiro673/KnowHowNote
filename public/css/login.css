@@ -53,10 +53,6 @@ h2 {
   box-sizing: border-box;
 }
 
-/* .content-video{
-  padding: 0px;
-} */
-
 .inside-cover {
   background-color: ghostwhite;
   position: fixed;
@@ -170,6 +166,15 @@ h2 {
 
 .explain-title{
   margin:46px 30px 30px 30px;
+}
+
+.gestlogin-p{
+  margin-top:32px;
+  margin-bottom:0px;
+}
+
+.next-page-arrow {
+  text-align: right;
 }
 
 /*********** ボタン ***********/
