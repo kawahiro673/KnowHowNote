@@ -178,6 +178,12 @@ label > input[type="checkbox"] {
   text-align: right;
 }
 
+.explanation {
+  display: flex;
+  align-items: center; /* 縦方向に中央寄せ */
+  justify-content: space-between; /* 横方向に均等に配置 */
+}
+
 /*********** ボタン ***********/
 
 #pass-change,
