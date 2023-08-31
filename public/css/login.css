@@ -18,6 +18,10 @@ h2 {
   margin-bottom: 15px;
 }
 
+label > input[type="checkbox"] {
+  display: none;
+}
+
 .front_cover p {
   font-size: 50px;
   font-family: 'PTSerifCaption', 'Open Sans', sans-serif;
