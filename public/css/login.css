@@ -8,6 +8,11 @@
   backface-visibility: hidden;
 }
 
+.top-title img{
+ width: 45px;
+ height: 45px;
+}
+
 h1 {
   font-size: 24px;
   margin-bottom: 15px;
