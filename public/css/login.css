@@ -192,7 +192,9 @@ label > input[type="checkbox"] {
   font-size:18px;
 }
 
-.explanation-1 {
+.explanation-1,
+.explanation-2,
+.explanation-3{
   width: 65%; /* 幅比率 6.5 */
 }
 /* 
