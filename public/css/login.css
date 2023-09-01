@@ -178,9 +178,12 @@ label > input[type="checkbox"] {
   text-align: right;
 }
 
-.explanation,
-.explanation-wrap{
+.explanation{
   display: flex;
+  align-items: center;
+}
+
+.explanation-wrap{
   align-items: center;
 }
 
