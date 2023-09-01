@@ -205,6 +205,16 @@ label > input[type="checkbox"] {
   height:270px;
 }
 
+.img-container {
+  width: 35%; /* 幅比率 3.5 */
+  display: flex;
+  flex-direction: column; /* 子要素を縦に並べる */
+}
+
+.img-container img {
+  width: 100%; /* 子要素の幅を100%に設定して親要素の幅に合わせる */
+}
+
 /*********** ボタン ***********/
 
 #pass-change,
