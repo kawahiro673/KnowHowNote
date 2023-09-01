@@ -4,11 +4,6 @@
     format('truetype');
 }
 
-body {
-  transform: scale(1.25);
-  transform-origin: top;
-}
-
 .dummy {
   backface-visibility: hidden;
 }
