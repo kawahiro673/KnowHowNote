@@ -178,10 +178,23 @@ label > input[type="checkbox"] {
   text-align: right;
 }
 
+/* .explanation {
+  display: flex;
+  align-items: center; 
+  justify-content: space-between; 
+} */
+
 .explanation {
   display: flex;
-  align-items: center; /* 縦方向に中央寄せ */
-  justify-content: space-between; /* 横方向に均等に配置 */
+  align-items: center;
+}
+
+.explanation-1 {
+  width: 65%; /* 幅比率 6.5 */
+}
+
+.explanation img {
+  width: 35%; /* 幅比率 3.5 */
 }
 
 /*********** ボタン ***********/
