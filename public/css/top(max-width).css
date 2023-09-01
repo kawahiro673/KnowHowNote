@@ -31,7 +31,7 @@
   .cssbk > label {
     display: flex;
     flex-direction: column;
-    width: 375px; /* 親要素内いっぱいにする */
+    width: 650px; /* 親要素内いっぱいにする */
     height: 1400px;
     border: 1px solid black;
     margin-bottom: 10px;
@@ -46,7 +46,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    height: 80%;
+    height: 50%;
   }
 
   .cssbk > label > span > .content {
