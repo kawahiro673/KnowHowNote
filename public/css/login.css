@@ -195,10 +195,10 @@ label > input[type="checkbox"] {
 .explanation-1 {
   width: 65%; /* 幅比率 6.5 */
 }
-
+/* 
 .explanation img {
   width: 35%; /* 幅比率 3.5 */
-}
+/*} */
 
 .explanation-wrap img{
   width:400px;
