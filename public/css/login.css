@@ -178,12 +178,6 @@ label > input[type="checkbox"] {
   text-align: right;
 }
 
-/* .explanation {
-  display: flex;
-  align-items: center; 
-  justify-content: space-between; 
-} */
-
 .explanation {
   display: flex;
   align-items: center;
@@ -195,6 +189,11 @@ label > input[type="checkbox"] {
 
 .explanation img {
   width: 35%; /* 幅比率 3.5 */
+}
+
+.explanation{
+  width:300px
+  height:135px
 }
 
 /*********** ボタン ***********/
