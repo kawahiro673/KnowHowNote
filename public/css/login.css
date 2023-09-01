@@ -191,9 +191,13 @@ label > input[type="checkbox"] {
   width: 35%; /* 幅比率 3.5 */
 }
 
+.explanation-wrap{
+  text-align: center;
+}
+
 .explanation-wrap img{
   width:300px;
-  height:135px;
+  height:150px;
 }
 
 /*********** ボタン ***********/
