@@ -178,9 +178,15 @@ label > input[type="checkbox"] {
   text-align: right;
 }
 
-.explanation {
+.explanation,
+.explanation-wrap{
   display: flex;
   align-items: center;
+}
+
+.explanation,
+.explanation-wrap{
+  font-size:18px;
 }
 
 .explanation-1 {
@@ -189,10 +195,6 @@ label > input[type="checkbox"] {
 
 .explanation img {
   width: 35%; /* 幅比率 3.5 */
-}
-
-.explanation-wrap{
-  text-align: center;
 }
 
 .explanation-wrap img{
