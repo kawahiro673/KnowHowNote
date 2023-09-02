@@ -54,7 +54,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #fff; /* 背景色 */
+    background-color: #fff;
     background-image: linear-gradient(
         90deg,
         transparent 0%,
@@ -209,5 +209,9 @@
     width: 130px;
     height: 45px;
     padding: 0;
+  }
+  .login-guide {
+    display: flex;
+    align-items: center;
   }
 }
