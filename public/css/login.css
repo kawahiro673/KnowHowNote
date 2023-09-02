@@ -8,9 +8,9 @@
   backface-visibility: hidden;
 }
 
-.top-title img{
- width: 35px;
- height: 35px;
+.top-title img {
+  width: 35px;
+  height: 35px;
 }
 
 h1 {
@@ -23,7 +23,7 @@ h2 {
   margin-bottom: 15px;
 }
 
-label > input[type="checkbox"] {
+label > input[type='checkbox'] {
   display: none;
 }
 
@@ -178,23 +178,23 @@ label > input[type="checkbox"] {
   text-align: right;
 }
 
-.explanation{
+.explanation {
   display: flex;
   align-items: center;
 }
 
-.explanation-wrap{
+.explanation-wrap {
   align-items: center;
 }
 
 .explanation,
-.explanation-wrap{
-  font-size:18px;
+.explanation-wrap {
+  font-size: 18px;
 }
 
 .explanation-1,
 .explanation-2,
-.explanation-3{
+.explanation-3 {
   width: 65%; /* 幅比率 6.5 */
 }
 /* 
@@ -202,9 +202,9 @@ label > input[type="checkbox"] {
   width: 35%; /* 幅比率 3.5 */
 /*} */
 
-.explanation-wrap img{
-  width:400px;
-  height:270px;
+.explanation-wrap img {
+  width: 400px;
+  height: 270px;
 }
 
 .img-container {
@@ -215,7 +215,7 @@ label > input[type="checkbox"] {
 
 .img-container img {
   width: 100%; /* 子要素の幅を100%に設定して親要素の幅に合わせる */
-  border: 2px solid black; 
+  border: 2px solid black;
 }
 
 /*********** ボタン ***********/
