@@ -219,6 +219,8 @@ label > input[type='checkbox'] {
 
 .img-container-3 img {
   border: 2px solid black;
+  width: 450px;
+  height: 318px;
 }
 
 /*********** ボタン ***********/
