@@ -113,9 +113,11 @@ label > input[type='checkbox'] {
 
 #pass-forget {
   padding: 0;
+  display: inline-block;
 }
 .passforgetdiv {
   margin-top: 40px;
+  text-align: right;
 }
 
 .new-account {
@@ -191,13 +193,13 @@ label > input[type='checkbox'] {
 
 .explanation-1 {
   width: 65%;
+  margin-right: 10px;
 }
 
 .img-container-1 {
   width: 35%;
   display: flex;
   flex-direction: column;
-  margin-right: 10px;
 }
 
 .img-container-1 img {
