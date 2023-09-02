@@ -195,4 +195,9 @@
   .img-container-3 img {
     display: none;
   }
+
+  .explanation-1 {
+    width: auto; /* 幅を自動調整に戻す */
+    margin-right: 0;
+  }
 }
