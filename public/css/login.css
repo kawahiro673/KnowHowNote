@@ -230,12 +230,12 @@ label > input[type='checkbox'] {
 }
 
 .login-guide p {
-  order: 1;
+  order: 2; /* 以前は1でしたが、2に変更します */
   margin-right: 5px;
 }
 
 #login-move-button {
-  order: 2;
+  order: 1; /* 以前は2でしたが、1に変更します */
 }
 
 /*********** ボタン ***********/
