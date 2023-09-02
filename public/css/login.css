@@ -200,7 +200,7 @@ label > input[type='checkbox'] {
 }
 
 .img-container-1 img {
-  width: 100%; /* 子要素の幅を100%に設定して親要素の幅に合わせる */
+  width: 100%;
   border: 2px solid black;
 }
 
@@ -209,8 +209,8 @@ label > input[type='checkbox'] {
 }
 
 .img-container-2 img {
-  /* width: ; 
- height: ; */
+  width: 490;
+  height: 265;
 }
 
 /*********** ボタン ***********/
