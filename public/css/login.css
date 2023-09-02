@@ -229,6 +229,15 @@ label > input[type='checkbox'] {
   margin: 10px;
 }
 
+.login-guide p {
+  order: 1;
+  margin-right: 5px;
+}
+
+#login-move-button {
+  order: 2;
+}
+
 /*********** ボタン ***********/
 
 #pass-change,
