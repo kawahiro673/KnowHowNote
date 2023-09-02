@@ -189,4 +189,10 @@
     width: 350px;
     height: 200px;
   }
+
+  .img-container-1 img,
+  .img-container-2 img,
+  .img-container-3 img {
+    display: none;
+  }
 }
