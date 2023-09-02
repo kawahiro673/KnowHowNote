@@ -245,15 +245,10 @@ label > input[type='checkbox'] {
 }
 
 #loginbtn,
-#registerbtn {
+#registerbtn,
+#gestloginbtn {
   padding: 1em 7em;
   margin-top: 10px;
-}
-
-#gestloginbtn {
-  width: 130px;
-  height: 45px;
-  padding: 0;
 }
 
 #registerbtn {
