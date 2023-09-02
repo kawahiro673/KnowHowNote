@@ -223,6 +223,12 @@ label > input[type='checkbox'] {
   height: 318px;
 }
 
+.login-guide {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+
 /*********** ボタン ***********/
 
 #pass-change,

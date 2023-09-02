@@ -210,10 +210,9 @@
     height: 45px;
     padding: 0;
   }
-  .login-guide {
-    display: flex;
-    align-items: center;
-    margin: 10px;
+  .login-guide,
+  #login-move-button {
+    margin: 0;
     font-size: 15px;
   }
 }
