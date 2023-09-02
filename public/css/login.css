@@ -226,7 +226,9 @@ label > input[type='checkbox'] {
 .login-guide {
   display: flex;
   align-items: center;
-  margin: 10px;
+}
+.login-guide-p {
+  margin-right: 10px;
 }
 
 /*********** ボタン ***********/
