@@ -178,44 +178,39 @@ label > input[type='checkbox'] {
   text-align: right;
 }
 
-.explanation {
+.explanation-container {
   display: flex;
   align-items: center;
-}
-
-.explanation-wrap {
-  align-items: center;
-}
-
-.explanation,
-.explanation-wrap {
   font-size: 18px;
 }
 
-.explanation-1,
-.explanation-2,
-.explanation-3 {
-  width: 65%; /* 幅比率 6.5 */
-}
-/* 
-.explanation img {
-  width: 35%; /* 幅比率 3.5 */
-/*} */
-
-.explanation-wrap img {
-  width: 400px;
-  height: 270px;
+.explanation-wrap {
+  align-items: center;
+  font-size: 18px;
 }
 
-.img-container {
-  width: 35%; /* 幅比率 3.5 */
+.explanation-1 {
+  width: 65%;
+}
+
+.img-container-1 {
+  width: 35%;
   display: flex;
-  flex-direction: column; /* 子要素を縦に並べる */
+  flex-direction: column;
 }
 
-.img-container img {
+.img-container-1 img {
   width: 100%; /* 子要素の幅を100%に設定して親要素の幅に合わせる */
   border: 2px solid black;
+}
+
+.img-container-2 {
+  align-items: center;
+}
+
+.img-container-2 img {
+  /* width: ; 
+ height: ; */
 }
 
 /*********** ボタン ***********/
