@@ -134,16 +134,16 @@ function loginButtonClick() {
 document.getElementById('login-move-button').addEventListener('click', (e) => {
   if (window.innerWidth <= 1000) {
     document
-      .getElementById('loginbtn')
+      .getElementsByClassName('login-title')[0]
       .scrollIntoView({ behavior: 'smooth', block: 'start' });
   } else {
     $('.next-page-arrow').trigger('click');
     setTimeout(() => {
       $('.click-1').trigger('click');
       setTimeout(() => {
-        $('.explanation-2').trigger('click');
+        $('.click-2').trigger('click');
         setTimeout(() => {
-          $('.explanation-3').trigger('click');
+          $('.click-3').trigger('click');
         }, 250);
       }, 250);
     }, 250);
