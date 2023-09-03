@@ -139,7 +139,7 @@ document.getElementById('login-move-button').addEventListener('click', (e) => {
   } else {
     $('.next-page-arrow').trigger('click');
     setTimeout(() => {
-      $('.explanation-1').trigger('click');
+      $('.click-1').trigger('click');
       setTimeout(() => {
         $('.explanation-2').trigger('click');
         setTimeout(() => {
