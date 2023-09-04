@@ -34,7 +34,7 @@
 #yes-button-explanation-pop,
 #change-password-button,
 #change-password-button-decision,
-#change-password-button-cancel{
+#change-password-button-cancel {
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
@@ -317,9 +317,9 @@
   float: right;
 }
 
-#login-move-button{
-  color:red;
-  background-color:white;
+#login-move-button {
+  color: red;
+  background-color: white;
   display: inline-block;
   padding: 0px;
   font-size: 24px;
@@ -409,6 +409,7 @@
   }
 
   #inquiry-button {
+    vertical-align: initial;
     position: absolute;
     bottom: 0;
     right: 0;
@@ -422,9 +423,7 @@
     font-size: smaller;
     padding: 4px 8px;
   }
-  #inquiry-button {
-    vertical-align: baseline;
-  }
+
   #share-send {
     vertical-align: baseline;
   }
