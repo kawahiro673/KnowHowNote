@@ -229,7 +229,10 @@ label > input[type='checkbox'] {
   align-items: center;
 }
 .login-guide-p {
-  margin-right: 10px;
+  /* margin-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 10; */
+  margin: 5px 10px 10px 0;
 }
 
 /*********** ボタン ***********/
