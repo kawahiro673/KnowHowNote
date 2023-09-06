@@ -216,4 +216,12 @@
     margin: 0;
     font-size: 15px;
   }
+
+  #login-move-button {
+    font-size: 17px;
+  }
+
+  .login-guide-p {
+    margin: 5px 10px 10px 0;
+  }
 }
