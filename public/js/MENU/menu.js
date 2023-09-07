@@ -916,7 +916,7 @@ document.getElementById('logout').addEventListener('click', async function () {
   if (document.getElementById('user_name').innerHTML.length > 20) {
     result = await answerPopUp(
       'ログアウト',
-      'ログアウトしますか？<br>※ゲストユーザーはログアウトするとデータが全て削除されます'
+      'ログアウトしますか？<br>※ゲストユーザーはログアウトすると<br>データが全て削除されます'
     );
   } else {
     result = await answerPopUp(
@@ -950,7 +950,7 @@ document
   .addEventListener('click', async function () {
     const result = await answerPopUp(
       '全削除',
-      'ノートやフォルダが全て削除されますが本当に削除しますか？'
+      'ノートやフォルダが全て削除されます<br>本当に削除しますか？'
     );
     if (result === true) {
       $.ajax({
