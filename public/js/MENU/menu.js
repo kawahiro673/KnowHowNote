@@ -1,5 +1,5 @@
 //MENUボタンの主な機能を実装
-import { hashedIdGet } from '../main.js';
+// import { hashedIdGet } from '../main.js';
 import {
   currentTimeGet,
   resultPopUp,
@@ -263,13 +263,13 @@ document
       return false;
     }
 
-    if (email.value === '') {
-      explanationPopUp(
-        'メールドレス変更',
-        '新しいメールアドレスが入力されておりません'
-      );
-      return false;
-    }
+    // if (email.value === '') {
+    //   explanationPopUp(
+    //     'メールドレス変更',
+    //     '新しいメールアドレスが入力されておりません'
+    //   );
+    //   return false;
+    // }
 
     // パスワードの文字数(8文字以上20文字以内)と英数字チェック
     if (!validateEmail(email)) {

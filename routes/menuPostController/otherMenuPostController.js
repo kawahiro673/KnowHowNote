@@ -4,7 +4,7 @@ const router = require('express').Router();
 const pool = require('../../db.js');
 const JWT = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const { reject } = require('bcrypt/promises');
+// const { reject } = require('bcrypt/promises');
 const nodemailer = require('nodemailer');
 
 //認証情報
@@ -90,12 +90,12 @@ router.post('/', async (req, res) => {
               reject(error);
             } else {
               //ユーザー名かぶりチェック
-              const user = result.find((user) => user.Email === req.body.email);
-              if (user) {
-                res.send({ msg: 'そのアドレスは使われています' });
-              } else {
-                resolve(resultDecoded);
-              }
+              //const user = result.find((user) => user.Email === req.body.email);
+              // if (user) {
+              //   res.send({ msg: 'そのアドレスは使われています' });
+              // } else {
+              resolve(resultDecoded);
+              // }
             }
           });
         });
