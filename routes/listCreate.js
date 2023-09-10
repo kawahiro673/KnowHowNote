@@ -52,7 +52,6 @@ router.post('/', async (req, res) => {
     const { resultDecoded, results1, results2 } = await getUserDataAndQueries(
       req
     );
-
     res.send({
       response: results1,
       response2: results2,
