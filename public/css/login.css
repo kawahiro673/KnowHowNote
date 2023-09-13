@@ -8,6 +8,10 @@ p{
    font-weight: bold;
 }
 
+label {
+  font-size: 16px;
+}
+
 .dummy {
   backface-visibility: hidden;
 }
