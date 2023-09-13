@@ -4,6 +4,10 @@
     format('truetype');
 }
 
+p{
+   font-weight: bold;
+}
+
 .dummy {
   backface-visibility: hidden;
 }
