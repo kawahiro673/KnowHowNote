@@ -50,11 +50,7 @@ TOP 画面から新規登録・ログイン・ゲストログイン・パスワ�
 **6.その他機能** <br>
 ノウハウの共有履歴の確認やタブ・背景の配色変更、共有機能の ON/OFF が個別設定から変更が可能です。
 
-<div class="image-container">
-  <img src="public/img/README_img/共有履歴.png" class="inline-image">
-  <img src="public/img/README_img/タブ色.png" class="inline-image">
-  <img src="public/img/README_img/個別設定.png" class="inline-image">
-</div>
+![共有履歴](public/img/README_img/共有履歴.png) ![タブ色](public/img/README_img/タブ色.png) ![個別設定](public/img/README_img/個別設定.png)
 
 <!-- <img src="public/img/README_img/共有履歴.png"><br>
 <img src="public/img/README_img/タブ色.png"><br>
@@ -83,13 +79,3 @@ TOP 画面から新規登録・ログイン・ゲストログイン・パスワ�
 ## 🌐 App URL
 
 ### **https://knowhownote-106672fa32dd.herokuapp.com/**
-
-<style>
-  .image-container {
-    display: flex; /* 画像を横並びに配置するために flex レイアウトを使用 */
-  }
-
-  .inline-image {
-    margin-right: 10px; /* 画像の間に余白を設定する（お好みに合わせて調整できます） */
-  }
-</style>
