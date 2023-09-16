@@ -77,7 +77,8 @@ TOP 画面から新規登録・ログイン・ゲストログイン・パスワ�
 - CSS
 - Javascriprt
   - jQuery
-- Node.js (Express)
+- Node.js
+  - Express
 - MySQL
 - HEROKU
 - VSCode（Visual Studio Code）
