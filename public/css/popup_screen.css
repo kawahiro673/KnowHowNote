@@ -273,6 +273,10 @@
   padding: 0 10px;
 }
 
+.popup-body_About-Website div{
+ align-items: center;
+}
+
 #explanation-pop-p,
 #answer-pop-p {
   text-align: center;
@@ -308,11 +312,15 @@
   .popup-window_friend-add,
   .popup-window_friend-add-ans,
   .popup-window_friend-delete-ans,
-  .popup-window_friend-delete-q,
-  .popup-window_About-Website {
+  .popup-window_friend-delete-q {
     width: 330px;
     height: 180px;
   }
+
+    .popup-window_About-Website{
+       width: 330px;
+    }
+  
   .popup-window_version {
     width: 350px;
     height: 130px;
