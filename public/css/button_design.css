@@ -411,6 +411,7 @@
   #inquiry-button {
     vertical-align: middle;
     position: static;
+    margin-left: 0;
   }
 
   #friend-list-add-button,
@@ -424,5 +425,7 @@
 
   #share-send {
     vertical-align: baseline;
+    margin-left: 0;
+    margin-bottom: 10px;
   }
 }
