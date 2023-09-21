@@ -409,10 +409,11 @@
   }
 
   #inquiry-button {
-    vertical-align: middle;
+    /* vertical-align: middle;
     position: static;
     margin-left: auto;
-    margin-top: 5px;
+    margin-top: 5px; */
+    float: right; /* ボタンを右寄せに配置 */
   }
 
   #friend-list-add-button,
