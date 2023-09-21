@@ -273,9 +273,9 @@
   padding: 0 10px;
 }
 
-.popup-body_About-Website table{
-  margin-right:auto;
-  margin-left:auto;
+.popup-body_About-Website table {
+  margin-right: auto;
+  margin-left: auto;
 }
 
 #explanation-pop-p,
@@ -318,10 +318,10 @@
     height: 180px;
   }
 
-    .popup-window_About-Website{
-       width: 330px;
-    }
-  
+  .popup-window_About-Website {
+    width: 330px;
+  }
+
   .popup-window_version {
     width: 350px;
     height: 130px;

@@ -409,10 +409,8 @@
   }
 
   #inquiry-button {
-    vertical-align: initial;
-    position: absolute;
-    bottom: 0;
-    right: 0;
+    vertical-align: middle;
+    position: static;
   }
 
   #friend-list-add-button,
