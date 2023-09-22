@@ -29,8 +29,8 @@
   }
 
   header h2 {
-  font-size: 10px;
-}
+    font-size: 10px;
+  }
 
   .tab-label {
     display: none;
@@ -85,11 +85,11 @@
   }
 
   .share-input {
-    max-width: 300px; /* 適切な値に調整してください */
+    max-width: 300px;
     height: 22px;
   }
   .share-message {
-    max-width: 300px; /* 適切な値に調整してください */
+    max-width: 300px;
     height: 80px;
   }
   .sab-share-p {
@@ -123,7 +123,6 @@
   }
 
   #friend-list-div,
-/*   #group-display, */
   #all-group-list {
     grid-template-columns: repeat(2, 1fr);
   }

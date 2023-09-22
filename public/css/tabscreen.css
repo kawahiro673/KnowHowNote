@@ -37,7 +37,7 @@
 .title {
   margin: 0px 30px;
   display: flex;
-  align-items: center; /* 要素の縦方向の中央揃え */
+  align-items: center;
   justify-content: flex-start;
 }
 
@@ -85,13 +85,11 @@
   left: 0;
   width: 20%;
   height: 100%;
-  /* z-index: -1; */
   background-color: var(--tab-label-background-color);
 }
 
 .tab-content {
   display: none;
-  /* position: absolute; */
   top: 0;
   left: 0;
   width: 100%;

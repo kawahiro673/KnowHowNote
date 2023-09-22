@@ -7,19 +7,18 @@ section {
   width: 100%;
   background-color: aliceblue;
   overflow: hidden;
-  user-select: none; /*カーソルでドラッグアンドドロップが出来なくなる*/
+  user-select: none;
 }
 
 section .row {
-  display: flex; /*改行をなくして横並びに*/
-  white-space: nowrap; /*折り返しなし*/
+  display: flex;
+  white-space: nowrap;
   font-size: 96px;
   padding: 10px 0;
-  transform: rotate(-30deg); /*画像を傾け*/
-  /*傾けた際に上側が若干あくため、埋めている*/
+  transform: rotate(-30deg);
   position: relative;
   top: -50%;
-  left: -50%; /* 左に移動してスペースを埋める */
+  left: -50%;
 }
 
 i {
