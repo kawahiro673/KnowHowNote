@@ -1,6 +1,6 @@
 <img src="public/img/README_img/タイトル.png">
 
-## Know How Note 　(作成日 2023.2〜)
+## Know How Note 　(作成期間 '23/2〜9)
 
 ### **https://knowhownote-106672fa32dd.herokuapp.com/**
 
