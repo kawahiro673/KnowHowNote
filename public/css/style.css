@@ -33,7 +33,6 @@
   right: 0;
   border-radius: 10px;
   padding: 10px;
-  /* overflow-y: auto; 縦方向のスクロールバーを表示 */
 }
 
 header {
@@ -46,13 +45,12 @@ header {
   border-radius: 5px;
   height: 60px;
   align-items: center;
-  /*    //overflow: hidden; */
 }
 
 .header-div {
   display: flex;
-  justify-content: center; /* 要素を水平方向に中央揃え */
-  align-items: center; /* 要素を垂直方向に中央揃え */
+  justify-content: center;
+  align-items: center;
 }
 
 .header-div img {
@@ -92,7 +90,7 @@ header h2 {
 }
 
 .file {
-  -webkit-text-stroke: 0.5px black; /* テキストの枠の設定 */
+  -webkit-text-stroke: 0.5px black;
 }
 
 .sharetree {
@@ -168,11 +166,11 @@ footer {
 }
 
 .dragging {
-  opacity: 0.5; /* ゴースト要素の透明度 */
+  opacity: 0.5;
 }
 
 .floating {
-  transition: top 0.3s, left 0.3s; /* アニメーションのプロパティと時間を設定 */
+  transition: top 0.3s, left 0.3s;
 }
 
 #color a {
@@ -181,8 +179,8 @@ footer {
 }
 
 .tab_content_description {
-  height: 930px; /* 表示したい高さを指定 */
-  max-width: 100%; /* 横スクロールを有効にするために必要な設定 */
+  height: 930px;
+  max-width: 100%;
   overflow: auto;
   white-space: nowrap; /* 横スクロールを有効にするために必要な設定 */
 }

@@ -8,7 +8,7 @@
   background-color: white;
   border: 1px solid #ccc;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 6px; /* 余白のサイズを調整してください */
+  padding: 6px;
   font-size: 14px;
   z-index: 9999;
 }
@@ -65,7 +65,7 @@
 #color,
 #notedetails,
 #sharedetails {
-  position: relative; /*これ重要*/
+  position: relative;
 }
 
 #color > ul > li > div,
@@ -102,12 +102,12 @@
 }
 
 #contextmenu6 {
-  width: 70px; /* 適切な幅に調整してください */
+  width: 70px;
   padding: 6px;
   margin: 0;
-  font-size: 14px; /* 適切なフォントサイズに調整してください */
+  font-size: 14px;
   background-color: white;
-  border: none; /* #color要素のborderを削除 */
+  border: none;
 }
 
 #contextmenu6 li {

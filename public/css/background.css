@@ -28,11 +28,11 @@ i {
 /*ホバーした時の処理*/
 i:hover {
   color: rgb(162, 241, 241);
-  text-shadow: 0 0 120px rgb(162, 241, 241); /*ぼかし120px*/
+  text-shadow: 0 0 120px rgb(162, 241, 241);
   transition: 0s;
 }
 
-/*アニメーション、、、*/
+/*アニメーション*/
 section .row div {
   animation: animate 40s linear infinite;
 }

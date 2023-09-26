@@ -112,14 +112,14 @@
 
   .tab_content {
     max-height: 170px;
-    max-width: 100%; /* 横スクロールを有効にするために必要な設定 */
+    max-width: 100%;
     overflow: auto;
     -webkit-overflow-scrolling: touch; /* iOSデバイスでのスムーズなスクロールを有効にする */
   }
 
   .tab_content_description {
     white-space: nowrap; /* 横スクロールを有効にするために必要な設定 */
-    display: inline-block; /* インラインブロック要素にすることで横幅を自動調整 */
+    display: inline-block;
   }
 
   #friend-list-div,
