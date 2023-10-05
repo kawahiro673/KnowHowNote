@@ -229,9 +229,7 @@ export const cancelButtonClick = async (id) => {
       element.innerHTML = element.innerHTML.substring(1);
     }
     resultPopUp('取り消し', '取り消しました');
-  } else {
-    // 「いいえ」が押された場合の処理 おそらくポップが閉じる
-  }
+  } 
 };
 
 ////////////////////////////////////////////////////////////////
@@ -260,7 +258,6 @@ function onClick(event) {
 }
 
 export const shareNoteSendFunc = (id, title) => {
-  console.log('やあ');
   const inputValue = document.getElementsByClassName('share-input')[0].value;
   const inputValues = inputValue.split(',').map((value) => value.trim());
 
@@ -268,7 +265,6 @@ export const shareNoteSendFunc = (id, title) => {
     document.getElementsByClassName('share-message')[0].value;
   //配列の文字列を全て数値へ
   const numArray = shareUserValues.map((str) => parseInt(str));
-
   //inputタブに自分の名前が含まれていない場合のみ実行
   if (inputValue !== '') {
     $.ajax({
@@ -666,9 +662,7 @@ export const tabClick = (e, id, title) => {
         document.getElementById('notepass').innerHTML = pass;
       },
     });
-  } else {
-    //タブ閉じるボタン押下
-  }
+  } 
 };
 
 //タブのラベルをランダムな色に付与する
