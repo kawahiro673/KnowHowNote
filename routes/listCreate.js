@@ -1,18 +1,7 @@
 const { getUserDataByToken } = require('./databaseQueries');
 
 const router = require('express').Router();
-// const { append } = require('express/lib/response');
 const pool = require('../db.js');
-// const JWT = require('jsonwebtoken');
-// const bcrypt = require('bcrypt');
-// const { resetWatchers } = require('nodemon/lib/monitor/watch');
-// const { request } = require('express');
-// const res = require('express/lib/response');
-// const { reject } = require('bcrypt/promises');
-// const { off } = require('../db.js');
-// const rules = require('nodemon/lib/rules');
-// const Connection = require('mysql/lib/Connection');
-// const PoolCluster = require('mysql/lib/PoolCluster');
 
 async function getUserDataAndQueries(req) {
   try {

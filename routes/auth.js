@@ -9,8 +9,8 @@ const nodemailer = require('nodemailer');
 const auth = {
   type: 'OAuth2',
   user: 'knowhownote.info@gmail.com',
-  clientId:
-    '253759917573-rf6skikg3ud0kn4u9o53c7kleoe283pk.apps.googleusercontent.com',
+  clientId: process.env.Email_ClientID,
+  //'253759917573-rf6skikg3ud0kn4u9o53c7kleoe283pk.apps.googleusercontent.com',
   clientSecret: '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',
   refreshToken:
     '1//04uFm6u1avztVCgYIARAAGAQSNwF-L9Iredxs2OJ3DqnrBPeO120ID-CGhR4TKozsIV9NE5IL0uEFJwyJxCTCCY7Abr4dmmDMuB4',
