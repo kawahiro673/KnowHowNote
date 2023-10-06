@@ -276,7 +276,7 @@ router.post('/', async (req, res) => {
           {
             userName,
           },
-          'SECRET_KEY'
+          process.env.Token_KEY
         );
         const hashedId = bcrypt.hashSync(userResult[0].id.toString(), 10);
         const encodedId = encodeURIComponent(hashedId);

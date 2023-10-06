@@ -3,7 +3,7 @@ const JWT = require('jsonwebtoken');
 
 function getUserDataByToken(req) {
   const token = req.cookies.token;
-  const decoded = JWT.verify(token, 'SECRET_KEY');
+  const decoded = JWT.verify(token, process.env.Token_KEY);
   return new Promise((resolve, reject) => {
     pool.query(
       'SELECT * FROM register_user WHERE UserName = ?;',

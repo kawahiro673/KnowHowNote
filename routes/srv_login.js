@@ -42,7 +42,7 @@ router.post('/', async (req, res) => {
         {
           userName,
         },
-        'SECRET_KEY' // 秘密鍵。envファイルなどに隠して管理することが推奨されます。
+        process.env.Token_KEY
       );
 
       // ユーザーIDをハッシュ化してURLに含める

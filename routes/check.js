@@ -4,13 +4,9 @@ const JWT = require('jsonwebtoken');
 //Cookieに保存しているトークンが
 function check(req, res, next) {
   try {
-    //承認用のトークン設定
     const token = req.cookies.token;
     //復号する。認証できるかどうか確認
-    const decoded = JWT.verify(
-      token,
-      'SECRET_KEY' //秘密鍵。envファイルとかに隠す。
-    );
+    const decoded = JWT.verify(token, process.env.Token_KEY);
     const hashedId = req.cookies.hashedId;
     req.value = hashedId;
 
