@@ -4,18 +4,15 @@ const router = require('express').Router();
 const pool = require('../../db.js');
 const JWT = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-// const { reject } = require('bcrypt/promises');
 const nodemailer = require('nodemailer');
 
 //認証情報
 const auth = {
   type: 'OAuth2',
   user: 'knowhownote.info@gmail.com',
-  clientId:
-    '253759917573-rf6skikg3ud0kn4u9o53c7kleoe283pk.apps.googleusercontent.com',
-  clientSecret: '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',
-  refreshToken:
-    '1//04uFm6u1avztVCgYIARAAGAQSNwF-L9Iredxs2OJ3DqnrBPeO120ID-CGhR4TKozsIV9NE5IL0uEFJwyJxCTCCY7Abr4dmmDMuB4',
+  clientId: process.env.Email_ClientID,
+  clientSecret: process.env.Client_Secret,
+  refreshToken: process.env.Refresh_Token,
 };
 const transport = {
   service: 'gmail',
@@ -26,7 +23,7 @@ const transporter = nodemailer.createTransport(transport);
 router.post('/', async (req, res) => {
   if (req.body.flg === 'RegisterUser') {
     const token = req.cookies.token;
-    const decoded = JWT.verify(token, 'SECRET_KEY');
+    const decoded = JWT.verify(token, process.env.Token_KEY);
     pool.query(
       'SELECT * FROM register_user WHERE UserName = ?;',
       [decoded.userName],
@@ -89,13 +86,7 @@ router.post('/', async (req, res) => {
             if (error) {
               reject(error);
             } else {
-              //ユーザー名かぶりチェック
-              //const user = result.find((user) => user.Email === req.body.email);
-              // if (user) {
-              //   res.send({ msg: 'そのアドレスは使われています' });
-              // } else {
               resolve(resultDecoded);
-              // }
             }
           });
         });
@@ -121,7 +112,6 @@ router.post('/', async (req, res) => {
                     console.log('Error:', error);
                     res.status(500).send('Error sending email');
                   } else {
-                    console.log('Email sent:', info.response);
                     res.send({ msg: '更新完了しました' });
                   }
                 });
@@ -137,7 +127,7 @@ router.post('/', async (req, res) => {
   } else if (req.body.flg === 'PassCheck') {
     try {
       const token = req.cookies.token;
-      const decoded = JWT.verify(token, 'SECRET_KEY');
+      const decoded = JWT.verify(token, process.env.Token_KEY);
 
       const resultDecoded = await new Promise((resolve, reject) => {
         pool.query(

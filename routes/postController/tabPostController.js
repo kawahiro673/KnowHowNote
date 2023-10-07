@@ -53,7 +53,6 @@ router.post('/', (req, res) => {
               if (error) {
                 reject(error);
               } else {
-                //res.send({ tabResult: result });
                 resolve({ resultDecoded: resultDecoded, result: result });
               }
             }

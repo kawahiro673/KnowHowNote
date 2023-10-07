@@ -2,7 +2,6 @@ const { getUserDataByToken } = require('../databaseQueries');
 
 const router = require('express').Router();
 const pool = require('../../db.js');
-const JWT = require('jsonwebtoken');
 const { reject } = require('bcrypt/promises');
 
 router.post('/', (req, res) => {
@@ -266,7 +265,6 @@ router.post('/', (req, res) => {
                           .send('Internal Server Error.(parentIDSame)');
                       });
                   } else {
-                    console.log('上へのやつ');
                     let promise1 = new Promise((resolve, reject) => {
                       resolve();
                     });
@@ -321,7 +319,7 @@ router.post('/', (req, res) => {
                       });
                   }
                 } else {
-                  console.log('orderは変化なし');
+                  console.log('order変化なし');
                 }
               }
             }

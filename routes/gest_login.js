@@ -292,14 +292,12 @@ router.post('/', async (req, res) => {
 
         return res.send({ message: 'ok', url: url });
       } catch (error) {
-        // エラーハンドリング
         console.error(error);
         return res.status(500).send({ message: 'Internal Server Error' });
       }
     })
     .catch((error) => {
       console.error(error);
-      // res.status(500).send('Internal Server Error.(Register user)');
     });
 });
 

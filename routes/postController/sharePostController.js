@@ -69,16 +69,13 @@ router.post('/', (req, res) => {
               if (error) {
                 rejct(error);
               } else {
-                resolve({
-                  folderResults: folderResults,
-                  resultDecoded: resultDecoded,
-                });
+                resolve(resultDecoded);
               }
             }
           );
         });
       })
-      .then(({ folderResults, resultDecoded }) => {
+      .then((resultDecoded) => {
         return new Promise((resolve, rejct) => {
           pool.query(
             'select * from it_memo WHERE (UserID = ?) AND (Type = "Share") order by folder_order ASC',
@@ -116,7 +113,7 @@ router.post('/', (req, res) => {
     let recipientGroupsCopy = [...req.body.RecipientGroups];
 
     const token = req.cookies.token;
-    const decoded = JWT.verify(token, 'SECRET_KEY');
+    const decoded = JWT.verify(token, process.env.Token_KEY);
     //配列かどうかをチェックし、そうでなければ単一の要素の配列に変換
     const RecipientIDs = Array.isArray(req.body.RecipientIDs)
       ? req.body.RecipientIDs

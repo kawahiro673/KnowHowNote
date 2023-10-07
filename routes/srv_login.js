@@ -52,7 +52,7 @@ router.post('/', async (req, res) => {
 
       const options = {
         httpOnly: true, // JavaScriptからアクセスできないようにする(document.cookieで取得もできない)
-        maxAge: 1000 * 60 * 360, // 有効期限を設定(ミリ秒) ６時間
+        maxAge: 1000 * 60 * 360, // 有効期限(ミリ秒) ６時間
       };
 
       res.cookie('token', token, options);

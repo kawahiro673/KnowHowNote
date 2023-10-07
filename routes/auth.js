@@ -22,7 +22,6 @@ const transporter = nodemailer.createTransport(transport);
 router
   .route('/')
   .get((req, res) => {
-    //指定したファイルを画面表示
     res.render('auth.ejs');
   })
   .post(async (req, res) => {
@@ -247,7 +246,6 @@ router
 
             return res.send({ message: 'ok', url: url });
           } catch (error) {
-            // エラーハンドリング
             console.error(error);
             return res.status(500).send({ message: 'Internal Server Error' });
           }
