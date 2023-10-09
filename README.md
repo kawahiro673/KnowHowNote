@@ -74,10 +74,91 @@ TOP 画面から新規登録・ログイン・ゲストログイン・パスワ�
 ## DB
 
 **register_user**
-| TH 左寄せ | TH 中央寄せ | TH 右寄せ |
-| :--- | :---: | ---: |
-| TD | TD | TD |
-| TD | TD | TD |
+| カラム名 | データ型 | Null | デフォルト |
+| :---: | :---: | :---: | :---: |
+| id | int | NO | NULL |
+| UserName | varchar | YES | NULL |
+| Email | varchar | YES | - |
+| HashedPassword | varchar | YES | NULL |
+| CreationDay | varchar | YES | NULL |
+| LoginDate | varchar | YES | NULL |
+| BackgroundColor | varchar | YES | blue |
+| DummyPassword | varchar | YES | NULL |
+| ShareFlg | varchar | YES | ON |
+| Authentication_ID | varchar | YES | NULL |
+
+**it_memo**
+| カラム名 | データ型 | Null | デフォルト |
+| :---: | :---: | :---: | :---: |
+| id | int | NO | NULL |
+| title | text | YES | NULL |
+| memo_text | text | YES | NULL |
+| title_color | varchar | YES | NULL |
+| tab_color | varchar | YES | NULL |
+| saved_time | varchar | YES | NULL |
+| parent_id | int | YES | NULL |
+| folder_order | int | YES | NULL |
+| Type | varchar | YES | NULL |
+| UserID | int | YES | NULL |
+| Message | varchar | YES | NULL |
+| Share_User | varchar | YES | NULL |
+
+**folder**
+| カラム名 | データ型 | Null | デフォルト |
+| :---: | :---: | :---: | :---: |
+| id | int | NO | NULL |
+| folder_name | text | YES | NULL |
+| parent_id | int | YES | NULL |
+| closed | varchar | YES | NULL |
+| folder_order | int | YES | NULL |
+| UserID | int | YES | NULL |
+| Type | varchar | YES | NULL |
+
+**share_user**
+| カラム名 | データ型 | Null | デフォルト |
+| :---: | :---: | :---: | :---: |
+| id | int | NO | NULL |
+| UserName | varchar | YES | NULL |
+| date | varchar | YES | NULL |
+| ShareNoteTitle | varchar | YES | NULL |
+| UserID | int | YES | NULL |
+| Share_ToDo_Flg | varchar | YES | NULL |
+
+**tab_hold**
+| カラム名 | データ型 | Null | デフォルト |
+| :---: | :---: | :---: | :---: |
+| id | int | NO | NULL |
+| focus | int | YES | NULL |
+| tabOrder | int | YES | NULL |
+| tabTitle | varchar | YES | NULL |
+| UserID | int | YES | NULL |
+| label_color | varchar | YES | #FFFFFF |
+
+**friend_list**
+| カラム名 | データ型 | Null | デフォルト |
+| :---: | :---: | :---: | :---: |
+| id | int | NO | NULL |
+| user_name | varchar | YES | NULL |
+| UserID | int | YES | NULL |
+| date | varchar | YES | NULL |
+| Changed_Name | varchar | YES | NULL |
+| User_Group | varchar | YES | NULL |
+
+**group_list**
+| カラム名 | データ型 | Null | デフォルト |
+| :---: | :---: | :---: | :---: |
+| id | int | NO | NULL |
+| User_Group | varchar | YES | NULL |
+| UserID | int | YES | NULL |
+
+**inquiry**
+| カラム名 | データ型 | Null | デフォルト |
+| :---: | :---: | :---: | :---: |
+| id | int | NO | NULL |
+| user | varchar | YES | NULL |
+| date | varchar | YES | NULL |
+| type | varchar | YES | NULL |
+| content | text | YES | NULL |
 
 <!--
 ## 👀 全体的な仕組み
