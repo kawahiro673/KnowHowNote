@@ -376,7 +376,6 @@ document.getElementById('idInput').addEventListener('input', () => {
 document
   .getElementById('share-list-update-button')
   .addEventListener('click', async function () {
-    console.log('更新ボタンクリックしました');
     document.getElementById('sharelist').innerHTML = '';
     document.getElementById('share-list-update-button').classList.add('rotate');
     await shareListCreate();
