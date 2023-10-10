@@ -71,9 +71,9 @@ TOP 画面から新規登録・ログイン・ゲストログイン・パスワ�
 | :---------------------------------------------: | :-----------------------------------------: | :---------------------------------------------: |
 |              共有履歴ポップアップ               |                タブの色変更                 |              個別設定ポップアップ               |
 
-## DB
+## DB テーブル定義
 
-**register_user**
+**register_user テーブル**
 | カラム名 | データ型 | Null | デフォルト |
 | :---: | :---: | :---: | :---: |
 | id | int | NO | NULL |
@@ -87,7 +87,7 @@ TOP 画面から新規登録・ログイン・ゲストログイン・パスワ�
 | ShareFlg | varchar | YES | ON |
 | Authentication_ID | varchar | YES | NULL |
 
-**it_memo**
+**it_memo テーブル**
 | カラム名 | データ型 | Null | デフォルト |
 | :---: | :---: | :---: | :---: |
 | id | int | NO | NULL |
@@ -103,7 +103,7 @@ TOP 画面から新規登録・ログイン・ゲストログイン・パスワ�
 | Message | varchar | YES | NULL |
 | Share_User | varchar | YES | NULL |
 
-**folder**
+**folder テーブル**
 | カラム名 | データ型 | Null | デフォルト |
 | :---: | :---: | :---: | :---: |
 | id | int | NO | NULL |
@@ -114,7 +114,7 @@ TOP 画面から新規登録・ログイン・ゲストログイン・パスワ�
 | UserID | int | YES | NULL |
 | Type | varchar | YES | NULL |
 
-**share_user**
+**share_user テーブル**
 | カラム名 | データ型 | Null | デフォルト |
 | :---: | :---: | :---: | :---: |
 | id | int | NO | NULL |
@@ -124,7 +124,7 @@ TOP 画面から新規登録・ログイン・ゲストログイン・パスワ�
 | UserID | int | YES | NULL |
 | Share_ToDo_Flg | varchar | YES | NULL |
 
-**tab_hold**
+**tab_hold テーブル**
 | カラム名 | データ型 | Null | デフォルト |
 | :---: | :---: | :---: | :---: |
 | id | int | NO | NULL |
@@ -134,7 +134,7 @@ TOP 画面から新規登録・ログイン・ゲストログイン・パスワ�
 | UserID | int | YES | NULL |
 | label_color | varchar | YES | #FFFFFF |
 
-**friend_list**
+**friend_list テーブル**
 | カラム名 | データ型 | Null | デフォルト |
 | :---: | :---: | :---: | :---: |
 | id | int | NO | NULL |
@@ -144,14 +144,14 @@ TOP 画面から新規登録・ログイン・ゲストログイン・パスワ�
 | Changed_Name | varchar | YES | NULL |
 | User_Group | varchar | YES | NULL |
 
-**group_list**
+**group_list テーブル**
 | カラム名 | データ型 | Null | デフォルト |
 | :---: | :---: | :---: | :---: |
 | id | int | NO | NULL |
 | User_Group | varchar | YES | NULL |
 | UserID | int | YES | NULL |
 
-**inquiry**
+**inquiry テーブル**
 | カラム名 | データ型 | Null | デフォルト |
 | :---: | :---: | :---: | :---: |
 | id | int | NO | NULL |
