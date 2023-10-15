@@ -1,12 +1,9 @@
 # node packages
 node_modules/
 
-
 # Local development
 .DS_Store
 .env
 
-#ゲストユーザーのフレンドとなるユーザー追加クエリ
-INSERT INTO register_user (UserName, ShareFlg, CreationDay, LoginDate) VALUES('GestUser_1', 'ON', '2023年01月01日 01:11', '2023年01月01日 01:11');
-INSERT INTO register_user (UserName, ShareFlg, CreationDay, LoginDate) VALUES('GestUser_2', 'ON', '2023年02月02日 02:22', '2023年02月02日 02:22');
-INSERT INTO register_user (UserName, ShareFlg, CreationDay, LoginDate) VALUES('GestUser_3', 'ON', '2023年03月03日 03:33', '2023年03月03日 03:33');
+# 特定のファイルを無視
+file-to-ignore.txt
